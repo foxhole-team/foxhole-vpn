@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_clipboard_empty">Le presse-papiers ne contient aucun texte à importer.</string>
+    <string name="vpn_clipboard_focus_unavailable">Impossible de lire le presse-papiers. Essayez de coller à nouveau.</string>
+</resources>

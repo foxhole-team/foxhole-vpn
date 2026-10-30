@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_help_open">Hilfe: %1$s</string>
+    <string name="router_help_choose_country">Land auswählen</string>
+    <string name="router_help_protocols">Veröffentlichte Protokolle Ihrer VPN-Profile wählen. Hysteria2 wird gewählt, wenn verfügbar. Nach der Routerkopplung können weitere Protokolle hinzugefügt werden.</string>
+    <string name="router_help_profile">Telefonprofil zum Senden an den Router wählen oder später hinzufügen.</string>
+    <string name="router_help_country_direct">Wenn aktiviert, umgeht Datenverkehr des gewählten Landes das Router-VPN. Flagge zum Wählen oder Ändern des Landes antippen.</string>
+    <string name="router_help_home">Nutzt zu Hause den Router und stellt beim Verlassen die vorherige Telefonverbindung wieder her, sofern automatische Umschaltung unterstützt wird.</string>
+    <string name="router_help_add_phone">Fügt dieses Telefon als Gerät im Heimnetz hinzu, damit sein Datenverkehr das Router-VPN nutzen kann.</string>
+    <string name="router_help_public_ip">Nur wählen, wenn der Router über eine öffentliche IP aus dem Internet erreichbar ist. Eine Prüfung über Mobilfunk ist weiterhin erforderlich.</string>
+    <string name="router_help_create_client">Erstellt ein Router-VPN-Profil für dieses Telefon für unterwegs. Dies belegt keine Erreichbarkeit des Routers aus dem Internet.</string>
+    <string name="router_help_password">OpenWrt-Administratorpasswort eingeben. Der übliche Benutzername ist root; dies ist nicht das WLAN-Passwort.</string>
+    <string name="router_help_pin">Bei der Ersteinrichtung eine eigene vierstellige PIN wählen. Diese für konfigurierte Router verwenden. Nach manueller Paketinstallation die PIN in LuCI mit dem Eigentümerkonto festlegen. Es gibt keine voreingestellte PIN.</string>
+    <string name="router_help_storage">Interner Speicher behält die VPN-Protokolle nach einem Neustart. RAM spart internen Speicher, lädt die Protokolle nach einem Neustart aber erneut herunter. Einstellungen bleiben im internen Speicher.</string>
+    <string name="router_help_setup_pair">Installieren fügt FoxHole zu einem unterstützten OpenWrt-Router hinzu. Verbinden koppelt dieses Telefon mit einer bestehenden FoxHole-Installation. Die OpenWrt-Firmware wird nicht installiert oder aktualisiert.</string>
+    <string name="router_help_control">Aktiviert die Verwaltung des gekoppelten Routers über dieses Telefon. Ausschalten entfernt keine VPN-Profile.</string>
+    <string name="router_help_vpn">Startet oder stoppt das gewählte VPN-Profil auf dem Router.</string>
+    <string name="router_help_lan_devices">Für jedes Heimgerät Router-VPN oder Direktverbindung wählen.</string>
+    <string name="router_help_remote_clients">Diese Profile verbinden sich von außerhalb des Heimnetzes mit dem Router. Sie können geteilt oder ihr Zugriff widerrufen werden.</string>
+    <string name="router_help_reset_foxhole">Entfernt nur FoxHole-Einstellungen, PIN und Clienteinträge. Danach FoxHole erneut einrichten. OpenWrt und andere Apps behalten ihre Einstellungen.</string>
+    <string name="router_help_country_source">Automatische Auswahl nutzt ein aktuelles Landergebnis der Internetverbindung des Routers. Telefon- und VPN-Standorte werden nicht verwendet. Bei Nichtverfügbarkeit bleiben Regeln unverändert; Land manuell wählen.</string>
+    <string name="router_help_device_status">Der Router meldet den Gerätestatus. Fehlende Daten bedeuten unbekannten Status.</string>
+    <string name="router_help_install_server">Nur aktivieren, wenn dieser Router VPN-Verbindungen Ihrer Geräte über eine öffentliche IP-Adresse annimmt. Dies installiert ein separates Serverpaket und erhöht den Speicherbedarf. Zugriff nach der Installation konfigurieren.</string>
+</resources>

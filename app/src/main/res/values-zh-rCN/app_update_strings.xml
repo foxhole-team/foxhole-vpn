@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_app_update_channel">应用更新</string>
+    <string name="vpn_app_update_notification_title">有可用 FoxHole VPN 更新</string>
+    <string name="vpn_app_update_notification_body">版本 %1$s 已可下载</string>
+</resources>

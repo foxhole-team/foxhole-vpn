@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_updates_title">FoxHole package updates</string>
+    <string name="router_updates_scope">Updates FoxHole and installed VPN protocol packages. Profiles and pairing are preserved. OpenWrt firmware and unrelated system packages are unchanged.</string>
+    <string name="router_updates_current_version">Current version: %1$s</string>
+    <string name="router_updates_available_version">Available version: %1$s</string>
+    <string name="router_updates_auto">Automatic FoxHole updates</string>
+    <string name="router_updates_auto_help">When enabled, the router checks daily and installs verified FoxHole package updates. Turn this off during setup or later in router Settings. The policy stays on the router after unpairing.</string>
+    <string name="router_updates_apply">UPDATE</string>
+    <string name="router_updates_check">CHECK</string>
+    <string name="router_updates_status">CHECK STATUS</string>
+    <string name="router_updates_waiting">Waiting for router status</string>
+    <string name="router_updates_uncertain">The router may be updating. Reconnect to check the result. The update request will not be sent again.</string>
+    <string name="router_updates_unreachable">The router is unavailable. Check the Wi-Fi connection, then check status.</string>
+    <string name="router_updates_automatic_job">Automatic update on the router</string>
+    <string name="router_updates_progress">%1$d%%</string>
+    <string name="router_updates_done">Done</string>
+    <string name="router_updates_changes">Changes to install</string>
+    <string name="router_updates_version_change">%1$s → %2$s</string>
+    <string name="router_updates_reconnect_note">The router VPN and control panel will reconnect. Installation continues if this window closes.</string>
+    <string name="router_updates_running">In progress</string>
+    <string name="router_updates_unsupported">Package updates are unavailable for this router.</string>
+    <string name="router_updates_current">Up to date</string>
+    <string name="router_updates_available">Update available</string>
+    <string name="router_updates_check_failed">Could not check for updates</string>
+    <string name="router_updates_not_checked">Not checked yet</string>
+    <string name="router_updates_step_release">Checking the release</string>
+    <string name="router_updates_step_backup">Preparing recovery</string>
+    <string name="router_updates_step_check">Checking installed packages</string>
+    <string name="router_updates_step_preparing">Preparing</string>
+    <string name="router_updates_step_index">Downloading the catalog</string>
+    <string name="router_updates_step_download">Downloading packages</string>
+    <string name="router_updates_step_verifying">Verifying packages</string>
+    <string name="router_updates_step_installing">Installing packages</string>
+    <string name="router_updates_step_reconnect">Reconnecting the router VPN</string>
+    <string name="router_updates_release_unavailable">No verified release is available for this router.</string>
+    <string name="router_updates_auth_failed">Router authorization is no longer valid. Pair again to continue.</string>
+    <string name="router_updates_stale">The router settings changed. Check status and review the update again.</string>
+    <string name="router_updates_no_space">The router does not have enough free storage or RAM.</string>
+    <string name="router_updates_download_failed">Could not download the update.</string>
+    <string name="router_updates_verification_failed">The router rejected the update files or version.</string>
+    <string name="router_updates_rollback_unavailable">Safe recovery is unavailable. The update was not started.</string>
+    <string name="router_updates_ram_unavailable">The verified RAM protocol cache is unavailable. The update was not started.</string>
+    <string name="router_updates_invalid_response">Could not verify the router response. Check status before continuing.</string>
+    <string name="router_updates_disconnect_before_update">Disconnect the router VPN before updating</string>
+</resources>

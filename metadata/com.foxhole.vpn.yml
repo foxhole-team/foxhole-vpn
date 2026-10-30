@@ -1,0 +1,15 @@
+Categories:
+  - Security
+  - VPN & Proxy
+License: GPL-3.0-or-later
+AuthorName: FoxHole Team
+AuthorEmail: adam@merovingian.io
+
+AutoName: FoxHole VPN
+Summary: Simple Android VPN client for your profiles
+
+Disabled: Pending a verified public source tag and a validated F-Droid source-build recipe
+AutoUpdateMode: None
+UpdateCheckMode: None
+CurrentVersion: 1.0.0
+CurrentVersionCode: 42

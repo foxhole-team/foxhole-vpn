@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_import_qr">ОТСКАНИРОВАТЬ QR-КОД</string>
+    <string name="vpn_qr_title">Сканировать QR-код</string>
+    <string name="vpn_qr_hint">Наведите камеру на QR-код профиля VPN.</string>
+    <string name="vpn_qr_camera_permission_title">Доступ к камере</string>
+    <string name="vpn_qr_camera_permission_body">Камера нужна для сканирования QR-кода. Фото и видео не сохраняются.</string>
+    <string name="vpn_qr_allow_camera">РАЗРЕШИТЬ КАМЕРУ</string>
+    <string name="vpn_qr_open_settings">ОТКРЫТЬ НАСТРОЙКИ ПРИЛОЖЕНИЯ</string>
+    <string name="vpn_qr_settings_unavailable">Не удалось открыть настройки приложения.</string>
+    <string name="vpn_qr_camera_unavailable">Камера недоступна. Попробуйте снова.</string>
+    <string name="vpn_qr_retry">ПОВТОРИТЬ</string>
+    <string name="vpn_qr_back">НАЗАД</string>
+    <string name="vpn_qr_preview">Камера для сканирования QR-кода</string>
+</resources>

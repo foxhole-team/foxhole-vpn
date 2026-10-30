@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_profile_share">分享</string>
+    <string name="vpn_profile_send_to_router">发送配置到路由器</string>
+</resources>

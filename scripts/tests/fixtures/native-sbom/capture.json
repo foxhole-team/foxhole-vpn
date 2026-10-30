@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "cwd": "/fixture/foxcore",
+  "core_revision": "e645a3a8a1110c28eef260e8ce4b87ca4fc24235",
+  "target": "aarch64-linux-android",
+  "features": [
+    "vless"
+  ],
+  "cargo_version": "cargo 1.98.1 (797e8a9bc 2026-08-05)",
+  "cargo_lock_sha256": "7bd222fb6d781761dd40537305cce68578d5405d53c04e3c4fa9f3b1f7bc1b62",
+  "tree": {
+    "exit_code": 0,
+    "sha256": "3301912734c5eac668aee7407657f184272dcc7a337ab12ab88be190ccf4013f",
+    "argv": [
+      "cargo",
+      "tree",
+      "--offline",
+      "--locked",
+      "--manifest-path",
+      "/fixture/foxcore/root/Cargo.toml",
+      "--no-default-features",
+      "--features",
+      "vless",
+      "--target",
+      "aarch64-linux-android",
+      "-p",
+      "foxcore-android",
+      "-e",
+      "normal,build",
+      "--no-dedupe",
+      "--prefix",
+      "depth",
+      "--format",
+      "|{p}|",
+      "--color",
+      "never"
+    ]
+  },
+  "metadata": {
+    "exit_code": 0,
+    "sha256": "215d075e3fbb8e9a96dbce2c2a7fa34b95f074c434e87c5d268e15a4985f618b",
+    "argv": [
+      "cargo",
+      "metadata",
+      "--offline",
+      "--locked",
+      "--manifest-path",
+      "/fixture/foxcore/root/Cargo.toml",
+      "--no-default-features",
+      "--features",
+      "vless",
+      "--filter-platform",
+      "aarch64-linux-android",
+      "--format-version",
+      "1"
+    ]
+  }
+}

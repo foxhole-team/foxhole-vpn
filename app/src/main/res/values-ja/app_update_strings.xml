@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_app_update_channel">アプリの更新</string>
+    <string name="vpn_app_update_notification_title">FoxHole VPNの更新があります</string>
+    <string name="vpn_app_update_notification_body">バージョン%1$sをダウンロードできます</string>
+</resources>

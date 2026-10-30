@@ -1,0 +1,8 @@
+0.1.1 Stable
+
+- Soft globe lighting and shadow.
+- Circular device and VPN-server icons.
+- Green arc, subtle pulses and a glint after connection validation.
+- Server details stay open while rotating.
+- Saved protocols, camera QR import and confirmation before changing an active protocol.
+- Encrypted local profiles and signed REALITY table updates.

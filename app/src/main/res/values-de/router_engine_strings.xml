@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_engines_entry">VPN-Protokolleinstellungen</string>
+    <string name="router_engines_title">VPN-Protokolle</string>
+    <string name="router_engines_help">VPN-Protokollpakete auf dem Router installieren oder entfernen. Verfügbare Protokolle hängen vom Router und dem verifizierten Release-Katalog ab.</string>
+    <string name="router_engines_installed">Installiert</string>
+    <string name="router_engines_add">Protokoll hinzufügen</string>
+    <string name="router_engines_update">Aktualisieren</string>
+    <string name="router_engines_update_reconnect">AKTUALISIEREN UND NEU VERBINDEN</string>
+    <string name="router_engines_remove_protocol">%1$s entfernen</string>
+    <string name="router_engines_in_use">Vom Router-VPN verwendet</string>
+    <string name="router_engines_download_size">Download</string>
+    <string name="router_engines_reconnect_note">Das Router-VPN verbindet sich erneut.</string>
+    <string name="router_engines_keep_active">Das Router-VPN wird nicht neu gestartet.</string>
+    <string name="router_engines_unavailable">Protokollverwaltung nicht verfügbar.</string>
+    <string name="router_engines_not_released">Kein veröffentlichtes Paket für diesen Router verfügbar.</string>
+    <string name="router_engines_stale">Die Routereinstellungen haben sich geändert. Prüfen Sie die Installation erneut.</string>
+    <string name="router_engines_no_space">Der Router hat nicht genug freien Speicherplatz oder Arbeitsspeicher.</string>
+    <string name="router_engines_profile_graph">Dieses Profil benötigt eine nicht unterstützte Protokollkombination.</string>
+    <string name="router_engines_busy">Der Router ist beschäftigt.</string>
+    <string name="router_engines_show_progress">FORTSCHRITT ANZEIGEN</string>
+    <string name="router_engines_queued">Installation wird vorbereitet</string>
+    <string name="router_engines_verifying">Dateien werden geprüft</string>
+    <string name="router_engines_installing">Installation auf dem Router</string>
+    <string name="router_engines_reconnecting">Router-VPN wird erneut verbunden</string>
+    <string name="router_engines_done">Fertig</string>
+    <string name="router_engines_failed">Der Vorgang wurde nicht abgeschlossen.</string>
+    <string name="router_engines_download_failed">Protokoll konnte nicht heruntergeladen werden.</string>
+    <string name="router_engines_verification_failed">Router hat die Installationsdateien abgelehnt.</string>
+    <string name="router_engines_recovery">Status des Router-VPN prüfen.</string>
+    <string name="router_engines_restored">Vorherige Verbindung wurde wiederhergestellt.</string>
+    <string name="router_engines_close_progress">Die Installation läuft nach dem Schließen dieses Fensters auf dem Router weiter.</string>
+    <string name="router_engines_check_status">STATUS PRÜFEN</string>
+    <string name="router_engines_remove_confirm">Ausgewähltes Protokoll vom Router entfernen?</string>
+    <string name="router_engines_flash_budget">Interner Speicher</string>
+    <string name="router_engines_ram_budget">RAM</string>
+    <string name="router_engines_memory_budget">Benötigt %1$s, verfügbar %2$s</string>
+    <string name="router_engines_show_result">ERGEBNIS ANZEIGEN</string>
+</resources>

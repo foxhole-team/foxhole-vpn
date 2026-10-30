@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_status_label">FoxHole VPN · Status</string>
+    <string name="widget_status_description">Kompakter VPN-Status und Verbindungssteuerung.</string>
+    <string name="widget_fox_label">FoxHole VPN · Fuchs</string>
+    <string name="widget_fox_description">Der Fuchs zeigt den VPN-Verbindungsstatus. Zum Verbinden oder Trennen antippen.</string>
+    <string name="widget_connected">Mit dem VPN-Netzwerk verbunden</string>
+    <string name="widget_loading">Wird geladen</string>
+    <string name="widget_disconnected">Vom VPN-Netzwerk getrennt</string>
+    <string name="widget_connecting">Verbindung wird hergestellt</string>
+    <string name="widget_validating">Verbindung wird geprüft</string>
+    <string name="widget_stopping">Verbindung wird getrennt</string>
+    <string name="widget_error">Verbindungsfehler</string>
+    <string name="widget_connect">Verbinden</string>
+    <string name="widget_disconnect">TRENNEN</string>
+    <string name="widget_cancel">ABBRECHEN</string>
+    <string name="widget_open_app">FoxHole VPN öffnen</string>
+    <string name="widget_choose_profile">Profil in der App auswählen</string>
+    <string name="widget_permission_denied">VPN-Berechtigung wurde nicht erteilt.</string>
+    <string name="widget_detail_empty">—</string>
+    <string name="widget_location_determining">Wird ermittelt…</string>
+    <string name="widget_location_cached">Zuletzt bekannt: %1$s</string>
+</resources>

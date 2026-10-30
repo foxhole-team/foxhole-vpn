@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_updates_title">FoxHole 软件包更新</string>
+    <string name="router_updates_scope">更新 FoxHole 和已安装的 VPN 协议软件包。配置与配对将保留。OpenWrt 固件和其他系统软件包不会更改。</string>
+    <string name="router_updates_current_version">当前版本：%1$s</string>
+    <string name="router_updates_available_version">可用版本：%1$s</string>
+    <string name="router_updates_auto">自动更新 FoxHole</string>
+    <string name="router_updates_auto_help">启用后，路由器每天检查并安装已验证的 FoxHole 软件包更新。可在设置时或稍后在路由器设置中关闭。取消配对后，此策略仍保留在路由器上。</string>
+    <string name="router_updates_apply">更新</string>
+    <string name="router_updates_check">检查</string>
+    <string name="router_updates_status">检查状态</string>
+    <string name="router_updates_waiting">正在等待路由器状态</string>
+    <string name="router_updates_uncertain">路由器可能正在更新。请重新连接以检查结果。不会再次发送更新请求。</string>
+    <string name="router_updates_unreachable">路由器不可用。请检查 Wi-Fi 连接，然后检查状态。</string>
+    <string name="router_updates_automatic_job">路由器自动更新</string>
+    <string name="router_updates_progress">%1$d%%</string>
+    <string name="router_updates_done">完成</string>
+    <string name="router_updates_changes">待安装的更改</string>
+    <string name="router_updates_version_change">%1$s → %2$s</string>
+    <string name="router_updates_reconnect_note">路由器 VPN 和控制面板将重新连接。关闭此窗口后，安装仍会继续。</string>
+    <string name="router_updates_running">正在进行</string>
+    <string name="router_updates_unsupported">此路由器不支持软件包更新。</string>
+    <string name="router_updates_current">已是最新</string>
+    <string name="router_updates_available">有可用更新</string>
+    <string name="router_updates_check_failed">无法检查更新</string>
+    <string name="router_updates_not_checked">尚未检查</string>
+    <string name="router_updates_step_release">正在检查发布版本</string>
+    <string name="router_updates_step_backup">正在准备恢复</string>
+    <string name="router_updates_step_check">正在检查已安装的软件包</string>
+    <string name="router_updates_step_preparing">正在准备</string>
+    <string name="router_updates_step_index">正在下载目录</string>
+    <string name="router_updates_step_download">正在下载软件包</string>
+    <string name="router_updates_step_verifying">正在验证软件包</string>
+    <string name="router_updates_step_installing">正在安装软件包</string>
+    <string name="router_updates_step_reconnect">正在重新连接路由器 VPN</string>
+    <string name="router_updates_release_unavailable">没有适用于此路由器的经验证发布版本。</string>
+    <string name="router_updates_auth_failed">路由器授权已失效。请重新配对以继续。</string>
+    <string name="router_updates_stale">路由器设置已更改。请检查状态并重新查看更新内容。</string>
+    <string name="router_updates_no_space">路由器可用存储空间或 RAM 不足。</string>
+    <string name="router_updates_download_failed">无法下载更新。</string>
+    <string name="router_updates_verification_failed">路由器拒绝了更新文件或版本。</string>
+    <string name="router_updates_rollback_unavailable">安全恢复不可用。未开始更新。</string>
+    <string name="router_updates_ram_unavailable">经验证的 RAM 协议缓存不可用。未开始更新。</string>
+    <string name="router_updates_invalid_response">无法验证路由器响应。继续前请检查状态。</string>
+    <string name="router_updates_disconnect_before_update">请先断开路由器 VPN</string>
+</resources>

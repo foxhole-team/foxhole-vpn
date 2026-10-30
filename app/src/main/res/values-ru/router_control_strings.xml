@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_control_enable">Управление</string>
+    <string name="router_control_vpn">Включить VPN</string>
+    <string name="router_control_choose_country">Страна местного трафика</string>
+    <string name="router_control_lan_clients">Домашние устройства</string>
+    <string name="router_control_remote_clients">Удалённые VPN-клиенты</string>
+    <string name="router_control_remove_body">Удалить %1$s с роутера?</string>
+    <string name="router_control_pairing_required">Сопряжение недоступно. Подключитесь к роутеру заново.</string>
+    <string name="router_control_unpair_help">Снятие сопряжения отключает управление. Для отзыва VPN-доступа удалите клиента отдельно.</string>
+    <string name="router_control_unpair">СНЯТЬ СОПРЯЖЕНИЕ</string>
+    <string name="router_control_unpair_title">Снять сопряжение с роутером?</string>
+    <string name="router_control_client_actions">Выберите действие с клиентом</string>
+    <string name="router_control_client_actions_button">ДЕЙСТВИЯ</string>
+    <string name="router_control_client_remove_title">Подтвердите удаление профиля</string>
+    <string name="router_control_client_remove_body">Удалить VPN-доступ для %1$s?</string>
+    <string name="router_control_client_remove_record_body">Удалить профиль %1$s с роутера?</string>
+    <string name="router_control_country_direct">Местный трафик напрямую</string>
+    <string name="router_control_auto_home">Переключение дома</string>
+    <string name="router_control_create_client">Создать клиента</string>
+    <string name="router_control_create">СОЗДАТЬ</string>
+    <string name="router_control_client_name">Имя клиента</string>
+    <string name="router_control_client_details">Управление профилем</string>
+    <string name="router_control_import_phone">ИМПОРТ НА ТЕЛЕФОН</string>
+    <string name="router_control_imported">Профиль импортирован</string>
+    <string name="router_control_show_qr">Показать QR</string>
+    <string name="router_control_qr_description">QR VPN-профиля %1$s</string>
+    <string name="router_control_qr_unavailable">QR для этого профиля недоступен</string>
+    <string name="router_control_client_access">Личный VPN-доступ</string>
+    <string name="router_control_client_template">Сохранённый шаблон; удалённый доступ не настроен</string>
+    <string name="router_control_create_help">Клиент Hysteria2. Нужны публичный адрес роутера и настроенный входящий VPN.</string>
+    <string name="router_control_enable_help">Включает управление с этого телефона. Отключение управления не останавливает VPN роутера.</string>
+    <string name="router_control_country_help">Страна определяется по интернет-подключению роутера. Нажмите на флаг, чтобы изменить её.</string>
+    <string name="router_control_home_help">Переключение между телефоном и домашним роутером только после подтверждения поддерживаемого соединения.</string>
+    <string name="router_control_vpn_help">Запуск или остановка выбранного профиля роутера. Нажмите профиль для выбора, удерживайте для действий.</string>
+    <string name="router_control_lan_help">Выберите VPN роутера или прямое подключение. Используется активный профиль роутера.</string>
+    <string name="router_control_clients_help">Откройте VPN-профиль для QR, импорта, отправки или удаления.</string>
+    <string name="router_control_qr_loading">Создание QR…</string>
+    <string name="router_control_profile_loading">Загружаю профиль…</string>
+    <string name="router_control_home_vpn">Управление через домашний VPN</string>
+    <string name="router_control_home_vpn_help">Управление уже сопряжённым роутером через VPN к нему, по сохранённому локальному IP-адресу. Подтвердите наличие публичного IP-адреса. Новое сопряжение выполняется по Wi-Fi.</string>
+    <string name="vpn_router_error_home_vpn">Нет проверенного VPN-маршрута к сопряжённому роутеру. Включите VPN к нему и разрешите управление через домашний VPN в настройках роутера.</string>
+    <string name="router_profile_probe_failed">Не удалось проверить сопряжение с роутером через этот VPN. Старое сопряжение сохранено.</string>
+    <string name="router_profile_retry_pairing">Повторить сопряжение</string>
+    <string name="router_profile_pair_wifi">Для повторного сопряжения подключитесь к Wi-Fi роутера</string>
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_profile_actions_title">プロファイルの操作を選択：</string>
+    <string name="vpn_profile_actions_named">%1$sの操作</string>
+</resources>

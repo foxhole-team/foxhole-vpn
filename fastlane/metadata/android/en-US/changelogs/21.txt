@@ -1,0 +1,3 @@
+Blue home point, subtle globe edge shading and a clearer route.
+Home details hide during connection changes and reopen after disconnection.
+Profile lists show up to six rows with a scrollbar for the rest.

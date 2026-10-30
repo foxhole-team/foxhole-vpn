@@ -1,0 +1,8 @@
+0.1.1 Stable
+
+- Gray globe with small flat device/exit points.
+- Short foreground pulse/glint, then a static green route.
+- View/add profiles while connected; stop to replace the active profile.
+- Tap server details to hide; tap its point to reopen.
+- Camera QR import, protocol choices, provider expiry and encrypted profiles.
+- Import buttons stay above the keyboard; active protocol changes ask for confirmation.

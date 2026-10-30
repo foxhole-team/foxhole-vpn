@@ -1,0 +1,3 @@
+Gray globe with short swipe inertia and marker callouts.
+Tap the globe to center your location or the VPN route.
+Keeps islands visible while rotating and makes bottom sheets more responsive.

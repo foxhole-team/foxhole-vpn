@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_help_open">Help: %1$s</string>
+    <string name="router_help_choose_country">Choose country</string>
+    <string name="router_help_protocols">Choose the released protocols used by your VPN profiles. Hysteria2 is selected when available. More protocols can be added after pairing the router.</string>
+    <string name="router_help_profile">Choose a phone profile to send to the router, or add one later.</string>
+    <string name="router_help_country_direct">When enabled, traffic associated with the selected country bypasses the router VPN. Tap the flag to choose or change the country.</string>
+    <string name="router_help_home">Uses the router at home and restores the phone’s previous connection when you leave, if automatic switching is supported.</string>
+    <string name="router_help_add_phone">Adds this phone as a device on the home network, so its traffic can use the router VPN.</string>
+    <string name="router_help_public_ip">Choose this only if the router can be reached from the internet through a public IP. A mobile-network check is still required.</string>
+    <string name="router_help_create_client">Creates a router VPN profile for this phone to use away from home. It does not prove that the router is reachable from the internet.</string>
+    <string name="router_help_password">Enter the OpenWrt administrator password. The usual login is root; this is not the Wi-Fi password.</string>
+    <string name="router_help_pin">Choose your own four-digit PIN during first setup. Use that PIN to connect to a configured router. After manual package installation, set the PIN in LuCI using the owner account. There is no preset PIN.</string>
+    <string name="router_help_storage">Internal storage keeps VPN protocols after a restart. RAM saves internal storage but downloads the protocols again after a restart. Settings stay in internal storage.</string>
+    <string name="router_help_setup_pair">Install adds FoxHole to a supported OpenWrt router. Connect pairs this phone with an existing FoxHole installation. OpenWrt firmware is not installed or upgraded.</string>
+    <string name="router_help_control">Enables control of the paired router from this phone. Switching this off does not remove its VPN profiles.</string>
+    <string name="router_help_vpn">Starts or stops the selected VPN profile on the router.</string>
+    <string name="router_help_lan_devices">Choose whether each home device uses the router VPN or a direct connection.</string>
+    <string name="router_help_remote_clients">These profiles connect to the router from outside your home network. You can share them or revoke access.</string>
+    <string name="router_help_reset_foxhole">Removes only FoxHole settings, its PIN and client records. Set up FoxHole again afterward. OpenWrt and other apps keep their settings.</string>
+    <string name="router_help_country_source">Automatic selection uses a fresh country result for the router’s internet connection. Phone and VPN location data are not used. If unavailable, previous rules stay unchanged; choose the country manually.</string>
+    <string name="router_help_device_status">The router reports device status. Missing data means the status is unknown.</string>
+    <string name="router_help_install_server">Enable only if this router will accept VPN connections from your devices over a public IP address. This installs a separate server package and increases memory use. You can configure access after installation.</string>
+</resources>

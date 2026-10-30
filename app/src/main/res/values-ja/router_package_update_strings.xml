@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_updates_title">FoxHoleパッケージの更新</string>
+    <string name="router_updates_scope">FoxHoleとインストール済みVPNプロトコルパッケージを更新します。プロファイルとペアリングは保持されます。OpenWrtファームウェアや他のシステムパッケージは変更しません。</string>
+    <string name="router_updates_current_version">現在のバージョン：%1$s</string>
+    <string name="router_updates_available_version">利用可能なバージョン：%1$s</string>
+    <string name="router_updates_auto">FoxHoleの自動更新</string>
+    <string name="router_updates_auto_help">有効にすると、ルーターは毎日確認し、検証済みFoxHoleパッケージ更新をインストールします。設定時または後からルーター設定でオフにできます。ペアリング解除後もこの設定はルーターに残ります。</string>
+    <string name="router_updates_apply">更新</string>
+    <string name="router_updates_check">確認</string>
+    <string name="router_updates_status">状態を確認</string>
+    <string name="router_updates_waiting">ルーターの状態を待機中</string>
+    <string name="router_updates_uncertain">ルーターは更新中の可能性があります。再接続して結果を確認してください。更新要求は再送信されません。</string>
+    <string name="router_updates_unreachable">ルーターを利用できません。Wi-Fi接続を確認してから状態を確認してください。</string>
+    <string name="router_updates_automatic_job">ルーターでの自動更新</string>
+    <string name="router_updates_progress">%1$d%%</string>
+    <string name="router_updates_done">完了</string>
+    <string name="router_updates_changes">インストールする変更</string>
+    <string name="router_updates_version_change">%1$s → %2$s</string>
+    <string name="router_updates_reconnect_note">ルーターVPNと管理パネルが再接続します。この画面を閉じてもインストールは続行されます。</string>
+    <string name="router_updates_running">実行中</string>
+    <string name="router_updates_unsupported">このルーターではパッケージ更新を利用できません。</string>
+    <string name="router_updates_current">最新です</string>
+    <string name="router_updates_available">更新があります</string>
+    <string name="router_updates_check_failed">更新を確認できませんでした</string>
+    <string name="router_updates_not_checked">未確認</string>
+    <string name="router_updates_step_release">リリースを確認中</string>
+    <string name="router_updates_step_backup">復旧を準備中</string>
+    <string name="router_updates_step_check">インストール済みパッケージを確認中</string>
+    <string name="router_updates_step_preparing">準備中</string>
+    <string name="router_updates_step_index">カタログをダウンロード中</string>
+    <string name="router_updates_step_download">パッケージをダウンロード中</string>
+    <string name="router_updates_step_verifying">パッケージを検証中</string>
+    <string name="router_updates_step_installing">パッケージをインストール中</string>
+    <string name="router_updates_step_reconnect">ルーターVPNを再接続中</string>
+    <string name="router_updates_release_unavailable">このルーター向けの検証済みリリースはありません。</string>
+    <string name="router_updates_auth_failed">ルーター認証が無効になりました。続行するには再度ペアリングしてください。</string>
+    <string name="router_updates_stale">ルーターの設定が変更されました。状態と更新内容を再確認してください。</string>
+    <string name="router_updates_no_space">ルーターの空きストレージまたはRAMが不足しています。</string>
+    <string name="router_updates_download_failed">更新をダウンロードできませんでした。</string>
+    <string name="router_updates_verification_failed">ルーターが更新ファイルまたはバージョンを拒否しました。</string>
+    <string name="router_updates_rollback_unavailable">安全な復旧を利用できません。更新は開始されませんでした。</string>
+    <string name="router_updates_ram_unavailable">検証済みのRAMプロトコルキャッシュを利用できません。更新は開始されませんでした。</string>
+    <string name="router_updates_invalid_response">ルーターの応答を検証できませんでした。続行前に状態を確認してください。</string>
+    <string name="router_updates_disconnect_before_update">まずルーターVPNを切断してください</string>
+</resources>

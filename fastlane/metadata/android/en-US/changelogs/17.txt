@@ -1,0 +1,7 @@
+0.1.1 Stable
+
+- Tap a profile to choose its protocol; hold it for Copy, Refresh or Delete. Copy includes the whole profile or subscription link.
+- A gray cartographic globe uses simpler coasts, quieter surface markers and natural drag with gentle inertia.
+- App updates from GitHub are separate from network-core data updates. Android confirms installation.
+- The status widget refreshes disconnected home location and uses clear VPN-network labels.
+- Help is shorter and the Home status dot has a light pulse.

@@ -1,0 +1,5 @@
+<resources>
+    <string name="vpn_app_update_channel">App updates</string>
+    <string name="vpn_app_update_notification_title">FoxHole VPN update available</string>
+    <string name="vpn_app_update_notification_body">Version %1$s is ready to download</string>
+</resources>

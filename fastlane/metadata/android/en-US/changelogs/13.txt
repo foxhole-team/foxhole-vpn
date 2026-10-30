@@ -1,0 +1,7 @@
+0.1.1 Stable
+
+- Subscriptions refresh every 12h; signed data checks every 24h, applied manually.
+- Foreground IP refresh every 30min; active configurations stay protected.
+- Neutral Light globe, flat points, gentle inertia and tap-to-center feedback.
+- Device/server details work while connected; brief effects settle to a static route.
+- Profile rows expand separately from selection; Copy uses the selected protocol or all expanded options.

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_help_privacy_title">Privacidad y comprobaciones de conexión</string>
+    <string name="vpn_help_privacy_body">Las comprobaciones de conexión contactan con Google; la ubicación aproximada por IP procede de ipwho.is. Las comprobaciones VPN usan la red VPN seleccionada; las de ubicación sin VPN usan la conexión actual a Internet. Estos servicios ven las solicitudes y su IP de origen. Los perfiles y ajustes están cifrados en este dispositivo. No incluye SDK publicitario ni de analítica.</string>
+    <string name="vpn_help_updates_title">Actualizaciones</string>
+    <string name="vpn_help_updates_body">Si se activan en Ajustes → Actualizaciones en segundo plano, las suscripciones se actualizan por defecto aproximadamente cada 12 horas y los datos de conexión firmados se comprueban cada 24 horas. Allí puede desactivar cada comprobación. Instalar los datos requiere su acción. Android puede retrasar las comprobaciones. F-Droid gestiona las actualizaciones de sus versiones.</string>
+</resources>

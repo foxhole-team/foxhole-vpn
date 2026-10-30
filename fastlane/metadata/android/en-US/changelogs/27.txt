@@ -1,0 +1,1 @@
+Night theme, clearer globe routes, shorter text and queued restart after Stop.

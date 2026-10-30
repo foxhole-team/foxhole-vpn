@@ -1,0 +1,9 @@
+{
+  "androidDeliveryProfile": "android4",
+  "canonicalCoreCoverageSha256": "ae3dee8a781d4f73b9f0e7eefdd8646596a64a50c4f0cb966008ce5c3292e7a9",
+  "coreCommit": "7b15f5b614031181b5a2eab274acac6f15d961ff",
+  "originalBytesRetained": true,
+  "rawOperationalReportPackaged": false,
+  "schema": 1,
+  "sourceProducerProfile": "android4"
+}

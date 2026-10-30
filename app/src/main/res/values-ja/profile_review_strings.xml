@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_profile_share">共有</string>
+    <string name="vpn_profile_send_to_router">設定をルーターに送信</string>
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_profile_actions_title">选择配置操作：</string>
+    <string name="vpn_profile_actions_named">%1$s 的操作</string>
+</resources>

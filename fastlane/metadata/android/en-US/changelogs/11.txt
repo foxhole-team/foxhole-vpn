@@ -1,0 +1,8 @@
+0.1.1 Stable
+
+- Gray globe with small device and VPN-exit points.
+- Validated green route with subtle foreground pulses and glint.
+- Tap server details to hide; tap its point to reopen.
+- Protocol choices, provider expiry dates and camera QR import.
+- Compatible link copying and encrypted local profiles.
+- Confirmation before switching an active protocol.

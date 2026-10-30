@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_control_enable">Control</string>
+    <string name="router_control_vpn">Enable VPN</string>
+    <string name="router_control_choose_country">Country for local traffic</string>
+    <string name="router_control_lan_clients">Home devices</string>
+    <string name="router_control_remote_clients">Remote VPN clients</string>
+    <string name="router_control_remove_body">Remove %1$s from the router?</string>
+    <string name="router_control_pairing_required">Pairing is unavailable. Reconnect to the router.</string>
+    <string name="router_control_unpair_help">Unpairing disconnects management. Delete the client separately to revoke VPN access.</string>
+    <string name="router_control_unpair">UNPAIR</string>
+    <string name="router_control_unpair_title">Unpair the router?</string>
+    <string name="router_control_client_actions">Choose a client action</string>
+    <string name="router_control_client_actions_button">ACTIONS</string>
+    <string name="router_control_client_remove_title">Confirm profile removal</string>
+    <string name="router_control_client_remove_body">Remove VPN access for %1$s?</string>
+    <string name="router_control_client_remove_record_body">Remove %1$s from the router?</string>
+    <string name="router_control_country_direct">Domestic sites directly</string>
+    <string name="router_control_auto_home">Home switching</string>
+    <string name="router_control_create_client">Create client</string>
+    <string name="router_control_create">CREATE</string>
+    <string name="router_control_client_name">Client name</string>
+    <string name="router_control_client_details">Manage profile</string>
+    <string name="router_control_import_phone">IMPORT TO PHONE</string>
+    <string name="router_control_imported">Profile imported</string>
+    <string name="router_control_show_qr">Show QR</string>
+    <string name="router_control_qr_description">VPN profile QR for %1$s</string>
+    <string name="router_control_qr_unavailable">QR unavailable for this profile</string>
+    <string name="router_control_client_access">Personal VPN access</string>
+    <string name="router_control_client_template">Saved template; remote access is not configured</string>
+    <string name="router_control_create_help">Hysteria2 client. A public router address and configured incoming VPN are required.</string>
+    <string name="router_control_enable_help">Enable management from this phone. Disabling management keeps the router VPN running.</string>
+    <string name="router_control_country_help">The country is based on the router’s internet connection. Tap the flag to change it.</string>
+    <string name="router_control_home_help">Switch between the phone and home router only when the supported router connection is confirmed.</string>
+    <string name="router_control_vpn_help">Start or stop the selected router profile. Tap a profile to select it; hold for actions.</string>
+    <string name="router_control_lan_help">Choose the router VPN or a direct connection. The router’s active profile is used.</string>
+    <string name="router_control_clients_help">Open a VPN profile for its QR code, import, sharing or removal.</string>
+    <string name="router_control_qr_loading">Generating QR…</string>
+    <string name="router_control_profile_loading">Loading profile…</string>
+    <string name="router_control_home_vpn">Manage through home VPN</string>
+    <string name="router_control_home_vpn_help">Manage an already paired router through its VPN, using its saved local IP address. Confirm that the router has a public IP address. New pairing requires Wi-Fi.</string>
+    <string name="vpn_router_error_home_vpn">No verified VPN route to the paired router. Connect to its VPN and enable home VPN management in router settings.</string>
+    <string name="router_profile_probe_failed">Could not verify the router pairing through this VPN. Your saved pairing is preserved.</string>
+    <string name="router_profile_retry_pairing">Retry pairing</string>
+    <string name="router_profile_pair_wifi">Connect to the router Wi-Fi to retry pairing</string>
+</resources>

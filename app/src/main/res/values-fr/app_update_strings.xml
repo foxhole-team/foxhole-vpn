@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_app_update_channel">Mises à jour de l’application</string>
+    <string name="vpn_app_update_notification_title">Mise à jour de FoxHole VPN disponible</string>
+    <string name="vpn_app_update_notification_body">La version %1$s est prête à télécharger</string>
+</resources>

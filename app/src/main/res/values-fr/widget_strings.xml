@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_status_label">FoxHole VPN · État</string>
+    <string name="widget_status_description">État VPN compact et contrôle de connexion.</string>
+    <string name="widget_fox_label">FoxHole VPN · Renard</string>
+    <string name="widget_fox_description">Le renard indique l’état de la connexion VPN. Touchez pour connecter ou déconnecter.</string>
+    <string name="widget_connected">Connecté au réseau VPN</string>
+    <string name="widget_loading">Chargement</string>
+    <string name="widget_disconnected">Déconnecté du réseau VPN</string>
+    <string name="widget_connecting">Connexion</string>
+    <string name="widget_validating">Vérification de la connexion</string>
+    <string name="widget_stopping">Déconnexion</string>
+    <string name="widget_error">Erreur de connexion</string>
+    <string name="widget_connect">Connecter</string>
+    <string name="widget_disconnect">DÉCONNECTER</string>
+    <string name="widget_cancel">ANNULER</string>
+    <string name="widget_open_app">Ouvrir FoxHole VPN</string>
+    <string name="widget_choose_profile">Choisissez un profil dans l’application</string>
+    <string name="widget_permission_denied">L’autorisation VPN n’a pas été accordée.</string>
+    <string name="widget_detail_empty">—</string>
+    <string name="widget_location_determining">Détermination…</string>
+    <string name="widget_location_cached">Dernière position : %1$s</string>
+</resources>

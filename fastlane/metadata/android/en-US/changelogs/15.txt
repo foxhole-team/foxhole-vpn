@@ -1,0 +1,8 @@
+0.1.1 Stable
+
+- Paste imports clipboard profiles directly, without an extra editor.
+- Insecure TLS still needs consent for the same pasted text.
+- Empty clipboard feedback appears above the import sheet.
+- Adding other profiles keeps the active VPN running.
+- Closing profiles resets expanded details and scroll position.
+- Subscriptions refresh every 12h, data checks every 24h, foreground IP every 30min; data installation stays manual.

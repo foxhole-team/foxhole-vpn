@@ -1,0 +1,4 @@
+<resources>
+    <string name="vpn_profile_actions_title">Выберите действие с профилем:</string>
+    <string name="vpn_profile_actions_named">Действия с профилем %1$s</string>
+</resources>

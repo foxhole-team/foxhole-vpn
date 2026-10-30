@@ -1,0 +1,8 @@
+0.1.1 Stable
+
+- Camera QR import, clipboard links and subscriptions.
+- Saved protocol choices and provider expiry dates when supplied.
+- Compatible link copying, including WireGuard DNS, without losing settings.
+- Globe, clear connection status, top notices and compact widgets.
+- Encrypted local profiles and signed REALITY table updates.
+- One globe geometry set during movement and rest keeps islands, coastlines and grid consistent.

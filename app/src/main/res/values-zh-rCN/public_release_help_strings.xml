@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_help_privacy_title">隐私与连接检查</string>
+    <string name="vpn_help_privacy_body">连接检查会联系 Google，基于 IP 的大致位置来自 ipwho.is。VPN 检查使用选中的 VPN 网络；未使用 VPN 的位置检查使用当前互联网连接。这些服务会看到请求及其来源 IP。配置与设置在此设备上加密保存。不含广告或分析 SDK。</string>
+    <string name="vpn_help_updates_title">更新</string>
+    <string name="vpn_help_updates_body">在“设置 → 后台更新”中启用后，默认大约每 12 小时刷新订阅，每 24 小时检查已签名的连接数据。可在同一页面分别关闭两项检查。安装数据需要您的操作。Android 可能延迟后台检查。F-Droid 管理其应用版本的更新。</string>
+</resources>

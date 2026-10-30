@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_profile_actions_title">Aktion für das Profil wählen:</string>
+    <string name="vpn_profile_actions_named">Aktionen für %1$s</string>
+</resources>

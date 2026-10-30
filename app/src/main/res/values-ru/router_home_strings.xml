@@ -1,0 +1,10 @@
+<resources>
+    <string name="vpn_router_home_notification_channel">Домашняя сеть</string>
+    <string name="vpn_router_home_notification_title">Домашняя сеть</string>
+    <string name="vpn_router_home_notification_monitoring">Автопереключение VPN включено</string>
+    <string name="vpn_router_home_notification_unavailable">Нет связи с роутером</string>
+    <string name="vpn_router_home_notification_stop">ВЫКЛЮЧИТЬ</string>
+    <string name="vpn_router_home_notification_permission">Разрешите уведомления для автопереключения VPN.</string>
+    <string name="vpn_router_home_notifications_permission">Разрешите уведомления для автопереключения VPN дома.</string>
+    <string name="vpn_router_home_notification_profile_unsupported">Автопереключение недоступно для этого профиля</string>
+</resources>

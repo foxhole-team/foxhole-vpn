@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_router_home_notification_channel">Heimnetz</string>
+    <string name="vpn_router_home_notification_title">Heimnetz</string>
+    <string name="vpn_router_home_notification_monitoring">Automatische VPN-Umschaltung ist aktiv</string>
+    <string name="vpn_router_home_notification_unavailable">Keine Verbindung zum Router</string>
+    <string name="vpn_router_home_notification_stop">AUSSCHALTEN</string>
+    <string name="vpn_router_home_notification_permission">Benachrichtigungen für automatische VPN-Umschaltung erlauben.</string>
+    <string name="vpn_router_home_notifications_permission">Benachrichtigungen für Heim-VPN-Umschaltung erlauben.</string>
+    <string name="vpn_router_home_notification_profile_unsupported">Automatische Umschaltung für dieses Profil nicht verfügbar</string>
+</resources>

@@ -1,0 +1,6 @@
+0.1.1 public beta
+
+- Uses simpler geometry while the globe is dragged, then restores full detail prepared in the background.
+- Keeps manual Volume (default) and Vector styles without repeating animation.
+- Shows a white-gray device marker and a subtle green tint after VPN validation.
+- Opens profiles and settings in bottom sheets; Start/Stop remains at the bottom.

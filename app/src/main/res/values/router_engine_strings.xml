@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_engines_entry">VPN protocol settings</string>
+    <string name="router_engines_title">VPN protocols</string>
+    <string name="router_engines_help">Install or remove VPN protocol packages on the router. Available protocols depend on the router and the verified release catalog.</string>
+    <string name="router_engines_installed">Installed</string>
+    <string name="router_engines_add">Add a protocol</string>
+    <string name="router_engines_update">UPDATE</string>
+    <string name="router_engines_update_reconnect">UPDATE AND RECONNECT</string>
+    <string name="router_engines_remove_protocol">Remove %1$s</string>
+    <string name="router_engines_in_use">Used by the router VPN</string>
+    <string name="router_engines_download_size">Download</string>
+    <string name="router_engines_reconnect_note">The router VPN will reconnect.</string>
+    <string name="router_engines_keep_active">The router VPN will not restart.</string>
+    <string name="router_engines_unavailable">Protocol management is unavailable.</string>
+    <string name="router_engines_not_released">No released package is available for this router.</string>
+    <string name="router_engines_stale">The router settings changed. Review the installation again.</string>
+    <string name="router_engines_no_space">The router does not have enough free storage or RAM.</string>
+    <string name="router_engines_profile_graph">This profile needs an unsupported combination of protocols.</string>
+    <string name="router_engines_busy">The router is busy.</string>
+    <string name="router_engines_show_progress">VIEW PROGRESS</string>
+    <string name="router_engines_queued">Preparing installation</string>
+    <string name="router_engines_verifying">Verifying files</string>
+    <string name="router_engines_installing">Installing on the router</string>
+    <string name="router_engines_reconnecting">Reconnecting the router VPN</string>
+    <string name="router_engines_done">Done</string>
+    <string name="router_engines_failed">The operation did not finish.</string>
+    <string name="router_engines_download_failed">Could not download the protocol.</string>
+    <string name="router_engines_verification_failed">The router rejected the installation files.</string>
+    <string name="router_engines_recovery">Check the router VPN status.</string>
+    <string name="router_engines_restored">The previous connection was restored.</string>
+    <string name="router_engines_close_progress">Installation continues on the router after this window closes.</string>
+    <string name="router_engines_check_status">CHECK STATUS</string>
+    <string name="router_engines_remove_confirm">Remove the selected protocol from the router?</string>
+    <string name="router_engines_flash_budget">Internal storage</string>
+    <string name="router_engines_ram_budget">RAM</string>
+    <string name="router_engines_memory_budget">Needs %1$s, available %2$s</string>
+    <string name="router_engines_show_result">VIEW RESULT</string>
+</resources>

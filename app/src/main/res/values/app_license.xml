@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_license_title">FoxHole VPN · license agreement</string>
+    <string name="vpn_license_body">1. The app must be used strictly in accordance with applicable law.\n\n2. FoxHole VPN is not antivirus software and does not guarantee detection or neutralization of executable malicious files.\n\n3. The developers are not liable for possible damage arising from use of the app.\n\n4. Use of the app constitutes full acceptance of the license terms of all its internal components and data sets.\n\n5. By continuing, you confirm your agreement with every provision of this agreement.</string>
+    <string name="vpn_license_accept">I accept the license agreement</string>
+    <string name="vpn_license_loading">Loading agreement…</string>
+    <string name="vpn_license_storage_error">Could not read or save your agreement. Try again.</string>
+    <string name="vpn_license_open_licenses">Open licenses</string>
+    <string name="vpn_license_required">Accept the license agreement first</string>
+</resources>

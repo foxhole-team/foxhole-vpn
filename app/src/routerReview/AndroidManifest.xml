@@ -1,0 +1,31 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.INTERNET" tools:node="remove" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" tools:node="remove" />
+    <uses-permission android:name="android.permission.ACCESS_LOCAL_NETWORK" tools:node="remove" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" tools:node="remove" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" tools:node="remove" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" tools:node="remove" />
+    <uses-permission android:name="android.permission.CAMERA" tools:node="remove"
+        tools:ignore="PermissionImpliesUnsupportedChromeOsHardware" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" tools:node="remove" />
+    <application android:name=".review.ReviewApplication" android:label="@string/review_demo_label"
+        tools:replace="android:name,android:label">
+        <activity android:name=".MainActivity" tools:node="remove" />
+        <activity android:name=".qr.QrScanActivity" tools:node="remove" />
+        <activity android:name=".widget.WidgetActionActivity" tools:node="remove" />
+        <service android:name=".runtime.VpnTunnelService" tools:node="remove" />
+        <service android:name=".router.RouterHomeAutomationService" tools:node="remove" />
+        <receiver android:name=".widget.StatusWidgetReceiver" tools:node="remove" />
+        <receiver android:name=".widget.FoxStatusWidgetReceiver" tools:node="remove" />
+        <receiver android:name=".widget.WidgetActionReceiver" tools:node="remove" />
+        <provider android:name=".appupdates.VpnAppUpdateFileProvider" tools:node="remove" />
+        <activity android:name="androidx.activity.ComponentActivity" android:exported="false" />
+        <activity android:name=".review.ReviewActivity" android:exported="true" android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

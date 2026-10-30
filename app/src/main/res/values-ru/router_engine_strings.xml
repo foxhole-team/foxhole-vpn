@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_engines_entry">Настройки протоколов VPN</string>
+    <string name="router_engines_title">Протоколы VPN</string>
+    <string name="router_engines_help">Установка и удаление пакетов VPN-протоколов на роутере. Доступные протоколы зависят от роутера и проверенного каталога выпуска.</string>
+    <string name="router_engines_installed">Установлены</string>
+    <string name="router_engines_add">Добавить протокол</string>
+    <string name="router_engines_update">ОБНОВИТЬ</string>
+    <string name="router_engines_update_reconnect">ОБНОВИТЬ И ПЕРЕПОДКЛЮЧИТЬ</string>
+    <string name="router_engines_remove_protocol">Удалить %1$s</string>
+    <string name="router_engines_in_use">Используется VPN роутера</string>
+    <string name="router_engines_download_size">Загрузить</string>
+    <string name="router_engines_reconnect_note">VPN роутера будет переподключён.</string>
+    <string name="router_engines_keep_active">VPN роутера не будет перезапущен.</string>
+    <string name="router_engines_unavailable">Управление протоколами недоступно.</string>
+    <string name="router_engines_not_released">Для этого роутера пакет не выпущен.</string>
+    <string name="router_engines_stale">Параметры роутера изменились. Повторно проверьте установку.</string>
+    <string name="router_engines_no_space">На роутере недостаточно свободного места или оперативной памяти.</string>
+    <string name="router_engines_profile_graph">Профиль использует неподдерживаемый набор протоколов.</string>
+    <string name="router_engines_busy">Роутер занят.</string>
+    <string name="router_engines_show_progress">ПОКАЗАТЬ ХОД УСТАНОВКИ</string>
+    <string name="router_engines_queued">Подготовка установки</string>
+    <string name="router_engines_verifying">Проверка файлов</string>
+    <string name="router_engines_installing">Установка на роутер</string>
+    <string name="router_engines_reconnecting">Переподключение VPN роутера</string>
+    <string name="router_engines_done">Готово</string>
+    <string name="router_engines_failed">Не удалось завершить действие.</string>
+    <string name="router_engines_download_failed">Не удалось загрузить протокол.</string>
+    <string name="router_engines_verification_failed">Роутер отклонил файлы установки.</string>
+    <string name="router_engines_recovery">Проверьте состояние VPN роутера.</string>
+    <string name="router_engines_restored">Предыдущее соединение восстановлено.</string>
+    <string name="router_engines_close_progress">После закрытия окна установка продолжится на роутере.</string>
+    <string name="router_engines_check_status">ПРОВЕРИТЬ</string>
+    <string name="router_engines_remove_confirm">Удалить выбранный протокол с роутера?</string>
+    <string name="router_engines_flash_budget">Внутренняя память</string>
+    <string name="router_engines_ram_budget">Оперативная память</string>
+    <string name="router_engines_memory_budget">Нужно %1$s, доступно %2$s</string>
+    <string name="router_engines_show_result">ПОКАЗАТЬ РЕЗУЛЬТАТ</string>
+</resources>

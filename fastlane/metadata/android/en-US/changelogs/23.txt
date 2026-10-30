@@ -1,0 +1,1 @@
+Soft globe edge shading replaces visible translucent bands.

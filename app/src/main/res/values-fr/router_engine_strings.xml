@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_engines_entry">Paramètres des protocoles VPN</string>
+    <string name="router_engines_title">Protocoles VPN</string>
+    <string name="router_engines_help">Installez ou supprimez des paquets de protocoles VPN sur le routeur. Les protocoles disponibles dépendent du routeur et du catalogue vérifié de la version.</string>
+    <string name="router_engines_installed">Installé</string>
+    <string name="router_engines_add">Ajouter un protocole</string>
+    <string name="router_engines_update">Mettre à jour</string>
+    <string name="router_engines_update_reconnect">METTRE À JOUR ET RECONNECTER</string>
+    <string name="router_engines_remove_protocol">Supprimer %1$s</string>
+    <string name="router_engines_in_use">Utilisé par le VPN du routeur</string>
+    <string name="router_engines_download_size">Téléchargement</string>
+    <string name="router_engines_reconnect_note">Le VPN du routeur se reconnectera.</string>
+    <string name="router_engines_keep_active">Le VPN du routeur ne redémarrera pas.</string>
+    <string name="router_engines_unavailable">Gestion des protocoles indisponible.</string>
+    <string name="router_engines_not_released">Aucun paquet publié disponible pour ce routeur.</string>
+    <string name="router_engines_stale">Les réglages du routeur ont changé. Vérifiez à nouveau l’installation.</string>
+    <string name="router_engines_no_space">Le routeur manque d’espace libre ou de mémoire vive.</string>
+    <string name="router_engines_profile_graph">Ce profil nécessite une combinaison de protocoles non prise en charge.</string>
+    <string name="router_engines_busy">Le routeur est occupé.</string>
+    <string name="router_engines_show_progress">VOIR LA PROGRESSION</string>
+    <string name="router_engines_queued">Préparation de l’installation</string>
+    <string name="router_engines_verifying">Vérification des fichiers</string>
+    <string name="router_engines_installing">Installation sur le routeur</string>
+    <string name="router_engines_reconnecting">Reconnexion du VPN du routeur</string>
+    <string name="router_engines_done">Terminé</string>
+    <string name="router_engines_failed">L’opération n’a pas abouti.</string>
+    <string name="router_engines_download_failed">Impossible de télécharger le protocole.</string>
+    <string name="router_engines_verification_failed">Le routeur a rejeté les fichiers d’installation.</string>
+    <string name="router_engines_recovery">Vérifiez l’état du VPN du routeur.</string>
+    <string name="router_engines_restored">La connexion précédente a été restaurée.</string>
+    <string name="router_engines_close_progress">L’installation continue sur le routeur après la fermeture de cette fenêtre.</string>
+    <string name="router_engines_check_status">VÉRIFIER L’ÉTAT</string>
+    <string name="router_engines_remove_confirm">Supprimer le protocole sélectionné du routeur ?</string>
+    <string name="router_engines_flash_budget">Stockage interne</string>
+    <string name="router_engines_ram_budget">RAM</string>
+    <string name="router_engines_memory_budget">Requis : %1$s, disponible : %2$s</string>
+    <string name="router_engines_show_result">VOIR LE RÉSULTAT</string>
+</resources>

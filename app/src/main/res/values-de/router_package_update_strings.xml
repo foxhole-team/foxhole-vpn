@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_updates_title">FoxHole-Paketupdates</string>
+    <string name="router_updates_scope">Aktualisiert FoxHole und installierte VPN-Protokollpakete. Profile und Kopplung bleiben erhalten. OpenWrt-Firmware und andere Systempakete bleiben unverändert.</string>
+    <string name="router_updates_current_version">Aktuelle Version: %1$s</string>
+    <string name="router_updates_available_version">Verfügbare Version: %1$s</string>
+    <string name="router_updates_auto">Automatische FoxHole-Updates</string>
+    <string name="router_updates_auto_help">Wenn aktiviert, prüft der Router täglich und installiert verifizierte FoxHole-Paketupdates. Bei der Einrichtung oder später in den Router-Einstellungen deaktivierbar. Die Richtlinie bleibt nach dem Entkoppeln auf dem Router.</string>
+    <string name="router_updates_apply">Aktualisieren</string>
+    <string name="router_updates_check">Prüfen</string>
+    <string name="router_updates_status">STATUS PRÜFEN</string>
+    <string name="router_updates_waiting">Warten auf Routerstatus</string>
+    <string name="router_updates_uncertain">Der Router wird möglicherweise aktualisiert. Zum Prüfen des Ergebnisses erneut verbinden. Die Updateanfrage wird nicht erneut gesendet.</string>
+    <string name="router_updates_unreachable">Router nicht verfügbar. WLAN-Verbindung und danach Status prüfen.</string>
+    <string name="router_updates_automatic_job">Automatisches Update auf dem Router</string>
+    <string name="router_updates_progress">%1$d%%</string>
+    <string name="router_updates_done">Fertig</string>
+    <string name="router_updates_changes">Zu installierende Änderungen</string>
+    <string name="router_updates_version_change">%1$s → %2$s</string>
+    <string name="router_updates_reconnect_note">Router-VPN und Steuerpanel verbinden sich erneut. Installation läuft beim Schließen dieses Fensters weiter.</string>
+    <string name="router_updates_running">Wird ausgeführt</string>
+    <string name="router_updates_unsupported">Paketupdates für diesen Router nicht verfügbar.</string>
+    <string name="router_updates_current">Aktuell</string>
+    <string name="router_updates_available">Update verfügbar</string>
+    <string name="router_updates_check_failed">Updates konnten nicht geprüft werden</string>
+    <string name="router_updates_not_checked">Noch nicht geprüft</string>
+    <string name="router_updates_step_release">Release wird geprüft</string>
+    <string name="router_updates_step_backup">Wiederherstellung wird vorbereitet</string>
+    <string name="router_updates_step_check">Installierte Pakete werden geprüft</string>
+    <string name="router_updates_step_preparing">Wird vorbereitet</string>
+    <string name="router_updates_step_index">Katalog wird heruntergeladen</string>
+    <string name="router_updates_step_download">Pakete werden heruntergeladen</string>
+    <string name="router_updates_step_verifying">Pakete werden geprüft</string>
+    <string name="router_updates_step_installing">Pakete werden installiert</string>
+    <string name="router_updates_step_reconnect">Router-VPN wird erneut verbunden</string>
+    <string name="router_updates_release_unavailable">Kein geprüftes Release für diesen Router verfügbar.</string>
+    <string name="router_updates_auth_failed">Routerautorisierung nicht mehr gültig. Zum Fortfahren erneut koppeln.</string>
+    <string name="router_updates_stale">Die Routereinstellungen haben sich geändert. Prüfen Sie den Status und das Update erneut.</string>
+    <string name="router_updates_no_space">Router hat nicht genug freien Speicher oder RAM.</string>
+    <string name="router_updates_download_failed">Update konnte nicht heruntergeladen werden.</string>
+    <string name="router_updates_verification_failed">Router hat Updatedateien oder Version abgelehnt.</string>
+    <string name="router_updates_rollback_unavailable">Sichere Wiederherstellung nicht verfügbar. Update wurde nicht gestartet.</string>
+    <string name="router_updates_ram_unavailable">Geprüfter RAM-Protokollcache nicht verfügbar. Update wurde nicht gestartet.</string>
+    <string name="router_updates_invalid_response">Routerantwort konnte nicht geprüft werden. Vor dem Fortfahren Status prüfen.</string>
+    <string name="router_updates_disconnect_before_update">Router-VPN zuerst trennen</string>
+</resources>

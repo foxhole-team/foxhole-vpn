@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_import_qr">QRコードをスキャン</string>
+    <string name="vpn_qr_title">QRコードをスキャン</string>
+    <string name="vpn_qr_hint">VPNプロファイルのQRコードにカメラを向けてください。</string>
+    <string name="vpn_qr_camera_permission_title">カメラへのアクセス</string>
+    <string name="vpn_qr_camera_permission_body">QRコードの読み取りにカメラへのアクセスが必要です。写真や動画は保存されません。</string>
+    <string name="vpn_qr_allow_camera">カメラを許可</string>
+    <string name="vpn_qr_open_settings">アプリ設定を開く</string>
+    <string name="vpn_qr_settings_unavailable">アプリ設定を開けませんでした。</string>
+    <string name="vpn_qr_camera_unavailable">カメラを利用できません。再試行してください。</string>
+    <string name="vpn_qr_retry">再試行</string>
+    <string name="vpn_qr_back">戻る</string>
+    <string name="vpn_qr_preview">QRカメラのプレビュー</string>
+</resources>

@@ -1,0 +1,5 @@
+0|foxcore-android v0.1.0 (/fixture/foxcore/root)|
+1|derive-tools v0.1.0 (proc-macro) (/fixture/foxcore/derive)|
+1|normal-crate v0.1.0 (/fixture/foxcore/normal)|
+2|build-helper v0.1.0 (/fixture/foxcore/helper)|
+1|build-helper v0.1.0 (/fixture/foxcore/helper)|

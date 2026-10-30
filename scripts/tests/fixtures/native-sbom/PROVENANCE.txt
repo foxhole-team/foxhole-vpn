@@ -1,0 +1,1 @@
+Path-only offline Cargo fixture; no compilation or network. Source paths normalized to /fixture/foxcore. tree.txt and metadata.json were captured using the exact commands recorded in capture.json. This is test data, not the Lite product inventory.

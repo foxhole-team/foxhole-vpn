@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_help_open">帮助：%1$s</string>
+    <string name="router_help_choose_country">选择国家</string>
+    <string name="router_help_protocols">请选择 VPN 配置使用的已发布协议。可用时会选择 Hysteria2。配对路由器后可添加更多协议。</string>
+    <string name="router_help_profile">选择要发送到路由器的手机配置，也可稍后添加。</string>
+    <string name="router_help_country_direct">启用后，与所选国家关联的流量将绕过路由器 VPN。点击国旗可选择或更改国家。</string>
+    <string name="router_help_home">支持自动切换时，在家使用路由器，离开后恢复手机之前的连接。</string>
+    <string name="router_help_add_phone">将此手机添加为家庭网络设备，使其流量可以使用路由器 VPN。</string>
+    <string name="router_help_public_ip">仅当可通过公网 IP 从互联网访问路由器时选择。仍需进行移动网络连接检查。</string>
+    <string name="router_help_create_client">创建供此手机在外使用的路由器 VPN 配置。这并不能证明可从互联网访问路由器。</string>
+    <string name="router_help_password">请输入 OpenWrt 管理员密码。通常用户名为 root；这不是 Wi-Fi 密码。</string>
+    <string name="router_help_pin">首次设置时请选择自己的四位 PIN。连接已配置的路由器时使用该 PIN。手动安装软件包后，请使用所有者账户在 LuCI 中设置 PIN。没有预设 PIN。</string>
+    <string name="router_help_storage">内部存储会在重启后保留 VPN 协议。RAM 可节省内部存储，但重启后需重新下载协议。设置保存在内部存储中。</string>
+    <string name="router_help_setup_pair">“安装”会将 FoxHole 添加到受支持的 OpenWrt 路由器。“连接”会将此手机与已安装的 FoxHole 配对。不会安装或升级 OpenWrt 固件。</string>
+    <string name="router_help_control">允许此手机控制已配对的路由器。关闭此功能不会删除 VPN 配置。</string>
+    <string name="router_help_vpn">启动或停止路由器上所选的 VPN 配置。</string>
+    <string name="router_help_lan_devices">选择每台家庭设备使用路由器 VPN 还是直连。</string>
+    <string name="router_help_remote_clients">这些配置可从家庭网络外连接到路由器。您可以分享配置或撤销访问权限。</string>
+    <string name="router_help_reset_foxhole">仅删除 FoxHole 设置、PIN 和客户端记录。之后需重新设置 FoxHole。OpenWrt 和其他应用的设置会保留。</string>
+    <string name="router_help_country_source">自动选择使用路由器互联网连接的最新国家结果，不使用手机或 VPN 位置数据。若不可用，将保留之前的规则；请手动选择国家。</string>
+    <string name="router_help_device_status">设备状态由路由器报告。缺少数据表示状态未知。</string>
+    <string name="router_help_install_server">仅当此路由器需要通过公网 IP 接受设备 VPN 连接时启用。此操作会安装独立的服务器软件包并增加内存用量。安装后可配置访问。</string>
+</resources>

@@ -1,0 +1,15 @@
+FoxHole VPN is a simple VPN client for Android 8 and later. Import a profile from your VPN provider or your own server, connect on your phone, and manage a paired OpenWrt router from the app.
+
+Supports VLESS, VMess, Trojan, Shadowsocks/Outline, WireGuard, Hysteria2, Naive, TUIC and AnyTLS. Imports compatible FoxHole Guard configurations, v2rayTun links and subscriptions, Clash/mihomo YAML, SIP008 JSON and dynamic Outline keys (ssconf://). Share profiles only with people you trust: exported profiles and source links may contain access credentials.
+
+When enabled in Settings → Background updates, subscriptions refresh about every 12 hours and signed connection-data updates from FoxHole DB are checked every 24 hours by default. Turn either background check off there. Data installation still requires your action. The GitHub build checks for app updates daily; downloading and installing an APK require your action and Android confirmation. The F-Droid build does not check for or install its own APK updates: use F-Droid. Android may delay background work.
+
+Profiles and settings are encrypted on the device with an Android Keystore key. No advertising or analytics SDK is included. VPN connection checks contact www.google.com/generate_204, and exit-IP details come from ipwho.is; these requests use the selected VPN network. When VPN is off, approximate device location can be refreshed through the current internet connection, including by a widget. These services receive the request and its source IP address. Signed connection data comes from foxhole-team.github.io/foxhole-db; subscriptions use your saved provider URLs. No GPS location is needed.
+
+Install the FoxHole OpenWrt Client (https://github.com/foxhole-team/foxhole-openwrt-client) package, then manage router VPN profiles, device routing and protocol packages. Current package support requires OpenWrt 25.12.5 with the apk package manager on mediatek/filogic or x86/64; setup verifies the exact architecture, release catalog and available storage. Installation needs router administrator access. Remote VPN profiles for your devices require a reachable public router address and configured incoming VPN. Check reachability from a mobile network.
+
+During a new router installation, the visible automatic FoxHole update checkbox starts enabled. Clear it to opt out, or change it later in router Settings. When enabled, the router checks daily and installs verified FoxHole package updates from FoxHole releases, independently of F-Droid. Pairing an existing router preserves its policy. Updates preserve profiles and pairing, and do not upgrade OpenWrt firmware or unrelated system packages. Unpairing the phone does not turn off this router policy.
+
+FoxCore: https://github.com/foxhole-team/foxhole-core
+FoxHole Guard: https://github.com/foxhole-team/foxhole-guard
+GPL-3.0-or-later.

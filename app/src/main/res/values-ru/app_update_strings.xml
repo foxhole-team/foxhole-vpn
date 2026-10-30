@@ -1,0 +1,5 @@
+<resources>
+    <string name="vpn_app_update_channel">Обновления приложения</string>
+    <string name="vpn_app_update_notification_title">Доступно обновление FoxHole VPN</string>
+    <string name="vpn_app_update_notification_body">Версия %1$s доступна для загрузки</string>
+</resources>

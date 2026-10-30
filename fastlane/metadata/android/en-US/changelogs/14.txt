@@ -1,0 +1,8 @@
+0.1.1 Stable
+
+- Closing profiles now resets expanded details and scroll position.
+- A reopened list starts fresh; confirmation Back keeps the previous page.
+- Rows expand details; radio buttons select profiles.
+- Copy uses the selected protocol or all expanded options.
+- Subscriptions refresh every 12h, signed data checks every 24h, foreground IP every 30min.
+- Active configurations stay protected; signed data is applied manually.

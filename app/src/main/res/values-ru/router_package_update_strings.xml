@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_updates_title">Обновления пакета FoxHole</string>
+    <string name="router_updates_scope">Обновляет FoxHole и установленные пакеты VPN-протоколов. Профили и сопряжение сохраняются. Прошивка OpenWrt и посторонние системные пакеты не изменяются.</string>
+    <string name="router_updates_current_version">Текущая версия: %1$s</string>
+    <string name="router_updates_available_version">Доступная версия: %1$s</string>
+    <string name="router_updates_auto">Автоматические обновления FoxHole</string>
+    <string name="router_updates_auto_help">Если включено, роутер раз в сутки проверяет и устанавливает проверенные обновления пакетов FoxHole. Отключить можно при установке или позже в настройках роутера. После снятия сопряжения политика остаётся на роутере.</string>
+    <string name="router_updates_apply">ОБНОВИТЬ</string>
+    <string name="router_updates_check">ПРОВЕРИТЬ</string>
+    <string name="router_updates_status">ПРОВЕРИТЬ СТАТУС</string>
+    <string name="router_updates_waiting">Ожидание статуса роутера</string>
+    <string name="router_updates_uncertain">Роутер может выполнять обновление. Подключитесь к нему и проверьте результат. Запрос обновления не будет отправлен повторно.</string>
+    <string name="router_updates_unreachable">Роутер недоступен. Проверьте подключение к Wi-Fi, затем проверьте статус.</string>
+    <string name="router_updates_automatic_job">Автоматическое обновление на роутере</string>
+    <string name="router_updates_progress">%1$d%%</string>
+    <string name="router_updates_done">Готово</string>
+    <string name="router_updates_changes">Будет обновлено</string>
+    <string name="router_updates_version_change">%1$s → %2$s</string>
+    <string name="router_updates_reconnect_note">VPN роутера и панель управления переподключатся. Установка продолжится, если закрыть это окно.</string>
+    <string name="router_updates_running">Выполняется</string>
+    <string name="router_updates_unsupported">Обновление пакетов недоступно для этого роутера.</string>
+    <string name="router_updates_current">Установлены актуальные версии</string>
+    <string name="router_updates_available">Доступно обновление</string>
+    <string name="router_updates_check_failed">Не удалось проверить обновления</string>
+    <string name="router_updates_not_checked">Ещё не проверено</string>
+    <string name="router_updates_step_release">Проверка выпуска</string>
+    <string name="router_updates_step_backup">Подготовка восстановления</string>
+    <string name="router_updates_step_check">Проверка установленных пакетов</string>
+    <string name="router_updates_step_preparing">Подготовка</string>
+    <string name="router_updates_step_index">Загрузка каталога</string>
+    <string name="router_updates_step_download">Загрузка пакетов</string>
+    <string name="router_updates_step_verifying">Проверка пакетов</string>
+    <string name="router_updates_step_installing">Установка пакетов</string>
+    <string name="router_updates_step_reconnect">Переподключение VPN роутера</string>
+    <string name="router_updates_release_unavailable">Для этого роутера нет проверенного выпуска.</string>
+    <string name="router_updates_auth_failed">Авторизация на роутере больше не действует. Для продолжения выполните сопряжение заново.</string>
+    <string name="router_updates_stale">Параметры роутера изменились. Проверьте статус и заново просмотрите обновление.</string>
+    <string name="router_updates_no_space">На роутере недостаточно свободной памяти или ОЗУ.</string>
+    <string name="router_updates_download_failed">Не удалось загрузить обновление.</string>
+    <string name="router_updates_verification_failed">Роутер отклонил файлы или версию обновления.</string>
+    <string name="router_updates_rollback_unavailable">Безопасное восстановление недоступно. Обновление не начато.</string>
+    <string name="router_updates_ram_unavailable">Проверенный кэш протоколов в ОЗУ недоступен. Обновление не начато.</string>
+    <string name="router_updates_invalid_response">Не удалось проверить ответ роутера. Прежде чем продолжить, проверьте статус.</string>
+    <string name="router_updates_disconnect_before_update">Отключите VPN на роутере перед обновлением</string>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_background_updates">Mises à jour en arrière-plan</string>
+    <string name="vpn_auto_refresh_subscriptions">Actualiser les abonnements automatiquement</string>
+    <string name="vpn_auto_refresh_subscriptions_help">Si activé, actualiser les abonnements enregistrés du fournisseur toutes les %1$d heures. Android peut retarder la vérification. La désactivation conserve les profils enregistrés.</string>
+    <string name="vpn_auto_check_connection_data">Vérifier les mises à jour des données de connexion</string>
+    <string name="vpn_auto_check_connection_data_help">Si activé, vérifier les données de connexion signées de FoxHole DB toutes les %1$d heures. Leur installation exige toujours votre action.</string>
+</resources>

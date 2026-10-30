@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_clipboard_empty">El portapapeles no tiene texto para importar.</string>
+    <string name="vpn_clipboard_focus_unavailable">No se pudo leer el portapapeles. Intente pegar de nuevo.</string>
+</resources>

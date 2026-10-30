@@ -1,0 +1,1 @@
+Current signed T VPN12 selected four-ABI Cargo graphs with complete original notice union. Original Maven notices retain their original capture authority. Per-ABI native producer and Rust tool identities are explicit. No app runtime, router-anchor or publication acceptance.

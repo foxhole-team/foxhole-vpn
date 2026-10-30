@@ -1,0 +1,8 @@
+0.1.1 public beta
+
+• Focused VPN Home and Settings with a vector Earth.
+• Encrypted profiles, subscriptions and explicit insecure-TLS consent.
+• Validated connection status and VPN-exit location.
+• System, Dark and Light themes; English and Russian.
+• Compact status and fox widgets.
+• Stop stays available while a failed session owns the tunnel.

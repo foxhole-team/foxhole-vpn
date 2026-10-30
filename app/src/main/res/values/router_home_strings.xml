@@ -1,0 +1,10 @@
+<resources>
+    <string name="vpn_router_home_notification_channel">Home network</string>
+    <string name="vpn_router_home_notification_title">Home network</string>
+    <string name="vpn_router_home_notification_monitoring">Automatic VPN switching is on</string>
+    <string name="vpn_router_home_notification_unavailable">No connection to the router</string>
+    <string name="vpn_router_home_notification_stop">TURN OFF</string>
+    <string name="vpn_router_home_notification_permission">Allow notifications to enable automatic VPN switching.</string>
+    <string name="vpn_router_home_notifications_permission">Allow notifications for home VPN switching.</string>
+    <string name="vpn_router_home_notification_profile_unsupported">Automatic switching is unavailable for this profile</string>
+</resources>

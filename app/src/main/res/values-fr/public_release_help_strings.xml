@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_help_privacy_title">Confidentialité et vérifications de connexion</string>
+    <string name="vpn_help_privacy_body">Les vérifications de connexion contactent Google ; la localisation approximative par IP provient de ipwho.is. Les vérifications VPN utilisent le réseau VPN sélectionné ; la localisation sans VPN utilise la connexion Internet actuelle. Ces services voient les requêtes et leur IP source. Les profils et réglages sont chiffrés sur cet appareil. Aucun SDK publicitaire ou d’analyse.</string>
+    <string name="vpn_help_updates_title">Mises à jour</string>
+    <string name="vpn_help_updates_body">Si activés dans Paramètres → Mises à jour en arrière-plan, les abonnements sont actualisés par défaut environ toutes les 12 heures et les données de connexion signées sont vérifiées toutes les 24 heures. Chaque vérification peut y être désactivée. L’installation des données exige votre action. Android peut retarder les vérifications. F-Droid gère ses propres mises à jour de l’application.</string>
+</resources>

@@ -1,0 +1,13 @@
+AGENTS.md
+.gradle/
+.idea/
+**/build/
+local.properties
+native-libs/
+*.jks
+*.keystore
+*.p12
+release-signing.properties
+.DS_Store
+__pycache__/
+*.pyc

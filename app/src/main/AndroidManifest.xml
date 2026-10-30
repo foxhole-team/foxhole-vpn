@@ -1,0 +1,60 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_LOCAL_NETWORK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <application
+        android:name=".VpnApplication"
+        android:allowBackup="false"
+        android:localeConfig="@xml/locale_config"
+        android:fullBackupContent="@xml/backup_rules"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:usesCleartextTraffic="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="FoxHole VPN"
+        android:theme="@style/Theme.Foxhole.Vpn">
+        <activity android:name=".MainActivity" android:exported="true" android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".qr.QrScanActivity" android:exported="false" android:excludeFromRecents="true" />
+        <service
+            android:name=".runtime.VpnTunnelService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse"
+            android:permission="android.permission.BIND_VPN_SERVICE">
+            <meta-data android:name="android.net.VpnService.SUPPORTS_ALWAYS_ON" android:value="false" />
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="User-initiated VPN tunnel" />
+            <intent-filter><action android:name="android.net.VpnService" /></intent-filter>
+        </service>
+        <service
+            android:name=".router.RouterHomeAutomationService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="User-enabled home-router monitoring for VPN switching, with a persistent notification and quick disable" />
+        </service>
+        <receiver android:name=".widget.StatusWidgetReceiver" android:exported="false" android:label="@string/widget_status_label">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_status_info" />
+        </receiver>
+        <receiver android:name=".widget.FoxStatusWidgetReceiver" android:exported="false" android:label="@string/widget_fox_label">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_fox_status_info" />
+        </receiver>
+        <activity android:name=".widget.WidgetActionActivity" android:exported="false" android:excludeFromRecents="true" android:theme="@style/Theme.Foxhole.WidgetAction" />
+        <receiver android:name=".widget.WidgetActionReceiver" android:exported="false" />
+        <provider
+            android:name=".appupdates.VpnAppUpdateFileProvider"
+            android:authorities="${applicationId}.app-update-files"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/app_update_file_paths" />
+        </provider>
+    </application>
+</manifest>

@@ -1,0 +1,15 @@
+FoxHole VPN 是适用于 Android 8 及更高版本的简洁 VPN 客户端。导入 VPN 服务商或自有服务器的配置，在手机上连接，并从应用管理已配对的 OpenWrt 路由器。
+
+支持 VLESS、VMess、Trojan、Shadowsocks/Outline、WireGuard、Hysteria2、Naive、TUIC 和 AnyTLS。可导入兼容的 FoxHole Guard 配置、v2rayTun 链接和订阅、Clash/mihomo YAML、SIP008 JSON 及 Outline 动态密钥（ssconf://）。导出的配置和来源链接可能包含访问凭据，请仅与可信的人分享。
+
+在“设置 → 后台更新”中启用后，默认大约每 12 小时刷新订阅，每 24 小时检查 FoxHole DB 的已签名连接数据。可在同一页面分别关闭这两项后台检查。安装数据仍需您的操作。GitHub 版本每天检查应用更新；下载和安装 APK 需要您的操作及 Android 确认。F-Droid 版本不会自行检查或安装 APK 更新，请使用 F-Droid。Android 可能延迟后台任务。
+
+配置与设置使用 Android Keystore 密钥在设备上加密保存。不含广告或分析 SDK。VPN 检查会联系 www.google.com/generate_204，出口 IP 信息来自 ipwho.is；这些请求使用选中的 VPN 网络。VPN 关闭时，可通过当前互联网连接更新大致设备位置，包括从小组件发起的更新。这些服务会收到请求及其来源 IP。已签名连接数据来自 foxhole-team.github.io/foxhole-db；订阅使用已保存的服务商 URL。不需要 GPS。
+
+安装 FoxHole OpenWrt Client (https://github.com/foxhole-team/foxhole-openwrt-client) 软件包后，可管理路由器 VPN 配置、设备路由和协议软件包。当前软件包支持 mediatek/filogic 和 x86/64 上使用 apk 软件包管理器的 OpenWrt 25.12.5；设置时会验证准确架构、发布目录和可用空间。安装需要路由器管理员权限。设备在外使用的 VPN 配置需要可访问的路由器公网地址及已配置的入站 VPN。请通过移动网络检查可达性。
+
+首次在路由器安装时，可见的 FoxHole 自动更新复选框默认选中。可取消勾选，或稍后在路由器设置中修改。启用后，路由器每天检查并安装来自 FoxHole 发布的已验证软件包更新，与 F-Droid 独立。与已有路由器配对会保留其更新策略。更新会保留配置与配对，不升级 OpenWrt 固件或其他系统软件包。取消手机配对不会关闭路由器上的此更新策略。
+
+FoxCore: https://github.com/foxhole-team/foxhole-core
+FoxHole Guard: https://github.com/foxhole-team/foxhole-guard
+GPL-3.0-or-later.

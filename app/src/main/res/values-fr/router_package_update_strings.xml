@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_updates_title">Mises à jour des paquets FoxHole</string>
+    <string name="router_updates_scope">Met à jour FoxHole et les paquets de protocoles VPN installés. Les profils et l’association sont conservés. Le micrologiciel OpenWrt et les autres paquets système restent inchangés.</string>
+    <string name="router_updates_current_version">Version actuelle : %1$s</string>
+    <string name="router_updates_available_version">Version disponible : %1$s</string>
+    <string name="router_updates_auto">Mises à jour automatiques de FoxHole</string>
+    <string name="router_updates_auto_help">Si activé, le routeur vérifie chaque jour et installe les mises à jour vérifiées des paquets FoxHole. Désactivez cette option pendant la configuration ou ensuite dans les réglages du routeur. La politique reste sur le routeur après sa dissociation.</string>
+    <string name="router_updates_apply">Mettre à jour</string>
+    <string name="router_updates_check">Vérifier</string>
+    <string name="router_updates_status">VÉRIFIER L’ÉTAT</string>
+    <string name="router_updates_waiting">En attente de l’état du routeur</string>
+    <string name="router_updates_uncertain">Le routeur est peut-être en cours de mise à jour. Reconnectez-vous pour vérifier le résultat. La demande ne sera pas renvoyée.</string>
+    <string name="router_updates_unreachable">Routeur indisponible. Vérifiez le Wi-Fi, puis l’état.</string>
+    <string name="router_updates_automatic_job">Mise à jour automatique sur le routeur</string>
+    <string name="router_updates_progress">%1$d%%</string>
+    <string name="router_updates_done">Terminé</string>
+    <string name="router_updates_changes">Modifications à installer</string>
+    <string name="router_updates_version_change">%1$s → %2$s</string>
+    <string name="router_updates_reconnect_note">Le VPN du routeur et le panneau se reconnecteront. L’installation continue si cette fenêtre est fermée.</string>
+    <string name="router_updates_running">En cours</string>
+    <string name="router_updates_unsupported">Mises à jour de paquets indisponibles pour ce routeur.</string>
+    <string name="router_updates_current">À jour</string>
+    <string name="router_updates_available">Mise à jour disponible</string>
+    <string name="router_updates_check_failed">Impossible de rechercher des mises à jour</string>
+    <string name="router_updates_not_checked">Pas encore vérifié</string>
+    <string name="router_updates_step_release">Vérification de la version publiée</string>
+    <string name="router_updates_step_backup">Préparation de la récupération</string>
+    <string name="router_updates_step_check">Vérification des paquets installés</string>
+    <string name="router_updates_step_preparing">Préparation</string>
+    <string name="router_updates_step_index">Téléchargement du catalogue</string>
+    <string name="router_updates_step_download">Téléchargement des paquets</string>
+    <string name="router_updates_step_verifying">Vérification des paquets</string>
+    <string name="router_updates_step_installing">Installation des paquets</string>
+    <string name="router_updates_step_reconnect">Reconnexion du VPN du routeur</string>
+    <string name="router_updates_release_unavailable">Aucune version vérifiée disponible pour ce routeur.</string>
+    <string name="router_updates_auth_failed">L’autorisation du routeur n’est plus valide. Appairez à nouveau pour continuer.</string>
+    <string name="router_updates_stale">Les réglages du routeur ont changé. Vérifiez l’état et examinez à nouveau la mise à jour.</string>
+    <string name="router_updates_no_space">Le routeur manque de stockage ou de RAM libre.</string>
+    <string name="router_updates_download_failed">Impossible de télécharger la mise à jour.</string>
+    <string name="router_updates_verification_failed">Le routeur a rejeté les fichiers ou la version de mise à jour.</string>
+    <string name="router_updates_rollback_unavailable">Récupération sûre indisponible. La mise à jour n’a pas démarré.</string>
+    <string name="router_updates_ram_unavailable">Cache RAM de protocole vérifié indisponible. La mise à jour n’a pas démarré.</string>
+    <string name="router_updates_invalid_response">Impossible de vérifier la réponse du routeur. Vérifiez l’état avant de continuer.</string>
+    <string name="router_updates_disconnect_before_update">Déconnectez d’abord le VPN du routeur</string>
+</resources>

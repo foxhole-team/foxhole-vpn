@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_router_setup_auto_off">Выключено</string>
+    <string name="vpn_router_setup_auto_on">Включено</string>
+    <string name="vpn_router_setup_auto_unknown">Роутер мог сохранить настройку. Проверьте статус для подтверждения. Настройка не будет отправлена повторно.</string>
+    <string name="vpn_router_setup_auto_updates">Автоматически обновлять FoxHole</string>
+</resources>

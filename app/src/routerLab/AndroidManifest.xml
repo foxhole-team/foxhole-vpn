@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <application android:name=".router.lab.RouterLabApplication" android:label="FoxHole Router Lab"
+        tools:replace="android:name,android:label">
+        <activity android:name=".MainActivity" tools:node="remove" />
+        <activity android:name=".router.lab.RouterLabActivity" android:exported="false" android:excludeFromRecents="true" />
+        <receiver android:name=".widget.StatusWidgetReceiver" tools:node="remove" />
+        <receiver android:name=".widget.FoxStatusWidgetReceiver" tools:node="remove" />
+        <receiver android:name=".widget.WidgetActionReceiver" tools:node="remove" />
+        <activity android:name=".widget.WidgetActionActivity" tools:node="remove" />
+    </application>
+</manifest>

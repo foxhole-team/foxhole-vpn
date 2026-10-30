@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_import_qr">SCANNER UN CODE QR</string>
+    <string name="vpn_qr_title">Scanner un code QR</string>
+    <string name="vpn_qr_hint">Dirigez la caméra vers le code QR du profil VPN.</string>
+    <string name="vpn_qr_camera_permission_title">Accès à la caméra</string>
+    <string name="vpn_qr_camera_permission_body">L’accès à la caméra est nécessaire pour scanner les codes QR. Aucune photo ni vidéo n’est enregistrée.</string>
+    <string name="vpn_qr_allow_camera">AUTORISER LA CAMÉRA</string>
+    <string name="vpn_qr_open_settings">OUVRIR LES PARAMÈTRES</string>
+    <string name="vpn_qr_settings_unavailable">Impossible d’ouvrir les paramètres de l’application.</string>
+    <string name="vpn_qr_camera_unavailable">Caméra indisponible. Réessayez.</string>
+    <string name="vpn_qr_retry">RÉESSAYER</string>
+    <string name="vpn_qr_back">Retour</string>
+    <string name="vpn_qr_preview">Aperçu caméra QR</string>
+</resources>

@@ -1,0 +1,1 @@
+Monochrome Night, FoxHole theme and a clearer globe route. Fixed rapid restarts and VPN network readiness. Shorter copy; the experimental latency test was removed.

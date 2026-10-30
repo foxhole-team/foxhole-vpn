@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_status_label">FoxHole VPN · Estado</string>
+    <string name="widget_status_description">Estado VPN compacto y control de conexión.</string>
+    <string name="widget_fox_label">FoxHole VPN · Zorro</string>
+    <string name="widget_fox_description">El zorro muestra el estado de conexión VPN. Toque para conectar o desconectar.</string>
+    <string name="widget_connected">Conectado a la red VPN</string>
+    <string name="widget_loading">Cargando</string>
+    <string name="widget_disconnected">Desconectado de la red VPN</string>
+    <string name="widget_connecting">Conectando</string>
+    <string name="widget_validating">Comprobando conexión</string>
+    <string name="widget_stopping">Desconectando</string>
+    <string name="widget_error">Error de conexión</string>
+    <string name="widget_connect">Conectar</string>
+    <string name="widget_disconnect">DESCONECTAR</string>
+    <string name="widget_cancel">CANCELAR</string>
+    <string name="widget_open_app">Abrir FoxHole VPN</string>
+    <string name="widget_choose_profile">Elija un perfil en la aplicación</string>
+    <string name="widget_permission_denied">No se concedió el permiso VPN.</string>
+    <string name="widget_detail_empty">—</string>
+    <string name="widget_location_determining">Determinando…</string>
+    <string name="widget_location_cached">Última ubicación: %1$s</string>
+</resources>

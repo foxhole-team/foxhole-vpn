@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_router_home_notification_channel">家庭网络</string>
+    <string name="vpn_router_home_notification_title">家庭网络</string>
+    <string name="vpn_router_home_notification_monitoring">VPN 自动切换已启用</string>
+    <string name="vpn_router_home_notification_unavailable">未连接路由器</string>
+    <string name="vpn_router_home_notification_stop">关闭</string>
+    <string name="vpn_router_home_notification_permission">请允许通知以启用 VPN 自动切换。</string>
+    <string name="vpn_router_home_notifications_permission">请允许家庭 VPN 切换通知。</string>
+    <string name="vpn_router_home_notification_profile_unsupported">此配置不支持自动切换</string>
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_clipboard_empty">В буфере нет текста для импорта.</string>
+    <string name="vpn_clipboard_focus_unavailable">Не удалось прочитать буфер. Повторите вставку.</string>
+</resources>

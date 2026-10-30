@@ -1,0 +1,6 @@
+0.1.1
+
+- Batches globe drawing on modern Android.
+- Uses grey gradients with a subtle green connected tint and a white-grey device marker.
+- Aligns the profile arrow and adds icons to import and settings sheets.
+- Keeps the logo left and actions right.

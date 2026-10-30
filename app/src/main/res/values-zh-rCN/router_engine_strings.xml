@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_engines_entry">VPN 协议设置</string>
+    <string name="router_engines_title">VPN 协议</string>
+    <string name="router_engines_help">在路由器上安装或移除 VPN 协议软件包。可用协议取决于路由器和已验证的发布目录。</string>
+    <string name="router_engines_installed">已安装</string>
+    <string name="router_engines_add">添加协议</string>
+    <string name="router_engines_update">更新</string>
+    <string name="router_engines_update_reconnect">更新并重新连接</string>
+    <string name="router_engines_remove_protocol">删除 %1$s</string>
+    <string name="router_engines_in_use">路由器 VPN 正在使用</string>
+    <string name="router_engines_download_size">下载</string>
+    <string name="router_engines_reconnect_note">路由器 VPN 将重新连接。</string>
+    <string name="router_engines_keep_active">路由器 VPN 不会重启。</string>
+    <string name="router_engines_unavailable">协议管理不可用。</string>
+    <string name="router_engines_not_released">没有适用于此路由器的已发布软件包。</string>
+    <string name="router_engines_stale">路由器设置已更改。请重新查看安装内容。</string>
+    <string name="router_engines_no_space">路由器的可用存储空间或 RAM 不足。</string>
+    <string name="router_engines_profile_graph">此配置需要不受支持的协议组合。</string>
+    <string name="router_engines_busy">路由器正忙。</string>
+    <string name="router_engines_show_progress">查看进度</string>
+    <string name="router_engines_queued">正在准备安装</string>
+    <string name="router_engines_verifying">正在验证文件</string>
+    <string name="router_engines_installing">正在路由器上安装</string>
+    <string name="router_engines_reconnecting">正在重新连接路由器 VPN</string>
+    <string name="router_engines_done">完成</string>
+    <string name="router_engines_failed">操作未完成。</string>
+    <string name="router_engines_download_failed">无法下载协议。</string>
+    <string name="router_engines_verification_failed">路由器拒绝了安装文件。</string>
+    <string name="router_engines_recovery">请检查路由器 VPN 状态。</string>
+    <string name="router_engines_restored">已恢复先前连接。</string>
+    <string name="router_engines_close_progress">关闭此窗口后，安装仍将在路由器上继续。</string>
+    <string name="router_engines_check_status">检查状态</string>
+    <string name="router_engines_remove_confirm">是否从路由器删除所选协议？</string>
+    <string name="router_engines_flash_budget">内部存储</string>
+    <string name="router_engines_ram_budget">RAM</string>
+    <string name="router_engines_memory_budget">需要 %1$s，可用 %2$s</string>
+    <string name="router_engines_show_result">查看结果</string>
+</resources>

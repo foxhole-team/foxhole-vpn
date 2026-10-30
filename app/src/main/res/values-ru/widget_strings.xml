@@ -1,0 +1,22 @@
+<resources>
+    <string name="widget_status_label">FoxHole VPN · Статус</string>
+    <string name="widget_status_description">Компактный статус VPN и управление подключением.</string>
+    <string name="widget_fox_label">FoxHole VPN · Лиса</string>
+    <string name="widget_fox_description">Лиса показывает состояние VPN. Нажмите для подключения или отключения.</string>
+    <string name="widget_connected">Подключено к VPN сети</string>
+    <string name="widget_loading">Загрузка</string>
+    <string name="widget_disconnected">Отключено от VPN сети</string>
+    <string name="widget_connecting">Подключение</string>
+    <string name="widget_validating">Проверка подключения</string>
+    <string name="widget_stopping">Отключение</string>
+    <string name="widget_error">Ошибка подключения</string>
+    <string name="widget_connect">ПОДКЛЮЧИТЬ</string>
+    <string name="widget_disconnect">ОТКЛЮЧИТЬ</string>
+    <string name="widget_cancel">ОТМЕНА</string>
+    <string name="widget_open_app">Открыть FoxHole VPN</string>
+    <string name="widget_choose_profile">Выберите профиль в приложении</string>
+    <string name="widget_permission_denied">Разрешение на VPN не предоставлено.</string>
+    <string name="widget_detail_empty">—</string>
+    <string name="widget_location_determining">Определение…</string>
+    <string name="widget_location_cached">Последнее известное: %1$s</string>
+</resources>

@@ -1,0 +1,9 @@
+0.1.1 Stable
+
+- Automatic device callout after a fresh app start.
+- Validated VPN server callout stays open while rotating.
+- Light drag haptics and stable island detail.
+- Clearer profile actions; confirmation before changing an active protocol.
+- Saved protocols, provider expiry dates and camera QR import.
+- Compatible links preserve WireGuard DNS and security settings.
+- Safer default-network selection and VPN ownership checks.

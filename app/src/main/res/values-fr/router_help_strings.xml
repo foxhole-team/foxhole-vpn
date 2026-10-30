@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_help_open">Aide : %1$s</string>
+    <string name="router_help_choose_country">Choisir un pays</string>
+    <string name="router_help_protocols">Choisissez les protocoles publiés utilisés par vos profils VPN. Hysteria2 est sélectionné si disponible. D’autres protocoles peuvent être ajoutés après l’appairage.</string>
+    <string name="router_help_profile">Choisissez un profil du téléphone à envoyer au routeur, ou ajoutez-en un plus tard.</string>
+    <string name="router_help_country_direct">Si activé, le trafic associé au pays sélectionné contourne le VPN du routeur. Touchez le drapeau pour choisir ou changer le pays.</string>
+    <string name="router_help_home">Utilise le routeur à domicile et rétablit la connexion précédente du téléphone au départ, si le basculement automatique est pris en charge.</string>
+    <string name="router_help_add_phone">Ajoute ce téléphone au réseau domestique afin que son trafic puisse utiliser le VPN du routeur.</string>
+    <string name="router_help_public_ip">Choisissez ceci uniquement si le routeur est joignable depuis Internet via une IP publique. Une vérification sur réseau mobile reste nécessaire.</string>
+    <string name="router_help_create_client">Crée un profil VPN du routeur pour ce téléphone hors du domicile. Cela ne prouve pas que le routeur est joignable depuis Internet.</string>
+    <string name="router_help_password">Saisissez le mot de passe administrateur OpenWrt. L’identifiant habituel est root ; ce n’est pas le mot de passe Wi-Fi.</string>
+    <string name="router_help_pin">Choisissez votre code PIN à quatre chiffres lors de la première configuration. Utilisez-le pour un routeur déjà configuré. Après installation manuelle du paquet, définissez-le dans LuCI avec le compte propriétaire. Aucun code PIN n’est prédéfini.</string>
+    <string name="router_help_storage">Le stockage interne conserve les protocoles VPN après redémarrage. La RAM économise le stockage interne mais retélécharge les protocoles au redémarrage. Les réglages restent dans le stockage interne.</string>
+    <string name="router_help_setup_pair">Installer ajoute FoxHole à un routeur OpenWrt pris en charge. Connecter associe ce téléphone à une installation FoxHole existante. Le micrologiciel OpenWrt n’est ni installé ni mis à jour.</string>
+    <string name="router_help_control">Active le contrôle du routeur appairé depuis ce téléphone. Le désactiver ne supprime pas ses profils VPN.</string>
+    <string name="router_help_vpn">Démarre ou arrête le profil VPN sélectionné sur le routeur.</string>
+    <string name="router_help_lan_devices">Choisissez pour chaque appareil domestique le VPN du routeur ou une connexion directe.</string>
+    <string name="router_help_remote_clients">Ces profils se connectent au routeur hors du réseau domestique. Vous pouvez les partager ou révoquer leur accès.</string>
+    <string name="router_help_reset_foxhole">Supprime uniquement les paramètres FoxHole, son code PIN et les fiches clients. Reconfigurez ensuite FoxHole. OpenWrt et les autres applications conservent leurs paramètres.</string>
+    <string name="router_help_country_source">La sélection automatique utilise un résultat pays récent de la connexion Internet du routeur. Les positions du téléphone et du VPN ne sont pas utilisées. Si indisponible, les règles restent inchangées ; choisissez le pays manuellement.</string>
+    <string name="router_help_device_status">Le routeur indique l’état des appareils. Des données manquantes signifient un état inconnu.</string>
+    <string name="router_help_install_server">Activez uniquement si ce routeur accepte les connexions VPN de vos appareils via une IP publique. Cela installe un paquet serveur séparé et augmente la mémoire utilisée. Vous pourrez configurer l’accès après l’installation.</string>
+</resources>

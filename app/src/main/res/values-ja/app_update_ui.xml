@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_app_update_title">アプリの更新</string>
+    <string name="vpn_app_update_check">更新を確認</string>
+    <string name="vpn_app_update_checking">アプリのバージョンを確認中…</string>
+    <string name="vpn_app_update_no_release">リリースはまだ公開されていません。</string>
+    <string name="vpn_app_update_current">最新バージョンがインストールされています。</string>
+    <string name="vpn_app_update_available">バージョン%1$sがあります。タップしてダウンロード。</string>
+    <string name="vpn_app_update_downloading">アプリをダウンロード中…</string>
+    <string name="vpn_app_update_percent">アプリをダウンロード中… %1$d%%</string>
+    <string name="vpn_app_update_verifying">ダウンロードしたアプリを確認中…</string>
+    <string name="vpn_app_update_ready">バージョン%1$sをダウンロードしました。タップしてインストール。</string>
+    <string name="vpn_app_update_intro">FoxHole VPNはGitHubから更新します。</string>
+    <string name="vpn_app_update_external_source">このアプリを入手した配布元から更新してください。</string>
+    <string name="vpn_app_update_error_network">GitHubに接続できませんでした。後で再試行してください。</string>
+    <string name="vpn_app_update_error_rate">GitHubが一時的にリクエストを制限しています。後で再試行してください。</string>
+    <string name="vpn_app_update_error_verify">更新ファイルを検証できませんでした。</string>
+    <string name="vpn_app_update_error_storage">更新を保存できませんでした。空き容量を確認してください。</string>
+    <string name="vpn_app_update_error_install">Androidのインストーラーを開けませんでした。</string>
+    <string name="vpn_app_update_install_permission">Androidの設定でFoxHole VPNからのインストールを許可し、再試行してください。</string>
+</resources>

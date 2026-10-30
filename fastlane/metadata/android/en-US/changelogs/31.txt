@@ -1,0 +1,1 @@
+Theme-tinted globe, neutral markers and a thinner route. Landscape profile and controls sit at the lower edge. Import actions match settings rows.

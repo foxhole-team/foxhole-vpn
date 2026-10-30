@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_app_update_title">Mise à jour de l’application</string>
+    <string name="vpn_app_update_check">RECHERCHER DES MISES À JOUR</string>
+    <string name="vpn_app_update_checking">Vérification de la version de l’application…</string>
+    <string name="vpn_app_update_no_release">Aucune version n’a encore été publiée.</string>
+    <string name="vpn_app_update_current">La dernière version est installée.</string>
+    <string name="vpn_app_update_available">La version %1$s est disponible. Touchez pour télécharger.</string>
+    <string name="vpn_app_update_downloading">Téléchargement de l’application…</string>
+    <string name="vpn_app_update_percent">Téléchargement de l’application… %1$d%%</string>
+    <string name="vpn_app_update_verifying">Vérification de l’application téléchargée…</string>
+    <string name="vpn_app_update_ready">La version %1$s est téléchargée. Touchez pour installer.</string>
+    <string name="vpn_app_update_intro">FoxHole VPN se met à jour depuis GitHub.</string>
+    <string name="vpn_app_update_external_source">Effectuez la mise à jour via la source de cette application.</string>
+    <string name="vpn_app_update_error_network">Impossible de joindre GitHub. Réessayez plus tard.</string>
+    <string name="vpn_app_update_error_rate">GitHub limite temporairement les requêtes. Réessayez plus tard.</string>
+    <string name="vpn_app_update_error_verify">Impossible de vérifier le fichier de mise à jour.</string>
+    <string name="vpn_app_update_error_storage">Impossible d’enregistrer la mise à jour. Vérifiez l’espace libre.</string>
+    <string name="vpn_app_update_error_install">Impossible d’ouvrir l’installateur Android.</string>
+    <string name="vpn_app_update_install_permission">Autorisez les installations depuis FoxHole VPN dans les paramètres Android, puis réessayez.</string>
+</resources>

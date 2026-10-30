@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_background_updates">Background updates</string>
+    <string name="vpn_auto_refresh_subscriptions">Refresh subscriptions automatically</string>
+    <string name="vpn_auto_refresh_subscriptions_help">When enabled, refresh saved provider subscriptions every %1$d hours. Android may delay the check. Turning this off keeps your saved profiles.</string>
+    <string name="vpn_auto_check_connection_data">Check connection-data updates</string>
+    <string name="vpn_auto_check_connection_data_help">When enabled, check FoxHole DB every %1$d hours for signed connection-data updates. Installing an update still requires your action.</string>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_background_updates">Фоновые обновления</string>
+    <string name="vpn_auto_refresh_subscriptions">Автоматически обновлять подписки</string>
+    <string name="vpn_auto_refresh_subscriptions_help">Если включено, обновлять сохранённые подписки провайдера раз в %1$d ч. Android может отложить проверку. При отключении сохранённые профили остаются.</string>
+    <string name="vpn_auto_check_connection_data">Проверять обновления данных подключения</string>
+    <string name="vpn_auto_check_connection_data_help">Если включено, проверять подписанные данные подключения FoxHole DB раз в %1$d ч. Установка обновления по-прежнему требует вашего действия.</string>
+</resources>

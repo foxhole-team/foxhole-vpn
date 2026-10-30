@@ -1,0 +1,266 @@
+{
+  "baseline_guard_commit": "da7542a5c49274f1c0ce0c6ecdc8d883af0bfa9b",
+  "baseline_core_commit": "e645a3a8a1110c28eef260e8ce4b87ca4fc24235",
+  "scope": "Initial source extraction provenance; the current native build revision is pinned in config/foxcore-revision.txt.",
+  "files": [
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "gradlew",
+      "source_sha256": "ab5c0cad16305af2e619c159c1f58dd68d07fab9c11e36701e109c0277407f7a",
+      "target_path": "gradlew",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "gradlew.bat",
+      "source_sha256": "475c4f08cd57cf2faa819e7f36d72aa93f0ad646ea23a8f7fa3ef54dee1cbc52",
+      "target_path": "gradlew.bat",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "gradle/wrapper/gradle-wrapper.jar",
+      "source_sha256": "497c8c2a7e5031f6aa847f88104aa80a93532ec32ee17bdb8d1d2f67a194a9c7",
+      "target_path": "gradle/wrapper/gradle-wrapper.jar",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "gradle/wrapper/gradle-wrapper.properties",
+      "source_sha256": "0ecee189fee5f062eddf509912cceb560e79395ca8d622d4b7eae8cce37cdb3c",
+      "target_path": "gradle/wrapper/gradle-wrapper.properties",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "gradle/gradle-daemon-jvm.properties",
+      "source_sha256": "231649d2f8e8dc24310f18c921e3ae33fd2715b7f48a7ddcaf27a85003e0729a",
+      "target_path": "gradle/gradle-daemon-jvm.properties",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "gradle/verification-metadata.xml",
+      "source_sha256": "c9f3c54101248bd1cd1d2f13e9e638382fb1ddf989352a28c02a4b101d33e134",
+      "target_path": "gradle/verification-metadata.xml",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "LICENSE",
+      "source_sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "target_path": "LICENSE",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/importer/src/main/kotlin/com/foxhole/core/importer/MemoizedRemoteHostResolver.kt",
+      "source_sha256": "476085dcd07e1f70096f1377de5430b4a1e633eb387eb36592a9768ad006b55b",
+      "target_path": "vpn-profile/src/main/kotlin/com/foxhole/core/importer/MemoizedRemoteHostResolver.kt",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/importer/src/main/kotlin/com/foxhole/core/importer/ProfileImportAmneziaSupport.kt",
+      "source_sha256": "42601a2150f6988b8fcb0e9143115e2d52a7d8d4f2a99c1a33946ddd8ceb883d",
+      "target_path": "vpn-profile/src/main/kotlin/com/foxhole/core/importer/ProfileImportAmneziaSupport.kt",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/importer/src/main/kotlin/com/foxhole/core/importer/ProfileImportConfigBuildSupport.kt",
+      "source_sha256": "831d1fbddcaf455e2db35290a770352d20dd87bd44392987e4bc0e67d6df6f77",
+      "target_path": "vpn-profile/src/main/kotlin/com/foxhole/core/importer/ProfileImportConfigBuildSupport.kt",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/importer/src/main/kotlin/com/foxhole/core/importer/ProfileImportCoreSupport.kt",
+      "source_sha256": "24523aecbcb112b01160cdcbdb080686b3a7973ebca52210c14d36704c060da6",
+      "target_path": "vpn-profile/src/main/kotlin/com/foxhole/core/importer/ProfileImportCoreSupport.kt",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/importer/src/main/kotlin/com/foxhole/core/importer/ProfileImportEngine.kt",
+      "source_sha256": "e32d54d0f8ff3c6deece3b35f429ecdc847e29e256c4292887853c047fe43148",
+      "target_path": "vpn-profile/src/main/kotlin/com/foxhole/core/importer/ProfileImportEngine.kt",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/importer/src/main/kotlin/com/foxhole/core/importer/ProfileImportNodeSupport.kt",
+      "source_sha256": "1af0c17741a1d1095a6b8128c5fe6ad763689d5150d0218fc1de216cfab26acb",
+      "target_path": "vpn-profile/src/main/kotlin/com/foxhole/core/importer/ProfileImportNodeSupport.kt",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/importer/src/main/kotlin/com/foxhole/core/importer/ProfileImportParser.kt",
+      "source_sha256": "b9f65bd6a0245fbc4295e2dd5965a18eafa5a7ad03277d15f8433d788b305fd7",
+      "target_path": "vpn-profile/src/main/kotlin/com/foxhole/core/importer/ProfileImportParser.kt",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/importer/src/main/kotlin/com/foxhole/core/importer/ProfileImportQuicNodeSupport.kt",
+      "source_sha256": "1ed453ddcd3e89b4b8ee8e9eb0fd4c84ff32f9657213636dd9a945416af47da9",
+      "target_path": "vpn-profile/src/main/kotlin/com/foxhole/core/importer/ProfileImportQuicNodeSupport.kt",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/importer/src/main/kotlin/com/foxhole/core/importer/ProfileImportSip008Support.kt",
+      "source_sha256": "daefe08fb11a00bc1b23a5cb9aa716761bec6a2546051f4e4221885ffe44c0ef",
+      "target_path": "vpn-profile/src/main/kotlin/com/foxhole/core/importer/ProfileImportSip008Support.kt",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/importer/src/main/kotlin/com/foxhole/core/importer/ProfileImportSmartConfigSupport.kt",
+      "source_sha256": "7b1afdedf42c30a77a49f10596f7f51469a30dc27eb9dc198d30bc2b9bbd8fcc",
+      "target_path": "vpn-profile/src/main/kotlin/com/foxhole/core/importer/ProfileImportSmartConfigSupport.kt",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/importer/src/main/kotlin/com/foxhole/core/importer/ProfileImportStrategy.kt",
+      "source_sha256": "5820c37cabf75c1b83f73ac85347dffb6b2f8689c3016038fce62895fe69d985",
+      "target_path": "vpn-profile/src/main/kotlin/com/foxhole/core/importer/ProfileImportStrategy.kt",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/importer/src/main/kotlin/com/foxhole/core/importer/ProfileImportStrategySupport.kt",
+      "source_sha256": "e347d879786d0100a4086cdb8a327561150195d514f16d4d89e0ffd31a4bba66",
+      "target_path": "vpn-profile/src/main/kotlin/com/foxhole/core/importer/ProfileImportStrategySupport.kt",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/importer/src/main/kotlin/com/foxhole/core/importer/ProfileImportXraySupport.kt",
+      "source_sha256": "88e9b7a58cf6a4586e777aa49c7d53c0d533d403ee7d6a0081137aeaea054fdf",
+      "target_path": "vpn-profile/src/main/kotlin/com/foxhole/core/importer/ProfileImportXraySupport.kt",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/importer/src/main/kotlin/com/foxhole/core/importer/SubscriptionMetadataParser.kt",
+      "source_sha256": "6601c615c1abed73529dbd41266cb13c427827e5fb34d80a8b4fd4ab1ef2e86a",
+      "target_path": "vpn-profile/src/main/kotlin/com/foxhole/core/importer/SubscriptionMetadataParser.kt",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/importer/src/main/kotlin/com/foxhole/core/importer/SubscriptionPayloadFormat.kt",
+      "source_sha256": "8feb27cdf92807162b39043812b190cc7c9e3cb859e4d79f4c28353defa7ea23",
+      "target_path": "vpn-profile/src/main/kotlin/com/foxhole/core/importer/SubscriptionPayloadFormat.kt",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/model/src/main/kotlin/com/foxhole/core/model/AmneziaContentPaddingRange.kt",
+      "source_sha256": "13de49eec7e44e5c45ab2a331744f064cf75ca19863bcfa24bc50f13e0cf9c03",
+      "target_path": "vpn-profile/src/main/kotlin/com/foxhole/core/model/AmneziaContentPaddingRange.kt",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/model/src/main/kotlin/com/foxhole/core/model/AmneziaHeaderProtectionKey.kt",
+      "source_sha256": "1b2e5c4e5dd05382d8ebe2940c50e32b84be8029106d35875e26575c51faada5",
+      "target_path": "vpn-profile/src/main/kotlin/com/foxhole/core/model/AmneziaHeaderProtectionKey.kt",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/model/src/main/kotlin/com/foxhole/core/model/RuntimeDefaults.kt",
+      "source_sha256": "3c844874012254836135f0f27bb0ae6721e67a250f1af15f184058002630d9ab",
+      "target_path": "vpn-profile/src/main/kotlin/com/foxhole/core/model/RuntimeDefaults.kt",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/network/src/main/kotlin/com/foxhole/core/network/PublicUrlPolicy.kt",
+      "source_sha256": "bc276c841719fdeb8a32b70db3d0d087fe9d0cf239cc8fe51eae377c1af41f25",
+      "target_path": "vpn-profile/src/main/kotlin/com/foxhole/core/network/PublicUrlPolicy.kt",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/runtime/src/main/kotlin/com/foxhole/core/runtime/FoxCoreProxyOutboundTranslator.kt",
+      "source_sha256": "8ed1c77d499178be821ecbcb426ba36498078c911bac49a482a7bbd5d51fa199",
+      "target_path": "vpn-engine/src/main/kotlin/com/foxhole/core/runtime/FoxCoreProxyOutboundTranslator.kt",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/runtime/src/main/kotlin/com/foxhole/core/runtime/FoxCoreTlsTransportTranslator.kt",
+      "source_sha256": "5b23f13b1e94988ad66e48952680fb4f0a42841110b91d18e419e59c4fe549ae",
+      "target_path": "vpn-engine/src/main/kotlin/com/foxhole/core/runtime/FoxCoreTlsTransportTranslator.kt",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/runtime/src/main/kotlin/com/foxhole/core/runtime/FoxCoreWireGuardTranslator.kt",
+      "source_sha256": "ac7caf439f4bea9fce7a34f48f1cdf38887131258c52c0785fcdd72aff832466",
+      "target_path": "vpn-engine/src/main/kotlin/com/foxhole/core/runtime/FoxCoreWireGuardTranslator.kt",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/runtime/src/main/kotlin/com/foxhole/core/runtime/FoxCoreConfigTranslationJson.kt",
+      "source_sha256": "ac1344c7ffc1ffefd86272ed95d3b04ac91edd117c0e8a1b3cd9d566a3c46d82",
+      "target_path": "vpn-engine/src/main/kotlin/com/foxhole/core/runtime/FoxCoreConfigTranslationJson.kt",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/runtime/src/main/java/com/foxhole/core/runtime/FoxholeNativeEngine.java",
+      "source_sha256": "0f591d1976f88858f51ec3d0b77c9ae509ea3c180127afcc64687b1c8ada055d",
+      "target_path": "vpn-engine/src/main/java/com/foxhole/core/runtime/FoxholeNativeEngine.java",
+      "transform": "none"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/model/src/main/kotlin/com/foxhole/core/model/SettingsEnums.kt",
+      "source_sha256": "e1a8d2b6ad8963719b1d4b76176a7c322d47ad5a5349545abfe7dc25b5ae8a54",
+      "target_path": "vpn-profile/src/main/kotlin/com/foxhole/core/model/ProfileEnums.kt",
+      "transform": "Extract @Serializable\nenum class ProfileSourceType through before fun storedProfileSourceType; drop Compose-only Immutable annotations"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/model/src/main/kotlin/com/foxhole/core/model/Models.kt",
+      "source_sha256": "e069d2429d5d92f45f0fa351b36a857211c4431837f250384c8b8592ed486e24",
+      "target_path": "vpn-profile/src/main/kotlin/com/foxhole/core/model/ProfileImportModels.kt",
+      "transform": "Extract @Immutable\ndata class ParsedImport through before @Immutable\ndata class FoxCoreSessionConfig; drop Compose-only Immutable annotations"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/model/src/main/kotlin/com/foxhole/core/model/Models.kt",
+      "source_sha256": "e069d2429d5d92f45f0fa351b36a857211c4431837f250384c8b8592ed486e24",
+      "target_path": "vpn-profile/src/main/kotlin/com/foxhole/core/model/FoxCoreTunPlan.kt",
+      "transform": "Extract @Immutable\ndata class FoxCoreTunPlan through before @Immutable\ndata class VpnSession; drop Compose-only Immutable annotations"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/runtime/src/main/kotlin/com/foxhole/core/runtime/FoxCoreTunTranslator.kt",
+      "source_sha256": "17d40db5b2ddc6254165433c4133ef14c5adc9ef63482a50c6348e4fa93a18cc",
+      "target_path": "vpn-engine/src/main/kotlin/com/foxhole/core/runtime/FoxCoreTunTranslator.kt",
+      "transform": "Retain strict managed TUN validation; remove control-proxy/loopback inbound translation; require exactly one TUN inbound"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/runtime/src/main/kotlin/com/foxhole/core/runtime/FoxCoreConfigTranslator.kt",
+      "source_sha256": "639dbaab05e5a9c74913c22fe9ffc2af1f380d8fa66ab8a1df161889492358c0",
+      "target_path": "vpn-engine/src/main/kotlin/com/foxhole/core/runtime/FoxCoreConfigErrors.kt",
+      "transform": "Extract rejection enum and typed translation exception only"
+    },
+    {
+      "source_repository": "foxhole-guard",
+      "source_path": "core/runtime/src/main/kotlin/com/foxhole/core/runtime/RuntimeConfigVocabulary.kt",
+      "source_sha256": "a7bcd4a516a674b33f5b5fb892d887926b5e734db5a2376086efbd4553731777",
+      "target_path": "vpn-engine/src/main/kotlin/com/foxhole/core/runtime/VpnTransportDefaults.kt",
+      "transform": "Extract only the two mobile TCP keepalive constants used by the reviewed outbound translator"
+    }
+  ]
+}

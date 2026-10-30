@@ -1,0 +1,5 @@
+0.1.1 Stable
+
+- Status widgets show the phone, country flag and city in both connection states.
+- Start/Stop works from the widget; tap the logo to open the app.
+- Android asks for VPN permission if it has not been granted. Stale profile actions cannot start another profile.

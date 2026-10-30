@@ -1,0 +1,2876 @@
+{
+  "abis": [
+    "arm64-v8a",
+    "armeabi-v7a",
+    "x86",
+    "x86_64"
+  ],
+  "androidDeliveryProfile": "android4",
+  "compiledInputs": {
+    ".cargo/config.toml": "7bffa1ce3ff53a1f59f465b34012ddeb1b49c08d9c8a18b47bdffd64ac1ef3db",
+    "Cargo.lock": "c0c0801a904fad36b34cfc8907614216c316bf13b7a5f0b2485029739e92a3c6",
+    "Cargo.toml": "829e34f89f2c66bd51a9f00d416242026e313c17d53e4fecd1a955263d9c6e9b",
+    "config/foxcore-android-delivery.json": "3edb85a047f7edfe0fb35df3737da24fcc7ee7829f0b547ca05e471382eab96d",
+    "config/source-forks/rustls-0.23.46.NOTICE.md": "58898732988c539065681264252fa603e737c637f11629a74d5b489f739b1d39",
+    "config/source-forks/rustls-0.23.46.json": "ecdc360e6e6569d14a922b51be28fde677ff18c818debdc09cb90f4d0eb7c519",
+    "config/source-forks/rustls-0.23.46.upstream-files.json": "bc389f68b1eb14f6d79bb38870640fabd05e44ec22bf12d872e479d033b81c34",
+    "crates/foxcore-android/Cargo.toml": "d72dd8cf8ce2a83e4601e313016d70e0652366b736d37eb32c16fa8bc1362dc7",
+    "crates/foxcore-android/build.rs": "cb1162f623c96df24d41491ff3d97680971c98f367a0a49e6734affc9a259d8c",
+    "crates/foxcore-android/capabilities.schema.json": "e830f0dff5b1583a75a31a42f9f55f58f5ce2342f88f1c5fdd504b10d965e15a",
+    "crates/foxcore-android/include/foxhole_core.h": "6a6d18f051679ab501dd137a874bfebdc04777d35abde4a972b949d55ed7ba5d",
+    "crates/foxcore-android/src/boundary.rs": "dfee6ae6c218da51e7e7888c127ca726539f075bdf9d05de1cff2c1642fd7bf2",
+    "crates/foxcore-android/src/capabilities.rs": "3229e539b7f67b0b4855fbcfd119979ac71514eac297a43a15f27d811f3caf94",
+    "crates/foxcore-android/src/dns_continuation.rs": "066f55da44a0c0feb08c9547aa9954f3bf1449bf62f4da4c075a9c26845bf2d9",
+    "crates/foxcore-android/src/ecosystem.rs": "e122f5678bc593893c795893b06aa537fce440b06f99db7ca81d9af1d2d72b1a",
+    "crates/foxcore-android/src/identity_metadata.rs": "d2a144dd9e6a01ca2c5a78818f88af935f0a72892b80c22ee32a400475daa656",
+    "crates/foxcore-android/src/lib.rs": "35c6d3a43df69f2b434bcef48f5975b4878eade6228e8c5239bd900ae5e59646",
+    "crates/foxcore-android/src/link.rs": "bca111c44a193a1d030279c9f2a95f66ef4ab51d5cda7058f2ad002ce4c32c8c",
+    "crates/foxcore-android/src/logcat.rs": "c8f6ad8ca3b96d58866bffa38e08a6a9c0c8dab622728d58f0c4b1f70ff13b53",
+    "crates/foxcore-api/Cargo.toml": "114545fb05b4453728e33d95bf52a802eea5fad3032903129783b57c9e682dc6",
+    "crates/foxcore-api/src/availability.rs": "6742477991c2be3f90eeafd734b3b83e9d232f94b396c32a646f6c33e12adbb3",
+    "crates/foxcore-api/src/config/anon.rs": "0acef19146e61f0dbd8c81ff4986e4d458023b83bb3a1f318aba6212c1b949ab",
+    "crates/foxcore-api/src/config/base.rs": "25e1f2b2388ae9c58d5647c593e0859c45a9a0eef57f316963ad09e4c08849fc",
+    "crates/foxcore-api/src/config/bootstrap_dns.rs": "30409417c5d089ed292163343ebe7e95d0bb189a59e4956519e6e58b8f8f0a85",
+    "crates/foxcore-api/src/config/dns.rs": "e36e07bf17a26f9709e8e78239e413f84b38abdbd1a97c131a2ac0d3d960729e",
+    "crates/foxcore-api/src/config/engine.rs": "60ca68a367bcae2e253947b3fb478cb7c0d41c1f9811eb47db708b427b9359ab",
+    "crates/foxcore-api/src/config/mod.rs": "215f6ebeef61d8bfce09c8ddd061e863655e9ae986f8aa7e1c06da04fee86c94",
+    "crates/foxcore-api/src/config/outbound.rs": "4b81f4dc553eb2a814a2fec6d8d68922aa53157bf02fdcf199b338fd0802c842",
+    "crates/foxcore-api/src/config/policy.rs": "405014d36c1fbc068a039e3c800e8da06670e079d4b5e4371d57217ecc0c52b7",
+    "crates/foxcore-api/src/config/quic.rs": "70f98a3d9c4ae7958ba181cbdc5e1d90ed52c1220e5044d9ce07558d4e9a1c8b",
+    "crates/foxcore-api/src/config/rt.rs": "8f077ca0a4926a93f8ef8aeda4a8da031b81220638b67d586a3db268203caccb",
+    "crates/foxcore-api/src/config/selector.rs": "df9d75c03b2414b49090433b0baaeb9f1d8fb991ec21f1eacb11f44c829de43c",
+    "crates/foxcore-api/src/config/ss.rs": "2fc53f0b86ac122b92d19efad8a684a7e41bfaa9697b7ffd97fed54561837802",
+    "crates/foxcore-api/src/config/tests/bootstrap_dns.rs": "ffc3695b4b9ea0771428cf095b9afcf92c8f9794ae14d2fed6221951d1526ed5",
+    "crates/foxcore-api/src/config/tests/mod.rs": "61870078de6d4a68eb2b483473b8007c54907c3f2946f0b6f8d318643a92fa23",
+    "crates/foxcore-api/src/config/tests/parse.rs": "63471fc4e440b590a5b5fd785e9a329a100dc098f5cc33991d17f7bf031e0346",
+    "crates/foxcore-api/src/config/tests/policy_tls.rs": "fd5d0448b6fd9dbecf37272b174c371896131749e6f6ce55233425ef261e3e34",
+    "crates/foxcore-api/src/config/tests/protocols.rs": "0f73a226a0147b822e69efce25f44123e22a2aad2caba62b1057361e40aafdcb",
+    "crates/foxcore-api/src/config/tls.rs": "dc76f4c318a22a1b195844db49738a15e9fce0256b0ee3726b8172ecbe6095f0",
+    "crates/foxcore-api/src/config/transport.rs": "0b04c8bd37a9c4dcf03f39091b871c18ad99bfde4ff2c59891cb8e0265141da0",
+    "crates/foxcore-api/src/config/validate.rs": "9135a3708c822d54f8fadb684641809e9fd1134d621b590c9550d8725c5fbf23",
+    "crates/foxcore-api/src/config/vless.rs": "55363ce3efaa438686351cfca829b827995e3dbe7859b0acd15c0db760f5c4fd",
+    "crates/foxcore-api/src/config/vless_encryption.rs": "2453e4d043517e7d20dcc180b7fb70719a1387f0f13460cb7c575b1c3a29f32a",
+    "crates/foxcore-api/src/config/wireguard.rs": "fc2a752527f975b84781afea9045a0da65821bf39d4ba56c57a6b892852a6d77",
+    "crates/foxcore-api/src/flow.rs": "6269d0b02a00662b23bff08ef30866b748609b2de8d55fb484d35a3c0ebf652a",
+    "crates/foxcore-api/src/lib.rs": "2ac0084d51b621fd019acb76564ab059ce3cf5362fa9de066a7f5367a7a34a98",
+    "crates/foxcore-api/src/secret.rs": "f4e23a97151474b36a6cd97ce6c248099029aca41c7c93778875916cf5a8a438",
+    "crates/foxcore-api/tests/abi_v1_fixtures.rs": "ee36fa3c88fd7c611a6e5a4f7b3590f24004e9940586124749e48e6f4b6ebf0f",
+    "crates/foxcore-api/tests/amnezia_content_padding.rs": "243d06e3aaf6d831263f1718485db1da9f713464d82482197552e158fb6dded1",
+    "crates/foxcore-api/tests/amnezia_header_protection.rs": "e06ddb6a5aa25c50be5b5b3773ca9d7cff859527e724acefc88b2a37fbcad43b",
+    "crates/foxcore-api/tests/dns_quic_config.rs": "67dbfac616ca92ba0e5052a19c81afbdabf2db8a36ba06f0ec3773fa3df06061",
+    "crates/foxcore-api/tests/ordinary_tls_chrome.rs": "0aa2361ad6981cfaa83578a20261c8d3f076b00ab4e70ab37d4755bab5427885",
+    "crates/foxcore-cli/Cargo.toml": "b870a3e6a10f516c2ba1d5ab02067d6d4ba0bb23856df3040bb89cc425304ebd",
+    "crates/foxcore-cli/src/args.rs": "9115395dc319f40442a4fbc03cbf8ad9a4fa89e3d383860e460ecd75cbba8d38",
+    "crates/foxcore-cli/src/bootstrap.rs": "4545562c716e50669ac048be5420f43316f621bc022e1357b2c3bf8825a78596",
+    "crates/foxcore-cli/src/bootstrap_budget.rs": "d501ea35ce59d89b6d68e7a1a2b1662fceaa65c43fe80085aa4ecce74297cd05",
+    "crates/foxcore-cli/src/bridge.rs": "d77accb3633200b6c8c2a3a90f537f0a11ff1806bda9fc3f27aee26d2ffcd34d",
+    "crates/foxcore-cli/src/config.rs": "6e565ec05a47e915cc4ceb8506f59447640c7754bc70ef451bf62c3639cadeef",
+    "crates/foxcore-cli/src/import.rs": "b57cbe8b91cc4e8c91512ee5b8ff7a7a854ca6cc896251882093dbc9cf601997",
+    "crates/foxcore-cli/src/linux.rs": "8d91e8236e6cd83577765803facf65070cbddd2ff08dcc298f10a7a966b93229",
+    "crates/foxcore-cli/src/main.rs": "c3539853328107467e1d6ba1366e107349dec890a4afaaf20eb1c533e9581270",
+    "crates/foxcore-cli/src/probe.rs": "d2bae225a9b4873b9e8b2c00f03736e63d564c9b6a9018c1a95285f1ab94ddb7",
+    "crates/foxcore-cli/src/protocols.rs": "4e54a3e482ca647484446bd9b6dd515599896afa604fa88b69d7fcb45aff0a65",
+    "crates/foxcore-cli/src/run.rs": "9bf8ea4af79696eb4b474cbb0f3db92462a49ae1d40df82deacf52438f3eed59",
+    "crates/foxcore-cli/src/status.rs": "0247f643375a517f69b27e6ad562ec530e90b3091baa507255668af61c8c0a25",
+    "crates/foxcore-component/Cargo.toml": "f5966fbf1152cbd9caad01c3d430f01eb076564477ccc37138be0297cc4afbd0",
+    "crates/foxcore-component/src/lan.rs": "879c327c4fb1e54c1230e41466681ceadcd2c38581e7556125e743f1688fce16",
+    "crates/foxcore-component/src/lib.rs": "ea239d2e1d27b80966c0ab58f97c8d876190126fa679a0bcf2433b6861e06e5d",
+    "crates/foxcore-dialer/Cargo.toml": "453b90e43a56d1d68d41c53399a2dbb28dfe5e8e8a0f93a63fadff902bc6e357",
+    "crates/foxcore-dialer/src/lib.rs": "237351f80a9bf8b9ea299334c52da7e654804c7ae1adc9d1b525ca2bb5b0709d",
+    "crates/foxcore-dns/Cargo.toml": "c9d9fd8639ef0c33fc8edaa06a93b8747191584d4f8569f6264f2f698309776d",
+    "crates/foxcore-dns/src/consts.rs": "bedbe83399b08ba1b94cb36e0e426ec8693ed93eebbb22f197ced6007ce80dd2",
+    "crates/foxcore-dns/src/lib.rs": "0f5ded58b145b8e83b5781acda42dc451df2d42eede975d05e7b9c684c162e25",
+    "crates/foxcore-dns/src/message.rs": "be54f49b2cd6248c1ab97d73524d18186f7313200502e4ddb044973b05336041",
+    "crates/foxcore-dns/src/wire.rs": "f17691c3409196355759877d3a65b4a7daa23a98a17b9aa634a4d10e708871f5",
+    "crates/foxcore-link/Cargo.toml": "1c63965f04b72d5b8b90aee02898ce222fd5eacdc95b68ef33192f325c832818",
+    "crates/foxcore-link/src/clash.rs": "33ae0eb21f91cda4087d02f7577d9a2bfd01e461ece5d2150979ca1f9653a14a",
+    "crates/foxcore-link/src/lib.rs": "bac3105c2d17881fe59bf605e544cb3d7ac6a6c48af7e91128d3761ad2bb1b99",
+    "crates/foxcore-link/src/structured.rs": "d2ed6d48c8bcbf2f995dacb46da5be6b0aab6f1f085a4be850a471b8aeb1c1e4",
+    "crates/foxcore-link/src/subscription_source.rs": "03c4067d8070eec37feae9a9c36d9763a56782cddf22be0dd8472e7dddc419c5",
+    "crates/foxcore-link/tests/amnezia_content_padding.rs": "12815830024ff893ff58436c68937232a9a5eeec07592099cc804accba83c800",
+    "crates/foxcore-link/tests/amnezia_header_protection.rs": "30358209bacf8edfefea940f46a3490901f6d7bde2f3cf1eb3f229a330c4f822",
+    "crates/foxcore-link/tests/ordinary_tls_chrome.rs": "7dd1f6c4dafdc7a6d117d095a32495bac424f460f5b23934089090bea1109f24",
+    "crates/foxcore-outbound/Cargo.toml": "291da32e9b60619d97243835b9d66b3f3546823cf01a8dc3d6ca4b4965cedd48",
+    "crates/foxcore-outbound/src/deferred.rs": "428946d635555bffaa1de3838c82e5a89c6b737fc48383b63f96f8567c3e02d1",
+    "crates/foxcore-outbound/src/lib.rs": "7c543b6b2eb58255923af45224eb0e6840123f1fad1d9983d67beb3b2d15fc31",
+    "crates/foxcore-outbound/src/packet_tunnel.rs": "729d0222c104bdc9ad2efc749390ff627c4832895ba062f129f268cc3f56a618",
+    "crates/foxcore-outbound/src/selector.rs": "4c235826029581c739a3b8da7c708f4214a15d631cd125e989ecdafd228c7070",
+    "crates/foxcore-relay/Cargo.toml": "3a6ec75b00ae2eb441339ad08d2e99383ae8fe73697f65c0f690b2950162fdb2",
+    "crates/foxcore-relay/benches/relay_copy.rs": "f88785747cd3c7f32b2bb5769c184ee77d9c679cd8950f1142ec590c6f3bb19c",
+    "crates/foxcore-relay/src/lib.rs": "2dd5cee367e49af24027f889206cbb7203e26ada281b9e2567e07afe84986051",
+    "crates/foxcore-relay/src/tests.rs": "9dd048bc4120749ee3df7aad3e24e65baf796948b1917e3278104e1609fc5e07",
+    "crates/foxcore-route/Cargo.toml": "90d2dfc1deba2f545fe6882e2fe9c695866f864ad53377112f6d84009bdbf630",
+    "crates/foxcore-route/benches/route_lookup.rs": "36c703bc6275582ed910d2be1ad7abf6c698f7407485f5b051713848cb07723c",
+    "crates/foxcore-route/src/bin/foxcore-dns-compile.rs": "8ce3d7512efb9b91bf028b184f684aee83af5eaebb8c8e73990243638764ea92",
+    "crates/foxcore-route/src/domain.rs": "0370121117142a709db684b1b032d7e81e830513de301ed7497a486b8b08e8bb",
+    "crates/foxcore-route/src/lib.rs": "00eb594a4c4c23debbdbad94cde4c9dffa1096a3acff477876502b288716e6f4",
+    "crates/foxcore-route/src/ruleset.rs": "ef1d47077c272d1196e38f7b2ef386ec7c24450abbaa95ad6f1462d7b126d900",
+    "crates/foxcore-route/src/ruleset/categories.rs": "09305ccc6150b7f6c4f38d351b1a35427ce49279e7b42733b07c9d16616b402c",
+    "crates/foxcore-route/tests/dns_ruleset_compat.rs": "07fec2c0fde835e17f41e22045594e8d08c2d8a50de357bd8297535489d2744e",
+    "crates/foxcore-route/tests/fixtures/categories/escape-u64.json": "8dfa2954a70529a78c9118b7ec68e1266f01b2aa4da8ee11d80928d7364e4f54",
+    "crates/foxcore-route/tests/fixtures/categories/manifest3-normal-medium.json": "c9dee28fcaa0b282e886c50c7e53fa4e621342330c2bfde3f97a5794397eab49",
+    "crates/foxcore-route/tests/fixtures/categories/tagged1-normal-medium.json": "90270075e6127dbe652275648b1237b3178e7a18bc4035076910bbd928d220a2",
+    "crates/foxcore-route/tests/fixtures/foxhole-dns-v1.fhds": "86947cf25b1eef84e0609a1fc78e29f6f34457be85d7d2dd5f421d9aa824f5b1",
+    "crates/foxcore-route/tests/owned_full_categories.rs": "f6cca20a0dd41ea0a8baa3c22c9d5c71f00a25d5fa1be38abbc10d3441ffa285",
+    "crates/foxcore-route/tests/rule_priority_properties.proptest-regressions": "3d24c95c024cac61ea4b2218fbf1e479095c6c2c145b03aa46e9904a0f61983a",
+    "crates/foxcore-route/tests/rule_priority_properties.rs": "f5eeaee6dd0f0b994f5e123bc08993e984254067516055a5c6c03c559da1888f",
+    "crates/foxcore-runtime/Cargo.toml": "1c774b4b938b10ae8dc6906fd26d7a30f0cbafe7da8c39491387790be9dbdb6e",
+    "crates/foxcore-runtime/src/bootstrap_dns.rs": "ba99f2efa28fc764e8eef03a3435f1605e95e203d4f26dc41fc5f6f686313bf9",
+    "crates/foxcore-runtime/src/bootstrap_dns/tests.rs": "5308c09887ff2c43bf7b468d45f9571897eced5d1f727922c465173a58c7fe7e",
+    "crates/foxcore-runtime/src/continuity.rs": "6f5d38e2f01367fed9db7a94b70bc1588e7c091e03760b8d3913c6f9bcaba87e",
+    "crates/foxcore-runtime/src/control.rs": "44709c6b2f044f32c7c75f9f02a20ba3715a65e81d60c39f17c7076cd9a10a95",
+    "crates/foxcore-runtime/src/dns_continuation.rs": "0f3d3557ceffe474dbbb90bafd388fea47d703f893dcd415bd4e388f3f1aec6a",
+    "crates/foxcore-runtime/src/events.rs": "6c4d77316f069268226841458fe6bec02247971a914c4e44179168dc9e28dd49",
+    "crates/foxcore-runtime/src/lan.rs": "7c945cca11e24cfc96ce23b2c311716851ab6be6c1839f29539cf5b68ddff5b6",
+    "crates/foxcore-runtime/src/lib.rs": "165881e26fc6b25a492a35e2e954656374ab1d29b8f2c17b8673c50db07d8cd4",
+    "crates/foxcore-runtime/src/publish.rs": "cdb691185a2f199e38b16b42ebba44e277547bc194175e734e9961aa9f439aac",
+    "crates/foxcore-runtime/src/registry.rs": "549eaac387b5d00b980075d308db429986ee7eb0edc495bffe8a05242fba33f0",
+    "crates/foxcore-runtime/src/snapshot.rs": "e25cfff4b8b34fc601539fd96276977022f0afba49d42772a76cb0b21eecc7c0",
+    "crates/foxcore-runtime/src/start.rs": "ed1c5da1927fb03774a0781dcb560bdd04b64416b3025fd06e975c954b08134a",
+    "crates/foxcore-runtime/src/state.rs": "d864fb7652932e14f386fba4ea2e0644168a39ed4f6a12326e14566599012ba8",
+    "crates/foxcore-runtime/src/stop_diagnostics.rs": "da9ad1e4e4e5f40f65194163c17834bc93d438f4c2242a934ff35d01179ff25c",
+    "crates/foxcore-runtime/src/tests/dns_attribution.rs": "620cf23c8c495409b0be9f14a8d0347ec85d98f797f7bc7ad55a670784bcbb67",
+    "crates/foxcore-runtime/src/tests/dns_continuation.rs": "14c61410f427106ba66090780b7635b204da2c55ca0358f5e32761eef3374810",
+    "crates/foxcore-runtime/src/tests/lifecycle.rs": "e20575940320068bcf4f3dae1d0ae712c480c37ed608c60489d66d69b133a030",
+    "crates/foxcore-runtime/src/tests/mod.rs": "2a2b2ecc914e52b3cf21564992d09444f487cd8b97c00aa1fe0661fb81c3ff69",
+    "crates/foxcore-runtime/src/tests/network.rs": "4d479778d45b167449e94c743dfc82a973f2cdcd4a782773e2762e7dcdfd3541",
+    "crates/foxcore-runtime/src/tests/stops.rs": "c640cc581850ee1f518abc13be5b05630443ae3c3372d7622067033dda917bcb",
+    "crates/foxcore-runtime/src/util.rs": "1507f92d32b84009953d2c367a26a1cb2898e2609bcbb8415e5bf19cad5a7c80",
+    "crates/foxcore-runtime/src/worker.rs": "98b0a811a14107374ecf9c053262ac8fb93bc03452493023d0bcef597f3b8709",
+    "crates/foxcore-runtime/tests/generation_memory.rs": "b3ab0208f2c1db6bd831b53ac52d29db3e244f8fb7789d1ed5343c902ba2b63e",
+    "crates/foxcore-runtime/tests/lifecycle_state_machine.rs": "36f6c6715adb2aeff2ffdedbe15a12d1f188a2060ae8e898d9c602aebd015825",
+    "crates/foxcore-runtime/tests/revoking_flows_is_a_control_call.rs": "9f18c7bd2ba7c5bb14c26e3d5873efe4af242a3578dd278097ad597e64909b92",
+    "crates/foxcore-share/Cargo.toml": "6730f1bf33186ecdd0583e43e00d570ade3a28111b256a7f5707bee59dc08908",
+    "crates/foxcore-share/src/lib.rs": "4c3f79be52f688fee400c1bece44f98f4d01819eb69f26d86e53de5326f7b26d",
+    "crates/foxcore-share/src/serve.rs": "30ee0216d50fcbdc4d17dc275f7e0b887450a54e31b35b53b34c654c750ce2a1",
+    "crates/foxcore-testkit/Cargo.toml": "30ebf4376b866691bbb6b722fade0b3d51c71a4eae5557e0ef4d4b9f023b8177",
+    "crates/foxcore-testkit/src/bin/foxcore_bench_client.rs": "f7649a4d84e2870a8d124ca2b3ffd2b69144a955a03ae310da3097e01c5fbe26",
+    "crates/foxcore-testkit/src/bin/foxcore_device_config.rs": "98e5f0350d66905267e65c802a48be5af2d8dc7f9d74e4a22e35756be0336d08",
+    "crates/foxcore-testkit/src/bin/foxcore_import_diag.rs": "b86c28e302114970d99f44dbe96411496c73d0b419ea6b40decc8e49924971dc",
+    "crates/foxcore-testkit/src/bin/foxcore_outbound_probe.rs": "5860ce208ed4bb328ff2915e884e4da444edc525bb2a010a3cf3b74cac984256",
+    "crates/foxcore-testkit/src/bin/foxcore_soak.rs": "168433b745806fdf282bafd2997351d8d2270b7ae14c85727b9fa9d71e3583c3",
+    "crates/foxcore-testkit/src/bin/foxcore_socks.rs": "1dbf8f98ed73751886104e298747316e905f0b57798d2f450fa131d060834847",
+    "crates/foxcore-testkit/src/bin/foxcore_subscription_probe.rs": "c7bd739a7f7c3221789a4ce805fb8afad8b3c7a5b92a9f925f24c0954eccfc89",
+    "crates/foxcore-testkit/src/bin/foxcore_tun.rs": "a37b4b270b4d7117b603643f32701b52358b3c405b6fd5f22aaa0e8224a23a6e",
+    "crates/foxcore-testkit/src/lib.rs": "ad5cd52bc942a0010b7fbb6893c0a07315a1fe80297aaaf71d3132c1e70744cf",
+    "crates/foxcore-trafficmap/Cargo.toml": "619647ee2fec9949d074d3c53a74ddf14c7cdc9d8f181d4634ae1e5688d18575",
+    "crates/foxcore-trafficmap/src/events.rs": "0ab8c1abc134a9383094bafd5518ea39a6d2c081525e73cce2d07f7c3d40d387",
+    "crates/foxcore-trafficmap/src/lib.rs": "34e66cf45bac3be73a9056083c9db3e741881a2eed151181aae17617cf35c433",
+    "crates/foxcore-trafficmap/src/map.rs": "481b24006058c917d9570a1464601c2ad3ebe59c43c0645ecdceff3e1fae7545",
+    "crates/foxcore-trafficmap/src/packet.rs": "9666478f04f0b1fe6612fd675987dd051f4691fb2eb2c5d7262ccd1c9ffd6b7e",
+    "crates/foxcore-trafficmap/src/route.rs": "61502b769ec5c8aee16949ec63e5515d7239dab25136bbbd79611617664c6bac",
+    "crates/foxcore-transport/Cargo.toml": "9cec9e93b5a405106426a2a902582d34456f9b996476537bb7bd1bd8eb38a51e",
+    "crates/foxcore-transport/src/backoff.rs": "5140930fbf558f55ec7bac6799bcb1de469d3a0b49a5fb7dbc82967b48b39d8e",
+    "crates/foxcore-transport/src/datagram.rs": "ad5a7ea8a79fa01edc5ab22d081a2fc5949c9afe47aba05282a86204ebb934db",
+    "crates/foxcore-transport/src/dns_quic/datagram.rs": "f60cc6001eba74800ca4905fae679065c3fb6a54d8754ef44c63f0166fad0c4b",
+    "crates/foxcore-transport/src/dns_quic/doh3.rs": "bc697a56f37972e30a07dd1ed427aef8ed0216bc759e5315cde7d8ad968202ca",
+    "crates/foxcore-transport/src/dns_quic/doq.rs": "5529ab9e18ab3ab76b830c66ea96538571e2f92452727e4d496f9e1b38c20e5f",
+    "crates/foxcore-transport/src/dns_quic/h3io.rs": "13ee6b77a6ef540492ed98a53900cc29d28c8a76bc997e17d7139f9307a86c0c",
+    "crates/foxcore-transport/src/dns_quic/mod.rs": "61e1b464d0fad7610979a694d807ae83ccbd9e0c7e71f71b75975b26b804f6d6",
+    "crates/foxcore-transport/src/grpc.rs": "005ca738a5c1ca0c5d7f572f0c494a84b95f2d4c72b97281ec8b4d9a4d5217e2",
+    "crates/foxcore-transport/src/h2io.rs": "9e45d251d8adb84d1438a902870edec49866cc3305be485839b8c5900ccd2499",
+    "crates/foxcore-transport/src/http2.rs": "577f9291dcc52fab23ee5213e972033f76cd6c1c794c25cf7720fe271654735b",
+    "crates/foxcore-transport/src/httpupgrade.rs": "dbeb773823611cb29d1358cc585e3780edf6b20e139411985b93e13e73d5155a",
+    "crates/foxcore-transport/src/ja.rs": "5445e1c7fe7bdf5bcc3fa98828547219014d26f7f68bf3f0d5febdc633b2acce",
+    "crates/foxcore-transport/src/lib.rs": "5fe9220331b75276991369cee25db1ba128813841a4acc02f08fe41745b883aa",
+    "crates/foxcore-transport/src/quic.rs": "ce686c8a2b3063ac658bbbd3d786c1e66f7ed218e3593d09bc0faa2636e2388a",
+    "crates/foxcore-transport/src/quic_initial.rs": "8507ef86eb6707765825c224a964c3d47a90f3160c2c2524651abb2d88378a09",
+    "crates/foxcore-transport/src/serverfirst.rs": "1783c1381650676122cb5f8855ce7896527c9a044a8e7758c65ef5a089096967",
+    "crates/foxcore-transport/src/splice.rs": "6e88481fc191bc28db7418ef86a487a91175e03d77ed9e03fd8ce24ee114e6f3",
+    "crates/foxcore-transport/src/tls.rs": "eff5b01bc2a2edf674f9905e2d954bd55c4eb85f8b04a2c9cd0c307b90bd5529",
+    "crates/foxcore-transport/src/tls/chrome_tests.rs": "ac20456b3e6eff3999a916b5d4406b6d7c3689d35d86057184e6f13ff4baf9fd",
+    "crates/foxcore-transport/src/websocket.rs": "babf5c127d58445e4cc6dcea0c3a2bf116864a4b6b03835f873a2194a8d36993",
+    "crates/foxcore-transport/src/xhttp.rs": "c79abd37ce798d7db7afdefe83dd0d5349241966002f6acc2b89d509611f774f",
+    "crates/foxcore-transport/tests/ech.rs": "282186d88a8dfa86f4b48656af3b3480d8bac7ebd75155236475da9b050095d3",
+    "crates/foxcore-transport/tests/grpc_authority.rs": "5b2b78a49fc2f849c4411ba976498db8129c1248e4c03a28381a796b17d45636",
+    "crates/foxcore-transport/tests/grpc_bounded_writes.rs": "6f65f373eddd5f19f9f9e97ef9d2b6dcb8256a2da66ee8fe787a2594e1e91541",
+    "crates/foxcore-transport/tests/ja_fingerprint.rs": "7110c8c5547b580f5d379234d296463a133119a2eefc61d43cfd21688317f250",
+    "crates/foxcore-transport/tests/quic_initial_chromium.rs": "bfe5fd8f311883ef3d313b9ad47ffd96b383e04bba9233ebb95d67935358af6a",
+    "crates/foxcore-transport/tests/quic_initial_vector.rs": "bd516e6393fb01a700e3739f875080df49db0f7e0f692159011cb821021911c9",
+    "crates/foxcore-transport/tests/rustls_hello_shape.rs": "a6a1995d15fdb6481793f18d33cd529d052d2f499e53720e6d4feaf26888bece",
+    "crates/foxcore-transport/tests/xhttp_stream_one.rs": "db4173298df97d4426940fa36a99144a489321882b86ecbea8430e730a622085",
+    "crates/foxcore-tun/Cargo.toml": "d23d5a52294a949e19124503ee281aa938d5335e077251bdf2fcf114899eec72",
+    "crates/foxcore-tun/benches/packet_path.rs": "889090724fadc595e975ebe50ee4e83250745dfef51d3579048eb5f14f0a4947",
+    "crates/foxcore-tun/src/arena.rs": "99bfc9233cbf11a1f75eb491c2cee2d94f8aaddb762192f5bfc1399dc3f8c3b4",
+    "crates/foxcore-tun/src/backlog.rs": "af9a64ccf5635b891c2f36c4277089148ffda5f33e173c8916966b23484889a2",
+    "crates/foxcore-tun/src/continuity.rs": "5b408a7b9c4917d5f6a7984bfe3b4bd43968232b74ea4463620ccfba33ce2245",
+    "crates/foxcore-tun/src/device.rs": "c21a032b1ee5265954ea6b619a0d9f56a0442453ffb977b83a5871895405fe70",
+    "crates/foxcore-tun/src/dns/lease.rs": "e3ac4bec3ff5a325f1671291c80d353bdec4731fd35195b5ec2956d6b0a94cdb",
+    "crates/foxcore-tun/src/dns/mod.rs": "19ba933918c1a3c9af2252df009cb6bde3f6ce821ead30e4109d4444a798e470",
+    "crates/foxcore-tun/src/dns/proxy.rs": "cc488fcd1c91c3b8a46051892981b1c9dd7ab38cab6ecf941bde996eef42f230",
+    "crates/foxcore-tun/src/dns/tests.rs": "b30be2971165b4e1be97fa5732287ce36f11b3f8915960692919cdf73ce4df6e",
+    "crates/foxcore-tun/src/dns/upstream.rs": "6fbc9e1f56360fed765c83cf9b13073d0be49b86772f407b51969799568915e2",
+    "crates/foxcore-tun/src/enginephase.rs": "da559c828bc4c1f73989edb9e380b7b2732ebe64ad50a020c047fcbe085d45df",
+    "crates/foxcore-tun/src/flow/engine.rs": "14e997b8149a7d31aed3db44b3c2f6fee78605aa404d0d5a05f57328d725ffc7",
+    "crates/foxcore-tun/src/flow/mod.rs": "f0e1d8334d28e5a475641f47f28f7a7e4bedecda0f161a48e553fa8a429c3533",
+    "crates/foxcore-tun/src/flow/policy.rs": "8dc951a7aefbe6a5b5fa0af3d493031837a902cb20934cc7081a1e81f17c6565",
+    "crates/foxcore-tun/src/flow/route.rs": "e7c1c3e9412b9fe265e0443fc75a57ed3101ea4ca75e34664baf3d9e2ae9de9a",
+    "crates/foxcore-tun/src/flow/select.rs": "f5d626331914b865b21fbf10c8f5c42018d54b52aee380f6318411411c30192d",
+    "crates/foxcore-tun/src/flow/state.rs": "7b9a7325b224673e739cea42e6b1d3ce89f729434974ae95e854c4afdb5c8679",
+    "crates/foxcore-tun/src/flow/tests/dnsflow.rs": "3514fcd7ca894b3ad82818110bb593bedc34ef0f6b978efa8cd1737dd053a126",
+    "crates/foxcore-tun/src/flow/tests/lanes.rs": "9ae13751e16b4cb5fd30ec56efc50f2edb3f60cf443f0affda1adfe2bc008f38",
+    "crates/foxcore-tun/src/flow/tests/mod.rs": "10dddf60eb342d82bda1eee12ed03a9fe27805336f6dcc78fd24ed1f9d51e3e2",
+    "crates/foxcore-tun/src/flow/tests/policy_dns_revocation.rs": "304ec1668ff4c48fbd8c12f55ae4cd46c8ae2b44ded6e3b2aea5e9f7341a4595",
+    "crates/foxcore-tun/src/flow/tests/routing.rs": "c7e5159b70b47a704d2c922b44209f456d3ff1193b90e8fed373639991dc38c2",
+    "crates/foxcore-tun/src/halfclose.rs": "f49e5ce81d231326dfd30319d229c6d064b1a1990f1802725d2a9244939b72d1",
+    "crates/foxcore-tun/src/icmp.rs": "3ebe717e37f5cd4ed4ce1994c737b4a3de4852f23fd8b16d01a6eb4d81ae4f62",
+    "crates/foxcore-tun/src/ingress.rs": "a65539825fa3a987acede581017815b0059e5f54d2d42fc01e1703850c92cbb4",
+    "crates/foxcore-tun/src/l3.rs": "2382557607f6c517890916235bbb4f3de965750fb383f7e32730eaa9aa566000",
+    "crates/foxcore-tun/src/lib.rs": "fddacf6a3caffaea9de90c3cc9dff7a2bc7794ffe744fa03481d77a592085a81",
+    "crates/foxcore-tun/src/metrics.rs": "b884b82ff48b9e68845b2c3b201ef4827c20fe708964e0a8120c1fe6215ebcbc",
+    "crates/foxcore-tun/src/netstack/actor.rs": "512937b579acf59a9e08a92843957c59be2ae262045f508d3be164229248eb1f",
+    "crates/foxcore-tun/src/netstack/error.rs": "7fead650bbcb316ca30938d6c28b6c6266ef8511495fc940ba4380c7d4b62985",
+    "crates/foxcore-tun/src/netstack/mod.rs": "5f216de2838b9608244175790aabf91f8c46d8a49e06199bed1d3f5156cfee19",
+    "crates/foxcore-tun/src/netstack/packet.rs": "7b85e109494845fde00388a3828cc3f4e74cb55e5066cf2a2717901fdc97873d",
+    "crates/foxcore-tun/src/netstack/stream/mod.rs": "246c737eab525a6069b27f5888b6f1602b1a33c5af2c615d871d71bd9c20248c",
+    "crates/foxcore-tun/src/netstack/stream/smoltcp_tcp.rs": "ab579efb79582a7b5737cb3a4e5b7c653b6ecc5d4fb05147b1e33e47ffc53515",
+    "crates/foxcore-tun/src/netstack/stream/udp.rs": "9f8c335aeed49549f422d6fd764ea8fb4a1310f7e8be6a2ffc7e82bd9e1cda82",
+    "crates/foxcore-tun/src/netstack/stream/unknown.rs": "89a7b52008f115a12571f177faddb592cf0e648c92af9244290494634bb499cd",
+    "crates/foxcore-tun/src/relay/engine.rs": "38c67a435e3a9f0afa8412b7b5f754ba76829ce862f97c200e628422b4d94a53",
+    "crates/foxcore-tun/src/relay/mod.rs": "dbc23f9e977a19307eab0eb6c31e535f9ec73b3dc32e4fe67fe9de9a145f2e14",
+    "crates/foxcore-tun/src/relay/state.rs": "979cad2518205932f202bdc012251b42b50607d732e3bffc5e6c66395aecb8cf",
+    "crates/foxcore-tun/src/relay/tests/datapath.rs": "5f7e17a7ca9ffe3ee00e790a96bda10a4a9058c5a310688e857337949f1c7f2f",
+    "crates/foxcore-tun/src/relay/tests/lifecycle.rs": "755d8b3d0646d08fc9fa6dbcb4a963f69dfeac062f7b40382e216305ec7e1fdd",
+    "crates/foxcore-tun/src/relay/tests/mod.rs": "517c9ac0000ab84f96893604575dae00850a69e61e75b14c8b7639cf8ba437cd",
+    "crates/foxcore-tun/src/split.rs": "04e424f471e9be608de333e43b3b4fe42643144aaf1364dc4059ad73e43fd189",
+    "crates/foxcore-tun/tests/a_full_core_refuses_out_loud.rs": "33bc0c6b06f7837c72a2b9d9e2d43f64cba5df1715ee23c2f2dcea3065043a30",
+    "crates/foxcore-tun/tests/a_half_closed_flow_gives_its_slot_back.rs": "d1dcc339ed79f932a43ca0c604d4c215b4e30bbcb78c6c51741185ee8f6a4d44",
+    "crates/foxcore-tun/tests/a_push_channel_outlives_the_minute.rs": "aa8eb417dfd1fded3ebcaf739e6f74e225e634cecb1c5c47cd8cacb9bb02faff",
+    "crates/foxcore-tun/tests/blocking_an_app_reaches_its_open_connections.rs": "ffe10948e84c95957c1631666f45914a60f2176972f9a5dd016b539b6faea9f6",
+    "crates/foxcore-tun/tests/dial_failure_reaches_the_app.rs": "22004e28f434cf2e646af7b517535d8326829aea57b28c47733159464456491a",
+    "crates/foxcore-tun/tests/dns_attribution_compatibility.rs": "b9b7ae5fef7046000ffa6e9a378790430a35d955d7a2181ca95919adc6919b20",
+    "crates/foxcore-tun/tests/dns_filter_does_not_depend_on_transport.rs": "342493f7a3fa96644e7e0472d99fb89aff00ca914a7a50f6e6a6b4ae23135a4c",
+    "crates/foxcore-tun/tests/fragmentation_properties.proptest-regressions": "bbbb402dfcd243c6dc1c5f6ef61a4715ae5b291560f69ee896a719a7e4d7d0f6",
+    "crates/foxcore-tun/tests/fragmentation_properties.rs": "743dbd5e88a08bc827382191b250c1cce094b6bde5eaa56ee04cb42cec1d8f11",
+    "crates/foxcore-tun/tests/packet_tunnel_reaches_the_app.rs": "b75c23ec409939b228e532becfeffa3b6b3b790614c68cf37716c6b3f1be267c",
+    "crates/foxcore-tun/tests/smoltcp_transparent_accept_contract.rs": "34fe5ae545d5aa75cb6dafbf74b475b924cd00cf7d500fb1617197dbfe65b815",
+    "crates/foxcore-tun/tests/stack_window_closes.rs": "0b93b9b404176d13bf81f20b62ab75252fb9e513b6ebd92adbb42fd8683e602c",
+    "crates/foxcore-tun/tests/stalled_flows_are_reclaimed.rs": "254448697bcb8f8c2996eb0682355e1c1f130e1e47703fa260c6388c21bcfe2e",
+    "crates/foxcore-tun/tests/the_stack_holds_a_bounded_amount.rs": "425671b06175e9a6774990cb9f042c00c2687dda9fe67dcaf414ac3b686f90c9",
+    "crates/foxcore-tun/tests/tun_descriptor_lifetime.rs": "a8caaf8265f3984d1f298d9b62672f3335a1f479761f7dbbaf56bc5d179c9e86",
+    "crates/foxcore-tun/tests/tunlab/mod.rs": "41590f3a20e4e06713c8c4866dd070f05e0bf070c4ae598983457fd7a14e9bcf",
+    "crates/foxcore-tun/tests/tunlab/sender.rs": "7d0f3534c3cfe28702c49af97ac15458055275465ea9f676a5f74504f42ef4f0",
+    "crates/proto-anytls/Cargo.toml": "acef64362d8aa272afa5c39b5d3557ebfad97149b8615d62d1ae8598c8b61ba6",
+    "crates/proto-anytls/src/codec.rs": "c4dca252db99ff9a096b734a6ad81883d6c028d52980dfbf3d4a9b3a660a690b",
+    "crates/proto-anytls/src/lib.rs": "2eea80e951fa1d8fc8d9ce6e26204da976a405107ec608eca5596ec40c882d0f",
+    "crates/proto-anytls/src/padding.rs": "10edfaf6c4f7492281c533d1e06b1b9b29a5996fe121e3b45011656fb9acbd64",
+    "crates/proto-anytls/src/session.rs": "666ff88929aa49331a1923fa80ae87def6967297486ef9be1d10ee3b1ac88a7d",
+    "crates/proto-anytls/src/uot.rs": "0e5dba6162f7becc43c8846893fe5ba4c488034f2026555e92625f9197498af1",
+    "crates/proto-http/Cargo.toml": "60d8cea1c495e2b5295a14882400f5f41f8c33861a9d2b7c7169bafb8e0708fb",
+    "crates/proto-http/src/codec.rs": "8c36c9340569ceb56b2a9a4b85cfd21a7922c5645de5d46d6957328d5b5daa0f",
+    "crates/proto-http/src/error.rs": "fe06cafbb23e7384fa1bfa63d667cc781415ffaef8b2dd75a8af90a4c32460bd",
+    "crates/proto-http/src/fuzz_internals.rs": "1aa036a30c08d3d0a0a16ba86aa6f29a01d9900591390213ebbca63f93876c9f",
+    "crates/proto-http/src/leftover.rs": "9af6f1f1f3702fac99b4b1cbfd912bafc3d50769dd60cceb94dbf81e7d67c0be",
+    "crates/proto-http/src/lib.rs": "4432a0a2c915f1c30db38cd6f06b20fb608a52ae270e77f6a3a438ff04e879f2",
+    "crates/proto-hysteria2/Cargo.toml": "0deb95037ff365fba257c25ff9f852fa8867a846540f5f0459d22c8071325844",
+    "crates/proto-hysteria2/src/brutal.rs": "554bfa07ecabe64f2d9e3e3185ff1ecb9edfb8bc9b2ad884eed06c44d325070b",
+    "crates/proto-hysteria2/src/codec.rs": "ffa73ca09854edf36c74a93af4cc7712dfda36fceb137783456174b44ae51a31",
+    "crates/proto-hysteria2/src/congestion.rs": "a95741cb5525017b575b5247b2b20c50482eb438d2d9b71d01d9d125f7596f34",
+    "crates/proto-hysteria2/src/connection.rs": "2383102ae24bde14c466216b6c951023048fe1617dd48cd126d6427670dee31a",
+    "crates/proto-hysteria2/src/hop.rs": "d33bb0e8e8487d210dbf55359b1d5b6c7c0927868a16b237688bc2bb1cfe24b5",
+    "crates/proto-hysteria2/src/lib.rs": "0707da56e4f5ae186afb6188392ee13a47620391d9906f5ef7851ec8ad7fbb6a",
+    "crates/proto-hysteria2/src/negotiated.rs": "e93a059bc24d66333f9aafba45738b1ff2ecc1795987572affd32f7da57dcbd2",
+    "crates/proto-hysteria2/src/obfs.rs": "8c75ffd6417fcf66c2bde9d0c45e4240384e95783195b07356aca05c91b9e115",
+    "crates/proto-hysteria2/src/pacing.rs": "ccf01c699f8d84b6ea7af3115a04c3ada7d9adfac6775580293a79033d81a9d9",
+    "crates/proto-hysteria2/src/quic_fingerprint.rs": "f5b747dd11caa3f78f9c6d5fcaf0e332c4f5f7d0675b8162565e660686be3745",
+    "crates/proto-hysteria2/src/session.rs": "ecf6198ffea1c7054cb87e545d3141776ea0a618a406aeed15b7566916faa3e8",
+    "crates/proto-hysteria2/src/udp.rs": "f9cea61604d2de6195392b0f74d41a00cd2b8f6cadd2648cdb8b43ff494f71e1",
+    "crates/proto-hysteria2/src/varint.rs": "bb4f9916c2e67c9d67285300be75e5bd25fc35ca4f1d7244719b4c2ee1cfa87d",
+    "crates/proto-i2p/Cargo.toml": "a48423b9fe484c0f601d25fd4eed142dd8ccc3eee9db844d8e5770c117a66236",
+    "crates/proto-i2p/src/lib.rs": "d5ac34b7bc79bb481cf1d6633979f19e9c3d93fee11c55356145d273753289fe",
+    "crates/proto-naive/Cargo.toml": "a3d4527f62482153fe7ad889571eb1c7513af08f64264458cf475590452bcfcd",
+    "crates/proto-naive/src/error.rs": "fc56c278d101a4da08686907869b4d9274aa2679f3542955bef5524556f973ce",
+    "crates/proto-naive/src/h2stream.rs": "acbeb81ecf381445b9e953ca2688e91457e1c7fddff51fe24a002196e8ea8b4f",
+    "crates/proto-naive/src/lib.rs": "3abc9d442bac2a2655ae94f6730cd001e1cf9012d70b053d57351a78bb2d2af3",
+    "crates/proto-naive/src/padding.rs": "94238b35662bc99ac11ca853a11f99671af498407fad15693313570d2f609687",
+    "crates/proto-naive/src/session.rs": "f21006351cba4f38061d3dc40eaedb6af11fbbe42c3b23e1c868f1ef93f1cf6b",
+    "crates/proto-naive/src/stream.rs": "6343a3801bbca158be373c9e80b07bf131a4aa07f8457b4ae807c2ab7f03aa99",
+    "crates/proto-reality/Cargo.toml": "797ebd885dbd9efca8a6322658da511f14d4764d4c7cf44144326886761b6832",
+    "crates/proto-reality/LICENSE-MIT": "1fb83b583e8604eff99cf01dfece917bb0ad56c3101d627516c7b59655375e19",
+    "crates/proto-reality/src/buf_reader.rs": "f47baef823c162b8fc6b925b5e11ff388f722225a4b80e8796c8bbf87e4dc224",
+    "crates/proto-reality/src/lib.rs": "fa5101343d12524e3dc2f83a8e88235dd1f16f1b32eea33464d1650d755685b1",
+    "crates/proto-reality/src/reality/common.rs": "eea5fdbd1ba13e3bf9d821be46417c8d0a8e16cde465458047c6ab4959245e60",
+    "crates/proto-reality/src/reality/fingerprint_vector.rs": "0bda93c60bc0f0107368f77aa14bec9bc9d7c8a0cec27bedebd9e0816e006185",
+    "crates/proto-reality/src/reality/fuzz_records.rs": "c035dd1d7dd96b668688a15a1b917f3abc803803304351bb48d8db826ccbe5c3",
+    "crates/proto-reality/src/reality/hello_profile.rs": "71a8e0c1b809eb6e1bad0c541bb45a8f659d5b7027786bf2d5d43d1a87f9578a",
+    "crates/proto-reality/src/reality/mod.rs": "2db228b1004e3e6203e80a7a53243e564b00ac25a4f1b5179f04fc99146cba30",
+    "crates/proto-reality/src/reality/parrot_fingerprints.rs": "7dee2506823521cf82df57cc6a807f88eb94ed9b538707c3af8385d2cda599b7",
+    "crates/proto-reality/src/reality/randomized_hello.rs": "43e618226ef3cde85d52e81d875fc45d80197d41cc0472b49fdb26e27187844e",
+    "crates/proto-reality/src/reality/randomized_hello/tests.rs": "2651db4d8be569388e8dfe70cbc44db50e5b2c83cab2e65b438387396eef56f2",
+    "crates/proto-reality/src/reality/reality_aead.rs": "f9c3d40d717e73cdf140c08c8be9843d4c6e1da0b6816d02acb0ea6f2beed720",
+    "crates/proto-reality/src/reality/reality_auth.rs": "ccbf86978ee663cbb1939bec5a1a76bd9d3a5b769183b29deed7b04a6c202ee0",
+    "crates/proto-reality/src/reality/reality_certificate.rs": "70d9942c71452cf14b53c98420701d1269f3b2cdf0e92e139310976a2904ebc2",
+    "crates/proto-reality/src/reality/reality_cipher_suite.rs": "4bd2b9a8caf8df603536d317c3c483ac3f44cede5f0d4eaf6e1717fd7464e957",
+    "crates/proto-reality/src/reality/reality_client_connection.rs": "ff8632dbe4929b9215612ced117879e70a44559796a702c05609a7590fd20c5e",
+    "crates/proto-reality/src/reality/reality_client_verify.rs": "9e4783a11ac16567f536bee23ae09a84a00a578d3b69af0cbf7dd287530bf038",
+    "crates/proto-reality/src/reality/reality_key_exchange.rs": "56b0a9d3d836a8d4d1b2cb5a1834178b1848cf5134e9451cbb6bf8b787b507bd",
+    "crates/proto-reality/src/reality/reality_reader_writer.rs": "2bb241951bfda4e05b195fad1d63a470b6f6b144e81d8316ded9d26089b32864",
+    "crates/proto-reality/src/reality/reality_records.rs": "4d48db41706d191e9ae06f4c0aaf5b37b701da60d79dc33465625056371cb1f2",
+    "crates/proto-reality/src/reality/reality_tls13_keys.rs": "0709b749767237a411c9fc01f233f40ebc44ee9f8fa5c30a8e6b652266d38a93",
+    "crates/proto-reality/src/reality/reality_tls13_messages.rs": "3363398150863435e7f1e58888d846b41876fddcc131a9b2e4b832aa8ec8752e",
+    "crates/proto-reality/src/reality/reality_util.rs": "4e6808b481c1cfd2a39daaa4a5195ab6ad57beed09cac66d6817962dee6024d9",
+    "crates/proto-reality/src/reality/runtime_tables.rs": "5a80de5363b06c8b64dd00e9080e04694ceaa75759a55425a69c7c612be5d22b",
+    "crates/proto-reality/src/reality/testkit_internals.rs": "d6a4d530553a4d6604fbeed5ebffc26211d46a1de0c0430616b659a4f8007929",
+    "crates/proto-reality/src/slide_buffer.rs": "f33ac53af047b306df9fd42a5e8cc8e9f8a5df54b6e783ef202a4c035a433534",
+    "crates/proto-reality/src/testkit.rs": "3355f05433e7f97e6c7fff38e545bdf22f468153719b544e355dc26b5fc73629",
+    "crates/proto-reality/tests/downloaded_table_reaches_the_wire.rs": "7d123081fe7cb7a85e130204b1f259bf4de506fe7a0203e6e116609aecedcfe4",
+    "crates/proto-reality/tests/fingerprint_table_fallback.rs": "467dfa8f47c0cca3a12eb03c31455d98497856cfc008e9fd278c1d0d0440e7f6",
+    "crates/proto-reality/tests/fingerprint_table_support/mod.rs": "b56e673868c4f3ef3be8e5df151727aa7197cc2a382f3aee3941bd49eaa66f1d",
+    "crates/proto-shadowsocks/Cargo.toml": "74289125c4b52e48a147888f74d20292a30517ab46ae7df4c92801135d952e3a",
+    "crates/proto-shadowsocks/src/lib.rs": "9ba575dc28c755594834423ac124cd45ad6b8432f330ede5e551cc5fffd782ab",
+    "crates/proto-shadowsocks/src/outline.rs": "4ed17a3332847b9404130d345177b6b91b6c2739108985a502c9051f9ffd06a0",
+    "crates/proto-shadowsocks/src/simple_obfs.rs": "09111628395d297552d6f4d66c503611d6f71318277b000a47c619bdf4d06c5d",
+    "crates/proto-shadowtls/Cargo.toml": "c009f1912925443b812f2330202b027e013436256f974083117530b13e4ba737",
+    "crates/proto-shadowtls/src/fuzz_internals.rs": "155a9205984c308a32064d69c9554d3746469e924e8529db7d09fc5d38fa8b50",
+    "crates/proto-shadowtls/src/handshake.rs": "038fd91cfe031ba842442c2ff03cf1275c5716dbac76b78b0ce509feed138e3b",
+    "crates/proto-shadowtls/src/lib.rs": "5440a3f5be842a715bfb0ba242d068fbe9c76e591e280ec1ee9a1b2282201aba",
+    "crates/proto-shadowtls/src/transport.rs": "b938022d460f88b233bdd19fb5df21b96b67feab2139ea3ff5a4a5a54bca5439",
+    "crates/proto-shadowtls/src/uot.rs": "309dc61e48c40229835ea9927b7367f2ea2b43124b0eaf48e777f8fa464469db",
+    "crates/proto-shadowtls/src/wire.rs": "8ba43c0a2df17514ee17b596a8d7edb603c361c46d4f5a87d60aaab7af9be26d",
+    "crates/proto-socks/Cargo.toml": "28b36b0cba3935e8d66f3070794d23940c9b782fcb8104ca61114d6fea488f94",
+    "crates/proto-socks/src/codec.rs": "d3b659e9f61cbc4e0da1bf91405809bd733768560f8fa48ed2940aec3172d4f4",
+    "crates/proto-socks/src/error.rs": "cfa9e1a3594e10c3740d56b6cb2f66ac8d387cb1f3032758b19fb3ff2b1dd7f8",
+    "crates/proto-socks/src/fuzz_internals.rs": "91a9fc6d331bdce024e29e8abad16165016ac15668083aa8804bd24a7b3d27c5",
+    "crates/proto-socks/src/lib.rs": "6d1fe0b48e573a821479b83d2294e650e000e1927c36fb2e2951ea55ae653ed9",
+    "crates/proto-socks/src/udp.rs": "beb7a299bb4c82344c1b5a86d44ac573518794dc95424012c531a6ae72602e04",
+    "crates/proto-tor/Cargo.toml": "8337ce7e193884a74846c813cf4d9d421402423a7dc53d147a0643a162a2464b",
+    "crates/proto-tor/examples/rsa_dynamic_probe.rs": "d9839c792fb2dc94248763c517c9f5c58e31dee6d00a04207d68b302cae49f3d",
+    "crates/proto-tor/src/lib.rs": "de52fd0dc3800d4b844bf395c7a0de7bd2088e478522f523addc211b0e6df738",
+    "crates/proto-trojan/Cargo.toml": "bcd096a69262ad400f1fd6aaac856c1b4bc754ca2cbb8629401d146f58e8ab50",
+    "crates/proto-trojan/src/lib.rs": "8d445650f89be0f17ef8b69515a647e55dff3aca0e6f23d5a57784d40f3b7605",
+    "crates/proto-tuic/Cargo.toml": "3c3f2e9681436f97f649bf3ea967486986adaba55e9f3dc40e727cc0d6116109",
+    "crates/proto-tuic/src/codec.rs": "9e3d0c23fe3933ce93e64ca7cc023ee36f2a43a7db9e0e88bfdcecf4cd4c8c71",
+    "crates/proto-tuic/src/connection.rs": "33d933992303ec8c6c36dac22d8f0b229b02eac09da63b2d6e46ecfc2dfbac30",
+    "crates/proto-tuic/src/lib.rs": "ab618634dc38053510308e88e8bd15bd77ac251f272e311c343e842830246a29",
+    "crates/proto-tuic/src/quic_fingerprint.rs": "19dea8eec0adce758c5c32d6f3ba4aa244a6dbe97248dd997d5025677a228c43",
+    "crates/proto-tuic/src/session.rs": "6cdd06e4b5d240a8ca1412fed3d2c7a04d3f82a5a6b3b18d106f0379f692b500",
+    "crates/proto-tuic/src/udp.rs": "b0690fba09cb597adb6a91444a8ef9f0d84b8374c39325c8b399a9b615d490e0",
+    "crates/proto-vless/Cargo.toml": "37fc7eceb62b13563fbdd4af1d68a970c89c10e1ee9b774ed44aa947b32830ae",
+    "crates/proto-vless/src/codec.rs": "39f17632fa93969dbca8ea6550a5fecf8d0cad6488c7fd6afeeb60826d2a69a4",
+    "crates/proto-vless/src/encryption/aead.rs": "7aaca0ca54ebf091e417649df888c5541e9fd1a4484e0d2363b3c09425a41fd8",
+    "crates/proto-vless/src/encryption/blake3.rs": "f2ba7b28cbf99f59471b6db1074c9fcfaa379dfe0698ae55fb8766079bd39539",
+    "crates/proto-vless/src/encryption/crypto.rs": "9b5489bc8b1e71ac4b3a633c8c10ae9272650b2c5f9f7a3292b5af51afe13f3d",
+    "crates/proto-vless/src/encryption/handshake.rs": "9066b7cafbbce4b94f08ca443b43893d8a2b2ba6ab4784ea066ca718fa6c7fe9",
+    "crates/proto-vless/src/encryption/mod.rs": "6d30752c619abe0f7e7d57eb390f926c209e6b763c9457c059f202149788ac12",
+    "crates/proto-vless/src/encryption/params.rs": "db615d007f5fbcd018812ce1774ee57ac1a8bea50d4498cf694c7ead6c970b24",
+    "crates/proto-vless/src/encryption/stream.rs": "134e33cb9911594fa58f793451d521e2cfb10a2b8ab53d6e8d86d515d4fcd660",
+    "crates/proto-vless/src/encryption/xor.rs": "7f9293240aa289cfdb44c599af272db049bff05adcddd064dd013fe1ef3df5ce",
+    "crates/proto-vless/src/lib.rs": "d9096af1cf2abbcc54e6140f73ae3007501fe1dfbe460d6a3a04b7b6885b4a0f",
+    "crates/proto-vless/src/packetaddr.rs": "96ee0a691b4edf4ebf95272cd76634f3e97c6a0bf04067049f989f0b22220a31",
+    "crates/proto-vless/src/vision.rs": "f706e9864fdd9363467638010784404d0ab4a86d36f8c6f99e7421dbf6ed5861",
+    "crates/proto-vless/src/xudp.rs": "9a0a84c7dd16dbf5042c1ebed0615af059f986b0ec33926391c055a11553fa30",
+    "crates/proto-vless/tests/encryption_import.rs": "f578e7982583f8931aa9f2f18756ccb42afef4517694afb30fe010ada8115287",
+    "crates/proto-vless/tests/encryption_interop.rs": "481e679f77463094daf628592e5167f2305c4eaef10b533686d1548d4c57416f",
+    "crates/proto-vless/tests/encryption_vector.rs": "81ab0a0371542108c64ee1e068e485760510358048e684b619e8f41b6c48bdc4",
+    "crates/proto-vless/tests/grpc_udp_backpressure.rs": "a079d3be751e95e9b4dbeb4aa823367bb306f3be15a86a9083d6f388c9335e98",
+    "crates/proto-vless/tests/reality_fingerprint_datapath.rs": "e37ea0baa654ebd572808a31198d286c0da00b7e9451b4c8c21b70952565317b",
+    "crates/proto-vless/tests/reality_transport.rs": "d5374650f39d9018828a7e32fd6501f33e9944ce20f79c1850f7ff12110e3590",
+    "crates/proto-vmess/Cargo.toml": "350ac1673ef564bdc1005623f2e5e15e3a799469437be5aea6f7f05c0a89aa99",
+    "crates/proto-vmess/src/crypto.rs": "9a6cb3dff58a56c9832ee68df1ff5c75d7c48c7d5080b24db4ab67e5bdd5d5ab",
+    "crates/proto-vmess/src/lib.rs": "aa24680102d3ea4a4ecaebc1219f2368d8c9373990ed5a7461b0d8591a4fe0a4",
+    "crates/proto-vmess/src/stream.rs": "0151e1f351ac312bcca86e6f9f128930147c80bfb94ca1fa930c046198bf809a",
+    "crates/proto-wireguard/Cargo.toml": "d844c9d8ee28d959d3cb3a8f912c941d475d4bcc4f7d28d9b0b5ca64e01b00e7",
+    "crates/proto-wireguard/benches/wireguard_datapath.rs": "316fff8912f6a3ab6d0077678fda3cf02242708a461a514956c0a18434e7274c",
+    "crates/proto-wireguard/examples/wg_responder.rs": "da7caaaef0f74470a2039ee084a1d32c6db9e5ebda1db0329da5cceb3173ca7e",
+    "crates/proto-wireguard/src/amnezia.rs": "e699ac5340019d6053166068c6137e63ba57e6fd5c281e08c69cd8337bf8f98a",
+    "crates/proto-wireguard/src/header_protection.rs": "7af1fbd55e874ea2a9d3464517681ce497a1268104a205a69408269c804c282b",
+    "crates/proto-wireguard/src/initpacket.rs": "7c32e99eef3cf34f08db6bd8db9115d127a8016faf21956e05c1f73ade234364",
+    "crates/proto-wireguard/src/lib.rs": "795c36b1ecd6431aa6bf4fb5fa3b3e9f105409d88ac70d080eb97484aa23c191",
+    "crates/proto-wireguard/src/message.rs": "f94a808047bebd5e2cf8bf06a8dc8670766ffe7d2cb5dbcad284b6b569c7d48c",
+    "crates/proto-wireguard/src/noise.rs": "1c23495f960a7b4ee0b972354efa962d5f3e3019ef5ae2f65f67dde5be963557",
+    "crates/proto-wireguard/src/session.rs": "f989677e613a5f0bf79239599a81611eadbda6c200bace22bc79102d94108ab6",
+    "crates/proto-wireguard/src/tunnel.rs": "eea49ab007c9bff82a44069e8623d4bb068cd406365b0b86936b1a97429616a2",
+    "crates/proto-wireguard/tests/fixtures/hpk-b5928efb.json": "3e4b03682a13969f610c3e065212919c77e719e9a4261ec324e21c82b526a4c9",
+    "crates/proto-wireguard/tests/replay_window_properties.rs": "0a40302bbcc00cdb4c6201160d86770523ebac04b1411df1535c96adb6bb4b12",
+    "crates/proto-wireguard/tests/upstream_content_padding.rs": "43f5924c4fc9e11aab21a82e625ae9c2d4a64ed591739ea7627bc13f5c95af78",
+    "crates/proto-wireguard/tests/upstream_header_protection.rs": "a64dbc0e5542f426a9cd3d94b6ef67a1332583f30b4a0b888e52996ff360e628",
+    "crates/proto-wireguard/tests/upstream_interop.rs": "f1f84a5c304e1d2916f444586e79032bf75f95974be94c808d0ee93a3cb11485",
+    "fingerprints/chrome_131.json": "65316c52e70d6b429c69289ad8defe46b978937eddea36dac8d35d5e61d4f0e4",
+    "fingerprints/chrome_133.json": "c1bae26ae942f7000a3dfaacb0e6f4e5cdc8f375d868e6165045c2bb7361a1e8",
+    "fingerprints/chrome_151.json": "4bb975a5aa7335e3f7889c1a332b7c368e3752ca6fc17579c079af19f54ea1e7",
+    "fingerprints/edge_85.json": "8d71897b54260c99fb4fcc9618d308de89ab07d26f6a900f52c5bcb59261090c",
+    "fingerprints/firefox_148.json": "5ee0807a05ca995e8f9cd53ea9605626546abc24336059337facb37a9911947c",
+    "fingerprints/firefox_153.json": "5dc20e9adfddf27c34d6be3fc9e7df0282f6f37bbd1fbe47a8136b257f2a1ca2",
+    "fingerprints/ios_14.json": "7a692b469fd01e0bce0cc620adc74b7cb461ddd5c8586731b4ca769de55bbd33",
+    "fingerprints/qq_11_1.json": "cfa9897e6eb60a10db740b2944003cbad7752947edcdf42fba9e25a31a38fa2c",
+    "fingerprints/safari_26_3.json": "589854084993c620b15f57b2add9bd3f66e40616ddeeef7013d75c492de417d3",
+    "fixtures/abi/v1/capabilities.json": "b0ce497757c39d2504dba8396b554da9e4d70a333ff0dcfc5cc7b268246dfbdb",
+    "fixtures/abi/v1/engine-config/01-minimal-vless.json": "fe59e52c425189ff0a4f94d30fe4f42225fc0d95d33f2036bc63ab5a0d82dbcf",
+    "fixtures/abi/v1/engine-config/02-dual-stack-traffic.json": "51d8d731f51e98748c969badb7be42620c9d2da914eb41db5780c991aa42fb6d",
+    "fixtures/abi/v1/engine-config/03-shadowsocks-runtime-tuning.json": "9c85f33e72879d58ba148382616190079f65c8d1eac5dc641cc794cf71af8718",
+    "fixtures/abi/v1/exports.txt": "f6627b7185de1e6fe8770d4db28ac36d3e563d57ea898bf6a5af042f32dde51a",
+    "fixtures/abi/v1/ondisk.txt": "9b8de45b12883a96f3a233782670994fdd93964e5b1f835c18b8a6278ed61cb9",
+    "fixtures/abi/v1/policy-config/01-per-app.json": "8b1feab58599cdf329054dab48325e1e75bffbf48c511d8853d7baed044c1188",
+    "fixtures/abi/v1/policy-config/02-kill-switch.json": "075d59b57156c1c1e6e1340f206ace0b1f17a7034ef7337c3ab6bf5f538ffc82",
+    "fixtures/quic-initial/chromium-151-first-flight.hex": "690217c0756a4bc970f71dfb7f146706bc081664027b1ab08f72f8f830d55c56",
+    "fixtures/quic-initial/rfc9001-a2-client-initial.hex": "eeb176544c3f66ef423a2d05cbee7ece892502767e9e921545206fd3873649d6",
+    "fixtures/tor-rsa/arti-0.47.0-review.json": "68e7ce5458765b35573d410828e1e582b7f5eb687eae500afdea20bdb789ddff",
+    "fixtures/tor-rsa/aws-lc-1.18.1-review.json": "40ca128c15f9fbda2fe2e66438e30dc08cdbb125c281eb8341e219cc3ceb5651",
+    "fixtures/tor-rsa/rsa-private-key-api.txt": "5c6ad7bc32d3539292f4b63c70652a7b1280d9c064b2626f77de80314e077e38",
+    "fixtures/vless-encryption/vectors.json": "bffb28961586a9665a5eeae73f6b209304dee37ff31aec5f26190170b7b09999",
+    "patches/rustls-0.23.46-chrome151.patch": "5deee21f5349fdacb350bc48ac2388a4b3a0fff988aec6b516294b6ae8e5921a",
+    "rust-toolchain.toml": "8e390d6a0838315f972690f46ef8bae8b7ecc9ee6c1ed70140ef852869c2482e",
+    "scripts/android-build.sh": "92db3b9af58d6c3bed58be8589167c03016e74d0c34044e3c584bcbfe577dbb0",
+    "scripts/android-elf-gate.sh": "a80e7e6544a00a5cb94a5a780f6600210982b1e96302588552017c6ddb28c857",
+    "scripts/android-path-leaks.py": "38a3c3449e9339c931c6b686cad8fa4a191cf40f3758935529635fa372485faf",
+    "vendor/rustls/.cargo_vcs_info.json": "1e72d988fea6fb071c9f55949e54ec08e0c7235d4a5389dc3d40fcaea01849cf",
+    "vendor/rustls/.clippy.toml": "9b9db19a4fa5a982c6af00c29aaabb16edd8d3b72ac00ad60edd78ace574b281",
+    "vendor/rustls/Cargo.lock": "8fb66853b333f7bb99c0d1c0cfcecf15d1a08940f09c7ce26eb3626af81ee6fa",
+    "vendor/rustls/Cargo.toml": "711fb85c4d470643f92952fcc2c1ef1a14588e044f0437ca0cfc6026f3cd4f09",
+    "vendor/rustls/Cargo.toml.orig": "279a804f483d7e4ac77a56dcb58cef9832b71e48af4280d5473945a81e93b2e8",
+    "vendor/rustls/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "vendor/rustls/LICENSE-ISC": "7cfafc877eccc46c0e346ccbaa5c51bb6b894d2b818e617d970211e232785ad4",
+    "vendor/rustls/LICENSE-MIT": "709e3175b4212f7b13aa93971c9f62ff8c69ec45ad8c6532a7e0c41d7a7d6f8c",
+    "vendor/rustls/README.md": "8908158d30b2641561f3d8b76f6cfeb95bc3e4c9ea2686e594f9867200423f2d",
+    "vendor/rustls/benches/benchmarks.rs": "4a249cd0b24459845608f2741f3cb70df1396a94b1e6532ab7854d1b12001bc9",
+    "vendor/rustls/build.rs": "380b9a051325baa7d4957bd9a4f1a637c27a663610b1b502f9524530f6995f4d",
+    "vendor/rustls/examples/internal/test_ca.rs": "bcb952d082cc46e53e8ef0ac547cda0cd990e7d36f0e9512448aa5ef4dd5e056",
+    "vendor/rustls/src/bs_debug.rs": "4e4ff4ee2d1db612ba7367e88ee587d525a973167c87b28bb2b35555a9eda27b",
+    "vendor/rustls/src/builder.rs": "3cfebc1faeb5e2b7fbb8ede68aca1240c7ba69061f3381a1a4ded87f11bf5d6a",
+    "vendor/rustls/src/check.rs": "8e5b8a35aebe931c60afa009159a398cf81f300c21898d2002fec88b42d13ad7",
+    "vendor/rustls/src/client/builder.rs": "9fa43f7d00507a4a6d191e7f2e12af1dca9c35a0a8758b39c6447a347e2bf46c",
+    "vendor/rustls/src/client/chrome_hello.rs": "bf330c800c80bcda4db04c3d7173f2be7fcf88691f2035b276e236c62939671f",
+    "vendor/rustls/src/client/client_conn.rs": "d84634776f49d0833841a9fa88a60f55b4e2006dd9fec916a6d1f2a4d4a94848",
+    "vendor/rustls/src/client/common.rs": "5a63d48f144d8a9aad2fd3a104fdcd66422560864745e256c0bd1ab7f655f2c1",
+    "vendor/rustls/src/client/ech.rs": "8ccfd8a3280164f44672e54ff09351b21a9b4c1c40737a1a9b3b49b046176505",
+    "vendor/rustls/src/client/handy.rs": "92ed69e812dffa183ffaaba5f0dfd11abff2bd71b953ce5b3f8680d063f3d114",
+    "vendor/rustls/src/client/hs.rs": "8d561a63874c1295c0b53cd0c53892582036b8a84645b46e2dadc95c8477e891",
+    "vendor/rustls/src/client/test.rs": "9c87ffa57d2160fa42f9b9f1c941c3a2b570e0a548033032b659e68fa7ffd93a",
+    "vendor/rustls/src/client/tls12.rs": "5fff268740878eaee2f13d86eaad7b5d4a3b74a2ba1bafbd500f7084e4d1e1b4",
+    "vendor/rustls/src/client/tls13.rs": "ea5c952da871f33611191368806b39660723f4f6c62a6881e9b688fe1b3a79a4",
+    "vendor/rustls/src/common_state.rs": "f47f795cd2f8b393971e9896dfbf69c38d78aef9610797cc4534d61b0c16491f",
+    "vendor/rustls/src/compress.rs": "c886ac583015ee53dccbbdc7958ad63d16ff276b8f2afc56011c282d16e2b438",
+    "vendor/rustls/src/conn.rs": "60b4bf4186776efe7df71c43be3aef44027cfde06f393e1238efbb9d1cfdfcf9",
+    "vendor/rustls/src/conn/kernel.rs": "ecdbb41cd6e4aa95c33a16584723befe6b310754452174cee9ab201917ffb87e",
+    "vendor/rustls/src/conn/unbuffered.rs": "b8ce65bf1b2fb4067f2ab9d5e417189989d125e20dd1d0ab7a5ff6d32730f3c7",
+    "vendor/rustls/src/crypto/aws_lc_rs/hpke.rs": "1cf05be7c5c65fbdcaae50dbdb1e66edaaf95db87e8868777048defe79c6c4f7",
+    "vendor/rustls/src/crypto/aws_lc_rs/mod.rs": "e50e9f80fff948d5ed959c408ba89558dc99892fa6297d73fad3062b595db018",
+    "vendor/rustls/src/crypto/aws_lc_rs/pq/hybrid.rs": "a1ac53e228fe7bb6851b3a73b1ba4aa64f09bdbc77a09053f59ae89c8ea152b8",
+    "vendor/rustls/src/crypto/aws_lc_rs/pq/mlkem.rs": "431389d968ac98aba0a7c6b480d7379a788ac5a6eb77c11cc6df41054515e8b7",
+    "vendor/rustls/src/crypto/aws_lc_rs/pq/mod.rs": "91edf8221f00d573151bb064badee925afb98a86cb37c1aaf7e23014f3956bf7",
+    "vendor/rustls/src/crypto/aws_lc_rs/sign.rs": "8163d1a10e5ce0d729af920ba8b5ad9096a0553a3b2b7798fb400bfc422f23b9",
+    "vendor/rustls/src/crypto/aws_lc_rs/ticketer.rs": "f1efbe8da00c2053dec3ce74b4aa904fcc5db500a93da2a99c0b5770313c81e1",
+    "vendor/rustls/src/crypto/aws_lc_rs/tls12.rs": "9e3a9220b68ce2a340d2289d376107bf4b75bc73319d1562c2800c5c01476d28",
+    "vendor/rustls/src/crypto/aws_lc_rs/tls13.rs": "e9998aa39049aa886c34c7ffb0da3b8d74388ce823bd310d07e1cd83b3559857",
+    "vendor/rustls/src/crypto/cipher.rs": "067842d11b0f2d373ced097392503c36eb318e685d85e1147048c7fbad421672",
+    "vendor/rustls/src/crypto/hash.rs": "eaa21b2d8f11afb9f5e41794e3461bcc18c950c53153d1fc37dfd23e3bdc1094",
+    "vendor/rustls/src/crypto/hmac.rs": "82ac9b1da0295b0ab70adec4ce321fb87d7873f530652a8b86397655042d035b",
+    "vendor/rustls/src/crypto/hpke.rs": "b65ace9c09cc0f83888c000b369376d8b8ca8a49e016d1aa0a9691c7921fdfbc",
+    "vendor/rustls/src/crypto/mod.rs": "46cb1c195e52824c98ea11129c93cbab03d06fb0c3a6daed81a3bab6f9f79e12",
+    "vendor/rustls/src/crypto/ring/hash.rs": "d4b594369971c8e8dc275a85beea83b51f5134174a4b37f620e130a51266d6ea",
+    "vendor/rustls/src/crypto/ring/hmac.rs": "7df8a4c33176c4e53306c23285ed965c9e35e0aebcc6fd03f1cd68759122ae94",
+    "vendor/rustls/src/crypto/ring/kx.rs": "d385431f42e76b7aa8bd0749ea256da268239d762114b40a37bee8306b07229d",
+    "vendor/rustls/src/crypto/ring/mod.rs": "0548e46ea13e22f6f6f7918d99f68d724d1d7a3e6f3a5a8171c5c6741c2e88e3",
+    "vendor/rustls/src/crypto/ring/quic.rs": "5f6df314c0d7a3988a2cfb4e98a910bf5926b11a4771a4a420a2205274ab8967",
+    "vendor/rustls/src/crypto/ring/sign.rs": "751b1ae4a16cd88bf9f9c450af043722f0e9eee19ba95ad51f3fd1893432b779",
+    "vendor/rustls/src/crypto/ring/ticketer.rs": "2ec1193097d3032fc31dda08277cfb0fcb8defc6667af09d4ff1bd16be95eba4",
+    "vendor/rustls/src/crypto/ring/tls12.rs": "a3a65ebd7cf6fe7157dd19500d35ac7a948970fc64f94909ec4cc22e889e3a44",
+    "vendor/rustls/src/crypto/ring/tls13.rs": "2d093ce74d9ad824ed15f0a18abf5d845fd701a5b8de2d7db088e706dd49ab62",
+    "vendor/rustls/src/crypto/signer.rs": "b097775c0b30d507255824a8ac65d8d7440e723b16a9e91036e0d096a3d7b071",
+    "vendor/rustls/src/crypto/tls12.rs": "b729e02f64415570ba68fdde0a17cfaa60062f4d694001658b0467672a4e626d",
+    "vendor/rustls/src/crypto/tls13.rs": "feec69f36dcc738ccf735bc69e12a767857d8b52ad9af139b2b8584990b651d3",
+    "vendor/rustls/src/enums.rs": "80b561e128596558a05b480cf8fe6295ea74e0d14e7a61d50b3f9e620e16a308",
+    "vendor/rustls/src/error.rs": "08ddfada2a3473d853cbe7634e65c2c26e5545eff7902a7fca70b536dc2b94a6",
+    "vendor/rustls/src/hash_hs.rs": "6a03da8c8aea2f44f162843bc803a0dfb683b4b99137e5e5f5a6dd7978b02849",
+    "vendor/rustls/src/key_log.rs": "6aeb8c45365e6d53c51246fe8773243096b8c6806274cdcc3ffd1bb82fe360e9",
+    "vendor/rustls/src/key_log_file.rs": "87ca50736aafa3463ea752ee7ed69d92f3b22fb56e505534fda82fb0376736ef",
+    "vendor/rustls/src/lib.rs": "cebc7161deaa8fdddc117e15834266417846cd25d7ca1a8ca2a1cb5e59595771",
+    "vendor/rustls/src/limited_cache.rs": "0ed052d4cef6645e8e530eb17beb6a203ff26735236f91f6fb4a23fff19e74d2",
+    "vendor/rustls/src/lock.rs": "a4d9befd9a53e7dfbd7fb5d30ca16bcdd54e61f3fc9b353992cd45928818d70e",
+    "vendor/rustls/src/manual/defaults.rs": "71e854184d355b71a96280d82f3e83224491300e861655916d76f44325bf626a",
+    "vendor/rustls/src/manual/features.rs": "a7fecd590287388215fa6bcc6403f425897f3d4ea4f44b72a5dee9bfa2ee8345",
+    "vendor/rustls/src/manual/fips.rs": "1e2cd9db42896c0504ae229190f5dca8b540ef5939c5382a5b718b6fc94abe45",
+    "vendor/rustls/src/manual/howto.rs": "df03dcc9abd0e8c11c13573680d43c84fd92876e4b128fb8bd881a58e07a0ae2",
+    "vendor/rustls/src/manual/implvulns.rs": "b42abb13ce142e83da012f7fa47759091c43216628abd46563de9910748efe5b",
+    "vendor/rustls/src/manual/mod.rs": "45e5d510140d668553030695a45e6ad50da2274e097e3e8fa8900446944a7576",
+    "vendor/rustls/src/manual/tlsvulns.rs": "9d2dc1d4f8f5703b67eb159d698325788863795848a246e36bef779dbba252be",
+    "vendor/rustls/src/msgs/alert.rs": "cf85febb6f1bd2719dd4767f6dea61468e2cee211f507956e93cfe79a9139afc",
+    "vendor/rustls/src/msgs/base.rs": "74d54b3a3180a280a929f382cf9ca2792a739f5ddecfc5432238e34bbb0d77c0",
+    "vendor/rustls/src/msgs/ccs.rs": "61117e8e8cc2fb7b030360f959b66d6392d34a601f4ae1dc7276bb444462a742",
+    "vendor/rustls/src/msgs/codec.rs": "fa53201ef4387a453c626c37138a6a2de2d2ff13d85c0ec34f8b13ee20daeeaf",
+    "vendor/rustls/src/msgs/deframer/buffers.rs": "48bb18eff4e5859ec56aba8910488a791457afabc79feba0b09375e11bcca459",
+    "vendor/rustls/src/msgs/deframer/handshake.rs": "8b72e2864ef0de161b47c23c1c7bd50d4d39c2354813be920af66f13139b638d",
+    "vendor/rustls/src/msgs/deframer/mod.rs": "bab59c49aa59b4d44e49928ab3aa6b58a5d167412585017bdae88cd32ce23847",
+    "vendor/rustls/src/msgs/enums.rs": "fa69d49afaa482dfff9cbd061dc7be25b72d2ac206c11b6d8939984a8def182d",
+    "vendor/rustls/src/msgs/ffdhe_groups.rs": "22a2abdede92e082300998e0b0d49cc915a995713db2cdd811b4ff3502c1c619",
+    "vendor/rustls/src/msgs/fragmenter.rs": "c324f9ac144999ec36673736d0ef026122be9d4f6eb1f2908c01461cebe1122d",
+    "vendor/rustls/src/msgs/handshake.rs": "c060b5751aa0bb3160f09ea23d982981c411b5f12ed733d9f4db588e87c7b135",
+    "vendor/rustls/src/msgs/handshake_test.rs": "52b2a5e1c375af5cd1e12c856fa8b2ba572314245c51ff71e1d11c69c129978c",
+    "vendor/rustls/src/msgs/macros.rs": "f8f99b70d11e611eba54fbfd599f6df9bd1072dd099aeb1a954352373cc18617",
+    "vendor/rustls/src/msgs/message/inbound.rs": "fabb29f7bc17a3098583a7d76fcf73515ea164943301714776aa0c794c712525",
+    "vendor/rustls/src/msgs/message/mod.rs": "f1bdfa1ee08e31e54c85dd1c47d090afee672bd50bb6074aaa9c51d08feae3bf",
+    "vendor/rustls/src/msgs/message/outbound.rs": "fb214090aff53ea7228519feeac4444fa4b0f389c9af6dc062bf6efbe6c8a8ff",
+    "vendor/rustls/src/msgs/message_test.rs": "d5b8c7572a0b8bbba9741f581d30a3db9629e2893b8dc69cf8d6ecefc6b3a80a",
+    "vendor/rustls/src/msgs/mod.rs": "39c54a233a8bd46497c27b3e2626d8aee173d4c41ec8670386bb8c1f19249d07",
+    "vendor/rustls/src/msgs/persist.rs": "2d88c8855a11c6ced38f4688da8cc772c2c41f84a165ba77c9f8bde30ff96891",
+    "vendor/rustls/src/polyfill.rs": "a6c6dcb5c42aa481099e60b85fd16d84559daa68bbef215c5cb02f93d5c65bec",
+    "vendor/rustls/src/quic.rs": "d84b2a42a37a0286966eaadfc716578697a515100c31a0d8814e006b3a80c6d7",
+    "vendor/rustls/src/rand.rs": "c0c55d130516c8415836187c9050ecb5269ed7b51f65d70b40305f05f9ba57fb",
+    "vendor/rustls/src/record_layer.rs": "949fa2a34f9ec44c6fe074adc035c1c09398126131fedd155fac856a703af412",
+    "vendor/rustls/src/server/builder.rs": "4ec5532bbaaf9d60ae2fb577e8f463e2f3f6915aa80d0f11627829214fa7eb8c",
+    "vendor/rustls/src/server/common.rs": "aef13bfc295f17218aa9b157f69c6fdfb9802ee90263acd43e880465a707bb20",
+    "vendor/rustls/src/server/handy.rs": "b3a6d338ee0fe635190b2d14094ebf5cfcb5dbdf34568e7f4cf431e0867104ff",
+    "vendor/rustls/src/server/hs.rs": "b1ed14e5e36ee46bfb843b86af58efda01cdaa71a7f25a2f647da21f52529f91",
+    "vendor/rustls/src/server/server_conn.rs": "603cddb8a3a415737b7e047deedd32a2a6e4f918c2372af0bfb50ebb04de2163",
+    "vendor/rustls/src/server/test.rs": "8cc4a71aa463829d6b2bd8878e9ca2a4a595e3bcc6983a196e59ee3249dbdf47",
+    "vendor/rustls/src/server/tls12.rs": "b7d083644d3be9bb6bf6cca4c654537cd22d3bc545f932ab2c9354503ebd7056",
+    "vendor/rustls/src/server/tls13.rs": "bd2482dad0811a179ea55af468f59d567e520a533a021a0e2f99c3b2afdbf18c",
+    "vendor/rustls/src/stream.rs": "c66b3e178560d8b6c61bc2ca40fc67546185d5255b8d7e527598b478a4c03935",
+    "vendor/rustls/src/suites.rs": "a39b270c0341c0bcd3e97e600c132eaa0918a2ef08e99497b160c08d215fda25",
+    "vendor/rustls/src/test_macros.rs": "e5f98aa388375cc195cef7bae2cdba8b33c795ce48e8ff228fbfef153a493c47",
+    "vendor/rustls/src/ticketer.rs": "b722e6be43f8920ca495e4a3cbd624a4e69d61e1ad7584cfae0d8bc06429290a",
+    "vendor/rustls/src/time_provider.rs": "cdc75369bb353ca1edfb1d700a6467e42779c1c0cba5d5bd7d9f67f392ea92b1",
+    "vendor/rustls/src/tls12/mod.rs": "159fb6a519534986e1d1fd2326d30ffa0422650d9fe636c3dac8a5bd113c7c8b",
+    "vendor/rustls/src/tls13/key_schedule.rs": "58a1c9c2d9352492eeadacefa9546c6bd641db6a99a7cec944d8a2e33015cc85",
+    "vendor/rustls/src/tls13/mod.rs": "f22e73dd261d1cc94076a9d3e0147352d7aa4c86872566bb79c93a8ad9f1c1a7",
+    "vendor/rustls/src/vecbuf.rs": "ab3129d12dbf01c946586f83ebf4fa00c5aac778315948e000f595f14a77ff6c",
+    "vendor/rustls/src/verify.rs": "b663615e265fede551c613f20e187d08ce6975c9ab4465e5538add685ea75de7",
+    "vendor/rustls/src/verifybench.rs": "f4ef5158bc5e86fb160f9d3fdab34d6a56d731440d422f6dfdd3f9ec5949a5a2",
+    "vendor/rustls/src/versions.rs": "125d9981b8c02ed6dcbabfdd76721fef3537f41d424ac1fb79e088331061fb22",
+    "vendor/rustls/src/webpki/anchors.rs": "1caba02e098ff418429943b0ae8bc178af4994152a3d2a18327ac73392e4f4bd",
+    "vendor/rustls/src/webpki/client_verifier.rs": "c6051e79858a70ce746fb55208751a429c691c1bb76bcaca238be310ae11d652",
+    "vendor/rustls/src/webpki/mod.rs": "eeb6747164b7a1776afebb6e50bc400a8dc0a9cbe327a5beabdfcc0a276fd768",
+    "vendor/rustls/src/webpki/server_verifier.rs": "1678d02f7fa352b990915de691959e1d90309ba631b714992afd1e98600cb301",
+    "vendor/rustls/src/webpki/verify.rs": "ed787e7e7ddd2819a0e47f2c8569fdddafc4a2ec9add4db9b1d5a22afeed131d",
+    "vendor/rustls/src/x509.rs": "e036e80ceb688d1b7ff2ff82a63e99545678b262cf5af0c331fbebc714db4444"
+  },
+  "consumer": "vpn",
+  "coreCommit": "7b15f5b614031181b5a2eab274acac6f15d961ff",
+  "derivedNativeExcludedForFreshGradleGeneration": true,
+  "kind": "canonical-vpn-source-legal-delivery",
+  "licenseFiles": {
+    "CURRENT-CORE-PROJECTION.json": {
+      "bytes": 61180,
+      "sha256": "e78550c3a30d30cd335407b67b83f615722417ef267234352346ec78c9c2a764"
+    },
+    "FoxHole-VPN-GPL-3.0-or-later.txt": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "JetBrainsMono-OFL.txt": {
+      "bytes": 4399,
+      "sha256": "30f0c136e3c88e422d0791acd97238870f9054a9729bc34cf2ff0d4ed8cac4ad"
+    },
+    "MANIFEST.json": {
+      "bytes": 107215,
+      "sha256": "fbcf9697d72e01dc6e3c0f9bc2a8a5387edd93241491c03d7e80d96f20316fa5"
+    },
+    "NaturalEarth-PUBLIC-DOMAIN.txt": {
+      "bytes": 602,
+      "sha256": "40375e1f5d0b5baf6306acc92e6162e1dbf8a0b8af82fb58239c47c52af4d062"
+    },
+    "README.txt": {
+      "bytes": 362,
+      "sha256": "1d685f00e3e71b0f6a069d6e72d7344681acb0dbad822aa9638b380abc4c8533"
+    },
+    "Tabler-MIT.txt": {
+      "bytes": 1073,
+      "sha256": "b740a1d46122672da62833e97f7e7c8a13fa85cbc7445b584b297cc00dde93db"
+    },
+    "Tiny5-OFL.txt": {
+      "bytes": 4389,
+      "sha256": "6fe7d64407c69d187748206265977654747d3e2fe9e38e45a62cd03ec4770df6"
+    },
+    "android/MANIFEST.json": {
+      "bytes": 174754,
+      "sha256": "d53dc24df41242422b52214d27a20e161814271f8a778dace6c0d484621de084"
+    },
+    "android/README.txt": {
+      "bytes": 128,
+      "sha256": "8d8a762576f6968afa974d81fce579ade7ac26ef004a6c4b171905850235e3d6"
+    },
+    "android/SOURCE-INPUTS.json": {
+      "bytes": 1133,
+      "sha256": "1d5296d57a22e7d64d3fab4d51d8b1ce87d3c87e3e5ecd921d300b4b84b358ca"
+    },
+    "android/maven-runtime.cdx.json": {
+      "bytes": 147006,
+      "sha256": "bb07e5b4a262e6a57368b9eca6ad5979050f01527a3c779014b5fcb12b04a50e"
+    },
+    "android/maven/androidx.activity/activity-compose/1.13.0/activity-compose-1.13.0.aar/META-INF/androidx/activity/activity-compose/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.activity/activity-ktx/1.13.0/activity-ktx-1.13.0.aar/META-INF/androidx/activity/activity-ktx/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.activity/activity/1.13.0/activity-1.13.0.aar/META-INF/androidx/activity/activity/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.annotation/annotation-experimental/1.5.0/annotation-experimental-1.5.0.aar/META-INF/androidx/annotation/annotation-experimental/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.annotation/annotation-jvm/1.10.0/annotation-jvm-1.10.0.jar/META-INF/androidx/annotation/annotation/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.collection/collection-jvm/1.5.0/collection-jvm-1.5.0.jar/META-INF/androidx/collection/collection/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.collection/collection-ktx/1.5.0/collection-ktx-1.5.0.jar/META-INF/androidx/collection/collection-ktx/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.compose.animation/animation-android/1.11.4/animation.aar/META-INF/androidx/compose/animation/animation/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.compose.animation/animation-core-android/1.11.4/animation-core.aar/META-INF/androidx/compose/animation/animation-core/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.compose.foundation/foundation-android/1.11.4/foundation.aar/META-INF/androidx/compose/foundation/foundation/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.compose.foundation/foundation-layout-android/1.11.4/foundation-layout.aar/META-INF/androidx/compose/foundation/foundation-layout/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.compose.material/material-ripple-android/1.11.4/material-ripple.aar/META-INF/androidx/compose/material/material-ripple/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.compose.material3/material3-android/1.4.0/material3.aar/META-INF/androidx/compose/material3/material3/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.compose.runtime/runtime-android/1.11.4/runtime.aar/META-INF/androidx/compose/runtime/runtime/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.compose.runtime/runtime-annotation-android/1.11.4/runtime-annotation.aar/META-INF/androidx/compose/runtime/runtime-annotation/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.compose.runtime/runtime-retain-android/1.11.4/runtime-retain.aar/META-INF/androidx/compose/runtime/runtime-retain/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.compose.runtime/runtime-saveable-android/1.11.4/runtime-saveable.aar/META-INF/androidx/compose/runtime/runtime-saveable/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.compose.ui/ui-android/1.11.4/ui.aar/META-INF/androidx/compose/ui/ui/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.compose.ui/ui-geometry-android/1.11.4/ui-geometry.aar/META-INF/androidx/compose/ui/ui-geometry/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.compose.ui/ui-graphics-android/1.11.4/ui-graphics.aar/META-INF/androidx/compose/ui/ui-graphics/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.compose.ui/ui-text-android/1.11.4/ui-text.aar/META-INF/androidx/compose/ui/ui-text/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.compose.ui/ui-unit-android/1.11.4/ui-unit.aar/META-INF/androidx/compose/ui/ui-unit/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.compose.ui/ui-util-android/1.11.4/ui-util.aar/META-INF/androidx/compose/ui/ui-util/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.core/core-ktx/1.19.0/core-ktx-1.19.0.aar/META-INF/androidx/core/core-ktx/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.core/core-viewtree/1.0.0/core-viewtree-1.0.0.aar/META-INF/androidx/core/core-viewtree/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.core/core/1.19.0/core-1.19.0.aar/META-INF/androidx/core/core/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.lifecycle/lifecycle-common-java8/2.11.0/lifecycle-common-java8-2.11.0.jar/META-INF/androidx/lifecycle/lifecycle-common-java8/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.lifecycle/lifecycle-common-jvm/2.11.0/lifecycle-common-jvm-2.11.0.jar/META-INF/androidx/lifecycle/lifecycle-common/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.lifecycle/lifecycle-livedata-core-ktx/2.11.0/lifecycle-livedata-core-ktx-2.11.0.aar/META-INF/androidx/lifecycle/lifecycle-livedata-core-ktx/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.lifecycle/lifecycle-livedata-core/2.11.0/lifecycle-livedata-core-2.11.0.aar/META-INF/androidx/lifecycle/lifecycle-livedata-core/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.lifecycle/lifecycle-livedata/2.11.0/lifecycle-livedata-2.11.0.aar/META-INF/androidx/lifecycle/lifecycle-livedata/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.lifecycle/lifecycle-process/2.11.0/lifecycle-process-2.11.0.aar/META-INF/androidx/lifecycle/lifecycle-process/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.lifecycle/lifecycle-runtime-android/2.11.0/lifecycle-runtime.aar/META-INF/androidx/lifecycle/lifecycle-runtime/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.lifecycle/lifecycle-runtime-compose-android/2.11.0/lifecycle-runtime-compose.aar/META-INF/androidx/lifecycle/lifecycle-runtime-compose/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.lifecycle/lifecycle-runtime-ktx-android/2.11.0/lifecycle-runtime-ktx.aar/META-INF/androidx/lifecycle/lifecycle-runtime-ktx/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.lifecycle/lifecycle-service/2.11.0/lifecycle-service-2.11.0.aar/META-INF/androidx/lifecycle/lifecycle-service/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.lifecycle/lifecycle-viewmodel-android/2.11.0/lifecycle-viewmodel.aar/META-INF/androidx/lifecycle/lifecycle-viewmodel/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.lifecycle/lifecycle-viewmodel-ktx/2.11.0/lifecycle-viewmodel-ktx-2.11.0.aar/META-INF/androidx/lifecycle/lifecycle-viewmodel-ktx/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.lifecycle/lifecycle-viewmodel-savedstate-android/2.11.0/lifecycle-viewmodel-savedstate.aar/META-INF/androidx/lifecycle/lifecycle-viewmodel-savedstate/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.lifecycle/lifecycle-viewmodel/2.11.0/lifecycle-viewmodel-2.11.0.aar/META-INF/androidx/lifecycle/lifecycle-viewmodel/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.navigationevent/navigationevent-android/1.0.0/navigationevent.aar/META-INF/androidx/navigationevent/navigationevent/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.navigationevent/navigationevent-compose-android/1.0.0/navigationevent-compose.aar/META-INF/androidx/navigationevent/navigationevent-compose/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.profileinstaller/profileinstaller/1.4.0/profileinstaller-1.4.0.aar/META-INF/androidx/profileinstaller/profileinstaller/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.room/room-common-jvm/2.8.4/room-common-jvm-2.8.4.jar/META-INF/androidx/room/room-common/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.room/room-runtime-android/2.8.4/room-runtime.aar/META-INF/androidx/room/room-runtime/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.savedstate/savedstate-android/1.4.0/savedstate.aar/META-INF/androidx/savedstate/savedstate/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.savedstate/savedstate-compose-android/1.4.0/savedstate-compose.aar/META-INF/androidx/savedstate/savedstate-compose/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.savedstate/savedstate-ktx/1.4.0/savedstate-ktx-1.4.0.aar/META-INF/androidx/savedstate/savedstate-ktx/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.sqlite/sqlite-android/2.6.2/sqlite.aar/META-INF/androidx/sqlite/sqlite/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.sqlite/sqlite-framework-android/2.6.2/sqlite-framework.aar/META-INF/androidx/sqlite/sqlite-framework/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.startup/startup-runtime/1.2.0/startup-runtime-1.2.0.aar/META-INF/androidx/startup/startup-runtime/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.transition/transition/1.6.0/transition-1.6.0.aar/META-INF/androidx/transition/transition/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.window/window-core-android/1.5.0/window-core.aar/META-INF/androidx/window/window-core/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.window/window/1.5.0/window-1.5.0.aar/META-INF/androidx/window/window/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.work/work-runtime-ktx/2.11.2/work-runtime-ktx-2.11.2.aar/META-INF/androidx/work/work-runtime-ktx/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/androidx.work/work-runtime/2.11.2/work-runtime-2.11.2.aar/META-INF/androidx/work/work-runtime/LICENSE.txt": {
+      "bytes": 10175,
+      "sha256": "809fa1ed21450f59827d1e9aec720bbc4b687434fa22283c6cb5dd82a47ab9c0"
+    },
+    "android/maven/com.android.tools/desugar_jdk_libs_configuration/2.1.5/desugar_jdk_libs_configuration-2.1.5.jar/LICENSE": {
+      "bytes": 1491,
+      "sha256": "68834f116f8ff545f05d14753357b620748156d60ee36b26beab4cb3f317efe4"
+    },
+    "android/maven/com.github.mwiede/jsch/2.28.8/jsch-2.28.8.jar/META-INF/LICENSE.JZlib.txt": {
+      "bytes": 1639,
+      "sha256": "9aa93e9bc58ae423a9e6476f608ee8f46063f5679e3bac0bc55f2f4b10d243ee"
+    },
+    "android/maven/com.github.mwiede/jsch/2.28.8/jsch-2.28.8.jar/META-INF/LICENSE.jBCrypt.txt": {
+      "bytes": 837,
+      "sha256": "a85927641ed1c8b95a5cef79b127b2392d80e0aa9d8e2d6f3b7b7401c5396af9"
+    },
+    "android/maven/com.github.mwiede/jsch/2.28.8/jsch-2.28.8.jar/META-INF/LICENSE.txt": {
+      "bytes": 1651,
+      "sha256": "9c3537ab0b485b391b887b95fdff761de3dd3273a6931e8a1942dde4d2093cc5"
+    },
+    "android/shared/Apache-2.0.txt": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "android/shared/JourneyApps-4.3.0-COPYING.txt": {
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "android/shared/desugar-2.1.5-ADDITIONAL_LICENSE_INFO.txt": {
+      "bytes": 2114,
+      "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916"
+    },
+    "android/shared/desugar-2.1.5-ASSEMBLY_EXCEPTION.txt": {
+      "bytes": 1522,
+      "sha256": "a44eb7b5caf5534c6ef536b21edb40b4d6babf91bf97d9d45596868618b2c6fb"
+    },
+    "android/shared/desugar-2.1.5-LICENSE.txt": {
+      "bytes": 19274,
+      "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726"
+    },
+    "flag-icons-LICENSE.txt": {
+      "bytes": 1087,
+      "sha256": "8f1195d55a2fd315a07d812328470ca9ba2abb78c8d317ff19619d5125e00cea"
+    },
+    "native/ABI-COVERAGE.json": {
+      "bytes": 2402,
+      "sha256": "d76721b64a1a8f23afff840f94742094db20170a425340f5ba41b8d2a3333083"
+    },
+    "native/CARGO-NOTICE-UNION.json": {
+      "bytes": 151841,
+      "sha256": "895836563046b4c2eb7d5e2aefa9efc3592b3ff68f4c1f3ba8357c49697a5926"
+    },
+    "native/NOTICE-ORIGINS.json": {
+      "bytes": 332,
+      "sha256": "8c5dd69b60362c4dafc9c058b8772b693de8d662443d8589dadf85a872891fb0"
+    },
+    "native/README.txt": {
+      "bytes": 275,
+      "sha256": "cf5365e2a7879f0307985db875476a7a898418c0fe89d62c66efbe61eca56de6"
+    },
+    "native/aarch64-linux-android.cdx.json": {
+      "bytes": 289405,
+      "sha256": "f35f19232601a4ccd923353f55d3e1a34089d59d837fda3a87e3aeef416cf3b0"
+    },
+    "native/aarch64-linux-android.notices.json": {
+      "bytes": 128307,
+      "sha256": "d9cc4bcdcdf072609999757bfac319261da2bdfd21d67358defb4ad893af4fdf"
+    },
+    "native/armv7-linux-androideabi.cdx.json": {
+      "bytes": 287041,
+      "sha256": "33b53e5d3d31c62a608767659bb2aa62f36247d84ff731e5f43fc93d2050a16e"
+    },
+    "native/armv7-linux-androideabi.notices.json": {
+      "bytes": 127223,
+      "sha256": "c81b2d3472aad6e0905dfaf26442ef524f1f0964d564d58e3c9ce2a37499cd5b"
+    },
+    "native/cargo/aead-0.5.2/LICENSE-APACHE": {
+      "bytes": 10850,
+      "sha256": "b1cf9a3333ca78152b859012cd4a804156e5243e9ca20ad1df7327ba5ea7405c"
+    },
+    "native/cargo/aead-0.5.2/LICENSE-MIT": {
+      "bytes": 1112,
+      "sha256": "949ab7b3e7140fee216f06fe3a2bd67d68dd511f8ea73c1e01c98cb348e9c8ae"
+    },
+    "native/cargo/aes-0.8.4/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/aes-0.8.4/LICENSE-MIT": {
+      "bytes": 1057,
+      "sha256": "f7e8ab639afef15573680c97f796166835cbeb3865175882fea41c60d106b733"
+    },
+    "native/cargo/aes-gcm-0.10.3/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/aes-gcm-0.10.3/LICENSE-MIT": {
+      "bytes": 1077,
+      "sha256": "3c0dfa33fd2e6976038555b52095699452653b1fcabe113074f14e0848a6b11e"
+    },
+    "native/cargo/alloc-no-stdlib-2.0.4/LICENSE": {
+      "bytes": 1483,
+      "sha256": "c0c56f26d9c051cac4d200c34c84e7ae9aaa853e01a982a1df08b09931e518ae"
+    },
+    "native/cargo/alloc-stdlib-0.2.4/upstream/LICENSE": {
+      "bytes": 1483,
+      "sha256": "c0c56f26d9c051cac4d200c34c84e7ae9aaa853e01a982a1df08b09931e518ae"
+    },
+    "native/cargo/arc-swap-1.9.2/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/arc-swap-1.9.2/LICENSE-MIT": {
+      "bytes": 1063,
+      "sha256": "ff3f1cd12af8866d9bde961d6cc40df774cd131d484de31d3170c4b02b21a7b5"
+    },
+    "native/cargo/argon2-0.5.3/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/argon2-0.5.3/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "33f702959c0ea91c08b21b65cf1f08b6c122ec9e6db0b5db784a7b367d942330"
+    },
+    "native/cargo/arraydeque-0.5.1/LICENSE": {
+      "bytes": 1101,
+      "sha256": "0aab2eeeaa27c8e946c235e5e605c6d52cb0a56d254c660bdcf618d6f7faf4af"
+    },
+    "native/cargo/arrayref-0.3.9/LICENSE": {
+      "bytes": 1336,
+      "sha256": "1bc7e6f475b3ec99b7e2643411950ae2368c250dd4c5c325f80f9811362a94a1"
+    },
+    "native/cargo/arrayvec-0.7.8/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/arrayvec-0.7.8/LICENSE-MIT": {
+      "bytes": 1071,
+      "sha256": "4da95ec4ecb65b738d470b7d762894ad9c97da93e6cbfb18b570fc2c96f4b871"
+    },
+    "native/cargo/asn1-rs-0.7.2/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/asn1-rs-0.7.2/LICENSE-MIT": {
+      "bytes": 1060,
+      "sha256": "a5c61b93b6ee1d104af9920cf020ff3c7efe818e31fe562c72261847a728f513"
+    },
+    "native/cargo/asn1-rs-derive-0.6.0/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/asn1-rs-derive-0.6.0/LICENSE-MIT": {
+      "bytes": 1060,
+      "sha256": "a5c61b93b6ee1d104af9920cf020ff3c7efe818e31fe562c72261847a728f513"
+    },
+    "native/cargo/asn1-rs-impl-0.2.0/upstream/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/asn1-rs-impl-0.2.0/upstream/LICENSE-MIT": {
+      "bytes": 1060,
+      "sha256": "a5c61b93b6ee1d104af9920cf020ff3c7efe818e31fe562c72261847a728f513"
+    },
+    "native/cargo/async-trait-0.1.89/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "native/cargo/async-trait-0.1.89/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/atomic-waker-1.1.2/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/atomic-waker-1.1.2/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/atomic-waker-1.1.2/LICENSE-THIRD-PARTY": {
+      "bytes": 1849,
+      "sha256": "6226d0632e2e1a80c23597e964da9812ae193c535fe058154afb034e94167aa5"
+    },
+    "native/cargo/autocfg-1.5.1/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/autocfg-1.5.1/LICENSE-MIT": {
+      "bytes": 1054,
+      "sha256": "27995d58ad5c1145c1a8cd86244ce844886958a35eb2b78c6b772748669999ac"
+    },
+    "native/cargo/aws-lc-rs-1.18.1/LICENSE": {
+      "bytes": 11085,
+      "sha256": "b50b376e7d24a0598488b730c3034ffcd0b58dd36c0913a24b9903a3cfd04bf7"
+    },
+    "native/cargo/aws-lc-sys-0.45.0/LICENSE": {
+      "bytes": 20337,
+      "sha256": "728536b4160e051f86d7c9c388f704866b3d512cd7df97ac3516c65279523c4e"
+    },
+    "native/cargo/aws-lc-sys-0.45.0/aws-lc/LICENSE": {
+      "bytes": 20338,
+      "sha256": "977c541bd25ffe36975dde25c028c0cd15ddf3d08243983b58e8a6a3d9447523"
+    },
+    "native/cargo/aws-lc-sys-0.45.0/aws-lc/third_party/fiat/LICENSE": {
+      "bytes": 1161,
+      "sha256": "43e358d7b6eb109d0f51f7b3a090fd82607965767c25fadee39e922475de2061"
+    },
+    "native/cargo/base64-0.22.1/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/base64-0.22.1/LICENSE-MIT": {
+      "bytes": 1076,
+      "sha256": "0dd882e53de11566d50f8e8e2d5a651bcf3fabee4987d70f306233cf39094ba7"
+    },
+    "native/cargo/base64ct-1.8.3/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/base64ct-1.8.3/LICENSE-MIT": {
+      "bytes": 1148,
+      "sha256": "2d1c57bff28344b9e698f51063bc8509799cc4c99a4e0cf2aa3f7e7c3e1f9a9d"
+    },
+    "native/cargo/bitflags-1.3.2/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/bitflags-1.3.2/LICENSE-MIT": {
+      "bytes": 1071,
+      "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
+    },
+    "native/cargo/blake2-0.10.6/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/blake2-0.10.6/LICENSE-MIT": {
+      "bytes": 1121,
+      "sha256": "9c768944eb4a0422ca2efc25ea9fb2fb9e7fbd3fdb04e86b87366339cb7466db"
+    },
+    "native/cargo/blake3-1.8.5/LICENSE_A2": {
+      "bytes": 11361,
+      "sha256": "00fcc7a934ddbc9ece2a7cc063ac788e284b703b1d705ccbba72d462aa97921e"
+    },
+    "native/cargo/blake3-1.8.5/LICENSE_A2LLVM": {
+      "bytes": 12267,
+      "sha256": "a5695f57ea0c221e0e8b7d784ff774c35e88c3d3270353646a925880bb3492cc"
+    },
+    "native/cargo/blake3-1.8.5/LICENSE_CC0": {
+      "bytes": 7048,
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    "native/cargo/block-buffer-0.10.4/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/block-buffer-0.10.4/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "d5c22aa3118d240e877ad41c5d9fa232f9c77d757d4aac0c2f943afc0a95e0ef"
+    },
+    "native/cargo/block-buffer-0.12.1/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/block-buffer-0.12.1/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "98181e7249d0c01737645ec982499ce99a0f07eb8f7d625b8840d799d10dbc01"
+    },
+    "native/cargo/brotli-decompressor-5.0.3/LICENSE": {
+      "bytes": 1483,
+      "sha256": "c0c56f26d9c051cac4d200c34c84e7ae9aaa853e01a982a1df08b09931e518ae"
+    },
+    "native/cargo/byte_string-1.0.0/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/byte_string-1.0.0/LICENSE-MIT": {
+      "bytes": 1058,
+      "sha256": "6025cd6598a37c30114be3c3804dc5270375aedde27baf7f8e7f705c2d39d56a"
+    },
+    "native/cargo/byteorder-1.5.0/COPYING": {
+      "bytes": 126,
+      "sha256": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f"
+    },
+    "native/cargo/byteorder-1.5.0/LICENSE-MIT": {
+      "bytes": 1081,
+      "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f"
+    },
+    "native/cargo/byteorder-1.5.0/UNLICENSE": {
+      "bytes": 1211,
+      "sha256": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c"
+    },
+    "native/cargo/bytes-1.12.1/LICENSE": {
+      "bytes": 1055,
+      "sha256": "45f522cacecb1023856e46df79ca625dfc550c94910078bd8aec6e02880b3d42"
+    },
+    "native/cargo/cc-1.2.66/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/cc-1.2.66/LICENSE-MIT": {
+      "bytes": 1057,
+      "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397"
+    },
+    "native/cargo/cesu8-1.1.0/COPYRIGHT-RUST.txt": {
+      "bytes": 17426,
+      "sha256": "5ca77347e58205d3b543c04a9c5bdd11d20a9f3108a7b246640edffa999b5f35"
+    },
+    "native/cargo/cfg-if-1.0.4/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/cfg-if-1.0.4/LICENSE-MIT": {
+      "bytes": 1057,
+      "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397"
+    },
+    "native/cargo/cfg_aliases-0.2.1/LICENSE": {
+      "bytes": 1076,
+      "sha256": "31b94860253d8ec7b4529f51901044d3b459d6292d996504a36b1bae3a36a812"
+    },
+    "native/cargo/chacha20-0.10.2/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/chacha20-0.10.2/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "b8c6939380a400f53e11923d50fcc4dd2fa1ba8339fd9d04cda38a0251b6c9b0"
+    },
+    "native/cargo/chacha20-0.9.1/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/chacha20-0.9.1/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "b6f6f01b03ee7e93c0ae96d62ed39527e98a120fb951afc9de456a741ef3f204"
+    },
+    "native/cargo/chacha20poly1305-0.10.1/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/chacha20poly1305-0.10.1/LICENSE-MIT": {
+      "bytes": 1077,
+      "sha256": "3c0dfa33fd2e6976038555b52095699452653b1fcabe113074f14e0848a6b11e"
+    },
+    "native/cargo/cipher-0.4.4/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/cipher-0.4.4/LICENSE-MIT": {
+      "bytes": 1070,
+      "sha256": "5c7bd92d1f096f12203dc1b601e3cb17484fa1b023e30b6b8edcc80e416237ec"
+    },
+    "native/cargo/cmake-0.1.58/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/cmake-0.1.58/LICENSE-MIT": {
+      "bytes": 1057,
+      "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397"
+    },
+    "native/cargo/combine-4.6.7/LICENSE": {
+      "bytes": 1085,
+      "sha256": "9bbc1b3dc4674a9ebb12c2a62f54fe3c08672539717f8d05828f684b6cc419a3"
+    },
+    "native/cargo/const-oid-0.10.2/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/const-oid-0.10.2/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "73b9dc2e79c7308998dd30296e073aefaefb944a68fb89aa412c23c0edcabcaa"
+    },
+    "native/cargo/constant_time_eq-0.4.2/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "native/cargo/constant_time_eq-0.4.2/LICENSE-CC0": {
+      "bytes": 7048,
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    "native/cargo/constant_time_eq-0.4.2/LICENSE-MIT0": {
+      "bytes": 858,
+      "sha256": "9a3aeb3f63659c4c6302d315e1d98784d1e8559858a47ff9562e091bb922d28d"
+    },
+    "native/cargo/cpufeatures-0.2.17/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/cpufeatures-0.2.17/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "ae9baa7beea910273c2f384c2a6b721fb7bd02bda3436074a1072e4ee689f985"
+    },
+    "native/cargo/cpufeatures-0.3.0/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/cpufeatures-0.3.0/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "ae9baa7beea910273c2f384c2a6b721fb7bd02bda3436074a1072e4ee689f985"
+    },
+    "native/cargo/crypto-common-0.1.7/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/crypto-common-0.1.7/LICENSE-MIT": {
+      "bytes": 1065,
+      "sha256": "3521672491a3479422d5fe1aca6645dd2984090f85da6e5205abfb18fb7a6897"
+    },
+    "native/cargo/crypto-common-0.2.2/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/crypto-common-0.2.2/LICENSE-MIT": {
+      "bytes": 1070,
+      "sha256": "d2e7ec5355c96eeade56b09187ceb48a6a30299da3ce7531a66d3d11405ab963"
+    },
+    "native/cargo/ctr-0.9.2/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/ctr-0.9.2/LICENSE-MIT": {
+      "bytes": 1103,
+      "sha256": "63af4bea227c94d021e99427f6ca3a4b8efddadcca93ab6130f708cf6138cf68"
+    },
+    "native/cargo/data-encoding-2.11.0/LICENSE": {
+      "bytes": 1121,
+      "sha256": "b68ad1a3367b825447089e1f8d6829b97f47a89eb78d2f4ebaef4672f5606186"
+    },
+    "native/cargo/der-parser-10.0.0/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/der-parser-10.0.0/LICENSE-MIT": {
+      "bytes": 1060,
+      "sha256": "a5c61b93b6ee1d104af9920cf020ff3c7efe818e31fe562c72261847a728f513"
+    },
+    "native/cargo/deranged-0.5.8/LICENSE-Apache": {
+      "bytes": 11349,
+      "sha256": "edd65bdd88957a205c47d53fa499eed8865a70320f0f03f6391668cb304ea376"
+    },
+    "native/cargo/deranged-0.5.8/LICENSE-MIT": {
+      "bytes": 1062,
+      "sha256": "231c837c45eb53f108fb48929e488965bc4fcc14e9ea21d35f50e6b99d98685b"
+    },
+    "native/cargo/digest-0.10.7/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/digest-0.10.7/LICENSE-MIT": {
+      "bytes": 1057,
+      "sha256": "9e0dfd2dd4173a530e238cb6adb37aa78c34c6bc7444e0e10c1ab5d8881f63ba"
+    },
+    "native/cargo/digest-0.11.3/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/digest-0.11.3/LICENSE-MIT": {
+      "bytes": 1103,
+      "sha256": "af59cea35d7f5e2777a713b8d155d65efa2c339eb43f3c14e868c6ac8506edad"
+    },
+    "native/cargo/displaydoc-0.2.6/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/displaydoc-0.2.6/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/dunce-1.0.5/LICENSE": {
+      "bytes": 7048,
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    "native/cargo/dynosaur-0.3.1/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "7cc5b24a69376a75c3979fce19878281c04abae5825f8a9d01f0efe1bc29faff"
+    },
+    "native/cargo/dynosaur-0.3.1/LICENSE-MIT": {
+      "bytes": 1071,
+      "sha256": "c3370554ca021e4492f8a599d6af6378d99ca80d474fa8fc6e36865647485dbf"
+    },
+    "native/cargo/dynosaur_derive-0.3.1/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "7cc5b24a69376a75c3979fce19878281c04abae5825f8a9d01f0efe1bc29faff"
+    },
+    "native/cargo/dynosaur_derive-0.3.1/LICENSE-MIT": {
+      "bytes": 1071,
+      "sha256": "c3370554ca021e4492f8a599d6af6378d99ca80d474fa8fc6e36865647485dbf"
+    },
+    "native/cargo/equivalent-1.0.2/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/equivalent-1.0.2/LICENSE-MIT": {
+      "bytes": 1049,
+      "sha256": "7365cc8878a1d7ce155a58c4ca09c3d7a6be413efa5334a80ea842912b669349"
+    },
+    "native/cargo/errno-0.3.14/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/errno-0.3.14/LICENSE-MIT": {
+      "bytes": 1054,
+      "sha256": "8764a597675778ddfd4e25f81b08a05dbcf089ac05662df7613fe67f150e3aa2"
+    },
+    "native/cargo/etherparse-0.19.0/upstream/LICENSE-APACHE": {
+      "bytes": 11342,
+      "sha256": "affcd3a3acd2a70d6405c6a5088413da8f97b91f5074ae313fbaa2ec4b45b19f"
+    },
+    "native/cargo/etherparse-0.19.0/upstream/LICENSE-MIT": {
+      "bytes": 1069,
+      "sha256": "4be7e6a9b3e7293807bbebfd081941c2d87fa445733e1ad0a9fc6efbc4f3029a"
+    },
+    "native/cargo/fastrand-2.4.1/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/fastrand-2.4.1/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/find-msvc-tools-0.1.9/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/find-msvc-tools-0.1.9/LICENSE-MIT": {
+      "bytes": 1057,
+      "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397"
+    },
+    "native/cargo/fnv-1.0.7/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/fnv-1.0.7/LICENSE-MIT": {
+      "bytes": 1056,
+      "sha256": "65fdb6c76cd61612070c066eec9ecdb30ee74fb27859d0d9af58b9f499fd0c3e"
+    },
+    "native/cargo/foldhash-0.2.0/LICENSE": {
+      "bytes": 856,
+      "sha256": "b1181a40b2a7b25cf66fd01481713bc1005df082c53ef73e851e55071b102744"
+    },
+    "native/cargo/form_urlencoded-1.2.2/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/form_urlencoded-1.2.2/LICENSE-MIT": {
+      "bytes": 1072,
+      "sha256": "20c7855c364d57ea4c97889a5e8d98470a9952dade37bd9248b9a54431670e5e"
+    },
+    "native/cargo/foxcore-android-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/foxcore-api-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/foxcore-component-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/foxcore-dialer-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/foxcore-dns-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/foxcore-link-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/foxcore-outbound-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/foxcore-relay-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/foxcore-route-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/foxcore-runtime-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/foxcore-share-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/foxcore-trafficmap-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/foxcore-transport-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/foxcore-tun-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/fs_extra-1.3.0/LICENSE": {
+      "bytes": 1072,
+      "sha256": "251ea8ccb1205ce5fa847d6e264d6b6753af62de2cecf2fd9abc0eb02c7c83fc"
+    },
+    "native/cargo/fst-0.4.7/COPYING": {
+      "bytes": 126,
+      "sha256": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f"
+    },
+    "native/cargo/fst-0.4.7/LICENSE-MIT": {
+      "bytes": 1081,
+      "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f"
+    },
+    "native/cargo/fst-0.4.7/UNLICENSE": {
+      "bytes": 1211,
+      "sha256": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c"
+    },
+    "native/cargo/futures-0.3.32/LICENSE-APACHE": {
+      "bytes": 10874,
+      "sha256": "275c491d6d1160553c32fd6127061d7f9606c3ea25abfad6ca3f6ed088785427"
+    },
+    "native/cargo/futures-0.3.32/LICENSE-MIT": {
+      "bytes": 1094,
+      "sha256": "6652c868f35dfe5e8ef636810a4e576b9d663f3a17fb0f5613ad73583e1b88fd"
+    },
+    "native/cargo/futures-channel-0.3.32/LICENSE-APACHE": {
+      "bytes": 10874,
+      "sha256": "275c491d6d1160553c32fd6127061d7f9606c3ea25abfad6ca3f6ed088785427"
+    },
+    "native/cargo/futures-channel-0.3.32/LICENSE-MIT": {
+      "bytes": 1094,
+      "sha256": "6652c868f35dfe5e8ef636810a4e576b9d663f3a17fb0f5613ad73583e1b88fd"
+    },
+    "native/cargo/futures-core-0.3.32/LICENSE-APACHE": {
+      "bytes": 10874,
+      "sha256": "275c491d6d1160553c32fd6127061d7f9606c3ea25abfad6ca3f6ed088785427"
+    },
+    "native/cargo/futures-core-0.3.32/LICENSE-MIT": {
+      "bytes": 1094,
+      "sha256": "6652c868f35dfe5e8ef636810a4e576b9d663f3a17fb0f5613ad73583e1b88fd"
+    },
+    "native/cargo/futures-executor-0.3.32/LICENSE-APACHE": {
+      "bytes": 10874,
+      "sha256": "275c491d6d1160553c32fd6127061d7f9606c3ea25abfad6ca3f6ed088785427"
+    },
+    "native/cargo/futures-executor-0.3.32/LICENSE-MIT": {
+      "bytes": 1094,
+      "sha256": "6652c868f35dfe5e8ef636810a4e576b9d663f3a17fb0f5613ad73583e1b88fd"
+    },
+    "native/cargo/futures-io-0.3.32/LICENSE-APACHE": {
+      "bytes": 10874,
+      "sha256": "275c491d6d1160553c32fd6127061d7f9606c3ea25abfad6ca3f6ed088785427"
+    },
+    "native/cargo/futures-io-0.3.32/LICENSE-MIT": {
+      "bytes": 1094,
+      "sha256": "6652c868f35dfe5e8ef636810a4e576b9d663f3a17fb0f5613ad73583e1b88fd"
+    },
+    "native/cargo/futures-macro-0.3.32/LICENSE-APACHE": {
+      "bytes": 10874,
+      "sha256": "275c491d6d1160553c32fd6127061d7f9606c3ea25abfad6ca3f6ed088785427"
+    },
+    "native/cargo/futures-macro-0.3.32/LICENSE-MIT": {
+      "bytes": 1094,
+      "sha256": "6652c868f35dfe5e8ef636810a4e576b9d663f3a17fb0f5613ad73583e1b88fd"
+    },
+    "native/cargo/futures-sink-0.3.32/LICENSE-APACHE": {
+      "bytes": 10874,
+      "sha256": "275c491d6d1160553c32fd6127061d7f9606c3ea25abfad6ca3f6ed088785427"
+    },
+    "native/cargo/futures-sink-0.3.32/LICENSE-MIT": {
+      "bytes": 1094,
+      "sha256": "6652c868f35dfe5e8ef636810a4e576b9d663f3a17fb0f5613ad73583e1b88fd"
+    },
+    "native/cargo/futures-task-0.3.32/LICENSE-APACHE": {
+      "bytes": 10874,
+      "sha256": "275c491d6d1160553c32fd6127061d7f9606c3ea25abfad6ca3f6ed088785427"
+    },
+    "native/cargo/futures-task-0.3.32/LICENSE-MIT": {
+      "bytes": 1094,
+      "sha256": "6652c868f35dfe5e8ef636810a4e576b9d663f3a17fb0f5613ad73583e1b88fd"
+    },
+    "native/cargo/futures-util-0.3.32/LICENSE-APACHE": {
+      "bytes": 10874,
+      "sha256": "275c491d6d1160553c32fd6127061d7f9606c3ea25abfad6ca3f6ed088785427"
+    },
+    "native/cargo/futures-util-0.3.32/LICENSE-MIT": {
+      "bytes": 1094,
+      "sha256": "6652c868f35dfe5e8ef636810a4e576b9d663f3a17fb0f5613ad73583e1b88fd"
+    },
+    "native/cargo/generic-array-0.14.7/LICENSE": {
+      "bytes": 1107,
+      "sha256": "c09aae9d3c77b531f56351a9947bc7446511d6b025b3255312d3e3442a9a7583"
+    },
+    "native/cargo/getrandom-0.2.17/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "aaff376532ea30a0cd5330b9502ad4a4c8bf769c539c87ffe78819d188a18ebf"
+    },
+    "native/cargo/getrandom-0.2.17/LICENSE-MIT": {
+      "bytes": 1130,
+      "sha256": "42fa16951ce7f24b5a467a40e5b449a1d41e662f97ca779864f053f39e097737"
+    },
+    "native/cargo/getrandom-0.3.4/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "aaff376532ea30a0cd5330b9502ad4a4c8bf769c539c87ffe78819d188a18ebf"
+    },
+    "native/cargo/getrandom-0.3.4/LICENSE-MIT": {
+      "bytes": 1130,
+      "sha256": "29e9fe5074bd27e0e5d5d110394fbbcd841baee2651a3c4b4560a632702cede4"
+    },
+    "native/cargo/getrandom-0.4.3/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "aaff376532ea30a0cd5330b9502ad4a4c8bf769c539c87ffe78819d188a18ebf"
+    },
+    "native/cargo/getrandom-0.4.3/LICENSE-MIT": {
+      "bytes": 1130,
+      "sha256": "523a42c25d245dde9c015f882cec7f4555aad883382a6cf19b4b7d9b2cd5419b"
+    },
+    "native/cargo/ghash-0.5.1/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/ghash-0.5.1/LICENSE-MIT": {
+      "bytes": 1065,
+      "sha256": "c0fabcc308b450cb6fe62c9f56fae6abbeb9768eb80d992484c857d744846c2e"
+    },
+    "native/cargo/h2-0.4.18/LICENSE": {
+      "bytes": 1054,
+      "sha256": "b21623012e6c453d944b0342c515b631cfcbf30704c2621b291526b69c10724d"
+    },
+    "native/cargo/h3-0.0.8/LICENSE": {
+      "bytes": 1054,
+      "sha256": "a0d039cdafe68f363893abddb5e4d50dbe6f8b56611e2650aaab4237103285f1"
+    },
+    "native/cargo/h3-quinn-0.0.10/LICENSE": {
+      "bytes": 1054,
+      "sha256": "a0d039cdafe68f363893abddb5e4d50dbe6f8b56611e2650aaab4237103285f1"
+    },
+    "native/cargo/hash32-0.3.1/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/hash32-0.3.1/LICENSE-MIT": {
+      "bytes": 1058,
+      "sha256": "c986bcdb83103d4ddf58aeb7b5302359782e54dc4eea14a0cc27c62dcbd50729"
+    },
+    "native/cargo/hashbrown-0.17.1/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/hashbrown-0.17.1/LICENSE-MIT": {
+      "bytes": 1060,
+      "sha256": "ff8f68cb076caf8cefe7a6430d4ac086ce6af2ca8ce2c4e5a2004d4552ef52a2"
+    },
+    "native/cargo/hashlink-0.12.2/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "c144680885b29e4719e2a51f0aab5439a1e02d980692b5aaf086cae12727f28b"
+    },
+    "native/cargo/hashlink-0.12.2/LICENSE-MIT": {
+      "bytes": 1133,
+      "sha256": "e915669a595b11a200873df8286561881b0e04932f6412a585db6297ba0bc97c"
+    },
+    "native/cargo/heapless-0.9.3/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/heapless-0.9.3/LICENSE-MIT": {
+      "bytes": 1058,
+      "sha256": "035e70219855119df4273b3c5b97543ae82e0dd60c520416e759107c602f651b"
+    },
+    "native/cargo/hkdf-0.12.4/LICENSE-APACHE": {
+      "bytes": 10848,
+      "sha256": "59013a5c8d3a19c26a457579105915a5d51bb0c09d579f8cdedf12e4203c3018"
+    },
+    "native/cargo/hkdf-0.12.4/LICENSE-MIT": {
+      "bytes": 1108,
+      "sha256": "d288f9c9b4590446ec18c22ead8f8b5a12a3d4025b68f62dc9015063eb9cca69"
+    },
+    "native/cargo/hmac-0.12.1/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/hmac-0.12.1/LICENSE-MIT": {
+      "bytes": 1057,
+      "sha256": "9e0dfd2dd4173a530e238cb6adb37aa78c34c6bc7444e0e10c1ab5d8881f63ba"
+    },
+    "native/cargo/http-1.4.2/LICENSE-APACHE": {
+      "bytes": 10835,
+      "sha256": "8bb1b50b0e5c9399ae33bd35fab2769010fa6c14e8860c729a52295d84896b7a"
+    },
+    "native/cargo/http-1.4.2/LICENSE-MIT": {
+      "bytes": 1059,
+      "sha256": "dc91f8200e4b2a1f9261035d4c18c33c246911a6c0f7b543d75347e61b249cff"
+    },
+    "native/cargo/httparse-1.10.1/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/httparse-1.10.1/LICENSE-MIT": {
+      "bytes": 1063,
+      "sha256": "391a5396cec6230bfabd4ef4eb2350eb895bc5efce377a2218f5702ed020d3e3"
+    },
+    "native/cargo/hybrid-array-0.4.13/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/hybrid-array-0.4.13/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "70c9d40f1f9545c3f133b8a67206e89da850f6468eed072281bb3701514114a9"
+    },
+    "native/cargo/icu_collections-2.2.0/LICENSE": {
+      "bytes": 2195,
+      "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+    },
+    "native/cargo/icu_locale_core-2.2.0/LICENSE": {
+      "bytes": 2195,
+      "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+    },
+    "native/cargo/icu_normalizer-2.2.0/LICENSE": {
+      "bytes": 2195,
+      "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+    },
+    "native/cargo/icu_normalizer_data-2.2.0/LICENSE": {
+      "bytes": 2195,
+      "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+    },
+    "native/cargo/icu_properties-2.2.0/LICENSE": {
+      "bytes": 2195,
+      "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+    },
+    "native/cargo/icu_properties_data-2.2.0/LICENSE": {
+      "bytes": 2195,
+      "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+    },
+    "native/cargo/icu_provider-2.2.0/LICENSE": {
+      "bytes": 2195,
+      "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+    },
+    "native/cargo/idna-1.1.0/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/idna-1.1.0/LICENSE-MIT": {
+      "bytes": 1072,
+      "sha256": "b38f11f6096706e6de553dabe2a7ed142d59b6fa8c97e290c67496154745cdd5"
+    },
+    "native/cargo/idna_adapter-1.2.2/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/idna_adapter-1.2.2/LICENSE-MIT": {
+      "bytes": 1062,
+      "sha256": "8b43ce8accd61e9d370b5ca9e9c4f953279b5c239926c62315b40e24df51b726"
+    },
+    "native/cargo/indexmap-2.14.0/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/indexmap-2.14.0/LICENSE-MIT": {
+      "bytes": 1049,
+      "sha256": "ecc269ef87fd38a1d98e30bfac9ba964a9dbd9315c3770fed98d4d7cb5882055"
+    },
+    "native/cargo/inout-0.1.4/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/inout-0.1.4/LICENSE-MIT": {
+      "bytes": 1110,
+      "sha256": "304b898acad7f02e03d6d8832d682a3b43ee729ab5d3a069af5a36979083b6b4"
+    },
+    "native/cargo/ipnet-2.12.0/LICENSE-APACHE": {
+      "bytes": 11352,
+      "sha256": "87d9feb9238c6bd8e0024fc4733b06cff036f89f36d93b7df1c8a0549bbb7a5b"
+    },
+    "native/cargo/ipnet-2.12.0/LICENSE-MIT": {
+      "bytes": 1062,
+      "sha256": "47dc9ff29128ddfb4d6a0435383c9f89120bc374dbcc1dd00b933a0b28aa7865"
+    },
+    "native/cargo/itoa-1.0.18/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "native/cargo/itoa-1.0.18/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/jni-0.21.1/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/jni-0.21.1/LICENSE-MIT": {
+      "bytes": 1104,
+      "sha256": "fea1d5bf3dd71605ce5d7d2ff695c1837e914c77195e523a86b5391716477960"
+    },
+    "native/cargo/jni-sys-0.3.1/LICENSE-APACHE": {
+      "bytes": 11358,
+      "sha256": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08"
+    },
+    "native/cargo/jni-sys-0.3.1/LICENSE-MIT": {
+      "bytes": 1071,
+      "sha256": "1d85bd754b04ceec93e98e890edd1fa3c6a22e81bcb32135806beeccefa51cd1"
+    },
+    "native/cargo/jni-sys-0.4.1/LICENSE-APACHE": {
+      "bytes": 11358,
+      "sha256": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08"
+    },
+    "native/cargo/jni-sys-0.4.1/LICENSE-MIT": {
+      "bytes": 1071,
+      "sha256": "1d85bd754b04ceec93e98e890edd1fa3c6a22e81bcb32135806beeccefa51cd1"
+    },
+    "native/cargo/jni-sys-macros-0.4.1/upstream/LICENSE-APACHE": {
+      "bytes": 11358,
+      "sha256": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08"
+    },
+    "native/cargo/jni-sys-macros-0.4.1/upstream/LICENSE-MIT": {
+      "bytes": 1071,
+      "sha256": "1d85bd754b04ceec93e98e890edd1fa3c6a22e81bcb32135806beeccefa51cd1"
+    },
+    "native/cargo/jobserver-0.1.35/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/jobserver-0.1.35/LICENSE-MIT": {
+      "bytes": 1057,
+      "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397"
+    },
+    "native/cargo/keccak-0.1.6/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/keccak-0.1.6/LICENSE-MIT": {
+      "bytes": 1070,
+      "sha256": "bdebaf9156a298f8fdab56dd26cb5144673de522d80f4c0d88e0039145f147f9"
+    },
+    "native/cargo/lazy_static-1.5.0/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/lazy_static-1.5.0/LICENSE-MIT": {
+      "bytes": 1071,
+      "sha256": "0621878e61f0d0fda054bcbe02df75192c28bde1ecc8289cbd86aeba2dd72720"
+    },
+    "native/cargo/libc-0.2.186/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "native/cargo/libc-0.2.186/LICENSE-MIT": {
+      "bytes": 1066,
+      "sha256": "123a331b5dbf04c30097fa43b8f858bc85df671fe776de498d01f3d6b7c1f69e"
+    },
+    "native/cargo/litemap-0.8.2/LICENSE": {
+      "bytes": 2195,
+      "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+    },
+    "native/cargo/lock_api-0.4.14/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/lock_api-0.4.14/LICENSE-MIT": {
+      "bytes": 1071,
+      "sha256": "c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5"
+    },
+    "native/cargo/log-0.4.33/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/log-0.4.33/LICENSE-MIT": {
+      "bytes": 1071,
+      "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
+    },
+    "native/cargo/lru-slab-0.1.2/LICENSE-APACHE": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "native/cargo/lru-slab-0.1.2/LICENSE-MIT": {
+      "bytes": 1067,
+      "sha256": "1466d9b4f3a59bb8997fc8d5fa977ce3f6a24bb2358793c09bfdf007039f6486"
+    },
+    "native/cargo/lru-slab-0.1.2/LICENSE-ZLIB": {
+      "bytes": 864,
+      "sha256": "09785877275ffada6c371b652a30e95c26b435126fc0fc62f1bc2d72171f80a4"
+    },
+    "native/cargo/lru_time_cache-0.11.11/LICENSE-BSD": {
+      "bytes": 1466,
+      "sha256": "14d6bb24e71abf7a96a713ec5ba69ebce5ab2e21ca4eb5a2517f84d3f7f0562c"
+    },
+    "native/cargo/lru_time_cache-0.11.11/LICENSE-MIT": {
+      "bytes": 1061,
+      "sha256": "69b3b756a3fc26f45d2f939bcd96e99fb8f13a0a7b1b577c7926a0304884d856"
+    },
+    "native/cargo/managed-0.8.0/LICENSE-0BSD.txt": {
+      "bytes": 653,
+      "sha256": "cd29cb316eb7a949599133073c5f5fc8d75d19ed21bdae8b0d4d1c32c5ccf117"
+    },
+    "native/cargo/md-5-0.10.6/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/md-5-0.10.6/LICENSE-MIT": {
+      "bytes": 1138,
+      "sha256": "b4eb00df6e2a4d22518fcaa6a2b4646f249b3a3c9814509b22bd2091f1392ff1"
+    },
+    "native/cargo/memchr-2.8.3/COPYING": {
+      "bytes": 126,
+      "sha256": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f"
+    },
+    "native/cargo/memchr-2.8.3/LICENSE-MIT": {
+      "bytes": 1081,
+      "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f"
+    },
+    "native/cargo/memchr-2.8.3/UNLICENSE": {
+      "bytes": 1211,
+      "sha256": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c"
+    },
+    "native/cargo/minimal-lexical-0.2.1/LICENSE-APACHE": {
+      "bytes": 10850,
+      "sha256": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90"
+    },
+    "native/cargo/minimal-lexical-0.2.1/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/minimal-lexical-0.2.1/LICENSE.md": {
+      "bytes": 2003,
+      "sha256": "dbe1fff0fb1314b6af94f161511406275cf01c5a32441fbf24528a57a051d599"
+    },
+    "native/cargo/mio-1.2.1/LICENSE": {
+      "bytes": 1082,
+      "sha256": "07919255c7e04793d8ea760d6c2ce32d19f9ff02bdbdde3ce90b1e1880929a9b"
+    },
+    "native/cargo/nom-7.1.3/LICENSE": {
+      "bytes": 1065,
+      "sha256": "4dbda04344456f09a7a588140455413a9ac59b6b26a1ef7cdf9c800c012d87f0"
+    },
+    "native/cargo/num-bigint-0.4.8/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/num-bigint-0.4.8/LICENSE-MIT": {
+      "bytes": 1071,
+      "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
+    },
+    "native/cargo/num-conv-0.2.2/LICENSE-Apache": {
+      "bytes": 10174,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+    },
+    "native/cargo/num-conv-0.2.2/LICENSE-MIT": {
+      "bytes": 1050,
+      "sha256": "e2e245f2b566d0bfafb0f6a04c16b82d710c4e6e7d799e39bb4ef6e541b85b98"
+    },
+    "native/cargo/num-integer-0.1.46/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/num-integer-0.1.46/LICENSE-MIT": {
+      "bytes": 1071,
+      "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
+    },
+    "native/cargo/num-traits-0.2.19/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/num-traits-0.2.19/LICENSE-MIT": {
+      "bytes": 1071,
+      "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb"
+    },
+    "native/cargo/oid-registry-0.8.1/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/oid-registry-0.8.1/LICENSE-MIT": {
+      "bytes": 1060,
+      "sha256": "a5c61b93b6ee1d104af9920cf020ff3c7efe818e31fe562c72261847a728f513"
+    },
+    "native/cargo/once_cell-1.21.4/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/once_cell-1.21.4/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/opaque-debug-0.3.1/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/opaque-debug-0.3.1/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "f59f5a78193597e04fd932ee9af86254d14d08be5c9d0e003ab888feccce2161"
+    },
+    "native/cargo/parking_lot-0.12.5/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/parking_lot-0.12.5/LICENSE-MIT": {
+      "bytes": 1071,
+      "sha256": "c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5"
+    },
+    "native/cargo/parking_lot_core-0.9.12/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/parking_lot_core-0.9.12/LICENSE-MIT": {
+      "bytes": 1071,
+      "sha256": "c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5"
+    },
+    "native/cargo/password-hash-0.5.0/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/password-hash-0.5.0/LICENSE-MIT": {
+      "bytes": 1070,
+      "sha256": "233b95ccbf90dc67e32f3e8995c489f6312d9191ebd141a931c3b684f1e3be6d"
+    },
+    "native/cargo/percent-encoding-2.3.2/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/percent-encoding-2.3.2/LICENSE-MIT": {
+      "bytes": 1072,
+      "sha256": "b38f11f6096706e6de553dabe2a7ed142d59b6fa8c97e290c67496154745cdd5"
+    },
+    "native/cargo/pin-project-1.1.13/LICENSE-APACHE": {
+      "bytes": 10174,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+    },
+    "native/cargo/pin-project-1.1.13/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/pin-project-internal-1.1.13/LICENSE-APACHE": {
+      "bytes": 10174,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+    },
+    "native/cargo/pin-project-internal-1.1.13/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/pin-project-lite-0.2.17/LICENSE-APACHE": {
+      "bytes": 10174,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+    },
+    "native/cargo/pin-project-lite-0.2.17/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/pkg-config-0.3.33/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/pkg-config-0.3.33/LICENSE-MIT": {
+      "bytes": 1057,
+      "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397"
+    },
+    "native/cargo/poly1305-0.8.0/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/poly1305-0.8.0/LICENSE-MIT": {
+      "bytes": 1070,
+      "sha256": "6d99fffea918d1f7dfe567029c7bd21d6fcaf310ad28c44e6511a0e1f68c79ea"
+    },
+    "native/cargo/polyval-0.6.2/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/polyval-0.6.2/LICENSE-MIT": {
+      "bytes": 1070,
+      "sha256": "a291b6910744d262a9e953c3b5868d74510e20161359f649a11e1791fde84fcd"
+    },
+    "native/cargo/potential_utf-0.1.5/LICENSE": {
+      "bytes": 2195,
+      "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+    },
+    "native/cargo/powerfmt-0.2.0/LICENSE-Apache": {
+      "bytes": 11349,
+      "sha256": "155420c6403d4e0fca34105e3c03fdd6939b64c393c7ec6f95f5b72c5474eab0"
+    },
+    "native/cargo/powerfmt-0.2.0/LICENSE-MIT": {
+      "bytes": 1062,
+      "sha256": "070dbc7dda03a29296f2d58bdb9b7331af90f2abc9f31df22875d1eabaf29852"
+    },
+    "native/cargo/ppv-lite86-0.2.21/LICENSE-APACHE": {
+      "bytes": 10854,
+      "sha256": "0218327e7a480793ffdd4eb792379a9709e5c135c7ba267f709d6f6d4d70af0a"
+    },
+    "native/cargo/ppv-lite86-0.2.21/LICENSE-MIT": {
+      "bytes": 1076,
+      "sha256": "4cada0bd02ea3692eee6f16400d86c6508bbd3bafb2b65fed0419f36d4f83e8f"
+    },
+    "native/cargo/proc-macro2-1.0.106/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "native/cargo/proc-macro2-1.0.106/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/proto-anytls-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/proto-http-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/proto-hysteria2-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/proto-naive-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/proto-reality-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/proto-reality-1.0.1/crates/proto-reality/LICENSE-MIT": {
+      "bytes": 1074,
+      "sha256": "1fb83b583e8604eff99cf01dfece917bb0ad56c3101d627516c7b59655375e19"
+    },
+    "native/cargo/proto-shadowsocks-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/proto-shadowtls-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/proto-socks-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/proto-trojan-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/proto-tuic-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/proto-vless-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/proto-vmess-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/proto-wireguard-1.0.1/LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/cargo/qpack-0.1.0/LICENSE": {
+      "bytes": 1054,
+      "sha256": "a0d039cdafe68f363893abddb5e4d50dbe6f8b56611e2650aaab4237103285f1"
+    },
+    "native/cargo/quinn-0.11.12/LICENSE-APACHE": {
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "native/cargo/quinn-0.11.12/LICENSE-MIT": {
+      "bytes": 1064,
+      "sha256": "4b2d0aca6789fa39e03d6738e869ea0988cceba210ca34ebb59c15c463e93a04"
+    },
+    "native/cargo/quinn-proto-0.11.19/LICENSE-APACHE": {
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "native/cargo/quinn-proto-0.11.19/LICENSE-MIT": {
+      "bytes": 1064,
+      "sha256": "4b2d0aca6789fa39e03d6738e869ea0988cceba210ca34ebb59c15c463e93a04"
+    },
+    "native/cargo/quinn-udp-0.5.16/LICENSE-APACHE": {
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "native/cargo/quinn-udp-0.5.16/LICENSE-MIT": {
+      "bytes": 1064,
+      "sha256": "4b2d0aca6789fa39e03d6738e869ea0988cceba210ca34ebb59c15c463e93a04"
+    },
+    "native/cargo/quote-1.0.46/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "native/cargo/quote-1.0.46/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/rand-0.10.2/COPYRIGHT": {
+      "bytes": 569,
+      "sha256": "90eb64f0279b0d9432accfa6023ff803bc4965212383697eee27a0f426d5f8d5"
+    },
+    "native/cargo/rand-0.10.2/LICENSE-APACHE": {
+      "bytes": 9724,
+      "sha256": "35242e7a83f69875e6edeff02291e688c97caafe2f8902e4e19b49d3e78b4cab"
+    },
+    "native/cargo/rand-0.10.2/LICENSE-MIT": {
+      "bytes": 1117,
+      "sha256": "209fbbe0ad52d9235e37badf9cadfe4dbdc87203179c0899e738b39ade42177b"
+    },
+    "native/cargo/rand-0.9.4/COPYRIGHT": {
+      "bytes": 569,
+      "sha256": "90eb64f0279b0d9432accfa6023ff803bc4965212383697eee27a0f426d5f8d5"
+    },
+    "native/cargo/rand-0.9.4/LICENSE-APACHE": {
+      "bytes": 9724,
+      "sha256": "35242e7a83f69875e6edeff02291e688c97caafe2f8902e4e19b49d3e78b4cab"
+    },
+    "native/cargo/rand-0.9.4/LICENSE-MIT": {
+      "bytes": 1117,
+      "sha256": "209fbbe0ad52d9235e37badf9cadfe4dbdc87203179c0899e738b39ade42177b"
+    },
+    "native/cargo/rand_chacha-0.9.0/COPYRIGHT": {
+      "bytes": 569,
+      "sha256": "90eb64f0279b0d9432accfa6023ff803bc4965212383697eee27a0f426d5f8d5"
+    },
+    "native/cargo/rand_chacha-0.9.0/LICENSE-APACHE": {
+      "bytes": 9724,
+      "sha256": "35242e7a83f69875e6edeff02291e688c97caafe2f8902e4e19b49d3e78b4cab"
+    },
+    "native/cargo/rand_chacha-0.9.0/LICENSE-MIT": {
+      "bytes": 1117,
+      "sha256": "209fbbe0ad52d9235e37badf9cadfe4dbdc87203179c0899e738b39ade42177b"
+    },
+    "native/cargo/rand_core-0.10.1/COPYRIGHT": {
+      "bytes": 478,
+      "sha256": "92b81db30f7ab6d693e0af5661a40d273ca1947e891123ed823924192c10cbc7"
+    },
+    "native/cargo/rand_core-0.10.1/LICENSE-APACHE": {
+      "bytes": 10282,
+      "sha256": "6df43f6f4b5d4587f3d8d71e45532c688fd168afa5fe89d571cb32fa09c4ef51"
+    },
+    "native/cargo/rand_core-0.10.1/LICENSE-MIT": {
+      "bytes": 1076,
+      "sha256": "8b6e9feec03e7c9a5facb26855cecd31662bf989b636bcfe79521bdf8ac863f0"
+    },
+    "native/cargo/rand_core-0.6.4/COPYRIGHT": {
+      "bytes": 569,
+      "sha256": "90eb64f0279b0d9432accfa6023ff803bc4965212383697eee27a0f426d5f8d5"
+    },
+    "native/cargo/rand_core-0.6.4/LICENSE-APACHE": {
+      "bytes": 10282,
+      "sha256": "6df43f6f4b5d4587f3d8d71e45532c688fd168afa5fe89d571cb32fa09c4ef51"
+    },
+    "native/cargo/rand_core-0.6.4/LICENSE-MIT": {
+      "bytes": 1117,
+      "sha256": "209fbbe0ad52d9235e37badf9cadfe4dbdc87203179c0899e738b39ade42177b"
+    },
+    "native/cargo/rand_core-0.9.5/COPYRIGHT": {
+      "bytes": 569,
+      "sha256": "90eb64f0279b0d9432accfa6023ff803bc4965212383697eee27a0f426d5f8d5"
+    },
+    "native/cargo/rand_core-0.9.5/LICENSE-APACHE": {
+      "bytes": 10282,
+      "sha256": "6df43f6f4b5d4587f3d8d71e45532c688fd168afa5fe89d571cb32fa09c4ef51"
+    },
+    "native/cargo/rand_core-0.9.5/LICENSE-MIT": {
+      "bytes": 1117,
+      "sha256": "209fbbe0ad52d9235e37badf9cadfe4dbdc87203179c0899e738b39ade42177b"
+    },
+    "native/cargo/rand_pcg-0.10.2/COPYRIGHT": {
+      "bytes": 569,
+      "sha256": "90eb64f0279b0d9432accfa6023ff803bc4965212383697eee27a0f426d5f8d5"
+    },
+    "native/cargo/rand_pcg-0.10.2/LICENSE-APACHE": {
+      "bytes": 10282,
+      "sha256": "6df43f6f4b5d4587f3d8d71e45532c688fd168afa5fe89d571cb32fa09c4ef51"
+    },
+    "native/cargo/rand_pcg-0.10.2/LICENSE-MIT": {
+      "bytes": 1139,
+      "sha256": "2234e3cefee876aeb686ad89e978bdb07bf118a1186ab1cf161bcdf69d4b4f57"
+    },
+    "native/cargo/ring-0.17.14/LICENSE": {
+      "bytes": 499,
+      "sha256": "b3d734001a94efff3579978d953391aa7115f877657d25eb54037a43875d078a"
+    },
+    "native/cargo/ring-0.17.14/LICENSE-BoringSSL": {
+      "bytes": 14870,
+      "sha256": "005fc765ddc5115da796cca915baa9557abae13ff35e0a47c47affc56f6c414d"
+    },
+    "native/cargo/ring-0.17.14/LICENSE-other-bits": {
+      "bytes": 731,
+      "sha256": "f025ccfb7dfb6bdfedc75ca0f67acc69e6fb4998143d834f7c2f38a29989680f"
+    },
+    "native/cargo/ring-0.17.14/src/polyfill/once_cell/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/ring-0.17.14/src/polyfill/once_cell/LICENSE-MIT": {
+      "bytes": 1022,
+      "sha256": "6ee2ed6c77710de911761acd5fc1ad1da00f476beb1a7ef27e78c2d1858deafc"
+    },
+    "native/cargo/ring-0.17.14/third_party/fiat/LICENSE": {
+      "bytes": 638,
+      "sha256": "9eacbcb81be660840c714a560a9d65ba07913db98dd4baf969f78dd499fdd60f"
+    },
+    "native/cargo/ring-compat-0.8.0/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/ring-compat-0.8.0/LICENSE-MIT": {
+      "bytes": 1077,
+      "sha256": "3c0dfa33fd2e6976038555b52095699452653b1fcabe113074f14e0848a6b11e"
+    },
+    "native/cargo/rustc-hash-2.1.3/LICENSE-APACHE": {
+      "bytes": 9722,
+      "sha256": "95bd3988beee069fa2848f648dab43cc6e0b2add2ad6bcb17360caf749802bcc"
+    },
+    "native/cargo/rustc-hash-2.1.3/LICENSE-MIT": {
+      "bytes": 1022,
+      "sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652"
+    },
+    "native/cargo/rusticata-macros-4.1.0/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/rusticata-macros-4.1.0/LICENSE-MIT": {
+      "bytes": 1060,
+      "sha256": "a5c61b93b6ee1d104af9920cf020ff3c7efe818e31fe562c72261847a728f513"
+    },
+    "native/cargo/rustls-pki-types-1.15.0/LICENSE-APACHE": {
+      "bytes": 10835,
+      "sha256": "45fd05c4865e7c350b98ad7ac50e1b15462d49af4a91e9b0c9dd933dc9a69742"
+    },
+    "native/cargo/rustls-pki-types-1.15.0/LICENSE-MIT": {
+      "bytes": 1080,
+      "sha256": "9117d922e667125508dde62b02c1f57ed22f5ad21eb536aa2e2d99e1c796e639"
+    },
+    "native/cargo/rustls-webpki-0.103.16/LICENSE": {
+      "bytes": 916,
+      "sha256": "5b698ca13897be3afdb7174256fa1574f8c6892b8bea1a66dd6469d3fe27885a"
+    },
+    "native/cargo/rustversion-1.0.23/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "native/cargo/rustversion-1.0.23/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/ryu-1.0.23/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "native/cargo/ryu-1.0.23/LICENSE-BOOST": {
+      "bytes": 1338,
+      "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566"
+    },
+    "native/cargo/same-file-1.0.6/COPYING": {
+      "bytes": 126,
+      "sha256": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f"
+    },
+    "native/cargo/same-file-1.0.6/LICENSE-MIT": {
+      "bytes": 1081,
+      "sha256": "cb3c929a05e6cbc9de9ab06a4c57eeb60ca8c724bef6c138c87d3a577e27aa14"
+    },
+    "native/cargo/same-file-1.0.6/UNLICENSE": {
+      "bytes": 1211,
+      "sha256": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c"
+    },
+    "native/cargo/scopeguard-1.2.0/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/scopeguard-1.2.0/LICENSE-MIT": {
+      "bytes": 1097,
+      "sha256": "fb77f0a9c53e473abe5103c8632ef9f0f2874d4fb3f17cb2d8c661aab9cee9d7"
+    },
+    "native/cargo/sealed-0.6.0/LICENSE-APACHE": {
+      "bytes": 10846,
+      "sha256": "769f80b5bcb42ed0af4e4d2fd74e1ac9bf843cb80c5a29219d1ef3544428a6bb"
+    },
+    "native/cargo/sealed-0.6.0/LICENSE-MIT": {
+      "bytes": 1022,
+      "sha256": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652"
+    },
+    "native/cargo/sendfd-0.4.4/LICENSE-APACHE": {
+      "bytes": 11349,
+      "sha256": "21bf87fa73bc9a1e5fca513c93886a1499c339af18b41f8749e335bcfe3cb6f9"
+    },
+    "native/cargo/sendfd-0.4.4/LICENSE-BSD": {
+      "bytes": 1527,
+      "sha256": "d70fa4e96247baebe13a2934690723800d1d52fdc8945cd35cca088820972f44"
+    },
+    "native/cargo/serde-1.0.228/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "native/cargo/serde-1.0.228/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/serde_core-1.0.228/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "native/cargo/serde_core-1.0.228/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/serde_derive-1.0.228/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "native/cargo/serde_derive-1.0.228/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/serde_json-1.0.150/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "native/cargo/serde_json-1.0.150/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/serde_urlencoded-0.7.1/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "native/cargo/serde_urlencoded-0.7.1/LICENSE-MIT": {
+      "bytes": 1058,
+      "sha256": "b9eb266294324f672cbe945fe8f2e32f85024f0d61a1a7d14382cdde0ac44769"
+    },
+    "native/cargo/sha1-0.10.7/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/sha1-0.10.7/LICENSE-MIT": {
+      "bytes": 1138,
+      "sha256": "b4eb00df6e2a4d22518fcaa6a2b4646f249b3a3c9814509b22bd2091f1392ff1"
+    },
+    "native/cargo/sha1-0.11.0/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/sha1-0.11.0/LICENSE-MIT": {
+      "bytes": 1196,
+      "sha256": "831e0f43ad0bf014c1c4fec5767aae470434c1d66d6e671be2d823e729063e25"
+    },
+    "native/cargo/sha2-0.10.9/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/sha2-0.10.9/LICENSE-MIT": {
+      "bytes": 1138,
+      "sha256": "b4eb00df6e2a4d22518fcaa6a2b4646f249b3a3c9814509b22bd2091f1392ff1"
+    },
+    "native/cargo/sha3-0.10.9/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/sha3-0.10.9/LICENSE-MIT": {
+      "bytes": 1197,
+      "sha256": "f18f6229547ab07f0b7b3e1f83acad8bb436f5f4c95a8a98b44f876caa00f04e"
+    },
+    "native/cargo/shadowsocks-1.24.0/LICENSE": {
+      "bytes": 1099,
+      "sha256": "b453481258ecf6dbe1ec0fb2efa621de6035fcddbee0868cb71b8ffc4c0c4782"
+    },
+    "native/cargo/shadowsocks-crypto-0.6.2/LICENSE": {
+      "bytes": 1063,
+      "sha256": "fbceed46c12ff19e132ca7a8bb8fd5ed92d0baea3f2ef7db67aee774c01b3849"
+    },
+    "native/cargo/shlex-2.0.1/LICENSE-APACHE": {
+      "bytes": 566,
+      "sha256": "553fffcd9b1cb158bc3e9edc35da85ca5c3b3d7d2e61c883ebcfa8a65814b583"
+    },
+    "native/cargo/shlex-2.0.1/LICENSE-MIT": {
+      "bytes": 1092,
+      "sha256": "4455bf75a91154108304cb283e0fea9948c14f13e20d60887cf2552449dea3b1"
+    },
+    "native/cargo/signal-hook-registry-1.4.8/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/signal-hook-registry-1.4.8/LICENSE-MIT": {
+      "bytes": 1068,
+      "sha256": "503558bfefe66ca15e4e3f7955b3cb0ec87fd52f29bf24b336af7bd00e946d5c"
+    },
+    "native/cargo/slab-0.4.12/LICENSE": {
+      "bytes": 1055,
+      "sha256": "8ce0830173fdac609dfb4ea603fdc002c2f4af0dc9b1a005653f5da9cf534b18"
+    },
+    "native/cargo/smallvec-1.15.2/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/smallvec-1.15.2/LICENSE-MIT": {
+      "bytes": 1072,
+      "sha256": "0b28172679e0009b655da42797c03fd163a3379d5cfa67ba1f1655e974a2a1a9"
+    },
+    "native/cargo/smoltcp-0.14.0/LICENSE-0BSD.txt": {
+      "bytes": 644,
+      "sha256": "beb2cad88fab8447f7975564e21f9506e733e14c344836f146fa02e811216694"
+    },
+    "native/cargo/socket2-0.6.4/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/socket2-0.6.4/LICENSE-MIT": {
+      "bytes": 1057,
+      "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397"
+    },
+    "native/cargo/spin-0.10.1/LICENSE": {
+      "bytes": 1084,
+      "sha256": "6ac8711fb340c62ce0a4ecd463342d3fa0e8e70de697c863a2e1c0c53006003c"
+    },
+    "native/cargo/stable_deref_trait-1.2.1/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/stable_deref_trait-1.2.1/LICENSE-MIT": {
+      "bytes": 1056,
+      "sha256": "5e05b024f653a5ce199e77cbbbd42fb5553562ec714b819421ed0c3e552a75d7"
+    },
+    "native/cargo/subtle-2.6.1/LICENSE": {
+      "bytes": 1582,
+      "sha256": "d1fc1bc0d155df60b2e7705b6b2ae02a05c96f948e1cec6e2fb86360b09f346b"
+    },
+    "native/cargo/syn-2.0.118/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "native/cargo/syn-2.0.118/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/synstructure-0.13.2/LICENSE": {
+      "bytes": 1052,
+      "sha256": "219920e865eee70b7dcfc948a86b099e7f4fe2de01bcca2ca9a20c0a033f2b59"
+    },
+    "native/cargo/thiserror-1.0.69/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "native/cargo/thiserror-1.0.69/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/thiserror-2.0.18/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "native/cargo/thiserror-2.0.18/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/thiserror-impl-1.0.69/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "native/cargo/thiserror-impl-1.0.69/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/thiserror-impl-2.0.18/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "native/cargo/thiserror-impl-2.0.18/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/time-0.3.53/LICENSE-Apache": {
+      "bytes": 10174,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+    },
+    "native/cargo/time-0.3.53/LICENSE-MIT": {
+      "bytes": 1057,
+      "sha256": "2537228d9a1b44a5dc595241349cae7090b326c8de165aaf89bfddef4a00d0fc"
+    },
+    "native/cargo/time-core-0.1.9/LICENSE-Apache": {
+      "bytes": 10174,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+    },
+    "native/cargo/time-core-0.1.9/LICENSE-MIT": {
+      "bytes": 1057,
+      "sha256": "2537228d9a1b44a5dc595241349cae7090b326c8de165aaf89bfddef4a00d0fc"
+    },
+    "native/cargo/time-macros-0.2.31/LICENSE-Apache": {
+      "bytes": 10174,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+    },
+    "native/cargo/time-macros-0.2.31/LICENSE-MIT": {
+      "bytes": 1057,
+      "sha256": "2537228d9a1b44a5dc595241349cae7090b326c8de165aaf89bfddef4a00d0fc"
+    },
+    "native/cargo/tinystr-0.8.3/LICENSE": {
+      "bytes": 2195,
+      "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+    },
+    "native/cargo/tinyvec-1.11.0/LICENSE-APACHE.md": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "native/cargo/tinyvec-1.11.0/LICENSE-MIT.md": {
+      "bytes": 1023,
+      "sha256": "fd80a26fbb3f644af1fa994134446702932968519797227e07a1368dea80f0bc"
+    },
+    "native/cargo/tinyvec-1.11.0/LICENSE-ZLIB.md": {
+      "bytes": 851,
+      "sha256": "84b34dd7608f7fb9b17bd588a6bf392bf7de504e2716f024a77d89f1b145a151"
+    },
+    "native/cargo/tinyvec_macros-0.1.1/LICENSE-APACHE.md": {
+      "bytes": 11350,
+      "sha256": "4f44572785f35152c1fd2eadf565b7e079c0f300b4324f0af653419f9d76b735"
+    },
+    "native/cargo/tinyvec_macros-0.1.1/LICENSE-MIT.md": {
+      "bytes": 1062,
+      "sha256": "1dd8eca0f83669e75fa119e34fb9e1be9d16e3e9b6368962b8019db6e8ae5f7b"
+    },
+    "native/cargo/tinyvec_macros-0.1.1/LICENSE-ZLIB.md": {
+      "bytes": 864,
+      "sha256": "41ace205715d9f19a3214218cc1c01d57c533e02cd0fef7c8e51a49a7fce5ac5"
+    },
+    "native/cargo/tokio-1.53.3/LICENSE": {
+      "bytes": 1070,
+      "sha256": "253cd04c6714889df2d32f3f64d669179a1c95c76ac43c40882c52eb06bc3552"
+    },
+    "native/cargo/tokio-macros-2.7.0/LICENSE": {
+      "bytes": 1102,
+      "sha256": "0b83dc40cba89b9922bb84b0a9c7d2768ce37c1d7e138b7424fd4549915778c9"
+    },
+    "native/cargo/tokio-rustls-0.26.4/LICENSE-APACHE": {
+      "bytes": 10832,
+      "sha256": "cc117d90b498b32b11a886f279b359da16a73c3b01efbb2f5cc004b20262334e"
+    },
+    "native/cargo/tokio-rustls-0.26.4/LICENSE-MIT": {
+      "bytes": 1056,
+      "sha256": "e20fa2b8e0a2565f24a792b94b4bf4b6c2b9d36f781d8a9516e218a036e6677a"
+    },
+    "native/cargo/tokio-tfo-0.4.3/LICENSE": {
+      "bytes": 1068,
+      "sha256": "3f49830f60f201a2317b3639e2fad8797cdfe8e03a9d3ac7c98bd6f724d83c0e"
+    },
+    "native/cargo/tokio-tungstenite-0.30.0/LICENSE": {
+      "bytes": 1093,
+      "sha256": "fdd55e2b2da854b0fbdc1e607df7c2ba1e1ebf91ecb77c515511ebeef972bc8f"
+    },
+    "native/cargo/tokio-util-0.7.18/LICENSE": {
+      "bytes": 1070,
+      "sha256": "253cd04c6714889df2d32f3f64d669179a1c95c76ac43c40882c52eb06bc3552"
+    },
+    "native/cargo/tracing-0.1.44/LICENSE": {
+      "bytes": 1062,
+      "sha256": "898b1ae9821e98daf8964c8d6c7f61641f5f5aa78ad500020771c0939ee0dea1"
+    },
+    "native/cargo/tracing-core-0.1.36/LICENSE": {
+      "bytes": 1062,
+      "sha256": "898b1ae9821e98daf8964c8d6c7f61641f5f5aa78ad500020771c0939ee0dea1"
+    },
+    "native/cargo/tracing-core-0.1.36/src/spin/LICENSE": {
+      "bytes": 1085,
+      "sha256": "58545fed1565e42d687aecec6897d35c6d37ccb71479a137c0deb2203e125c79"
+    },
+    "native/cargo/trait-variant-0.1.2/upstream/LICENSE-APACHE": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "native/cargo/trait-variant-0.1.2/upstream/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/tungstenite-0.30.0/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/tungstenite-0.30.0/LICENSE-MIT": {
+      "bytes": 1092,
+      "sha256": "7fea0ee51a4ca5d5cea7464135fd55e8b09caf3a61da3d451ac8a22af95c033f"
+    },
+    "native/cargo/typenum-1.20.1/LICENSE": {
+      "bytes": 17,
+      "sha256": "db11fec9946737df39ca3898d9cd8c10ec6f6c3a884a6802b0ad0b81b4e8f23a"
+    },
+    "native/cargo/typenum-1.20.1/LICENSE-APACHE": {
+      "bytes": 10835,
+      "sha256": "516b24e051bf5630880ebbd55c40a25ce9552ebaf8970a53e8976eb70e522406"
+    },
+    "native/cargo/typenum-1.20.1/LICENSE-MIT": {
+      "bytes": 1083,
+      "sha256": "a825bd853ab71619a4923d7b4311221427848070ff44d990da39b0b274c1683f"
+    },
+    "native/cargo/unicode-ident-1.0.24/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "native/cargo/unicode-ident-1.0.24/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/cargo/unicode-ident-1.0.24/LICENSE-UNICODE": {
+      "bytes": 1995,
+      "sha256": "f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1"
+    },
+    "native/cargo/universal-hash-0.5.1/LICENSE-APACHE": {
+      "bytes": 10849,
+      "sha256": "a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5"
+    },
+    "native/cargo/universal-hash-0.5.1/LICENSE-MIT": {
+      "bytes": 1070,
+      "sha256": "6b50510a0400c72172355cc5d2ba0f2c5c2eb33149b8f96539dc345fdc484920"
+    },
+    "native/cargo/untrusted-0.9.0/LICENSE.txt": {
+      "bytes": 769,
+      "sha256": "7abd9b6960dcf7d4d0a48606a5b71bfe37d472db68d70637f3a58a56785f1621"
+    },
+    "native/cargo/url-2.5.8/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/url-2.5.8/LICENSE-MIT": {
+      "bytes": 1072,
+      "sha256": "b38f11f6096706e6de553dabe2a7ed142d59b6fa8c97e290c67496154745cdd5"
+    },
+    "native/cargo/utf8_iter-1.0.4/COPYRIGHT": {
+      "bytes": 1742,
+      "sha256": "c30152c94a6d75e021adbc52b3a52470366a46edb917e17deae3259251af244c"
+    },
+    "native/cargo/utf8_iter-1.0.4/LICENSE-APACHE": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "native/cargo/utf8_iter-1.0.4/LICENSE-MIT": {
+      "bytes": 1053,
+      "sha256": "3fa4ca83dcc9237839b1bdeb2e6d16bdfb5ec0c5ce42b24694d8bbf0dcbef72c"
+    },
+    "native/cargo/version_check-0.9.5/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/version_check-0.9.5/LICENSE-MIT": {
+      "bytes": 1085,
+      "sha256": "b7e650f3fce5c53249d1cdc608b54df156a97edd636cf9d23498d0cfe7aec63e"
+    },
+    "native/cargo/walkdir-2.5.0/COPYING": {
+      "bytes": 126,
+      "sha256": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f"
+    },
+    "native/cargo/walkdir-2.5.0/LICENSE-MIT": {
+      "bytes": 1081,
+      "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f"
+    },
+    "native/cargo/walkdir-2.5.0/UNLICENSE": {
+      "bytes": 1211,
+      "sha256": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c"
+    },
+    "native/cargo/webpki-roots-1.0.10/LICENSE": {
+      "bytes": 2371,
+      "sha256": "e271993808fec50ab29350b39539cdec611a9103f827e0aa26d61da70e2d33f8"
+    },
+    "native/cargo/writeable-0.6.3/LICENSE": {
+      "bytes": 2195,
+      "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+    },
+    "native/cargo/x509-parser-0.18.1/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/cargo/x509-parser-0.18.1/LICENSE-MIT": {
+      "bytes": 1060,
+      "sha256": "a5c61b93b6ee1d104af9920cf020ff3c7efe818e31fe562c72261847a728f513"
+    },
+    "native/cargo/yaml-rust2-0.13.0/upstream/Apache-LICENSE": {
+      "bytes": 10307,
+      "sha256": "278f0e5c23f023a2f1af8d528dd5c29dc3a5ea2dd63558aa8d4f077c09e037c7"
+    },
+    "native/cargo/yaml-rust2-0.13.0/upstream/MIT-LICENSE": {
+      "bytes": 1107,
+      "sha256": "3dd30063cdb4a378736348c215cb84b78b0711ba7e39903162cae5ce71dc9757"
+    },
+    "native/cargo/yoke-0.8.3/LICENSE": {
+      "bytes": 2195,
+      "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+    },
+    "native/cargo/yoke-derive-0.8.2/LICENSE": {
+      "bytes": 2195,
+      "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+    },
+    "native/cargo/zerocopy-0.8.54/LICENSE-APACHE": {
+      "bytes": 11350,
+      "sha256": "9d185ac6703c4b0453974c0d85e9eee43e6941009296bb1f5eb0b54e2329e9f3"
+    },
+    "native/cargo/zerocopy-0.8.54/LICENSE-BSD": {
+      "bytes": 1275,
+      "sha256": "83c1763356e822adde0a2cae748d938a73fdc263849ccff6b27776dff213bd32"
+    },
+    "native/cargo/zerocopy-0.8.54/LICENSE-MIT": {
+      "bytes": 1060,
+      "sha256": "1a2f5c12ddc934d58956aa5dbdd3255fe55fd957633ab7d0d39e4f0daa73f7df"
+    },
+    "native/cargo/zerocopy-derive-0.8.54/LICENSE-APACHE": {
+      "bytes": 11350,
+      "sha256": "9d185ac6703c4b0453974c0d85e9eee43e6941009296bb1f5eb0b54e2329e9f3"
+    },
+    "native/cargo/zerocopy-derive-0.8.54/LICENSE-BSD": {
+      "bytes": 1275,
+      "sha256": "83c1763356e822adde0a2cae748d938a73fdc263849ccff6b27776dff213bd32"
+    },
+    "native/cargo/zerocopy-derive-0.8.54/LICENSE-MIT": {
+      "bytes": 1060,
+      "sha256": "1a2f5c12ddc934d58956aa5dbdd3255fe55fd957633ab7d0d39e4f0daa73f7df"
+    },
+    "native/cargo/zerofrom-0.1.8/LICENSE": {
+      "bytes": 2195,
+      "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+    },
+    "native/cargo/zerofrom-derive-0.1.7/LICENSE": {
+      "bytes": 2195,
+      "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+    },
+    "native/cargo/zeroize-1.9.0/LICENSE-APACHE": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "native/cargo/zeroize-1.9.0/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "8c7516d4b27b1e495be5e38b612298b63de48d05f49cdac94f70f3cd70f8864b"
+    },
+    "native/cargo/zeroize_derive-1.5.0/LICENSE-APACHE": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    "native/cargo/zeroize_derive-1.5.0/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "b8c6939380a400f53e11923d50fcc4dd2fa1ba8339fd9d04cda38a0251b6c9b0"
+    },
+    "native/cargo/zerotrie-0.2.4/LICENSE": {
+      "bytes": 2195,
+      "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+    },
+    "native/cargo/zerovec-0.11.6/LICENSE": {
+      "bytes": 2195,
+      "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+    },
+    "native/cargo/zerovec-derive-0.11.3/LICENSE": {
+      "bytes": 2195,
+      "sha256": "f367c1b8e1aa262435251e442901da4607b4650e0e63a026f5044473ecfb90f2"
+    },
+    "native/cargo/zmij-1.0.21/LICENSE-MIT": {
+      "bytes": 1023,
+      "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+    },
+    "native/foxcore/ABI-COVERAGE.json": {
+      "bytes": 126374,
+      "sha256": "ae3dee8a781d4f73b9f0e7eefdd8646596a64a50c4f0cb966008ce5c3292e7a9"
+    },
+    "native/foxcore/FoxHole-Core-GPL-3.0-or-later.txt": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    "native/foxcore/REVISION.txt": {
+      "bytes": 41,
+      "sha256": "2cfbd12fef87def68ec3497d8a33912f5ede76b4470361d85fde5530cc29adfa"
+    },
+    "native/foxcore/THIRD_PARTY_NOTICES.md": {
+      "bytes": 9331,
+      "sha256": "5f63fe1104d0ba682236527f2bd8c3ed71cdd664898b50e17c08fb20a34c2116"
+    },
+    "native/i686-linux-android.cdx.json": {
+      "bytes": 289478,
+      "sha256": "913a29a559a077a0daf589913c4aa19bb2a2c09a5a83977fd2892ab401a3fce7"
+    },
+    "native/i686-linux-android.notices.json": {
+      "bytes": 128307,
+      "sha256": "d9f0898b6d4edc41c4814f397b62a3000116fd60e9f4f6c664f7923e7abcdf6c"
+    },
+    "native/sentinel/ABI-COVERAGE.json": {
+      "bytes": 85294,
+      "sha256": "92e96b03a87d8740c6ece1a25cb1514205cd4b227b1c52f9e8d0ed48f9dfb292"
+    },
+    "native/source-forks/rustls-0.23.46/FOXHOLE-MODIFICATIONS.md": {
+      "bytes": 763,
+      "sha256": "58898732988c539065681264252fa603e737c637f11629a74d5b489f739b1d39"
+    },
+    "native/source-forks/rustls-0.23.46/LICENSE-APACHE": {
+      "bytes": 10847,
+      "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
+    },
+    "native/source-forks/rustls-0.23.46/LICENSE-ISC": {
+      "bytes": 775,
+      "sha256": "7cfafc877eccc46c0e346ccbaa5c51bb6b894d2b818e617d970211e232785ad4"
+    },
+    "native/source-forks/rustls-0.23.46/LICENSE-MIT": {
+      "bytes": 1082,
+      "sha256": "709e3175b4212f7b13aa93971c9f62ff8c69ec45ad8c6532a7e0c41d7a7d6f8c"
+    },
+    "native/source-forks/rustls-0.23.46/ORIGIN.json": {
+      "bytes": 23956,
+      "sha256": "ecdc360e6e6569d14a922b51be28fde677ff18c818debdc09cb90f4d0eb7c519"
+    },
+    "native/source-forks/rustls-0.23.46/chrome151.patch": {
+      "bytes": 68886,
+      "sha256": "5deee21f5349fdacb350bc48ac2388a4b3a0fff988aec6b516294b6ae8e5921a"
+    },
+    "native/source-forks/rustls-0.23.46/upstream-files.json": {
+      "bytes": 21323,
+      "sha256": "bc389f68b1eb14f6d79bb38870640fabd05e44ec22bf12d872e479d033b81c34"
+    },
+    "native/toolchain/COPYRIGHT-library.html": {
+      "bytes": 279302,
+      "sha256": "0a65bb747c49c7bb816cbc7188319bd6e4e8d08091c1190b8a3c0971c47968ed"
+    },
+    "native/toolchain/LICENSE-APACHE": {
+      "bytes": 9723,
+      "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a"
+    },
+    "native/toolchain/LICENSE-MIT": {
+      "bytes": 1068,
+      "sha256": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1"
+    },
+    "native/toolchain/PROVENANCE.json": {
+      "bytes": 22570,
+      "sha256": "3f6a7511cc52fe3898b494a9e2dc2b374ab1c59c38a89956121266616e2460ae"
+    },
+    "native/x86_64-linux-android.cdx.json": {
+      "bytes": 289480,
+      "sha256": "a65eb550f733d8243b95c239f18368cacf266926baa529c494127add2d63b1c2"
+    },
+    "native/x86_64-linux-android.notices.json": {
+      "bytes": 128307,
+      "sha256": "e9d398e9b73f04c46b95a2eafd80ca56281c5c793ab30e702e5c1a5d570c53b1"
+    }
+  },
+  "nativeLibraries": {
+    "aarch64-linux-android": {
+      "abi": "arm64-v8a",
+      "bytes": 12257600,
+      "sha256": "038da434bc38492598ad4d3b614fc2d2ed5c87719801c94cffbe9fc143f64af1"
+    },
+    "armv7-linux-androideabi": {
+      "abi": "armeabi-v7a",
+      "bytes": 8573072,
+      "sha256": "19925fb57db59e2496212a72c7306f3f3bb91768c3edd88821615662411ee98d"
+    },
+    "i686-linux-android": {
+      "abi": "x86",
+      "bytes": 13088992,
+      "sha256": "ac11fa4008bcd93fc73d117fe4354855289ca4138ae4c2e8be690c164fef95fd"
+    },
+    "x86_64-linux-android": {
+      "abi": "x86_64",
+      "bytes": 14569544,
+      "sha256": "6384126a9ac969eb7a6c3b6fffb5e3653e45190ec9079b8d86575b16b1456912"
+    }
+  },
+  "normalGraphics4ProducerReceiptSha256": "448cfa28f72adee3b200c2e8f5bbe23f0ae895a3aad6c857952936dceaff9345",
+  "producerReceiptsByTarget": {
+    "aarch64-linux-android": "8738ecef13448837ae7893680fc3a1e61839daa9259a90109d9ca71727c353f6",
+    "armv7-linux-androideabi": "8738ecef13448837ae7893680fc3a1e61839daa9259a90109d9ca71727c353f6",
+    "i686-linux-android": "8738ecef13448837ae7893680fc3a1e61839daa9259a90109d9ca71727c353f6",
+    "x86_64-linux-android": "8738ecef13448837ae7893680fc3a1e61839daa9259a90109d9ca71727c353f6"
+  },
+  "schema": 1,
+  "sourceProducerProfile": "android4",
+  "targets": [
+    "aarch64-linux-android",
+    "armv7-linux-androideabi",
+    "i686-linux-android",
+    "x86_64-linux-android"
+  ]
+}

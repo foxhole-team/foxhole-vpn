@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_help_privacy_title">Datenschutz und Verbindungsprüfungen</string>
+    <string name="vpn_help_privacy_body">Verbindungsprüfungen kontaktieren Google; der ungefähre IP-basierte Standort stammt von ipwho.is. VPN-Prüfungen nutzen das gewählte VPN-Netz, Standortprüfungen ohne VPN die aktuelle Internetverbindung. Diese Dienste sehen die Anfragen und deren Quell-IP. Profile und Einstellungen sind auf diesem Gerät verschlüsselt. Keine Werbe- oder Analyse-SDKs enthalten.</string>
+    <string name="vpn_help_updates_title">Updates</string>
+    <string name="vpn_help_updates_body">Wenn unter Einstellungen → Hintergrundupdates aktiviert, werden Abonnements standardmäßig etwa alle 12 Stunden aktualisiert und signierte Verbindungsdaten alle 24 Stunden geprüft. Beide Prüfungen lassen sich dort deaktivieren. Die Dateninstallation erfordert Ihre Aktion. Android kann Hintergrundprüfungen verzögern. F-Droid verwaltet App-Updates für seine Versionen.</string>
+</resources>

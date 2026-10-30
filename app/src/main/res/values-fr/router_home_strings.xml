@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_router_home_notification_channel">Réseau domestique</string>
+    <string name="vpn_router_home_notification_title">Réseau domestique</string>
+    <string name="vpn_router_home_notification_monitoring">Basculement VPN automatique activé</string>
+    <string name="vpn_router_home_notification_unavailable">Aucune connexion au routeur</string>
+    <string name="vpn_router_home_notification_stop">DÉSACTIVER</string>
+    <string name="vpn_router_home_notification_permission">Autorisez les notifications pour activer le basculement VPN automatique.</string>
+    <string name="vpn_router_home_notifications_permission">Autorisez les notifications pour le basculement VPN à domicile.</string>
+    <string name="vpn_router_home_notification_profile_unsupported">Basculement automatique indisponible pour ce profil</string>
+</resources>

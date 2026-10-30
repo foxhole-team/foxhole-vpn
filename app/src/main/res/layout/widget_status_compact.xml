@@ -1,0 +1,155 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_status_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/widget_status_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:importantForAccessibility="no"
+        android:scaleType="fitXY"
+        android:src="@drawable/widget_status_background_dark" />
+
+    <LinearLayout
+        android:id="@+id/widget_status_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="4dp">
+
+        <LinearLayout
+            android:id="@+id/widget_status_header"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <FrameLayout
+                android:id="@+id/widget_status_logo_touch"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/widget_open_app"
+                android:focusable="true">
+                <ImageView
+                    android:id="@+id/widget_status_logo"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_launcher_openwrt" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:gravity="start|center_vertical"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/widget_status_label"
+                    android:layout_width="wrap_content"
+                    android:maxWidth="168dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/tiny5_regular"
+                    android:gravity="start|center_vertical"
+                    android:maxLines="2"
+                    android:text="@string/widget_loading"
+                    android:textColor="#B49A76"
+                    android:textSize="11sp" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:gravity="start|center_vertical"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/widget_status_device"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginEnd="3dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/widget_status_device" />
+                    <ImageView
+                        android:id="@+id/widget_status_flag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:importantForAccessibility="no"
+                        android:scaleType="fitCenter"
+                        android:visibility="gone" />
+                    <TextView
+                        android:id="@+id/widget_status_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/jetbrains_mono_bold"
+                        android:gravity="start|center_vertical"
+                        android:maxLines="1"
+                        android:text="@string/widget_detail_empty"
+                        android:textColor="#F0E6D6"
+                        android:textSize="@dimen/widget_compact_detail_text_size" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/widget_status_action_row"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+            <FrameLayout
+                android:id="@+id/widget_status_power_touch"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:contentDescription="@string/widget_connect"
+                android:enabled="false"
+                android:focusable="true">
+                <ImageView
+                    android:id="@+id/widget_status_power_surface"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/widget_status_action_surface" />
+                <ImageView
+                    android:id="@+id/widget_status_power_ring"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/widget_status_action_outline" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="12dp">
+                    <ImageView
+                        android:id="@+id/widget_status_power_icon"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/widget_status_power" />
+                    <TextView
+                        android:id="@+id/widget_status_power_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/jetbrains_mono_bold"
+                        android:importantForAccessibility="no"
+                        android:maxLines="1"
+                        android:text="@string/widget_connect"
+                        android:textColor="#777777"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

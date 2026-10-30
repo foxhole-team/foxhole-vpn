@@ -1,0 +1,2 @@
+Restored the simple gray vector globe with direct dragging and bounded inertia.
+The widget shows “Determining…” while connecting or determining home location.

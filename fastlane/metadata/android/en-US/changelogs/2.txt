@@ -1,0 +1,6 @@
+0.1.1
+
+- Adds a manually rotatable globe with Volume and Vector styles, current-network and VPN markers.
+- Moves profiles, imports and settings into bottom sheets.
+- Adds a large green Start and red Stop action.
+- Preserves connection errors and settles cancelled starts.

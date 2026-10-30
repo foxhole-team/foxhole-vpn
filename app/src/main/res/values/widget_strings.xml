@@ -1,0 +1,22 @@
+<resources>
+    <string name="widget_status_label">FoxHole VPN · Status</string>
+    <string name="widget_status_description">Compact VPN status and connection control.</string>
+    <string name="widget_fox_label">FoxHole VPN · Fox</string>
+    <string name="widget_fox_description">The fox shows the VPN connection state. Tap to connect or disconnect.</string>
+    <string name="widget_connected">Connected to the VPN network</string>
+    <string name="widget_loading">Loading</string>
+    <string name="widget_disconnected">Disconnected from the VPN network</string>
+    <string name="widget_connecting">Connecting</string>
+    <string name="widget_validating">Checking connection</string>
+    <string name="widget_stopping">Disconnecting</string>
+    <string name="widget_error">Connection error</string>
+    <string name="widget_connect">CONNECT</string>
+    <string name="widget_disconnect">DISCONNECT</string>
+    <string name="widget_cancel">CANCEL</string>
+    <string name="widget_open_app">Open FoxHole VPN</string>
+    <string name="widget_choose_profile">Choose profile in the app</string>
+    <string name="widget_permission_denied">VPN permission was not granted.</string>
+    <string name="widget_detail_empty">—</string>
+    <string name="widget_location_determining">Determining…</string>
+    <string name="widget_location_cached">Last known: %1$s</string>
+</resources>

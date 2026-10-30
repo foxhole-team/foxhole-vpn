@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_clipboard_empty">クリップボードにインポートするテキストがありません。</string>
+    <string name="vpn_clipboard_focus_unavailable">クリップボードを読み取れませんでした。再度貼り付けてください。</string>
+</resources>

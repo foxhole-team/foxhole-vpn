@@ -1,0 +1,79 @@
+name: Prepare app update manifest
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Existing release tag matching the signed APK version
+        required: true
+        type: string
+      apk_asset:
+        description: Existing canonical-signed public VPN APK asset
+        required: true
+        type: string
+      publish_manifest:
+        description: Attach the verified manifest to this release
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: checkout
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - name: setup Android verification tools
+        uses: android-actions/setup-android@40fd30fb8d7440372e1316f5d1809ec01dcd3699 # v4
+      - name: install build tools
+        run: sdkmanager "build-tools;37.0.0"
+      - name: verify published APK and generate manifest
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+          APK_ASSET: ${{ inputs.apk_asset }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$GITHUB_REPOSITORY" == "foxhole-team/foxhole-vpn" ]]
+          [[ "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+([-.][A-Za-z0-9.-]+)?$ ]]
+          [[ "$APK_ASSET" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*\.apk$ ]]
+          candidate_dir="$RUNNER_TEMP/vpn-update-candidate"
+          mkdir -m 700 "$candidate_dir"
+          gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --json isDraft,isPrerelease,assets > "$candidate_dir/release.json"
+          jq -e --arg name "$APK_ASSET" '(.isDraft == false) and (.isPrerelease == false) and ([.assets[] | select(.name == $name and .size > 0 and .size <= 134217728)] | length == 1) and ([.assets[] | select(.name == "update-manifest.json")] | length == 0)' "$candidate_dir/release.json"
+          gh release download "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --pattern "$APK_ASSET" --dir "$candidate_dir"
+          tools_dir="${ANDROID_HOME:?}/build-tools/37.0.0"
+          python3 scripts/generate-update-manifest.py --apk "$candidate_dir/$APK_ASSET" --asset-name "$APK_ASSET" \
+            --tag "$RELEASE_TAG" --apksigner "$tools_dir/apksigner" --aapt2 "$tools_dir/aapt2" \
+            --output "$candidate_dir/update-manifest.json"
+      - name: retain verified update manifest
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: vpn-update-manifest
+          path: ${{ runner.temp }}/vpn-update-candidate/update-manifest.json
+          if-no-files-found: error
+
+  attach:
+    if: inputs.publish_manifest
+    needs: verify
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - name: download verified manifest
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          name: vpn-update-manifest
+          path: ${{ runner.temp }}/vpn-update-manifest
+      - name: attach without replacing existing assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        run: gh release upload "$RELEASE_TAG" "$RUNNER_TEMP/vpn-update-manifest/update-manifest.json" --repo "$GITHUB_REPOSITORY"

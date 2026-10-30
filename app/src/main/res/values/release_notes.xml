@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_release_notes_title">What’s new</string>
+    <string name="vpn_release_notes_formats">New subscription formats: compatible Clash/Mihomo YAML/JSON and Outline JSON.</string>
+    <string name="vpn_release_notes_imports">Import v2rayTun links, FoxHole JSON profiles, and pasted SIP008 JSON.</string>
+    <string name="vpn_release_notes_router">Install and manage VPN on a router running FoxHole OpenWrt Client, directly from the app.</string>
+    <string name="vpn_release_notes_storage_error">Could not read or save your acknowledgement. Try again.</string>
+</resources>

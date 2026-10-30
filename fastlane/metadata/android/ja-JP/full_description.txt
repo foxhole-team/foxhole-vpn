@@ -1,0 +1,15 @@
+FoxHole VPNはAndroid 8以降向けのシンプルなVPNクライアントです。VPNプロバイダーまたは自分のサーバーのプロファイルをインポートし、電話を接続して、ペアリング済みOpenWrtルーターをアプリから管理できます。
+
+VLESS、VMess、Trojan、Shadowsocks/Outline、WireGuard、Hysteria2、Naive、TUIC、AnyTLSに対応します。互換性のあるFoxHole Guard設定、v2rayTunリンクとサブスクリプション、Clash/mihomo YAML、SIP008 JSON、Outline動的キー（ssconf://）をインポートできます。エクスポートしたプロファイルや参照リンクには認証情報が含まれる場合があります。信頼できる相手とのみ共有してください。
+
+設定 → バックグラウンド更新で有効にすると、既定ではサブスクリプションを約12時間ごとに更新し、FoxHole DBの署名付き接続データを24時間ごとに確認します。各確認は同じ画面で個別にオフにできます。データのインストールには引き続き操作が必要です。GitHub版は毎日アプリの更新を確認します。APKのダウンロードとインストールには操作とAndroidの確認が必要です。F-Droid版は独自のAPK更新を確認・インストールしません。F-Droidをご利用ください。Androidがバックグラウンド処理を遅らせることがあります。
+
+プロファイルと設定はAndroid Keystoreの鍵で端末上に暗号化されます。広告や解析SDKは含まれません。VPN確認にはwww.google.com/generate_204を使用し、出口IPの情報はipwho.isから取得します。これらのリクエストは選択したVPNネットワークを使用します。VPNがオフのときは、ウィジェットを含め、現在のインターネット接続でおおよその端末位置を更新できます。各サービスはリクエストと送信元IPを受け取ります。署名付き接続データはfoxhole-team.github.io/foxhole-db、サブスクリプションは保存済みプロバイダーURLから取得します。GPSは不要です。
+
+FoxHole OpenWrt Client (https://github.com/foxhole-team/foxhole-openwrt-client)パッケージをインストールすると、ルーターのVPNプロファイル、端末ルーティング、プロトコルパッケージを管理できます。現在のパッケージはmediatek/filogicとx86/64上のパッケージマネージャーapkを使用するOpenWrt 25.12.5に対応します。設定時に正確なアーキテクチャ、リリースカタログ、空き容量を検証します。ルーターの管理者権限が必要です。外出先で自分の端末からVPNに接続するには、到達可能なルーターの公開アドレスと設定済みの受信VPNが必要です。モバイル回線から到達性を確認してください。
+
+ルーターへの新規インストールでは、表示されるFoxHole自動更新のチェックボックスが最初からオンになっています。オフにするか、後からルーター設定で変更できます。有効な場合、ルーターは毎日確認し、F-Droidとは別にFoxHoleリリースの検証済みパッケージ更新をインストールします。既存ルーターとのペアリングでは既存の設定を保持します。プロファイルとペアリングは保持され、OpenWrtファームウェアや他のシステムパッケージは更新しません。電話のペアリングを解除しても、この更新設定は無効になりません。
+
+FoxCore: https://github.com/foxhole-team/foxhole-core
+FoxHole Guard: https://github.com/foxhole-team/foxhole-guard
+GPL-3.0-or-later.

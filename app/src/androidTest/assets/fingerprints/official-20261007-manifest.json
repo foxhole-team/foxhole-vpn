@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "name": "foxhole-tls-fingerprints",
+  "format": "tls-fingerprint-tables-json",
+  "generated_at": "2026-10-07T10:18:37Z",
+  "source": {
+    "repo": "https://github.com/foxhole-team/foxhole-core",
+    "dataset": "fingerprints",
+    "license": "GPL-3.0-or-later",
+    "profile_count": 9,
+    "upstream_reference": "profile-specific provenance in foxhole-core/fingerprints; uTLS where available"
+  },
+  "artifact": {
+    "file": "fingerprints.json",
+    "size": 99345,
+    "sha256": "73c2d86a587596e4aa4b9a568247ba9d7174f747950a79e0b0a55854d5d36013"
+  },
+  "compatibility": {
+    "min_app_version": "0.0.1"
+  }
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_licenses_title">ライセンス</string>
+    <string name="vpn_license_public_domain">パブリックドメイン</string>
+</resources>

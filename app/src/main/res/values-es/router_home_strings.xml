@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_router_home_notification_channel">Red doméstica</string>
+    <string name="vpn_router_home_notification_title">Red doméstica</string>
+    <string name="vpn_router_home_notification_monitoring">Cambio automático de VPN activado</string>
+    <string name="vpn_router_home_notification_unavailable">Sin conexión al router</string>
+    <string name="vpn_router_home_notification_stop">DESACTIVAR</string>
+    <string name="vpn_router_home_notification_permission">Permita las notificaciones para activar el cambio automático de VPN.</string>
+    <string name="vpn_router_home_notifications_permission">Permita notificaciones para el cambio de VPN en casa.</string>
+    <string name="vpn_router_home_notification_profile_unsupported">El cambio automático no está disponible para este perfil</string>
+</resources>

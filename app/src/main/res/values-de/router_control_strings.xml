@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_control_enable">Steuerung</string>
+    <string name="router_control_vpn">VPN aktivieren</string>
+    <string name="router_control_choose_country">Land für lokalen Datenverkehr</string>
+    <string name="router_control_lan_clients">Heimgeräte</string>
+    <string name="router_control_remote_clients">Entfernte VPN-Clients</string>
+    <string name="router_control_remove_body">%1$s vom Router entfernen?</string>
+    <string name="router_control_pairing_required">Kopplung nicht verfügbar. Erneut mit dem Router verbinden.</string>
+    <string name="router_control_unpair_help">Entkoppeln trennt die Verwaltung. Den Client separat löschen, um den VPN-Zugriff zu widerrufen.</string>
+    <string name="router_control_unpair">ENTKOPPELN</string>
+    <string name="router_control_unpair_title">Router entkoppeln?</string>
+    <string name="router_control_client_actions">Clientaktion wählen</string>
+    <string name="router_control_client_actions_button">Aktionen</string>
+    <string name="router_control_client_remove_title">Profilentfernung bestätigen</string>
+    <string name="router_control_client_remove_body">VPN-Zugriff für %1$s entfernen?</string>
+    <string name="router_control_client_remove_record_body">%1$s vom Router entfernen?</string>
+    <string name="router_control_country_direct">Inländische Websites direkt</string>
+    <string name="router_control_auto_home">Heimnetzumschaltung</string>
+    <string name="router_control_create_client">Client erstellen</string>
+    <string name="router_control_create">ERSTELLEN</string>
+    <string name="router_control_client_name">Clientname</string>
+    <string name="router_control_client_details">Profil verwalten</string>
+    <string name="router_control_import_phone">AUF TELEFON IMPORTIEREN</string>
+    <string name="router_control_imported">Profil importiert</string>
+    <string name="router_control_show_qr">QR anzeigen</string>
+    <string name="router_control_qr_description">VPN-Profil-QR für %1$s</string>
+    <string name="router_control_qr_unavailable">QR für dieses Profil nicht verfügbar</string>
+    <string name="router_control_client_access">Persönlicher VPN-Zugang</string>
+    <string name="router_control_client_template">Gespeicherte Vorlage; Fernzugriff nicht konfiguriert</string>
+    <string name="router_control_create_help">Hysteria2-Client. Öffentliche Routeradresse und konfiguriertes eingehendes VPN erforderlich.</string>
+    <string name="router_control_enable_help">Verwaltung von diesem Telefon aktivieren. Das Deaktivieren beendet das Router-VPN nicht.</string>
+    <string name="router_control_country_help">Das Land wird anhand der Internetverbindung des Routers ermittelt. Tippen Sie auf die Flagge, um es zu ändern.</string>
+    <string name="router_control_home_help">Nur zwischen Telefon und Heimrouter wechseln, wenn die unterstützte Routerverbindung bestätigt ist.</string>
+    <string name="router_control_vpn_help">Ausgewähltes Routerprofil starten oder stoppen. Zum Auswählen antippen, für Aktionen gedrückt halten.</string>
+    <string name="router_control_lan_help">Router-VPN oder Direktverbindung wählen. Das aktive Routerprofil wird verwendet.</string>
+    <string name="router_control_clients_help">VPN-Profil für QR-Code, Import, Teilen oder Entfernen öffnen.</string>
+    <string name="router_control_qr_loading">QR wird erstellt…</string>
+    <string name="router_control_profile_loading">Profil wird geladen…</string>
+</resources>

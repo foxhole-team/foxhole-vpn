@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_control_enable">管理</string>
+    <string name="router_control_vpn">启用 VPN</string>
+    <string name="router_control_choose_country">本地流量所属国家</string>
+    <string name="router_control_lan_clients">家庭设备</string>
+    <string name="router_control_remote_clients">远程 VPN 客户端</string>
+    <string name="router_control_remove_body">是否从路由器删除 %1$s？</string>
+    <string name="router_control_pairing_required">配对不可用。请重新连接路由器。</string>
+    <string name="router_control_unpair_help">取消配对会断开管理连接。要撤销 VPN 访问权限，请单独删除客户端。</string>
+    <string name="router_control_unpair">取消配对</string>
+    <string name="router_control_unpair_title">是否取消路由器配对？</string>
+    <string name="router_control_client_actions">选择客户端操作</string>
+    <string name="router_control_client_actions_button">操作</string>
+    <string name="router_control_client_remove_title">确认删除配置</string>
+    <string name="router_control_client_remove_body">是否删除 %1$s 的 VPN 访问权限？</string>
+    <string name="router_control_client_remove_record_body">是否从路由器删除 %1$s？</string>
+    <string name="router_control_country_direct">国内网站直连</string>
+    <string name="router_control_auto_home">家庭网络切换</string>
+    <string name="router_control_create_client">创建客户端</string>
+    <string name="router_control_create">创建</string>
+    <string name="router_control_client_name">客户端名称</string>
+    <string name="router_control_client_details">管理配置</string>
+    <string name="router_control_import_phone">导入手机</string>
+    <string name="router_control_imported">已导入配置</string>
+    <string name="router_control_show_qr">显示二维码</string>
+    <string name="router_control_qr_description">%1$s 的 VPN 配置二维码</string>
+    <string name="router_control_qr_unavailable">此配置的二维码不可用</string>
+    <string name="router_control_client_access">个人 VPN 访问</string>
+    <string name="router_control_client_template">已保存的模板；尚未配置远程访问</string>
+    <string name="router_control_create_help">Hysteria2 客户端。需要路由器公网地址及已配置的入站 VPN。</string>
+    <string name="router_control_enable_help">启用此手机的管理功能。关闭管理后，路由器 VPN 仍继续运行。</string>
+    <string name="router_control_country_help">国家或地区根据路由器的互联网连接确定。点按国旗即可更改。</string>
+    <string name="router_control_home_help">仅在确认受支持的路由器连接后，才在手机和家庭路由器之间切换。</string>
+    <string name="router_control_vpn_help">启动或停止所选的路由器配置。点击配置进行选择；长按查看操作。</string>
+    <string name="router_control_lan_help">选择路由器 VPN 或直连。将使用路由器当前配置。</string>
+    <string name="router_control_clients_help">打开 VPN 配置可查看二维码、导入、分享或删除。</string>
+    <string name="router_control_qr_loading">正在生成二维码…</string>
+    <string name="router_control_profile_loading">正在加载配置…</string>
+</resources>

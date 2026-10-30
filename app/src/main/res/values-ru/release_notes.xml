@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_release_notes_title">Что нового</string>
+    <string name="vpn_release_notes_formats">Новые форматы подписок: совместимые Clash/Mihomo YAML/JSON и Outline JSON.</string>
+    <string name="vpn_release_notes_imports">Импорт ссылок v2rayTun, JSON-профилей FoxHole и прямая вставка SIP008 JSON.</string>
+    <string name="vpn_release_notes_router">Поддержка установки и управления VPN на роутере с установленным пакетом FoxHole OpenWrt Client прямо из приложения.</string>
+    <string name="vpn_release_notes_storage_error">Не удалось прочитать или сохранить подтверждение. Повторите попытку.</string>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FoxHole VPN Тест</string>
+    <string name="review_demo_label">FoxHole VPN Тест</string>
+    <string name="review_demo_mode_hint">Демо · без сетевого подключения</string>
+    <string name="review_demo_flash">Демо: обычный роутер</string>
+    <string name="review_demo_ram">Демо: мало флеш-памяти</string>
+    <string name="review_demo_action">В тестовом приложении используются только демо-данные. Сетевых и системных действий нет.</string>
+</resources>

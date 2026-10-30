@@ -1,0 +1,98 @@
+# This checks source metadata only. Full tests and builds run in Git LAN / the lab.
+name: source-checks
+
+on:
+  push:
+    branches: [dev, main]
+  pull_request:
+    branches: [dev, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: source-checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source-checks:
+    name: source syntax and metadata only
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout source without build dependencies
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - name: Validate source syntax and pinned metadata
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import ast, json, pathlib, subprocess, tomllib
+          import xml.etree.ElementTree as ET
+          root = pathlib.Path('.')
+          paths = subprocess.check_output(['git', 'ls-files', '-z'], text=True).split('\0')
+          checked = 0
+          for name in filter(None, paths):
+              p = root / name
+              if not p.is_file():
+                  continue
+              if name.startswith(('scripts/', 'tools/')) and p.suffix == '.py':
+                  ast.parse(p.read_text(), filename=name)
+                  checked += 1
+              elif name.startswith(('config/', 'metadata/')) and p.suffix == '.json':
+                  json.loads(p.read_text())
+                  checked += 1
+              elif name in ('Cargo.toml', 'Cargo.lock', 'rust-toolchain.toml', 'gradle/libs.versions.toml', 'package-lock.json', 'package.json'):
+                  if p.suffix == '.json':
+                      json.loads(p.read_text())
+                  else:
+                      tomllib.loads(p.read_text())
+                  checked += 1
+          assert checked, 'No source metadata was checked'
+          print(f'Source syntax and metadata checked: {checked} files; no build or test qualification.')
+          import re
+          props = pathlib.Path('gradle.properties').read_text()
+          assert re.search(r'^org\.gradle\.dependency\.verification\s*=\s*strict\s*$', props, re.M), 'Strict dependency verification is required'
+          metadata = ET.parse('gradle/verification-metadata.xml').getroot()
+          ns = {'v': metadata.tag.split('}')[0][1:]}
+          assert metadata.findtext('v:configuration/v:verify-metadata', namespaces=ns) == 'true'
+          components = {(c.get('group'), c.get('name'), c.get('version')): c for c in metadata.findall('v:components/v:component', ns)}
+          required = set()
+          plugins = {'org.jetbrains.kotlin.plugin.compose': ('org.jetbrains.kotlin', 'compose-compiler-gradle-plugin'), 'org.jetbrains.kotlin.plugin.serialization': ('org.jetbrains.kotlin', 'kotlin-serialization'), 'com.google.devtools.ksp': ('com.google.devtools.ksp', 'symbol-processing-gradle-plugin')}
+          for name in filter(None, paths):
+              if not name.endswith('build.gradle.kts'):
+                  continue
+              text = pathlib.Path(name).read_text()
+              required.update(re.findall(r'classpath\("([^":]+):([^":]+):([^"\s]+)"\)', text))
+              for plugin, version in re.findall(r'id\("([^"\s]+)"\)\s+version\s+"([^"\s]+)"', text):
+                  if plugin in plugins:
+                      required.add((*plugins[plugin], version))
+          for coordinate in sorted(required):
+              assert coordinate in components, f'Missing reviewed verification metadata: {coordinate}'
+              artifacts = components[coordinate].findall('v:artifact', ns)
+              assert artifacts and all(re.fullmatch(r'[0-9a-f]{64}', a.find('v:sha256', ns).get('value', '')) if a.find('v:sha256', ns) is not None else False for a in artifacts), f'Missing or invalid SHA-256: {coordinate}'
+          wrapper = pathlib.Path('gradle/wrapper/gradle-wrapper.properties').read_text()
+          assert re.search(r'^distributionSha256Sum=[0-9a-f]{64}$', wrapper, re.M), 'Pinned Gradle distribution SHA-256 is required'
+          print('Declared build-tool versions have checksum entries. Publisher trust and the resolved graph require lab verification.')
+          PY
+      - name: Check shell syntax
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import pathlib, subprocess
+          for raw in subprocess.check_output(['git', 'ls-files', '-z'], text=True).split('\0'):
+              p = pathlib.Path(raw)
+              if not raw or not p.is_file() or not (raw.startswith(('scripts/', 'tools/')) or raw in ('gradlew', 'install.sh')):
+                  continue
+              first = p.open('rb').readline()
+              if first.startswith(b'#!') and b'bash' in first:
+                  subprocess.run(['bash', '-n', raw], check=True)
+              elif first.startswith(b'#!/bin/sh') or raw == 'gradlew':
+                  subprocess.run(['sh', '-n', raw], check=True)
+          PY
+      - name: Record verification scope
+        shell: bash
+        run: |
+          printf '%s\n' 'Source syntax and metadata only. Full tests, dependency/publisher verification, native builds, APKs and emulators require the Git LAN / lab record for the exact source and inputs. This result does not qualify a release.' >> "$GITHUB_STEP_SUMMARY"

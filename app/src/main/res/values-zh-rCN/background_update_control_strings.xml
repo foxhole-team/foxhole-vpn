@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_background_updates">后台更新</string>
+    <string name="vpn_auto_refresh_subscriptions">自动刷新订阅</string>
+    <string name="vpn_auto_refresh_subscriptions_help">启用后，每 %1$d 小时刷新已保存的服务商订阅。Android 可能延迟检查。关闭后会保留已保存的配置。</string>
+    <string name="vpn_auto_check_connection_data">检查连接数据更新</string>
+    <string name="vpn_auto_check_connection_data_help">启用后，每 %1$d 小时检查 FoxHole DB 的已签名连接数据。安装更新仍需您的操作。</string>
+</resources>

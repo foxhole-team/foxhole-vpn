@@ -1,0 +1,1 @@
+Server card placement avoids covering the home marker and connection line.

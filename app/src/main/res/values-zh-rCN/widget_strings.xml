@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_status_label">FoxHole VPN · 状态</string>
+    <string name="widget_status_description">简洁的 VPN 状态与连接控制。</string>
+    <string name="widget_fox_label">FoxHole VPN · 狐狸</string>
+    <string name="widget_fox_description">狐狸显示 VPN 连接状态。点击可连接或断开。</string>
+    <string name="widget_connected">已连接 VPN 网络</string>
+    <string name="widget_loading">正在加载</string>
+    <string name="widget_disconnected">已断开 VPN 网络</string>
+    <string name="widget_connecting">正在连接</string>
+    <string name="widget_validating">正在检查连接</string>
+    <string name="widget_stopping">正在断开连接</string>
+    <string name="widget_error">连接错误</string>
+    <string name="widget_connect">连接</string>
+    <string name="widget_disconnect">断开连接</string>
+    <string name="widget_cancel">取消</string>
+    <string name="widget_open_app">打开 FoxHole VPN</string>
+    <string name="widget_choose_profile">请在应用中选择配置</string>
+    <string name="widget_permission_denied">未授予 VPN 权限。</string>
+    <string name="widget_detail_empty">—</string>
+    <string name="widget_location_determining">正在确定…</string>
+    <string name="widget_location_cached">上次位置：%1$s</string>
+</resources>

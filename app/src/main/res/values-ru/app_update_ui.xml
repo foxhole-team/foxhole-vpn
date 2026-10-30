@@ -1,0 +1,20 @@
+<resources>
+    <string name="vpn_app_update_title">Обновление приложения</string>
+    <string name="vpn_app_update_check">ПРОВЕРИТЬ ОБНОВЛЕНИЯ</string>
+    <string name="vpn_app_update_checking">Проверяем версию приложения…</string>
+    <string name="vpn_app_update_no_release">Релиз ещё не опубликован.</string>
+    <string name="vpn_app_update_current">Установлена последняя версия.</string>
+    <string name="vpn_app_update_available">Доступна версия %1$s. Нажмите, чтобы скачать.</string>
+    <string name="vpn_app_update_downloading">Загружаем приложение…</string>
+    <string name="vpn_app_update_percent">Загружаем приложение… %1$d%%</string>
+    <string name="vpn_app_update_verifying">Проверяем загруженное приложение…</string>
+    <string name="vpn_app_update_ready">Версия %1$s загружена. Нажмите, чтобы установить.</string>
+    <string name="vpn_app_update_intro">Обновления FoxHole VPN с GitHub.</string>
+    <string name="vpn_app_update_external_source">Обновляйте приложение через источник, из которого оно установлено.</string>
+    <string name="vpn_app_update_error_network">Не удалось связаться с GitHub. Попробуйте позже.</string>
+    <string name="vpn_app_update_error_rate">GitHub временно ограничил запросы. Попробуйте позже.</string>
+    <string name="vpn_app_update_error_verify">Файл обновления не прошёл проверку.</string>
+    <string name="vpn_app_update_error_storage">Не удалось сохранить обновление. Проверьте свободное место.</string>
+    <string name="vpn_app_update_error_install">Не удалось открыть установщик Android.</string>
+    <string name="vpn_app_update_install_permission">Разрешите установку из FoxHole VPN в настройках Android и повторите.</string>
+</resources>

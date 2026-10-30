@@ -1,0 +1,1 @@
+Generated subscription names now show their VPN protocol clearly.

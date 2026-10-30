@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_router_home_notification_channel">ホームネットワーク</string>
+    <string name="vpn_router_home_notification_title">ホームネットワーク</string>
+    <string name="vpn_router_home_notification_monitoring">自動VPN切り替えが有効です</string>
+    <string name="vpn_router_home_notification_unavailable">ルーターに接続していません</string>
+    <string name="vpn_router_home_notification_stop">無効にする</string>
+    <string name="vpn_router_home_notification_permission">自動VPN切り替えを有効にするには通知を許可してください。</string>
+    <string name="vpn_router_home_notifications_permission">ホームVPN切り替えの通知を許可してください。</string>
+    <string name="vpn_router_home_notification_profile_unsupported">このプロファイルは自動切り替えに対応していません</string>
+</resources>

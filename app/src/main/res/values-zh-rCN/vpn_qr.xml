@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_import_qr">扫描二维码</string>
+    <string name="vpn_qr_title">扫描二维码</string>
+    <string name="vpn_qr_hint">请将摄像头对准 VPN 配置二维码。</string>
+    <string name="vpn_qr_camera_permission_title">相机访问</string>
+    <string name="vpn_qr_camera_permission_body">扫描二维码需要相机访问权限。不会保存照片或视频。</string>
+    <string name="vpn_qr_allow_camera">允许相机</string>
+    <string name="vpn_qr_open_settings">打开应用设置</string>
+    <string name="vpn_qr_settings_unavailable">无法打开应用设置。</string>
+    <string name="vpn_qr_camera_unavailable">相机不可用。请重试。</string>
+    <string name="vpn_qr_retry">重试</string>
+    <string name="vpn_qr_back">返回</string>
+    <string name="vpn_qr_preview">二维码相机预览</string>
+</resources>

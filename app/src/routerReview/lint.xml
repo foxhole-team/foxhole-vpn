@@ -1,0 +1,10 @@
+<lint>
+    <!-- These production components are removed from the offline demo manifest. -->
+    <issue id="NotificationPermission">
+        <ignore path="**/src/main/kotlin/com/foxhole/vpn/appupdates/VpnAppUpdateNotifier.kt" />
+    </issue>
+    <issue id="ForegroundServiceType">
+        <ignore path="**/src/main/kotlin/com/foxhole/vpn/runtime/VpnTunnelService.kt" />
+        <ignore path="**/src/main/kotlin/com/foxhole/vpn/router/RouterHomeAutomationService.kt" />
+    </issue>
+</lint>

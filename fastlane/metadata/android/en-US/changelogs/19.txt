@@ -1,0 +1,1 @@
+Limit the gentle status pulse to eight updates per second; keep the globe cached while idle.

@@ -1,0 +1,25 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_fox_root" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:padding="2dp">
+    <ViewFlipper android:id="@+id/widget_fox_animation" android:layout_width="match_parent"
+        android:layout_height="match_parent" android:autoStart="true" android:flipInterval="320">
+        <ImageView android:layout_width="match_parent" android:layout_height="match_parent"
+            android:importantForAccessibility="no" android:scaleType="centerInside"
+            android:src="@drawable/fhg_status_frame_1" />
+        <ImageView android:layout_width="match_parent" android:layout_height="match_parent"
+            android:importantForAccessibility="no" android:scaleType="centerInside"
+            android:src="@drawable/fhg_status_frame_2" />
+        <ImageView android:layout_width="match_parent" android:layout_height="match_parent"
+            android:importantForAccessibility="no" android:scaleType="centerInside"
+            android:src="@drawable/fhg_status_frame_3" />
+        <ImageView android:layout_width="match_parent" android:layout_height="match_parent"
+            android:importantForAccessibility="no" android:scaleType="centerInside"
+            android:src="@drawable/fhg_status_frame_4" />
+        <ImageView android:layout_width="match_parent" android:layout_height="match_parent"
+            android:importantForAccessibility="no" android:scaleType="centerInside"
+            android:src="@drawable/fhg_status_frame_5" />
+        <ImageView android:layout_width="match_parent" android:layout_height="match_parent"
+            android:importantForAccessibility="no" android:scaleType="centerInside"
+            android:src="@drawable/fhg_status_frame_6" />
+    </ViewFlipper>
+</FrameLayout>

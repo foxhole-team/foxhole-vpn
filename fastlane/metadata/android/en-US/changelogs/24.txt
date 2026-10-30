@@ -1,0 +1,1 @@
+Readable VPN protocol names and safe connection diagnostics.

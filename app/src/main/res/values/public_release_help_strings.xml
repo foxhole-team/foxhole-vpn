@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_help_privacy_title">Privacy and connection checks</string>
+    <string name="vpn_help_privacy_body">Connection checks contact Google, and approximate IP-based location comes from ipwho.is. VPN checks use the selected VPN network; location checks without VPN use the current internet connection. These services see the requests and their source IP address. Profiles and settings are encrypted on this device. No advertising or analytics SDK is included.</string>
+    <string name="vpn_help_updates_title">Updates</string>
+    <string name="vpn_help_updates_body">When enabled in Settings → Background updates, subscriptions refresh about every 12 hours and signed connection-data updates are checked every 24 hours by default. Turn either check off there. Data installation requires your action. Android may delay background checks. F-Droid manages app updates for its builds.</string>
+</resources>

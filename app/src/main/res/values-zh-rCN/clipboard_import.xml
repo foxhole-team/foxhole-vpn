@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_clipboard_empty">剪贴板中没有可导入的文本。</string>
+    <string name="vpn_clipboard_focus_unavailable">无法读取剪贴板。请再次粘贴。</string>
+</resources>

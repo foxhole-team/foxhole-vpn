@@ -1,0 +1,4 @@
+<resources>
+    <string name="vpn_profile_actions_title">Choose an action for the profile:</string>
+    <string name="vpn_profile_actions_named">Actions for %1$s</string>
+</resources>
