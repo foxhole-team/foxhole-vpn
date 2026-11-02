@@ -15,7 +15,7 @@
     <string name="vpn_router_flash">Во внутренней памяти</string>
     <string name="vpn_router_ram">В оперативной памяти</string>
     <string name="vpn_router_ram_note">После перезапуска роутера ядро VPN нужно загрузить заново.</string>
-    <string name="vpn_router_standard_network">Для автоматической настройки подключитесь к Wi-Fi роутера со стандартными настройками OpenWrt.</string>
+    <string name="vpn_router_standard_network">Подключитесь к Wi-Fi роутера и укажите его текущий адрес в локальной сети. Нестандартные сетевые настройки OpenWrt поддерживаются.</string>
     <string name="vpn_router_identity_review">Проверьте отпечаток роутера перед входом.</string>
     <string name="vpn_router_identity_changed">Отпечаток роутера изменился. Проверьте его перед повторным подключением.</string>
     <string name="vpn_router_checking">Проверка роутера…</string>
@@ -25,7 +25,7 @@
     <string name="vpn_router_remote_check">Профиль сохранён. Проверьте подключение через мобильную сеть.</string>
     <string name="vpn_router_new_pin">Новый PIN</string>
     <string name="vpn_router_repeat_pin">Повторите PIN</string>
-    <string name="vpn_router_change_pin_note">Задайте свой PIN из четырёх цифр для доступа к роутеру.</string>
+    <string name="vpn_router_change_pin_note">В конце первой настройки задайте шестизначный PIN-код. В дальнейшем изменить PIN можно только в LuCI под учётной записью владельца.</string>
     <string name="vpn_router_save">СОХРАНИТЬ</string>
     <string name="vpn_router_no_profile">Без профиля VPN для роутера</string>
     <string name="vpn_router_country_direct">Местный трафик напрямую</string>
@@ -36,8 +36,8 @@
     <string name="vpn_router_error_wifi">Для поиска роутера подключитесь к Wi-Fi роутера</string>
     <string name="vpn_router_error_address">Проверьте локальный IP-адрес роутера.</string>
     <string name="vpn_router_error_identity">Проверьте роутер и подключитесь заново.</string>
-    <string name="vpn_router_error_password">Проверьте пароль роутера.</string>
-    <string name="vpn_router_error_pin">Проверьте PIN роутера.</string>
+    <string name="vpn_router_error_password">Проверьте пароль роутера или SSH-ключ и пароль ключа.</string>
+    <string name="vpn_router_error_pin">Неверный PIN-код</string>
     <string name="vpn_router_error_locked">Слишком много попыток. Повторите позже.</string>
     <string name="vpn_router_error_unsupported">Эта конфигурация роутера не поддерживается.</string>
     <string name="vpn_router_error_storage">На роутере недостаточно свободного места или оперативной памяти.</string>
@@ -57,7 +57,7 @@
     <string name="vpn_router_profile_title">Профиль VPN</string>
     <string name="vpn_router_choose_protocols">Выберите протоколы</string>
     <string name="vpn_router_protocol_combination_unavailable">Такой набор недоступен. Измените выбор.</string>
-    <string name="vpn_router_error_limit">Можно сохранить до трёх роутеров</string>
+    <string name="vpn_router_error_limit">Сопряжение: до 10 мобильных устройств к одному роутеру; до 10 роутеров в одном приложении.</string>
     <string name="vpn_router_install_server">VPN-сервер для своих устройств</string>
     <string name="vpn_router_install_server_yes">Установить</string>
     <string name="vpn_router_install_server_no">Не устанавливать</string>

@@ -25,7 +25,7 @@
     <string name="vpn_router_remote_check">Telefonprofil gespeichert. Verbindung über mobile Daten prüfen.</string>
     <string name="vpn_router_new_pin">Neue PIN</string>
     <string name="vpn_router_repeat_pin">PIN wiederholen</string>
-    <string name="vpn_router_change_pin_note">Eigene vierstellige PIN für den Routerzugriff wählen.</string>
+    <string name="vpn_router_change_pin_note">Wählen Sie am Ende der Ersteinrichtung eine sechsstellige PIN. Spätere PIN-Änderungen sind nur in LuCI mit dem Eigentümerkonto möglich.</string>
     <string name="vpn_router_save">Speichern</string>
     <string name="vpn_router_no_profile">Kein Router-VPN-Profil</string>
     <string name="vpn_router_country_direct">Länderwebsites direkt</string>
@@ -37,7 +37,7 @@
     <string name="vpn_router_error_address">Lokale IP-Adresse des Routers prüfen.</string>
     <string name="vpn_router_error_identity">Routeridentität prüfen und erneut verbinden.</string>
     <string name="vpn_router_error_password">Routerpasswort prüfen.</string>
-    <string name="vpn_router_error_pin">Router-PIN prüfen.</string>
+    <string name="vpn_router_error_pin">Falsche PIN</string>
     <string name="vpn_router_error_locked">Zu viele Versuche. Später erneut versuchen.</string>
     <string name="vpn_router_error_unsupported">Diese Routerkonfiguration wird nicht unterstützt.</string>
     <string name="vpn_router_error_storage">Der Router hat nicht genug freien Speicherplatz oder Arbeitsspeicher.</string>
@@ -56,7 +56,7 @@
     <string name="vpn_router_profile_title">VPN-Profil</string>
     <string name="vpn_router_choose_protocols">Protokolle auswählen</string>
     <string name="vpn_router_protocol_combination_unavailable">Diese Kombination ist nicht verfügbar. Auswahl ändern.</string>
-    <string name="vpn_router_error_limit">Es können bis zu drei Router gespeichert werden</string>
+    <string name="vpn_router_error_limit">Kopplung: bis zu 10 Mobilgeräte pro Router; bis zu 10 Router in einer App.</string>
     <string name="vpn_router_install_server">VPN-Server für Ihre Geräte</string>
     <string name="vpn_router_install_server_yes">Enthalten</string>
     <string name="vpn_router_install_server_no">Nicht enthalten</string>

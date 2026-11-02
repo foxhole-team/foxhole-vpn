@@ -34,8 +34,8 @@
     <string name="vpn_system_settings">AndroidのVPN設定</string>
     <string name="vpn_theme">テーマ</string>
     <string name="vpn_font_style">フォント</string>
-    <string name="vpn_font_pixel">ピクセル</string>
-    <string name="vpn_font_standard">標準</string>
+    <string name="vpn_font_pixel">Tiny5 Regular</string>
+    <string name="vpn_font_standard">JetBrains Mono Bold</string>
     <string name="vpn_theme_system">システム</string>
     <string name="vpn_theme_light">ライト</string>
     <string name="vpn_language">言語</string>
@@ -48,7 +48,7 @@
     <string name="vpn_help_connect_title">接続</string>
     <string name="vpn_help_connect_body">VPNプロバイダーまたは自分のサーバーのプロファイルをインポートして選択し、「開始」をタップしてAndroidのVPN要求を許可してください。「停止」は接続処理をキャンセルするかVPNを切断します。</string>
     <string name="vpn_help_profiles_title">プロファイル</string>
-    <string name="vpn_help_profiles_body">プロファイルをタップしてプロトコルを選びます。長押しで共有、更新、削除、ペアリング済みルーターへの送信ができます。共有にはプロファイル全体または参照リンクが含まれ、認証情報を含む場合があります。信頼できる相手とのみ共有してください。更新はv2rayTunサブスクリプションとOutline動的キーを更新します。</string>
+    <string name="vpn_help_profiles_body">左側の丸いボタンでプロファイルを選択します。カードをタップすると詳細が開きます。プロファイルに複数のプロトコル候補がある場合は、リストから選んでください。長押しで共有、更新、削除、ペアリング済みルーターへの送信ができます。共有にはプロファイル全体または参照リンクが含まれ、認証情報を含む場合があります。信頼できる相手とのみ共有してください。更新では、プロバイダーのサブスクリプションとOutline動的キーから取得したプロファイルを更新します。</string>
     <string name="vpn_import">インポート</string>
     <string name="vpn_import_text">設定またはリンクを貼り付け</string>
     <string name="vpn_import_file">ファイルを選択</string>
@@ -112,7 +112,7 @@
     <string name="vpn_continue">続行</string>
     <string name="vpn_profile_refresh_unavailable">サブスクリプションのプロファイルのみ更新できます。</string>
     <string name="vpn_help_add_title">プロファイルを追加</string>
-    <string name="vpn_help_add_body">+を押して接続リンクやv2rayTunサブスクリプションを貼り付け、手動入力、ファイル読み込み、QRコードのスキャンを行ってください。</string>
+    <string name="vpn_help_add_body">+を押して接続リンク、またはv2rayTun由来を含むプロバイダーのHTTPSサブスクリプションリンクを貼り付けます。手動入力、ファイルの選択、QRコードのスキャンもできます。</string>
     <string name="vpn_help_protocols_title">対応プロトコル</string>
-    <string name="vpn_help_protocols_body">VLESS、VMess、Trojan、Shadowsocks/Outline、WireGuard、Hysteria2、Naive、TUIC、AnyTLS。インポート：リンク、v2rayTunサブスクリプション、互換JSON、Clash/mihomo YAML、SIP008 JSON、Outline動的キー（ssconf://）、WireGuard。</string>
+    <string name="vpn_help_protocols_body">VLESS、VMess、Trojan、Shadowsocks/Outline、WireGuard、Hysteria2、Naive、TUIC、AnyTLS。インポート：リンク、v2rayTun由来を含むプロバイダーのHTTPSサブスクリプション、互換JSON、Clash/mihomo YAML、SIP008 JSON、Outline動的キー（ssconf://）、WireGuard。Clash/mihomoからは対応するサーバーをインポートします。ルーティングルール、グループ、その他のクライアント設定は引き継ぎません。外部proxy-providersを含む設定には対応していません。</string>
 </resources>

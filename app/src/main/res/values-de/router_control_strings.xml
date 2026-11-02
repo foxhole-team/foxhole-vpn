@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="router_control_enable">Steuerung</string>
+    <string name="router_control_enable">Routerverwaltung</string>
     <string name="router_control_vpn">VPN aktivieren</string>
     <string name="router_control_choose_country">Land für lokalen Datenverkehr</string>
     <string name="router_control_lan_clients">Heimgeräte</string>
@@ -29,12 +29,23 @@
     <string name="router_control_client_access">Persönlicher VPN-Zugang</string>
     <string name="router_control_client_template">Gespeicherte Vorlage; Fernzugriff nicht konfiguriert</string>
     <string name="router_control_create_help">Hysteria2-Client. Öffentliche Routeradresse und konfiguriertes eingehendes VPN erforderlich.</string>
-    <string name="router_control_enable_help">Verwaltung von diesem Telefon aktivieren. Das Deaktivieren beendet das Router-VPN nicht.</string>
+    <string name="router_control_enable_help">Routerverwaltung aktivieren oder deaktivieren.</string>
     <string name="router_control_country_help">Das Land wird anhand der Internetverbindung des Routers ermittelt. Tippen Sie auf die Flagge, um es zu ändern.</string>
     <string name="router_control_home_help">Nur zwischen Telefon und Heimrouter wechseln, wenn die unterstützte Routerverbindung bestätigt ist.</string>
     <string name="router_control_vpn_help">Ausgewähltes Routerprofil starten oder stoppen. Zum Auswählen antippen, für Aktionen gedrückt halten.</string>
-    <string name="router_control_lan_help">Router-VPN oder Direktverbindung wählen. Das aktive Routerprofil wird verwendet.</string>
+    <string name="router_control_lan_help">Wählen Sie für jedes Gerät VPN oder Ohne VPN. VPN ist die Standard-Routingregel; das VPN-Profil wird separat gestartet.</string>
     <string name="router_control_clients_help">VPN-Profil für QR-Code, Import, Teilen oder Entfernen öffnen.</string>
     <string name="router_control_qr_loading">QR wird erstellt…</string>
     <string name="router_control_profile_loading">Profil wird geladen…</string>
+    <string name="router_control_hide_offline">Offline-Geräte ausblenden</string>
+    <string name="router_control_hide_offline_help">Geräte ausblenden, die derzeit nicht mit Ihrem Heimnetzwerk verbunden sind.</string>
+    <string name="router_review_no_online_devices">Keine Geräte online</string>
+    <string name="router_updates_check_entry">Nach Updates suchen</string>
+    <string name="router_control_available_protocols">Verfügbare Protokolle: %1$s</string>
+    <string name="router_control_protocols_unknown">Verfügbare Protokolle: unbekannt</string>
+    <string name="router_control_protocols_loading">Verfügbare Protokolle: Prüfung…</string>
+    <string name="router_control_protocols_empty">Verfügbare Protokolle: keine installiert</string>
+    <string name="router_profile_probe_failed">Um das FoxHole OpenWRT-Paket zu verwalten, verbinden Sie sich mit Ihrem persönlichen VPN oder Ihrem WLAN zu Hause.</string>
+    <string name="router_control_home_vpn">Verwaltung über VPN</string>
+    <string name="router_control_home_vpn_help">Ermöglicht die Verwaltung des Routers über sein VPN-Netzwerk. Eine statische öffentliche IP-Adresse ist erforderlich.</string>
 </resources>

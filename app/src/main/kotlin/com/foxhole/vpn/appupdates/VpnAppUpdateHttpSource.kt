@@ -62,6 +62,13 @@ internal class VpnAppUpdateHttpSource(
             throw VpnAppUpdateFailure(VpnAppUpdateError.METADATA)
         }
         if (manifest.versionCode <= installedCode) VpnAppUpdateCheck.UpToDate else {
+            val checksumAssets = release.assets.filter { it.name == "SHA256SUMS" }
+            if (checksumAssets.size != 1) throw VpnAppUpdateFailure(VpnAppUpdateError.METADATA)
+            val checksumAsset = checksumAssets.single()
+            requireAsset(checksumAsset)
+            if (!vpnAppUpdateChecksumMatches(text(checksumAsset.browserDownloadUrl), manifest.apkName, manifest.apkSha256)) {
+                throw VpnAppUpdateFailure(VpnAppUpdateError.VERIFICATION)
+            }
             val assets = release.assets.filter { it.name == manifest.apkName }
             if (assets.size != 1) throw VpnAppUpdateFailure(VpnAppUpdateError.METADATA)
             val apk = assets.single()

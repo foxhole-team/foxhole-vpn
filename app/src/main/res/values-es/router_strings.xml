@@ -25,7 +25,7 @@
     <string name="vpn_router_remote_check">El perfil del teléfono está guardado. Compruebe la conexión con datos móviles.</string>
     <string name="vpn_router_new_pin">Nuevo PIN</string>
     <string name="vpn_router_repeat_pin">Repetir PIN</string>
-    <string name="vpn_router_change_pin_note">Elija un PIN propio de cuatro dígitos para acceder al router.</string>
+    <string name="vpn_router_change_pin_note">Elija un PIN de seis dígitos al finalizar la configuración inicial. Los cambios posteriores solo están disponibles en LuCI con la cuenta del propietario.</string>
     <string name="vpn_router_save">Guardar</string>
     <string name="vpn_router_no_profile">Sin perfil VPN del router</string>
     <string name="vpn_router_country_direct">Sitios del país directamente</string>
@@ -37,7 +37,7 @@
     <string name="vpn_router_error_address">Compruebe la dirección IP local del router.</string>
     <string name="vpn_router_error_identity">Compruebe la identidad del router y reconecte.</string>
     <string name="vpn_router_error_password">Compruebe la contraseña del router.</string>
-    <string name="vpn_router_error_pin">Compruebe el PIN del router.</string>
+    <string name="vpn_router_error_pin">PIN incorrecto</string>
     <string name="vpn_router_error_locked">Demasiados intentos. Inténtelo más tarde.</string>
     <string name="vpn_router_error_unsupported">Esta configuración del router no es compatible.</string>
     <string name="vpn_router_error_storage">El router no tiene suficiente espacio libre o memoria RAM.</string>
@@ -56,7 +56,7 @@
     <string name="vpn_router_profile_title">Perfil VPN</string>
     <string name="vpn_router_choose_protocols">Elegir protocolos</string>
     <string name="vpn_router_protocol_combination_unavailable">Esta combinación no está disponible. Cambie la selección.</string>
-    <string name="vpn_router_error_limit">Puede guardar hasta tres routers</string>
+    <string name="vpn_router_error_limit">Vinculación: hasta 10 dispositivos móviles por router y hasta 10 routers en una aplicación.</string>
     <string name="vpn_router_install_server">Servidor VPN para sus dispositivos</string>
     <string name="vpn_router_install_server_yes">Incluido</string>
     <string name="vpn_router_install_server_no">No incluido</string>

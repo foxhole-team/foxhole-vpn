@@ -77,7 +77,7 @@ class VpnTunnelService : VpnService() {
 
     fun protectSocket(socket: Int): Boolean = protect(socket)
 
-    override fun onRevoke() { controller.serviceRevoked(this); super.onRevoke() }
+    override fun onRevoke() { controller.serviceRevoked(this, permissionRevoked = true); super.onRevoke() }
 
     override fun onDestroy() {
         if (registered) { runCatching { connectivity.unregisterNetworkCallback(callback) }; registered = false }

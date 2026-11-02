@@ -115,18 +115,18 @@ class VpnRouterManagementAndroidTest {
         compose.runOnIdle { assertEquals(1, imported) }
     }
 
-    @Test fun aDeviceCannotSelectAnInactiveGlobalRouterVpnProfile() {
+    @Test fun inheritedVpnPolicyDoesNotMutateUntilAnExplicitWithoutVpnChoice() {
         var selected: Boolean? = null
-        compose.setContent { VpnUiTheme(VpnTheme.DARK) { VpnRouterDeviceRouteDropdown(null, true, false) { selected = it } } }
-        compose.onNodeWithText(context.getString(R.string.router_review_router_default)).performClick()
-        compose.onNodeWithText(context.getString(R.string.router_review_device_vpn)).assertIsNotEnabled()
+        compose.setContent { VpnUiTheme(VpnTheme.DARK) { VpnRouterDeviceRouteDropdown(null, true) { selected = it } } }
+        compose.runOnIdle { assertEquals(null, selected) }
+        compose.onNodeWithText(context.getString(R.string.router_review_device_vpn)).performClick()
         compose.onNodeWithText(context.getString(R.string.router_review_direct)).performClick()
         compose.runOnIdle { assertEquals(false, selected) }
     }
 
     @Test fun aDeviceUsesTheGlobalRouterVpnChoiceWithoutIndependentProfiles() {
         var selected: Boolean? = null
-        compose.setContent { VpnUiTheme(VpnTheme.DARK) { VpnRouterDeviceRouteDropdown("direct", true, true) { selected = it } } }
+        compose.setContent { VpnUiTheme(VpnTheme.DARK) { VpnRouterDeviceRouteDropdown("direct", true) { selected = it } } }
         compose.onNodeWithText(context.getString(R.string.router_review_direct)).performClick()
         compose.onNodeWithText(context.getString(R.string.router_review_device_vpn)).assertIsEnabled().performClick()
         compose.runOnIdle { assertEquals(true, selected) }

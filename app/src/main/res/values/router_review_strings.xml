@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="router_review_management">Router management</string>
+    <string name="router_review_management">OpenWRT Client</string>
     <string name="router_review_compatibility">Supported OpenWrt versions</string>
     <string name="router_review_platforms">Platform</string>
     <string name="router_review_supported_platforms">OpenWrt 25.12.5: mediatek/filogic · x86/64</string>
@@ -10,15 +10,15 @@
     <string name="router_review_architecture">Architecture</string>
     <string name="router_review_protocols">VPN protocols</string>
     <string name="router_review_storage">Installation</string>
-    <string name="router_review_direct_ip">Public IP address</string>
+    <string name="router_review_direct_ip">Static IPv4 address confirmed</string>
     <string name="router_review_remote_settings">VPN access from outside your home</string>
     <string name="router_review_phone_profile">Create a VPN profile for this phone</string>
-    <string name="router_review_remote_help">The router needs a public IP address and an incoming VPN service. Check the connection from a mobile network.</string>
-    <string name="router_review_router_vpn">Router VPN</string>
+    <string name="router_review_remote_help">If your router supports a static public IP address, you can use it as a VPN gateway for your devices. Route: device → router; local traffic exits directly, while foreign traffic uses the active VPN connection.</string>
+    <string name="router_review_router_vpn">VPN OpenWRT</string>
     <string name="router_review_vpn_clients">VPN clients</string>
     <string name="router_review_router_vpn_description">Profiles, connection and settings</string>
     <string name="router_review_clients_description">Home devices and remote access</string>
-    <string name="router_review_unavailable">The router is currently unavailable</string>
+    <string name="router_review_unavailable">Router not found</string>
     <string name="router_review_control_disabled">Router management is disabled</string>
     <string name="router_review_back">BACK</string>
     <string name="router_review_profiles">VPN profiles</string>
@@ -35,7 +35,7 @@
     <string name="router_review_use_router_profile">USE ROUTER VPN</string>
     <string name="router_review_use_direct">CONNECT DIRECTLY</string>
     <string name="router_review_current_route">Current route</string>
-    <string name="router_review_direct">Direct connection</string>
+    <string name="router_review_direct">Without VPN</string>
     <string name="router_review_selected_profile">Selected router profile</string>
     <string name="router_review_unpair">Unpair the router?</string>
     <string name="router_review_unpair_description">This phone will stop managing the router. Router VPN keeps running unless you remove FoxHole.</string>
@@ -57,7 +57,7 @@
     <string name="router_review_progress_percent">%1$d%%</string>
     <string name="router_review_find_router">FIND ROUTER</string>
     <string name="router_review_router_found">Router found</string>
-    <string name="router_review_package_present">FoxHole found on the router</string>
+    <string name="router_review_package_present">FoxHole OpenWRT Client has been found and is ready to pair with your device</string>
     <string name="router_review_package_missing">FoxHole is not installed yet</string>
     <string name="router_review_package_unknown">Could not check FoxHole. Try finding the router again.</string>
     <string name="router_review_reset_before_connect">Reset FoxHole setup</string>
@@ -71,7 +71,7 @@
     <string name="router_review_country_unknown">Country unknown</string>
     <string name="router_review_country_description">Country for local traffic: %1$s. Change country.</string>
     <string name="router_review_country_unknown_description">Country unknown. Choose a country.</string>
-    <string name="router_review_device_vpn">Through router VPN</string>
+    <string name="router_review_device_vpn">VPN</string>
     <string name="router_review_add_router">Add router</string>
     <string name="router_review_choose_router">Choose router</string>
     <string name="router_review_saved_number">Router %1$d</string>
@@ -80,7 +80,7 @@
     <string name="router_review_saved_unknown">Not checked</string>
     <string name="router_review_expand_profiles">Show VPN profiles</string>
     <string name="router_review_collapse_profiles">Hide VPN profiles</string>
-    <string name="router_review_settings_help">Router management and routing preferences for this phone.</string>
+    <string name="router_review_settings_help">Router management and routing preferences for this phone.\n\nPairing: up to 10 mobile devices per router; up to 10 routers in one app.</string>
     <string name="router_review_disconnect">DISCONNECT</string>
     <string name="router_review_retry_search">Retry search</string>
     <string name="router_review_enter_manually">Enter manually</string>

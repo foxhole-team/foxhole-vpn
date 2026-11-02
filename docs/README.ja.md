@@ -1,3 +1,11 @@
+<h1 align="center">FoxHole VPN</h1>
+
+<div align="center">
+
+FoxHole VPNはAndroid 8以降向けのシンプルなVPNクライアントです。VPNプロバイダーまたは自分のサーバーのプロファイルをインポートし、電話を接続して、ペアリング済みOpenWrtルーターをアプリから管理できます。
+
+</div>
+
 <p align="center">
     <img
       src="../media/fhg.gif"
@@ -23,18 +31,45 @@
   <a href="https://github.com/foxhole-team/foxhole-vpn/releases">
     <img src="https://img.shields.io/github/v/release/foxhole-team/foxhole-vpn?label=version&style=flat-square" alt="GitHub Version">
   </a>
+  <img src="https://img.shields.io/badge/status-stable-success?style=flat-square" alt="Status: stable">
   <a href="https://f-droid.org/packages/com.foxhole.vpn/">
     <img src="https://img.shields.io/f-droid/v/com.foxhole.vpn?label=F-Droid&logo=f-droid&style=flat-square" alt="F-Droid Version">
   </a>
-  <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.foxhole.vpn%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Ffoxhole-team%2Ffoxhole-vpn%22%2C%22author%22%3A%22FoxHole%20Team%22%2C%22name%22%3A%22FoxHole%20VPN%22%2C%22preferredApkIndex%22%3A0%2C%22additionalSettings%22%3A%22%7B%5C%22apkFilterRegEx%5C%22%3A%5C%22arm64-v8a-release%5C%5C%5C%5C.apk%24%5C%22%2C%5C%22invertAPKFilter%5C%22%3Afalse%2C%5C%22verifyLatestTag%5C%22%3Atrue%7D%22%2C%22overrideSource%22%3A%22GitHub%22%7D">
-    <img src="https://img.shields.io/badge/Obtainium-add%20app-1A73E8?style=flat-square" alt="Get it on Obtainium">
+  <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.foxhole.vpn%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Ffoxhole-team%2Ffoxhole-vpn%22%2C%22author%22%3A%22FoxHole%20Team%22%2C%22name%22%3A%22FoxHole%20VPN%22%2C%22preferredApkIndex%22%3A0%2C%22additionalSettings%22%3A%22%7B%5C%22apkFilterRegEx%5C%22%3A%5C%22arm64-v8a%5B.%5Dapk%24%5C%22%2C%5C%22invertAPKFilter%5C%22%3Afalse%2C%5C%22verifyLatestTag%5C%22%3Atrue%7D%22%2C%22overrideSource%22%3A%22GitHub%22%7D" title="Obtainium · ARM64">
+    <img src="https://img.shields.io/badge/Obtainium-add%20app-1A73E8?style=flat-square" alt="Get it on Obtainium · ARM64">
   </a>
 </p>
 
-# FoxHole VPN
 
-[![FoxHole VPN](https://img.shields.io/badge/GitHub-FoxHole_VPN-181717?logo=github&style=flat-square)](https://github.com/foxhole-team/foxhole-vpn)
+VLESS、VMess、Trojan、Shadowsocks/Outline、WireGuard、AmneziaWG（試験的サポート）、Hysteria2、Naive、TUIC、AnyTLSに対応します。互換性のあるFoxHole Guard設定、v2rayTunリンクとサブスクリプション、Clash/mihomo YAML、SIP008 JSON、Outline動的キー（`ssconf://`）をインポートできます。エクスポートしたプロファイルや参照リンクには認証情報が含まれる場合があります。信頼できる相手とのみ共有してください。
 
+インポートでは対応する接続パラメーターを移します。Clash/mihomoのルールや他のクライアント設定は移さず、外部`proxy-providers`は非対応です。Guardプロファイルとの互換性はVPN接続を対象とし、Tor、I2P、ファイアウォール、Guardのシナリオを引き継ぐものではありません。
+
+<p align="center"><a href="#quickstart">使い始める</a> · <a href="#features">機能</a> · <a href="#details">詳細</a> · <a href="#whats-new">新機能と変更点</a></p>
+
+<a id="whats-new"></a>
+
+> **🆕 新機能と変更点 - 1.0.1 Stable**
+>
+> - VPNプロバイダーのサブスクリプション対応を改善しました。
+> - ルーターの検索、ペアリング、SSH経由のOpenWrt確認を修正し、SSHキーへの対応を追加しました。
+> - GitHubからの更新時のAPK検証を修正しました。
+> - ウィンドウのアニメーションを改善しました。
+> - 通知を閉じるタイマーと、上方向へのスワイプで閉じる操作を追加しました。
+> - OpenWrtの設定と、家庭内端末・VPNクライアントの管理を簡素化しました。
+> - インストール時に確認入力する6桁のPINと、最大10台のルーターへの対応を追加しました。
+
+<a id="quickstart"></a>
+
+## ⬇️ 使い始め方とダウンロード
+
+Android 8（API 26）以降が必要です。利用可能なAPKアーキテクチャは公開済みリリースを参照してください。
+
+1. [GitHub Releases](https://github.com/foxhole-team/foxhole-vpn/releases)でAPKアーキテクチャを選びます。
+2. 自分のサーバーやプロバイダーのプロファイルをファイル、クリップボード、QRから取り込みます。
+3. 接続し、AndroidのVPN要求を承認します。
+
+Obtainium · ARM64。他のアーキテクチャは[GitHub Releases](https://github.com/foxhole-team/foxhole-vpn/releases)でAPKを選んでください。
 
 <p align="center">
   <img src="../fastlane/metadata/android/ja-JP/images/phoneScreenshots/00_main.png" width="24%" alt="English main screen">
@@ -42,15 +77,17 @@
   <img src="../fastlane/metadata/android/ja-JP/images/phoneScreenshots/02_settings.png" width="24%" alt="English settings">
 </p>
 
-FoxHole VPNはAndroid 8以降向けのシンプルなVPNクライアントです。VPNプロバイダーまたは自分のサーバーのプロファイルをインポートし、電話を接続して、ペアリング済みOpenWrtルーターをアプリから管理できます。
-
-VLESS、VMess、Trojan、Shadowsocks/Outline、WireGuard、AmneziaWG（試験的サポート）、Hysteria2、Naive、TUIC、AnyTLSに対応します。互換性のあるFoxHole Guard設定、v2rayTunリンクとサブスクリプション、Clash/mihomo YAML、SIP008 JSON、Outline動的キー（`ssconf://`）をインポートできます。エクスポートしたプロファイルや参照リンクには認証情報が含まれる場合があります。信頼できる相手とのみ共有してください。
-
 ## 🤖 対応プラットフォーム
 
 Android 8（API 26）以降が必要です。ビルドプロファイルには `arm64-v8a`、`armeabi-v7a`、`x86`、`x86_64` を含められます。利用できる APK は各公開リリースに記載されます。
 
 現在のルーターパッケージ・更新ポリシーは、OpenWrt 25.12.5 の `mediatek/filogic` と `x86/64` を対象とします。正確なアーキテクチャの認証済みカタログ、対応する依存関係とカーネル ABI、十分なフラッシュ/RAM が必要です。対象名だけではすべてのルーターモデルとの互換性を証明できません。
+
+## 📦 リリースの提供状況
+
+利用できるAPKのアーキテクチャとルーターの対象は、各公開リリースに記載されます。ビルド設定やソースレシピだけでは、端末との互換性やF-Droidでの提供を証明できません。F-Droidへの収録には同プロジェクトの審査が必要です。
+
+<a id="features"></a>
 
 ## 🎛️ 日常の操作
 
@@ -59,13 +96,21 @@ Android 8（API 26）以降が必要です。ビルドプロファイルには `
 - ホーム画面のウィジェットで接続状態を確認し、選択したプロファイルを開始・停止できます。
 - 設定でテーマと言語を選べます。英語、ロシア語、ドイツ語、フランス語、スペイン語、日本語、簡体字中国語に対応します。
 
-設定 → バックグラウンド更新で有効にすると、既定ではサブスクリプションを約12時間ごとに更新し、FoxHole DBの署名付き接続データを24時間ごとに確認します。各確認は同じ画面で個別にオフにできます。データのインストールには引き続き操作が必要です。GitHub版は毎日アプリの更新を確認します。APKのダウンロードとインストールには操作とAndroidの確認が必要です。F-Droid版は独自のAPK更新を確認・インストールしません。F-Droidをご利用ください。Androidがバックグラウンド処理を遅らせることがあります。
+設定 → バックグラウンド更新で有効にすると、既定ではサブスクリプションを約12時間ごとに更新し、FoxHole DBの署名付きTLSフィンガープリントテーブルを24時間ごとに確認します。各確認は同じ画面で個別にオフにできます。データのインストールには引き続き操作が必要です。GitHub版は毎日アプリの更新を確認します。APKのダウンロードとインストールには操作とAndroidの確認が必要です。F-Droid版は独自のAPK更新を確認・インストールしません。F-Droidをご利用ください。Androidがバックグラウンド処理を遅らせることがあります。
+
+更新するのはコアがTLS ClientHelloを生成する際のデータです。検証済み更新の適用にはユーザーの操作が必要です。
+
+<a id="details"></a>
 
 ## 🛜 ルーター管理（パブリックベータ）
+
+> [!NOTE]
+> VPN 接続が有効な間のルーター管理は、まだサポートされていません。
 
 ルーター管理はパブリックベータ版です。端末の互換性とインストール・更新手順は検証中です。
 
 > [!IMPORTANT]
+> 以下の制限は現在公開されているリリースについての説明です。
 > 現在、自動インストールに対応するのは、OpenWrt の設定がすべて初期値のルーターのみです。
 > 最新の [FoxHole OpenWrt Client](https://github.com/foxhole-team/foxhole-openwrt-client) を手動でインストールしたルーターともペアリングできます。
 > セットアップとペアリングには、スマートフォンとルーターが同じ LAN に接続され、ルーターからインターネットにアクセスできる必要があります。
@@ -78,9 +123,14 @@ Wi-Fi アイコンは物理的な Wi-Fi 接続のみを示し、SSID や位置�
 
 自宅 VPN 経由で管理は独立した選択で、既存のペアリングごとに既定でオフです。公開 IP アドレスの確認（ルーターに公開 IP と受信 VPN サービスがあるという利用者の申告）と、利用可能なアクティブ VPN 経路も必要です。この確認はアドレスの割り当てやファイアウォール設定を行いません。アプリはその VPN ネットワーク経由で保存済みのプライベート接続先に、既存の固定 TLS 識別情報とペアリング認証で管理を試みます。WAN 管理ポートを開いたり、モバイル回線で新たに検索・ペアリングしたりはしません。 電話の VPN 自動切替・ハンドオフは引き続き無効です。この選択はルーター管理だけに適用されます。
 
+<details>
+<summary>ルーター管理の詳細</summary>
+
 認証済みのペアリング済みルーターからアプリへ直接届く受信 VPN プロファイルにのみ、独立したアプリ連携メタデータが付きます。接続 URI、設定、QR 形式は変わりません。一般のウェブ・QR・プロバイダーのエクスポートには付きません。インポートしたヒントだけでは信頼を確立できません。
 
 自動認識には、保存済みローカルプロファイル、現在の設定、選択したペアリングの一致に加え、そのプロファイルがアプリ自身の VPN で実際に接続中であることも必要です。実際の接続ごとに時間制限付き確認を一度行い、タイマー、自動再試行、プロバイダープロファイルの定期照会はありません。ペアリングを再試行は Wi-Fi・権限・PIN を使う明示的な手順です。認証成功までは元の記録を保持し、変更された証明書の識別情報を自動承認しません。
+
+</details>
 
 ルーターへの初回インストール前に、FoxHole OpenWRT Client の同意事項を読み、明示的に同意してください。同意欄は初期状態では未選択で、自動更新とは別の設定です。既にペアリング済みのルーターに遡って同意を求めることはありません。
 
@@ -92,39 +142,27 @@ Wi-Fi アイコンは物理的な Wi-Fi 接続のみを示し、SSID や位置�
 
 ## 🔒 プライバシー
 
-プロファイルと設定はAndroid Keystoreの鍵で端末上に暗号化されます。広告や解析SDKは含まれません。VPN確認には`www.google.com/generate_204`を使用し、出口IPの情報は`ipwho.is`から取得します。これらのリクエストは選択したVPNネットワークを使用します。VPNがオフのときは、ウィジェットを含め、現在のインターネット接続でおおよその端末位置を更新できます。各サービスはリクエストと送信元IPを受け取ります。署名付き接続データは`foxhole-team.github.io/foxhole-db`、サブスクリプションは保存済みプロバイダーURLから取得します。GPSは不要です。
+プロファイルと設定はAndroid Keystoreの鍵で端末上に暗号化されます。広告や解析SDKは含まれません。VPN確認には`www.google.com/generate_204`を使用し、出口IPの情報は`ipwho.is`から取得します。これらのリクエストは選択したVPNネットワークを使用します。VPNがオフのときは、ウィジェットを含め、現在のインターネット接続でおおよその端末位置を更新できます。各サービスはリクエストと送信元IPを受け取ります。署名付きTLSフィンガープリントテーブルは`foxhole-team.github.io/foxhole-db`、サブスクリプションは保存済みプロバイダーURLから取得します。GPSは不要です。
 
-## 📄 ライセンス
+<a id="ecosystem"></a>
 
-[GPL-3.0-or-later](../LICENSE) · Copyright (C) 2026 FOXHOLE TEAM.
+## 🔗 FoxHoleエコシステム
 
-コンポーネントのライセンスは「設定 → このアプリについて」で確認できます。
+| プロジェクト | 役割 |
+| --- | --- |
+| [FoxHole Guard](https://github.com/foxhole-team/foxhole-guard) | Android：VPN、Tor/I2P、通信ルールとローカル監視 |
+| [**FoxHole VPN**](https://github.com/foxhole-team/foxhole-vpn) | Android：シンプルなVPNとペアリング済みOpenWrt管理 |
+| [FoxHole Core](https://github.com/foxhole-team/foxhole-core) | 共通Rustネットワークコア。機能はビルドによる |
+| [FoxHole OpenWrt](https://github.com/foxhole-team/foxhole-openwrt-client) | ルーターVPNとローカルネットワーク管理 |
+| [FoxHole DB](https://github.com/foxhole-team/foxhole-db) | 署名付きルールと参照データ |
 
-[サードパーティー製コンポーネント](../THIRD_PARTY_NOTICES.md).
+## 🤝 開発への参加
 
-## 🔗 関連プロジェクト
-
-[![FoxHole Core](https://img.shields.io/badge/GitHub-FoxHole_Core-181717?logo=github&style=flat-square)](https://github.com/foxhole-team/foxhole-core)
-[![Version](https://img.shields.io/github/v/release/foxhole-team/foxhole-core?label=version&style=flat-square)](https://github.com/foxhole-team/foxhole-core/releases)
-
-[![FoxHole DB](https://img.shields.io/badge/GitHub-FoxHole_DB-181717?logo=github&style=flat-square)](https://github.com/foxhole-team/foxhole-db)
-[![Version](https://img.shields.io/github/v/release/foxhole-team/foxhole-db?label=version&style=flat-square)](https://github.com/foxhole-team/foxhole-db/releases)
-
-[![FoxHole Guard](https://img.shields.io/badge/GitHub-FoxHole_Guard-181717?logo=github&style=flat-square)](https://github.com/foxhole-team/foxhole-guard)
-[![Version](https://img.shields.io/github/v/release/foxhole-team/foxhole-guard?label=version&style=flat-square)](https://github.com/foxhole-team/foxhole-guard/releases)
-
-[![FoxHole OpenWrt](https://img.shields.io/badge/GitHub-FoxHole_OpenWrt-181717?logo=github&style=flat-square)](https://github.com/foxhole-team/foxhole-openwrt-client)
-[![Version](https://img.shields.io/github/v/release/foxhole-team/foxhole-openwrt-client?label=version&style=flat-square)](https://github.com/foxhole-team/foxhole-openwrt-client/releases)
-
-## 📦 リリースの提供状況
-
-利用できるAPKのアーキテクチャとルーターの対象は、各公開リリースに記載されます。ビルド設定やソースレシピだけでは、端末との互換性やF-Droidでの提供を証明できません。F-Droidへの収録には同プロジェクトの審査が必要です。
+不具合報告や変更提案は[Issues](https://github.com/foxhole-team/foxhole-vpn/issues)へお願いします。
 
 ## 💖 開発を支援する
 
-私たちはAIツールの助けを借りながら、すべて自分たちの時間と資源でFoxHole VPNを開発・保守しています。皆さまのご支援により、プロジェクトにより多くの時間を充て、開発を加速できます。
-
-[プロジェクトを支援する - 暗号資産ウォレット](#cryptocurrency-wallets)
+私たちは、開発にAIツールを使用しながら、すべて自分たちの時間と資源でFoxHole VPNを開発・保守しています。皆さまのご支援により、プロジェクトにより多くの時間を充て、開発を加速できます。
 
 <a id="cryptocurrency-wallets"></a>
 
@@ -147,3 +185,11 @@ bc1qatnyy7jcpqrp0d3dk9rta9vqfejgh4mysd6m2f
 ```text
 0xDEBA357Cc8f5E865ea7FFa98E138C8241A16A465
 ```
+
+## 📄 ライセンス
+
+[GPL-3.0-or-later](../LICENSE) · Copyright (C) 2026 FOXHOLE TEAM.
+
+コンポーネントのライセンスは「設定 → このアプリについて」で確認できます。
+
+[サードパーティー製コンポーネント](../THIRD_PARTY_NOTICES.md).

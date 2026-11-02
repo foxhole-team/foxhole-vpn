@@ -1,6 +1,27 @@
 {
   "androidDeliveryProfile": "android4",
-  "coreCommit": "7b15f5b614031181b5a2eab274acac6f15d961ff",
+  "coreCommit": "66286391a715fbc1c2bbabb2581c5295f76a1acd",
+  "currentNativeToolchainEvidence": {
+    "NDKpropertiesSHA256": "716f3518a923198cfab037abb32dc3f1b1f7e9a9dcdcda6b66be5906215d2658",
+    "controllerReceiptSHA256": "8297db57530c97d13eb48bdd5f39b5bd7636e92755503c98a606e368a519058b",
+    "freshStdlibBodyHashExecution": false,
+    "freshToolBinaryBodyHashExecution": false,
+    "freshVersionWitnessSHA256": "37ca05ecdd691ce202b73803a665c004da12ee5b0e303d36e5e6a1d0685a9fa0",
+    "normalAndroidBuildReceiptSHA256": "dd7f7a80cda8a1ee971e5a8e381c76cfceaf0706f50cf040a1aab98d3963db6a",
+    "normalGatesReceiptSHA256": "f339ec86926446c949e5c61d3830e4a17f483652157557914223da2ff742c887",
+    "retainedP1StdlibWitnessSHA256": "71a5051ae62d2a0662cee0790dc77d23c32edc77cd183c6c1030f8d1c74d0b28",
+    "retainedP1ToolWitnessSHA256": "7861de31efa54e5427856e0b1e9501ff04a7eb0e74c3ab3bb146113e1dae6c2e",
+    "retainedToolAuthoritySHA256": "dc51548885f8368363df36aa21c665a666b4b3decae9cb9cb44b6dc47b73117f",
+    "retainedToolBinarySHA256": {
+      "cargo": "828980723df339d62434390e9fb8ef8831036583343ae2316b7ab5646b5c1953",
+      "cargo-ndk": "2c5378939232a48415b80a872738bd4461ea5882b7ca9e31f92b0dd061e93698",
+      "clang": "d326ed4fc4f71e5315b9ce388fc23ec792f81652ca7b29e66294de6ed2520844",
+      "ld.lld": "9f7df260a1a6cd02e3274c1d57ff22b2745791b85fb38a958051ebcd31e42900",
+      "llvm-readelf": "5104576a3518575cf1887c2afa9249bbd0dc175cb9dc0f2af0d430fe0cb20bbe",
+      "rustc": "d3a664c970a9fd8361b64194861bebc1ae37b9054e5ee3400dc1c9e691797eea"
+    },
+    "workerReceiptSHA256": "4c09efd5818cfc587c2bbf3c378864bd743db79314060badaf52d74a95b093b6"
+  },
   "installedRuntimeArchives": {
     "aarch64-linux-android": [
       {
@@ -559,56 +580,56 @@
   "nativeLibraries": {
     "aarch64-linux-android": {
       "abi": "arm64-v8a",
-      "bytes": 12257600,
-      "sha256": "038da434bc38492598ad4d3b614fc2d2ed5c87719801c94cffbe9fc143f64af1"
+      "bytes": 12274696,
+      "sha256": "2e73e61f73e037f8aaa7456d903d0fa98e8809f74276cbc7cff25bb3c03dbae5"
     },
     "armv7-linux-androideabi": {
       "abi": "armeabi-v7a",
-      "bytes": 8573072,
-      "sha256": "19925fb57db59e2496212a72c7306f3f3bb91768c3edd88821615662411ee98d"
+      "bytes": 8581772,
+      "sha256": "0cb7b83919f57f27edac23dc3fcfc56cabc9ed663270ff8282a2003e1bf1e7c6"
     },
     "i686-linux-android": {
       "abi": "x86",
-      "bytes": 13088992,
-      "sha256": "ac11fa4008bcd93fc73d117fe4354855289ca4138ae4c2e8be690c164fef95fd"
+      "bytes": 13103268,
+      "sha256": "009dc5ce41ab2ab75360f7eb823b4d211ede80ffa62c75152da084cefc49e721"
     },
     "x86_64-linux-android": {
       "abi": "x86_64",
-      "bytes": 14569544,
-      "sha256": "6384126a9ac969eb7a6c3b6fffb5e3653e45190ec9079b8d86575b16b1456912"
+      "bytes": 14582680,
+      "sha256": "724c6ebb6633e1d79121acabd9502f55d10e1dfcdacfba1855f03fe6ddb22208"
     }
   },
   "producerReceiptsByTarget": {
-    "aarch64-linux-android": "8738ecef13448837ae7893680fc3a1e61839daa9259a90109d9ca71727c353f6",
-    "armv7-linux-androideabi": "8738ecef13448837ae7893680fc3a1e61839daa9259a90109d9ca71727c353f6",
-    "i686-linux-android": "8738ecef13448837ae7893680fc3a1e61839daa9259a90109d9ca71727c353f6",
-    "x86_64-linux-android": "8738ecef13448837ae7893680fc3a1e61839daa9259a90109d9ca71727c353f6"
+    "aarch64-linux-android": "4340b342c280ad38b212ec07a36ea59c377542c44b9026411c7749874690b7c3",
+    "armv7-linux-androideabi": "4340b342c280ad38b212ec07a36ea59c377542c44b9026411c7749874690b7c3",
+    "i686-linux-android": "4340b342c280ad38b212ec07a36ea59c377542c44b9026411c7749874690b7c3",
+    "x86_64-linux-android": "4340b342c280ad38b212ec07a36ea59c377542c44b9026411c7749874690b7c3"
   },
   "producerToolchainsByTarget": {
     "aarch64-linux-android": {
-      "hostKind": "darwin-arm64",
-      "imageId": null,
+      "hostKind": "linux-x86_64-native",
+      "imageId": "sha256:42937d2c1a0128612cb31a1119c24af835f36ddf2f49073fcca4beb948cb775b",
       "ndkVersion": "29.0.14206865",
       "rustVersion": "1.97.1",
       "rustcCommit": "8bab26f4f68e0e26f0bb7960be334d5b520ea452"
     },
     "armv7-linux-androideabi": {
-      "hostKind": "darwin-arm64",
-      "imageId": null,
+      "hostKind": "linux-x86_64-native",
+      "imageId": "sha256:42937d2c1a0128612cb31a1119c24af835f36ddf2f49073fcca4beb948cb775b",
       "ndkVersion": "29.0.14206865",
       "rustVersion": "1.97.1",
       "rustcCommit": "8bab26f4f68e0e26f0bb7960be334d5b520ea452"
     },
     "i686-linux-android": {
-      "hostKind": "darwin-arm64",
-      "imageId": null,
+      "hostKind": "linux-x86_64-native",
+      "imageId": "sha256:42937d2c1a0128612cb31a1119c24af835f36ddf2f49073fcca4beb948cb775b",
       "ndkVersion": "29.0.14206865",
       "rustVersion": "1.97.1",
       "rustcCommit": "8bab26f4f68e0e26f0bb7960be334d5b520ea452"
     },
     "x86_64-linux-android": {
-      "hostKind": "darwin-arm64",
-      "imageId": null,
+      "hostKind": "linux-x86_64-native",
+      "imageId": "sha256:42937d2c1a0128612cb31a1119c24af835f36ddf2f49073fcca4beb948cb775b",
       "ndkVersion": "29.0.14206865",
       "rustVersion": "1.97.1",
       "rustcCommit": "8bab26f4f68e0e26f0bb7960be334d5b520ea452"
@@ -617,5 +638,5 @@
   "rustVersion": "1.97.1",
   "rustcCommit": "8bab26f4f68e0e26f0bb7960be334d5b520ea452",
   "schema": 1,
-  "scope": "Actual per-ABI S VPN12 source producers; Darwin ARM and immutable429 VM tool identities remain distinct. Original Rust notices/archive inventories unchanged."
+  "scope": "Actual current Core102 VPN profile producer; original Rust1.97.1 notices and archive inventories retained."
 }

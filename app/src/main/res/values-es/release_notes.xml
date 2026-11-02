@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_release_notes_subscriptions">Mejorado el soporte de suscripciones de proveedores VPN.</string>
+    <string name="vpn_release_notes_router_setup">Se han corregido la búsqueda del router, la vinculación y la comprobación de OpenWrt por SSH, y se ha añadido compatibilidad con claves SSH.</string>
+    <string name="vpn_release_notes_apk_updates">Se ha corregido la verificación del APK al actualizar desde GitHub.</string>
+    <string name="vpn_release_notes_motion">Se han mejorado las animaciones de las ventanas.</string>
+    <string name="vpn_release_notes_notices">Añadidos un temporizador para cerrar las notificaciones y el cierre deslizando hacia arriba.</string>
+    <string name="vpn_release_notes_vless_reality">Corregida la compatibilidad de VLESS + REALITY.</string>
+    <string name="vpn_release_notes_router_management">Simplificadas la configuración de OpenWrt y la gestión de dispositivos domésticos y clientes VPN.</string>
+    <string name="vpn_release_notes_pin6">Añadidos un PIN de seis dígitos con confirmación durante la instalación y soporte para hasta 10 routers.</string>
+</resources>

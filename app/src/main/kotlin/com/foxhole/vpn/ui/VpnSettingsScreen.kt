@@ -3,7 +3,6 @@ package com.foxhole.vpn.ui
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -18,7 +17,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuAnchorType
 import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -28,12 +30,20 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.layout.boundsInWindow
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionInWindow
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.DpOffset
+import androidx.compose.ui.unit.LayoutDirection
+import kotlin.math.roundToInt
 import com.foxhole.vpn.R
 import com.foxhole.vpn.VpnLanguage
 import com.foxhole.vpn.VpnSettings
@@ -128,23 +138,49 @@ internal fun VpnSettingsDetailScreen(
 }
 
 @Composable
+@OptIn(ExperimentalMaterial3Api::class)
 private fun FontStyleDropdown(style: VpnFontStyle, enabled: Boolean, onSelect: (VpnFontStyle) -> Unit) {
     var expanded by remember { mutableStateOf(false) }
-    BoxWithConstraints(Modifier.fillMaxWidth()) {
-        val menuWidth = maxWidth
-        OutlinedButton(onClick = { expanded = true }, enabled = enabled,
-            modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp).testTag("font-style-anchor")) {
+    var menuGeometry by remember { mutableStateOf(VpnFontMenuGeometry(0, 0)) }
+    val density = LocalDensity.current
+    val layoutDirection = LocalLayoutDirection.current
+    val menuExpanded = expanded && enabled && menuGeometry.widthPx > 0
+    ExposedDropdownMenuBox(
+        expanded = menuExpanded,
+        onExpandedChange = { if (enabled) expanded = it },
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        val shape = MaterialTheme.shapes.extraLarge
+        val toggleTarget = !menuExpanded
+        OutlinedButton(onClick = { expanded = toggleTarget }, enabled = enabled, shape = shape,
+            modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)
+                .menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable, enabled)
+                .onGloballyPositioned { coordinates ->
+                    val origin = coordinates.positionInWindow()
+                    val visible = coordinates.boundsInWindow()
+                    menuGeometry = vpnFontMenuGeometry(
+                        nativeLeftPx = origin.x.roundToInt(),
+                        nativeWidthPx = coordinates.size.width,
+                        visibleLeftPx = visible.left.roundToInt(),
+                        visibleRightPx = visible.right.roundToInt(),
+                        isRtl = layoutDirection == LayoutDirection.Rtl,
+                    )
+                }
+                .testTag("font-style-anchor")) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text(stringResource(fontStyleLabel(style)), Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium,
+                Text(stringResource(fontStyleLabel(style)), Modifier.weight(1f), style = vpnFontPreviewStyle(style),
                     maxLines = 2, overflow = TextOverflow.Ellipsis)
                 Icon(painterResource(R.drawable.lin_chevron_down), null, Modifier.size(20.dp))
             }
         }
-        DropdownMenu(expanded = expanded && enabled, onDismissRequest = { expanded = false },
-            modifier = Modifier.width(menuWidth).heightIn(max = 240.dp).testTag("font-style-menu")) {
+        DropdownMenu(expanded = menuExpanded, onDismissRequest = { expanded = false },
+            offset = DpOffset(with(density) { menuGeometry.offsetPx.toDp() }, 0.dp),
+            shape = shape,
+            modifier = Modifier.width(with(density) { menuGeometry.widthPx.toDp() })
+                .heightIn(max = 240.dp).testTag("font-style-menu")) {
             VpnFontStyle.entries.forEach { value ->
-                DropdownMenuItem(text = { Text(stringResource(fontStyleLabel(value)), style = MaterialTheme.typography.bodyMedium,
+                DropdownMenuItem(text = { Text(stringResource(fontStyleLabel(value)), style = vpnFontPreviewStyle(value),
                     maxLines = 2, overflow = TextOverflow.Ellipsis) },
                     onClick = { expanded = false; onSelect(value) },
                     trailingIcon = { RadioButton(value == style, onClick = null) },
@@ -167,7 +203,7 @@ private fun HelpContent() {
             R.string.vpn_help_connect_title to R.string.vpn_help_connect_body,
             R.string.vpn_help_profiles_title to R.string.vpn_help_profiles_body,
             R.string.vpn_help_protocols_title to R.string.vpn_help_protocols_body,
-            R.string.vpn_router to R.string.router_control_unpair_help,
+            R.string.vpn_router to R.string.vpn_help_router_body,
             R.string.vpn_help_updates_title to R.string.vpn_help_updates_body,
             R.string.vpn_help_privacy_title to R.string.vpn_help_privacy_body,
         ).forEach { (title, body) ->

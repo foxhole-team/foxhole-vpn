@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="router_review_management">Управление роутером</string>
+    <string name="router_review_management">OpenWRT Клиент</string>
     <string name="router_review_compatibility">Поддерживаемые версии OpenWrt</string>
     <string name="router_review_platforms">Платформа</string>
     <string name="router_review_supported_platforms">OpenWrt 25.12.5: mediatek/filogic · x86/64</string>
@@ -10,15 +10,15 @@
     <string name="router_review_architecture">Архитектура</string>
     <string name="router_review_protocols">Протоколы VPN</string>
     <string name="router_review_storage">Установка</string>
-    <string name="router_review_direct_ip">Публичный IP-адрес</string>
+    <string name="router_review_direct_ip">Статический IPv4 адрес подтверждён</string>
     <string name="router_review_remote_settings">Доступ к VPN вне дома</string>
     <string name="router_review_phone_profile">Создать VPN-профиль для телефона</string>
-    <string name="router_review_remote_help">Нужны публичный IP-адрес роутера и входящий VPN-сервис. Проверьте подключение через мобильную сеть.</string>
-    <string name="router_review_router_vpn">VPN на роутере</string>
-    <string name="router_review_vpn_clients">VPN-клиенты</string>
+    <string name="router_review_remote_help">Если ваш роутер поддерживает статический публичный IP-адрес, его можно использовать как VPN-шлюз для ваших устройств. Маршрут: устройство → роутер; местный трафик выходит напрямую, а зарубежный — через активное VPN-соединение.</string>
+    <string name="router_review_router_vpn">VPN OpenWRT</string>
+    <string name="router_review_vpn_clients">Клиенты VPN</string>
     <string name="router_review_router_vpn_description">Профили, подключение и настройки</string>
     <string name="router_review_clients_description">Домашние устройства и удалённый доступ</string>
-    <string name="router_review_unavailable">Роутер пока недоступен</string>
+    <string name="router_review_unavailable">Роутер не обнаружен</string>
     <string name="router_review_control_disabled">Управление роутером выключено</string>
     <string name="router_review_back">НАЗАД</string>
     <string name="router_review_profiles">Профили VPN</string>
@@ -35,7 +35,7 @@
     <string name="router_review_use_router_profile">ЧЕРЕЗ VPN РОУТЕРА</string>
     <string name="router_review_use_direct">ПОДКЛЮЧАТЬ НАПРЯМУЮ</string>
     <string name="router_review_current_route">Текущий маршрут</string>
-    <string name="router_review_direct">Прямое подключение</string>
+    <string name="router_review_direct">Без VPN</string>
     <string name="router_review_selected_profile">Выбранный профиль роутера</string>
     <string name="router_review_unpair">Удалить сопряжение с роутером?</string>
     <string name="router_review_unpair_description">Телефон перестанет управлять роутером. VPN продолжит работать, если не удалить FoxHole.</string>
@@ -57,7 +57,7 @@
     <string name="router_review_progress_percent">%1$d%%</string>
     <string name="router_review_find_router">НАЙТИ РОУТЕР</string>
     <string name="router_review_router_found">Роутер найден</string>
-    <string name="router_review_package_present">FoxHole найден на роутере</string>
+    <string name="router_review_package_present">FoxHole OpenWRT Client обнаружен и готов к сопряжению с Вашим устройством</string>
     <string name="router_review_package_missing">FoxHole ещё не установлен</string>
     <string name="router_review_package_unknown">Не удалось проверить FoxHole. Повторите поиск.</string>
     <string name="router_review_reset_before_connect">Настроить FoxHole заново</string>
@@ -71,7 +71,7 @@
     <string name="router_review_country_unknown">Страна неизвестна</string>
     <string name="router_review_country_description">Страна для локального трафика: %1$s. Изменить.</string>
     <string name="router_review_country_unknown_description">Страна неизвестна. Выбрать страну.</string>
-    <string name="router_review_device_vpn">Через VPN роутера</string>
+    <string name="router_review_device_vpn">VPN</string>
     <string name="router_review_add_router">Добавить роутер</string>
     <string name="router_review_choose_router">Выбрать роутер</string>
     <string name="router_review_saved_number">Роутер %1$d</string>
@@ -80,7 +80,7 @@
     <string name="router_review_saved_unknown">Не проверен</string>
     <string name="router_review_expand_profiles">Показать профили VPN</string>
     <string name="router_review_collapse_profiles">Скрыть профили VPN</string>
-    <string name="router_review_settings_help">Управление роутером и правила маршрутизации для этого телефона.</string>
+    <string name="router_review_settings_help">Управление роутером и правила маршрутизации для этого телефона.\n\nСопряжение: до 10 мобильных устройств к одному роутеру; до 10 роутеров в одном приложении.</string>
     <string name="router_review_disconnect">ОТКЛЮЧИТЬ</string>
     <string name="router_review_retry_search">Повторить поиск</string>
     <string name="router_review_enter_manually">Указать вручную</string>

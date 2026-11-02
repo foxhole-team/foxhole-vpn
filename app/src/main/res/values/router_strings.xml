@@ -15,7 +15,7 @@
     <string name="vpn_router_flash">Keep in internal storage</string>
     <string name="vpn_router_ram">Use router RAM</string>
     <string name="vpn_router_ram_note">The VPN engine must be downloaded again after a router restart.</string>
-    <string name="vpn_router_standard_network">For automatic setup, connect to the router’s Wi-Fi using standard OpenWrt network settings.</string>
+    <string name="vpn_router_standard_network">Connect to the router’s Wi-Fi and enter its current LAN address. Custom OpenWrt network settings are supported.</string>
     <string name="vpn_router_identity_review">Check the router fingerprint before signing in.</string>
     <string name="vpn_router_identity_changed">The router identity has changed. Verify its fingerprint before reconnecting.</string>
     <string name="vpn_router_checking">Checking the router…</string>
@@ -25,7 +25,7 @@
     <string name="vpn_router_remote_check">The phone profile is saved. Check the connection using mobile data.</string>
     <string name="vpn_router_new_pin">New PIN</string>
     <string name="vpn_router_repeat_pin">Repeat PIN</string>
-    <string name="vpn_router_change_pin_note">Choose your own four-digit PIN for router access.</string>
+    <string name="vpn_router_change_pin_note">Choose a six-digit PIN at the end of first setup. Later PIN changes are available only in LuCI using the owner account.</string>
     <string name="vpn_router_save">SAVE</string>
     <string name="vpn_router_no_profile">No router VPN profile</string>
     <string name="vpn_router_country_direct">Country sites directly</string>
@@ -36,8 +36,8 @@
     <string name="vpn_router_error_wifi">To find the router, connect to its Wi-Fi</string>
     <string name="vpn_router_error_address">Check the router’s local IP address.</string>
     <string name="vpn_router_error_identity">Check the router identity and reconnect.</string>
-    <string name="vpn_router_error_password">Check the router password.</string>
-    <string name="vpn_router_error_pin">Check the router PIN.</string>
+    <string name="vpn_router_error_password">Check the router password or SSH key and its passphrase.</string>
+    <string name="vpn_router_error_pin">Incorrect PIN</string>
     <string name="vpn_router_error_locked">Too many attempts. Try again later.</string>
     <string name="vpn_router_error_unsupported">This router configuration is not supported.</string>
     <string name="vpn_router_error_storage">The router does not have enough free storage or RAM.</string>
@@ -57,7 +57,7 @@
     <string name="vpn_router_profile_title">VPN profile</string>
     <string name="vpn_router_choose_protocols">Choose protocols</string>
     <string name="vpn_router_protocol_combination_unavailable">This combination is not available. Change the selection.</string>
-    <string name="vpn_router_error_limit">You can save up to three routers</string>
+    <string name="vpn_router_error_limit">Pairing: up to 10 mobile devices per router; up to 10 routers in one app.</string>
     <string name="vpn_router_install_server">VPN server for your devices</string>
     <string name="vpn_router_install_server_yes">Included</string>
     <string name="vpn_router_install_server_no">Not included</string>

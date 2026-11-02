@@ -42,6 +42,13 @@ require(appUpdateChannel in setOf("github", "fdroid"))
 require(selectedAbis.toSet() != setOf("arm64-v8a", "armeabi-v7a", "x86_64") || appUpdateChannel == "fdroid") {
     "The android3 ABI profile is reserved for the F-Droid channel"
 }
+val apkDeliveryAbis = providers.gradleProperty("foxhole.deliveryAbis").orNull
+    ?.split(' ', ',')?.map(String::trim)?.filter(String::isNotEmpty) ?: selectedAbis
+require(apkDeliveryAbis.isNotEmpty() && apkDeliveryAbis.distinct().size == apkDeliveryAbis.size &&
+    apkDeliveryAbis.all { it in selectedAbis }) {
+    "foxhole.deliveryAbis must be a nonempty unique subset of foxhole.abis"
+}
+
 val instrumentationBuild = providers.gradleProperty("foxhole.androidTestBuildType").orElse("debug").get()
 require(instrumentationBuild in setOf("debug", "routerLab", "routerReview"))
 
@@ -59,10 +66,12 @@ android {
         applicationId = "com.foxhole.vpn"
         minSdk = 26
         targetSdk = 37
-        versionCode = 42
-        versionName = "1.0.0"
+        versionCode = 43
+        versionName = "1.0.1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        ndk { abiFilters += selectedAbis }
+        if (!providers.gradleProperty("foxhole.splitApks").map(String::toBoolean).orElse(false).get()) {
+            ndk { abiFilters += apkDeliveryAbis }
+        }
         buildConfigField("String", "APP_UPDATE_CHANNEL", "\"$appUpdateChannel\"")
         buildConfigField("String", "UPDATE_MANIFEST_ASSET", "\"${if (selectedAbis == listOf("armeabi-v7a")) "update-manifest-armeabi-v7a.json" else "update-manifest.json"}\"")
     }
@@ -72,8 +81,8 @@ android {
             abi {
                 isEnable = true
                 reset()
-                include(*selectedAbis.toTypedArray())
-                isUniversalApk = true
+                include(*apkDeliveryAbis.toTypedArray())
+                isUniversalApk = apkDeliveryAbis.toSet() == selectedAbis.toSet()
             }
         }
     }
@@ -277,14 +286,16 @@ androidComponents {
                         "--native", nativeDirectory.get().asFile.absolutePath,
                         "--merged", merged.get().asFile.absolutePath,
                         "--abis",
-                    ) + selectedAbis,
+                    ) + selectedAbis + listOf("--delivery-abis") + apkDeliveryAbis,
                 )
             }
         }
         val verifyApk = tasks.register<Exec>("verify${variantName}PageAlignedNativeApk") {
             if (!review) dependsOn(preparePageAlignedNative)
             val apks = variant.artifacts.get(SingleArtifact.APK)
+            val merged = variant.artifacts.get(SingleArtifact.MERGED_NATIVE_LIBS)
             inputs.dir(apks)
+            inputs.dir(merged)
             inputs.dir(nativeDirectory)
             doFirst {
                 commandLine(
@@ -293,8 +304,9 @@ androidComponents {
                         "--repo", rootProject.projectDir.absolutePath,
                         "--native", nativeDirectory.get().asFile.absolutePath,
                         "--apk-directory", apks.get().asFile.absolutePath,
+                        "--merged", merged.get().asFile.absolutePath,
                         "--abis",
-                    ) + selectedAbis,
+                    ) + selectedAbis + listOf("--delivery-abis") + apkDeliveryAbis,
                 )
             }
         }

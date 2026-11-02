@@ -1,0 +1,4 @@
+<resources>
+    <string name="vpn_app_update_install_vpn_notice">安装会短暂中断VPN。应用会尝试恢复原有连接；如有需要，请打开应用并重新连接。</string>
+    <string name="vpn_app_update_reconnect_required">更新后，请打开应用并重新连接以恢复VPN。</string>
+</resources>

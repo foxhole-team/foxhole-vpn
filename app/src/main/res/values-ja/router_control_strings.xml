@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="router_control_enable">管理</string>
+    <string name="router_control_enable">ルーターの管理</string>
     <string name="router_control_vpn">VPNを有効にする</string>
     <string name="router_control_choose_country">ローカルトラフィックの国</string>
     <string name="router_control_lan_clients">ホームデバイス</string>
@@ -29,12 +29,23 @@
     <string name="router_control_client_access">個人用VPNアクセス</string>
     <string name="router_control_client_template">保存済みテンプレート。リモートアクセスは未設定です</string>
     <string name="router_control_create_help">Hysteria2クライアント。公開ルーターアドレスと受信VPNの設定が必要です。</string>
-    <string name="router_control_enable_help">このスマートフォンからの管理を有効にします。管理を無効にしてもルーターVPNは動作を続けます。</string>
+    <string name="router_control_enable_help">ルーターの管理を有効または無効にします。</string>
     <string name="router_control_country_help">国はルーターのインターネット接続から判定されます。変更するには国旗をタップしてください。</string>
     <string name="router_control_home_help">対応するルーター接続を確認できた場合のみ、スマートフォンとホームルーターを切り替えます。</string>
     <string name="router_control_vpn_help">選択したルータープロファイルを開始または停止します。タップで選択し、長押しで操作します。</string>
-    <string name="router_control_lan_help">ルーターVPNまたは直接接続を選択します。ルーターの使用中のプロファイルが使われます。</string>
+    <string name="router_control_lan_help">端末ごとにVPNまたはVPNなしを選択します。既定の経路はVPNです。VPNプロファイルの起動は別の操作です。</string>
     <string name="router_control_clients_help">VPNプロファイルを開くと、QR、インポート、共有、削除を利用できます。</string>
     <string name="router_control_qr_loading">QRを生成中…</string>
     <string name="router_control_profile_loading">プロファイルを読み込み中…</string>
+    <string name="router_control_hide_offline">オフラインの端末を非表示</string>
+    <string name="router_control_hide_offline_help">現在ホームネットワークに接続していないデバイスを表示しません。</string>
+    <string name="router_review_no_online_devices">オンラインの端末はありません</string>
+    <string name="router_updates_check_entry">更新を確認</string>
+    <string name="router_control_available_protocols">利用可能なプロトコル：%1$s</string>
+    <string name="router_control_protocols_unknown">利用可能なプロトコル：不明</string>
+    <string name="router_control_protocols_loading">利用可能なプロトコル：確認中…</string>
+    <string name="router_control_protocols_empty">利用可能なプロトコル：未インストール</string>
+    <string name="router_profile_probe_failed">FoxHole OpenWRTパッケージを管理するには、ご自身のVPNまたは自宅のWi-Fiネットワークに接続してください。</string>
+    <string name="router_control_home_vpn">VPN経由の管理</string>
+    <string name="router_control_home_vpn_help">ルーターのVPNネットワーク経由で管理できます。静的パブリックIPアドレスが必要です。</string>
 </resources>

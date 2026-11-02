@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="router_review_management">路由器管理</string>
+    <string name="router_review_management">OpenWRT 客户端</string>
     <string name="router_review_compatibility">支持的 OpenWrt 版本</string>
     <string name="router_review_platforms">平台</string>
     <string name="router_review_catalog_pending">OpenWrt 25.12.5：mediatek/filogic 和 x86/64。设置时会根据已验证的发布目录检查架构和可用空间。</string>
@@ -9,15 +9,15 @@
     <string name="router_review_architecture">架构</string>
     <string name="router_review_protocols">VPN 协议</string>
     <string name="router_review_storage">安装</string>
-    <string name="router_review_direct_ip">公网 IP 地址</string>
+    <string name="router_review_direct_ip">已确认静态 IPv4 地址</string>
     <string name="router_review_remote_settings">在外访问 VPN</string>
     <string name="router_review_phone_profile">为此手机创建 VPN 配置</string>
-    <string name="router_review_remote_help">路由器需要公网 IP 地址和入站 VPN 服务。请通过移动网络检查连接。</string>
-    <string name="router_review_router_vpn">路由器 VPN</string>
+    <string name="router_review_remote_help">如果路由器支持静态公网 IP 地址，您可以将其用作设备的 VPN 网关。路径：设备 → 路由器；本地流量直接访问互联网，境外流量通过当前活动的 VPN 连接。</string>
+    <string name="router_review_router_vpn">VPN OpenWRT</string>
     <string name="router_review_vpn_clients">VPN 客户端</string>
     <string name="router_review_router_vpn_description">配置、连接与设置</string>
     <string name="router_review_clients_description">家庭设备与远程访问</string>
-    <string name="router_review_unavailable">路由器当前不可用</string>
+    <string name="router_review_unavailable">未找到路由器</string>
     <string name="router_review_control_disabled">路由器管理已禁用</string>
     <string name="router_review_back">返回</string>
     <string name="router_review_profiles">VPN 配置</string>
@@ -34,7 +34,7 @@
     <string name="router_review_use_router_profile">使用路由器 VPN</string>
     <string name="router_review_use_direct">直接连接</string>
     <string name="router_review_current_route">当前路由</string>
-    <string name="router_review_direct">直连</string>
+    <string name="router_review_direct">不使用 VPN</string>
     <string name="router_review_selected_profile">所选路由器配置</string>
     <string name="router_review_unpair">是否取消路由器配对？</string>
     <string name="router_review_unpair_description">此手机将停止管理路由器。除非移除 FoxHole，否则路由器 VPN 将继续运行。</string>
@@ -56,7 +56,7 @@
     <string name="router_review_progress_percent">%1$d%%</string>
     <string name="router_review_find_router">查找路由器</string>
     <string name="router_review_router_found">已找到路由器</string>
-    <string name="router_review_package_present">在路由器上找到 FoxHole</string>
+    <string name="router_review_package_present">已发现 FoxHole OpenWRT Client，可以与您的设备配对</string>
     <string name="router_review_package_missing">尚未安装 FoxHole</string>
     <string name="router_review_package_unknown">无法检查 FoxHole。请重新查找路由器。</string>
     <string name="router_review_reset_before_connect">重置 FoxHole 设置</string>
@@ -70,7 +70,7 @@
     <string name="router_review_country_unknown">国家未知</string>
     <string name="router_review_country_description">本地流量所属国家：%1$s。更改国家。</string>
     <string name="router_review_country_unknown_description">国家未知。请选择国家。</string>
-    <string name="router_review_device_vpn">通过路由器 VPN</string>
+    <string name="router_review_device_vpn">VPN</string>
     <string name="router_review_add_router">添加路由器</string>
     <string name="router_review_choose_router">选择路由器</string>
     <string name="router_review_saved_number">路由器 %1$d</string>
@@ -79,6 +79,6 @@
     <string name="router_review_saved_unknown">尚未检查</string>
     <string name="router_review_expand_profiles">显示 VPN 配置</string>
     <string name="router_review_collapse_profiles">隐藏 VPN 配置</string>
-    <string name="router_review_settings_help">此手机的路由器管理与路由偏好设置。</string>
+    <string name="router_review_settings_help">此手机的路由器管理与路由偏好设置。\n\n配对限制：每台路由器最多连接 10 台移动设备；每个应用最多保存 10 台路由器。</string>
     <string name="router_review_disconnect">断开连接</string>
 </resources>

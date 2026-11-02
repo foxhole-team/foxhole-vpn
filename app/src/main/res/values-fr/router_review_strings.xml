@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="router_review_management">Gestion du routeur</string>
+    <string name="router_review_management">Client OpenWRT</string>
     <string name="router_review_compatibility">Versions OpenWrt prises en charge</string>
     <string name="router_review_platforms">Plateforme</string>
     <string name="router_review_catalog_pending">OpenWrt 25.12.5 : mediatek/filogic et x86/64. La configuration vérifie l’architecture et l’espace libre dans le catalogue vérifié de la version.</string>
@@ -9,15 +9,15 @@
     <string name="router_review_architecture">Architecture</string>
     <string name="router_review_protocols">Protocoles VPN</string>
     <string name="router_review_storage">Installation</string>
-    <string name="router_review_direct_ip">Adresse IP publique</string>
+    <string name="router_review_direct_ip">Adresse IPv4 statique confirmée</string>
     <string name="router_review_remote_settings">Accès VPN hors du domicile</string>
     <string name="router_review_phone_profile">Créer un profil VPN pour ce téléphone</string>
-    <string name="router_review_remote_help">Le routeur nécessite une IP publique et un service VPN entrant. Vérifiez la connexion depuis un réseau mobile.</string>
-    <string name="router_review_router_vpn">VPN du routeur</string>
+    <string name="router_review_remote_help">Si votre routeur prend en charge une adresse IP publique statique, vous pouvez l’utiliser comme passerelle VPN pour vos appareils. Trajet : appareil → routeur ; le trafic local sort directement, tandis que le trafic étranger passe par la connexion VPN active.</string>
+    <string name="router_review_router_vpn">VPN OpenWRT</string>
     <string name="router_review_vpn_clients">Clients VPN</string>
     <string name="router_review_router_vpn_description">Profils, connexion et paramètres</string>
     <string name="router_review_clients_description">Appareils domestiques et accès distant</string>
-    <string name="router_review_unavailable">Le routeur est actuellement indisponible</string>
+    <string name="router_review_unavailable">Routeur introuvable</string>
     <string name="router_review_control_disabled">Gestion du routeur désactivée</string>
     <string name="router_review_back">Retour</string>
     <string name="router_review_profiles">Profils VPN</string>
@@ -34,7 +34,7 @@
     <string name="router_review_use_router_profile">UTILISER LE VPN DU ROUTEUR</string>
     <string name="router_review_use_direct">CONNECTER DIRECTEMENT</string>
     <string name="router_review_current_route">Route actuelle</string>
-    <string name="router_review_direct">Connexion directe</string>
+    <string name="router_review_direct">Sans VPN</string>
     <string name="router_review_selected_profile">Profil du routeur sélectionné</string>
     <string name="router_review_unpair">Désappairer le routeur ?</string>
     <string name="router_review_unpair_description">Ce téléphone cessera de gérer le routeur. Le VPN du routeur continuera de fonctionner sauf si vous supprimez FoxHole.</string>
@@ -56,7 +56,7 @@
     <string name="router_review_progress_percent">%1$d%%</string>
     <string name="router_review_find_router">RECHERCHER LE ROUTEUR</string>
     <string name="router_review_router_found">Routeur trouvé</string>
-    <string name="router_review_package_present">FoxHole trouvé sur le routeur</string>
+    <string name="router_review_package_present">FoxHole OpenWRT Client a été détecté et est prêt à être associé à votre appareil</string>
     <string name="router_review_package_missing">FoxHole n’est pas encore installé</string>
     <string name="router_review_package_unknown">Impossible de vérifier FoxHole. Recherchez à nouveau le routeur.</string>
     <string name="router_review_reset_before_connect">Réinitialiser la configuration FoxHole</string>
@@ -70,7 +70,7 @@
     <string name="router_review_country_unknown">Pays inconnu</string>
     <string name="router_review_country_description">Pays du trafic local : %1$s. Changer de pays.</string>
     <string name="router_review_country_unknown_description">Pays inconnu. Choisissez un pays.</string>
-    <string name="router_review_device_vpn">Via le VPN du routeur</string>
+    <string name="router_review_device_vpn">VPN</string>
     <string name="router_review_add_router">Ajouter un routeur</string>
     <string name="router_review_choose_router">Choisir un routeur</string>
     <string name="router_review_saved_number">Routeur %1$d</string>
@@ -79,6 +79,6 @@
     <string name="router_review_saved_unknown">Non vérifié</string>
     <string name="router_review_expand_profiles">Afficher les profils VPN</string>
     <string name="router_review_collapse_profiles">Masquer les profils VPN</string>
-    <string name="router_review_settings_help">Gestion du routeur et préférences de routage pour ce téléphone.</string>
+    <string name="router_review_settings_help">Gestion du routeur et préférences de routage pour ce téléphone.\n\nAssociation : jusqu’à 10 appareils mobiles par routeur ; jusqu’à 10 routeurs dans une application.</string>
     <string name="router_review_disconnect">DÉCONNECTER</string>
 </resources>

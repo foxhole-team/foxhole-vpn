@@ -1,3 +1,11 @@
+<h1 align="center">FoxHole VPN</h1>
+
+<div align="center">
+
+FoxHole VPN est un client VPN simple pour Android 8 et versions ultérieures. Importez un profil de votre fournisseur VPN ou de votre serveur, connectez votre téléphone et gérez un routeur OpenWrt associé depuis l’application.
+
+</div>
+
 <p align="center">
     <img
       src="../media/fhg.gif"
@@ -23,18 +31,45 @@
   <a href="https://github.com/foxhole-team/foxhole-vpn/releases">
     <img src="https://img.shields.io/github/v/release/foxhole-team/foxhole-vpn?label=version&style=flat-square" alt="GitHub Version">
   </a>
+  <img src="https://img.shields.io/badge/status-stable-success?style=flat-square" alt="Status: stable">
   <a href="https://f-droid.org/packages/com.foxhole.vpn/">
     <img src="https://img.shields.io/f-droid/v/com.foxhole.vpn?label=F-Droid&logo=f-droid&style=flat-square" alt="F-Droid Version">
   </a>
-  <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.foxhole.vpn%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Ffoxhole-team%2Ffoxhole-vpn%22%2C%22author%22%3A%22FoxHole%20Team%22%2C%22name%22%3A%22FoxHole%20VPN%22%2C%22preferredApkIndex%22%3A0%2C%22additionalSettings%22%3A%22%7B%5C%22apkFilterRegEx%5C%22%3A%5C%22arm64-v8a-release%5C%5C%5C%5C.apk%24%5C%22%2C%5C%22invertAPKFilter%5C%22%3Afalse%2C%5C%22verifyLatestTag%5C%22%3Atrue%7D%22%2C%22overrideSource%22%3A%22GitHub%22%7D">
-    <img src="https://img.shields.io/badge/Obtainium-add%20app-1A73E8?style=flat-square" alt="Get it on Obtainium">
+  <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.foxhole.vpn%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Ffoxhole-team%2Ffoxhole-vpn%22%2C%22author%22%3A%22FoxHole%20Team%22%2C%22name%22%3A%22FoxHole%20VPN%22%2C%22preferredApkIndex%22%3A0%2C%22additionalSettings%22%3A%22%7B%5C%22apkFilterRegEx%5C%22%3A%5C%22arm64-v8a%5B.%5Dapk%24%5C%22%2C%5C%22invertAPKFilter%5C%22%3Afalse%2C%5C%22verifyLatestTag%5C%22%3Atrue%7D%22%2C%22overrideSource%22%3A%22GitHub%22%7D" title="Obtainium · ARM64">
+    <img src="https://img.shields.io/badge/Obtainium-add%20app-1A73E8?style=flat-square" alt="Get it on Obtainium · ARM64">
   </a>
 </p>
 
-# FoxHole VPN
 
-[![FoxHole VPN](https://img.shields.io/badge/GitHub-FoxHole_VPN-181717?logo=github&style=flat-square)](https://github.com/foxhole-team/foxhole-vpn)
+Prend en charge VLESS, VMess, Trojan, Shadowsocks/Outline, WireGuard, AmneziaWG (expérimental), Hysteria2, Naive, TUIC et AnyTLS. Importe les configurations FoxHole Guard compatibles, les liens et abonnements v2rayTun, le YAML Clash/mihomo, le JSON SIP008 et les clés dynamiques Outline (`ssconf://`). Partagez uniquement avec des personnes de confiance : les profils exportés et leurs liens sources peuvent contenir des identifiants.
 
+L’import transfère les paramètres de connexion pris en charge. Les règles et autres réglages clients de Clash/mihomo ne sont pas transférés ; les `proxy-providers` externes ne sont pas pris en charge. La compatibilité avec les profils Guard concerne la connexion VPN, sans transfert de Tor, I2P, du pare-feu ni des scénarios Guard.
+
+<p align="center"><a href="#quickstart">Démarrer</a> · <a href="#features">Fonctions</a> · <a href="#details">Détails</a> · <a href="#whats-new">Nouveautés</a></p>
+
+<a id="whats-new"></a>
+
+> **🆕 Nouveautés - 1.0.1 Stable**
+>
+> - Amélioration de la prise en charge des abonnements des fournisseurs VPN.
+> - Correction de la découverte des routeurs, de l’association et de la vérification d’OpenWrt par SSH, et ajout de la prise en charge des clés SSH.
+> - Correction de la vérification des APK lors des mises à jour depuis GitHub.
+> - Amélioration des animations des fenêtres.
+> - Ajout d’un délai de fermeture des notifications et de la fermeture par balayage vers le haut.
+> - Simplification de la configuration OpenWrt et de la gestion des appareils du foyer et des clients VPN.
+> - Ajout d’un PIN à six chiffres avec confirmation pendant l’installation et de la prise en charge de jusqu’à 10 routeurs.
+
+<a id="quickstart"></a>
+
+## ⬇️ Démarrage et téléchargement
+
+Android 8 (API 26) ou ultérieur est requis. Les architectures APK disponibles sont indiquées dans la version publiée.
+
+1. Choisissez votre architecture APK dans [GitHub Releases](https://github.com/foxhole-team/foxhole-vpn/releases).
+2. Importez le profil de votre serveur ou fournisseur par fichier, presse-papiers ou QR code.
+3. Connectez-vous et confirmez la demande VPN Android.
+
+Obtainium · ARM64. Pour les autres architectures, choisissez l’APK dans [GitHub Releases](https://github.com/foxhole-team/foxhole-vpn/releases).
 
 <p align="center">
   <img src="../fastlane/metadata/android/fr-FR/images/phoneScreenshots/00_main.png" width="24%" alt="English main screen">
@@ -42,15 +77,17 @@
   <img src="../fastlane/metadata/android/fr-FR/images/phoneScreenshots/02_settings.png" width="24%" alt="English settings">
 </p>
 
-FoxHole VPN est un client VPN simple pour Android 8 et versions ultérieures. Importez un profil de votre fournisseur VPN ou de votre serveur, connectez votre téléphone et gérez un routeur OpenWrt associé depuis l’application.
-
-Prend en charge VLESS, VMess, Trojan, Shadowsocks/Outline, WireGuard, AmneziaWG (expérimental), Hysteria2, Naive, TUIC et AnyTLS. Importe les configurations FoxHole Guard compatibles, les liens et abonnements v2rayTun, le YAML Clash/mihomo, le JSON SIP008 et les clés dynamiques Outline (`ssconf://`). Partagez uniquement avec des personnes de confiance : les profils exportés et leurs liens sources peuvent contenir des identifiants.
-
 ## 🤖 Plateformes prises en charge
 
 Android 8 (API 26) ou ultérieur est requis. Les profils de compilation peuvent inclure `arm64-v8a`, `armeabi-v7a`, `x86` et `x86_64` ; chaque version publiée indique les APK disponibles.
 
 La politique actuelle des paquets et mises à jour du routeur admet OpenWrt 25.12.5 avec `mediatek/filogic` et `x86/64`, sous réserve d’un catalogue authentifié pour l’architecture exacte, de dépendances et d’une ABI du noyau compatibles, et d’assez de mémoire flash/RAM. Un nom de cible ne valide pas tous les modèles de routeur.
+
+## 📦 Disponibilité des versions
+
+Chaque version publiée indique les architectures APK et les cibles de routeur disponibles. Une option de compilation ou une recette source ne prouve ni la compatibilité avec un appareil ni la disponibilité sur F-Droid ; l’inclusion sur F-Droid reste soumise à son examen.
+
+<a id="features"></a>
 
 ## 🎛️ Commandes au quotidien
 
@@ -59,13 +96,21 @@ La politique actuelle des paquets et mises à jour du routeur admet OpenWrt 25.1
 - Les widgets de l’écran d’accueil affichent l’état de connexion et permettent de démarrer ou d’arrêter le profil sélectionné.
 - Choisissez le thème et la langue dans les paramètres : anglais, russe, allemand, français, espagnol, japonais ou chinois simplifié.
 
-Si activés dans Paramètres → Mises à jour en arrière-plan, les abonnements sont actualisés par défaut environ toutes les 12 heures et les données de connexion signées de FoxHole DB sont vérifiées toutes les 24 heures. Chaque vérification peut y être désactivée séparément. L’installation des données exige toujours votre action. La version GitHub recherche une mise à jour de l’application chaque jour ; le téléchargement et l’installation d’un APK exigent votre action et une confirmation Android. La version F-Droid ne recherche ni n’installe ses propres mises à jour APK : utilisez F-Droid. Android peut retarder les tâches en arrière-plan.
+Si activés dans Paramètres → Mises à jour en arrière-plan, les abonnements sont actualisés par défaut environ toutes les 12 heures et les tables signées d’empreintes TLS de FoxHole DB sont vérifiées toutes les 24 heures. Chaque vérification peut y être désactivée séparément. L’installation des données exige toujours votre action. La version GitHub recherche une mise à jour de l’application chaque jour ; le téléchargement et l’installation d’un APK exigent votre action et une confirmation Android. La version F-Droid ne recherche ni n’installe ses propres mises à jour APK : utilisez F-Droid. Android peut retarder les tâches en arrière-plan.
+
+Ces mises à jour modifient les données utilisées par le cœur pour former TLS ClientHello. L’installation d’une mise à jour vérifiée exige votre action.
+
+<a id="details"></a>
 
 ## 🛜 Gestion du routeur (bêta publique)
+
+> [!NOTE]
+> La gestion du routeur pendant qu’une connexion VPN est active n’est pas encore prise en charge.
 
 La gestion du routeur est en bêta publique. La compatibilité des appareils ainsi que l’installation et les mises à jour sont encore en cours de validation.
 
 > [!IMPORTANT]
+> Les restrictions ci-dessous concernent la version actuellement publiée.
 > L’installation automatique est actuellement prise en charge uniquement sur les routeurs dont la configuration OpenWrt est entièrement celle par défaut.
 > L’association est aussi possible après l’installation manuelle de la dernière version de [FoxHole OpenWrt Client](https://github.com/foxhole-team/foxhole-openwrt-client).
 > Pour l’installation et l’association, le téléphone et le routeur doivent être sur le même réseau local, et le routeur doit avoir accès à Internet.
@@ -92,39 +137,27 @@ Les mises à jour manuelles de FoxHole depuis l’application et LuCI utilisent 
 
 ## 🔒 Confidentialité
 
-Les profils et réglages sont chiffrés sur l’appareil avec une clé Android Keystore. Aucun SDK publicitaire ou d’analyse. Les vérifications VPN contactent `www.google.com/generate_204` ; les données de l’IP de sortie proviennent de `ipwho.is`. Ces requêtes utilisent le réseau VPN sélectionné. Sans VPN, la position approximative peut être actualisée via la connexion Internet actuelle, y compris par un widget. Les services reçoivent la requête et son IP source. Les données de connexion signées proviennent de `foxhole-team.github.io/foxhole-db` ; les abonnements utilisent les URL enregistrées du fournisseur. Le GPS n’est pas nécessaire.
+Les profils et réglages sont chiffrés sur l’appareil avec une clé Android Keystore. Aucun SDK publicitaire ou d’analyse. Les vérifications VPN contactent `www.google.com/generate_204` ; les données de l’IP de sortie proviennent de `ipwho.is`. Ces requêtes utilisent le réseau VPN sélectionné. Sans VPN, la position approximative peut être actualisée via la connexion Internet actuelle, y compris par un widget. Les services reçoivent la requête et son IP source. Les tables signées d’empreintes TLS proviennent de `foxhole-team.github.io/foxhole-db` ; les abonnements utilisent les URL enregistrées du fournisseur. Le GPS n’est pas nécessaire.
 
-## 📄 Licence
+<a id="ecosystem"></a>
 
-[GPL-3.0-or-later](../LICENSE) · Copyright (C) 2026 FOXHOLE TEAM.
+## 🔗 Écosystème FoxHole
 
-Les licences des composants figurent dans Paramètres → À propos.
+| Projet | Rôle |
+| --- | --- |
+| [FoxHole Guard](https://github.com/foxhole-team/foxhole-guard) | Android : VPN, Tor/I2P, règles de trafic et surveillance locale |
+| [**FoxHole VPN**](https://github.com/foxhole-team/foxhole-vpn) | Android : client VPN simple et gestion OpenWrt appairée |
+| [FoxHole Core](https://github.com/foxhole-team/foxhole-core) | Cœur réseau Rust commun ; fonctions selon la compilation |
+| [FoxHole OpenWrt](https://github.com/foxhole-team/foxhole-openwrt-client) | VPN de routeur et gestion du réseau local |
+| [FoxHole DB](https://github.com/foxhole-team/foxhole-db) | Règles signées et données de référence |
 
-[Composants tiers](../THIRD_PARTY_NOTICES.md).
+## 🤝 Contribuer
 
-## 🔗 Projets associés
-
-[![FoxHole Core](https://img.shields.io/badge/GitHub-FoxHole_Core-181717?logo=github&style=flat-square)](https://github.com/foxhole-team/foxhole-core)
-[![Version](https://img.shields.io/github/v/release/foxhole-team/foxhole-core?label=version&style=flat-square)](https://github.com/foxhole-team/foxhole-core/releases)
-
-[![FoxHole DB](https://img.shields.io/badge/GitHub-FoxHole_DB-181717?logo=github&style=flat-square)](https://github.com/foxhole-team/foxhole-db)
-[![Version](https://img.shields.io/github/v/release/foxhole-team/foxhole-db?label=version&style=flat-square)](https://github.com/foxhole-team/foxhole-db/releases)
-
-[![FoxHole Guard](https://img.shields.io/badge/GitHub-FoxHole_Guard-181717?logo=github&style=flat-square)](https://github.com/foxhole-team/foxhole-guard)
-[![Version](https://img.shields.io/github/v/release/foxhole-team/foxhole-guard?label=version&style=flat-square)](https://github.com/foxhole-team/foxhole-guard/releases)
-
-[![FoxHole OpenWrt](https://img.shields.io/badge/GitHub-FoxHole_OpenWrt-181717?logo=github&style=flat-square)](https://github.com/foxhole-team/foxhole-openwrt-client)
-[![Version](https://img.shields.io/github/v/release/foxhole-team/foxhole-openwrt-client?label=version&style=flat-square)](https://github.com/foxhole-team/foxhole-openwrt-client/releases)
-
-## 📦 Disponibilité des versions
-
-Chaque version publiée indique les architectures APK et les cibles de routeur disponibles. Une option de compilation ou une recette source ne prouve ni la compatibilité avec un appareil ni la disponibilité sur F-Droid ; l’inclusion sur F-Droid reste soumise à son examen.
+Signalez les erreurs et proposez des modifications via [Issues](https://github.com/foxhole-team/foxhole-vpn/issues).
 
 ## 💖 Soutenir le développement
 
-Nous développons et maintenons FoxHole VPN entièrement avec notre propre temps et nos propres ressources, avec l’aide d’outils d’IA. Votre soutien nous aide à consacrer plus de temps au projet et à accélérer le développement.
-
-[Soutenir le projet - portefeuilles de cryptomonnaies](#cryptocurrency-wallets)
+Nous développons et maintenons FoxHole VPN entièrement avec notre propre temps et nos propres ressources, en utilisant des outils d’IA pendant le développement. Votre soutien nous aide à consacrer plus de temps au projet et à accélérer le développement.
 
 <a id="cryptocurrency-wallets"></a>
 
@@ -147,3 +180,11 @@ bc1qatnyy7jcpqrp0d3dk9rta9vqfejgh4mysd6m2f
 ```text
 0xDEBA357Cc8f5E865ea7FFa98E138C8241A16A465
 ```
+
+## 📄 Licence
+
+[GPL-3.0-or-later](../LICENSE) · Copyright (C) 2026 FOXHOLE TEAM.
+
+Les licences des composants figurent dans Paramètres → À propos.
+
+[Composants tiers](../THIRD_PARTY_NOTICES.md).

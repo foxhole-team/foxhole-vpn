@@ -72,8 +72,16 @@ class MainActivity : AppCompatActivity() {
         else if (action != null) uiError = getString(R.string.vpn_router_error_local_network_permission)
     }
     private val appUpdater get() = (application as VpnApplication).appUpdater
-    private val appInstaller = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+    private val appInstaller = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         appInstallerPending = false
+        if (result.resultCode != Activity.RESULT_OK) {
+            val installedCode = runCatching {
+                androidx.core.content.pm.PackageInfoCompat.getLongVersionCode(packageManager.getPackageInfo(packageName, 0))
+            }.getOrDefault(BuildConfig.VERSION_CODE.toLong())
+            if (installedCode <= BuildConfig.VERSION_CODE) {
+                (application as VpnApplication).runtimeController.cancelAppUpdateResume()
+            }
+        }
     }
     private val appInstallPermission = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         val requested = appInstallPermissionPending
@@ -122,6 +130,7 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         lifecycleScope.launch { synchronizeAppLanguage() }
+        lifecycleScope.launch { (application as VpnApplication).resumeConnectionAfterUpdate() }
     }
 
     private suspend fun synchronizeAppLanguage() {
@@ -239,12 +248,20 @@ class MainActivity : AppCompatActivity() {
         if (appInstallPreparing || appInstallerPending) return
         appInstallPreparing = true
         lifecycleScope.launch {
+            var installerLaunched = false
             try {
                 when (val action = appUpdater.prepareInstall(this@MainActivity)) {
                     is VpnAppInstallAction.Install -> {
+                        if (!(application as VpnApplication).runtimeController.armAppUpdateResume(action.versionCode)) {
+                            uiError = getString(R.string.vpn_app_update_error_storage)
+                            return@launch
+                        }
                         appInstallerPending = true
-                        try { appInstaller.launch(action.intent) }
-                        catch (_: Exception) { appInstallerPending = false; uiError = getString(R.string.vpn_app_update_error_install) }
+                        try { appInstaller.launch(action.intent); installerLaunched = true }
+                        catch (_: Exception) {
+                            appInstallerPending = false
+                            uiError = getString(R.string.vpn_app_update_error_install)
+                        }
                     }
                     is VpnAppInstallAction.PermissionRequired -> {
                         appInstallPermissionPending = true
@@ -254,7 +271,10 @@ class MainActivity : AppCompatActivity() {
                     is VpnAppInstallAction.Failed -> uiError = getString(appUpdateErrorResource(action.error))
                     VpnAppInstallAction.Unavailable -> Unit
                 }
-            } finally { appInstallPreparing = false }
+            } finally {
+                if (!installerLaunched) (application as VpnApplication).runtimeController.cancelAppUpdateResume()
+                appInstallPreparing = false
+            }
         }
     }
 

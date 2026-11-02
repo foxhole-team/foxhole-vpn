@@ -8,8 +8,11 @@ import android.net.NetworkCapabilities
 import androidx.core.content.ContextCompat
 import com.foxhole.core.runtime.VpnEngineConfig
 import com.foxhole.core.runtime.FoxholeNativeEngine
+import com.foxhole.vpn.appupdates.VpnUpdateResumeStore
+import com.foxhole.vpn.appupdates.VpnUpdateResumeTicket
+import com.foxhole.vpn.appupdates.vpnUpdateConfigurationDigest
+import com.foxhole.vpn.appupdates.vpnUpdateResumeAllowed
 import com.foxhole.vpn.updates.VpnDataUpdater
-import com.foxhole.vpn.updates.VpnDataUpdatePhase
 import java.io.File
 import java.net.Socket
 import com.foxhole.core.runtime.FoxCoreConfigTranslationException
@@ -45,6 +48,8 @@ import com.foxhole.vpn.router.routerAutomaticProfilesProtected
 import com.foxhole.vpn.router.routerAutomaticLeaseProtected
 import com.foxhole.vpn.router.routerAutomaticPreparedLeaseProtected
 import com.foxhole.vpn.refresh.ForegroundIpRefresh
+import com.foxhole.vpn.refresh.ConnectionDataRefreshCoordinator
+import com.foxhole.vpn.refresh.SubscriptionRefreshCoordinator
 import com.foxhole.vpn.refresh.RefreshAttempt
 import com.foxhole.vpn.refresh.RefreshOutcome
 import com.foxhole.vpn.refresh.SubscriptionRefreshRun
@@ -52,8 +57,6 @@ import com.foxhole.vpn.refresh.SubscriptionRefreshTarget
 import com.foxhole.vpn.refresh.VpnRefreshWork
 import com.foxhole.vpn.refresh.attempted
 import com.foxhole.vpn.refresh.proposeSubscriptionRefresh
-import com.foxhole.vpn.refresh.refreshIntervalMillis
-import com.foxhole.vpn.refresh.refreshIsDue
 import com.foxhole.vpn.refresh.subscriptionRefreshTargets
 import com.foxhole.vpn.refresh.subscriptionSourceKey
 import com.foxhole.vpn.storage.EncryptedProfileStore
@@ -72,11 +75,9 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.isActive
-import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.coroutines.supervisorScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -87,7 +88,6 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import java.util.concurrent.ConcurrentHashMap
-import java.io.IOException
 
 internal class DefaultVpnController(
     private val context: Context,
@@ -98,13 +98,27 @@ internal class DefaultVpnController(
     override val state: StateFlow<VpnUiState> = mutable
     private val settingsMutable = MutableStateFlow(VpnSettings())
     override val settings: StateFlow<VpnSettings> = settingsMutable
+
     private val ready = CompletableDeferred<Unit>()
     private val storage = EncryptedProfileStore(context)
     private val importer = VpnProfileImporter()
-    private val fetcher by lazy { SubscriptionFetcher() }
+    private val routerPersonalVpnGuard by lazy {
+        val manager = requireNotNull(context.getSystemService(android.net.ConnectivityManager::class.java))
+        val protection = object : com.foxhole.vpn.router.RouterSocketProtection {
+            override fun protect(socket: Socket) = protectRouterSocket(socket)
+            override fun isCurrent(socket: Socket) = isRouterSocketCurrent(socket)
+        }
+        com.foxhole.vpn.router.RouterPersonalVpnStartGuard(
+            com.foxhole.vpn.router.EncryptedRouterPairingStore(context),
+            com.foxhole.vpn.router.WifiRouterWizardTransport(manager, socketProtection = protection,
+                accessCheck = { com.foxhole.vpn.router.requireRouterLocalNetworkAccess(context) },
+                nsd = context.getSystemService(android.net.nsd.NsdManager::class.java)))
+    }
+    private val fetcher by lazy { SubscriptionFetcher("FoxHole/${BuildConfig.VERSION_NAME}") }
     private val mutations = Mutex()
     private val widgetLocationOperations = Mutex()
     private val commands = ConnectionCommandFence()
+    private val updateResume = VpnUpdateResumeStore(context)
     private val routerManualMutable = MutableStateFlow(0L)
     internal val routerManualGeneration: StateFlow<Long> = routerManualMutable
     private var routerPausedPhone: RouterPausedPhone? = null
@@ -129,16 +143,33 @@ internal class DefaultVpnController(
         },
         { try { FoxholeNativeEngine.nativeClearTlsFingerprintTables() } catch (_: LinkageError) { } },
     )
-    private var dataCheckJob: Job? = null
-    private var dataUpdateJob: Job? = null
-    private var dataCheckEpoch = 0
-    private val dataOperations = Mutex()
-    private val subscriptionOperations = Mutex()
+    private val connectionDataRefresh = ConnectionDataRefreshCoordinator(
+        scope = scope,
+        foregroundLock = visibleActivities,
+        awaitReady = ::awaitReady,
+        storageAvailable = { !storageFailed && !profileStoreFault },
+        settings = { stored.settings },
+        attempt = { stored.automaticRefresh.connectionData },
+        updater = dataUpdater,
+        recordAttempt = ::recordConnectionDataAttempt,
+    )
+    private val subscriptionRefresh = SubscriptionRefreshCoordinator(
+        scope = scope,
+        foregroundLock = visibleActivities,
+        awaitReady = ::awaitReady,
+        storageAvailable = { !storageFailed && !profileStoreFault },
+        settings = { stored.settings },
+        attempts = { stored.automaticRefresh.subscriptions },
+        targets = { subscriptionRefreshTargets(stored) },
+        currentGeneration = commands::currentGeneration,
+        profilesProtected = ::automaticProfilesProtected,
+        load = ::loadAutomaticSubscription,
+        commit = ::commitAutomaticSubscription,
+        recordAttempt = ::recordSubscriptionAttempt,
+    )
     private val refreshWork = VpnRefreshWork(context)
     private val ipRefresh = ForegroundIpRefresh(scope, ::refreshForegroundIp)
-    private var subscriptionCheckJob: Job? = null
-    private val automaticSubscriptionMutable = MutableStateFlow(SubscriptionRefreshRun())
-    internal val automaticSubscriptionState: StateFlow<SubscriptionRefreshRun> = automaticSubscriptionMutable
+    internal val automaticSubscriptionState: StateFlow<SubscriptionRefreshRun> = subscriptionRefresh.state
     @Volatile private var stored = ProfileStoreState()
     @Volatile private var storageFailed = false
     @Volatile private var profileStoreFault = false
@@ -147,6 +178,7 @@ internal class DefaultVpnController(
     private var pendingUiFailure: PendingRuntimeUiFailure? = null
     // Service dispatch precedes the actor's first snapshot for this ticket.
     private var awaitingRuntimeTicket: Long? = null
+    private var updateResumeStartTicket: Long? = null
 
     init {
         scope.launch {
@@ -258,6 +290,60 @@ internal class DefaultVpnController(
         }
     }
 
+    internal suspend fun armAppUpdateResume(targetVersionCode: Long) = withContext(Dispatchers.IO) {
+        val operationContext = currentCoroutineContext()
+        synchronized(commands) {
+            operationContext.ensureActive()
+            val snapshot = runtime.state.value
+            val profile = stored.profiles.firstOrNull { it.id == snapshot.profileId }
+            val active = targetVersionCode > BuildConfig.VERSION_CODE && state.value.isConnected && snapshot.phase == EnginePhase.CONNECTED && snapshot.hasOwnedTunnel &&
+                snapshot.commandTicket == commands.currentGeneration() && profile?.id == stored.selectedProfileId &&
+                !storageFailed && !profileStoreFault
+            val ticket = profile?.takeIf { active }?.let {
+                VpnUpdateResumeTicket(it.id, updateResumeDigest(it), targetVersionCode, System.currentTimeMillis())
+            }
+            val saved = updateResume.arm(ticket)
+            operationContext.ensureActive()
+            saved
+        }
+    }
+
+    internal fun cancelAppUpdateResume() = synchronized(commands) { updateResume.cancel() }
+
+    internal suspend fun resumeAfterAppUpdate(): Unit = withContext(Dispatchers.IO) {
+        val operationContext = currentCoroutineContext()
+        awaitReady()
+        synchronized(commands) {
+            operationContext.ensureActive()
+            val ticket = updateResume.read() ?: return@synchronized
+            if (ticket.targetVersionCode != BuildConfig.VERSION_CODE.toLong()) return@synchronized
+            val profile = stored.profiles.firstOrNull { it.id == ticket.profileId }
+            val idle = state.value.phase in setOf(VpnPhase.IDLE, VpnPhase.ERROR) && !state.value.canDisconnect &&
+                !pendingRuntimeStart(runtime.state.value) && !runtime.state.value.hasOwnedTunnel
+            val allowed = idle && licenseAccepted() && !storageFailed && !profileStoreFault &&
+                profile?.id == stored.selectedProfileId && VpnService.prepare(context) == null &&
+                vpnUpdateResumeAllowed(ticket, BuildConfig.VERSION_CODE.toLong(), profile?.id,
+                    profile?.let(::updateResumeDigest), System.currentTimeMillis())
+            if (!allowed) {
+                updateResume.cancel()
+                if (idle) showMessage(R.string.vpn_app_update_reconnect_required)
+                return@synchronized
+            }
+            if (!updateResume.consume(ticket)) {
+                showMessage(R.string.vpn_app_update_reconnect_required)
+                return@synchronized
+            }
+            operationContext.ensureActive()
+            connectSelected()
+            if (commands.hasPendingStart()) updateResumeStartTicket = commands.currentGeneration()
+        }
+    }
+
+    private fun updateResumeDigest(profile: VpnProfile): String = vpnUpdateConfigurationDigest(
+        listOf(profile.protocol, profile.insecureTlsConsent.toString(), profile.normalizedConfigJson, profile.selectedProtocolOptionId.orEmpty()) +
+            profile.protocolOptions.flatMap { listOf(it.id, it.normalizedConfigJson) }
+    )
+
     override fun connectSelected() = synchronized(commands) {
         if (!licenseAccepted()) {
             showMessage(R.string.vpn_license_required)
@@ -270,6 +356,8 @@ internal class DefaultVpnController(
         if (!current.isReady || storageFailed || profileStoreFault || current.isConnected || current.canDisconnect && !stopping) return@synchronized
         val selected = current.selectedProfileId
         if (selected == null) { showMessage(R.string.vpn_error_no_profile); return@synchronized }
+        updateResumeStartTicket = null
+        updateResume.cancel()
         val ticket = commands.reserveStart()
         commands.applyCurrent(ticket) {
             pendingUiFailure = null
@@ -290,19 +378,36 @@ internal class DefaultVpnController(
             return
         }
         val preparation = routerStartPreparation
-        if (preparation == null) { requestStartNow(id, ticket); return }
         val owner = synchronized(commands) {
             if (!commands.isCurrent(ticket)) null else RouterPhoneSession(id, state.value.profileRevision, ticket)
         } ?: return
         scope.launch {
             try {
-                val plan = preparation(owner)
+                val profile = synchronized(commands) {
+                    stored.profiles.singleOrNull { it.id == id && stored.selectedProfileId == id }
+                } ?: run {
+                    failPendingStart(ticket, R.string.vpn_error_profile_unavailable, stopExisting = false)
+                    return@launch
+                }
+                val configDigest = com.foxhole.vpn.router.routerProfileDigest(profile.normalizedConfigJson)
+                routerPersonalVpnGuard.requireAway(id, configDigest) {
+                    synchronized(commands) { commands.isCurrent(ticket) && state.value.profileRevision == owner.profileRevision &&
+                        stored.selectedProfileId == id && stored.profiles.singleOrNull { it.id == id } == profile }
+                }
+                val plan = preparation?.invoke(owner)
                 val current = synchronized(commands) {
                     if (!commands.isCurrent(ticket) || state.value.profileRevision != owner.profileRevision || stored.selectedProfileId != id) false
                     else { routerPreparedStart = plan?.let { ticket to it }; routerLaunchingLease = routerPreparedStart; true }
                 }
                 if (current) requestStartNow(id, ticket)
-            } catch (cancelled: CancellationException) { throw cancelled }
+                else failPendingStart(ticket, R.string.vpn_error_profile_unavailable, stopExisting = false)
+            } catch (cancelled: CancellationException) {
+                if (currentCoroutineContext().isActive) failPendingStart(ticket, R.string.vpn_error_profile_unavailable, stopExisting = false)
+                throw cancelled
+            }
+            catch (_: com.foxhole.vpn.router.RouterPersonalVpnAtHome) {
+                failPendingStart(ticket, R.string.router_personal_vpn_at_home, stopExisting = false)
+            }
             catch (_: Exception) { failPendingStart(ticket, R.string.vpn_error_connection_failed, stopExisting = false) }
         }
     }
@@ -334,7 +439,9 @@ internal class DefaultVpnController(
         commands.applyCurrent(ticket) {
             commands.abandon(ticket)
             if (awaitingRuntimeTicket == ticket) awaitingRuntimeTicket = null
-            pendingUiFailure = PendingRuntimeUiFailure(commands.currentGeneration(), resource)
+            val failureResource = if (updateResumeStartTicket == ticket) R.string.vpn_app_update_reconnect_required else resource
+            if (updateResumeStartTicket == ticket) updateResumeStartTicket = null
+            pendingUiFailure = PendingRuntimeUiFailure(commands.currentGeneration(), failureResource)
             if (stopExisting) runtime.stop()
             val snapshot = runtime.state.value
             mutable.update { projectVpnRuntime(
@@ -346,6 +453,8 @@ internal class DefaultVpnController(
     }
 
     override fun disconnect() = synchronized(commands) {
+        updateResumeStartTicket = null
+        updateResume.cancel()
         routerManualAction()
         commands.stop { pendingUiFailure = null; awaitingRuntimeTicket = null; stopRuntime() }
     }
@@ -478,9 +587,9 @@ internal class DefaultVpnController(
         ipRefresh.setForeground(foreground)
         if (!wasForeground && foreground) {
             refreshForegroundIp()
-            if (subscriptionCheckJob?.isActive != true) subscriptionCheckJob = scope.launch { refreshSubscriptionsAutomatically() }
+            subscriptionRefresh.foregroundEntered()
         }
-        dataForegroundChanged(foreground)
+        connectionDataRefresh.foregroundChanged(foreground)
     }
 
     private fun refreshForegroundIp() = synchronized(visibleActivities) {
@@ -495,62 +604,9 @@ internal class DefaultVpnController(
         }
     }
 
-    private fun dataForegroundChanged(visible: Boolean) {
-        if (!visible) {
-            dataCheckEpoch++
-            dataCheckJob?.cancel()
-            dataCheckJob = null
-            return
-        }
-        if (dataCheckJob?.isActive == true || dataUpdateJob?.isActive == true) return
-        val epoch = ++dataCheckEpoch
-        dataCheckJob = scope.launch {
-            try {
-                awaitReady()
-                checkConnectionDataAutomatically()
-            } finally {
-                synchronized(visibleActivities) { if (epoch == dataCheckEpoch) dataCheckJob = null }
-            }
-        }
-    }
+    internal fun updateData() = connectionDataRefresh.update()
 
-    internal fun updateData() = synchronized(visibleActivities) {
-        if (dataUpdateJob?.isActive == true) return@synchronized
-        dataCheckEpoch++
-        dataCheckJob?.cancel()
-        dataCheckJob = null
-        dataUpdateJob = scope.launch {
-            awaitReady()
-            dataOperations.withLock {
-                dataUpdater.update()
-                if (dataUpdater.state.value.phase in setOf(VpnDataUpdatePhase.UPDATED, VpnDataUpdatePhase.UP_TO_DATE)) {
-                    recordConnectionDataAttempt(RefreshOutcome.UNCHANGED)
-                }
-            }
-        }
-    }
-
-    internal suspend fun checkConnectionDataAutomatically(): Boolean {
-        awaitReady()
-        if (storageFailed || profileStoreFault) return false
-        return dataOperations.withLock {
-            if (!stored.settings.autoCheckConnectionData) return@withLock false
-            val stamp = stored.automaticRefresh.connectionData
-            val dueStamp = if (dataUpdater.hasVerifiedCheckCache) stamp else stamp.copy(lastSuccessAtMillis = 0)
-            val interval = refreshIntervalMillis(stored.settings.connectionDataCheckIntervalHours, 24)
-            if (!refreshIsDue(dueStamp, System.currentTimeMillis(), interval)) return@withLock false
-            recordConnectionDataAttempt(RefreshOutcome.CHECKING)
-            dataUpdater.check()
-            val current = dataUpdater.state.value
-            val outcome = when (current.phase) {
-                VpnDataUpdatePhase.AVAILABLE -> RefreshOutcome.AVAILABLE
-                VpnDataUpdatePhase.UP_TO_DATE -> RefreshOutcome.UNCHANGED
-                else -> RefreshOutcome.FAILED
-            }
-            recordConnectionDataAttempt(outcome)
-            current.error in setOf(com.foxhole.vpn.updates.VpnDataUpdateError.NETWORK, com.foxhole.vpn.updates.VpnDataUpdateError.STORAGE)
-        }
-    }
+    internal suspend fun checkConnectionDataAutomatically(): Boolean = connectionDataRefresh.checkAutomatically()
 
     private suspend fun recordConnectionDataAttempt(outcome: RefreshOutcome) = mutations.withLock {
         if (storageFailed || profileStoreFault) return@withLock
@@ -563,63 +619,13 @@ internal class DefaultVpnController(
         }
     }
 
-    internal suspend fun refreshSubscriptionsAutomatically(): SubscriptionRefreshRun {
-        awaitReady()
-        if (storageFailed || profileStoreFault || !stored.settings.autoRefreshSubscriptions) return SubscriptionRefreshRun()
-        return subscriptionOperations.withLock {
-            if (storageFailed || profileStoreFault || !stored.settings.autoRefreshSubscriptions) return@withLock SubscriptionRefreshRun()
-            val now = System.currentTimeMillis()
-            val interval = refreshIntervalMillis(stored.settings.subscriptionRefreshIntervalHours, 12)
-            val targets = subscriptionRefreshTargets(stored)
-                .filter { refreshIsDue(stored.automaticRefresh.subscriptions[it.key], now, interval) }
-                .sortedBy { stored.automaticRefresh.subscriptions[it.key]?.lastAttemptAtMillis ?: 0 }
-            val generation = commands.currentGeneration()
-            var report = SubscriptionRefreshRun()
-            try {
-                val completed = withTimeoutOrNull(8 * 60 * 1000L) {
-                    for (target in targets) {
-                        currentCoroutineContext().ensureActive()
-                        if (!stored.settings.autoRefreshSubscriptions || commands.currentGeneration() != generation) {
-                            report = report.copy(stale = report.stale + targets.size - report.checked)
-                            break
-                        }
-                        if (automaticProfilesProtected()) {
-                            recordSubscriptionAttempt(target, generation, RefreshOutcome.DEFERRED)
-                            report = report.copy(checked = report.checked + 1, deferred = report.deferred + 1)
-                            continue
-                        }
-                        if (!recordSubscriptionAttempt(target, generation, RefreshOutcome.CHECKING)) continue
-                        val outcome = try {
-                            val incoming = withContext(Dispatchers.IO) {
-                                fetcher.fetchWithMetadata(target.source).let { fetched ->
-                                    importer.importSubscription(fetched.body, target.source, target.allowInsecureTls,
-                                        fetched.displayName, fetched.subscriptionExpiresAt)
-                                }.also { parsed -> parsed.profiles.forEach(VpnEngineConfig::prepare) }
-                            }
-                            commitAutomaticSubscription(target, incoming, generation)
-                        } catch (cancelled: CancellationException) {
-                            throw cancelled
-                        } catch (failure: Exception) {
-                            report = report.copy(retry = report.retry || failure is IOException)
-                            RefreshOutcome.FAILED
-                        }
-                        if (outcome in setOf(RefreshOutcome.DEFERRED, RefreshOutcome.STALE, RefreshOutcome.FAILED)) {
-                            recordSubscriptionAttempt(target, generation, outcome)
-                        }
-                        report = report.copy(
-                            checked = report.checked + 1,
-                            updated = report.updated + if (outcome == RefreshOutcome.UPDATED) 1 else 0,
-                            failed = report.failed + if (outcome == RefreshOutcome.FAILED) 1 else 0,
-                            deferred = report.deferred + if (outcome == RefreshOutcome.DEFERRED) 1 else 0,
-                            stale = report.stale + if (outcome == RefreshOutcome.STALE) 1 else 0,
-                        )
-                    }
-                    true
-                }
-                if (completed == null) report = report.copy(retry = true)
-                report
-            } finally { automaticSubscriptionMutable.value = report }
-        }
+    internal suspend fun refreshSubscriptionsAutomatically(): SubscriptionRefreshRun = subscriptionRefresh.refreshAutomatically()
+
+    private suspend fun loadAutomaticSubscription(target: SubscriptionRefreshTarget): ImportedVpnProfiles = withContext(Dispatchers.IO) {
+        fetcher.fetchWithMetadata(target.source).let { fetched ->
+            importer.importSubscription(fetched.body, target.source, target.allowInsecureTls,
+                fetched.displayName, fetched.subscriptionExpiresAt)
+        }.also { parsed -> parsed.profiles.forEach(VpnEngineConfig::prepare) }
     }
 
     private fun automaticTargetCurrent(target: SubscriptionRefreshTarget, generation: Long): Boolean =
@@ -660,7 +666,9 @@ internal class DefaultVpnController(
                 if (!admitted()) false else { publish(next); true }
             }
         }
-        if (result == ProfileMutationResult.APPLIED) proposal.outcome else RefreshOutcome.STALE
+        if (result == ProfileMutationResult.APPLIED) {
+            proposal.outcome
+        } else RefreshOutcome.STALE
     }
 
     private fun automaticCandidateSafe(before: ProfileStoreState, candidate: ProfileStoreState): Boolean = synchronized(commands) {
@@ -1032,9 +1040,9 @@ internal class DefaultVpnController(
             profileRevision = revision,
         ) }
         try { refreshWork.apply(value.settings, value.profiles.any { it.sourceUrl != null }) }
-        catch (_: RuntimeException) { automaticSubscriptionMutable.value = SubscriptionRefreshRun(failed = 1, retry = true) }
-        if (!value.settings.autoRefreshSubscriptions) subscriptionCheckJob?.cancel()
-        if (!value.settings.autoCheckConnectionData) dataCheckJob?.cancel()
+        catch (_: RuntimeException) { subscriptionRefresh.schedulingFailed() }
+        if (!value.settings.autoRefreshSubscriptions) subscriptionRefresh.cancelAutomaticRefresh()
+        if (!value.settings.autoCheckConnectionData) connectionDataRefresh.cancelAutomaticCheck()
     }
 
     internal fun serviceCommand(service: VpnTunnelService, profileId: String?, ticket: Long, startId: Int) {
@@ -1073,7 +1081,11 @@ internal class DefaultVpnController(
         }
     }
 
-    internal fun serviceRevoked(service: VpnTunnelService) = synchronized(commands) {
+    internal fun serviceRevoked(service: VpnTunnelService, permissionRevoked: Boolean = false) = synchronized(commands) {
+        if (permissionRevoked) {
+            updateResumeStartTicket = null
+            updateResume.cancel()
+        }
         routerManualAction()
         val driver = drivers[service]
         if (driver != null) commands.stop { runtime.stop(driver) }

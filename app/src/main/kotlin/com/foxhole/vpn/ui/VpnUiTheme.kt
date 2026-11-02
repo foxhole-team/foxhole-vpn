@@ -99,6 +99,12 @@ internal fun vpnTypographyFor(style: VpnFontStyle): Typography = if (style == Vp
     labelLarge = AppTypography.labelLarge.copy(fontFamily = Mono, fontWeight = FontWeight.Bold),
 )
 
+@Composable
+internal fun vpnFontPreviewStyle(style: VpnFontStyle): TextStyle = MaterialTheme.typography.bodyMedium.copy(
+    fontFamily = if (style == VpnFontStyle.PIXEL) Pixel else Mono,
+    fontWeight = if (style == VpnFontStyle.PIXEL) FontWeight.Normal else FontWeight.Bold,
+)
+
 internal fun vpnGlobeDeviceTint(theme: VpnTheme): Color? = when (theme) {
     VpnTheme.DARK -> Color(0xFF6E94AF)
     VpnTheme.LIGHT -> Color(0xFFE8EEF5)

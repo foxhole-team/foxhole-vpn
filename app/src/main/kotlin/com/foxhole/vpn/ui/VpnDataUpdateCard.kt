@@ -92,7 +92,7 @@ internal fun VpnDataUpdateCard(
                 } else {
                     CircularProgressIndicator(modifier = Modifier.size(24.dp), color = downloadColor, strokeWidth = 2.dp)
                 }
-            } else {
+            } else if (enabled) {
                 Icon(
                     painterResource(R.drawable.lin_chevron_right),
                     contentDescription = null,

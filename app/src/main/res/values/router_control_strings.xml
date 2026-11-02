@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="router_control_enable">Control</string>
+    <string name="router_control_enable">Router management</string>
     <string name="router_control_vpn">Enable VPN</string>
     <string name="router_control_choose_country">Country for local traffic</string>
     <string name="router_control_lan_clients">Home devices</string>
@@ -29,18 +29,26 @@
     <string name="router_control_client_access">Personal VPN access</string>
     <string name="router_control_client_template">Saved template; remote access is not configured</string>
     <string name="router_control_create_help">Hysteria2 client. A public router address and configured incoming VPN are required.</string>
-    <string name="router_control_enable_help">Enable management from this phone. Disabling management keeps the router VPN running.</string>
+    <string name="router_control_enable_help">Enable or disable router management.</string>
     <string name="router_control_country_help">The country is based on the router’s internet connection. Tap the flag to change it.</string>
     <string name="router_control_home_help">Switch between the phone and home router only when the supported router connection is confirmed.</string>
     <string name="router_control_vpn_help">Start or stop the selected router profile. Tap a profile to select it; hold for actions.</string>
-    <string name="router_control_lan_help">Choose the router VPN or a direct connection. The router’s active profile is used.</string>
+    <string name="router_control_lan_help">Choose VPN or Without VPN for each device. VPN is the default routing policy; starting the VPN profile is a separate action.</string>
     <string name="router_control_clients_help">Open a VPN profile for its QR code, import, sharing or removal.</string>
     <string name="router_control_qr_loading">Generating QR…</string>
     <string name="router_control_profile_loading">Loading profile…</string>
-    <string name="router_control_home_vpn">Manage through home VPN</string>
-    <string name="router_control_home_vpn_help">Manage an already paired router through its VPN, using its saved local IP address. Confirm that the router has a public IP address. New pairing requires Wi-Fi.</string>
+    <string name="router_control_home_vpn">Management via VPN</string>
+    <string name="router_control_home_vpn_help">Allows you to manage the router through its VPN network. A static public IP address is required.</string>
     <string name="vpn_router_error_home_vpn">No verified VPN route to the paired router. Connect to its VPN and enable home VPN management in router settings.</string>
-    <string name="router_profile_probe_failed">Could not verify the router pairing through this VPN. Your saved pairing is preserved.</string>
+    <string name="router_profile_probe_failed">To manage the FoxHole OpenWRT package, connect to your personal VPN or your home Wi-Fi network.</string>
     <string name="router_profile_retry_pairing">Retry pairing</string>
     <string name="router_profile_pair_wifi">Connect to the router Wi-Fi to retry pairing</string>
+    <string name="router_control_hide_offline">Hide offline devices</string>
+    <string name="router_control_hide_offline_help">Hide devices that are not currently connected to your home network.</string>
+    <string name="router_review_no_online_devices">No online devices</string>
+    <string name="router_updates_check_entry">Check for updates</string>
+    <string name="router_control_available_protocols">Available protocols: %1$s</string>
+    <string name="router_control_protocols_unknown">Available protocols: unknown</string>
+    <string name="router_control_protocols_loading">Available protocols: checking…</string>
+    <string name="router_control_protocols_empty">Available protocols: none installed</string>
 </resources>

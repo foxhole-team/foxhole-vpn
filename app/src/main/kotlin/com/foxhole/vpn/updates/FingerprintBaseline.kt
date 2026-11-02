@@ -1,11 +1,12 @@
 package com.foxhole.vpn.updates
 
 internal object FingerprintBaseline {
-    const val baselineSourceRevision = "be0ff0ed269341b4c4ee6b1f6d9976344ecbd3f1"
+    const val baselineSourceRevision = "66286391a715fbc1c2bbabb2581c5295f76a1acd"
     val digests = mapOf(
         "chrome_131" to "067eaf2f3cc80e2c631e2d4cf9f8b6d0121979fcdd59f221fdc51ac28948be91",
         "chrome_133" to "976e90341cf6dc8f6a063a82a831be04044e2a35cc45b3dd50c152355453b30b",
         "chrome_151" to "132cda7ad9c67f6a27f45c6cd49781bb5b45e378d75d153b35c68a9d13fe9c0e",
+        "chrome_156" to "da2075bca0d4016125ae7bcad021cd89de3aa6c90016acc99872a6e9cb097eb7",
         "edge_85" to "c96cf1c85472ef523d1e3c42c26ada5d0bfbecafac18857f8c966d51d5afe7d8",
         "firefox_148" to "2e1242e21f1dc7303b07c0f372320afc66f3743d71db565b7347fe443b756211",
         "firefox_153" to "9ef80bfb14b70587ff4f7b6cab3c4ec8b5ae3d9ccae5734dab94645c33f6d782",

@@ -1,0 +1,4 @@
+<resources>
+    <string name="vpn_app_update_install_vpn_notice">La instalación interrumpe brevemente la VPN. La aplicación intentará restaurar una conexión activa; ábrela y vuelve a conectarte si es necesario.</string>
+    <string name="vpn_app_update_reconnect_required">Abre la aplicación y vuelve a conectarte para restaurar la VPN después de actualizar.</string>
+</resources>

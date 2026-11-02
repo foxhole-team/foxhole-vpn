@@ -34,8 +34,8 @@
     <string name="vpn_system_settings">Android VPN settings</string>
     <string name="vpn_theme">Theme</string>
     <string name="vpn_font_style">Font style</string>
-    <string name="vpn_font_pixel">PIXEL</string>
-    <string name="vpn_font_standard">STANDARD</string>
+    <string name="vpn_font_pixel">Tiny5 Regular</string>
+    <string name="vpn_font_standard">JetBrains Mono Bold</string>
     <string name="vpn_theme_system">System</string>
     <string name="vpn_theme_light">Light</string>
     <string name="vpn_language">Language</string>
@@ -48,7 +48,7 @@
     <string name="vpn_help_connect_title">Connection</string>
     <string name="vpn_help_connect_body">Import a profile from your VPN provider or your own server, select it, tap Start and allow the Android VPN request. Stop cancels a pending connection or disconnects the VPN.</string>
     <string name="vpn_help_profiles_title">Profiles</string>
-    <string name="vpn_help_profiles_body">Tap a profile to choose a protocol. Long-press to share, refresh, delete or send it to a paired router. Sharing includes the full profile or its source link and may contain access credentials. Share only with people you trust. Refresh updates v2rayTun subscriptions and Outline dynamic keys.</string>
+    <string name="vpn_help_profiles_body">Select a profile with the round button on the left. Tap the card to expand its details; if the profile has several protocol options, choose one from the list. Long-press to share, refresh, delete or send it to a paired router. Sharing includes the full profile or its source link and may contain access credentials. Share only with people you trust. Refresh updates profiles from provider subscriptions and Outline dynamic keys.</string>
     <string name="vpn_import">IMPORT</string>
     <string name="vpn_import_text">Paste configuration or link</string>
     <string name="vpn_import_file">CHOOSE FILE</string>
@@ -112,7 +112,7 @@
     <string name="vpn_continue">CONTINUE</string>
     <string name="vpn_profile_refresh_unavailable">Only subscription profiles can be refreshed.</string>
     <string name="vpn_help_add_title">Add a profile</string>
-    <string name="vpn_help_add_body">Press + to paste a connection link or v2rayTun subscription, enter it manually, open a file or scan a QR code.</string>
+    <string name="vpn_help_add_body">Press + to paste a connection link or a provider HTTPS subscription link, including one from v2rayTun. You can also enter it manually, choose a file or scan a QR code.</string>
     <string name="vpn_help_protocols_title">Supported protocols</string>
-    <string name="vpn_help_protocols_body">VLESS, VMess, Trojan, Shadowsocks/Outline, WireGuard, Hysteria2, Naive, TUIC and AnyTLS. Import: links, v2rayTun subscriptions, compatible JSON, Clash/mihomo YAML, SIP008 JSON, Outline dynamic keys (ssconf://) and WireGuard.</string>
+    <string name="vpn_help_protocols_body">VLESS, VMess, Trojan, Shadowsocks/Outline, WireGuard, Hysteria2, Naive, TUIC and AnyTLS. Import: links, provider HTTPS subscriptions, including those from v2rayTun, compatible JSON, Clash/mihomo YAML, SIP008 JSON, Outline dynamic keys (ssconf://) and WireGuard. Supported servers are imported from Clash/mihomo. Routing rules, groups and other client settings are not transferred; configurations with external proxy-providers are not supported.</string>
 </resources>

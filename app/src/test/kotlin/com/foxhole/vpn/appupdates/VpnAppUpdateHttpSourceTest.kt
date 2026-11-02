@@ -30,7 +30,7 @@ class VpnAppUpdateHttpSourceTest {
     private val payload = ByteArray(2048) { (it % 127).toByte() }
     private val digest get() = MessageDigest.getInstance("SHA-256").digest(payload).hexDigest()
     private val manifest get() = """{"versionCode":19,"versionName":"0.1.2","apkName":"vpn.apk","apkSha256":"$digest"}"""
-    private val release get() = """{"tag_name":"v0.1.2","html_url":"https://github.com/foxhole-team/foxhole-vpn/releases/tag/v0.1.2","assets":[{"name":"update-manifest.json","browser_download_url":"$BASE/update-manifest.json","size":256},{"name":"vpn.apk","browser_download_url":"$BASE/vpn.apk","size":${payload.size}}]}"""
+    private val release get() = """{"tag_name":"v0.1.2","html_url":"https://github.com/foxhole-team/foxhole-vpn/releases/tag/v0.1.2","assets":[{"name":"SHA256SUMS","browser_download_url":"$BASE/SHA256SUMS","size":128},{"name":"update-manifest.json","browser_download_url":"$BASE/update-manifest.json","size":256},{"name":"vpn.apk","browser_download_url":"$BASE/vpn.apk","size":${payload.size}}]}"""
 
     private class OwnedCall(private val value: Request, private val respond: ((Request) -> Response)?) : Call by OkHttpClient().newCall(value) {
         var cancelled = false
@@ -54,7 +54,7 @@ class VpnAppUpdateHttpSourceTest {
         }, manifestAssetName)
 
     private fun routes() = mapOf(VpnAppUpdatePolicy.RELEASES_API to (200 to release.toByteArray()),
-        "$BASE/update-manifest.json" to (200 to manifest.toByteArray()), "$BASE/vpn.apk" to (200 to payload))
+        "$BASE/update-manifest.json" to (200 to manifest.toByteArray()), "$BASE/SHA256SUMS" to (200 to "$digest  vpn.apk\n".toByteArray()), "$BASE/vpn.apk" to (200 to payload))
 
     @Test fun armv7SelectsOnlyItsManifestAndNeverFallsBackToThe64BitChannel() = runTest {
         val requests = mutableListOf<Request>()
@@ -88,6 +88,13 @@ class VpnAppUpdateHttpSourceTest {
         assertTrue(payload.contentEquals(file.readBytes()))
         assertEquals(payload.size.toLong() to payload.size.toLong(), progress.last())
         assertTrue(requests.all { it.header("Authorization") == null })
+    }
+
+    @Test fun releaseChecksumsMustMatchTheManifestBeforeDownloadIsOffered() = runTest {
+        val requests = mutableListOf<Request>()
+        val result = source(routes() + ("$BASE/SHA256SUMS" to (200 to "${"b".repeat(64)}  vpn.apk\n".toByteArray())), requests).latest(18)
+        assertEquals(VpnAppUpdateError.VERIFICATION, (result as VpnAppUpdateCheck.Failed).error)
+        assertFalse(requests.any { it.url.toString().endsWith("vpn.apk") })
     }
 
     @Test fun digestMismatchAndAnnouncedLengthMismatchAreRefused() = runTest {

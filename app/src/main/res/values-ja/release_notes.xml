@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_release_notes_subscriptions">VPNプロバイダーのサブスクリプション対応を改善しました。</string>
+    <string name="vpn_release_notes_router_setup">ルーターの検索、ペアリング、SSH経由のOpenWrt確認を修正し、SSHキーへの対応を追加しました。</string>
+    <string name="vpn_release_notes_apk_updates">GitHubからの更新時のAPK検証を修正しました。</string>
+    <string name="vpn_release_notes_motion">ウィンドウのアニメーションを改善しました。</string>
+    <string name="vpn_release_notes_notices">通知を閉じるタイマーと、上方向へのスワイプで閉じる操作を追加しました。</string>
+    <string name="vpn_release_notes_vless_reality">VLESS + REALITY の互換性を修正しました。</string>
+    <string name="vpn_release_notes_router_management">OpenWrtの設定と、家庭内端末・VPNクライアントの管理を簡素化しました。</string>
+    <string name="vpn_release_notes_pin6">インストール時に確認入力する6桁のPINと、最大10台のルーターへの対応を追加しました。</string>
+</resources>

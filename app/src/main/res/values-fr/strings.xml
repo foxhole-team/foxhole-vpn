@@ -34,8 +34,8 @@
     <string name="vpn_system_settings">Paramètres VPN Android</string>
     <string name="vpn_theme">Thème</string>
     <string name="vpn_font_style">Style de police</string>
-    <string name="vpn_font_pixel">PIXEL</string>
-    <string name="vpn_font_standard">STANDARD</string>
+    <string name="vpn_font_pixel">Tiny5 Regular</string>
+    <string name="vpn_font_standard">JetBrains Mono Bold</string>
     <string name="vpn_theme_system">Système</string>
     <string name="vpn_theme_light">Clair</string>
     <string name="vpn_language">Langue</string>
@@ -48,7 +48,7 @@
     <string name="vpn_help_connect_title">Connexion</string>
     <string name="vpn_help_connect_body">Importez un profil de votre fournisseur VPN ou de votre serveur, sélectionnez-le, appuyez sur Démarrer et autorisez la demande VPN Android. Arrêter annule une connexion en cours ou déconnecte le VPN.</string>
     <string name="vpn_help_profiles_title">Profils</string>
-    <string name="vpn_help_profiles_body">Touchez un profil pour choisir un protocole. Un appui long permet de partager, actualiser, supprimer ou envoyer au routeur associé. Le partage inclut le profil complet ou son lien source et peut contenir des identifiants. Partagez uniquement avec des personnes de confiance. Actualiser met à jour les abonnements v2rayTun et les clés dynamiques Outline.</string>
+    <string name="vpn_help_profiles_body">Sélectionnez un profil avec le bouton rond à gauche. Touchez la carte pour afficher ses détails ; si le profil propose plusieurs variantes de protocole, choisissez celle souhaitée dans la liste. Un appui long permet de partager, actualiser, supprimer ou envoyer au routeur associé. Le partage inclut le profil complet ou son lien source et peut contenir des identifiants. Partagez uniquement avec des personnes de confiance. Actualiser met à jour les profils issus des abonnements de fournisseurs et des clés dynamiques Outline.</string>
     <string name="vpn_import">IMPORTER</string>
     <string name="vpn_import_text">Coller une configuration ou un lien</string>
     <string name="vpn_import_file">CHOISIR UN FICHIER</string>
@@ -112,7 +112,7 @@
     <string name="vpn_continue">CONTINUER</string>
     <string name="vpn_profile_refresh_unavailable">Seuls les profils d’abonnement peuvent être actualisés.</string>
     <string name="vpn_help_add_title">Ajouter un profil</string>
-    <string name="vpn_help_add_body">Appuyez sur + pour coller un lien de connexion ou un abonnement v2rayTun, le saisir manuellement, ouvrir un fichier ou scanner un code QR.</string>
+    <string name="vpn_help_add_body">Appuyez sur + pour coller un lien de connexion ou un lien d’abonnement HTTPS d’un fournisseur, notamment depuis v2rayTun. Vous pouvez aussi le saisir manuellement, choisir un fichier ou scanner un code QR.</string>
     <string name="vpn_help_protocols_title">Protocoles pris en charge</string>
-    <string name="vpn_help_protocols_body">VLESS, VMess, Trojan, Shadowsocks/Outline, WireGuard, Hysteria2, Naive, TUIC et AnyTLS. Import : liens, abonnements v2rayTun, JSON compatible, YAML Clash/mihomo, JSON SIP008, clés dynamiques Outline (ssconf://) et WireGuard.</string>
+    <string name="vpn_help_protocols_body">VLESS, VMess, Trojan, Shadowsocks/Outline, WireGuard, Hysteria2, Naive, TUIC et AnyTLS. Import : liens, abonnements HTTPS de fournisseurs, notamment ceux de v2rayTun, JSON compatible, YAML Clash/mihomo, JSON SIP008, clés dynamiques Outline (ssconf://) et WireGuard. Les serveurs pris en charge sont importés depuis Clash/mihomo. Les règles de routage, groupes et autres paramètres du client ne sont pas transférés ; les configurations avec des proxy-providers externes ne sont pas prises en charge.</string>
 </resources>

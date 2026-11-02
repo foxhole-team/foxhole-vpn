@@ -14,7 +14,7 @@ import java.security.MessageDigest
 import java.net.URI
 import java.util.UUID
 
-data class ImportedVpnProfiles(val profiles: List<VpnProfile>, val rejected: Int)
+data class ImportedVpnProfiles(val profiles: List<VpnProfile>, val rejected: Int, val compatibilityWarning: Boolean = false)
 
 class VpnProfileImporter(private val json: Json = Json { ignoreUnknownKeys = false }) {
     private val parser = ProfileImportParser(json)
@@ -53,6 +53,7 @@ class VpnProfileImporter(private val json: Json = Json { ignoreUnknownKeys = fal
                 ),
             ),
             rejected = parsed.entryReports.count { it.status == SubscriptionEntryStatus.IGNORED_UNSUPPORTED },
+            compatibilityWarning = parsed.hasCompatibilityWarning,
         )
     }
 
@@ -102,6 +103,7 @@ class VpnProfileImporter(private val json: Json = Json { ignoreUnknownKeys = fal
             profiles,
             parsed.entryReports.count { it.status == SubscriptionEntryStatus.IGNORED_UNSUPPORTED } +
                 parsed.profiles.size - profiles.size,
+            compatibilityWarning = parsed.hasCompatibilityWarning,
         )
     }
 

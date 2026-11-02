@@ -27,15 +27,15 @@ class VpnAppApkArchivePolicyTest {
         assertEquals(setOf("arm64-v8a"), inspectVpnApkArchive(archive()))
     }
 
-    @Test fun installedSplitAndUniversal64UpdatesKeepTheRunningAbiAndEveryCoreLibrary() {
+    @Test fun installedSplitAndFourAbiUniversalUpdatesKeepTheRunningAbiAndEveryCoreLibrary() {
         val core = setOf("libfoxhole_native.so")
-        val universal = mapOf("arm64-v8a" to core, "x86_64" to core)
+        val universal = listOf("arm64-v8a", "armeabi-v7a", "x86", "x86_64").associateWith { core }
         for (abi in universal.keys) {
             assertEquals(abi, vpnAppRunningAbi(setOf(abi), listOf(abi)))
             assertTrue(vpnAppNativeProfileCompatible(abi, universal, armv7 = false))
             assertTrue(vpnAppNativeProfileCompatible(abi, mapOf(abi to core), armv7 = false))
             assertFalse(vpnAppNativeProfileCompatible(abi, universal - abi, armv7 = false))
-            assertFalse(vpnAppNativeProfileCompatible(abi, universal + ("armeabi-v7a" to core), armv7 = false))
+            assertFalse(vpnAppNativeProfileCompatible(abi, universal + ("mips" to core), armv7 = false))
             assertFalse(vpnAppNativeProfileCompatible(abi, universal + ("x86_64" to emptySet()), armv7 = false))
             assertFalse(vpnAppNativeProfileCompatible(abi, universal, armv7 = true))
         }

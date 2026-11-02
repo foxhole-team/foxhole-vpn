@@ -58,9 +58,16 @@ internal fun VpnRouterPackageUpdates(state: RouterUpdateControlState, enabled: B
         status.availableVersion?.let { Text(stringResource(R.string.router_updates_available_version, it)) }
     }
     Text(stringResource(updateAvailabilityLabel(state)), style = MaterialTheme.typography.titleSmall)
+    if (state.deviceDownloading) {
+        Column(Modifier.fillMaxWidth().semantics { liveRegion = LiveRegionMode.Polite }, verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            val percent = state.deviceProgressPercent
+            if (percent == null) LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
+            else LinearProgressIndicator(progress = { percent / 100f }, modifier = Modifier.fillMaxWidth())
+        }
+    }
     if (state.pending != null || state.reconnecting) Text(stringResource(R.string.router_updates_uncertain))
     if (state.unreachable) Text(stringResource(R.string.router_updates_unreachable))
-    val progress = state.job?.progress?.takeIf { it.running } ?: status?.activeAutomaticJob ?:
+    val progress = if (state.deviceDownloading || state.deviceCheckedCurrent) null else state.job?.progress?.takeIf { it.running } ?: status?.activeAutomaticJob ?:
         state.job?.progress?.takeIf { state.pending == null && !state.reconnecting }
     if (progress != null) {
         if (progress.automatic) Text(stringResource(R.string.router_updates_automatic_job))
@@ -86,7 +93,7 @@ internal fun VpnRouterPackageUpdates(state: RouterUpdateControlState, enabled: B
         Text(stringResource(if (plan.impact == RouterEngineImpact.RECONNECT_REQUIRED) R.string.router_updates_reconnect_note
             else R.string.router_engines_keep_active), style = MaterialTheme.typography.bodySmall)
     }
-    val failure = status?.autoUpdate?.suspendedReason ?: status?.failureReason ?: state.failure
+    val failure = if (state.deviceCheckedCurrent) null else status?.autoUpdate?.suspendedReason ?: status?.failureReason ?: state.failure
     failure?.let { Text(stringResource(updateFailureLabel(it)), color = MaterialTheme.colorScheme.error) }
     val auto = status?.autoUpdate
     Row(Modifier.fillMaxWidth().heightIn(min = 56.dp).semantics(mergeDescendants = true) {}.toggleable(value = auto?.enabled == true,
@@ -112,6 +119,8 @@ internal fun VpnRouterPackageUpdateFooter(state: RouterUpdateControlState, enabl
 }
 
 private fun updateAvailabilityLabel(state: RouterUpdateControlState): Int = when {
+    state.deviceDownloading -> R.string.router_updates_device_download
+    state.deviceCheckedCurrent -> R.string.router_updates_current
     state.pending != null || state.reconnecting -> R.string.router_updates_waiting
     state.job?.running == true || state.status?.busy == true || state.status?.activeAutomaticJob?.running == true -> R.string.router_updates_running
     state.supported == false -> R.string.router_updates_unsupported

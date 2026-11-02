@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_release_notes_subscriptions">改进 VPN 提供商订阅的支持。</string>
+    <string name="vpn_release_notes_router_setup">修复了路由器发现、配对和通过 SSH 检查 OpenWrt 的问题，并添加了 SSH 密钥支持。</string>
+    <string name="vpn_release_notes_apk_updates">修复了从 GitHub 更新时的 APK 验证。</string>
+    <string name="vpn_release_notes_motion">改进了窗口动画。</string>
+    <string name="vpn_release_notes_notices">新增通知关闭计时器和向上滑动关闭功能。</string>
+    <string name="vpn_release_notes_vless_reality">修复了 VLESS + REALITY 的兼容性。</string>
+    <string name="vpn_release_notes_router_management">简化 OpenWrt 设置以及家庭设备和 VPN 客户端的管理。</string>
+    <string name="vpn_release_notes_pin6">新增安装时确认的六位 PIN，并支持最多 10 台路由器。</string>
+</resources>

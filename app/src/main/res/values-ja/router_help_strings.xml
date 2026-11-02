@@ -7,18 +7,18 @@
     <string name="router_help_country_direct">有効な場合、選択した国に関連するトラフィックはルーターVPNを迂回します。旗をタップして国を選択または変更できます。</string>
     <string name="router_help_home">自動切り替えに対応している場合、自宅ではルーターを使用し、外出時にスマートフォンの前の接続を復元します。</string>
     <string name="router_help_add_phone">このスマートフォンをホームネットワークのデバイスとして追加し、その通信にルーターVPNを使用できるようにします。</string>
-    <string name="router_help_public_ip">公開IPを通じてインターネットからルーターに接続できる場合のみ選択してください。モバイル回線での確認は引き続き必要です。</string>
+    <string name="router_help_public_ip">ルーターが静的パブリックIPアドレスに対応している場合、デバイスのVPNゲートウェイとして使用できます。経路：デバイス → ルーター。国内向けの通信は直接インターネットへ、海外向けの通信は有効なVPN接続を経由します。</string>
     <string name="router_help_create_client">外出先からこのスマートフォンで使用するルーターVPNプロファイルを作成します。インターネットからルーターに到達できることを証明するものではありません。</string>
     <string name="router_help_password">OpenWrtの管理者パスワードを入力してください。通常のログイン名はrootです。Wi-Fiパスワードではありません。</string>
-    <string name="router_help_pin">初回設定時にご自身の4桁のPINを選択してください。設定済みのルーターにはそのPINで接続します。手動インストール後は、所有者アカウントでLuCIにログインしてPINを設定してください。初期PINはありません。</string>
+    <string name="router_help_pin">初回設定の最後に6桁のPINを設定してください。設定済みルーターとのペアリングにはそのPINを使用します。以降のPIN変更は、所有者アカウントでLuCIにログインした場合のみ可能です。初期PINはありません。\n\nペアリング：ルーター1台につきモバイル端末は10台まで、1つのアプリに保存できるルーターは10台までです。</string>
     <string name="router_help_storage">内部ストレージは再起動後もVPNプロトコルを保持します。RAMは内部ストレージを節約しますが、再起動後にプロトコルを再ダウンロードします。設定は内部ストレージに保持されます。</string>
-    <string name="router_help_setup_pair">「インストール」は対応するOpenWrtルーターにFoxHoleを追加します。「接続」は既存のFoxHoleとこの電話をペアリングします。OpenWrtファームウェアのインストールや更新は行いません。</string>
+    <string name="router_help_setup_pair">「インストール」は対応するOpenWrtルーターにFoxHoleを追加します。「接続」は既存のFoxHoleとこの電話をペアリングします。OpenWrtファームウェアのインストールや更新は行いません。\n\nペアリング：ルーター1台につきモバイル端末は10台まで、1つのアプリに保存できるルーターは10台までです。</string>
     <string name="router_help_control">このスマートフォンからペアリング済みルーターの管理を有効にします。無効にしてもVPNプロファイルは削除されません。</string>
     <string name="router_help_vpn">ルーターで選択したVPNプロファイルを開始または停止します。</string>
     <string name="router_help_lan_devices">各ホームデバイスでルーターVPNと直接接続のどちらを使用するか選択します。</string>
     <string name="router_help_remote_clients">これらのプロファイルはホームネットワーク外からルーターに接続します。共有またはアクセスの取り消しができます。</string>
     <string name="router_help_reset_foxhole">FoxHoleの設定、PIN、クライアント記録のみを削除します。その後FoxHoleを再設定してください。OpenWrtや他のアプリの設定は保持されます。</string>
-    <string name="router_help_country_source">自動選択はルーターのインターネット接続の新しい国情報を使用します。スマートフォンやVPNの位置情報は使用しません。取得できない場合は以前のルールを保持します。手動で国を選択してください。</string>
+    <string name="router_help_country_source">有効にすると、国内向けの通信はVPNを経由しません。たとえばルーターがRUにある場合、RUのサイトやサービスにはルーターのIPアドレスでアクセスします。海外サービスへの通信は有効なVPN接続を経由します。</string>
     <string name="router_help_device_status">デバイスの状態はルーターが報告します。データがない場合は状態不明です。</string>
     <string name="router_help_install_server">このルーターが公開IP経由でデバイスからのVPN接続を受け付ける場合のみ有効にしてください。別のサーバーパッケージをインストールするため、メモリ使用量が増えます。アクセス設定はインストール後に行えます。</string>
 </resources>

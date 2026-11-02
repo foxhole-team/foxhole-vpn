@@ -79,7 +79,7 @@ internal fun vpnAppRunningAbi(installedAbis: Set<String>, supportedAbis: List<St
     supportedAbis.firstOrNull(installedAbis::contains)
 
 internal fun vpnAppNativeProfileCompatible(runningAbi: String?, candidate: Map<String, Set<String>>, armv7: Boolean): Boolean {
-    val allowed = if (armv7) setOf("armeabi-v7a") else setOf("arm64-v8a", "x86_64")
+    val allowed = if (armv7) setOf("armeabi-v7a") else setOf("arm64-v8a", "armeabi-v7a", "x86", "x86_64")
     return runningAbi != null && runningAbi in allowed && runningAbi in candidate && candidate.keys.all(allowed::contains) &&
         candidate.values.all { "libfoxhole_native.so" in it }
 }

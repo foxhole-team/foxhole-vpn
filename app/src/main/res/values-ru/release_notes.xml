@@ -5,4 +5,12 @@
     <string name="vpn_release_notes_imports">Импорт ссылок v2rayTun, JSON-профилей FoxHole и прямая вставка SIP008 JSON.</string>
     <string name="vpn_release_notes_router">Поддержка установки и управления VPN на роутере с установленным пакетом FoxHole OpenWrt Client прямо из приложения.</string>
     <string name="vpn_release_notes_storage_error">Не удалось прочитать или сохранить подтверждение. Повторите попытку.</string>
+    <string name="vpn_release_notes_subscriptions">Улучшена поддержка подписок VPN провайдеров.</string>
+    <string name="vpn_release_notes_router_setup">Исправлены поиск роутера, сопряжение и проверка OpenWrt по SSH и добавлена поддержка SSH ключей.</string>
+    <string name="vpn_release_notes_apk_updates">Исправлена проверка APK при обновлении с Github.</string>
+    <string name="vpn_release_notes_motion">Доработаны анимации окон.</string>
+    <string name="vpn_release_notes_notices">Добавлены таймер закрытия уведомлений и закрытие свайпом вверх.</string>
+    <string name="vpn_release_notes_vless_reality">Исправлена совместимость VLESS + REALITY.</string>
+    <string name="vpn_release_notes_router_management">Упрощены настройка OpenWrt и управление домашними устройствами и VPN-клиентами.</string>
+    <string name="vpn_release_notes_pin6">Добавлены шестизначный PIN с подтверждением при установке и поддержка до 10 роутеров.</string>
 </resources>

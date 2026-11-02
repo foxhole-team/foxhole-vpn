@@ -34,8 +34,8 @@
     <string name="vpn_system_settings">Настройки VPN в Android</string>
     <string name="vpn_theme">Тема</string>
     <string name="vpn_font_style">Стиль шрифта</string>
-    <string name="vpn_font_pixel">ПИКСЕЛЬНЫЙ</string>
-    <string name="vpn_font_standard">СТАНДАРТНЫЙ</string>
+    <string name="vpn_font_pixel">Tiny5 Regular</string>
+    <string name="vpn_font_standard">JetBrains Mono Bold</string>
     <string name="vpn_theme_system">Системная</string>
     <string name="vpn_theme_light">Светлая</string>
     <string name="vpn_language">Язык</string>
@@ -48,7 +48,7 @@
     <string name="vpn_help_connect_title">Подключение</string>
     <string name="vpn_help_connect_body">Импортируйте профиль своего VPN-провайдера или сервера, выберите его, нажмите «Старт» и разрешите VPN в окне Android. «Стоп» отменяет подключение или отключает VPN.</string>
     <string name="vpn_help_profiles_title">Профили</string>
-    <string name="vpn_help_profiles_body">Нажмите на профиль для выбора протокола. Удерживайте, чтобы поделиться, обновить, удалить или отправить на сопряжённый роутер. При отправке передаётся весь профиль или исходная ссылка, включая возможные данные доступа. Делитесь только с теми, кому доверяете. Обновляются подписки v2rayTun и динамические ключи Outline.</string>
+    <string name="vpn_help_profiles_body">Выберите профиль круглой кнопкой слева. Нажмите на карточку, чтобы раскрыть сведения; если в профиле несколько вариантов протокола, выберите нужный в списке. Удерживайте, чтобы поделиться, обновить, удалить или отправить на сопряжённый роутер. При отправке передаётся весь профиль или исходная ссылка, включая возможные данные доступа. Делитесь только с теми, кому доверяете. Обновляются профили из подписок провайдера и динамических ключей Outline.</string>
     <string name="vpn_import">ИМПОРТ</string>
     <string name="vpn_import_text">Конфигурация или ссылка</string>
     <string name="vpn_import_file">ВЫБРАТЬ ФАЙЛ</string>
@@ -112,7 +112,7 @@
     <string name="vpn_continue">ПРОДОЛЖИТЬ</string>
     <string name="vpn_profile_refresh_unavailable">Обновлять можно только профили подписки.</string>
     <string name="vpn_help_add_title">Добавление профиля</string>
-    <string name="vpn_help_add_body">Нажмите +: вставьте ссылку подключения или подписки v2rayTun из буфера, введите её вручную, выберите файл или отсканируйте QR-код.</string>
+    <string name="vpn_help_add_body">Нажмите +: вставьте ссылку подключения или HTTPS-ссылку подписки провайдера, в том числе из v2rayTun. Также можно ввести её вручную, выбрать файл или отсканировать QR-код.</string>
     <string name="vpn_help_protocols_title">Поддерживаемые протоколы</string>
-    <string name="vpn_help_protocols_body">VLESS, VMess, Trojan, Shadowsocks/Outline, WireGuard, Hysteria2, Naive, TUIC и AnyTLS. Импорт: ссылки, подписки v2rayTun, совместимые JSON, Clash/mihomo YAML, SIP008 JSON, динамические ключи Outline (ssconf://) и WireGuard.</string>
+    <string name="vpn_help_protocols_body">VLESS, VMess, Trojan, Shadowsocks/Outline, WireGuard, Hysteria2, Naive, TUIC и AnyTLS. Импорт: ссылки, HTTPS-подписки провайдера, в том числе из v2rayTun, совместимые JSON, Clash/mihomo YAML, SIP008 JSON, динамические ключи Outline (ssconf://) и WireGuard. Из Clash/mihomo импортируются поддерживаемые серверы. Правила маршрутизации, группы и другие настройки клиента не переносятся; конфигурации с внешними proxy-providers не поддерживаются.</string>
 </resources>

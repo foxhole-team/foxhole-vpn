@@ -9,13 +9,16 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.ui.Alignment
 import com.foxhole.vpn.router.RouterInstallCatalog
 import com.foxhole.vpn.router.RouterDiscoveryKind
+import com.foxhole.vpn.router.RouterDiscoveryIssue
 import com.foxhole.vpn.router.RouterDiscoveryResult
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -27,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.foxhole.vpn.R
 
@@ -73,7 +77,7 @@ internal fun VpnRouterEntrySheet(
                         Text(stringResource(if (notFound) R.string.router_review_retry_search
                             else R.string.router_review_find_router))
                     }
-                    if (notFound) TextButton(onClick = onPair, enabled = !finding,
+                    TextButton(onClick = onPair, enabled = !finding,
                         modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)) {
                         Text(stringResource(R.string.router_review_enter_manually))
                     }
@@ -89,19 +93,40 @@ internal fun VpnRouterEntrySheet(
         RouterWifiIndicator(connected)
         if (discovery == null) Text(stringResource(R.string.vpn_router_intro), style = MaterialTheme.typography.bodyMedium)
         else {
-            if (discovery.kind != RouterDiscoveryKind.NOT_FOUND) {
+            if (discovery.kind == RouterDiscoveryKind.INSTALLED || discovery.kind == RouterDiscoveryKind.SSH_AVAILABLE) {
                 Text(stringResource(R.string.router_review_router_found), style = MaterialTheme.typography.titleMedium)
                 Text(discovery.address, style = MaterialTheme.typography.bodySmall)
             }
-            Text(stringResource(when (discovery.kind) {
+            val discoveryMessage = stringResource(discovery.issue?.let { issue ->
+                when (issue) {
+                    RouterDiscoveryIssue.API_UNAVAILABLE -> if (discovery.kind == RouterDiscoveryKind.SSH_AVAILABLE)
+                        R.string.router_discovery_ssh_only else R.string.router_discovery_api_absent
+                    RouterDiscoveryIssue.TIMEOUT -> R.string.router_discovery_timeout
+                    RouterDiscoveryIssue.TLS -> R.string.router_discovery_tls
+                    RouterDiscoveryIssue.NETWORK -> R.string.router_discovery_network
+                    RouterDiscoveryIssue.PACKAGE_STATUS -> R.string.router_discovery_package_check
+                }
+            } ?: when (discovery.kind) {
                 RouterDiscoveryKind.INSTALLED -> R.string.router_review_package_present
                 RouterDiscoveryKind.SSH_AVAILABLE -> R.string.router_review_setup_available
                 RouterDiscoveryKind.UNKNOWN -> R.string.router_review_package_unknown
                 RouterDiscoveryKind.NOT_FOUND -> R.string.router_review_not_found
-            }), style = MaterialTheme.typography.bodyMedium)
-            if (discovery.kind == RouterDiscoveryKind.UNKNOWN) OutlinedButton(onClick = onPair,
-                enabled = !finding, modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)) {
-                Text(stringResource(R.string.router_review_manual_address))
+            })
+            if (!finding && discovery.kind == RouterDiscoveryKind.INSTALLED && discovery.issue == null) {
+                val foundColor = routerConnectColor()
+                Surface(
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = MaterialTheme.shapes.medium,
+                    color = MaterialTheme.colorScheme.surfaceContainerLow,
+                    border = BorderStroke(1.dp, foundColor),
+                ) {
+                    Text(discoveryMessage, Modifier.fillMaxWidth().padding(16.dp),
+                        color = foundColor, textAlign = TextAlign.Center,
+                        style = MaterialTheme.typography.bodyMedium)
+                }
+            } else Text(discoveryMessage, style = MaterialTheme.typography.bodyMedium)
+            if (discovery.kind == RouterDiscoveryKind.UNKNOWN || discovery.kind == RouterDiscoveryKind.NOT_FOUND) {
+                Text(discovery.address, style = MaterialTheme.typography.bodySmall)
             }
             if (discovery.kind == RouterDiscoveryKind.INSTALLED) {
                 if (discovery.pinConfigured == false) Text(stringResource(R.string.router_review_owner_setup_required),

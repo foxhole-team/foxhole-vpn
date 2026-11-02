@@ -21,6 +21,11 @@ class VpnApplication : Application() {
     internal lateinit var appUpdater: VpnAppUpdater
         private set
 
+    internal suspend fun resumeConnectionAfterUpdate() {
+        if (!licenseConsent.state.value.loaded) licenseConsent.load()
+        runtimeController.resumeAfterAppUpdate()
+    }
+
     override fun onCreate() {
         super.onCreate()
         runtimeController = DefaultVpnController(this, applicationScope) { licenseConsent.state.value.accepted }

@@ -5,4 +5,12 @@
     <string name="vpn_release_notes_imports">Import v2rayTun links, FoxHole JSON profiles, and pasted SIP008 JSON.</string>
     <string name="vpn_release_notes_router">Install and manage VPN on a router running FoxHole OpenWrt Client, directly from the app.</string>
     <string name="vpn_release_notes_storage_error">Could not read or save your acknowledgement. Try again.</string>
+    <string name="vpn_release_notes_subscriptions">Improved support for VPN provider subscriptions.</string>
+    <string name="vpn_release_notes_router_setup">Fixed router discovery, pairing and OpenWrt inspection over SSH, and added SSH key support.</string>
+    <string name="vpn_release_notes_apk_updates">Fixed APK validation when updating from GitHub.</string>
+    <string name="vpn_release_notes_motion">Refined window animations.</string>
+    <string name="vpn_release_notes_notices">Added a notification dismiss timer and swipe-up dismissal.</string>
+    <string name="vpn_release_notes_vless_reality">Fixed VLESS + REALITY compatibility.</string>
+    <string name="vpn_release_notes_router_management">Simplified OpenWrt setup and management of home devices and VPN clients.</string>
+    <string name="vpn_release_notes_pin6">Added a six-digit PIN with confirmation during installation and support for up to 10 routers.</string>
 </resources>

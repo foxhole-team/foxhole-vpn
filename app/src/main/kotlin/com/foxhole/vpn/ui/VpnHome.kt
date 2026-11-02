@@ -1,5 +1,7 @@
 package com.foxhole.vpn.ui
 
+import androidx.compose.animation.Crossfade
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
@@ -28,14 +30,26 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.text
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.style.TextAlign
@@ -55,7 +69,7 @@ import java.util.Locale
 @Composable
 internal fun VpnHome(
     state: VpnUiState,
-    onPrimary: () -> Unit,
+    onPrimary: ((Long) -> Unit) -> Unit,
     onProfiles: () -> Unit,
     modifier: Modifier = Modifier,
     dataUpdate: VpnDataUpdateState = VpnDataUpdateState(),
@@ -65,6 +79,30 @@ internal fun VpnHome(
     onAppUpdate: () -> Unit = {},
 ) {
     val colors = LocalVpnColors.current
+    val haptics = LocalHapticFeedback.current
+    val lifecycle = LocalLifecycleOwner.current.lifecycle
+    var disconnectHapticConnection by remember { mutableStateOf<Long?>(null) }
+    LifecycleResumeEffect(Unit) {
+        onPauseOrDispose { disconnectHapticConnection = null }
+    }
+    LaunchedEffect(state.phase, state.hasOwnedTunnel, state.hasPendingStart, state.connectionId, disconnectHapticConnection) {
+        val pending = disconnectHapticConnection
+        if (pending != null) {
+            val stopped = state.phase == VpnPhase.IDLE && !state.hasOwnedTunnel && !state.hasPendingStart
+            val superseded = state.phase == VpnPhase.ERROR || state.hasPendingStart ||
+                state.phase == VpnPhase.CONNECTING || state.phase == VpnPhase.VALIDATING ||
+                (state.phase == VpnPhase.CONNECTED && state.connectionId != pending)
+            if (stopped || superseded) {
+                disconnectHapticConnection = null
+                if (stopped && lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED))
+                    haptics.performHapticFeedback(HapticFeedbackType.Confirm)
+            }
+        }
+    }
+    val onPrimaryWithHaptic: () -> Unit = {
+        disconnectHapticConnection = null
+        onPrimary { connectionId -> disconnectHapticConnection = connectionId }
+    }
     val device = state.deviceLocation.location
     val exit = validatedExitLocation(state)
     val route = remember(device?.latitude, device?.longitude, exit?.latitude, exit?.longitude) {
@@ -89,7 +127,7 @@ internal fun VpnHome(
                 BoxWithConstraints(Modifier.weight(1f).fillMaxHeight()) {
                     Column(Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).heightIn(min = maxHeight),
                         verticalArrangement = Arrangement.Bottom, horizontalAlignment = Alignment.CenterHorizontally) {
-                        VpnHomeControls(state, onPrimary, onProfiles, dataUpdate, onDataUpdate, appUpdate, onAppUpdate)
+                        VpnHomeControls(state, onPrimaryWithHaptic, onProfiles, dataUpdate, onDataUpdate, appUpdate, onAppUpdate)
                     }
                 }
             }
@@ -113,7 +151,7 @@ internal fun VpnHome(
                         }
                     }
                 }
-                VpnHomeControls(state, onPrimary, onProfiles, dataUpdate, onDataUpdate, appUpdate, onAppUpdate)
+                VpnHomeControls(state, onPrimaryWithHaptic, onProfiles, dataUpdate, onDataUpdate, appUpdate, onAppUpdate)
             }
         }
     }
@@ -198,14 +236,22 @@ private fun VpnConnectionStatus(state: VpnUiState) {
     val expiresAt = state.selectedProfile?.subscriptionExpiresAt
     val expiry = remember(expiresAt, locale, zone) { formatSubscriptionExpiry(expiresAt, locale, zone) }
     val showStatus = state.isReady || state.canDisconnect || state.phase == VpnPhase.ERROR
+    val status = stringResource(if (showStatus) statusLabel(state.phase) else R.string.vpn_loading)
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
-            VpnStatusDot(if (state.isConnected) colors.connected else if (colors.monochrome) colors.muted else StopRed)
+        Crossfade(
+            targetState = status,
+            modifier = Modifier.fillMaxWidth().clearAndSetSemantics { text = AnnotatedString(status) },
+            animationSpec = tween(durationMillis = 120),
+            label = "vpn-connection-status",
+        ) { label ->
             Text(
-                stringResource(if (showStatus) statusLabel(state.phase) else R.string.vpn_loading),
+                label,
+                modifier = Modifier.fillMaxWidth(),
                 style = MaterialTheme.typography.bodyLarge,
                 color = if (state.isConnected) colors.connected else colors.foreground,
                 textAlign = TextAlign.Center,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
             )
         }
         if (expiry != null) {

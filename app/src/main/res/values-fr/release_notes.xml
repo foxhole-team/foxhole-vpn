@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_release_notes_subscriptions">Amélioration de la prise en charge des abonnements des fournisseurs VPN.</string>
+    <string name="vpn_release_notes_router_setup">Correction de la découverte des routeurs, de l’association et de la vérification d’OpenWrt par SSH, et ajout de la prise en charge des clés SSH.</string>
+    <string name="vpn_release_notes_apk_updates">Correction de la vérification des APK lors des mises à jour depuis GitHub.</string>
+    <string name="vpn_release_notes_motion">Amélioration des animations des fenêtres.</string>
+    <string name="vpn_release_notes_notices">Ajout d’un délai de fermeture des notifications et de la fermeture par balayage vers le haut.</string>
+    <string name="vpn_release_notes_vless_reality">Compatibilité de VLESS + REALITY corrigée.</string>
+    <string name="vpn_release_notes_router_management">Simplification de la configuration OpenWrt et de la gestion des appareils du foyer et des clients VPN.</string>
+    <string name="vpn_release_notes_pin6">Ajout d’un PIN à six chiffres avec confirmation pendant l’installation et de la prise en charge de jusqu’à 10 routeurs.</string>
+</resources>

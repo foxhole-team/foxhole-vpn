@@ -10,7 +10,7 @@ import java.io.File
 import java.io.FileOutputStream
 
 internal sealed interface VpnAppInstallAction {
-    data class Install(val intent: Intent) : VpnAppInstallAction
+    data class Install(val intent: Intent, val versionCode: Long) : VpnAppInstallAction
     data class PermissionRequired(val intent: Intent) : VpnAppInstallAction
     data class Failed(val error: VpnAppUpdateError) : VpnAppInstallAction
     data object Unavailable : VpnAppInstallAction
@@ -41,7 +41,7 @@ internal class VpnAppInstaller(context: Context, private val verify: (File, VpnA
                 setDataAndType(uri, "application/vnd.android.package-archive")
                 clipData = ClipData.newRawUri("FoxHole VPN update", uri)
                 addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            })
+            }, manifest.versionCode)
         } finally {
             temporary.delete()
         }

@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.1 Stable
+
+- Улучшена поддержка подписок VPN провайдеров.
+- Исправлены поиск роутера, сопряжение и проверка OpenWrt по SSH и добавлена поддержка SSH ключей.
+- Исправлена проверка APK при обновлении с Github.
+- Доработаны анимации окон.
+- Добавлены таймер закрытия уведомлений и закрытие свайпом вверх.
+- Упрощены настройка OpenWrt и управление домашними устройствами и VPN-клиентами.
+- Добавлены шестизначный PIN с подтверждением при установке и поддержка до 10 роутеров.
+
 ## 1.0.0 Stable (unreleased)
 
 - Keep router-origin `appMetadata` in the app layer, separate from the connection URI and Core JSON. Only an authenticated export over the pinned paired-router channel can enroll the matching saved pairing, local profile ID and normalized configuration digest; imported/provider hints never enroll trust. JNI, Rust/native inputs and connection formats remain unchanged.

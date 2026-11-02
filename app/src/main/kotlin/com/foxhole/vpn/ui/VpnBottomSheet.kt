@@ -21,6 +21,7 @@ import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.material3.SheetValue
 import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.rememberCoroutineScope
@@ -58,6 +59,7 @@ internal fun VpnBottomSheet(onDismiss: () -> Unit, onBack: (() -> Unit)? = null,
         }
     }
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true, confirmValueChange = confirmValueChange)
+    val sheetMotionSpec = remember { MaterialSheetMotion.fastSpatialSpec() }
     val bodyGestures = if (confineContentGestures) Modifier.nestedScroll(SheetBodyScrollConnection)
         .scrollable(rememberScrollableState { 0f }, Orientation.Vertical) else Modifier
     val onClose: () -> Unit = {
@@ -80,6 +82,7 @@ internal fun VpnBottomSheet(onDismiss: () -> Unit, onBack: (() -> Unit)? = null,
             contentColor = colors.foreground,
             dragHandle = if (fixedHeightFraction == null) ({ BottomSheetDefaults.DragHandle() }) else null,
             content = {
+                SideEffect { MaterialSheetMotion.applyFastSpatialSpec(sheetState, sheetMotionSpec) }
                 CompositionLocalProvider(LocalVpnSheetClose provides onClose, LocalVpnSheetBodyGestures provides bodyGestures) {
                 if (fixedHeightFraction != null) {
                     require(fixedHeightFraction in .5f..1f)

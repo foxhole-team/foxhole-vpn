@@ -41,6 +41,9 @@ internal fun VpnAppUpdateSheet(state: VpnAppUpdateState, onAction: () -> Unit, o
     VpnSheetContent(R.string.vpn_app_update_title, R.drawable.lin_download, busy = state.isBusy) {
         Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
             Text(appUpdateDetail(state), style = MaterialTheme.typography.bodyMedium)
+            if (state.phase == VpnAppUpdatePhase.READY) {
+                Text(stringResource(R.string.vpn_app_update_install_vpn_notice), style = MaterialTheme.typography.bodySmall)
+            }
             if (state.phase in setOf(VpnAppUpdatePhase.AVAILABLE, VpnAppUpdatePhase.DOWNLOADING,
                     VpnAppUpdatePhase.VERIFYING, VpnAppUpdatePhase.READY, VpnAppUpdatePhase.ERROR)) {
                 VpnAppUpdateCard(state, onAction)

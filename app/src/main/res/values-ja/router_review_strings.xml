@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="router_review_management">ルーター管理</string>
+    <string name="router_review_management">OpenWRT クライアント</string>
     <string name="router_review_compatibility">対応するOpenWrtバージョン</string>
     <string name="router_review_platforms">プラットフォーム</string>
     <string name="router_review_catalog_pending">OpenWrt 25.12.5：mediatek/filogicとx86/64。設定時に、アーキテクチャと空き容量を検証済みリリースカタログと照合します。</string>
@@ -9,15 +9,15 @@
     <string name="router_review_architecture">アーキテクチャ</string>
     <string name="router_review_protocols">VPNプロトコル</string>
     <string name="router_review_storage">インストール先</string>
-    <string name="router_review_direct_ip">公開IPアドレス</string>
+    <string name="router_review_direct_ip">固定IPv4アドレスを確認済み</string>
     <string name="router_review_remote_settings">外出先からのVPNアクセス</string>
     <string name="router_review_phone_profile">このスマートフォン用のVPNプロファイルを作成</string>
-    <string name="router_review_remote_help">ルーターには公開IPアドレスと受信VPNサービスが必要です。モバイル回線から接続を確認してください。</string>
-    <string name="router_review_router_vpn">ルーターVPN</string>
-    <string name="router_review_vpn_clients">VPNクライアント</string>
+    <string name="router_review_remote_help">ルーターが静的パブリックIPアドレスに対応している場合、デバイスのVPNゲートウェイとして使用できます。経路：デバイス → ルーター。国内向けの通信は直接インターネットへ、海外向けの通信は有効なVPN接続を経由します。</string>
+    <string name="router_review_router_vpn">VPN OpenWRT</string>
+    <string name="router_review_vpn_clients">VPN クライアント</string>
     <string name="router_review_router_vpn_description">プロファイル、接続、設定</string>
     <string name="router_review_clients_description">ホームデバイスとリモートアクセス</string>
-    <string name="router_review_unavailable">ルーターは現在利用できません</string>
+    <string name="router_review_unavailable">ルーターが見つかりません</string>
     <string name="router_review_control_disabled">ルーター管理は無効です</string>
     <string name="router_review_back">戻る</string>
     <string name="router_review_profiles">VPNプロファイル</string>
@@ -34,7 +34,7 @@
     <string name="router_review_use_router_profile">ルーターVPNを使用</string>
     <string name="router_review_use_direct">直接接続</string>
     <string name="router_review_current_route">現在のルート</string>
-    <string name="router_review_direct">直接接続</string>
+    <string name="router_review_direct">VPN なし</string>
     <string name="router_review_selected_profile">選択したルータープロファイル</string>
     <string name="router_review_unpair">ルーターのペアリングを解除しますか？</string>
     <string name="router_review_unpair_description">このスマートフォンからの管理を終了します。FoxHoleを削除しない限りルーターVPNは動作を続けます。</string>
@@ -56,7 +56,7 @@
     <string name="router_review_progress_percent">%1$d%%</string>
     <string name="router_review_find_router">ルーターを検索</string>
     <string name="router_review_router_found">ルーターが見つかりました</string>
-    <string name="router_review_package_present">ルーターにFoxHoleが見つかりました</string>
+    <string name="router_review_package_present">FoxHole OpenWRT Clientが見つかり、お使いの端末とペアリングする準備ができています</string>
     <string name="router_review_package_missing">FoxHoleはまだインストールされていません</string>
     <string name="router_review_package_unknown">FoxHoleを確認できませんでした。ルーターを再検索してください。</string>
     <string name="router_review_reset_before_connect">FoxHole設定をリセット</string>
@@ -70,7 +70,7 @@
     <string name="router_review_country_unknown">国が不明です</string>
     <string name="router_review_country_description">ローカルトラフィックの国：%1$s。国を変更。</string>
     <string name="router_review_country_unknown_description">国が不明です。国を選択してください。</string>
-    <string name="router_review_device_vpn">ルーターVPN経由</string>
+    <string name="router_review_device_vpn">VPN</string>
     <string name="router_review_add_router">ルーターを追加</string>
     <string name="router_review_choose_router">ルーターを選択</string>
     <string name="router_review_saved_number">ルーター %1$d</string>
@@ -79,6 +79,6 @@
     <string name="router_review_saved_unknown">未確認</string>
     <string name="router_review_expand_profiles">VPNプロファイルを表示</string>
     <string name="router_review_collapse_profiles">VPNプロファイルを非表示</string>
-    <string name="router_review_settings_help">このスマートフォンのルーター管理とルーティング設定。</string>
+    <string name="router_review_settings_help">このスマートフォンのルーター管理とルーティング設定。\n\nペアリング：ルーター1台につきモバイル端末は10台まで、1つのアプリに保存できるルーターは10台までです。</string>
     <string name="router_review_disconnect">切断</string>
 </resources>

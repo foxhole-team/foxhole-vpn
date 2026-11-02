@@ -74,7 +74,9 @@ internal fun VpnRouterSheetContent(
                 val working = stringResource(R.string.vpn_working)
                 CircularProgressIndicator(Modifier.size(20.dp).semantics { contentDescription = working }, strokeWidth = 2.dp)
             }
-            actions()
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(0.dp)) {
+                actions()
+            }
         }
         val body = Modifier.weight(1f).fillMaxWidth().then(LocalVpnSheetBodyGestures.current)
         Column(if (scrollable) body.verticalScroll(rememberScrollState()) else body,

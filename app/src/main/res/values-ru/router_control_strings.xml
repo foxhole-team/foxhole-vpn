@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="router_control_enable">Управление</string>
+    <string name="router_control_enable">Управление роутером</string>
     <string name="router_control_vpn">Включить VPN</string>
     <string name="router_control_choose_country">Страна местного трафика</string>
     <string name="router_control_lan_clients">Домашние устройства</string>
@@ -29,18 +29,26 @@
     <string name="router_control_client_access">Личный VPN-доступ</string>
     <string name="router_control_client_template">Сохранённый шаблон; удалённый доступ не настроен</string>
     <string name="router_control_create_help">Клиент Hysteria2. Нужны публичный адрес роутера и настроенный входящий VPN.</string>
-    <string name="router_control_enable_help">Включает управление с этого телефона. Отключение управления не останавливает VPN роутера.</string>
+    <string name="router_control_enable_help">Включить или отключить управление роутером.</string>
     <string name="router_control_country_help">Страна определяется по интернет-подключению роутера. Нажмите на флаг, чтобы изменить её.</string>
     <string name="router_control_home_help">Переключение между телефоном и домашним роутером только после подтверждения поддерживаемого соединения.</string>
     <string name="router_control_vpn_help">Запуск или остановка выбранного профиля роутера. Нажмите профиль для выбора, удерживайте для действий.</string>
-    <string name="router_control_lan_help">Выберите VPN роутера или прямое подключение. Используется активный профиль роутера.</string>
+    <string name="router_control_lan_help">Для каждого устройства выберите VPN или «Без VPN». По умолчанию используется VPN. Запуск профиля VPN управляется отдельно.</string>
     <string name="router_control_clients_help">Откройте VPN-профиль для QR, импорта, отправки или удаления.</string>
     <string name="router_control_qr_loading">Создание QR…</string>
     <string name="router_control_profile_loading">Загружаю профиль…</string>
-    <string name="router_control_home_vpn">Управление через домашний VPN</string>
-    <string name="router_control_home_vpn_help">Управление уже сопряжённым роутером через VPN к нему, по сохранённому локальному IP-адресу. Подтвердите наличие публичного IP-адреса. Новое сопряжение выполняется по Wi-Fi.</string>
+    <string name="router_control_home_vpn">Управление через VPN</string>
+    <string name="router_control_home_vpn_help">Позволяет управлять роутером через его VPN-сеть. Требуется статический публичный IP-адрес.</string>
     <string name="vpn_router_error_home_vpn">Нет проверенного VPN-маршрута к сопряжённому роутеру. Включите VPN к нему и разрешите управление через домашний VPN в настройках роутера.</string>
-    <string name="router_profile_probe_failed">Не удалось проверить сопряжение с роутером через этот VPN. Старое сопряжение сохранено.</string>
+    <string name="router_profile_probe_failed">Для управления пакетом FoxHole OpenWRT подключитесь к вашему личному VPN или к домашней сети Wi-Fi.</string>
     <string name="router_profile_retry_pairing">Повторить сопряжение</string>
     <string name="router_profile_pair_wifi">Для повторного сопряжения подключитесь к Wi-Fi роутера</string>
+    <string name="router_control_hide_offline">Скрывать офлайн устройства</string>
+    <string name="router_control_hide_offline_help">Не показывать устройства, которые сейчас не подключены к вашей домашней сети.</string>
+    <string name="router_review_no_online_devices">Нет устройств в сети</string>
+    <string name="router_updates_check_entry">Проверить обновление</string>
+    <string name="router_control_available_protocols">Доступные протоколы: %1$s</string>
+    <string name="router_control_protocols_unknown">Доступные протоколы: неизвестно</string>
+    <string name="router_control_protocols_loading">Доступные протоколы: проверка…</string>
+    <string name="router_control_protocols_empty">Доступные протоколы: не установлены</string>
 </resources>

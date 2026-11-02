@@ -25,7 +25,7 @@
     <string name="vpn_router_remote_check">スマートフォンのプロファイルを保存しました。モバイルデータで接続を確認してください。</string>
     <string name="vpn_router_new_pin">新しいPIN</string>
     <string name="vpn_router_repeat_pin">PINを再入力</string>
-    <string name="vpn_router_change_pin_note">ルーターへのアクセス用にご自身の4桁のPINを選択してください。</string>
+    <string name="vpn_router_change_pin_note">初回設定の最後に6桁のPINを設定してください。以降のPIN変更は、所有者アカウントでLuCIにログインした場合のみ可能です。</string>
     <string name="vpn_router_save">保存</string>
     <string name="vpn_router_no_profile">ルーターVPNプロファイルがありません</string>
     <string name="vpn_router_country_direct">国内サイトに直接接続</string>
@@ -37,7 +37,7 @@
     <string name="vpn_router_error_address">ルーターのローカルIPアドレスを確認してください。</string>
     <string name="vpn_router_error_identity">ルーターの識別情報を確認して再接続してください。</string>
     <string name="vpn_router_error_password">ルーターのパスワードを確認してください。</string>
-    <string name="vpn_router_error_pin">ルーターのPINを確認してください。</string>
+    <string name="vpn_router_error_pin">PINコードが正しくありません</string>
     <string name="vpn_router_error_locked">試行回数が多すぎます。後で再試行してください。</string>
     <string name="vpn_router_error_unsupported">このルーター設定には対応していません。</string>
     <string name="vpn_router_error_storage">ルーターの空きストレージまたはRAMが不足しています。</string>
@@ -56,7 +56,7 @@
     <string name="vpn_router_profile_title">VPNプロファイル</string>
     <string name="vpn_router_choose_protocols">プロトコルを選択</string>
     <string name="vpn_router_protocol_combination_unavailable">この組み合わせは利用できません。選択を変更してください。</string>
-    <string name="vpn_router_error_limit">ルーターは3台まで保存できます</string>
+    <string name="vpn_router_error_limit">ペアリング：ルーター1台につきモバイル端末は10台まで、1つのアプリに保存できるルーターは10台までです。</string>
     <string name="vpn_router_install_server">デバイス用VPNサーバー</string>
     <string name="vpn_router_install_server_yes">含める</string>
     <string name="vpn_router_install_server_no">含めない</string>

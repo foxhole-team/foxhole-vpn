@@ -1,9 +1,12 @@
 {
   "androidDeliveryProfile": "android4",
-  "canonicalCoreCoverageSha256": "ae3dee8a781d4f73b9f0e7eefdd8646596a64a50c4f0cb966008ce5c3292e7a9",
-  "coreCommit": "7b15f5b614031181b5a2eab274acac6f15d961ff",
+  "canonicalCoreCoverageSha256": "e460e8b2b16d9cb04ad8dd59bea18cd17eeb6641356207178e7aaeeffc1922d6",
+  "coreCommit": "66286391a715fbc1c2bbabb2581c5295f76a1acd",
+  "forkMaterialChangedForP2": false,
   "originalBytesRetained": true,
+  "originalLicenseBodiesRetained": true,
   "rawOperationalReportPackaged": false,
+  "retainedBaseProducer": "50e615c9551c044ed1488d74fccd72c7e8f16c46",
   "schema": 1,
   "sourceProducerProfile": "android4"
 }

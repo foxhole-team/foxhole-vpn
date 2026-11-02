@@ -22,6 +22,8 @@ import android.os.SystemClock
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.launch
 import java.io.FileNotFoundException
+import java.io.InputStream
+import java.security.MessageDigest
 
 internal class RouterRuntime(
     val wizard: RouterWizardCoordinator,
@@ -44,7 +46,8 @@ internal fun createRouterRuntime(context: Context, controller: DefaultVpnControl
         override fun isCurrent(socket: java.net.Socket) = controller.isRouterSocketCurrent(socket)
     }
     val access = { requireRouterLocalNetworkAccess(application) }
-    val transport = WifiRouterWizardTransport(manager, socketProtection = protection, accessCheck = access)
+    val transport = WifiRouterWizardTransport(manager, socketProtection = protection, accessCheck = access,
+        nsd = application.getSystemService(android.net.nsd.NsdManager::class.java))
     val provisioner = RouterHttpProvisioner(localAddress = { identity ->
         requireNotNull(RouterWifiConnection.select(manager, identity.endpoint, protection, access).localAddress.hostAddress)
     }, pairingStore = pairing)
@@ -88,7 +91,8 @@ internal fun createRouterRuntime(context: Context, controller: DefaultVpnControl
         }, retainedLeases = leases)
     controller.routerLeaseOwner = { home.leaseOwner ?: leases.owner }
     val release = readRouterReleaseAnchor(application)
-    val setup = release?.let { WifiRouterSetupService.forWifi(manager, it, protection, access) }
+    val setup = release?.let { WifiRouterSetupService.forWifi(manager, it, protection, access,
+            deviceBundleProvider = RouterDeviceInstallBundleProvider(application.cacheDir)) }
     val export = RouterPhoneProfileExport(controller)
     val routerImports = VpnRouterProfileImports(controller, pairing)
     val wizard = RouterWizardCoordinator(transport, pairing, Build.MODEL.take(128).ifBlank { "Android" }, setup, provisioner,
@@ -96,8 +100,10 @@ internal fun createRouterRuntime(context: Context, controller: DefaultVpnControl
             val result = controller.importProfiles(uri, allowInsecureTls = false)
             result is VpnImportResult.Success && result.rejected == 0 && result.added + result.updated > 0
         }, preferenceStore = preferences, beforeRouterSelection = home::routerSelectionChanged,
-        importAuthenticatedProfile = routerImports::authenticated)
+        importAuthenticatedProfile = routerImports::authenticated,
+        readonlyInspector = WifiRouterReadonlyInspector.forWifi(manager, protection, access))
     val control = RouterControlCoordinator(PairedRouterManagementTransport(transport, manager, access), pairing, preferences, provisioner,
+        deviceUpdateRelay = RouterDeviceUpdateRelay(RouterDeviceReleaseSource(application.cacheDir)),
         homeAutomationAvailable = home.available, applyHomeAutomation = home::setEnabled, homeAutomationActive = { home.isEnabled }, copyProfile = { value ->
         withContext(Dispatchers.Main) {
             val clipboard = requireNotNull(application.getSystemService(ClipboardManager::class.java))
@@ -122,15 +128,33 @@ internal fun createRouterRuntime(context: Context, controller: DefaultVpnControl
 // Enabled only after firmware handoff and physical foreground-service acceptance.
 private const val ROUTER_HOME_ACCEPTED = false
 
-private fun readRouterReleaseAnchor(context: Context): RouterSetupRelease? {
+private fun readRouterReleaseAnchor(context: Context): RouterSetupRelease? =
+    readQualifiedVpnRouterReleaseAnchor(VPN_ROUTER_QUALIFIED_ANCHOR_SHA256) {
+        context.assets.open("router-release-anchor.json")
+    }
+
+// Root binds only an actually qualified final router anchor; old assets cannot enable setup.
+internal val VPN_ROUTER_QUALIFIED_ANCHOR_SHA256: String? = null
+
+internal fun readQualifiedVpnRouterReleaseAnchor(expected: String?, open: () -> InputStream): RouterSetupRelease? {
+    val pin = expected ?: return null
+    require(pin.matches(Regex("[a-f0-9]{64}")))
     val bytes = try {
-        context.assets.open("router-release-anchor.json").use { stream ->
-            val contents = stream.readBytes()
-            require(contents.size in 1..4096)
-            contents
+        open().use { input ->
+            val buffer = ByteArray(4097)
+            var size = 0
+            while (size < buffer.size) {
+                val read = input.read(buffer, size, buffer.size - size)
+                if (read < 0) break
+                require(read > 0)
+                size += read
+            }
+            require(size in 1..4096)
+            buffer.copyOf(size)
         }
     } catch (_: FileNotFoundException) { return null }
+    require(MessageDigest.getInstance("SHA-256").digest(bytes).joinToString("") { "%02x".format(it.toInt() and 255) } == pin)
     val anchor = routerInstallDocument(bytes, 4096)
-    require(anchor.installNumber("schema") == 1)
+    require(anchor.keys == setOf("schema", "baseUrl", "manifestSha256") && anchor.installNumber("schema") == 1)
     return GithubRouterSetupRelease(anchor.installText("baseUrl"), anchor.installText("manifestSha256"))
 }

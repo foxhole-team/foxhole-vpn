@@ -2,6 +2,7 @@
 <resources>
     <string name="vpn_help_privacy_title">プライバシーと接続確認</string>
     <string name="vpn_help_privacy_body">接続確認にはGoogleを使用し、IPに基づくおおよその位置情報はipwho.isから取得します。VPN確認は選択したVPNネットワークを使用し、VPNを使用しない位置確認は現在のインターネット接続を使用します。各サービスはリクエストと送信元IPを受け取ります。プロファイルと設定は端末上で暗号化されます。広告や解析SDKは含まれません。</string>
+    <string name="vpn_help_router_body">「ルーター」では、対応するOpenWrtにFoxHoleをインストールするか、既存のFoxHoleにスマートフォンを接続できます。設定の横にある疑問符ボタンでヘルプを開けます。ペアリングを解除すると管理が無効になります。VPNアクセスを取り消すには、別途クライアントを削除してください。</string>
     <string name="vpn_help_updates_title">更新</string>
-    <string name="vpn_help_updates_body">設定 → バックグラウンド更新で有効にすると、既定ではサブスクリプションを約12時間ごとに更新し、署名付き接続データを24時間ごとに確認します。各確認は同じ画面でオフにできます。データのインストールには操作が必要です。Androidが確認を遅らせることがあります。F-Droid版のアプリ更新はF-Droidが管理します。</string>
+    <string name="vpn_help_updates_body">設定 → バックグラウンド更新で有効にすると、既定ではサブスクリプションを約12時間ごとに更新し、署名付き接続データを24時間ごとに確認します。各確認は同じ画面でオフにできます。FoxHole DBの接続データ更新は、ユーザーの操作によってインストールされます。サブスクリプションの自動更新が有効な場合、プロファイルは安全に置き換えられるときに自動更新されます。Androidが確認を遅らせることがあります。F-Droid版のアプリ更新はF-Droidが管理します。</string>
 </resources>

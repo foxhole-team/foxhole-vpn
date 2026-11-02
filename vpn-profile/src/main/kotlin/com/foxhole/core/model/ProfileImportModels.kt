@@ -13,7 +13,10 @@ data class ParsedImport(
     val protocolOptions: List<StoredProfileProtocolOption> = emptyList(),
     val selectedProtocolOptionId: String? = null,
     val entryReports: List<SubscriptionEntryReport> = emptyList(),
-)
+) {
+    val hasCompatibilityWarning: Boolean
+        get() = entryReports.any { it.status == SubscriptionEntryStatus.ACCEPTED && it.compatibilityWarning }
+}
 
 data class ParsedSubscriptionProfile(
     val displayName: String,
@@ -35,6 +38,7 @@ data class SubscriptionEntryReport(
     val status: SubscriptionEntryStatus,
     val sourceLine: Int,
     val reason: String? = null,
+    val compatibilityWarning: Boolean = false,
 )
 
 data class ParsedSubscriptionImport(
@@ -49,6 +53,9 @@ data class ParsedSubscriptionImport(
 
     val nodesCount: Int
         get() = profiles.size
+
+    val hasCompatibilityWarning: Boolean
+        get() = entryReports.any { it.status == SubscriptionEntryStatus.ACCEPTED && it.compatibilityWarning }
 }
 
 @Serializable

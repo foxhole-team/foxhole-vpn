@@ -24,6 +24,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.foxhole.vpn.router.routerLanDeviceUsesVpn
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -143,31 +145,29 @@ private fun RouterCountryAsset(country: String) {
 }
 
 @Composable
-private fun VpnRouterDropdownButton(label: String, enabled: Boolean, onClick: () -> Unit) {
+private fun VpnRouterDropdownButton(label: String, enabled: Boolean, labelColor: Color? = null, onClick: () -> Unit) {
     OutlinedButton(onClick, enabled = enabled, modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)) {
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text(label, Modifier.weight(1f), maxLines = 2, overflow = TextOverflow.Ellipsis)
+            Text(label, Modifier.weight(1f), color = labelColor ?: androidx.compose.material3.LocalContentColor.current, maxLines = 2, overflow = TextOverflow.Ellipsis)
             Icon(painterResource(R.drawable.lin_chevron_down), null, Modifier.size(20.dp))
         }
     }
 }
 
 @Composable
-internal fun VpnRouterDeviceRouteDropdown(route: String?, enabled: Boolean, vpnAvailable: Boolean, onSelect: (Boolean) -> Unit) {
+internal fun VpnRouterDeviceRouteDropdown(route: String?, enabled: Boolean, onSelect: (Boolean) -> Unit) {
     var expanded by remember { mutableStateOf(false) }
-    val label = stringResource(when (route) {
-        "vpn" -> R.string.router_review_device_vpn
-        "direct" -> R.string.router_review_direct
-        else -> R.string.router_review_router_default
-    })
+    val usesVpn = routerLanDeviceUsesVpn(route)
+    val label = stringResource(if (usesVpn) R.string.router_review_device_vpn
+        else R.string.router_review_direct)
     BoxWithConstraints(Modifier.fillMaxWidth()) {
         val menuWidth = maxWidth
-        VpnRouterDropdownButton(label, enabled) { expanded = !expanded }
+        VpnRouterDropdownButton(label, enabled, if (usesVpn) routerConnectColor() else null) { expanded = !expanded }
         DropdownMenu(expanded = expanded && enabled, onDismissRequest = { expanded = false },
             modifier = Modifier.width(menuWidth).heightIn(max = 240.dp)) {
-            DropdownMenuItem(text = { Text(stringResource(R.string.router_review_device_vpn)) },
-                leadingIcon = { Icon(painterResource(R.drawable.lin_power), null, Modifier.size(20.dp)) },
-                enabled = vpnAvailable, onClick = { expanded = false; onSelect(true) })
+            DropdownMenuItem(text = { Text(stringResource(R.string.router_review_device_vpn), color = routerConnectColor()) },
+                leadingIcon = { Icon(painterResource(R.drawable.lin_power), null, Modifier.size(20.dp), tint = routerConnectColor()) },
+                onClick = { expanded = false; onSelect(true) })
             DropdownMenuItem(text = { Text(stringResource(R.string.router_review_direct)) },
                 leadingIcon = { Icon(painterResource(R.drawable.router_review_globe), null, Modifier.size(20.dp)) },
                 onClick = { expanded = false; onSelect(false) })

@@ -1,0 +1,4 @@
+<resources>
+    <string name="vpn_app_update_install_vpn_notice">Установка ненадолго прервёт VPN. Приложение попробует восстановить активное соединение; при необходимости откройте его и подключитесь снова.</string>
+    <string name="vpn_app_update_reconnect_required">Откройте приложение и подключитесь снова, чтобы восстановить VPN после обновления.</string>
+</resources>

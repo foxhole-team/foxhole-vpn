@@ -134,6 +134,7 @@ private fun VpnAppContent(
     val resources by rememberUpdatedState(LocalResources.current)
     val scope = rememberCoroutineScope()
     val notices = requireNotNull(LocalVpnNotices.current)
+
     val navigation = remember { VpnSheetNavigation() }
     val betaNoticePreferences = remember(context.applicationContext) { RouterBetaNoticePreferences(context) }
     var routerBetaNoticeVisible by rememberSaveable { mutableStateOf(false) }
@@ -150,15 +151,22 @@ private fun VpnAppContent(
     DisposableEffect(routerWizard) { onDispose { routerJob?.cancel(); routerWizard?.close() } }
     DisposableEffect(routerControl) { onDispose { routerControl?.close() } }
     LaunchedEffect(routerState?.error) {
-        routerState?.error?.let { notices.show(resources.getString(routerWizardErrorLabel(it)), error = true) }
+        val inlinePin = routerState?.let { it.path == com.foxhole.vpn.router.RouterWizardPath.PAIR &&
+            it.stage == RouterWizardStage.LOGIN && it.error in setOf(
+                com.foxhole.vpn.router.RouterWizardError.PIN, com.foxhole.vpn.router.RouterWizardError.LOCKED) } == true
+        if (!inlinePin) routerState?.error?.let { notices.show(resources.getString(routerWizardErrorLabel(it)), error = true) }
     }
     LaunchedEffect(routerState?.stage) {
         if (routerState?.stage == RouterWizardStage.NEW_PIN) routerControl?.loadPairingState()
         if (routerState?.stage == RouterWizardStage.COMPLETE && navigation.current?.page == VpnSheetPage.RouterWizard && routerControl != null) {
             val completedEntryId = navigation.current?.id
+            val pairedExisting = routerState?.installedInThisWizard == false
             routerWizard?.close()
             routerControl.loadPairingState()
-            if (navigation.current?.id == completedEntryId) navigation.replace(VpnSheetPage.RouterControl)
+            if (navigation.current?.id == completedEntryId) {
+                if (pairedExisting) routerControl.preparePairedOpen()
+                navigation.replace(VpnSheetPage.RouterControl)
+            }
         }
     }
     fun routerAction(secret: CharArray? = null, action: suspend () -> Unit) {
@@ -208,9 +216,9 @@ private fun VpnAppContent(
         }
     }
 
-    suspend fun inspectRouterAddress(address: String) {
+    suspend fun inspectRouterAddress(address: String, setupAddress: Boolean = false) {
         val wizard = routerWizard ?: return
-        wizard.inspectAddress(address)
+        if (setupAddress) wizard.inspectSetupAddress(address) else wizard.inspectAddress(address)
         val inspected = wizard.state.value
         if (inspected.stage == RouterWizardStage.IDENTITY && inspected.error == null && !inspected.busy) {
             if (inspected.identityChanged) {
@@ -405,11 +413,15 @@ private fun VpnAppContent(
                 }
             }
             VpnHome(state,
-                onPrimary = {
+                onPrimary = { requestDisconnectCue ->
                     notices.dismiss()
                     val current = controller.state.value
                     if (primaryActionEnabled(current)) when (primaryAction(current)) {
-                        VpnPrimaryAction.DISCONNECT -> controller.disconnect()
+                        VpnPrimaryAction.DISCONNECT -> {
+                            controller.disconnect()
+                            if (current.isConnected && current.hasOwnedTunnel)
+                                current.connectionId?.let(requestDisconnectCue)
+                        }
                         VpnPrimaryAction.CONNECT -> actions.connect()
                     }
                 },
@@ -489,7 +501,8 @@ private fun VpnAppContent(
                             }, requestHomeEnable = { action -> if (entryCurrent(entry)) {
                                 if (onRouterHomeEnableRequest == null) notices.show(resources.getString(R.string.vpn_router_error_unavailable), error = true)
                                 else onRouterHomeEnableRequest { if (entryCurrent(entry)) action() }
-                            } }, enabled = entryCurrent(entry))
+                            } }, enabled = entryCurrent(entry),
+                            onClose = { if (entryCurrent(entry)) sheetClose() })
                         VpnSheetPage.RouterEntry -> if (routerWizard != null) VpnRouterEntrySheet(
                             setupEnabled = routerWizard.setupAvailable,
                             installationCatalog = routerWizard.installationCatalog,
@@ -516,6 +529,11 @@ private fun VpnAppContent(
                                     { notices.show(resources.getString(R.string.vpn_router_error_unavailable), error = true) }) {
                                     routerAction { inspectRouterAddress(address) }
                                 } },
+                                setupAddress = { address -> requestRouterAccessForEntry({ entryCurrent(entry) }, onRouterEntryRequest,
+                                    { notices.show(resources.getString(R.string.vpn_router_error_unavailable), error = true) }) {
+                                    routerWizard.begin(RouterWizardPath.SETUP, null, addingNew = routerWizard.isAddingRouter)
+                                    routerAction { inspectRouterAddress(address, setupAddress = true) }
+                                } },
                                 trust = { if (entryCurrent(entry)) routerAction { routerWizard.acceptIdentity() } },
                                 installProtocols = { if (entryCurrent(entry)) routerWizard.installProtocols(it) },
                                 installCompactSelection = { protocols, server -> if (entryCurrent(entry)) routerWizard.installProtocols(protocols, server) },
@@ -524,18 +542,26 @@ private fun VpnAppContent(
                                     val ownedCredential = credential.copyOf()
                                     routerAction(ownedCredential) { routerWizard.login(ownedCredential) }
                                 } else credential.fill('\u0000') },
+                                loginKey = { key, passphrase ->
+                                    if (entryCurrent(entry) && routerJob?.isActive != true) {
+                                        val ownedKey = key.copyOf()
+                                        val ownedPassphrase = passphrase.copyOf()
+                                        routerAction(ownedPassphrase) { routerWizard.loginWithKey(ownedKey, ownedPassphrase) }
+                                        routerJob?.invokeOnCompletion { ownedKey.fill(0) }
+                                    }
+                                },
                                 newPin = { credential -> if (entryCurrent(entry)) routerAction(credential) { routerWizard.changePin(credential) } else credential.fill('\u0000') },
                                 install = { if (entryCurrent(entry)) routerAction { routerWizard.install() } },
                                 options = { if (entryCurrent(entry)) routerWizard.options(it) },
-                                finish = { if (entryCurrent(entry)) routerAction { routerWizard.finish() } },
+                                finish = { pin -> if (entryCurrent(entry)) routerAction(pin) { routerWizard.finish(pin) } else pin?.fill('\u0000') },
                                 failure = { notices.show(resources.getString(R.string.vpn_router_error_network), error = true) },
                                 openRouterSetup = {
                                     val address = routerState.address
-                                    if (entryCurrent(entry) && address == "192.168.1.1") {
+                                    if (entryCurrent(entry) && com.foxhole.vpn.router.routerLanAddress(address) != null) {
                                         try {
                                             if (openRouterSetup != null) openRouterSetup(address)
                                             else context.startActivity(android.content.Intent(android.content.Intent.ACTION_VIEW,
-                                                android.net.Uri.parse("http://192.168.1.1/cgi-bin/luci/admin/services/foxhole/pin")))
+                                                android.net.Uri.parse("http://$address/cgi-bin/luci/admin/services/foxhole/pin")))
                                         }
                                         catch (_: Exception) { notices.show(resources.getString(R.string.vpn_router_error_unavailable), error = true) }
                                     }

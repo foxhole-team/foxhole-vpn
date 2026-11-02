@@ -49,6 +49,9 @@
         </receiver>
         <activity android:name=".widget.WidgetActionActivity" android:exported="false" android:excludeFromRecents="true" android:theme="@style/Theme.Foxhole.WidgetAction" />
         <receiver android:name=".widget.WidgetActionReceiver" android:exported="false" />
+        <receiver android:name=".appupdates.VpnPackageReplacedReceiver" android:exported="false">
+            <intent-filter><action android:name="android.intent.action.MY_PACKAGE_REPLACED" /></intent-filter>
+        </receiver>
         <provider
             android:name=".appupdates.VpnAppUpdateFileProvider"
             android:authorities="${applicationId}.app-update-files"

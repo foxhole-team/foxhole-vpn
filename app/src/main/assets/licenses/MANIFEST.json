@@ -6,12 +6,12 @@
     "x86_64"
   ],
   "androidDeliveryProfile": "android4",
-  "core_revision": "7b15f5b614031181b5a2eab274acac6f15d961ff",
+  "core_revision": "66286391a715fbc1c2bbabb2581c5295f76a1acd",
   "files": [
     {
-      "bytes": 61180,
+      "bytes": 61536,
       "path": "CURRENT-CORE-PROJECTION.json",
-      "sha256": "e78550c3a30d30cd335407b67b83f615722417ef267234352346ec78c9c2a764"
+      "sha256": "79133fa0bc5851aed23034eb35a84b1a79383738b93c96d8a0a8d08df830ea8f"
     },
     {
       "bytes": 35149,
@@ -396,17 +396,17 @@
     {
       "bytes": 2402,
       "path": "native/ABI-COVERAGE.json",
-      "sha256": "d76721b64a1a8f23afff840f94742094db20170a425340f5ba41b8d2a3333083"
+      "sha256": "38708d3371d2dbcc54d87cc87fdea53e632c0e47f33328ac66a2a4f6af94049c"
     },
     {
-      "bytes": 151841,
+      "bytes": 152091,
       "path": "native/CARGO-NOTICE-UNION.json",
-      "sha256": "895836563046b4c2eb7d5e2aefa9efc3592b3ff68f4c1f3ba8357c49697a5926"
+      "sha256": "c267eb11a913cc55f270c66b3edb8a65d1221920bf97905dba0f04369bb4fe96"
     },
     {
-      "bytes": 332,
+      "bytes": 480,
       "path": "native/NOTICE-ORIGINS.json",
-      "sha256": "8c5dd69b60362c4dafc9c058b8772b693de8d662443d8589dadf85a872891fb0"
+      "sha256": "829e13e5ab2d73dcb4167e1413db10b5ffc396249690d75b1e36b3d63bec7283"
     },
     {
       "bytes": 275,
@@ -414,24 +414,24 @@
       "sha256": "cf5365e2a7879f0307985db875476a7a898418c0fe89d62c66efbe61eca56de6"
     },
     {
-      "bytes": 289405,
+      "bytes": 289342,
       "path": "native/aarch64-linux-android.cdx.json",
-      "sha256": "f35f19232601a4ccd923353f55d3e1a34089d59d837fda3a87e3aeef416cf3b0"
+      "sha256": "aed54dd159738703621697f0c148017cd995f489abdac98ce652297cfff1233c"
     },
     {
       "bytes": 128307,
       "path": "native/aarch64-linux-android.notices.json",
-      "sha256": "d9cc4bcdcdf072609999757bfac319261da2bdfd21d67358defb4ad893af4fdf"
+      "sha256": "27f845ebacbd86b8cbdd2d5e5bc0fcfefe49c16d34a1e40283f2b7732af26fc0"
     },
     {
-      "bytes": 287041,
+      "bytes": 286978,
       "path": "native/armv7-linux-androideabi.cdx.json",
-      "sha256": "33b53e5d3d31c62a608767659bb2aa62f36247d84ff731e5f43fc93d2050a16e"
+      "sha256": "0c7abdba0f47fa9747592197dae717a6fffc6fc863a70379f6da51716d28ec65"
     },
     {
       "bytes": 127223,
       "path": "native/armv7-linux-androideabi.notices.json",
-      "sha256": "c81b2d3472aad6e0905dfaf26442ef524f1f0964d564d58e3c9ce2a37499cd5b"
+      "sha256": "406fe150e9f85695647ee195d71b57b640bcbec936699f38ead0f3f60566027c"
     },
     {
       "bytes": 10850,
@@ -1025,72 +1025,72 @@
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/foxcore-android-1.0.1/LICENSE",
+      "path": "native/cargo/foxcore-android-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/foxcore-api-1.0.1/LICENSE",
+      "path": "native/cargo/foxcore-api-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/foxcore-component-1.0.1/LICENSE",
+      "path": "native/cargo/foxcore-component-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/foxcore-dialer-1.0.1/LICENSE",
+      "path": "native/cargo/foxcore-dialer-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/foxcore-dns-1.0.1/LICENSE",
+      "path": "native/cargo/foxcore-dns-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/foxcore-link-1.0.1/LICENSE",
+      "path": "native/cargo/foxcore-link-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/foxcore-outbound-1.0.1/LICENSE",
+      "path": "native/cargo/foxcore-outbound-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/foxcore-relay-1.0.1/LICENSE",
+      "path": "native/cargo/foxcore-relay-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/foxcore-route-1.0.1/LICENSE",
+      "path": "native/cargo/foxcore-route-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/foxcore-runtime-1.0.1/LICENSE",
+      "path": "native/cargo/foxcore-runtime-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/foxcore-share-1.0.1/LICENSE",
+      "path": "native/cargo/foxcore-share-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/foxcore-trafficmap-1.0.1/LICENSE",
+      "path": "native/cargo/foxcore-trafficmap-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/foxcore-transport-1.0.1/LICENSE",
+      "path": "native/cargo/foxcore-transport-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/foxcore-tun-1.0.1/LICENSE",
+      "path": "native/cargo/foxcore-tun-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
@@ -1840,72 +1840,72 @@
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/proto-anytls-1.0.1/LICENSE",
+      "path": "native/cargo/proto-anytls-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/proto-http-1.0.1/LICENSE",
+      "path": "native/cargo/proto-http-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/proto-hysteria2-1.0.1/LICENSE",
+      "path": "native/cargo/proto-hysteria2-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/proto-naive-1.0.1/LICENSE",
+      "path": "native/cargo/proto-naive-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/proto-reality-1.0.1/LICENSE",
+      "path": "native/cargo/proto-reality-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 1074,
-      "path": "native/cargo/proto-reality-1.0.1/crates/proto-reality/LICENSE-MIT",
+      "path": "native/cargo/proto-reality-1.0.2/crates/proto-reality/LICENSE-MIT",
       "sha256": "1fb83b583e8604eff99cf01dfece917bb0ad56c3101d627516c7b59655375e19"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/proto-shadowsocks-1.0.1/LICENSE",
+      "path": "native/cargo/proto-shadowsocks-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/proto-shadowtls-1.0.1/LICENSE",
+      "path": "native/cargo/proto-shadowtls-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/proto-socks-1.0.1/LICENSE",
+      "path": "native/cargo/proto-socks-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/proto-trojan-1.0.1/LICENSE",
+      "path": "native/cargo/proto-trojan-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/proto-tuic-1.0.1/LICENSE",
+      "path": "native/cargo/proto-tuic-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/proto-vless-1.0.1/LICENSE",
+      "path": "native/cargo/proto-vless-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/proto-vmess-1.0.1/LICENSE",
+      "path": "native/cargo/proto-vmess-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "bytes": 35149,
-      "path": "native/cargo/proto-wireguard-1.0.1/LICENSE",
+      "path": "native/cargo/proto-wireguard-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
@@ -2774,9 +2774,9 @@
       "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
     },
     {
-      "bytes": 126374,
+      "bytes": 126151,
       "path": "native/foxcore/ABI-COVERAGE.json",
-      "sha256": "ae3dee8a781d4f73b9f0e7eefdd8646596a64a50c4f0cb966008ce5c3292e7a9"
+      "sha256": "e460e8b2b16d9cb04ad8dd59bea18cd17eeb6641356207178e7aaeeffc1922d6"
     },
     {
       "bytes": 35149,
@@ -2786,7 +2786,7 @@
     {
       "bytes": 41,
       "path": "native/foxcore/REVISION.txt",
-      "sha256": "2cfbd12fef87def68ec3497d8a33912f5ede76b4470361d85fde5530cc29adfa"
+      "sha256": "8a5ca50b48a26d9f7bcc2dd45b3fa880bfe80d9d88ded9cb05ebc286b427b566"
     },
     {
       "bytes": 9331,
@@ -2794,14 +2794,14 @@
       "sha256": "5f63fe1104d0ba682236527f2bd8c3ed71cdd664898b50e17c08fb20a34c2116"
     },
     {
-      "bytes": 289478,
+      "bytes": 289415,
       "path": "native/i686-linux-android.cdx.json",
-      "sha256": "913a29a559a077a0daf589913c4aa19bb2a2c09a5a83977fd2892ab401a3fce7"
+      "sha256": "5b8811ed8855ec0e4b0a10ae1211f9f681aa0ed9eb1b0029f9d967ea108ea769"
     },
     {
       "bytes": 128307,
       "path": "native/i686-linux-android.notices.json",
-      "sha256": "d9f0898b6d4edc41c4814f397b62a3000116fd60e9f4f6c664f7923e7abcdf6c"
+      "sha256": "8ed60b4caafc2d7d15cfb3804bd35b5b755177a52bc54e26155a3efd379ef9d2"
     },
     {
       "bytes": 85294,
@@ -2809,9 +2809,9 @@
       "sha256": "92e96b03a87d8740c6ece1a25cb1514205cd4b227b1c52f9e8d0ed48f9dfb292"
     },
     {
-      "bytes": 763,
+      "bytes": 834,
       "path": "native/source-forks/rustls-0.23.46/FOXHOLE-MODIFICATIONS.md",
-      "sha256": "58898732988c539065681264252fa603e737c637f11629a74d5b489f739b1d39"
+      "sha256": "e348815a3c8cf11f58344f109e9565419f5ef2324408d3543d3905309485fafb"
     },
     {
       "bytes": 10847,
@@ -2831,12 +2831,12 @@
     {
       "bytes": 23956,
       "path": "native/source-forks/rustls-0.23.46/ORIGIN.json",
-      "sha256": "ecdc360e6e6569d14a922b51be28fde677ff18c818debdc09cb90f4d0eb7c519"
+      "sha256": "88dd76f0174bc49acd931551910754fbe0d4a0ad09cb63ea652fdea6a6ed1df6"
     },
     {
-      "bytes": 68886,
+      "bytes": 70478,
       "path": "native/source-forks/rustls-0.23.46/chrome151.patch",
-      "sha256": "5deee21f5349fdacb350bc48ac2388a4b3a0fff988aec6b516294b6ae8e5921a"
+      "sha256": "a63cadc3346277f82594b6dcd818f56796c39c44aa0ef1377c6da90328631638"
     },
     {
       "bytes": 21323,
@@ -2859,19 +2859,19 @@
       "sha256": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1"
     },
     {
-      "bytes": 22570,
+      "bytes": 24413,
       "path": "native/toolchain/PROVENANCE.json",
-      "sha256": "3f6a7511cc52fe3898b494a9e2dc2b374ab1c59c38a89956121266616e2460ae"
+      "sha256": "2fbac6b5f86fad6ccef8539260aa30b3424f4c51f588c5c176678da2ac5575e5"
     },
     {
-      "bytes": 289480,
+      "bytes": 289417,
       "path": "native/x86_64-linux-android.cdx.json",
-      "sha256": "a65eb550f733d8243b95c239f18368cacf266926baa529c494127add2d63b1c2"
+      "sha256": "f2d4171fcba37e1fc5562b418b80155cac09b77de4785710ba7b7b78c22f12a2"
     },
     {
       "bytes": 128307,
       "path": "native/x86_64-linux-android.notices.json",
-      "sha256": "e9d398e9b73f04c46b95a2eafd80ca56281c5c793ab30e702e5c1a5d570c53b1"
+      "sha256": "b98dbf08b9bec2c37f8cff493390ce7a473d5910738da642423b6267e686fb29"
     }
   ],
   "product": "FoxHole VPN",
