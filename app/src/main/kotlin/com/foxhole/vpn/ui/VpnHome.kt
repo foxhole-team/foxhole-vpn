@@ -164,6 +164,11 @@ private fun VpnHomeControls(
     appUpdate: VpnAppUpdateState, onAppUpdate: () -> Unit,
 ) {
     val colors = LocalVpnColors.current
+    if (appUpdate.phase in setOf(VpnAppUpdatePhase.AVAILABLE, VpnAppUpdatePhase.DOWNLOADING,
+            VpnAppUpdatePhase.VERIFYING, VpnAppUpdatePhase.READY, VpnAppUpdatePhase.ERROR)) {
+        Spacer(Modifier.height(12.dp))
+        VpnAppUpdateCard(appUpdate, onAppUpdate)
+    }
     Spacer(Modifier.height(16.dp))
     OutlinedButton(
         onClick = onProfiles,
@@ -219,11 +224,6 @@ private fun VpnHomeControls(
     )) {
         Spacer(Modifier.height(12.dp))
         VpnDataUpdateStatus(dataUpdate, onDataUpdate)
-    }
-    if (appUpdate.phase in setOf(VpnAppUpdatePhase.AVAILABLE, VpnAppUpdatePhase.DOWNLOADING,
-            VpnAppUpdatePhase.VERIFYING, VpnAppUpdatePhase.READY, VpnAppUpdatePhase.ERROR)) {
-        Spacer(Modifier.height(12.dp))
-        VpnAppUpdateCard(appUpdate, onAppUpdate)
     }
 }
 

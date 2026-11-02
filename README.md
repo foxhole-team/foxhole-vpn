@@ -53,8 +53,10 @@ Import transfers supported connection parameters. Clash/mihomo routing rules and
 
 <a id="whats-new"></a>
 
-> **🆕 What's new - 1.0.1 Stable**
+> **🆕 What's new - 1.0.2 Stable**
 >
+> - Fixed the OpenWrt version check when pairing with a router.
+> - Moved the application update notice above the VPN profile selection area.
 > - Improved support for VPN provider subscriptions.
 > - Fixed router discovery, pairing and OpenWrt inspection over SSH, and added SSH key support.
 > - Fixed APK validation when updating from GitHub.
@@ -199,3 +201,7 @@ bc1qatnyy7jcpqrp0d3dk9rta9vqfejgh4mysd6m2f
 Component licenses are listed in Settings → About.
 
 [Third-party components](THIRD_PARTY_NOTICES.md).
+
+## Roadmap
+
+See [Roadmap](ROADMAP.md) for project priorities and [TODO](TODO.md) for planned work.

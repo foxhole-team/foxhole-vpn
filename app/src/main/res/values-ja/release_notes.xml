@@ -8,4 +8,6 @@
     <string name="vpn_release_notes_vless_reality">VLESS + REALITY の互換性を修正しました。</string>
     <string name="vpn_release_notes_router_management">OpenWrtの設定と、家庭内端末・VPNクライアントの管理を簡素化しました。</string>
     <string name="vpn_release_notes_pin6">インストール時に確認入力する6桁のPINと、最大10台のルーターへの対応を追加しました。</string>
+    <string name="vpn_release_notes_update_position">アプリの更新通知を VPN プロファイル選択欄の上に移動しました。</string>
+    <string name="vpn_release_notes_router_pairing_version">ルーターとのペアリング時の OpenWrt バージョン確認の不具合を修正しました。</string>
 </resources>

@@ -68,6 +68,8 @@ private fun VpnUpdateNoticeSheet(
                 Surface(shape = MaterialTheme.shapes.small, border = BorderStroke(1.dp, LocalVpnColors.current.border),
                     color = LocalVpnColors.current.panel) {
                     Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                        VpnReleaseNoteRow(R.drawable.lin_router, R.string.vpn_release_notes_router_pairing_version)
+                        VpnReleaseNoteRow(R.drawable.lin_refresh, R.string.vpn_release_notes_update_position)
                         VpnReleaseNoteRow(R.drawable.lin_profiles, R.string.vpn_release_notes_subscriptions)
                         VpnReleaseNoteRow(R.drawable.lin_router, R.string.vpn_release_notes_router_setup)
                         VpnReleaseNoteRow(R.drawable.lin_file, R.string.vpn_release_notes_apk_updates)

@@ -1,7 +1,9 @@
 # TODO
 
+Keep all TODO entries in English.
+
 ## FoxHole OpenWrt
 
-- Добавить поддержку нескольких вай фай сетей при настройке и управлению клиентом фоксол опенврт в приложении и веб интерфейсе
-- Добавить поддержку нескольких бриджей при настройке и управлении клиентом FoxHole OpenWrt в приложении и веб-интерфейсе.
-- Добавить поддержку управления сопряжённым OpenWrt-роутером при активном VPN-соединении.
+- Support multiple Wi-Fi networks when setting up and managing FoxHole OpenWrt Client in the app and web interface.
+- Support multiple bridges when setting up and managing FoxHole OpenWrt Client in the app and web interface.
+- Support managing a paired OpenWrt router while a VPN connection is active.
