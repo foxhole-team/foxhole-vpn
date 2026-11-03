@@ -1,18 +1,5 @@
 <h1 align="center">FoxHole VPN</h1>
 
-<a id="whats-new"></a>
-
-> **🆕 What's new - 1.0.3 Stable**
->
-> - Added Routing (beta) for simple per-app traffic routing with atomic rule updates.
-> - Fixed DNS routing in application scenarios.
-> - The widget now shows the current routing scenario with color indication.
-> - Optimized the interface: fixed country flag display, selection list colors, and window animations.
-> - Improved documentation and the help section in all supported languages.
-> - Added the application log.
-> - The application interface is now more compact.
-> - Added system notifications for new app versions (GitHub version only).
-
 <div align="center">
 
 FoxHole VPN is a simple VPN client for Android 8 and later. Import a profile from your VPN provider or your own server, connect on your phone, and manage a paired OpenWrt router from the app.
@@ -64,6 +51,18 @@ Import transfers supported connection parameters. Clash/mihomo routing rules and
 
 <p align="center"><a href="#quickstart">Get started</a> · <a href="#features">Features</a> · <a href="#details">Details</a> · <a href="#whats-new">What's new</a></p>
 
+<a id="whats-new"></a>
+
+> **🆕 What's new - 1.0.3 Stable**
+>
+> - Added Routing (beta) for simple per-app traffic routing with atomic rule updates.
+> - Fixed DNS routing in application scenarios.
+> - The widget now shows the current routing scenario with color indication.
+> - Optimized the interface: fixed country flag display, selection list colors, and window animations.
+> - Improved documentation and the help section in all supported languages.
+> - Added the application log.
+> - The application interface is now more compact.
+> - Added system notifications for new app versions (GitHub version only).
 
 <a id="quickstart"></a>
 

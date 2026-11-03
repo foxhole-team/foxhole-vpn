@@ -1,18 +1,5 @@
 <h1 align="center">FoxHole VPN</h1>
 
-<a id="whats-new"></a>
-
-> **🆕 Nouveautés - 1.0.3 Stable**
->
-> - Ajout de la section « Routage » (bêta) pour un routage simple du trafic par application avec application atomique des modifications.
-> - Correction du routage DNS dans les scénarios de l’application.
-> - Le widget affiche désormais le scénario de routage actuel avec une indication de couleur.
-> - Optimisation de l’interface : correction des drapeaux de pays, des couleurs des listes de sélection et des animations des fenêtres.
-> - Amélioration de la documentation et de la section d’aide dans toutes les langues prises en charge.
-> - Ajout du journal de l’application.
-> - L’interface de l’application est désormais plus compacte.
-> - Ajout de notifications système pour les nouvelles versions de l’application (version GitHub uniquement).
-
 <div align="center">
 
 FoxHole VPN est un client VPN simple pour Android 8 et versions ultérieures. Importez un profil de votre fournisseur VPN ou de votre serveur, connectez votre téléphone et gérez un routeur OpenWrt associé depuis l’application.
@@ -60,6 +47,18 @@ L’import transfère les paramètres de connexion pris en charge. Les règles e
 
 <p align="center"><a href="#quickstart">Démarrer</a> · <a href="#features">Fonctions</a> · <a href="#details">Détails</a> · <a href="#whats-new">Nouveautés</a></p>
 
+<a id="whats-new"></a>
+
+> **🆕 Nouveautés - 1.0.3 Stable**
+>
+> - Ajout de la section « Routage » (bêta) pour un routage simple du trafic par application avec application atomique des modifications.
+> - Correction du routage DNS dans les scénarios de l’application.
+> - Le widget affiche désormais le scénario de routage actuel avec une indication de couleur.
+> - Optimisation de l’interface : correction des drapeaux de pays, des couleurs des listes de sélection et des animations des fenêtres.
+> - Amélioration de la documentation et de la section d’aide dans toutes les langues prises en charge.
+> - Ajout du journal de l’application.
+> - L’interface de l’application est désormais plus compacte.
+> - Ajout de notifications système pour les nouvelles versions de l’application (version GitHub uniquement).
 
 <a id="quickstart"></a>
 
