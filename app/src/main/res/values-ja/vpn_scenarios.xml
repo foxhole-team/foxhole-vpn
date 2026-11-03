@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_add_application">アプリを追加</string>
+    <string name="vpn_app_picker_unavailable">システムのアプリ選択画面を利用できません。</string>
+    <string name="vpn_app_route_direct">直接</string>
+    <string name="vpn_app_route_vpn">VPN</string>
+    <string name="vpn_app_rules">アプリのルール</string>
+    <string name="vpn_app_rules_empty">アプリを追加して通信経路のルールを作成してください。</string>
+    <string name="vpn_help_scenarios_body">ホーム画面上部のボタンから「シナリオ」を開いてください。端末全体または個別のアプリの通信経路を選べます。\n\n「アプリを追加」を押して一覧からアプリを選び、「VPN」または「直接」のルールを設定してください。選択済みのアプリは上に表示されます。フィルターで、すべて、システム、ユーザーのアプリを表示できます。既定ではユーザーアプリを表示します。ルールを長押しして削除を確認してください。シナリオを切り替えても一覧は保存されます。\n\n「端末全体」シナリオは、すべての通信を VPN 経由にし、アプリのルールを無視します。\n\n「プロキシ」シナリオは一覧内のアプリのルールを使います。「端末全体」設定がオンの場合、「直接」に指定したアプリ以外はすべて VPN を使います。オフの場合、「VPN」ルールのアプリだけが VPN を使います。\n\nシナリオ設定で一括適用と変更確認を管理できます。一括適用は既定でオンです。有効な通信経路を変更する前に通信をブロックし、新しいルールを適用して、必要な場合は VPN を再接続します。変更確認は既定でオフです。停止中の VPN は自動的に開始しません。</string>
+    <string name="vpn_routing_mode">シナリオ</string>
+    <string name="vpn_scenario_atomic">シナリオの一括適用</string>
+    <string name="vpn_scenario_atomic_help">オンの場合、有効な通信経路を変更する前に通信を一時的にブロックします。その後、ルールを適用し、必要な場合は VPN を再接続します。変更を安全に完了できなかった場合は、再試行する前に VPN を停止してください。オフの場合、「確認を求める」がオフでも、シナリオや「端末全体」設定の変更に確認が必要です。アプリのルールは自動的に適用します。停止中の VPN は開始しません。</string>
+    <string name="vpn_scenario_back">戻る</string>
+    <string name="vpn_scenario_confirm_body">この通信経路の変更を適用しますか？必要に応じて動作中の VPN が再接続します。</string>
+    <string name="vpn_scenario_confirm_title">シナリオを適用しますか？</string>
+    <string name="vpn_scenario_confirmation">確認を求める</string>
+    <string name="vpn_scenario_confirmation_help">オンの場合、シナリオの変更や「端末全体」設定の切り替えに確認が必要です。 既定ではオフです。</string>
+    <string name="vpn_scenario_default_help">オフの場合、「VPN」ルールを設定した選択済みアプリの通信だけが VPN を経由します。「端末全体」シナリオでは、この設定は常にオンで、変更できません。</string>
+    <string name="vpn_scenario_remove">ルールを削除</string>
+    <string name="vpn_scenario_selected_apps">プロキシ</string>
+    <string name="vpn_scenario_settings">シナリオ設定</string>
+    <string name="vpn_scenario_status_selected">シナリオ：プロキシ</string>
+    <string name="vpn_scenario_status_whole">シナリオ：端末全体</string>
+    <string name="vpn_scenario_whole_device">端末全体</string>
+    <string name="vpn_scenarios">ルーティング</string>
+    <string name="vpn_scenarios_help">「端末全体」シナリオは、すべての通信を VPN 経由にし、アプリのルールを無視します。\n\n「プロキシ」シナリオは「VPN」／「直接」のルールを適用します。\n\n「端末全体」設定がオンの場合、「直接」ルールのアプリ以外はすべての通信が VPN を経由します。オフの場合、「VPN」ルールのアプリの通信だけが VPN を経由します。\n\n「直接」ルールは、端末の通常の接続と、Private DNS を含むシステムの DNS 設定を使用します。</string>
+</resources>

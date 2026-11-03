@@ -5,7 +5,7 @@
     <string name="router_updates_current_version">Текущая версия: %1$s</string>
     <string name="router_updates_available_version">Доступная версия: %1$s</string>
     <string name="router_updates_auto">Автоматические обновления FoxHole</string>
-    <string name="router_updates_auto_help">Если включено, роутер раз в сутки проверяет и устанавливает проверенные обновления пакетов FoxHole. Отключить можно при установке или позже в настройках роутера. После снятия сопряжения политика остаётся на роутере.</string>
+    <string name="router_updates_auto_help">Если включено, роутер раз в 24 часа проверяет и устанавливает проверенные обновления пакетов FoxHole. Отключить можно при установке или позже в настройках роутера. После снятия сопряжения политика остаётся на роутере.</string>
     <string name="router_updates_apply">ОБНОВИТЬ</string>
     <string name="router_updates_check">ПРОВЕРИТЬ</string>
     <string name="router_updates_status">ПРОВЕРИТЬ СТАТУС</string>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="widget_status_label">FoxHole VPN · 状態</string>
-    <string name="widget_status_description">コンパクトなVPN状態と接続操作。</string>
+    <string name="widget_status_description">簡潔な VPN 状態表示と接続操作。</string>
     <string name="widget_fox_label">FoxHole VPN · キツネ</string>
-    <string name="widget_fox_description">キツネがVPN接続の状態を示します。タップして接続または切断。</string>
+    <string name="widget_fox_description">VPN の状態です。押すと接続または切断します。</string>
     <string name="widget_connected">VPNネットワークに接続済み</string>
     <string name="widget_loading">読み込み中</string>
     <string name="widget_disconnected">VPNネットワークから切断済み</string>

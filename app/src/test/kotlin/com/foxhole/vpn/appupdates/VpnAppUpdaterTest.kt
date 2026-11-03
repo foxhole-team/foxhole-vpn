@@ -41,6 +41,23 @@ class VpnAppUpdaterTest {
         }
     }
 
+    @Test fun onlyEnabledAvailableChecksAnnounceAndNotificationFailureDoesNotBlockAnUpdate() = runTest {
+        val source = Source(release)
+        var announcements = 0
+        val updater = VpnAppUpdater(temporary.newFolder(), { 18 }, { _, _ -> }, source = source,
+            cache = Cache(), io = StandardTestDispatcher(testScheduler), announce = { announcements++; error("notifications unavailable") })
+        assertTrue(updater.check() is VpnAppUpdateCheck.Available)
+        assertEquals(VpnAppUpdatePhase.AVAILABLE, updater.state.value.phase)
+        assertEquals(1, announcements)
+        source.result = VpnAppUpdateCheck.UpToDate
+        updater.check()
+        assertEquals(1, announcements)
+        val disabled = VpnAppUpdater(temporary.newFolder(), { 18 }, { _, _ -> }, enabled = false,
+            source = source, cache = Cache(), io = StandardTestDispatcher(testScheduler), announce = { announcements++ })
+        assertEquals(VpnAppUpdateCheck.Disabled, disabled.check())
+        assertEquals(1, announcements)
+    }
+
     @Test fun packageVerifierMustApproveBeforeReadyAndFailedVerificationLeavesNoArtifact() = runTest {
         val directory = temporary.newFolder()
         val source = Source(release)

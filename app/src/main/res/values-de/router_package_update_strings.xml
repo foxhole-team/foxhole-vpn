@@ -5,7 +5,7 @@
     <string name="router_updates_current_version">Aktuelle Version: %1$s</string>
     <string name="router_updates_available_version">Verfügbare Version: %1$s</string>
     <string name="router_updates_auto">Automatische FoxHole-Updates</string>
-    <string name="router_updates_auto_help">Wenn aktiviert, prüft der Router täglich und installiert verifizierte FoxHole-Paketupdates. Bei der Einrichtung oder später in den Router-Einstellungen deaktivierbar. Die Richtlinie bleibt nach dem Entkoppeln auf dem Router.</string>
+    <string name="router_updates_auto_help">Wenn aktiviert, prüft und installiert der Router alle 24 Stunden verifizierte Updates der FoxHole-Pakete. Sie können dies bei der Installation oder später in den Routereinstellungen deaktivieren. Nach dem Aufheben der Kopplung bleibt die Richtlinie auf dem Router bestehen.</string>
     <string name="router_updates_apply">Aktualisieren</string>
     <string name="router_updates_check">Prüfen</string>
     <string name="router_updates_status">STATUS PRÜFEN</string>

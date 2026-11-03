@@ -28,7 +28,7 @@
     <string name="vpn_router_change_pin_note">初回設定の最後に6桁のPINを設定してください。以降のPIN変更は、所有者アカウントでLuCIにログインした場合のみ可能です。</string>
     <string name="vpn_router_save">保存</string>
     <string name="vpn_router_no_profile">ルーターVPNプロファイルがありません</string>
-    <string name="vpn_router_country_direct">国内サイトに直接接続</string>
+    <string name="vpn_router_country_direct">ローカルトラフィック</string>
     <string name="vpn_router_country_direct_note">選択した国のサイトはVPNトンネルを迂回します。</string>
     <string name="vpn_router_home_country">国コード（例：NL）</string>
     <string name="vpn_router_auto_home">ホーム自動切り替え</string>

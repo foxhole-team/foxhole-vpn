@@ -13,6 +13,7 @@ import android.net.VpnService
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.ServiceCompat
+import androidx.annotation.Keep
 import com.foxhole.vpn.R
 import com.foxhole.vpn.VpnPhase
 import com.foxhole.vpn.withVpnLocale
@@ -36,6 +37,7 @@ class VpnTunnelService : VpnService() {
     private var foreground = false
     private val notificationScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
     private var upstream: Network? = null
+    private val identities by lazy { VpnApplicationIdentityResolver(this) }
     private val callback = object : ConnectivityManager.NetworkCallback() {
         override fun onAvailable(network: Network) {
             if (upstream != network) controller.underlyingChanged()
@@ -76,6 +78,9 @@ class VpnTunnelService : VpnService() {
     }
 
     fun protectSocket(socket: Int): Boolean = protect(socket)
+
+    @Keep
+    fun signingDigestForPackage(packageName: String): String? = identities.signingCertificateSha256(packageName)
 
     override fun onRevoke() { controller.serviceRevoked(this, permissionRevoked = true); super.onRevoke() }
 

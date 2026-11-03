@@ -13,13 +13,14 @@ import subprocess
 def validate_fork_material(repo, original, manifest, delivery_profile="legacy4", abis=None):
     source = json.loads((repo / "config/foxcore-source-manifest.json").read_text())
     targets = {
+        "android-arm64": ["aarch64-linux-android"],
         "android4": ["aarch64-linux-android", "armv7-linux-androideabi", "i686-linux-android", "x86_64-linux-android"],
         "legacy4": ["aarch64-linux-android", "armv7-linux-androideabi", "i686-linux-android", "x86_64-linux-android"],
         "android64": ["aarch64-linux-android", "x86_64-linux-android"],
         "android-armv7": ["armv7-linux-androideabi"],
         "android3": ["aarch64-linux-android", "armv7-linux-androideabi", "x86_64-linux-android"],
     }
-    delivery_abis = {"android4": ["arm64-v8a", "armeabi-v7a", "x86", "x86_64"], "legacy4": ["arm64-v8a", "armeabi-v7a", "x86", "x86_64"],
+    delivery_abis = {"android-arm64": ["arm64-v8a"], "android4": ["arm64-v8a", "armeabi-v7a", "x86", "x86_64"], "legacy4": ["arm64-v8a", "armeabi-v7a", "x86", "x86_64"],
                      "android64": ["arm64-v8a", "x86_64"],
                      "android-armv7": ["armeabi-v7a"], "android3": ["arm64-v8a", "armeabi-v7a", "x86_64"]}
     if delivery_profile not in targets:
@@ -76,7 +77,7 @@ def main():
     parser.add_argument('--native', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--abis', nargs='+', required=True)
-    parser.add_argument('--android-delivery-profile', choices=['legacy4', 'android64', 'android-armv7', 'android3', 'android4'], default='legacy4')
+    parser.add_argument('--android-delivery-profile', choices=['legacy4', 'android-arm64', 'android64', 'android-armv7', 'android3', 'android4'], default='legacy4')
     args = parser.parse_args()
     owned_output = args.repo.resolve() / 'app/build/generated/derivedLicenseAssets/licenses'
     if args.output.resolve() != owned_output or args.output.is_symlink():

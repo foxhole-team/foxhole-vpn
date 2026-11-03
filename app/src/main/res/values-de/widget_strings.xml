@@ -3,7 +3,7 @@
     <string name="widget_status_label">FoxHole VPN · Status</string>
     <string name="widget_status_description">Kompakter VPN-Status und Verbindungssteuerung.</string>
     <string name="widget_fox_label">FoxHole VPN · Fuchs</string>
-    <string name="widget_fox_description">Der Fuchs zeigt den VPN-Verbindungsstatus. Zum Verbinden oder Trennen antippen.</string>
+    <string name="widget_fox_description">VPN-Status. Zum Verbinden oder Trennen tippen.</string>
     <string name="widget_connected">Mit dem VPN-Netzwerk verbunden</string>
     <string name="widget_loading">Wird geladen</string>
     <string name="widget_disconnected">Vom VPN-Netzwerk getrennt</string>

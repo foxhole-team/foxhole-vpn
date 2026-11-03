@@ -59,6 +59,8 @@ ANDROID4_ABIS = ["arm64-v8a", "armeabi-v7a", "x86", "x86_64"]
 ANDROID4_TARGETS = ["aarch64-linux-android", "armv7-linux-androideabi", "i686-linux-android", "x86_64-linux-android"]
 ANDROID64_ABIS = ["arm64-v8a", "x86_64"]
 ANDROID64_TARGETS = ["aarch64-linux-android", "x86_64-linux-android"]
+ARM64_ABIS = ["arm64-v8a"]
+ARM64_TARGETS = ["aarch64-linux-android"]
 ARMV7_ABIS = ["armeabi-v7a"]
 ARMV7_TARGETS = ["armv7-linux-androideabi"]
 ANDROID3_ABIS = ["arm64-v8a", "armeabi-v7a", "x86_64"]
@@ -86,7 +88,7 @@ def sha256(data):
 
 
 def validate_delivery_profile(record, delivery_profile):
-    require(delivery_profile in ("legacy4", "android64", "android-armv7", "android3", "android4"), "Unknown Android delivery profile")
+    require(delivery_profile in ("legacy4", "android-arm64", "android64", "android-armv7", "android3", "android4"), "Unknown Android delivery profile")
     require(record.get("androidDeliveryProfile", "legacy4") == delivery_profile,
             "Android delivery profile differs from the explicit selection")
     if delivery_profile == "android4":
@@ -98,6 +100,9 @@ def validate_delivery_profile(record, delivery_profile):
     elif delivery_profile == "android3":
         require(record.get("abis") == ANDROID3_ABIS and record.get("targets") == ANDROID3_TARGETS,
                 "android3 requires its exact three ABI/target authorities")
+    elif delivery_profile == "android-arm64":
+        require(record.get("abis") == ARM64_ABIS and record.get("targets") == ARM64_TARGETS,
+                "ARM64 preview requires its exact ABI/target authority")
     elif delivery_profile == "android-armv7":
         require(record.get("abis") == ARMV7_ABIS and record.get("targets") == ARMV7_TARGETS,
                 "ARMv7 requires its exact ABI/target authority")
@@ -317,6 +322,7 @@ def build_inventory(tree_bytes, metadata_bytes, capture, lock_bytes, expected_fe
             "android64 target is outside its exact two ABI authorities")
     require(delivery_profile != "android4" or target in ANDROID4_TARGETS, "android4 target is outside its exact authorities")
     require(delivery_profile != "android3" or target in ANDROID3_TARGETS, "android3 target is outside its exact authorities")
+    require(delivery_profile != "android-arm64" or target in ARM64_TARGETS, "ARM64 preview target is outside its exact authority")
     require(delivery_profile != "android-armv7" or target in ARMV7_TARGETS,
             "ARMv7 target is outside its exact authority")
     require(re.fullmatch(r"[0-9a-f]{40}", revision) is not None and capture.get("core_revision") == revision, "Core revision mismatch")
@@ -529,6 +535,8 @@ def notice_report(selection):
         result.update(androidDeliveryProfile="android64", abis=ANDROID64_ABIS, targets=ANDROID64_TARGETS)
     elif selection.delivery_profile == "android3":
         result.update(androidDeliveryProfile="android3", abis=ANDROID3_ABIS, targets=ANDROID3_TARGETS)
+    elif selection.delivery_profile == "android-arm64":
+        result.update(androidDeliveryProfile="android-arm64", abis=ARM64_ABIS, targets=ARM64_TARGETS)
     elif selection.delivery_profile == "android-armv7":
         result.update(androidDeliveryProfile="android-armv7", abis=ARMV7_ABIS, targets=ARMV7_TARGETS)
     return result
@@ -573,7 +581,7 @@ def main():
     parser.add_argument("--notices-output", type=Path)
     parser.add_argument("--source-archive", type=Path)
     parser.add_argument("--source-manifest", type=Path)
-    parser.add_argument("--android-delivery-profile", choices=("legacy4", "android64", "android-armv7", "android3", "android4"), default="legacy4")
+    parser.add_argument("--android-delivery-profile", choices=("legacy4", "android-arm64", "android64", "android-armv7", "android3", "android4"), default="legacy4")
     args = parser.parse_args()
     try:
         capture = read_json(args.capture.read_bytes())

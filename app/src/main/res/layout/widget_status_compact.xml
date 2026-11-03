@@ -19,52 +19,64 @@
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:paddingHorizontal="12dp"
-        android:paddingVertical="4dp">
+        android:paddingVertical="2dp">
 
         <LinearLayout
             android:id="@+id/widget_status_header"
             android:layout_gravity="center_horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal">
             <FrameLayout
                 android:id="@+id/widget_status_logo_touch"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
                 android:contentDescription="@string/widget_open_app"
                 android:focusable="true">
                 <ImageView
                     android:id="@+id/widget_status_logo"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
                     android:layout_gravity="center"
                     android:importantForAccessibility="no"
                     android:src="@drawable/ic_launcher_openwrt" />
             </FrameLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:gravity="start|center_vertical"
                 android:orientation="vertical">
                 <TextView
                     android:id="@+id/widget_status_label"
-                    android:layout_width="wrap_content"
-                    android:maxWidth="168dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:fontFamily="@font/tiny5_regular"
                     android:gravity="start|center_vertical"
-                    android:maxLines="2"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
                     android:text="@string/widget_loading"
                     android:textColor="#B49A76"
                     android:textSize="11sp" />
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/widget_status_scenario"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/jetbrains_mono_bold"
+                    android:includeFontPadding="false"
+                    android:gravity="start|center_vertical"
+                    android:text="@string/vpn_scenario_status_whole"
+                    android:textColor="#B49A76"
+                    android:textSize="10sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
                     android:gravity="start|center_vertical"
                     android:orientation="horizontal">
                     <ImageView
@@ -84,12 +96,14 @@
                         android:visibility="gone" />
                     <TextView
                         android:id="@+id/widget_status_detail"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:fontFamily="@font/jetbrains_mono_bold"
                         android:gravity="start|center_vertical"
                         android:maxLines="1"
+                        android:includeFontPadding="false"
                         android:text="@string/widget_detail_empty"
                         android:textColor="#F0E6D6"
                         android:textSize="@dimen/widget_compact_detail_text_size" />
@@ -101,12 +115,13 @@
             android:id="@+id/widget_status_action_row"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="2dp"
             android:orientation="horizontal"
-            android:gravity="center_horizontal">
+            android:gravity="center">
             <FrameLayout
                 android:id="@+id/widget_status_power_touch"
                 android:layout_width="match_parent"
+                android:minWidth="48dp"
                 android:layout_height="48dp"
                 android:contentDescription="@string/widget_connect"
                 android:enabled="false"

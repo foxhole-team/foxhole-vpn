@@ -2,7 +2,7 @@
     <string name="widget_status_label">FoxHole VPN · Статус</string>
     <string name="widget_status_description">Компактный статус VPN и управление подключением.</string>
     <string name="widget_fox_label">FoxHole VPN · Лиса</string>
-    <string name="widget_fox_description">Лиса показывает состояние VPN. Нажмите для подключения или отключения.</string>
+    <string name="widget_fox_description">Состояние VPN. Нажмите для подключения или отключения.</string>
     <string name="widget_connected">Подключено к VPN сети</string>
     <string name="widget_loading">Загрузка</string>
     <string name="widget_disconnected">Отключено от VPN сети</string>

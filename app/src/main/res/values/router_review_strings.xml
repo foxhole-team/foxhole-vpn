@@ -10,10 +10,10 @@
     <string name="router_review_architecture">Architecture</string>
     <string name="router_review_protocols">VPN protocols</string>
     <string name="router_review_storage">Installation</string>
-    <string name="router_review_direct_ip">Static IPv4 address confirmed</string>
+    <string name="router_review_direct_ip">Static IPv4 address</string>
     <string name="router_review_remote_settings">VPN access from outside your home</string>
     <string name="router_review_phone_profile">Create a VPN profile for this phone</string>
-    <string name="router_review_remote_help">If your router supports a static public IP address, you can use it as a VPN gateway for your devices. Route: device → router; local traffic exits directly, while foreign traffic uses the active VPN connection.</string>
+    <string name="router_review_remote_help">If your router supports a static public IP address, it can act as a VPN gateway for your devices. Route: device → router; local traffic goes directly, while foreign traffic uses the active VPN connection.</string>
     <string name="router_review_router_vpn">VPN OpenWRT</string>
     <string name="router_review_vpn_clients">VPN clients</string>
     <string name="router_review_router_vpn_description">Profiles, connection and settings</string>
@@ -38,7 +38,7 @@
     <string name="router_review_direct">Without VPN</string>
     <string name="router_review_selected_profile">Selected router profile</string>
     <string name="router_review_unpair">Unpair the router?</string>
-    <string name="router_review_unpair_description">This phone will stop managing the router. Router VPN keeps running unless you remove FoxHole.</string>
+    <string name="router_review_unpair_description">The phone will stop managing the router. VPN will keep running unless FoxHole is removed.</string>
     <string name="router_review_delete_package">Remove FoxHole from the router</string>
     <string name="router_review_delete_unavailable">Removal requires a reachable router and a compatible installer.</string>
     <string name="router_review_confirm_unpair">UNPAIR</string>
@@ -66,11 +66,11 @@
     <string name="router_review_reset_unavailable">Resetting FoxHole is currently unavailable.</string>
     <string name="router_review_open_router_setup">OPEN ROUTER SETTINGS</string>
     <string name="router_review_manual_address">ENTER ADDRESS</string>
-    <string name="router_review_local_traffic">Country sites directly</string>
+    <string name="router_review_local_traffic">Local traffic</string>
     <string name="router_review_country_auto">Automatic</string>
     <string name="router_review_country_unknown">Country unknown</string>
-    <string name="router_review_country_description">Country for local traffic: %1$s. Change country.</string>
-    <string name="router_review_country_unknown_description">Country unknown. Choose a country.</string>
+    <string name="router_review_country_description">Country for local traffic: %1$s. Change.</string>
+    <string name="router_review_country_unknown_description">Country unknown. Choose country.</string>
     <string name="router_review_device_vpn">VPN</string>
     <string name="router_review_add_router">Add router</string>
     <string name="router_review_choose_router">Choose router</string>
@@ -80,7 +80,7 @@
     <string name="router_review_saved_unknown">Not checked</string>
     <string name="router_review_expand_profiles">Show VPN profiles</string>
     <string name="router_review_collapse_profiles">Hide VPN profiles</string>
-    <string name="router_review_settings_help">Router management and routing preferences for this phone.\n\nPairing: up to 10 mobile devices per router; up to 10 routers in one app.</string>
+    <string name="router_review_settings_help">Router management and routing rules for this device.\n\nPairing: up to 10 mobile devices per router; up to 10 routers in one app.</string>
     <string name="router_review_disconnect">DISCONNECT</string>
     <string name="router_review_retry_search">Retry search</string>
     <string name="router_review_enter_manually">Enter manually</string>

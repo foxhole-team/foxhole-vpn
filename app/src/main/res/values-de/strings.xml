@@ -44,11 +44,11 @@
     <string name="vpn_language_russian">Русский</string>
     <string name="vpn_help">Hilfe</string>
     <string name="vpn_about">Über die App</string>
-    <string name="vpn_about_text">FoxHole VPN %1$s. Ein fokussierter VPN-Client von FoxHole Team. Schriften: Tiny5 und JetBrains Mono, SIL Open Font License 1.1.</string>
+    <string name="vpn_about_text">FoxHole VPN %1$s. Ein minimalistischer VPN-Client von FoxHole Team. Schriftarten: Tiny5 und JetBrains Mono, SIL Open Font License 1.1.</string>
     <string name="vpn_help_connect_title">Verbindung</string>
-    <string name="vpn_help_connect_body">Importieren Sie ein Profil Ihres VPN-Anbieters oder eigenen Servers, wählen Sie es aus, tippen Sie auf Starten und erlauben Sie die Android-VPN-Anfrage. Stoppen bricht die Verbindung ab oder trennt das VPN.</string>
+    <string name="vpn_help_connect_body">Importieren Sie ein Profil Ihres VPN-Anbieters oder Servers, wählen Sie es aus, tippen Sie auf „Start“ und erlauben Sie VPN im Android-Systemdialog. „Stopp“ bricht den Verbindungsaufbau ab und trennt das VPN.</string>
     <string name="vpn_help_profiles_title">Profile</string>
-    <string name="vpn_help_profiles_body">Wählen Sie ein Profil mit der runden Schaltfläche links. Tippen Sie auf die Karte, um Details aufzuklappen; bietet das Profil mehrere Protokollvarianten, wählen Sie die gewünschte aus der Liste. Lange drücken zum Teilen, Aktualisieren, Löschen oder Senden an einen gekoppelten Router. Geteilt wird das gesamte Profil oder sein Quelllink, möglicherweise mit Zugangsdaten. Teilen Sie nur mit vertrauenswürdigen Personen. Aktualisieren erneuert Profile aus Anbieterabonnements und dynamischen Outline-Schlüsseln.</string>
+    <string name="vpn_help_profiles_body">Halten Sie ein gespeichertes VPN-Profil gedrückt, um es zu verwalten. Sie können es teilen, aktualisieren, löschen oder an einen gekoppelten Router senden. Dabei wird das gesamte Profil oder der ursprüngliche Link einschließlich möglicher Zugangsdaten übertragen. Teilen Sie es nur mit Personen, denen Sie vertrauen. Profile aus Anbieter-Abonnements und dynamischen Outline-Schlüsseln können aktualisiert werden.</string>
     <string name="vpn_import">IMPORTIEREN</string>
     <string name="vpn_import_text">Konfiguration oder Link einfügen</string>
     <string name="vpn_import_file">DATEI AUSWÄHLEN</string>
@@ -112,7 +112,7 @@
     <string name="vpn_continue">FORTFAHREN</string>
     <string name="vpn_profile_refresh_unavailable">Nur Abonnementprofile können aktualisiert werden.</string>
     <string name="vpn_help_add_title">Profil hinzufügen</string>
-    <string name="vpn_help_add_body">Drücken Sie +, um einen Verbindungslink oder einen HTTPS-Abonnementlink eines Anbieters einzufügen, auch aus v2rayTun. Sie können ihn auch manuell eingeben, eine Datei wählen oder einen QR-Code scannen.</string>
+    <string name="vpn_help_add_body">Tippen Sie auf +: Fügen Sie einen Verbindungslink oder den HTTPS-Abonnementlink Ihres VPN-Anbieters ein, auch aus v2rayTun. Sie können ihn auch manuell eingeben, eine Datei auswählen oder einen QR-Code scannen.</string>
     <string name="vpn_help_protocols_title">Unterstützte Protokolle</string>
-    <string name="vpn_help_protocols_body">VLESS, VMess, Trojan, Shadowsocks/Outline, WireGuard, Hysteria2, Naive, TUIC und AnyTLS. Import: Links, HTTPS-Abonnements von Anbietern, auch aus v2rayTun, kompatibles JSON, Clash/mihomo-YAML, SIP008-JSON, dynamische Outline-Schlüssel (ssconf://) und WireGuard. Aus Clash/mihomo werden unterstützte Server importiert. Routingregeln, Gruppen und andere Clienteinstellungen werden nicht übernommen; Konfigurationen mit externen proxy-providers werden nicht unterstützt.</string>
+    <string name="vpn_help_protocols_body">VLESS, VMess, Trojan, Shadowsocks/Outline, WireGuard, Hysteria2, Naive, TUIC und AnyTLS. Import: Links, HTTPS-Anbieter-Abonnements einschließlich v2rayTun, kompatibles JSON, Clash/mihomo YAML, SIP008 JSON, dynamische Outline-Schlüssel (ssconf://) und WireGuard. Aus Clash/mihomo werden unterstützte Server importiert.</string>
 </resources>

@@ -37,12 +37,12 @@ internal fun VpnRouterReviewTable(rows: List<Pair<String, String>>, icons: List<
     Surface(
         modifier = Modifier.fillMaxWidth(),
         shape = MaterialTheme.shapes.medium,
-        color = MaterialTheme.colorScheme.surfaceContainerLow,
-        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
+        color = LocalVpnColors.current.panel,
+        border = BorderStroke(1.dp, LocalVpnColors.current.border),
     ) {
         Column {
             rows.forEachIndexed { index, (label, value) ->
-                if (index > 0) HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+                if (index > 0) HorizontalDivider(color = LocalVpnColors.current.border)
                 VpnRouterTableRow(Modifier.fillMaxWidth().padding(horizontal = 12.dp).semantics(mergeDescendants = true) {}) {
                     Icon(painterResource(icons.getOrNull(index) ?: R.drawable.lin_info), null,
                         Modifier.size(20.dp), tint = LocalVpnColors.current.muted)
@@ -67,22 +67,22 @@ internal fun VpnRouterNavigationFooter(backEnabled: Boolean, onBack: (() -> Unit
     if (onClose != null) {
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             if (onBack != null) OutlinedButton(onClick = onBack, enabled = backEnabled,
-                modifier = Modifier.weight(1f).heightIn(min = 56.dp)) {
+                modifier = Modifier.weight(1f).heightIn(min = 48.dp)) {
                 Text(stringResource(R.string.router_review_back))
             }
-            OutlinedButton(onClick = onClose, modifier = Modifier.weight(1f).heightIn(min = 56.dp)) {
+            OutlinedButton(onClick = onClose, modifier = Modifier.weight(1f).heightIn(min = 48.dp)) {
                 Text(stringResource(R.string.vpn_close))
             }
         }
     } else if (onBack != null) OutlinedButton(onClick = onBack, enabled = backEnabled,
-        modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)) {
+        modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)) {
         Text(stringResource(R.string.router_review_back))
     }
 }
 
 @Composable
-internal fun VpnRouterIllustration(modifier: Modifier = Modifier) {
-    var opened by remember { mutableStateOf(false) }
+internal fun VpnRouterIllustration(modifier: Modifier = Modifier, animateEntrance: Boolean = true) {
+    var opened by remember { mutableStateOf(!animateEntrance) }
     LaunchedEffect(Unit) { opened = true }
     val opacity by animateFloatAsState(if (opened) 1f else 0f, VpnSheetMotion.fastEffectsSpec(), label = "router-image-opacity")
     val scale by animateFloatAsState(if (opened) 1f else .97f, VpnSheetMotion.defaultSpatialSpec(), label = "router-image-scale")

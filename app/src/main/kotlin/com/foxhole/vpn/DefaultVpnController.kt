@@ -78,6 +78,7 @@ import kotlinx.coroutines.isActive
 import kotlinx.coroutines.supervisorScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -937,10 +938,44 @@ internal class DefaultVpnController(
     override suspend fun updateSettings(settings: VpnSettings) {
         awaitReady()
         try {
-            persist { it.copy(settings = settings) }
+            persist { it.copy(settings = settings.copy(appRouting = it.settings.appRouting)) }
             withContext(Dispatchers.Main.immediate) { drivers.keys.forEach { it.refreshOwnedNotification() } }
         } catch (cancelled: CancellationException) { throw cancelled }
         catch (_: Exception) { showMessage(R.string.vpn_error_secure_storage) }
+    }
+
+    override suspend fun updateAppRouting(transform: (VpnAppRouting) -> VpnAppRouting) {
+        awaitReady()
+        if (storageFailed || profileStoreFault) throw ProfileMutationStorageFaultException()
+        mutations.withLock {
+            val before = stored
+            val routing = withContext(Dispatchers.Default) { transform(before.settings.appRouting).validated(context.packageName) }
+            val candidate = before.copy(settings = before.settings.copy(appRouting = routing))
+            if (candidate == before) return@withLock
+            val owner = captureProfileMutationOwner()
+            val target = routing.applicationScope(context.packageName)
+            val effectiveChange = before.settings.appRouting.applicationScope(context.packageName) != target
+            val liveChange = effectiveChange && owner.hasOwnedTunnel
+            if (liveChange && (owner.phase != VpnPhase.CONNECTED || owner.hasPendingStart)) throw ProfileMutationSupersededException()
+            fun current(): Boolean = if (liveChange) synchronized(commands) {
+                val snapshot = runtime.state.value
+                commands.isCurrentWithoutPendingStart(owner.generation) &&
+                    stored.selectedProfileId == before.selectedProfileId && snapshot.hasOwnedTunnel &&
+                    snapshot.commandTicket == owner.generation && snapshot.phase in setOf(EnginePhase.CONNECTED, EnginePhase.VALIDATING)
+            } else profileMutationAdmitted(owner, captureProfileMutationOwner(), effectiveChange, null)
+            suspend fun commit() {
+                val result = commitProfileMutation(before, candidate, storage::update, ::current,
+                    onRollbackFailure = ::recordProfileStoreFault) { next -> synchronized(commands) {
+                    if (!current()) false else { publish(next); true }
+                } }
+                if (result == ProfileMutationResult.SUPERSEDED) throw ProfileMutationSupersededException()
+            }
+            // Closing a sheet cannot abandon a native hold halfway through a secure-store write. Stop has its own generation fence.
+            withContext(NonCancellable) {
+                if (liveChange) runtime.applyApplicationPolicy(owner.generation, target, ::current, ::commit)
+                else commit()
+            }
+        }
     }
 
     private suspend fun persist(preservingCommand: Long? = null, protectRunningProfile: Boolean = false, expectedAppLanguage: VpnLanguage? = null, transform: (ProfileStoreState) -> ProfileStoreState) {
@@ -1061,7 +1096,9 @@ internal class DefaultVpnController(
                     failPendingStart(ticket, R.string.vpn_error_profile_unavailable)
                 } else {
                     service.recordAcceptedCommand(ticket)
-                    val driver = drivers.getOrPut(service) { AndroidEngineDriver(service) { profile -> routerPreparedConfiguration(profile, service.latestCommandTicket) } }
+                    val driver = drivers.getOrPut(service) { AndroidEngineDriver(service,
+                        applicationScope = { settings.value.appRouting.applicationScope(context.packageName) },
+                    ) { profile -> routerPreparedConfiguration(profile, service.latestCommandTicket) } }
                     awaitingRuntimeTicket = ticket
                     runtime.connect(profile, driver, commandTicket = ticket)
                 }
@@ -1137,6 +1174,7 @@ internal class DefaultVpnController(
         EngineFailure.PROFILE -> R.string.vpn_error_profile_invalid
         EngineFailure.STOP -> R.string.vpn_error_tunnel_stop
         EngineFailure.GEO -> R.string.vpn_error_geo_unavailable
+        EngineFailure.APPLICATION_POLICY -> R.string.vpn_routing_apply_failed
     }
 }
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_app_journal_title">应用日志</string>
+    <string name="vpn_app_journal_retention">日志清理</string>
+    <string name="vpn_app_journal_day">1天</string>
+    <string name="vpn_app_journal_week">1周</string>
+    <string name="vpn_app_journal_month">1个月</string>
+    <string name="vpn_app_journal_forever">永久</string>
+    <string name="vpn_app_journal_save">保存</string>
+    <string name="vpn_app_journal_time">时间（UTC）</string>
+    <string name="vpn_app_journal_event">事件</string>
+    <string name="vpn_app_journal_result">结果</string>
+    <string name="vpn_app_journal_empty">暂无应用事件。</string>
+    <string name="vpn_app_journal_storage_error">无法读取或更新日志。</string>
+    <string name="vpn_app_journal_saved">日志已保存。</string>
+    <string name="vpn_app_journal_save_failed">无法保存日志。</string>
+</resources>

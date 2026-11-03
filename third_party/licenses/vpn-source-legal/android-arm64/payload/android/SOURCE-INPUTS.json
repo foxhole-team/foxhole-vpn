@@ -1,0 +1,18 @@
+{
+  "additional_configurations": [
+    ":app:coreLibraryDesugaring"
+  ],
+  "configuration": ":app:releaseRuntimeClasspath",
+  "runtime_capture_sha256": "4dc220ceba23774d18849197c4a358600b8bfce10e7b8ace954f302c6849f833",
+  "schema_version": 1,
+  "scope": "Actual VPN42 release runtime/desugaring pre R8/L8 capture; original archive/publisher notices and separately qualified B86 JNI/android64/Std assets preserved.",
+  "source_sha256": {
+    "app/build.gradle.kts": "2e4973966fdcb5413a7cbbf7b69b3083e4be8b49bbd612451f7242627f760b56",
+    "build.gradle.kts": "e69b0f076b3d919625406e54884ea6172357a2e88bfd0b6a2ebe9be6fc473101",
+    "gradle.properties": "ebcd5e2a9880c000d932ceec26f16b6049d566dd253d7354aedf08a1526a9cc1",
+    "gradle/verification-metadata.xml": "db0ffb2af96c7fdb08fcf93f1236def2a8434308f261b61e1e465e413050d3bf",
+    "settings.gradle.kts": "71902220779331895fdaba4485ed0908d85d902a08157817f96166be6a6fefbe",
+    "vpn-engine/build.gradle.kts": "85ae30b0833f5a4ba75bae98c42eac69ccfd417799c2ad1a5e88e5a7389874d9",
+    "vpn-profile/build.gradle.kts": "a2cf6e0bef8f755f967bdc28e03c91c56919c57f071271d95c0077727f087937"
+  }
+}

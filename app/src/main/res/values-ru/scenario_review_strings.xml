@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_scenario_filter_label">Фильтр</string>
+    <string name="vpn_scenario_filter_all">Все</string>
+    <string name="vpn_scenario_filter_system">Системные</string>
+    <string name="vpn_scenario_filter_user">Пользовательские</string>
+    <string name="vpn_scenario_filter_count">%1$s (%2$d)</string>
+    <string name="vpn_scenario_delete_title">Удалить приложение?</string>
+    <string name="vpn_scenario_delete_body">Удалить %1$s из правил приложений?</string>
+    <string name="vpn_scenario_confirm_action">ПОДТВЕРДИТЬ</string>
+    <string name="vpn_scenario_no_visible_apps">Нет приложений для этого фильтра.</string>
+    <string name="vpn_scenario_picker_failed">Не удалось загрузить приложения.</string>
+    <string name="vpn_scenario_system_picker">ОТКРЫТЬ СИСТЕМНЫЙ СПИСОК</string>
+</resources>

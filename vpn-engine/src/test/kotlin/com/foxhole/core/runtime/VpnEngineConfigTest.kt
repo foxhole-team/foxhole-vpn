@@ -56,4 +56,15 @@ class VpnEngineConfigTest {
         val changed = profile.copy(normalizedConfigJson = JsonObject(root + ("route" to route)).toString())
         assertThrows(IllegalStateException::class.java) { VpnEngineConfig.prepare(changed) }
     }
+
+    @Test
+    fun `imported per-app TUN lists cannot acquire trusted settings authority`() {
+        for (field in listOf("include_package", "exclude_package")) {
+            val root = Json.parseToJsonElement(profile.normalizedConfigJson).jsonObject
+            val tun = (root.getValue("inbounds") as JsonArray).single().jsonObject
+            val changedTun = JsonObject(tun + (field to Json.parseToJsonElement("[\"org.example.app\"]")))
+            val changed = profile.copy(normalizedConfigJson = JsonObject(root + ("inbounds" to JsonArray(listOf(changedTun)))).toString())
+            assertThrows(IllegalArgumentException::class.java) { VpnEngineConfig.prepare(changed) }
+        }
+    }
 }

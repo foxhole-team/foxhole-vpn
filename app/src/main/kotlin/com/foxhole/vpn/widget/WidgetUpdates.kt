@@ -9,6 +9,7 @@ import android.provider.Settings
 import com.foxhole.vpn.VpnApplication
 import com.foxhole.vpn.VpnLanguage
 import com.foxhole.vpn.VpnPhase
+import com.foxhole.vpn.VpnRoutingMode
 import com.foxhole.vpn.VpnSettings
 import com.foxhole.vpn.VpnTheme
 import com.foxhole.vpn.VpnUiState
@@ -68,7 +69,7 @@ internal fun widgetRenderRequests(
 private data class WidgetRenderRequest(val state: VpnUiState, val settings: VpnSettings, val revision: Long) {
     val key = WidgetRenderKey(
         state.isReady, state.phase, state.hasOwnedTunnel, state.selectedProfile?.id,
-        widgetLocation(state), settings.theme, settings.language, revision,
+        widgetLocation(state), settings.theme, settings.language, settings.appRouting.mode, revision,
     )
 }
 
@@ -80,5 +81,6 @@ private data class WidgetRenderKey(
     val location: WidgetLocation?,
     val theme: VpnTheme,
     val language: VpnLanguage,
+    val routingMode: VpnRoutingMode,
     val revision: Long,
 )

@@ -55,7 +55,7 @@ internal fun VpnRouterEntrySheet(
         R.string.router_review_management,
         R.drawable.lin_router,
         busy = finding,
-        actions = { VpnRouterHelpButton(R.string.vpn_router, R.string.router_help_setup_pair) },
+        titleHelp = R.string.router_help_setup_pair,
         footer = {
             when (discovery?.kind) {
                 RouterDiscoveryKind.INSTALLED -> {
@@ -63,17 +63,17 @@ internal fun VpnRouterEntrySheet(
                         enabled = !finding && (!reset || resetAvailable),
                         border = BorderStroke(1.5.dp, routerConnectColor()),
                         colors = ButtonDefaults.outlinedButtonColors(contentColor = routerConnectColor()),
-                        modifier = Modifier.fillMaxWidth().heightIn(min = 60.dp)) {
+                        modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) {
                         Text(stringResource(R.string.vpn_router_pair))
                     }
                 }
                 RouterDiscoveryKind.SSH_AVAILABLE -> OutlinedButton(onClick = onSetup,
-                    enabled = !finding && setupEnabled, modifier = Modifier.fillMaxWidth().heightIn(min = 60.dp)) {
+                    enabled = !finding && setupEnabled, modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) {
                     Text(stringResource(R.string.vpn_router_install))
                 }
                 else -> {
                     OutlinedButton(onClick = { onFind?.invoke() }, enabled = !finding && connected && onFind != null,
-                        modifier = Modifier.fillMaxWidth().heightIn(min = 60.dp)) {
+                        modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp)) {
                         Text(stringResource(if (notFound) R.string.router_review_retry_search
                             else R.string.router_review_find_router))
                     }
@@ -120,7 +120,7 @@ internal fun VpnRouterEntrySheet(
                     color = MaterialTheme.colorScheme.surfaceContainerLow,
                     border = BorderStroke(1.dp, foundColor),
                 ) {
-                    Text(discoveryMessage, Modifier.fillMaxWidth().padding(16.dp),
+                    Text(discoveryMessage, Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp),
                         color = foundColor, textAlign = TextAlign.Center,
                         style = MaterialTheme.typography.bodyMedium)
                 }
@@ -131,12 +131,11 @@ internal fun VpnRouterEntrySheet(
             if (discovery.kind == RouterDiscoveryKind.INSTALLED) {
                 if (discovery.pinConfigured == false) Text(stringResource(R.string.router_review_owner_setup_required),
                     style = MaterialTheme.typography.bodySmall)
-                Row(Modifier.fillMaxWidth().heightIn(min = 56.dp), verticalAlignment = Alignment.CenterVertically) {
+                Row(Modifier.fillMaxWidth().heightIn(min = 48.dp), verticalAlignment = Alignment.CenterVertically) {
                     Checkbox(reset, onCheckedChange = { checked -> if (!checked || resetAvailable) reset = checked },
                         enabled = !finding && (reset || resetAvailable))
-                    Text(stringResource(R.string.router_review_reset_before_connect), Modifier.weight(1f),
-                        style = MaterialTheme.typography.bodyMedium)
-                    VpnRouterHelpButton(R.string.router_review_reset_before_connect, R.string.router_help_reset_foxhole)
+                    VpnHelpLabel(stringResource(R.string.router_review_reset_before_connect),
+                        R.string.router_review_reset_before_connect, R.string.router_help_reset_foxhole, Modifier.weight(1f))
                 }
                 if (!resetAvailable) Text(stringResource(R.string.router_review_reset_unavailable),
                     style = MaterialTheme.typography.bodySmall, color = LocalVpnColors.current.muted)

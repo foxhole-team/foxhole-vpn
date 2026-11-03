@@ -14,11 +14,12 @@ internal fun ownedVpnNetwork(
     ownUid: Int,
     sdk: Int,
     previousHandles: Set<Long>,
+    freshOwnedTun: Boolean = false,
 ): Long? {
     val owned = candidates.filter { isOwnedVpnNetwork(it, ownUid, sdk) }.distinctBy { it.handle }
     owned.firstOrNull { it.handle !in previousHandles }?.let { return it.handle }
-    // Modern ownership permits a reused NetworkAgent; old APIs retain the new-ID fallback.
-    return if (sdk >= 30) owned.singleOrNull()?.handle else null
+    // On old APIs, agent reuse requires a freshly established, generation-owned TUN handover.
+    return if (sdk >= 30 || freshOwnedTun) owned.singleOrNull()?.handle else null
 }
 
 private fun underlyingPreference(candidate: EngineNetworkCandidate): Int =

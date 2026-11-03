@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="vpn_help_privacy_title">隐私与连接检查</string>
-    <string name="vpn_help_privacy_body">连接检查会联系 Google，基于 IP 的大致位置来自 ipwho.is。VPN 检查使用选中的 VPN 网络；未使用 VPN 的位置检查使用当前互联网连接。这些服务会看到请求及其来源 IP。配置与设置在此设备上加密保存。不含广告或分析 SDK。</string>
-    <string name="vpn_help_router_body">在“路由器”中，可以在受支持的 OpenWrt 上安装 FoxHole，或将手机连接到已安装的 FoxHole。设置旁的问号按钮可打开帮助。解除配对会禁用管理；如需撤销 VPN 访问，请另行删除客户端。</string>
+    <string name="vpn_help_privacy_body">使用 Google 检查连接，使用 ipwho.is 根据 IP 估算位置。VPN 检查通过所选 VPN 网络进行；未使用 VPN 时的位置查询通过当前互联网连接进行。这些服务可以看到请求和出口 IP 地址。配置和设置在设备上加密保存。应用不包含广告或分析 SDK。</string>
+    <string name="vpn_help_router_body">在“路由器”部分，可以在受支持的 OpenWrt 上安装 FoxHole 软件包，或将手机连接到已安装 FoxHole 的路由器。设置旁提供了提示。解除配对会关闭管理。要撤销 VPN 访问权限，请另行删除客户端。</string>
     <string name="vpn_help_updates_title">更新</string>
-    <string name="vpn_help_updates_body">在“设置 → 后台更新”中启用后，默认大约每 12 小时刷新订阅，每 24 小时检查已签名的连接数据。可在同一页面分别关闭两项检查。FoxHole DB 连接数据更新由您操作安装。启用订阅自动更新后，配置会在可以安全替换时自动更新。Android 可能延迟后台检查。F-Droid 管理其应用版本的更新。</string>
+    <string name="vpn_help_updates_body">在“设置 → 后台更新”中启用后，默认约每 12 小时更新一次订阅，每 24 小时检查一次已签名的连接数据。可以在设置中分别关闭各项更新检查。FoxHole DB 连接数据的更新由您手动安装。启用订阅自动更新后，受支持的配置会自动更新。Android 可能推迟后台检查。只有 GitHub 版本支持在应用内更新应用本身。</string>
 </resources>

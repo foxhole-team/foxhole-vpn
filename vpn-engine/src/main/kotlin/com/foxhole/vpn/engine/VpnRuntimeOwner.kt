@@ -3,6 +3,7 @@ package com.foxhole.vpn.engine
 import com.foxhole.vpn.profile.VpnProfile
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.currentCoroutineContext
@@ -11,9 +12,10 @@ import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import java.util.concurrent.atomic.AtomicBoolean
 
 enum class EnginePhase { IDLE, CONNECTING, VALIDATING, CONNECTED, STOPPING, ERROR }
-enum class EngineFailure { START, VALIDATION, NATIVE_UNAVAILABLE, PROFILE, STOP, GEO }
+enum class EngineFailure { START, VALIDATION, NATIVE_UNAVAILABLE, PROFILE, STOP, GEO, APPLICATION_POLICY }
 class EngineException(val reason: EngineFailure, val processPoisoned: Boolean = false) : IllegalStateException(reason.name)
 data class EngineLocation(
     val countryCode: String,
@@ -47,6 +49,9 @@ interface EngineSession {
     suspend fun networkChanged()
     suspend fun checkHealth(): Boolean
     suspend fun stop(): EngineStopResult
+    suspend fun applyApplicationPolicy(scope: VpnApplicationScope, isCurrent: () -> Boolean, persist: suspend () -> Unit): EngineLocation? {
+        throw EngineException(EngineFailure.PROFILE)
+    }
 }
 
 class VpnRuntimeOwner(
@@ -69,6 +74,7 @@ class VpnRuntimeOwner(
     private var lastValidationFailure: ValidationFailure? = null
     private var probe: Job? = null
     private var health: Job? = null
+    private var policyChange: PolicyChange? = null
 
     init {
         scope.launch {
@@ -82,6 +88,8 @@ class VpnRuntimeOwner(
                     is Event.Geo -> updateGeo(event)
                     is Event.PendingExpired -> expirePending(event.request)
                     is Event.Health -> healthChecked(event)
+                    is Event.ApplyPolicy -> applyPolicy(event)
+                    is Event.PolicyApplied -> policyApplied(event)
                     Event.Refresh -> refreshNow()
                     Event.NetworkChanged -> revalidateNow()
                 }
@@ -96,6 +104,53 @@ class VpnRuntimeOwner(
     fun refreshLocation() { events.trySend(Event.Refresh) }
     fun networkChanged() { events.trySend(Event.NetworkChanged) }
 
+    suspend fun applyApplicationPolicy(ticket: Long, target: VpnApplicationScope, isCurrent: () -> Boolean, persist: suspend () -> Unit) {
+        val reply = CompletableDeferred<Unit>()
+        events.send(Event.ApplyPolicy(ticket, target, isCurrent, persist, reply))
+        reply.await()
+    }
+
+    private fun applyPolicy(event: Event.ApplyPolicy) {
+        val captured = active
+        if (captured == null || stopping || policyChange != null || desired !== captured.request ||
+            captured.request.commandTicket != event.ticket || mutable.value.phase != EnginePhase.CONNECTED || !event.isCurrent()) {
+            event.reply.completeExceptionally(EngineException(EngineFailure.START))
+            return
+        }
+        probe?.cancel()
+        health?.cancel()
+        probeGeneration++
+        val change = PolicyChange(captured, event.isCurrent).also { policyChange = it }
+        publish(EngineSnapshot(EnginePhase.VALIDATING, captured.request.profile.id))
+        scope.launch {
+            val result = captureEngineResult {
+                captured.session.applyApplicationPolicy(event.target,
+                    { change.current.get() && event.isCurrent() }, event.persist)
+            }
+            events.send(Event.PolicyApplied(change, result, event.reply))
+        }
+    }
+
+    private fun policyApplied(event: Event.PolicyApplied) {
+        val change = event.change
+        if (policyChange === change && active === change.active && change.current.get() && change.ownerCurrent() && !stopping) {
+            policyChange = null
+            change.current.set(false)
+            if (event.result.isSuccess) {
+                change.active.policyBlocked = false
+                change.active.validated = true
+                publish(EngineSnapshot(EnginePhase.CONNECTED, change.active.request.profile.id, event.result.getOrNull()))
+                scheduleHealth(change.active)
+            }
+            else {
+                change.active.policyBlocked = true
+                // Retain owned protection and failed frames; only Stop releases them.
+                publish(EngineSnapshot(EnginePhase.ERROR, change.active.request.profile.id, failure = EngineFailure.APPLICATION_POLICY))
+            }
+        }
+        event.result.fold({ event.reply.complete(Unit) }, { event.reply.completeExceptionally(it) })
+    }
+
     private fun connectNow(profile: VpnProfile, driver: EngineDriver, commandTicket: Long?) {
         if (poisoned) return
         if (commandTicket != null && (
@@ -107,6 +162,8 @@ class VpnRuntimeOwner(
         if (desired?.profile == profile && desired?.driver === driver && desired?.commandTicket == commandTicket &&
             mutable.value.phase != EnginePhase.ERROR
         ) return
+        policyChange?.current?.set(false)
+        policyChange = null
         desired = Request(++generation, profile, driver, commandTicket)
         finalFailure = null
         lastValidationFailure = null
@@ -120,6 +177,8 @@ class VpnRuntimeOwner(
     private fun stopNow(driver: EngineDriver?) {
         if (poisoned) return
         if (driver != null && active?.request?.driver !== driver && pending?.driver !== driver && desired?.driver !== driver) return
+        policyChange?.current?.set(false)
+        policyChange = null
         desired = null
         generation++
         finalFailure = null
@@ -191,6 +250,7 @@ class VpnRuntimeOwner(
 
     private fun validateActive(rebind: Boolean) {
         val captured = active ?: return
+        if (captured.policyBlocked) return
         val version = ++probeGeneration
         probe?.cancel()
         health?.cancel()
@@ -283,6 +343,8 @@ class VpnRuntimeOwner(
     }
 
     private fun revalidateNow() {
+        if (policyChange != null) return
+        if (active?.policyBlocked == true) return
         if (active != null && desired === active?.request && !stopping) validateActive(rebind = true)
     }
 
@@ -334,7 +396,11 @@ class VpnRuntimeOwner(
     }
 
     private data class Request(val generation: Long, val profile: VpnProfile, val driver: EngineDriver, val commandTicket: Long?)
-    private data class Active(val request: Request, val session: EngineSession, var validated: Boolean = false)
+    private data class Active(val request: Request, val session: EngineSession, var validated: Boolean = false,
+        var policyBlocked: Boolean = false)
+    private class PolicyChange(val active: Active, val ownerCurrent: () -> Boolean) {
+        val current = AtomicBoolean(true)
+    }
     private sealed interface Event {
         data class Connect(val profile: VpnProfile, val driver: EngineDriver, val commandTicket: Long?) : Event
         data class Stop(val driver: EngineDriver?) : Event
@@ -344,6 +410,9 @@ class VpnRuntimeOwner(
         data class Geo(val active: Active, val version: Long, val result: Result<EngineLocation>) : Event
         data class PendingExpired(val request: Request) : Event
         data class Health(val active: Active, val version: Long, val result: Result<Boolean>) : Event
+        data class ApplyPolicy(val ticket: Long, val target: VpnApplicationScope, val isCurrent: () -> Boolean,
+            val persist: suspend () -> Unit, val reply: CompletableDeferred<Unit>) : Event
+        data class PolicyApplied(val change: PolicyChange, val result: Result<EngineLocation?>, val reply: CompletableDeferred<Unit>) : Event
         data object Refresh : Event
         data object NetworkChanged : Event
     }

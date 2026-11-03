@@ -7,7 +7,7 @@
     <string name="router_control_remote_clients">远程 VPN 客户端</string>
     <string name="router_control_remove_body">是否从路由器删除 %1$s？</string>
     <string name="router_control_pairing_required">配对不可用。请重新连接路由器。</string>
-    <string name="router_control_unpair_help">取消配对会断开管理连接。要撤销 VPN 访问权限，请单独删除客户端。</string>
+    <string name="router_control_unpair_help">解除配对会关闭管理。要撤销 VPN 访问权限，请另行删除客户端。</string>
     <string name="router_control_unpair">取消配对</string>
     <string name="router_control_unpair_title">是否取消路由器配对？</string>
     <string name="router_control_client_actions">选择客户端操作</string>
@@ -24,17 +24,17 @@
     <string name="router_control_import_phone">导入手机</string>
     <string name="router_control_imported">已导入配置</string>
     <string name="router_control_show_qr">显示二维码</string>
-    <string name="router_control_qr_description">%1$s 的 VPN 配置二维码</string>
+    <string name="router_control_qr_description">VPN 配置 %1$s 的二维码</string>
     <string name="router_control_qr_unavailable">此配置的二维码不可用</string>
     <string name="router_control_client_access">个人 VPN 访问</string>
     <string name="router_control_client_template">已保存的模板；尚未配置远程访问</string>
-    <string name="router_control_create_help">Hysteria2 客户端。需要路由器公网地址及已配置的入站 VPN。</string>
-    <string name="router_control_enable_help">启用或禁用路由器管理。</string>
-    <string name="router_control_country_help">国家或地区根据路由器的互联网连接确定。点按国旗即可更改。</string>
-    <string name="router_control_home_help">仅在确认受支持的路由器连接后，才在手机和家庭路由器之间切换。</string>
-    <string name="router_control_vpn_help">启动或停止所选的路由器配置。点击配置进行选择；长按查看操作。</string>
-    <string name="router_control_lan_help">为每台设备选择 VPN 或不使用 VPN。默认路由策略为 VPN，VPN 配置的启动单独控制。</string>
-    <string name="router_control_clients_help">打开 VPN 配置可查看二维码、导入、分享或删除。</string>
+    <string name="router_control_create_help">Hysteria2 客户端。需要路由器的公网地址和已配置的入站 VPN。</string>
+    <string name="router_control_enable_help">启用或关闭路由器管理。</string>
+    <string name="router_control_country_help">根据路由器的互联网连接判断国家。点击国旗可更改。</string>
+    <string name="router_control_home_help">仅在确认受支持的连接后，才在手机和家庭路由器之间切换。</string>
+    <string name="router_control_vpn_help">启动或停止路由器上选中的配置。点击配置进行选择，长按进行操作。</string>
+    <string name="router_control_lan_help">为每个设备选择 VPN 或“不经 VPN”。默认使用 VPN。VPN 配置的启动单独控制。</string>
+    <string name="router_control_clients_help">打开 VPN 配置可查看二维码、导入、发送或删除。</string>
     <string name="router_control_qr_loading">正在生成二维码…</string>
     <string name="router_control_profile_loading">正在加载配置…</string>
     <string name="router_control_hide_offline">隐藏离线设备</string>
@@ -47,5 +47,5 @@
     <string name="router_control_protocols_empty">可用协议：尚未安装</string>
     <string name="router_profile_probe_failed">要管理 FoxHole OpenWRT 软件包，请连接到您的个人 VPN 或家庭 Wi-Fi 网络。</string>
     <string name="router_control_home_vpn">通过 VPN 管理</string>
-    <string name="router_control_home_vpn_help">允许通过路由器的 VPN 网络管理它。需要静态公网 IP 地址。</string>
+    <string name="router_control_home_vpn_help">允许通过路由器的 VPN 网络管理路由器。需要静态公网 IP 地址。</string>
 </resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_scenario_filter_label">筛选</string>
+    <string name="vpn_scenario_filter_all">全部</string>
+    <string name="vpn_scenario_filter_system">系统</string>
+    <string name="vpn_scenario_filter_user">用户</string>
+    <string name="vpn_scenario_filter_count">%1$s (%2$d)</string>
+    <string name="vpn_scenario_delete_title">删除应用？</string>
+    <string name="vpn_scenario_delete_body">要将 %1$s 从应用规则中移除吗？</string>
+    <string name="vpn_scenario_confirm_action">确认</string>
+    <string name="vpn_scenario_no_visible_apps">没有符合此筛选条件的应用。</string>
+    <string name="vpn_scenario_picker_failed">无法加载应用。</string>
+    <string name="vpn_scenario_system_picker">打开系统选择器</string>
+</resources>

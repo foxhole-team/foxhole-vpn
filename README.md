@@ -53,17 +53,16 @@ Import transfers supported connection parameters. Clash/mihomo routing rules and
 
 <a id="whats-new"></a>
 
-> **🆕 What's new - 1.0.2 Stable**
+> **🆕 What's new - 1.0.3 Stable**
 >
-> - Fixed the OpenWrt version check when pairing with a router.
-> - Moved the application update notice above the VPN profile selection area.
-> - Improved support for VPN provider subscriptions.
-> - Fixed router discovery, pairing and OpenWrt inspection over SSH, and added SSH key support.
-> - Fixed APK validation when updating from GitHub.
-> - Refined window animations.
-> - Added a notification dismiss timer and swipe-up dismissal.
-> - Simplified OpenWrt setup and management of home devices and VPN clients.
-> - Added a six-digit PIN with confirmation during installation and support for up to 10 routers.
+> - Added system notifications for new app versions (GitHub version only).
+> - Added Routing (beta) for simple per-app traffic routing with atomic rule updates.
+> - Fixed DNS routing in application scenarios.
+> - The widget now shows the current routing scenario with color indication.
+> - Optimized the interface: fixed country flag display, selection list colors, and window animations.
+> - Improved documentation and the help section in all supported languages.
+> - Added the application log.
+> - The application interface is now more compact.
 
 <a id="quickstart"></a>
 
@@ -99,8 +98,17 @@ Available APK architectures and router targets are listed in each published rele
 
 - Import profiles from the clipboard, a file or a QR code; share saved profiles and refresh profiles that retain a subscription source.
 - Select a protocol from the options in an imported profile. Changing the active profile’s protocol asks for confirmation before reconnecting.
+- Choose a routing scenario for the whole device or selected applications, with VPN and Direct rules.
 - Home-screen widgets provide connection status and start/stop controls for the selected profile.
 - Choose a theme and app language in Settings: English, Russian, German, French, Spanish, Japanese or Simplified Chinese.
+
+Scenarios use Android’s VPN application routing for every supported profile protocol on Android 8.0 (API 26) and later. Whole device ignores app rules. In Proxy, the Whole device switch controls the default for unlisted apps: on sends them through VPN, off sends only explicit VPN rules through VPN. A Direct rule uses the device’s normal connection and system DNS settings, including Private DNS. These app-owned rules are separate from imported profiles.
+
+The application picker shows selected apps first and filters all, system, or user apps, with user apps selected by default. Press and hold an application rule to remove it after confirmation. Successful scenario changes and live rule updates show a brief confirmation with haptic feedback.
+
+Installed-app visibility is used locally to populate routing rules, including system applications.
+
+Atomic application is enabled by default. Before saving changes to active routing, the app establishes a temporary VPN interface covering the whole device to block traffic. After the new encrypted settings are committed, it applies the target Android application scope and reconnects VPN when needed. If a change cannot be completed safely, stop VPN before trying again. Confirmation is disabled by default. A stopped VPN stays stopped.
 
 When enabled in Settings → Background updates, subscriptions refresh about every 12 hours and signed TLS fingerprint tables from FoxHole DB are checked every 24 hours by default. Turn either background check off there. Data installation still requires your action. The GitHub build checks for app updates daily; downloading and installing an APK require your action and Android confirmation. The F-Droid build does not check for or install its own APK updates: use F-Droid. Android may delay background work.
 

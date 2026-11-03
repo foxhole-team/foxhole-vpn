@@ -1,5 +1,9 @@
 package com.foxhole.vpn.ui
 
+import android.app.Activity
+import android.content.Intent
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import android.os.Handler
 import android.os.Looper
 import android.view.View
@@ -54,6 +58,14 @@ import com.foxhole.vpn.R
 import com.foxhole.vpn.VpnController
 import com.foxhole.vpn.VpnImportResult
 import com.foxhole.vpn.VpnSettings
+import com.foxhole.vpn.VpnAppRouting
+import com.foxhole.vpn.VpnAppRoute
+import com.foxhole.vpn.RoutingSuccessNotice
+import com.foxhole.vpn.routingSuccessNotice
+import com.foxhole.vpn.journal.AppJournal
+import com.foxhole.vpn.journal.AppJournalEvent
+import com.foxhole.vpn.journal.AppJournalResult
+import com.foxhole.vpn.withRule
 import com.foxhole.vpn.VpnUiState
 import com.foxhole.vpn.shareVpnProfile
 import com.foxhole.vpn.profileRemovalCurrent
@@ -72,6 +84,8 @@ import com.foxhole.vpn.router.RouterProfileSelection
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
@@ -139,10 +153,25 @@ private fun VpnAppContent(
     val betaNoticePreferences = remember(context.applicationContext) { RouterBetaNoticePreferences(context) }
     var routerBetaNoticeVisible by rememberSaveable { mutableStateOf(false) }
     var profilesUi by remember { mutableStateOf(VpnProfilesUiState()) }
+    val scenariosUi = remember { VpnScenariosUiState() }
+    var appPickerEntry by rememberSaveable { mutableStateOf<Long?>(null) }
     var importText by remember { mutableStateOf("") }
     var pendingInsecureInput by remember { mutableStateOf<String?>(null) }
     var clipboardRequest by remember { mutableStateOf<ClipboardImportRequest?>(null) }
     var busy by remember { mutableStateOf(false) }
+    val journal = remember(context.applicationContext) { AppJournal.shared(context) }
+    var savingJournal by remember { mutableStateOf(false) }
+    val journalExport = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("text/plain")) { destination ->
+        if (destination == null) savingJournal = false
+        else scope.launch {
+            savingJournal = true
+            try {
+                val saved = journal.saveTo(context.contentResolver, destination)
+                notices.show(resources.getString(if (saved) R.string.vpn_app_journal_saved else R.string.vpn_app_journal_save_failed),
+                    error = !saved, success = saved)
+            } finally { savingJournal = false }
+        }
+    }
     val routerState = routerWizard?.let { it.state.collectAsStateWithLifecycle().value }
     val profileProbeState = routerProfileProbe?.state?.collectAsStateWithLifecycle()?.value
     val routerControlState = routerControl?.let { it.state.collectAsStateWithLifecycle().value }
@@ -154,7 +183,11 @@ private fun VpnAppContent(
         val inlinePin = routerState?.let { it.path == com.foxhole.vpn.router.RouterWizardPath.PAIR &&
             it.stage == RouterWizardStage.LOGIN && it.error in setOf(
                 com.foxhole.vpn.router.RouterWizardError.PIN, com.foxhole.vpn.router.RouterWizardError.LOCKED) } == true
-        if (!inlinePin) routerState?.error?.let { notices.show(resources.getString(routerWizardErrorLabel(it)), error = true) }
+        if (!inlinePin) routerState?.error?.let { error ->
+            val vpnBlocked = error == com.foxhole.vpn.router.RouterWizardError.VPN_ACTIVE
+            notices.show(resources.getString(if (vpnBlocked) R.string.router_management_disconnect_vpn else routerWizardErrorLabel(error)),
+                error = !vpnBlocked)
+        }
     }
     LaunchedEffect(routerState?.stage) {
         if (routerState?.stage == RouterWizardStage.NEW_PIN) routerControl?.loadPairingState()
@@ -244,7 +277,6 @@ private fun VpnAppContent(
         importText = ""
         pendingInsecureInput = null
         clipboardRequest = null
-        notices.clearTransient()
         navigation.push(VpnSheetPage.ImportText)
     }
 
@@ -275,6 +307,60 @@ private fun VpnAppContent(
             catch (cancelled: CancellationException) { throw cancelled }
             catch (_: Exception) { notices.show(resources.getString(R.string.vpn_error_action_failed), error = true) }
             finally { busy = false }
+        }
+    }
+
+    fun canEditRouting(): Boolean {
+        val current = controller.state.value
+        return !busy && current.isReady && !current.isBusy && !current.hasPendingStart &&
+            (!current.hasOwnedTunnel || current.isConnected)
+    }
+
+    fun routingAction(transform: (VpnAppRouting) -> VpnAppRouting) {
+        if (canEditRouting()) profileAction {
+            val connection = controller.state.value.takeIf { it.isConnected }?.connectionId
+            var applied: Pair<VpnAppRouting, VpnAppRouting>? = null
+            journal.record(AppJournalEvent.SCENARIO_APPLY_STARTED)
+            try {
+                controller.updateAppRouting { before -> transform(before).also { applied = before to it } }
+            } catch (cancelled: CancellationException) { throw cancelled }
+            catch (failure: Exception) {
+                journal.record(AppJournalEvent.SCENARIO_APPLY_FAILED, AppJournalResult.UNKNOWN)
+                throw failure
+            }
+            val (before, after) = applied ?: return@profileAction
+            if (controller.settings.value.appRouting != after) return@profileAction
+            if (before != after) journal.record(AppJournalEvent.SCENARIO_APPLIED, AppJournalResult.SUCCESS)
+            val current = controller.state.value
+            val live = connection != null && current.isConnected && current.connectionId == connection
+            val message = when (routingSuccessNotice(before, after, live)) {
+                RoutingSuccessNotice.SCENARIO -> R.string.vpn_routing_scenario_applied
+                RoutingSuccessNotice.APP_REMOVED -> R.string.vpn_routing_app_removed
+                RoutingSuccessNotice.RULES -> R.string.vpn_routing_rules_applied
+                null -> return@profileAction
+            }
+            notices.show(resources.getString(message), success = true)
+        }
+    }
+
+    val appPicker = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        val expectedEntry = appPickerEntry
+        appPickerEntry = null
+        val component = result.data?.component
+        if (result.resultCode == Activity.RESULT_OK && component != null && expectedEntry != null &&
+            navigation.current?.id == expectedEntry && navigation.current?.page == VpnSheetPage.Scenarios && canEditRouting()) {
+            profileAction {
+                val packageName = withContext(Dispatchers.IO) {
+                    val activity = context.packageManager.getActivityInfo(component, 0)
+                    val launcher = Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER).setComponent(component)
+                    check(activity.enabled && activity.exported && context.packageManager.resolveActivity(launcher, 0) != null)
+                    activity.packageName.also { check(it != context.packageName) }
+                }
+                controller.updateAppRouting { routing ->
+                    if (routing.rules.any { it.packageName == packageName }) routing
+                    else routing.withRule(packageName, VpnAppRoute.VPN)
+                }
+            }
         }
     }
 
@@ -318,7 +404,6 @@ private fun VpnAppContent(
         val request = ClipboardImportRequest(entry.id)
         clipboardRequest = request
         pendingInsecureInput = null
-        notices.clearTransient()
         profileAction {
             if (!awaitClipboardWindowFocus(view)) {
                 if (clipboardOwnerCurrent(request)) {
@@ -401,6 +486,10 @@ private fun VpnAppContent(
                     enabled = !busy && state.isReady) {
                     Icon(painterResource(R.drawable.lin_plus), stringResource(R.string.vpn_no_profile))
                 }
+                IconButton(onClick = { clipboardRequest = null; pendingInsecureInput = null; navigation.open(VpnSheetPage.Scenarios) },
+                    enabled = state.isReady) {
+                    Icon(painterResource(R.drawable.lin_apps), stringResource(R.string.vpn_scenarios))
+                }
                 if (routerWizard != null || routerControl != null) IconButton(onClick = {
                     clipboardRequest = null; pendingInsecureInput = null
                     if (routerControlState?.selectedRouterId == null) routerWizard?.begin(RouterWizardPath.PAIR, null)
@@ -434,26 +523,25 @@ private fun VpnAppContent(
                 },
                 modifier = Modifier.weight(1f), dataUpdate = dataUpdate, onDataUpdate = actions.updateData,
                 claimConnectionCue = controller::claimConnectionCue,
-                appUpdate = appUpdate, onAppUpdate = actions.appUpdateAction)
+                appUpdate = appUpdate, onAppUpdate = actions.appUpdateAction, routingMode = settings.appRouting.mode)
         }
     }
 
     navigation.current?.let { shown ->
         val routerSheet = shown.page in setOf(VpnSheetPage.RouterEntry, VpnSheetPage.RouterWizard, VpnSheetPage.RouterControl)
+        val confineViewportGestures = routerSheet || shown.page == VpnSheetPage.Settings ||
+            shown.page is VpnSheetPage.SettingsDetail || shown.page == VpnSheetPage.AppJournal ||
+            shown.page == VpnSheetPage.AppJournalSettings
         val showRouterBetaNotice = routerSheet && routerBetaNoticeVisible
         key(showRouterBetaNotice) { VpnBottomSheet(
             onDismiss = {
                 if (showRouterBetaNotice) { if (entryCurrent(shown)) routerBetaNoticeVisible = false } else close(shown)
             },
             onBack = if (!showRouterBetaNotice && shown.depth > 0) ({ back(shown) }) else null,
-            fixedHeightFraction = when {
-                showRouterBetaNotice -> null
-                shown.page == VpnSheetPage.RouterEntry -> .85f
-                routerSheet -> if (LocalConfiguration.current.orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE) 1f else .75f
-                else -> null
-            },
-            showCloseButton = showRouterBetaNotice || shown.page !in setOf(VpnSheetPage.RouterControl, VpnSheetPage.RouterWizard),
-            confineContentGestures = routerSheet && !showRouterBetaNotice,
+            showCloseButton = showRouterBetaNotice || (shown.page !in setOf(
+                VpnSheetPage.RouterControl, VpnSheetPage.RouterWizard, VpnSheetPage.ImportText, VpnSheetPage.InsecureConsent, VpnSheetPage.AppJournal,
+            ) && shown.page !is VpnSheetPage.ProtocolConfirmation && shown.page !is VpnSheetPage.RemoveConfirmation),
+            confineContentGestures = confineViewportGestures && !showRouterBetaNotice,
             footerContent = if (showRouterBetaNotice) ({ VpnRouterBetaNoticeOptOut(betaNoticePreferences) }) else null) {
             val sheetClose = LocalVpnSheetClose.current
             val sheetFocus = LocalFocusManager.current
@@ -466,8 +554,8 @@ private fun VpnAppContent(
                 }
             }
             if (showRouterBetaNotice) VpnRouterBetaNoticeContent()
-            else Box(if (routerSheet) Modifier.fillMaxSize() else Modifier.heightIn(max = LocalConfiguration.current.screenHeightDp.dp * .85f)) {
-                VpnSheetPageTransition(shown, animateSize = !routerSheet) { entry ->
+            else Box(Modifier.fillMaxWidth()) {
+                VpnSheetPageTransition(shown, animateSize = true) { entry ->
                     val pageBusy = busy || !entryCurrent(entry)
                     when (val page = entry.page) {
                         VpnSheetPage.RouterControl -> if (routerControl != null) VpnRouterControlSheet(routerControl,
@@ -567,19 +655,59 @@ private fun VpnAppContent(
                                     }
                                 },
                             ), onBack = { back(entry) })
+                        VpnSheetPage.Scenarios -> VpnScenariosSheet(settings.appRouting,
+                            enabled = !pageBusy && canEditRouting(), busy = busy, ui = scenariosUi,
+                            onChange = { if (entryCurrent(entry)) routingAction(it) },
+                            onAdd = {
+                                if (entryCurrent(entry) && canEditRouting()) {
+                                    val intent = Intent(Intent.ACTION_PICK_ACTIVITY)
+                                        .putExtra(Intent.EXTRA_INTENT, Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER))
+                                        .putExtra(Intent.EXTRA_TITLE, resources.getString(R.string.vpn_add_application))
+                                    try { appPickerEntry = entry.id; appPicker.launch(intent) }
+                                    catch (_: RuntimeException) {
+                                        appPickerEntry = null
+                                        notices.show(resources.getString(R.string.vpn_app_picker_unavailable), error = true)
+                                    }
+                                }
+                            },
+                            onSettings = { if (entryCurrent(entry) && !busy) navigation.push(VpnSheetPage.ScenarioSettings) })
+                        VpnSheetPage.ScenarioSettings -> VpnScenarioSettingsSheet(settings.appRouting,
+                            enabled = !pageBusy && canEditRouting(), busy = busy,
+                            onChange = { if (entryCurrent(entry)) routingAction(it) }, onBack = { back(entry) })
                         VpnSheetPage.Settings -> VpnSettingsScreen(settings,
+                            modifier = Modifier.then(LocalVpnSheetBodyGestures.current),
                             onSettingsDetail = { if (entryCurrent(entry)) navigation.push(VpnSheetPage.SettingsDetail(it)) },
                             onProfiles = { if (entryCurrent(entry)) navigation.push(VpnSheetPage.Profiles) },
                             onSystemSettings = { if (entryCurrent(entry)) actions.systemSettings() },
-                            onAppUpdate = { if (entryCurrent(entry)) navigation.push(VpnSheetPage.AppUpdate) })
+                            onAppUpdate = { if (entryCurrent(entry)) navigation.push(VpnSheetPage.AppUpdate) },
+                            onAppJournal = { if (entryCurrent(entry)) navigation.push(VpnSheetPage.AppJournal) })
+                        VpnSheetPage.AppJournal -> VpnAppJournalSheet(journal,
+                            onBack = { back(entry) }, saving = savingJournal,
+                            onSave = { if (entryCurrent(entry) && !savingJournal) {
+                                savingJournal = true
+                                try { journalExport.launch(AppJournal.exportFileName()) }
+                                catch (_: RuntimeException) {
+                                    savingJournal = false
+                                    notices.show(resources.getString(R.string.vpn_app_journal_save_failed), error = true)
+                                }
+                            } }, onSettings = { if (entryCurrent(entry)) navigation.push(VpnSheetPage.AppJournalSettings) })
+                        VpnSheetPage.AppJournalSettings -> VpnAppJournalSettingsSheet(journal)
                         VpnSheetPage.AppUpdate -> VpnAppUpdateSheet(appUpdate,
                             onAction = { if (entryCurrent(entry)) actions.appUpdateAction() },
                             onCheck = { if (entryCurrent(entry)) actions.checkAppUpdate() })
                         is VpnSheetPage.SettingsDetail -> VpnSettingsDetailScreen(page.detail, settings,
+                            modifier = Modifier.then(LocalVpnSheetBodyGestures.current),
                             onSettings = { updated -> if (entryCurrent(entry)) profileAction {
-                                if (page.detail == VpnSettingsDetail.LANGUAGE) {
+                                if (updated.language != controller.settings.value.language) {
                                     check(com.foxhole.vpn.selectVpnAppLanguage(context, controller, updated.language)) { "App language change remains pending" }
                                 } else com.foxhole.vpn.updateVpnAppSettings(controller, updated)
+                                if (page.detail == VpnSettingsDetail.APPEARANCE) {
+                                    val applied = controller.settings.value
+                                    check(applied.language == updated.language && applied.fontStyle == updated.fontStyle && applied.theme == updated.theme) {
+                                        "Appearance change remains pending"
+                                    }
+                                    if (entryCurrent(entry)) back(entry)
+                                }
                             } },
                             onBack = { back(entry) }, enabled = !pageBusy, busy = busy)
                         VpnSheetPage.Profiles -> VpnProfilesSheet(state, busy, profilesUi,

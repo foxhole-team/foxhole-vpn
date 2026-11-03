@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_app_journal_title">アプリのログ</string>
+    <string name="vpn_app_journal_retention">ログの削除</string>
+    <string name="vpn_app_journal_day">1日</string>
+    <string name="vpn_app_journal_week">1週間</string>
+    <string name="vpn_app_journal_month">1か月</string>
+    <string name="vpn_app_journal_forever">無期限</string>
+    <string name="vpn_app_journal_save">保存</string>
+    <string name="vpn_app_journal_time">時刻（UTC）</string>
+    <string name="vpn_app_journal_event">イベント</string>
+    <string name="vpn_app_journal_result">結果</string>
+    <string name="vpn_app_journal_empty">アプリのイベントはまだありません。</string>
+    <string name="vpn_app_journal_storage_error">ログの読み込みまたは更新ができませんでした。</string>
+    <string name="vpn_app_journal_saved">ログを保存しました。</string>
+    <string name="vpn_app_journal_save_failed">ログを保存できませんでした。</string>
+</resources>

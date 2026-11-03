@@ -2,7 +2,7 @@
 <resources>
     <string name="vpn_background_updates">Actualizaciones en segundo plano</string>
     <string name="vpn_auto_refresh_subscriptions">Actualizar suscripciones automáticamente</string>
-    <string name="vpn_auto_refresh_subscriptions_help">Si se activa, actualizar suscripciones guardadas del proveedor cada %1$d horas. Android puede retrasar la comprobación. Desactivar conserva los perfiles guardados.</string>
+    <string name="vpn_auto_refresh_subscriptions_help">Al activarlo, actualizar las suscripciones guardadas del proveedor cada %1$d horas. Android puede retrasar la comprobación. Al desactivarlo se conservan los perfiles guardados.</string>
     <string name="vpn_auto_check_connection_data">Comprobar actualizaciones de datos de conexión</string>
-    <string name="vpn_auto_check_connection_data_help">Si se activa, comprobar en FoxHole DB los datos de conexión firmados cada %1$d horas. Instalarlos sigue requiriendo su acción.</string>
+    <string name="vpn_auto_check_connection_data_help">Al activarlo, comprobar los datos de conexión firmados de FoxHole DB cada %1$d horas. La instalación de una actualización sigue requiriendo tu acción.</string>
 </resources>

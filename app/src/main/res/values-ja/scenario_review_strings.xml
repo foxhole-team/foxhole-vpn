@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_scenario_filter_label">フィルター</string>
+    <string name="vpn_scenario_filter_all">すべて</string>
+    <string name="vpn_scenario_filter_system">システム</string>
+    <string name="vpn_scenario_filter_user">ユーザー</string>
+    <string name="vpn_scenario_filter_count">%1$s (%2$d)</string>
+    <string name="vpn_scenario_delete_title">アプリを削除しますか？</string>
+    <string name="vpn_scenario_delete_body">%1$s をアプリのルールから削除しますか？</string>
+    <string name="vpn_scenario_confirm_action">確認</string>
+    <string name="vpn_scenario_no_visible_apps">このフィルターに一致するアプリはありません。</string>
+    <string name="vpn_scenario_picker_failed">アプリを読み込めませんでした。</string>
+    <string name="vpn_scenario_system_picker">システムの選択画面を開く</string>
+</resources>

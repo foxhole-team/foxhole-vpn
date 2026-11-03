@@ -22,7 +22,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -125,8 +124,8 @@ internal fun VpnRouterWizardSheet(
     }
     val discoveredPackageVersion = state.discovery?.takeIf { it.address == state.address &&
                     it.kind == com.foxhole.vpn.router.RouterDiscoveryKind.INSTALLED }?.packageVersion
-    AnimatedContent(targetState = state.stage, modifier = Modifier.fillMaxSize(), transitionSpec = {
-        VpnSheetMotion.pageTransition(animateSize = false)
+    AnimatedContent(targetState = state.stage, modifier = Modifier.fillMaxWidth(), transitionSpec = {
+        VpnSheetMotion.pageTransition(animateSize = true)
     }, label = "router-wizard") { stage ->
         val enabled = stage == state.stage && !state.busy
         when (stage) {
@@ -146,8 +145,9 @@ internal fun VpnRouterWizardSheet(
                 onBack = onBack,
                 layout = { working, headerActions, footer, content ->
                     RouterWizardContent(
-                        R.string.vpn_router, R.drawable.lin_router,
-                        state.address, discoveredPackageVersion, working,
+                        if (state.path == RouterWizardPath.PAIR) R.string.vpn_router_pin else R.string.vpn_router_password,
+                        R.drawable.lin_router, state.address, discoveredPackageVersion, working,
+                        titleHelp = if (state.path == RouterWizardPath.PAIR) R.string.router_help_pin else R.string.router_help_password,
                         actions = headerActions, footer = footer, content = content,
                     )
                 },
@@ -220,8 +220,8 @@ internal fun VpnRouterWizardSheet(
                         Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(0.dp)) {
                             VpnRouterTableRow(Modifier.fillMaxWidth()) {
                                 Icon(painterResource(R.drawable.lin_power), null, Modifier.size(20.dp))
-                                Text(stringResource(R.string.vpn_router_install_protocols), Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
-                                VpnRouterHelpButton(R.string.vpn_router_install_protocols, R.string.router_help_protocols)
+                                VpnHelpLabel(stringResource(R.string.vpn_router_install_protocols), R.string.vpn_router_install_protocols,
+                                    R.string.router_help_protocols, Modifier.weight(1f))
                             }
                             VpnRouterProtocolDropdown(installationCatalog, protocols, enabled) { protocols = it }
                         }
@@ -342,8 +342,8 @@ private fun RouterOptionsContent(
     Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(0.dp)) {
         VpnRouterTableRow(Modifier.fillMaxWidth()) {
             Icon(painterResource(R.drawable.lin_profiles), null, Modifier.size(20.dp))
-            Text(stringResource(R.string.vpn_router_profile_title), Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
-            VpnRouterHelpButton(R.string.vpn_router_profile_title, R.string.router_help_profile)
+            VpnHelpLabel(stringResource(R.string.vpn_router_profile_title), R.string.vpn_router_profile_title,
+                R.string.router_help_profile, Modifier.weight(1f))
         }
         VpnRouterProfileDropdown(profiles, options.profileId, enabled) { onChange(options.copy(profileId = it)) }
         HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
@@ -384,7 +384,7 @@ private fun RouterSetupLicenseChoice(accepted: Boolean, enabled: Boolean, licens
         }
     }
     if (expanded) {
-        VpnBottomSheet(onDismiss = { expanded = false }, fixedHeightFraction = .85f,
+        VpnBottomSheet(onDismiss = { expanded = false },
             confineContentGestures = true, footerContent = {
                 Column(Modifier.fillMaxWidth().padding(horizontal = 20.dp)) {
                     RouterLicenseAcceptedRow(accepted, enabled, onChange)
@@ -412,8 +412,8 @@ private fun RouterLocalRoutingChoice(checked: Boolean, enabled: Boolean, onChang
     VpnRouterTableRow(Modifier.fillMaxWidth().semantics(mergeDescendants = true) {}.toggleable(
         value = checked, enabled = enabled, role = Role.Checkbox, onValueChange = onChange)) {
         Icon(painterResource(R.drawable.lin_power), null, Modifier.size(20.dp))
-        Text(stringResource(R.string.router_setup_all_lan_vpn), Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
-        VpnRouterHelpButton(R.string.router_setup_all_lan_vpn, R.string.router_setup_all_lan_vpn_help)
+        VpnHelpLabel(stringResource(R.string.router_setup_all_lan_vpn), R.string.router_setup_all_lan_vpn,
+            R.string.router_setup_all_lan_vpn_help, Modifier.weight(1f))
         Checkbox(checked = checked, onCheckedChange = null, enabled = enabled)
     }
 }
@@ -436,8 +436,8 @@ internal fun knownRouterHomeCountry(code: String?): String? = code?.uppercase(Lo
 private fun RouterHelpLabel(title: Int, help: Int) {
     VpnRouterTableRow(Modifier.fillMaxWidth()) {
         Icon(painterResource(R.drawable.router_review_globe), null, Modifier.size(20.dp))
-        Text(stringResource(title), Modifier.weight(1f).semantics { heading() }, style = MaterialTheme.typography.titleMedium)
-        VpnRouterHelpButton(title, help)
+        VpnHelpLabel(stringResource(title), title, help, Modifier.weight(1f).semantics { heading() },
+            style = MaterialTheme.typography.titleMedium)
     }
 }
 
@@ -452,10 +452,11 @@ private fun RouterCheckRow(label: Int, help: Int, checked: Boolean, enabled: Boo
             else -> R.drawable.lin_power
         }
         Icon(painterResource(icon), null, Modifier.size(20.dp))
-        Text(stringResource(label), Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
-        if (showHelp) VpnRouterHelpButton(label, help)
+        if (showHelp) VpnHelpLabel(stringResource(label), label, help, Modifier.weight(1f))
+        else Text(stringResource(label), Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
         VpnSwitch(checked, onCheckedChange = onChange, enabled = enabled)
     }
+    HorizontalDivider(color = LocalVpnColors.current.border.copy(alpha = .5f))
 }
 
 @Composable
@@ -532,11 +533,12 @@ private fun RouterWizardContent(
     title: Int, icon: Int, address: String, packageVersion: String?, busy: Boolean,
     actions: @Composable RowScope.() -> Unit = {},
     footer: (@Composable ColumnScope.() -> Unit)? = null,
+    titleHelp: Int? = null,
     content: @Composable ColumnScope.() -> Unit,
 ) {
-    BoxWithConstraints(Modifier.fillMaxSize().imePadding().padding(horizontal = 20.dp, vertical = 6.dp)) {
+    BoxWithConstraints(Modifier.fillMaxWidth().imePadding().padding(horizontal = 20.dp, vertical = 6.dp)) {
         val compact = maxHeight < 420.dp
-        Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.End) {
                 if (busy) {
@@ -545,8 +547,8 @@ private fun RouterWizardContent(
                 }
                 actions()
             }
-            Column(Modifier.weight(1f).fillMaxWidth().then(LocalVpnSheetBodyGestures.current)
-                .verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(if (compact) 8.dp else 14.dp)) {
+            Column(Modifier.weight(1f, fill = false).fillMaxWidth().then(LocalVpnSheetBodyGestures.current)
+                .verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(if (compact) 8.dp else 12.dp)) {
                 Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.spacedBy(4.dp)) {
                     Image(painterResource(R.drawable.ic_launcher_openwrt), null,
@@ -560,10 +562,12 @@ private fun RouterWizardContent(
                         textAlign = TextAlign.Center)
                     Text(address, Modifier.fillMaxWidth(), style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant, textAlign = TextAlign.Center)
-                    Row(Modifier.fillMaxWidth().padding(top = 8.dp).semantics(mergeDescendants = true) { heading() },
-                        verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally)) {
+                    Row(Modifier.fillMaxWidth().padding(top = 8.dp),
+                        verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         Icon(painterResource(icon), null, Modifier.size(20.dp))
-                        Text(stringResource(title), style = MaterialTheme.typography.titleMedium, textAlign = TextAlign.Center)
+                        Text(stringResource(title), Modifier.weight(1f).semantics { heading() },
+                            style = MaterialTheme.typography.titleMedium, maxLines = 2)
+                        if (titleHelp != null) VpnRouterHelpButton(title, titleHelp, actionStyle = true)
                     }
                 }
                 content()

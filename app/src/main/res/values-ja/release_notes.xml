@@ -10,4 +10,10 @@
     <string name="vpn_release_notes_pin6">インストール時に確認入力する6桁のPINと、最大10台のルーターへの対応を追加しました。</string>
     <string name="vpn_release_notes_update_position">アプリの更新通知を VPN プロファイル選択欄の上に移動しました。</string>
     <string name="vpn_release_notes_router_pairing_version">ルーターとのペアリング時の OpenWrt バージョン確認の不具合を修正しました。</string>
+    <string name="vpn_release_notes_title">更新内容</string>
+    <string name="vpn_release_notes_scenarios">変更をアトミックに適用し、アプリごとの通信を簡単に振り分けるルーティング（ベータ版）を追加しました。</string>
+    <string name="vpn_release_notes_interface_103">インターフェースを最適化し、国旗の表示、選択リストの色、ウィンドウのアニメーションを修正しました。</string>
+    <string name="vpn_release_notes_help_103">対応するすべての言語で、ドキュメントとヘルプを改善しました。</string>
+    <string name="vpn_release_notes_dns_103">アプリのシナリオでの DNS ルーティングを修正しました。</string>
+    <string name="vpn_release_notes_widget_103">ウィジェットに、色分けされた現在の通信経路シナリオを追加しました。</string>
 </resources>

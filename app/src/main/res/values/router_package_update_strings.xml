@@ -5,7 +5,7 @@
     <string name="router_updates_current_version">Current version: %1$s</string>
     <string name="router_updates_available_version">Available version: %1$s</string>
     <string name="router_updates_auto">Automatic FoxHole updates</string>
-    <string name="router_updates_auto_help">When enabled, the router checks daily and installs verified FoxHole package updates. Turn this off during setup or later in router Settings. The policy stays on the router after unpairing.</string>
+    <string name="router_updates_auto_help">When enabled, the router checks for and installs verified FoxHole package updates every 24 hours. You can turn this off during installation or later in router settings. The policy remains on the router after unpairing.</string>
     <string name="router_updates_apply">UPDATE</string>
     <string name="router_updates_check">CHECK</string>
     <string name="router_updates_status">CHECK STATUS</string>

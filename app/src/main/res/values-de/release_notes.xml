@@ -10,4 +10,9 @@
     <string name="vpn_release_notes_pin6">Eine sechsstellige PIN mit Bestätigung bei der Installation und Unterstützung für bis zu 10 Router hinzugefügt.</string>
     <string name="vpn_release_notes_update_position">Der Hinweis auf App-Updates wurde über die VPN-Profilauswahl verschoben.</string>
     <string name="vpn_release_notes_router_pairing_version">Die Prüfung der OpenWrt-Version beim Koppeln mit einem Router wurde korrigiert.</string>
+    <string name="vpn_release_notes_scenarios">Routing (Beta) für die einfache anwendungsbezogene Verkehrssteuerung mit atomarer Übernahme von Änderungen hinzugefügt.</string>
+    <string name="vpn_release_notes_interface_103">Die Oberfläche wurde optimiert: Anzeige der Länderflagge, Farben der Auswahllisten und Fensteranimationen wurden korrigiert.</string>
+    <string name="vpn_release_notes_help_103">Dokumentation und Hilfebereich wurden in allen unterstützten Sprachen verbessert.</string>
+    <string name="vpn_release_notes_dns_103">DNS-Routing in den Szenarien der Anwendung korrigiert.</string>
+    <string name="vpn_release_notes_widget_103">Das Widget zeigt jetzt das aktuelle Routing-Szenario mit farblicher Kennzeichnung an.</string>
 </resources>

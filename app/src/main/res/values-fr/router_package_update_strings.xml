@@ -5,7 +5,7 @@
     <string name="router_updates_current_version">Version actuelle : %1$s</string>
     <string name="router_updates_available_version">Version disponible : %1$s</string>
     <string name="router_updates_auto">Mises à jour automatiques de FoxHole</string>
-    <string name="router_updates_auto_help">Si activé, le routeur vérifie chaque jour et installe les mises à jour vérifiées des paquets FoxHole. Désactivez cette option pendant la configuration ou ensuite dans les réglages du routeur. La politique reste sur le routeur après sa dissociation.</string>
+    <string name="router_updates_auto_help">Si activé, le routeur vérifie et installe toutes les 24 heures les mises à jour vérifiées des paquets FoxHole. Vous pouvez désactiver cette option à l’installation ou plus tard dans les paramètres du routeur. La politique reste sur le routeur après la dissociation.</string>
     <string name="router_updates_apply">Mettre à jour</string>
     <string name="router_updates_check">Vérifier</string>
     <string name="router_updates_status">VÉRIFIER L’ÉTAT</string>

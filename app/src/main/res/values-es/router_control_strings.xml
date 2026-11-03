@@ -7,7 +7,7 @@
     <string name="router_control_remote_clients">Clientes VPN remotos</string>
     <string name="router_control_remove_body">¿Eliminar %1$s del router?</string>
     <string name="router_control_pairing_required">La vinculación no está disponible. Vuelva a conectarse al router.</string>
-    <string name="router_control_unpair_help">Desvincular desconecta la gestión. Elimine el cliente por separado para revocar el acceso VPN.</string>
+    <string name="router_control_unpair_help">Desvincular desactiva la administración. Para revocar el acceso VPN, elimina el cliente por separado.</string>
     <string name="router_control_unpair">DESVINCULAR</string>
     <string name="router_control_unpair_title">¿Desvincular el router?</string>
     <string name="router_control_client_actions">Elegir acción del cliente</string>
@@ -24,21 +24,21 @@
     <string name="router_control_import_phone">IMPORTAR AL TELÉFONO</string>
     <string name="router_control_imported">Perfil importado</string>
     <string name="router_control_show_qr">Mostrar QR</string>
-    <string name="router_control_qr_description">QR del perfil VPN de %1$s</string>
+    <string name="router_control_qr_description">Código QR del perfil VPN %1$s</string>
     <string name="router_control_qr_unavailable">QR no disponible para este perfil</string>
     <string name="router_control_client_access">Acceso VPN personal</string>
     <string name="router_control_client_template">Plantilla guardada; acceso remoto no configurado</string>
     <string name="router_control_create_help">Cliente Hysteria2. Requiere una dirección pública del router y una VPN entrante configurada.</string>
     <string name="router_control_enable_help">Activar o desactivar la administración del router.</string>
-    <string name="router_control_country_help">El país se determina a partir de la conexión a Internet del router. Toque la bandera para cambiarlo.</string>
-    <string name="router_control_home_help">Cambia entre el teléfono y el router doméstico solo cuando se confirma una conexión de router compatible.</string>
-    <string name="router_control_vpn_help">Inicia o detiene el perfil seleccionado del router. Toque para seleccionar; mantenga pulsado para ver acciones.</string>
-    <string name="router_control_lan_help">Elija VPN o Sin VPN para cada dispositivo. VPN es la política de ruta predeterminada; el perfil VPN se inicia por separado.</string>
-    <string name="router_control_clients_help">Abra un perfil VPN para ver su QR, importarlo, compartirlo o eliminarlo.</string>
+    <string name="router_control_country_help">El país se determina a partir de la conexión a Internet del router. Toca la bandera para cambiarlo.</string>
+    <string name="router_control_home_help">Cambiar entre el teléfono y el router doméstico solo después de confirmar una conexión compatible.</string>
+    <string name="router_control_vpn_help">Iniciar o detener el perfil seleccionado del router. Toca un perfil para seleccionarlo y mantenlo pulsado para ver las acciones.</string>
+    <string name="router_control_lan_help">Elige VPN o Sin VPN para cada dispositivo. VPN es la opción predeterminada. El inicio del perfil VPN se controla por separado.</string>
+    <string name="router_control_clients_help">Abre un perfil VPN para ver su código QR, importarlo, compartirlo o eliminarlo.</string>
     <string name="router_control_qr_loading">Generando QR…</string>
     <string name="router_control_profile_loading">Cargando perfil…</string>
     <string name="router_control_hide_offline">Ocultar dispositivos sin conexión</string>
-    <string name="router_control_hide_offline_help">Ocultar los dispositivos que no estén conectados actualmente a su red doméstica.</string>
+    <string name="router_control_hide_offline_help">Ocultar los dispositivos que no estén conectados a tu red doméstica.</string>
     <string name="router_review_no_online_devices">No hay dispositivos en línea</string>
     <string name="router_updates_check_entry">Buscar actualizaciones</string>
     <string name="router_control_available_protocols">Protocolos disponibles: %1$s</string>
@@ -47,5 +47,5 @@
     <string name="router_control_protocols_empty">Protocolos disponibles: ninguno instalado</string>
     <string name="router_profile_probe_failed">Para administrar el paquete FoxHole OpenWRT, conéctese a su VPN personal o a su red Wi-Fi doméstica.</string>
     <string name="router_control_home_vpn">Administración mediante VPN</string>
-    <string name="router_control_home_vpn_help">Permite administrar el router a través de su red VPN. Se requiere una dirección IP pública estática.</string>
+    <string name="router_control_home_vpn_help">Administrar el router a través de su red VPN. Requiere una dirección IP pública estática.</string>
 </resources>

@@ -16,9 +16,10 @@ final class MaterialSheetMotion {
 
     static void applyFastSpatialSpec(
             SheetState sheetState,
-            FiniteAnimationSpec<Float> motionSpec
+            FiniteAnimationSpec<Float> motionSpec,
+            FiniteAnimationSpec<Float> hideMotionSpec
     ) {
         sheetState.setShowMotionSpec$material3(motionSpec);
-        sheetState.setHideMotionSpec$material3(motionSpec);
+        sheetState.setHideMotionSpec$material3(hideMotionSpec);
     }
 }

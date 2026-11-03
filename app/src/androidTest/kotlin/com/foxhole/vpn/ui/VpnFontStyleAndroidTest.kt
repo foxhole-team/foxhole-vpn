@@ -30,13 +30,13 @@ import org.junit.runner.RunWith
 class VpnFontStyleAndroidTest {
     @get:Rule val compose = createComposeRule()
 
-    @Test fun fontMenuMatchesItsAnchorAndBothChoicesFitAtCompactWidth() {
+    @Test fun fontMenuCanExpandBeyondItsCompactAnchorAndBothChoicesRemainInside() {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         compose.setContent {
             var settings by remember { mutableStateOf(VpnSettings()) }
             VpnUiTheme(settings.theme, settings.fontStyle) {
                 Box(Modifier.width(260.dp)) {
-                    VpnSettingsDetailScreen(VpnSettingsDetail.THEME, settings,
+                    VpnSettingsDetailScreen(VpnSettingsDetail.APPEARANCE, settings,
                         onSettings = { settings = it }, onBack = {})
                 }
             }
@@ -48,13 +48,13 @@ class VpnFontStyleAndroidTest {
             val menu = compose.onNodeWithTag("font-style-menu").fetchSemanticsNode().boundsInRoot
             val option = compose.onNodeWithText(context.getString(choice)).assertIsDisplayed()
             val text = option.fetchSemanticsNode().boundsInRoot
-            assertTrue(abs(button.width - menu.width) <= 2f)
+            assertTrue(menu.width + 2f >= button.width)
             assertTrue(text.left >= menu.left && text.right <= menu.right)
             option.performClick()
         }
     }
 
-    @Test fun fontDropdownChangesHeadingsWithoutLeavingThemeSettingsOrChangingBodyText() {
+    @Test fun fontDropdownChangesHeadingsWithinAppearanceOrChangingBodyText() {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         var current = VpnSettings()
         var backCalls = 0
@@ -62,7 +62,7 @@ class VpnFontStyleAndroidTest {
             var settings by remember { mutableStateOf(VpnSettings()) }
             current = settings
             VpnUiTheme(settings.theme, settings.fontStyle) {
-                VpnSettingsDetailScreen(VpnSettingsDetail.THEME, settings,
+                VpnSettingsDetailScreen(VpnSettingsDetail.APPEARANCE, settings,
                     onSettings = { settings = it }, onBack = { backCalls++ })
             }
         }

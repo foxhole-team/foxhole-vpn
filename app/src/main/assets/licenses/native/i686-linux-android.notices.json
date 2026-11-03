@@ -6,7 +6,7 @@
     "x86_64"
   ],
   "androidDeliveryProfile": "android4",
-  "canonicalUnionNoticeManifestSha256": "c267eb11a913cc55f270c66b3edb8a65d1221920bf97905dba0f04369bb4fe96",
+  "canonicalUnionNoticeManifestSha256": "b46cfac9fbae6400170a68df0dfa48b5c278a2b0377cdf5ea53c1e0b2dcca83e",
   "coverage": "complete",
   "files": [
     {
@@ -837,98 +837,98 @@
     },
     {
       "owners": [
-        "urn:foxhole:cargo:b6c77f1cc14262c069343b4e718161f000631db5299db2a5c3c4ab94fe080e9c"
+        "urn:foxhole:cargo:70f8f2f72e556cc1747be4e08b679bef598381da20626d28a89be3093b92e303"
       ],
       "path": "cargo/foxcore-android-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:9706bda65c5319cc208f7d5bc2bad4bf7e24bfd7cb9291c3b594139dbf52ab87"
+        "urn:foxhole:cargo:343fe1e0350f4f05ac9c3e2a636f8e2a3beae1094ba9af999a86201fc981bc0a"
       ],
       "path": "cargo/foxcore-api-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:0fa5a2b856c56b698892f5aa6c4992cda84487bd7f6bb30c95baee536af9f134"
+        "urn:foxhole:cargo:d5a02adfa8cf0b44ff7f1e398079fdfd2a640ff15453127b7e027249e104ea87"
       ],
       "path": "cargo/foxcore-component-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:352dc006f6eebe38c920152c12deabd2dd49a8fa64cc5a78ffa9ecfa85c3ef6c"
+        "urn:foxhole:cargo:ea74cf3ff7936c7ece1fff61d69a0d7cd4d035541caa03d3b001ed056722c415"
       ],
       "path": "cargo/foxcore-dialer-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:455c8eb40216d3d922014e6c172a8af25b50e22137d2a11e885b5394c10e28e0"
+        "urn:foxhole:cargo:c978aa0c547673e23fcf83fd8f62c8b0c5a1b112728989906ad1ad623268c302"
       ],
       "path": "cargo/foxcore-dns-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:04a1b1c561a6704ae9f09b9d2738fd5566884e180109210d06e44ec11f6eef2a"
+        "urn:foxhole:cargo:bc2b47eb464cb0183a7a4024c52fffdc60e710e9f37b60d67bfd9646b510b7f2"
       ],
       "path": "cargo/foxcore-link-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:78223c5ef1e05c1df06dbec82a93eb25855527bde83debd65559a5ed85f8f8fb"
+        "urn:foxhole:cargo:c3227e0e71217f8899850275f645ec6e0b34f8e9e9463c1e36afc44b1b89b307"
       ],
       "path": "cargo/foxcore-outbound-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:26736506ecb2da5ebca2d13ddead01bb53d8e32f6145dae6d6325e1aeb17a47b"
+        "urn:foxhole:cargo:36b9d5dcb6e73da102102e18a190fc916a1937fb361067a404a7886f562bb1f6"
       ],
       "path": "cargo/foxcore-relay-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:62688329dcc3593e615319323046b823314db8eafdd73ac767e369d0014d13f2"
+        "urn:foxhole:cargo:06f336e9c7ac5466a23aa22c5d80be8c5530ea52d61d7cbdb16e3843ae400557"
       ],
       "path": "cargo/foxcore-route-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:ea282d19909dc62bbb59215d97c6d344417cf943249339c3316fb13963305935"
+        "urn:foxhole:cargo:9bc1e7b2ffc875602b1969841d78a89f8900d5bb7c245d870c778c8be2c0a58d"
       ],
       "path": "cargo/foxcore-runtime-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:b68d565cd80473aa234d467cf647773c32c74eb25d8e58b04c2612896363dfc6"
+        "urn:foxhole:cargo:9d41e31135bfbc6e0af88d1f0c89498d3b88574cb5ec10f8966f6de715047eb6"
       ],
       "path": "cargo/foxcore-share-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:be5ad0c850198064192b37ea3b0a3af60523ff42caaa42a078363b6f3bc208b6"
+        "urn:foxhole:cargo:e3fe15d9e131af2be192c625720956f866207cc8f131bc875d9c7bc76ddf092b"
       ],
       "path": "cargo/foxcore-trafficmap-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:bde239d02afad7d7ddaacb4a2c557ea8b80e6291433c3d02646b22defcc78260"
+        "urn:foxhole:cargo:8eae00688dfae9cfd73cd9062a07d6a49520680d555a8eb134324bf44d3f58a0"
       ],
       "path": "cargo/foxcore-transport-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:3d103e19688c59948be9bafb534b9f86c3763fa7d6f962fd6003cf19aa154014"
+        "urn:foxhole:cargo:a9385372284732f121d2e4d22e0c3f3124b4571f373b723bac00f9dde7d0972b"
       ],
       "path": "cargo/foxcore-tun-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
@@ -1978,98 +1978,98 @@
     },
     {
       "owners": [
-        "urn:foxhole:cargo:7165882e3b84ad03d11d162f50b3d5550699d6e6d7895f46720a1b3bab47c5ea"
+        "urn:foxhole:cargo:5e944fff3ea8832c4e51d123fbdfcc77e0df0eebbca7aa96ab90a6f6eb988cd5"
       ],
       "path": "cargo/proto-anytls-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:9bfcd8581abb7e3edb549c62cceedc74a9b7ef291ea506531ab8c6224fc2d8d8"
+        "urn:foxhole:cargo:921796352b1969a04acdce72c81a1c737145deb850fe10bec754e6778c2e65b5"
       ],
       "path": "cargo/proto-http-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:de22bb34ea42ea3c1995a12e633fcc9e062032c7b65a7f0fb216bf23cdf68455"
+        "urn:foxhole:cargo:f009c4cb53c01ba0540f5fc7cb2d38be0cc989249e5790624274b7933f15b816"
       ],
       "path": "cargo/proto-hysteria2-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:ecd31128e76f56f29b118cc1afc5e737a0c70f71250b64b381302a1da6c67266"
+        "urn:foxhole:cargo:acba38a004b733b3abb8dbd9a440ee961cb45f7d363216caefacdffe462ea457"
       ],
       "path": "cargo/proto-naive-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:a3fa99dc14076e04c295247af73cd5d6871cbdcbae5b6da1dfcd22bcb4ffb5aa"
+        "urn:foxhole:cargo:c3862e21b29641458607afe94d53cd39afa10c17b97d4f5db4b7bc42352dd3c0"
       ],
       "path": "cargo/proto-reality-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:a3fa99dc14076e04c295247af73cd5d6871cbdcbae5b6da1dfcd22bcb4ffb5aa"
+        "urn:foxhole:cargo:c3862e21b29641458607afe94d53cd39afa10c17b97d4f5db4b7bc42352dd3c0"
       ],
       "path": "cargo/proto-reality-1.0.2/crates/proto-reality/LICENSE-MIT",
       "sha256": "1fb83b583e8604eff99cf01dfece917bb0ad56c3101d627516c7b59655375e19"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:ba3171b662cc5ab5aa6566f184cf11430558ee10e35ead361e036f3dd5dfbc38"
+        "urn:foxhole:cargo:3e3aa79aac87b9d44a95fbfb0e8de3d9fda4f0cd60c0aa8b27d41fcc89782149"
       ],
       "path": "cargo/proto-shadowsocks-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:0b25bff6e051f9a33fe7b79e12bc31e2a1ef4a9d138b4fcc8f6524fbd733ef1b"
+        "urn:foxhole:cargo:df00588b6b2ee8b686d081df08a54c39dd6e4b62910344b063030f137e068a34"
       ],
       "path": "cargo/proto-shadowtls-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:c7abcce21239beb731ee883a99410c49ac06e22df91fe7b18eb8711e48ab0e08"
+        "urn:foxhole:cargo:b5112b2ffbcb489fa389d3fc2dd9a00ac5e5552eaf20f2244f960705620ffb80"
       ],
       "path": "cargo/proto-socks-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:53214d49391dac307fc8bd463e947415d6615af6becd22b47c800f374ce3d37b"
+        "urn:foxhole:cargo:e16a51a376d937426eb7fdecaf7e82ef2077e740c37e8b4fd5248303605a691d"
       ],
       "path": "cargo/proto-trojan-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:5da6995557ab0a0c47c2886d7b42f6d7ba8f4cf5e7b09fb46538c900fa0064cf"
+        "urn:foxhole:cargo:5c256f81e24561175dbaee6f0033f97245d618777f8051c32b761c8a7ee565ab"
       ],
       "path": "cargo/proto-tuic-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:e040755c3e7cba63a1b1ff14e3ab9bc098bcda093f2302a4f891045761a2e069"
+        "urn:foxhole:cargo:bd54d457c2f82d227f455795245a134cca70510129e7347319920dfa331ea137"
       ],
       "path": "cargo/proto-vless-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:b02156f45fc1080737914dd5fd052eb6a1c659c1ff796eb458c3ab286229e666"
+        "urn:foxhole:cargo:63fba35fc852cc1a326793e9baafb063673baaec6bac8892ca6d9978b6600988"
       ],
       "path": "cargo/proto-vmess-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:0f26796dea19dd401570bdafdf0740cad66440799d793409fc71c433aa0f7e31"
+        "urn:foxhole:cargo:c927b9e28f2887ba1e67b53960ca5c31033d9b519e28f64f793e53cce424b208"
       ],
       "path": "cargo/proto-wireguard-1.0.2/LICENSE",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
@@ -3287,55 +3287,55 @@
     },
     {
       "owners": [
-        "urn:foxhole:cargo:332d8e05b359844fed8198124f4dcb209a3ead6016456dad4ac6f90a1f307908"
+        "urn:foxhole:cargo:eaa0e2e8dba221c0fd731395c99f46ab221cfa78e5838e3a4a756100f7e6a019"
       ],
       "path": "source-forks/rustls-0.23.46/FOXHOLE-MODIFICATIONS.md",
       "sha256": "e348815a3c8cf11f58344f109e9565419f5ef2324408d3543d3905309485fafb"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:332d8e05b359844fed8198124f4dcb209a3ead6016456dad4ac6f90a1f307908"
+        "urn:foxhole:cargo:eaa0e2e8dba221c0fd731395c99f46ab221cfa78e5838e3a4a756100f7e6a019"
       ],
       "path": "source-forks/rustls-0.23.46/LICENSE-APACHE",
       "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:332d8e05b359844fed8198124f4dcb209a3ead6016456dad4ac6f90a1f307908"
+        "urn:foxhole:cargo:eaa0e2e8dba221c0fd731395c99f46ab221cfa78e5838e3a4a756100f7e6a019"
       ],
       "path": "source-forks/rustls-0.23.46/LICENSE-ISC",
       "sha256": "7cfafc877eccc46c0e346ccbaa5c51bb6b894d2b818e617d970211e232785ad4"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:332d8e05b359844fed8198124f4dcb209a3ead6016456dad4ac6f90a1f307908"
+        "urn:foxhole:cargo:eaa0e2e8dba221c0fd731395c99f46ab221cfa78e5838e3a4a756100f7e6a019"
       ],
       "path": "source-forks/rustls-0.23.46/LICENSE-MIT",
       "sha256": "709e3175b4212f7b13aa93971c9f62ff8c69ec45ad8c6532a7e0c41d7a7d6f8c"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:332d8e05b359844fed8198124f4dcb209a3ead6016456dad4ac6f90a1f307908"
+        "urn:foxhole:cargo:eaa0e2e8dba221c0fd731395c99f46ab221cfa78e5838e3a4a756100f7e6a019"
       ],
       "path": "source-forks/rustls-0.23.46/ORIGIN.json",
       "sha256": "88dd76f0174bc49acd931551910754fbe0d4a0ad09cb63ea652fdea6a6ed1df6"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:332d8e05b359844fed8198124f4dcb209a3ead6016456dad4ac6f90a1f307908"
+        "urn:foxhole:cargo:eaa0e2e8dba221c0fd731395c99f46ab221cfa78e5838e3a4a756100f7e6a019"
       ],
       "path": "source-forks/rustls-0.23.46/chrome151.patch",
       "sha256": "a63cadc3346277f82594b6dcd818f56796c39c44aa0ef1377c6da90328631638"
     },
     {
       "owners": [
-        "urn:foxhole:cargo:332d8e05b359844fed8198124f4dcb209a3ead6016456dad4ac6f90a1f307908"
+        "urn:foxhole:cargo:eaa0e2e8dba221c0fd731395c99f46ab221cfa78e5838e3a4a756100f7e6a019"
       ],
       "path": "source-forks/rustls-0.23.46/upstream-files.json",
       "sha256": "bc389f68b1eb14f6d79bb38870640fabd05e44ec22bf12d872e479d033b81c34"
     }
   ],
-  "sbom_sha256": "5b8811ed8855ec0e4b0a10ae1211f9f681aa0ed9eb1b0029f9d967ea108ea769",
+  "sbom_sha256": "f1b4471d172be6b3cd4d090cc488d2979a015e75e5cf58cce7213ba55a8fef0a",
   "schema_version": 1,
   "sourceProducerProfile": "android4",
   "targets": [

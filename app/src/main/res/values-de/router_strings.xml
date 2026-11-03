@@ -28,7 +28,7 @@
     <string name="vpn_router_change_pin_note">Wählen Sie am Ende der Ersteinrichtung eine sechsstellige PIN. Spätere PIN-Änderungen sind nur in LuCI mit dem Eigentümerkonto möglich.</string>
     <string name="vpn_router_save">Speichern</string>
     <string name="vpn_router_no_profile">Kein Router-VPN-Profil</string>
-    <string name="vpn_router_country_direct">Länderwebsites direkt</string>
+    <string name="vpn_router_country_direct">Lokaler Datenverkehr</string>
     <string name="vpn_router_country_direct_note">Websites im gewählten Land umgehen den VPN-Tunnel.</string>
     <string name="vpn_router_home_country">Ländercode, zum Beispiel NL</string>
     <string name="vpn_router_auto_home">Automatische Heimnetzumschaltung</string>

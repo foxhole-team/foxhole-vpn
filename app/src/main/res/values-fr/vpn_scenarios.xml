@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_add_application">Ajouter une application</string>
+    <string name="vpn_app_picker_unavailable">Le sélecteur d’applications du système est indisponible.</string>
+    <string name="vpn_app_route_direct">Sans VPN</string>
+    <string name="vpn_app_route_vpn">Via VPN</string>
+    <string name="vpn_app_rules">Règles des applications</string>
+    <string name="vpn_app_rules_empty">Ajoutez des applications pour créer des règles de routage.</string>
+    <string name="vpn_help_scenarios_body">Ouvrez « Scénarios » avec le bouton de la rangée supérieure de l’accueil. Vous pouvez y choisir le routage de tout l’appareil ou de certaines applications.\n\nTouchez « Ajouter une application », sélectionnez des applications dans la liste et définissez « Via VPN » ou « Sans VPN ». Les applications sélectionnées apparaissent en premier. Le filtre affiche toutes les applications, celles du système ou celles de l’utilisateur ; celles de l’utilisateur sont affichées par défaut. Maintenez une règle appuyée et confirmez sa suppression. La liste est conservée lorsque vous changez de scénario.\n\nLe scénario « Tout l’appareil » dirige tout le trafic vers le VPN et ignore les règles des applications.\n\nLe scénario « Proxy » utilise les règles des applications de la liste. Si « Tout l’appareil » est activé, toutes les applications utilisent le VPN sauf celles marquées « Sans VPN ». Sinon, seules les applications avec la règle « Via VPN » l’utilisent.\n\nLes paramètres des scénarios permettent de gérer l’application atomique et la confirmation des changements. L’application atomique est activée par défaut : le trafic est bloqué avant la modification des routes actives, puis les nouvelles règles sont appliquées et le VPN se reconnecte si nécessaire. La confirmation est désactivée par défaut. Un VPN arrêté ne démarre pas de lui-même.</string>
+    <string name="vpn_routing_mode">Scénario</string>
+    <string name="vpn_scenario_atomic">Appliquer les scénarios de façon atomique</string>
+    <string name="vpn_scenario_atomic_help">Si activé, le trafic est temporairement bloqué avant la modification des routes actives. Les règles sont ensuite appliquées et le VPN se reconnecte si nécessaire. Si la modification n’a pas pu être effectuée en toute sécurité, arrêtez le VPN avant de réessayer. Si désactivé, changer de scénario ou modifier « Tout l’appareil » nécessite une confirmation, même si « Demander confirmation » est désactivé. Les règles des applications s’appliquent automatiquement. Un VPN arrêté ne démarre pas.</string>
+    <string name="vpn_scenario_back">RETOUR</string>
+    <string name="vpn_scenario_confirm_body">Appliquer le changement de routage ? Le VPN actif se reconnectera si nécessaire.</string>
+    <string name="vpn_scenario_confirm_title">Appliquer le scénario ?</string>
+    <string name="vpn_scenario_confirmation">Demander confirmation</string>
+    <string name="vpn_scenario_confirmation_help">Si activé, changer de scénario ou basculer « Tout l’appareil » nécessite une confirmation. Désactivé par défaut.</string>
+    <string name="vpn_scenario_default_help">Si désactivé, seul le trafic des applications sélectionnées avec la règle « Via VPN » passe par le VPN. Dans le scénario « Tout l’appareil », cette option reste activée et ne peut pas être modifiée.</string>
+    <string name="vpn_scenario_remove">Supprimer la règle</string>
+    <string name="vpn_scenario_selected_apps">Proxy</string>
+    <string name="vpn_scenario_settings">Paramètres des scénarios</string>
+    <string name="vpn_scenario_status_selected">Scénario : Proxy</string>
+    <string name="vpn_scenario_status_whole">Scénario : Tout l’appareil</string>
+    <string name="vpn_scenario_whole_device">Tout l’appareil</string>
+    <string name="vpn_scenarios">Routage</string>
+    <string name="vpn_scenarios_help">Le scénario « Tout l’appareil » dirige tout le trafic vers le VPN et ignore les règles des applications.\n\nLe scénario « Proxy » applique les règles « Via VPN » / « Sans VPN ».\n\nSi « Tout l’appareil » est activé, tout le trafic passe par le VPN sauf celui des applications avec la règle « Sans VPN ». Sinon, seul le trafic des applications avec la règle « Via VPN » utilise le VPN.\n\nLa règle « Sans VPN » utilise la connexion habituelle de l’appareil et les paramètres DNS du système, y compris Private DNS.</string>
+</resources>

@@ -5,7 +5,7 @@
     <string name="router_updates_current_version">現在のバージョン：%1$s</string>
     <string name="router_updates_available_version">利用可能なバージョン：%1$s</string>
     <string name="router_updates_auto">FoxHoleの自動更新</string>
-    <string name="router_updates_auto_help">有効にすると、ルーターは毎日確認し、検証済みFoxHoleパッケージ更新をインストールします。設定時または後からルーター設定でオフにできます。ペアリング解除後もこの設定はルーターに残ります。</string>
+    <string name="router_updates_auto_help">オンの場合、ルーターは 24 時間ごとに FoxHole パッケージの検証済み更新を確認し、インストールします。インストール時または後からルーター設定で無効にできます。ペアリングを解除しても、このポリシーはルーターに残ります。</string>
     <string name="router_updates_apply">更新</string>
     <string name="router_updates_check">確認</string>
     <string name="router_updates_status">状態を確認</string>

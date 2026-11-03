@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="vpn_release_notes_title">Что нового</string>
+    <string name="vpn_release_notes_scenarios">Добавлен раздел «Маршрутизация» (бета) для простой маршрутизации трафика по приложениям с атомарным применением изменений.</string>
+    <string name="vpn_release_notes_interface_103">Оптимизирован интерфейс: исправлены отображение флага страны, цвета списков выбора и анимации окон.</string>
+    <string name="vpn_release_notes_help_103">Доработаны документация и раздел помощи на всех поддерживаемых языках.</string>
     <string name="vpn_release_notes_formats">Новые форматы подписок: совместимые Clash/Mihomo YAML/JSON и Outline JSON.</string>
     <string name="vpn_release_notes_imports">Импорт ссылок v2rayTun, JSON-профилей FoxHole и прямая вставка SIP008 JSON.</string>
     <string name="vpn_release_notes_router">Поддержка установки и управления VPN на роутере с установленным пакетом FoxHole OpenWrt Client прямо из приложения.</string>
@@ -15,4 +18,6 @@
     <string name="vpn_release_notes_pin6">Добавлены шестизначный PIN с подтверждением при установке и поддержка до 10 роутеров.</string>
     <string name="vpn_release_notes_update_position">Уведомление об обновлении приложения перенесено вверх над областью выбора профилей VPN.</string>
     <string name="vpn_release_notes_router_pairing_version">Исправлен баг проверки версии OpenWRT при сопряжении с роутером.</string>
+    <string name="vpn_release_notes_dns_103">Исправление DNS-маршрутизации в сценариях работы приложения.</string>
+    <string name="vpn_release_notes_widget_103">В виджет добавлен текущий сценарий маршрутизации с цветовой индикацией.</string>
 </resources>

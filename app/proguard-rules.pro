@@ -32,4 +32,5 @@
 -dontwarn org.slf4j.LoggerFactory
 -keepclassmembers class com.foxhole.vpn.runtime.VpnTunnelService {
     public boolean protectSocket(int);
+    public java.lang.String signingDigestForPackage(java.lang.String);
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_add_application">Añadir aplicación</string>
+    <string name="vpn_app_picker_unavailable">El selector de aplicaciones del sistema no está disponible.</string>
+    <string name="vpn_app_route_direct">Sin VPN</string>
+    <string name="vpn_app_route_vpn">Por VPN</string>
+    <string name="vpn_app_rules">Reglas de aplicaciones</string>
+    <string name="vpn_app_rules_empty">Añade aplicaciones para crear reglas de enrutamiento.</string>
+    <string name="vpn_help_scenarios_body">Abre Escenarios con el botón de la fila superior de la pantalla principal. Elige el enrutamiento para todo el dispositivo o para aplicaciones concretas.\n\nToca Añadir aplicación, selecciona aplicaciones en la lista y asigna Por VPN o Sin VPN. Las aplicaciones seleccionadas aparecen primero. El filtro permite mostrar todas las aplicaciones, las del sistema o las del usuario; por defecto se muestran las del usuario. Mantén pulsada una regla y confirma su eliminación. La lista se conserva al cambiar de escenario.\n\nEl escenario Todo el dispositivo envía todo el tráfico por VPN e ignora las reglas de aplicaciones.\n\nEl escenario Proxy usa las reglas de las aplicaciones de la lista. Con Todo el dispositivo activado, todas usan VPN salvo las marcadas Sin VPN. Si está desactivado, solo usan VPN las aplicaciones con una regla Por VPN.\n\nLos ajustes de escenarios permiten gestionar la aplicación atómica y la confirmación de cambios. La aplicación atómica está activada de forma predeterminada: el tráfico se bloquea antes de cambiar las rutas activas, después se aplican las nuevas reglas y la VPN vuelve a conectarse si es necesario. La confirmación está desactivada de forma predeterminada. Una VPN detenida no se inicia automáticamente.</string>
+    <string name="vpn_routing_mode">Escenario</string>
+    <string name="vpn_scenario_atomic">Aplicación atómica de escenarios</string>
+    <string name="vpn_scenario_atomic_help">Si se activa, el tráfico se bloquea temporalmente antes de cambiar las rutas activas. Después se aplican las reglas y la VPN vuelve a conectarse si es necesario. Si el cambio no se pudo completar de forma segura, detén la VPN antes de volver a intentarlo. Si se desactiva, cambiar el escenario o la opción Todo el dispositivo requiere confirmación aunque Pedir confirmación esté desactivado. Las reglas de aplicaciones se aplican automáticamente. Una VPN detenida no se inicia.</string>
+    <string name="vpn_scenario_back">ATRÁS</string>
+    <string name="vpn_scenario_confirm_body">¿Aplicar este cambio de enrutamiento? La VPN activa volverá a conectarse si es necesario.</string>
+    <string name="vpn_scenario_confirm_title">¿Aplicar escenario?</string>
+    <string name="vpn_scenario_confirmation">Pedir confirmación</string>
+    <string name="vpn_scenario_confirmation_help">Al activarlo, cambiar el escenario o la opción Todo el dispositivo requiere confirmación. Desactivado de forma predeterminada.</string>
+    <string name="vpn_scenario_default_help">Si está desactivado, solo pasa por VPN el tráfico de las aplicaciones que hayas elegido con una regla Por VPN. En el escenario Todo el dispositivo, esta opción siempre está activada y no se puede cambiar.</string>
+    <string name="vpn_scenario_remove">Eliminar regla</string>
+    <string name="vpn_scenario_selected_apps">Proxy</string>
+    <string name="vpn_scenario_settings">Ajustes de escenarios</string>
+    <string name="vpn_scenario_status_selected">Escenario: Proxy</string>
+    <string name="vpn_scenario_status_whole">Escenario: Todo el dispositivo</string>
+    <string name="vpn_scenario_whole_device">Todo el dispositivo</string>
+    <string name="vpn_scenarios">Enrutamiento</string>
+    <string name="vpn_scenarios_help">El escenario Todo el dispositivo envía todo el tráfico por VPN e ignora las reglas de aplicaciones.\n\nEl escenario Proxy aplica las reglas Por VPN / Sin VPN.\n\nCon Todo el dispositivo activado, todo el tráfico pasa por VPN salvo las aplicaciones marcadas Sin VPN. Si está desactivado, solo pasa por VPN el tráfico de las aplicaciones con una regla Por VPN.\n\nLa regla Sin VPN usa la conexión habitual del dispositivo y su configuración DNS del sistema, incluido Private DNS.</string>
+</resources>

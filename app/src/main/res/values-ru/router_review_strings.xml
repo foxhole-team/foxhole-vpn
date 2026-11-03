@@ -10,7 +10,7 @@
     <string name="router_review_architecture">Архитектура</string>
     <string name="router_review_protocols">Протоколы VPN</string>
     <string name="router_review_storage">Установка</string>
-    <string name="router_review_direct_ip">Статический IPv4 адрес подтверждён</string>
+    <string name="router_review_direct_ip">Статический IPv4 адрес</string>
     <string name="router_review_remote_settings">Доступ к VPN вне дома</string>
     <string name="router_review_phone_profile">Создать VPN-профиль для телефона</string>
     <string name="router_review_remote_help">Если ваш роутер поддерживает статический публичный IP-адрес, его можно использовать как VPN-шлюз для ваших устройств. Маршрут: устройство → роутер; местный трафик выходит напрямую, а зарубежный — через активное VPN-соединение.</string>
@@ -66,7 +66,7 @@
     <string name="router_review_reset_unavailable">Сброс FoxHole сейчас недоступен.</string>
     <string name="router_review_open_router_setup">ОТКРЫТЬ НАСТРОЙКИ РОУТЕРА</string>
     <string name="router_review_manual_address">УКАЗАТЬ АДРЕС</string>
-    <string name="router_review_local_traffic">Местный трафик напрямую</string>
+    <string name="router_review_local_traffic">Местный трафик</string>
     <string name="router_review_country_auto">Автоматически</string>
     <string name="router_review_country_unknown">Страна неизвестна</string>
     <string name="router_review_country_description">Страна для локального трафика: %1$s. Изменить.</string>
@@ -80,7 +80,7 @@
     <string name="router_review_saved_unknown">Не проверен</string>
     <string name="router_review_expand_profiles">Показать профили VPN</string>
     <string name="router_review_collapse_profiles">Скрыть профили VPN</string>
-    <string name="router_review_settings_help">Управление роутером и правила маршрутизации для этого телефона.\n\nСопряжение: до 10 мобильных устройств к одному роутеру; до 10 роутеров в одном приложении.</string>
+    <string name="router_review_settings_help">Управление роутером и правила маршрутизации для этого устройства.\n\nСопряжение: до 10 мобильных устройств к одному роутеру; до 10 роутеров в одном приложении.</string>
     <string name="router_review_disconnect">ОТКЛЮЧИТЬ</string>
     <string name="router_review_retry_search">Повторить поиск</string>
     <string name="router_review_enter_manually">Указать вручную</string>

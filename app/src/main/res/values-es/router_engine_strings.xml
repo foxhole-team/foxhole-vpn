@@ -2,7 +2,7 @@
 <resources>
     <string name="router_engines_entry">Ajustes de protocolos VPN</string>
     <string name="router_engines_title">Protocolos VPN</string>
-    <string name="router_engines_help">Instale o quite paquetes de protocolos VPN en el router. Los protocolos disponibles dependen del router y del catálogo verificado de la versión.</string>
+    <string name="router_engines_help">Instalar o eliminar paquetes de protocolos VPN en el router. Los protocolos disponibles dependen del router y del catálogo verificado de la versión.</string>
     <string name="router_engines_installed">Instalado</string>
     <string name="router_engines_add">Añadir protocolo</string>
     <string name="router_engines_update">Actualizar</string>

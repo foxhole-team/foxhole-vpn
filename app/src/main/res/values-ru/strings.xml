@@ -46,9 +46,9 @@
     <string name="vpn_about">О приложении</string>
     <string name="vpn_about_text">FoxHole VPN %1$s. Минимальный VPN-клиент от FoxHole Team. Шрифты: Tiny5 и JetBrains Mono, SIL Open Font License 1.1.</string>
     <string name="vpn_help_connect_title">Подключение</string>
-    <string name="vpn_help_connect_body">Импортируйте профиль своего VPN-провайдера или сервера, выберите его, нажмите «Старт» и разрешите VPN в окне Android. «Стоп» отменяет подключение или отключает VPN.</string>
+    <string name="vpn_help_connect_body">Импортируйте профиль своего VPN-провайдера или сервера, выберите его, нажмите «Старт» и разрешите VPN в системном окне Android. «Стоп» отменяет подключение и отключает VPN.</string>
     <string name="vpn_help_profiles_title">Профили</string>
-    <string name="vpn_help_profiles_body">Выберите профиль круглой кнопкой слева. Нажмите на карточку, чтобы раскрыть сведения; если в профиле несколько вариантов протокола, выберите нужный в списке. Удерживайте, чтобы поделиться, обновить, удалить или отправить на сопряжённый роутер. При отправке передаётся весь профиль или исходная ссылка, включая возможные данные доступа. Делитесь только с теми, кому доверяете. Обновляются профили из подписок провайдера и динамических ключей Outline.</string>
+    <string name="vpn_help_profiles_body">Управление сохранённым профилем VPN реализовано через длительное нажатие на профиль. Доступны функции: поделиться, обновить, удалить или отправить на сопряжённый роутер. При отправке передаётся весь профиль или исходная ссылка, включая возможные данные доступа. Делитесь только с теми, кому доверяете. Обновляются профили из подписок провайдера и динамических ключей Outline.</string>
     <string name="vpn_import">ИМПОРТ</string>
     <string name="vpn_import_text">Конфигурация или ссылка</string>
     <string name="vpn_import_file">ВЫБРАТЬ ФАЙЛ</string>
@@ -112,7 +112,7 @@
     <string name="vpn_continue">ПРОДОЛЖИТЬ</string>
     <string name="vpn_profile_refresh_unavailable">Обновлять можно только профили подписки.</string>
     <string name="vpn_help_add_title">Добавление профиля</string>
-    <string name="vpn_help_add_body">Нажмите +: вставьте ссылку подключения или HTTPS-ссылку подписки провайдера, в том числе из v2rayTun. Также можно ввести её вручную, выбрать файл или отсканировать QR-код.</string>
+    <string name="vpn_help_add_body">Нажмите «+»: вставьте ссылку подключения или HTTPS-ссылку подписки вашего провайдера VPN, в том числе из v2rayTun. Также можно ввести её вручную, выбрать файл или отсканировать QR-код.</string>
     <string name="vpn_help_protocols_title">Поддерживаемые протоколы</string>
-    <string name="vpn_help_protocols_body">VLESS, VMess, Trojan, Shadowsocks/Outline, WireGuard, Hysteria2, Naive, TUIC и AnyTLS. Импорт: ссылки, HTTPS-подписки провайдера, в том числе из v2rayTun, совместимые JSON, Clash/mihomo YAML, SIP008 JSON, динамические ключи Outline (ssconf://) и WireGuard. Из Clash/mihomo импортируются поддерживаемые серверы. Правила маршрутизации, группы и другие настройки клиента не переносятся; конфигурации с внешними proxy-providers не поддерживаются.</string>
+    <string name="vpn_help_protocols_body">VLESS, VMess, Trojan, Shadowsocks/Outline, WireGuard, Hysteria2, Naive, TUIC и AnyTLS. Импорт: ссылки, HTTPS-подписки провайдера, в том числе из v2rayTun, совместимые JSON, Clash/mihomo YAML, SIP008 JSON, динамические ключи Outline (ssconf://) и WireGuard. Из Clash/mihomo импортируются поддерживаемые серверы.</string>
 </resources>

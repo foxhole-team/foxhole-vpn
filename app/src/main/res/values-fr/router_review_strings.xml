@@ -9,7 +9,7 @@
     <string name="router_review_architecture">Architecture</string>
     <string name="router_review_protocols">Protocoles VPN</string>
     <string name="router_review_storage">Installation</string>
-    <string name="router_review_direct_ip">Adresse IPv4 statique confirmée</string>
+    <string name="router_review_direct_ip">Adresse IPv4 statique</string>
     <string name="router_review_remote_settings">Accès VPN hors du domicile</string>
     <string name="router_review_phone_profile">Créer un profil VPN pour ce téléphone</string>
     <string name="router_review_remote_help">Si votre routeur prend en charge une adresse IP publique statique, vous pouvez l’utiliser comme passerelle VPN pour vos appareils. Trajet : appareil → routeur ; le trafic local sort directement, tandis que le trafic étranger passe par la connexion VPN active.</string>
@@ -37,7 +37,7 @@
     <string name="router_review_direct">Sans VPN</string>
     <string name="router_review_selected_profile">Profil du routeur sélectionné</string>
     <string name="router_review_unpair">Désappairer le routeur ?</string>
-    <string name="router_review_unpair_description">Ce téléphone cessera de gérer le routeur. Le VPN du routeur continuera de fonctionner sauf si vous supprimez FoxHole.</string>
+    <string name="router_review_unpair_description">Le téléphone ne pourra plus gérer le routeur. Le VPN continuera de fonctionner tant que FoxHole n’est pas supprimé.</string>
     <string name="router_review_delete_package">Supprimer FoxHole du routeur</string>
     <string name="router_review_delete_unavailable">La suppression nécessite un routeur joignable et un installateur compatible.</string>
     <string name="router_review_confirm_unpair">DÉSAPPAIRER</string>
@@ -65,11 +65,11 @@
     <string name="router_review_reset_unavailable">Réinitialisation de FoxHole actuellement indisponible.</string>
     <string name="router_review_open_router_setup">OUVRIR LES PARAMÈTRES DU ROUTEUR</string>
     <string name="router_review_manual_address">SAISIR L’ADRESSE</string>
-    <string name="router_review_local_traffic">Sites du pays en direct</string>
+    <string name="router_review_local_traffic">Trafic local</string>
     <string name="router_review_country_auto">Automatique</string>
     <string name="router_review_country_unknown">Pays inconnu</string>
-    <string name="router_review_country_description">Pays du trafic local : %1$s. Changer de pays.</string>
-    <string name="router_review_country_unknown_description">Pays inconnu. Choisissez un pays.</string>
+    <string name="router_review_country_description">Pays pour le trafic local : %1$s. Modifier.</string>
+    <string name="router_review_country_unknown_description">Pays inconnu. Choisir un pays.</string>
     <string name="router_review_device_vpn">VPN</string>
     <string name="router_review_add_router">Ajouter un routeur</string>
     <string name="router_review_choose_router">Choisir un routeur</string>
@@ -79,6 +79,6 @@
     <string name="router_review_saved_unknown">Non vérifié</string>
     <string name="router_review_expand_profiles">Afficher les profils VPN</string>
     <string name="router_review_collapse_profiles">Masquer les profils VPN</string>
-    <string name="router_review_settings_help">Gestion du routeur et préférences de routage pour ce téléphone.\n\nAssociation : jusqu’à 10 appareils mobiles par routeur ; jusqu’à 10 routeurs dans une application.</string>
+    <string name="router_review_settings_help">Gestion du routeur et règles de routage pour cet appareil.\n\nAppairage : jusqu’à 10 appareils mobiles pour un routeur et 10 routeurs dans une application.</string>
     <string name="router_review_disconnect">DÉCONNECTER</string>
 </resources>

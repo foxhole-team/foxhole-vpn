@@ -180,22 +180,18 @@ internal fun VpnRouterLoginSheet(
         return
     }
     val render: VpnRouterLoginLayout = layout ?: { working, headerActions, footer, content ->
-        VpnRouterSheetContent(R.string.vpn_router, R.drawable.lin_router,
+        VpnRouterSheetContent(if (installed) R.string.vpn_router_pin else R.string.vpn_router_password,
+            R.drawable.lin_router, titleHelp = if (installed) R.string.router_help_pin else R.string.router_help_password,
             busy = working, actions = headerActions, footer = footer, content = content)
     }
     render(
         busy || submitting || readingKey,
-        {
-            VpnRouterHelpButton(
-                if (installed) R.string.vpn_router_pin else R.string.vpn_router_password,
-                if (installed) R.string.router_help_pin else R.string.router_help_password,
-            )
-        },
+        {},
         {
             OutlinedButton(
                 onClick = ::submit,
                 enabled = !busy && !submitting && ready,
-                modifier = Modifier.fillMaxWidth().heightIn(min = if (layout == null) 60.dp else 48.dp),
+                modifier = Modifier.fillMaxWidth().heightIn(min = if (layout == null) 52.dp else 48.dp),
                 border = BorderStroke(1.5.dp, if (installed || layout != null) routerConnectColor() else MaterialTheme.colorScheme.outline),
                 colors = ButtonDefaults.outlinedButtonColors(contentColor =
                     if (installed || layout != null) routerConnectColor() else MaterialTheme.colorScheme.primary),

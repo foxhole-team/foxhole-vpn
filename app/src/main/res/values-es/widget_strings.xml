@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="widget_status_label">FoxHole VPN · Estado</string>
-    <string name="widget_status_description">Estado VPN compacto y control de conexión.</string>
+    <string name="widget_status_description">Estado compacto de la VPN y controles de conexión.</string>
     <string name="widget_fox_label">FoxHole VPN · Zorro</string>
-    <string name="widget_fox_description">El zorro muestra el estado de conexión VPN. Toque para conectar o desconectar.</string>
+    <string name="widget_fox_description">Estado de la VPN. Toca para conectar o desconectar.</string>
     <string name="widget_connected">Conectado a la red VPN</string>
     <string name="widget_loading">Cargando</string>
     <string name="widget_disconnected">Desconectado de la red VPN</string>

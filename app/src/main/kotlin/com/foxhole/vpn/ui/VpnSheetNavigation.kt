@@ -11,7 +11,11 @@ import com.foxhole.vpn.VpnProtocolChangeRequest
 
 internal sealed interface VpnSheetPage {
     data object Settings : VpnSheetPage
+    data object Scenarios : VpnSheetPage
+    data object ScenarioSettings : VpnSheetPage
     data object AppUpdate : VpnSheetPage
+    data object AppJournal : VpnSheetPage
+    data object AppJournalSettings : VpnSheetPage
     data object RouterEntry : VpnSheetPage
     data object RouterWizard : VpnSheetPage
     data object RouterControl : VpnSheetPage
@@ -55,7 +59,7 @@ internal fun VpnSheetPageTransition(entry: VpnSheetEntry, animateSize: Boolean =
         targetState = entry,
         modifier = Modifier.fillMaxWidth(),
         contentKey = { it.page },
-        transitionSpec = { VpnSheetMotion.pageTransition(animateSize) },
+        transitionSpec = { VpnSheetMotion.pageTransition(animateSize, forward = targetState.depth >= initialState.depth) },
         label = "vpn-sheet-navigation",
         content = { current -> content(current) },
     )

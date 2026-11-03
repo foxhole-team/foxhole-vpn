@@ -12,6 +12,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.edit
+import com.foxhole.vpn.BuildConfig
 import com.foxhole.vpn.MainActivity
 import com.foxhole.vpn.R
 import com.foxhole.vpn.VpnApplication
@@ -23,6 +24,7 @@ internal class VpnAppUpdateNotifier(context: Context) {
     private val preferences = this.context.getSharedPreferences("vpn-app-updates", Context.MODE_PRIVATE)
 
     fun notify(release: VpnAppRelease): Boolean {
+        if (!VpnAppUpdatePolicy.allowed(context.packageName, BuildConfig.APP_UPDATE_CHANNEL)) return false
         val localized = context.withVpnLocale((context as? VpnApplication)?.controller?.settings?.value?.language ?: VpnLanguage.SYSTEM)
         val code = release.manifest.versionCode
         if (code <= preferences.getLong("last-notified-code", 0) ||
@@ -35,10 +37,13 @@ internal class VpnAppUpdateNotifier(context: Context) {
         val open = PendingIntent.getActivity(context, 490, Intent(context, MainActivity::class.java)
             .setAction(ACTION_OPEN_APP_UPDATE).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP),
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+        val body = localized.getString(R.string.app_update_available_recommendation)
         val notification = NotificationCompat.Builder(context, CHANNEL)
             .setSmallIcon(R.drawable.ic_notification_vpn)
-            .setContentTitle(localized.getString(R.string.vpn_app_update_notification_title))
-            .setContentText(localized.getString(R.string.vpn_app_update_notification_body, release.manifest.versionName))
+            .setContentTitle(localized.getString(R.string.app_name))
+            .setContentText(body).setOnlyAlertOnce(true)
+            .setStyle(NotificationCompat.BigTextStyle().bigText(body))
+            .addAction(R.drawable.lin_download, localized.getString(R.string.app_update_available_action), open)
             .setContentIntent(open).setAutoCancel(true).setVisibility(NotificationCompat.VISIBILITY_PRIVATE)
             .setCategory(NotificationCompat.CATEGORY_RECOMMENDATION).build()
         return try {

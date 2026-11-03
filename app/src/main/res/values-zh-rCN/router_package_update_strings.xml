@@ -5,7 +5,7 @@
     <string name="router_updates_current_version">当前版本：%1$s</string>
     <string name="router_updates_available_version">可用版本：%1$s</string>
     <string name="router_updates_auto">自动更新 FoxHole</string>
-    <string name="router_updates_auto_help">启用后，路由器每天检查并安装已验证的 FoxHole 软件包更新。可在设置时或稍后在路由器设置中关闭。取消配对后，此策略仍保留在路由器上。</string>
+    <string name="router_updates_auto_help">启用后，路由器每 24 小时检查并安装经过验证的 FoxHole 软件包更新。可以在安装时或稍后在路由器设置中关闭。解除配对后，此策略仍保留在路由器上。</string>
     <string name="router_updates_apply">更新</string>
     <string name="router_updates_check">检查</string>
     <string name="router_updates_status">检查状态</string>

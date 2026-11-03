@@ -2,7 +2,7 @@
 <resources>
     <string name="router_engines_entry">VPN 协议设置</string>
     <string name="router_engines_title">VPN 协议</string>
-    <string name="router_engines_help">在路由器上安装或移除 VPN 协议软件包。可用协议取决于路由器和已验证的发布目录。</string>
+    <string name="router_engines_help">在路由器上安装或删除 VPN 协议软件包。可用协议取决于路由器和已验证的发布目录。</string>
     <string name="router_engines_installed">已安装</string>
     <string name="router_engines_add">添加协议</string>
     <string name="router_engines_update">更新</string>

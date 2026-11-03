@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_appearance">Apariencia</string>
+    <string name="vpn_app_journal_settings">Ajustes del registro</string>
+</resources>

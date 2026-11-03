@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_app_journal_title">Application journal</string>
+    <string name="vpn_app_journal_retention">Journal cleanup</string>
+    <string name="vpn_app_journal_day">1 day</string>
+    <string name="vpn_app_journal_week">1 week</string>
+    <string name="vpn_app_journal_month">1 month</string>
+    <string name="vpn_app_journal_forever">Forever</string>
+    <string name="vpn_app_journal_save">Save</string>
+    <string name="vpn_app_journal_time">Time (UTC)</string>
+    <string name="vpn_app_journal_event">Event</string>
+    <string name="vpn_app_journal_result">Result</string>
+    <string name="vpn_app_journal_empty">No application events yet.</string>
+    <string name="vpn_app_journal_storage_error">The journal could not be read or updated.</string>
+    <string name="vpn_app_journal_saved">Journal saved.</string>
+    <string name="vpn_app_journal_save_failed">The journal could not be saved.</string>
+</resources>

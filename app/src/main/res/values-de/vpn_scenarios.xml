@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_add_application">App hinzufügen</string>
+    <string name="vpn_app_picker_unavailable">Die System-App-Auswahl ist nicht verfügbar.</string>
+    <string name="vpn_app_route_direct">Ohne VPN</string>
+    <string name="vpn_app_route_vpn">Über VPN</string>
+    <string name="vpn_app_rules">App-Regeln</string>
+    <string name="vpn_app_rules_empty">Fügen Sie Apps hinzu, um Routingregeln zu erstellen.</string>
+    <string name="vpn_help_scenarios_body">Öffnen Sie „Szenarien“ über die Schaltfläche in der oberen Reihe der Startseite. Hier wählen Sie das Routing für das gesamte Gerät oder einzelne Apps.\n\nTippen Sie auf „App hinzufügen“, wählen Sie Apps in der Liste aus und legen Sie „Über VPN“ oder „Ohne VPN“ fest. Markierte Apps stehen oben. Der App-Filter zeigt alle, System- oder Benutzer-Apps; standardmäßig werden Benutzer-Apps angezeigt. Halten Sie eine Regel gedrückt und bestätigen Sie das Entfernen. Die App-Liste bleibt beim Wechsel zwischen Szenarien erhalten.\n\nDas Szenario „Gesamtes Gerät“ leitet sämtlichen Datenverkehr durch das VPN und ignoriert App-Regeln.\n\nDas Szenario „Proxy“ verwendet die Regeln der Apps in der Liste. Ist „Gesamtes Gerät“ aktiviert, verwenden alle Apps das VPN außer den mit „Ohne VPN“ markierten. Ist es deaktiviert, verwenden nur Apps mit der Regel „Über VPN“ das VPN.\n\nIn den Szenarioeinstellungen steuern Sie die atomare Anwendung und die Bestätigung von Änderungen. Die atomare Anwendung ist standardmäßig aktiviert: Vor Änderungen an den aktiven Routen wird der Datenverkehr blockiert, anschließend werden die neuen Regeln angewendet und das VPN bei Bedarf neu verbunden. Die Bestätigung ist standardmäßig deaktiviert. Ein gestopptes VPN wird nicht selbstständig gestartet.</string>
+    <string name="vpn_routing_mode">Szenario</string>
+    <string name="vpn_scenario_atomic">Szenarien atomar anwenden</string>
+    <string name="vpn_scenario_atomic_help">Wenn aktiviert, wird der Datenverkehr vor Änderungen an den aktiven Routen vorübergehend blockiert. Danach werden die Regeln angewendet und das VPN bei Bedarf neu verbunden. Wenn die Änderung nicht sicher abgeschlossen werden konnte, stoppen Sie das VPN vor einem erneuten Versuch. Wenn deaktiviert, erfordern ein Szenariowechsel und Änderungen an „Gesamtes Gerät“ eine Bestätigung, selbst wenn „Bestätigung anfordern“ deaktiviert ist. App-Regeln werden automatisch angewendet. Ein gestopptes VPN wird nicht gestartet.</string>
+    <string name="vpn_scenario_back">ZURÜCK</string>
+    <string name="vpn_scenario_confirm_body">Die Routingänderung anwenden? Ein laufendes VPN wird bei Bedarf neu verbunden.</string>
+    <string name="vpn_scenario_confirm_title">Szenario anwenden?</string>
+    <string name="vpn_scenario_confirmation">Bestätigung anfordern</string>
+    <string name="vpn_scenario_confirmation_help">Wenn aktiviert, erfordern ein Szenariowechsel und das Umschalten von „Gesamtes Gerät“ eine Bestätigung. Standardmäßig deaktiviert.</string>
+    <string name="vpn_scenario_default_help">Wenn deaktiviert, läuft nur der Datenverkehr ausgewählter Apps mit der Regel „Über VPN“ durch das VPN. Im Szenario „Gesamtes Gerät“ ist diese Einstellung immer aktiviert und kann nicht geändert werden.</string>
+    <string name="vpn_scenario_remove">Regel entfernen</string>
+    <string name="vpn_scenario_selected_apps">Proxy</string>
+    <string name="vpn_scenario_settings">Szenarioeinstellungen</string>
+    <string name="vpn_scenario_status_selected">Szenario: Proxy</string>
+    <string name="vpn_scenario_status_whole">Szenario: Gesamtes Gerät</string>
+    <string name="vpn_scenario_whole_device">Gesamtes Gerät</string>
+    <string name="vpn_scenarios">Routing</string>
+    <string name="vpn_scenarios_help">Das Szenario „Gesamtes Gerät“ leitet sämtlichen Datenverkehr durch das VPN und ignoriert App-Regeln.\n\nDas Szenario „Proxy“ wendet die Regeln „Über VPN“ / „Ohne VPN“ an.\n\nIst „Gesamtes Gerät“ aktiviert, läuft sämtlicher Datenverkehr durch das VPN außer dem von Apps mit der Regel „Ohne VPN“. Ist es deaktiviert, verwenden nur Apps mit der Regel „Über VPN“ das VPN.\n\nDie Regel „Ohne VPN“ verwendet die normale Verbindung des Geräts und dessen DNS-Einstellungen des Systems, einschließlich Private DNS.</string>
+</resources>

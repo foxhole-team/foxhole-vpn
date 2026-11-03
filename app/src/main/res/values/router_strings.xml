@@ -28,10 +28,10 @@
     <string name="vpn_router_change_pin_note">Choose a six-digit PIN at the end of first setup. Later PIN changes are available only in LuCI using the owner account.</string>
     <string name="vpn_router_save">SAVE</string>
     <string name="vpn_router_no_profile">No router VPN profile</string>
-    <string name="vpn_router_country_direct">Country sites directly</string>
+    <string name="vpn_router_country_direct">Local traffic</string>
     <string name="vpn_router_country_direct_note">Sites in the selected country bypass the VPN tunnel.</string>
     <string name="vpn_router_home_country">Country code, for example NL</string>
-    <string name="vpn_router_auto_home">Automatic home switching</string>
+    <string name="vpn_router_auto_home">Auto-connect on home network</string>
     <string name="vpn_router_add_phone">Add this phone</string>
     <string name="vpn_router_error_wifi">To find the router, connect to its Wi-Fi</string>
     <string name="vpn_router_error_address">Check the router’s local IP address.</string>

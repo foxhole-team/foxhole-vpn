@@ -10,7 +10,7 @@ import javax.xml.parsers.DocumentBuilderFactory
 
 class FoxWidgetAssetsTest {
     @Test
-    fun `simple power action has symmetric host padding and a centered header`() {
+    fun `power action fills the same content width as the header without extra insets`() {
         listOf("widget_status.xml", "widget_status_compact.xml").forEach { layout ->
             val document = DocumentBuilderFactory.newInstance().newDocumentBuilder()
                 .parse(resourceRoot().resolve("layout/$layout"))
@@ -37,7 +37,7 @@ class FoxWidgetAssetsTest {
             assertEquals("match_parent", attribute(row, "layout_width"))
             assertEquals("48dp", attribute(row, "layout_height"))
             assertEquals("horizontal", attribute(row, "orientation"))
-            assertEquals("6dp", attribute(row, "layout_marginTop"))
+            assertEquals("2dp", attribute(row, "layout_marginTop"))
             assertEquals(null, attribute(action, "layout_marginTop"))
             assertEquals("48dp", attribute(action, "layout_height"))
             assertEquals(null, attribute(action, "layout_weight"))
@@ -50,15 +50,27 @@ class FoxWidgetAssetsTest {
             assertEquals("@drawable/widget_status_action_outline", attribute(ring, "src"))
             assertEquals(null, attribute(row, "paddingStart"))
             assertEquals(null, attribute(row, "paddingEnd"))
+            assertEquals(null, attribute(row, "paddingHorizontal"))
+            assertEquals(null, attribute(row, "paddingLeft"))
+            assertEquals(null, attribute(row, "paddingRight"))
+            assertEquals(null, attribute(action, "layout_marginStart"))
+            assertEquals(null, attribute(action, "layout_marginEnd"))
             assertEquals("match_parent", attribute(action, "layout_width"))
-            assertEquals("center_horizontal", attribute(row, "gravity"))
-            assertEquals(48f, dp(touch, "layout_width"), 0.001f)
+            assertEquals("48dp", attribute(action, "minWidth"))
+            assertEquals("center", attribute(row, "gravity"))
+            val labelRow = (0 until action.childNodes.length).map(action.childNodes::item)
+                .single { it.nodeName == "LinearLayout" }
+            assertEquals("match_parent", attribute(labelRow, "layout_width"))
+            assertEquals("center", attribute(labelRow, "gravity"))
+            assertTrue(dp(touch, "layout_width") >= 48f)
             assertTrue(dp(logo, "layout_width") <= dp(touch, "layout_width"))
             val headers = document.getElementsByTagName("LinearLayout")
             val header = (0 until headers.length).map(headers::item).single {
                 attribute(it, "id") == "@+id/widget_status_header"
             }
-            assertEquals("wrap_content", attribute(header, "layout_width"))
+            assertEquals("match_parent", attribute(header, "layout_width"))
+            assertEquals(attribute(header, "layout_width"), attribute(row, "layout_width"))
+            assertEquals(header.parentNode, row.parentNode)
             assertEquals("center_horizontal", attribute(header, "layout_gravity"))
             val group = row.parentNode
             assertEquals("match_parent", attribute(group, "layout_width"))

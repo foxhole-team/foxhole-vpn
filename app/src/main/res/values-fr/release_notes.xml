@@ -10,4 +10,9 @@
     <string name="vpn_release_notes_pin6">Ajout d’un PIN à six chiffres avec confirmation pendant l’installation et de la prise en charge de jusqu’à 10 routeurs.</string>
     <string name="vpn_release_notes_update_position">La notification de mise à jour de l’application a été déplacée au-dessus de la sélection des profils VPN.</string>
     <string name="vpn_release_notes_router_pairing_version">Correction de la vérification de la version d’OpenWrt lors de l’appairage avec un routeur.</string>
+    <string name="vpn_release_notes_scenarios">Ajout du routage (bêta) par application avec application atomique des modifications.</string>
+    <string name="vpn_release_notes_interface_103">Interface optimisée : correction de l’affichage du drapeau du pays, des couleurs des listes de sélection et des animations des fenêtres.</string>
+    <string name="vpn_release_notes_help_103">Amélioration de la documentation et de la section d’aide dans toutes les langues prises en charge.</string>
+    <string name="vpn_release_notes_dns_103">Correction du routage DNS dans les scénarios de l’application.</string>
+    <string name="vpn_release_notes_widget_103">Le widget affiche désormais le scénario de routage actuel avec une indication par couleur.</string>
 </resources>

@@ -8,7 +8,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
@@ -16,41 +17,25 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.ExposedDropdownMenuBox
-import androidx.compose.material3.ExposedDropdownMenuAnchorType
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.layout.boundsInWindow
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.layout.positionInWindow
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.DpOffset
-import androidx.compose.ui.unit.LayoutDirection
-import kotlin.math.roundToInt
 import com.foxhole.vpn.R
 import com.foxhole.vpn.VpnLanguage
 import com.foxhole.vpn.VpnSettings
 import com.foxhole.vpn.VpnTheme
 import com.foxhole.vpn.VpnFontStyle
 
-internal enum class VpnSettingsDetail { THEME, LANGUAGE, BACKGROUND_UPDATES, HELP, ABOUT }
+internal enum class VpnSettingsDetail { APPEARANCE, BACKGROUND_UPDATES, HELP, ABOUT }
 
 @Composable
 internal fun VpnSettingsScreen(
@@ -60,17 +45,15 @@ internal fun VpnSettingsScreen(
     onSystemSettings: () -> Unit,
     modifier: Modifier = Modifier,
     onAppUpdate: () -> Unit = {},
+    onAppJournal: () -> Unit = {},
 ) {
     VpnSheetContent(R.string.vpn_settings, R.drawable.lin_settings, modifier.verticalScroll(rememberScrollState())) {
-        SectionLabel(R.string.vpn_settings_connection, first = true)
         SettingsRow(R.string.vpn_profiles, onClick = onProfiles)
         SettingsRow(R.string.vpn_system_settings, onClick = onSystemSettings)
+        SettingsRow(R.string.vpn_appearance) { onSettingsDetail(VpnSettingsDetail.APPEARANCE) }
         SettingsRow(R.string.vpn_background_updates) { onSettingsDetail(VpnSettingsDetail.BACKGROUND_UPDATES) }
-        SectionLabel(R.string.vpn_settings_app)
-        SettingsRow(R.string.vpn_theme, stringResource(themeLabel(settings.theme))) { onSettingsDetail(VpnSettingsDetail.THEME) }
-        SettingsRow(R.string.vpn_language, stringResource(languageLabel(settings.language)),
-            valueFlagCountry = com.foxhole.vpn.vpnLanguageFlagCountry(settings.language)) { onSettingsDetail(VpnSettingsDetail.LANGUAGE) }
         SettingsRow(R.string.vpn_app_update_title, onClick = onAppUpdate)
+        SettingsRow(R.string.vpn_app_journal_title, onClick = onAppJournal)
         SettingsRow(R.string.vpn_help) { onSettingsDetail(VpnSettingsDetail.HELP) }
         SettingsRow(R.string.vpn_about) { onSettingsDetail(VpnSettingsDetail.ABOUT) }
     }
@@ -87,36 +70,52 @@ internal fun VpnSettingsDetailScreen(
     busy: Boolean = false,
 ) {
     val title = when (detail) {
-        VpnSettingsDetail.THEME -> R.string.vpn_theme
-        VpnSettingsDetail.LANGUAGE -> R.string.vpn_language
+        VpnSettingsDetail.APPEARANCE -> R.string.vpn_appearance
         VpnSettingsDetail.BACKGROUND_UPDATES -> R.string.vpn_background_updates
         VpnSettingsDetail.HELP -> R.string.vpn_help
         VpnSettingsDetail.ABOUT -> R.string.vpn_about
     }
     val icon = when (detail) {
-        VpnSettingsDetail.THEME -> R.drawable.lin_theme
-        VpnSettingsDetail.LANGUAGE -> R.drawable.lin_language
+        VpnSettingsDetail.APPEARANCE -> R.drawable.lin_theme
         VpnSettingsDetail.BACKGROUND_UPDATES -> R.drawable.lin_refresh
         VpnSettingsDetail.HELP -> R.drawable.lin_help
         VpnSettingsDetail.ABOUT -> R.drawable.lin_info
     }
+    if (detail == VpnSettingsDetail.HELP) {
+        VpnRouterSheetContent(title, icon, modifier, busy = busy, scrollable = false, naturalHeight = true) {
+            HelpContent()
+        }
+        return
+    }
     VpnSheetContent(title, icon, modifier.verticalScroll(rememberScrollState()), busy = busy) {
         when (detail) {
-            VpnSettingsDetail.THEME -> {
-                VpnTheme.entries.forEach { value ->
-                    ChoiceRow(stringResource(themeLabel(value)), settings.theme == value, enabled) {
-                        onSettings(settings.copy(theme = value))
-                        onBack()
+            VpnSettingsDetail.APPEARANCE -> {
+                val locales = LocalConfiguration.current.locales
+                val effectiveLanguageTag = if (locales.isEmpty) "" else locales[0].toLanguageTag()
+                AppearanceSettingRow(R.string.vpn_language) {
+                    VpnChoiceDropdown(stringResource(languageLabel(settings.language)), enabled,
+                        leadingFlagCountry = displayedLanguageFlagCountry(settings.language, effectiveLanguageTag)) { dismiss ->
+                        com.foxhole.vpn.VPN_APP_LANGUAGE_CHOICES.forEach { value ->
+                            DropdownMenuItem(text = { Text(stringResource(languageLabel(value)), maxLines = 1,
+                                overflow = TextOverflow.Ellipsis) },
+                                leadingIcon = { VpnFlagIcon(displayedLanguageFlagCountry(value, effectiveLanguageTag), showUnknown = true) },
+                                trailingIcon = { RadioButton(value == settings.language, onClick = null) },
+                                onClick = { dismiss(); onSettings(settings.copy(language = value)) })
+                        }
                     }
                 }
-                SectionLabel(R.string.vpn_font_style)
-                FontStyleDropdown(settings.fontStyle, enabled) { onSettings(settings.copy(fontStyle = it)) }
-            }
-            VpnSettingsDetail.LANGUAGE -> com.foxhole.vpn.VPN_APP_LANGUAGE_CHOICES.forEach { value ->
-                ChoiceRow(stringResource(languageLabel(value)), settings.language == value, enabled,
-                    flagCountry = com.foxhole.vpn.vpnLanguageFlagCountry(value)) {
-                    onSettings(settings.copy(language = value))
-                    onBack()
+                AppearanceSettingRow(R.string.vpn_font_style) {
+                    FontStyleDropdown(settings.fontStyle, enabled) { onSettings(settings.copy(fontStyle = it)) }
+                }
+                AppearanceSettingRow(R.string.vpn_theme) {
+                    VpnChoiceDropdown(stringResource(themeLabel(settings.theme)), enabled) { dismiss ->
+                        VpnTheme.entries.forEach { value ->
+                            DropdownMenuItem(text = { Text(stringResource(themeLabel(value)), maxLines = 1,
+                                overflow = TextOverflow.Ellipsis) },
+                                trailingIcon = { RadioButton(value == settings.theme, onClick = null) },
+                                onClick = { dismiss(); onSettings(settings.copy(theme = value)) })
+                        }
+                    }
                 }
             }
             VpnSettingsDetail.BACKGROUND_UPDATES -> {
@@ -131,61 +130,23 @@ internal fun VpnSettingsDetailScreen(
                     onSettings(settings.copy(autoCheckConnectionData = it))
                 }
             }
-            VpnSettingsDetail.HELP -> HelpContent()
+            VpnSettingsDetail.HELP -> Unit
             VpnSettingsDetail.ABOUT -> VpnAboutContent()
         }
     }
 }
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
 private fun FontStyleDropdown(style: VpnFontStyle, enabled: Boolean, onSelect: (VpnFontStyle) -> Unit) {
-    var expanded by remember { mutableStateOf(false) }
-    var menuGeometry by remember { mutableStateOf(VpnFontMenuGeometry(0, 0)) }
-    val density = LocalDensity.current
-    val layoutDirection = LocalLayoutDirection.current
-    val menuExpanded = expanded && enabled && menuGeometry.widthPx > 0
-    ExposedDropdownMenuBox(
-        expanded = menuExpanded,
-        onExpandedChange = { if (enabled) expanded = it },
-        modifier = Modifier.fillMaxWidth(),
-    ) {
-        val shape = MaterialTheme.shapes.extraLarge
-        val toggleTarget = !menuExpanded
-        OutlinedButton(onClick = { expanded = toggleTarget }, enabled = enabled, shape = shape,
-            modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)
-                .menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable, enabled)
-                .onGloballyPositioned { coordinates ->
-                    val origin = coordinates.positionInWindow()
-                    val visible = coordinates.boundsInWindow()
-                    menuGeometry = vpnFontMenuGeometry(
-                        nativeLeftPx = origin.x.roundToInt(),
-                        nativeWidthPx = coordinates.size.width,
-                        visibleLeftPx = visible.left.roundToInt(),
-                        visibleRightPx = visible.right.roundToInt(),
-                        isRtl = layoutDirection == LayoutDirection.Rtl,
-                    )
-                }
-                .testTag("font-style-anchor")) {
-            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text(stringResource(fontStyleLabel(style)), Modifier.weight(1f), style = vpnFontPreviewStyle(style),
-                    maxLines = 2, overflow = TextOverflow.Ellipsis)
-                Icon(painterResource(R.drawable.lin_chevron_down), null, Modifier.size(20.dp))
-            }
-        }
-        DropdownMenu(expanded = menuExpanded, onDismissRequest = { expanded = false },
-            offset = DpOffset(with(density) { menuGeometry.offsetPx.toDp() }, 0.dp),
-            shape = shape,
-            modifier = Modifier.width(with(density) { menuGeometry.widthPx.toDp() })
-                .heightIn(max = 240.dp).testTag("font-style-menu")) {
-            VpnFontStyle.entries.forEach { value ->
-                DropdownMenuItem(text = { Text(stringResource(fontStyleLabel(value)), style = vpnFontPreviewStyle(value),
-                    maxLines = 2, overflow = TextOverflow.Ellipsis) },
-                    onClick = { expanded = false; onSelect(value) },
-                    trailingIcon = { RadioButton(value == style, onClick = null) },
-                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp))
-            }
+    VpnChoiceDropdown(stringResource(fontStyleLabel(style)), enabled,
+        labelStyle = vpnFontPreviewStyle(style), tag = "font-style",
+        menuMaxHeight = 240.dp) { dismiss ->
+        VpnFontStyle.entries.forEach { value ->
+            DropdownMenuItem(text = { Text(stringResource(fontStyleLabel(value)), style = vpnFontPreviewStyle(value),
+                maxLines = 1, overflow = TextOverflow.Ellipsis) },
+                onClick = { dismiss(); onSelect(value) },
+                trailingIcon = { RadioButton(value == style, onClick = null) },
+                modifier = Modifier.heightIn(min = 48.dp))
         }
     }
 }
@@ -197,26 +158,17 @@ internal fun fontStyleLabel(style: VpnFontStyle): Int = when (style) {
 
 @Composable
 private fun HelpContent() {
-    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        listOf(
-            R.string.vpn_help_add_title to R.string.vpn_help_add_body,
-            R.string.vpn_help_connect_title to R.string.vpn_help_connect_body,
-            R.string.vpn_help_profiles_title to R.string.vpn_help_profiles_body,
-            R.string.vpn_help_protocols_title to R.string.vpn_help_protocols_body,
-            R.string.vpn_router to R.string.vpn_help_router_body,
-            R.string.vpn_help_updates_title to R.string.vpn_help_updates_body,
-            R.string.vpn_help_privacy_title to R.string.vpn_help_privacy_body,
-        ).forEach { (title, body) ->
-            Text(stringResource(title), style = MaterialTheme.typography.titleMedium)
-            Text(stringResource(body), style = MaterialTheme.typography.bodyMedium)
-        }
-    }
+    VpnHelpContent()
 }
 
 @Composable
-private fun SectionLabel(label: Int, first: Boolean = false) {
-    Text(stringResource(label), Modifier.padding(top = if (first) 0.dp else 24.dp, bottom = 6.dp),
-        style = MaterialTheme.typography.bodySmall, color = LocalVpnColors.current.muted)
+private fun AppearanceSettingRow(label: Int, value: @Composable () -> Unit) {
+    Row(Modifier.fillMaxWidth().heightIn(min = 48.dp).padding(vertical = 2.dp),
+        verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        Text(stringResource(label), Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
+        Box(Modifier.widthIn(max = LocalConfiguration.current.screenWidthDp.dp * .6f)) { value() }
+    }
+    HorizontalDivider(color = LocalVpnColors.current.border.copy(alpha = .5f))
 }
 
 @Composable
@@ -224,15 +176,16 @@ internal fun SettingsRow(label: Int, value: String? = null, enabled: Boolean = t
     valueFlagCountry: String? = null, onClick: () -> Unit) {
     val colors = LocalVpnColors.current
     val contentAlpha = if (enabled) 1f else .38f
-    Row(Modifier.fillMaxWidth().heightIn(min = 64.dp).clickable(enabled = enabled, onClick = onClick).padding(vertical = 18.dp),
+    Row(Modifier.fillMaxWidth().heightIn(min = 48.dp).clickable(enabled = enabled, onClick = onClick).padding(vertical = 12.dp),
         horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
         val icon = when (label) {
             R.string.vpn_profiles -> R.drawable.lin_profiles
             R.string.vpn_system_settings -> R.drawable.lin_settings
-            R.string.vpn_theme -> R.drawable.lin_theme
+            R.string.vpn_theme, R.string.vpn_appearance -> R.drawable.lin_theme
             R.string.vpn_language -> R.drawable.lin_language
             R.string.vpn_background_updates -> R.drawable.lin_refresh
             R.string.vpn_help -> R.drawable.lin_help
+            R.string.vpn_app_journal_title -> R.drawable.lin_file
             R.string.vpn_import_from_clipboard -> R.drawable.lin_clipboard
             R.string.vpn_import_file -> R.drawable.lin_file
             R.string.vpn_import_qr -> R.drawable.lin_qr
@@ -252,18 +205,6 @@ internal fun SettingsRow(label: Int, value: String? = null, enabled: Boolean = t
         Icon(painterResource(R.drawable.lin_chevron_right), null, Modifier.size(24.dp), tint = colors.muted.copy(alpha = contentAlpha))
     }
     HorizontalDivider(color = LocalVpnColors.current.border.copy(alpha = .5f))
-}
-
-@Composable
-private fun ChoiceRow(label: String, selected: Boolean, enabled: Boolean, flagCountry: String? = null, onClick: () -> Unit) {
-    Row(Modifier.fillMaxWidth().heightIn(min = 52.dp).clickable(enabled = enabled, onClick = onClick), verticalAlignment = Alignment.CenterVertically) {
-        RadioButton(selected, onClick = null, enabled = enabled)
-        Row(Modifier.padding(start = 10.dp), verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            if (flagCountry != null) VpnFlagIcon(flagCountry, MaterialTheme.typography.bodyMedium)
-            Text(label, style = MaterialTheme.typography.bodyMedium)
-        }
-    }
 }
 
 internal fun themeLabel(value: VpnTheme): Int = when (value) {
@@ -297,4 +238,5 @@ private fun BackgroundUpdateRow(label: Int, help: String, checked: Boolean, enab
         VpnSwitch(checked, onCheckedChange = onChange, enabled = enabled,
             modifier = Modifier.testTag(tag).semantics { contentDescription = title })
     }
+    HorizontalDivider(color = LocalVpnColors.current.border.copy(alpha = .5f))
 }

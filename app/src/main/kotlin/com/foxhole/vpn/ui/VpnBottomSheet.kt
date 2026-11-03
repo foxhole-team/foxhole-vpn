@@ -1,14 +1,24 @@
 package com.foxhole.vpn.ui
 
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.background
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.only
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.ime
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.rememberScrollableState
 import androidx.compose.foundation.gestures.scrollable
@@ -19,7 +29,6 @@ import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.material3.SheetValue
-import androidx.compose.material3.BottomSheetDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.remember
@@ -29,6 +38,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
@@ -44,13 +57,15 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun VpnBottomSheet(onDismiss: () -> Unit, onBack: (() -> Unit)? = null, gesturesEnabled: Boolean = true,
-    fixedHeightFraction: Float? = null, showCloseButton: Boolean = true, confineContentGestures: Boolean = false,
+    showCloseButton: Boolean = true, confineContentGestures: Boolean = false,
     footerContent: (@Composable ColumnScope.() -> Unit)? = null,
+    heightFraction: Float? = null,
     content: @Composable ColumnScope.() -> Unit) {
     val colors = LocalVpnColors.current
     val back = rememberUpdatedState(onBack)
     val dismiss = rememberUpdatedState(onDismiss)
     val explicitClose = remember { mutableStateOf(false) }
+    val noticeHandoff = remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
     val confirmValueChange = remember {
         { value: SheetValue ->
@@ -60,6 +75,7 @@ internal fun VpnBottomSheet(onDismiss: () -> Unit, onBack: (() -> Unit)? = null,
     }
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true, confirmValueChange = confirmValueChange)
     val sheetMotionSpec = remember { MaterialSheetMotion.fastSpatialSpec() }
+    val hideMotionSpec = remember { androidx.compose.animation.core.tween<Float>(180, easing = androidx.compose.animation.core.FastOutSlowInEasing) }
     val bodyGestures = if (confineContentGestures) Modifier.nestedScroll(SheetBodyScrollConnection)
         .scrollable(rememberScrollableState { 0f }, Orientation.Vertical) else Modifier
     val onClose: () -> Unit = {
@@ -80,34 +96,47 @@ internal fun VpnBottomSheet(onDismiss: () -> Unit, onBack: (() -> Unit)? = null,
             sheetGesturesEnabled = gesturesEnabled,
             containerColor = colors.panel,
             contentColor = colors.foreground,
-            dragHandle = if (fixedHeightFraction == null) ({ BottomSheetDefaults.DragHandle() }) else null,
+            dragHandle = null,
+            contentWindowInsets = { WindowInsets.ime.only(WindowInsetsSides.Bottom) },
             content = {
-                SideEffect { MaterialSheetMotion.applyFastSpatialSpec(sheetState, sheetMotionSpec) }
+                SideEffect { MaterialSheetMotion.applyFastSpatialSpec(sheetState, sheetMotionSpec, hideMotionSpec) }
                 CompositionLocalProvider(LocalVpnSheetClose provides onClose, LocalVpnSheetBodyGestures provides bodyGestures) {
-                if (fixedHeightFraction != null) {
-                    require(fixedHeightFraction in .5f..1f)
-                    val density = LocalDensity.current
-                    val windowHeight = LocalWindowInfo.current.containerSize.height
-                    val topInset = WindowInsets.systemBars.getTop(density)
-                    val bottomInset = WindowInsets.systemBars.getBottom(density)
-                    val imeInset = WindowInsets.ime.getBottom(density)
-                    val normalAvailable = (windowHeight - topInset - bottomInset).coerceAtLeast(0)
-                    val keyboardAvailable = (windowHeight - topInset - maxOf(bottomInset, imeInset)).coerceAtLeast(0)
-                    val fixedHeight = with(density) {
-                        minOf(normalAvailable * fixedHeightFraction, keyboardAvailable.toFloat()).toDp()
+                val density = LocalDensity.current
+                val windowHeight = LocalWindowInfo.current.containerSize.height
+                val topInset = WindowInsets.systemBars.getTop(density)
+                val bottomInset = WindowInsets.systemBars.getBottom(density)
+                val navigationInset = WindowInsets.navigationBars.getBottom(density)
+                val imeInset = WindowInsets.ime.getBottom(density)
+                val navigationPadding = with(density) { if (imeInset > navigationInset) 0.dp else navigationInset.toDp() }
+                val normalAvailable = (windowHeight - topInset - bottomInset).coerceAtLeast(0)
+                val maximumHeight = with(density) {
+                    (normalAvailable * .85f).toDp()
+                }
+                // Reserve the dialog navigation area explicitly; parent inset consumption must not erase it.
+                // Native content insets retain IME avoidance without adding the navigation area twice.
+                // Constant window constraints; AnimatedContent owns page-height motion.
+                val requestedHeight = heightFraction?.let { fraction ->
+                    require(fraction > 0f && fraction <= .85f)
+                    with(density) { (normalAvailable * fraction).toDp() }
+                }
+                Column(Modifier.fillMaxWidth().then(when {
+                    requestedHeight != null -> Modifier.height(requestedHeight)
+                    windowHeight > 0 -> Modifier.heightIn(max = maximumHeight)
+                    else -> Modifier
+                }).padding(bottom = navigationPadding)) {
+                    val handleDescription = stringResource(R.string.vpn_sheet_handle)
+                    Box(Modifier.fillMaxWidth().height(24.dp).semantics { contentDescription = handleDescription },
+                        contentAlignment = Alignment.Center) {
+                        Box(Modifier.width(32.dp).height(4.dp).background(colors.muted, RoundedCornerShape(2.dp)))
                     }
-                    Column(Modifier.fillMaxWidth().height(fixedHeight)) {
-                        BottomSheetDefaults.DragHandle(modifier = Modifier.align(androidx.compose.ui.Alignment.CenterHorizontally))
-                        VpnNoticeWindow()
-                        Column(Modifier.weight(1f)) { content() }
-                        footerContent?.invoke(this)
-                        if (showCloseButton) VpnSheetCloseButton(onClose)
+                    SideEffect {
+                        if (sheetState.targetValue == SheetValue.Expanded) noticeHandoff.value = false
+                        else if (sheetState.isVisible && sheetState.targetValue == SheetValue.Hidden) noticeHandoff.value = true
                     }
-                } else {
-                    VpnNoticeWindow()
-                    Column(Modifier.weight(1f, fill = false)) { content() }
+                    VpnNoticeWindow(closing = explicitClose.value || noticeHandoff.value)
+                    Column(Modifier.weight(1f, fill = heightFraction != null).fillMaxWidth().clipToBounds()) { content() }
                     footerContent?.invoke(this)
-                    if (showCloseButton) VpnSheetCloseButton(onClose)
+                    if (showCloseButton) VpnSheetCloseButton(onClose, onBack)
                 }
                 }
             },
@@ -126,10 +155,15 @@ private object SheetBodyScrollConnection : NestedScrollConnection {
 }
 
 @Composable
-private fun VpnSheetCloseButton(onClick: () -> Unit) {
-    OutlinedButton(onClick, modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp)
-        .padding(top = 8.dp, bottom = 20.dp).heightIn(min = 56.dp)) {
-        Text(stringResource(R.string.vpn_close))
+private fun VpnSheetCloseButton(onClick: () -> Unit, onBack: (() -> Unit)?) {
+    Row(Modifier.fillMaxWidth().padding(horizontal = 20.dp).padding(top = 8.dp, bottom = 12.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        if (onBack != null) OutlinedButton(onClick = onBack, modifier = Modifier.weight(1f).heightIn(min = 56.dp)) {
+            Text(stringResource(R.string.router_review_back))
+        }
+        OutlinedButton(onClick, modifier = Modifier.weight(1f).heightIn(min = 56.dp)) {
+            Text(stringResource(R.string.vpn_close))
+        }
     }
 }
 

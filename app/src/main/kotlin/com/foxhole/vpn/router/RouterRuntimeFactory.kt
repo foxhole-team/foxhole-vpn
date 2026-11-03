@@ -102,7 +102,7 @@ internal fun createRouterRuntime(context: Context, controller: DefaultVpnControl
         }, preferenceStore = preferences, beforeRouterSelection = home::routerSelectionChanged,
         importAuthenticatedProfile = routerImports::authenticated,
         readonlyInspector = WifiRouterReadonlyInspector.forWifi(manager, protection, access))
-    val control = RouterControlCoordinator(PairedRouterManagementTransport(transport, manager, access), pairing, preferences, provisioner,
+    val control = RouterControlCoordinator(PairedRouterManagementTransport(transport, manager, access, pairing, controller::routerConnectedProfile), pairing, preferences, provisioner,
         deviceUpdateRelay = RouterDeviceUpdateRelay(RouterDeviceReleaseSource(application.cacheDir)),
         homeAutomationAvailable = home.available, applyHomeAutomation = home::setEnabled, homeAutomationActive = { home.isEnabled }, copyProfile = { value ->
         withContext(Dispatchers.Main) {

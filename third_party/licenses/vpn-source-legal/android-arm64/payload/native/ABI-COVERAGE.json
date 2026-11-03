@@ -1,0 +1,32 @@
+{
+  "abis": [
+    "arm64-v8a"
+  ],
+  "actualValidatedOriginalNoticeCoverageComplete": true,
+  "androidDeliveryProfile": "android-arm64",
+  "canonicalCoreCoverageSha256": "4b685864e6317a10f485f5f96c5d9da0deb4425a5d048814c8a56feb4dcdcf83",
+  "canonicalUnionNoticeManifestSha256": "5212bf84c423106a2ef4a9347289cb1d7a1849ca2e73aaa832daba576550b1cf",
+  "consumer": "vpn",
+  "coreCommit": "fc2134dc15b32087516672935e64ae7b8b0d5472",
+  "features": "vless,vmess,hysteria2,tuic,trojan,shadowsocks,socks,http,naive,anytls,shadowtls,wireguard",
+  "kind": "canonical-vpn-profile-selected-native-coverage",
+  "nativeLibraries": {
+    "aarch64-linux-android": {
+      "abi": "arm64-v8a",
+      "bytes": 12279272,
+      "sha256": "d7fa5e1ec029254a71d8d2d292e2117b1c819045218aceb9d8b9e3e245ca1edd"
+    }
+  },
+  "producerReceiptsByTarget": {
+    "aarch64-linux-android": "b849cd16771d2cbb9d2b3e19d3dd9741e0c2a63439dc57e64237a33fa1d4f1ec"
+  },
+  "rawOperationalReceiptsPackaged": false,
+  "schema": 1,
+  "selectedSboms": {
+    "aarch64-linux-android": "9176f0f0e3a42f40f6944581cea9c897cc0761cc9ae4bac38d937a44e9183ff2"
+  },
+  "sourceProducerProfile": "android-arm64",
+  "targets": [
+    "aarch64-linux-android"
+  ]
+}

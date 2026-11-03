@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 internal fun vpnProfileRowHeight(): Dp = with(LocalDensity.current) {
-    maxOf(64.dp, MaterialTheme.typography.bodyLarge.lineHeight.toDp() + MaterialTheme.typography.bodySmall.lineHeight.toDp() + 21.dp)
+    maxOf(56.dp, MaterialTheme.typography.bodyLarge.lineHeight.toDp() + MaterialTheme.typography.bodySmall.lineHeight.toDp() + 13.dp)
 }
 
 internal fun vpnProfilesViewportHeight(profileCount: Int, expanded: Boolean, rowHeight: Dp, density: Density = Density(1f)): Dp {

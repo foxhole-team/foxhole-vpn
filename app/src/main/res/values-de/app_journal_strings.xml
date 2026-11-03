@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_app_journal_title">App-Protokoll</string>
+    <string name="vpn_app_journal_retention">Protokollbereinigung</string>
+    <string name="vpn_app_journal_day">1 Tag</string>
+    <string name="vpn_app_journal_week">1 Woche</string>
+    <string name="vpn_app_journal_month">1 Monat</string>
+    <string name="vpn_app_journal_forever">Für immer</string>
+    <string name="vpn_app_journal_save">Speichern</string>
+    <string name="vpn_app_journal_time">Zeit (UTC)</string>
+    <string name="vpn_app_journal_event">Ereignis</string>
+    <string name="vpn_app_journal_result">Ergebnis</string>
+    <string name="vpn_app_journal_empty">Noch keine App-Ereignisse.</string>
+    <string name="vpn_app_journal_storage_error">Das Protokoll konnte nicht gelesen oder aktualisiert werden.</string>
+    <string name="vpn_app_journal_saved">Protokoll gespeichert.</string>
+    <string name="vpn_app_journal_save_failed">Das Protokoll konnte nicht gespeichert werden.</string>
+</resources>

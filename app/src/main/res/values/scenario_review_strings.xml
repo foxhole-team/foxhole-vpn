@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_scenario_filter_label">Filter</string>
+    <string name="vpn_scenario_filter_all">All</string>
+    <string name="vpn_scenario_filter_system">System</string>
+    <string name="vpn_scenario_filter_user">User</string>
+    <string name="vpn_scenario_filter_count">%1$s (%2$d)</string>
+    <string name="vpn_scenario_delete_title">Delete application?</string>
+    <string name="vpn_scenario_delete_body">Remove %1$s from the application rules?</string>
+    <string name="vpn_scenario_confirm_action">CONFIRM</string>
+    <string name="vpn_scenario_no_visible_apps">No applications match this filter.</string>
+    <string name="vpn_scenario_picker_failed">Applications could not be loaded.</string>
+    <string name="vpn_scenario_system_picker">OPEN SYSTEM PICKER</string>
+</resources>

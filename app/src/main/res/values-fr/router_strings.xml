@@ -28,7 +28,7 @@
     <string name="vpn_router_change_pin_note">Choisissez un code PIN à six chiffres à la fin de la configuration initiale. Les modifications suivantes sont possibles uniquement dans LuCI avec le compte du propriétaire.</string>
     <string name="vpn_router_save">Enregistrer</string>
     <string name="vpn_router_no_profile">Aucun profil VPN du routeur</string>
-    <string name="vpn_router_country_direct">Sites du pays en direct</string>
+    <string name="vpn_router_country_direct">Trafic local</string>
     <string name="vpn_router_country_direct_note">Les sites du pays sélectionné contournent le tunnel VPN.</string>
     <string name="vpn_router_home_country">Code pays, par exemple NL</string>
     <string name="vpn_router_auto_home">Basculement automatique à domicile</string>

@@ -1,4 +1,4 @@
 <resources>
-    <string name="vpn_app_update_install_vpn_notice">インストール中はVPNが一時的に切断されます。アプリは有効な接続の復元を試みます。必要に応じてアプリを開き、再接続してください。</string>
+    <string name="vpn_app_update_install_vpn_notice">インストールにより VPN が一時的に切断されます。アプリは有効な接続の復元を試みます。必要に応じてアプリを開き、再接続してください。</string>
     <string name="vpn_app_update_reconnect_required">更新後にVPNを復元するには、アプリを開いて再接続してください。</string>
 </resources>

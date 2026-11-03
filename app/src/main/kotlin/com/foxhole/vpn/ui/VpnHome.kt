@@ -50,6 +50,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.text
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.style.TextAlign
@@ -58,6 +61,10 @@ import androidx.compose.ui.unit.dp
 import com.foxhole.vpn.R
 import com.foxhole.vpn.VpnUiState
 import com.foxhole.vpn.VpnPhase
+import com.foxhole.vpn.VpnRoutingMode
+import com.foxhole.vpn.vpnScenarioColor
+import com.foxhole.vpn.vpnScenarioStatusLabel
+import com.foxhole.vpn.vpnScenarioValueStart
 import com.foxhole.vpn.updates.VpnDataUpdateState
 import com.foxhole.vpn.updates.VpnDataUpdatePhase
 import com.foxhole.vpn.updates.VpnDataUpdateError
@@ -77,6 +84,7 @@ internal fun VpnHome(
     claimConnectionCue: (Long) -> Boolean = { true },
     appUpdate: VpnAppUpdateState = VpnAppUpdateState(),
     onAppUpdate: () -> Unit = {},
+    routingMode: VpnRoutingMode = VpnRoutingMode.WHOLE_DEVICE,
 ) {
     val colors = LocalVpnColors.current
     val haptics = LocalHapticFeedback.current
@@ -116,12 +124,12 @@ internal fun VpnHome(
         if (landscape) {
             Row(Modifier.fillMaxSize().padding(horizontal = 20.dp, vertical = 12.dp), horizontalArrangement = Arrangement.spacedBy(24.dp)) {
                 BoxWithConstraints(Modifier.weight(1f).fillMaxHeight(), contentAlignment = Alignment.Center) {
-                    val statusHeight = if (state.selectedProfile?.subscriptionExpiresAt != null) 64.dp else 48.dp
+                    val statusHeight = if (state.selectedProfile?.subscriptionExpiresAt != null) 88.dp else 72.dp
                     val width = minOf(maxWidth, (maxHeight - statusHeight).coerceAtLeast(0.dp) * 400f / 410f, 380.dp)
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         VpnPlanet(route, state.isConnected, device, exit, Modifier.width(width), connectionId = state.connectionId,
                             claimConnectionCue = claimConnectionCue, phase = state.phase)
-                        VpnConnectionStatus(state)
+                        VpnConnectionStatus(state, routingMode)
                     }
                 }
                 BoxWithConstraints(Modifier.weight(1f).fillMaxHeight()) {
@@ -140,14 +148,14 @@ internal fun VpnHome(
             ) {
                 if (scrollable) {
                     VpnPlanet(route, state.isConnected, device, exit, Modifier.widthIn(max = 280.dp).fillMaxWidth(), connectionId = state.connectionId, claimConnectionCue = claimConnectionCue, phase = state.phase)
-                    VpnConnectionStatus(state)
+                    VpnConnectionStatus(state, routingMode)
                 } else {
                     BoxWithConstraints(Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
-                        val statusHeight = if (state.selectedProfile?.subscriptionExpiresAt != null) 60.dp else 36.dp
+                        val statusHeight = if (state.selectedProfile?.subscriptionExpiresAt != null) 84.dp else 60.dp
                         val width = minOf(maxWidth, (maxHeight - statusHeight).coerceAtLeast(0.dp) * 400f / 410f, 380.dp)
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             VpnPlanet(route, state.isConnected, device, exit, Modifier.width(width), connectionId = state.connectionId, claimConnectionCue = claimConnectionCue, phase = state.phase)
-                            VpnConnectionStatus(state)
+                            VpnConnectionStatus(state, routingMode)
                         }
                     }
                 }
@@ -166,14 +174,14 @@ private fun VpnHomeControls(
     val colors = LocalVpnColors.current
     if (appUpdate.phase in setOf(VpnAppUpdatePhase.AVAILABLE, VpnAppUpdatePhase.DOWNLOADING,
             VpnAppUpdatePhase.VERIFYING, VpnAppUpdatePhase.READY, VpnAppUpdatePhase.ERROR)) {
-        Spacer(Modifier.height(12.dp))
+        Spacer(Modifier.height(8.dp))
         VpnAppUpdateCard(appUpdate, onAppUpdate)
     }
-    Spacer(Modifier.height(16.dp))
+    Spacer(Modifier.height(12.dp))
     OutlinedButton(
         onClick = onProfiles,
         enabled = state.isReady,
-        modifier = Modifier.fillMaxWidth().heightIn(min = 52.dp),
+        modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp),
         shape = CircleShape,
         border = BorderStroke(1.dp, colors.border),
         colors = ButtonDefaults.outlinedButtonColors(contentColor = colors.foreground),
@@ -201,12 +209,12 @@ private fun VpnHomeControls(
             tint = colors.muted,
         )
     }
-    Spacer(Modifier.height(16.dp))
+    Spacer(Modifier.height(12.dp))
     val status = stringResource(statusLabel(state.phase))
     Button(
         onClick = onPrimary,
         enabled = primaryActionEnabled(state),
-        modifier = Modifier.fillMaxWidth().heightIn(min = 68.dp).semantics { stateDescription = status },
+        modifier = Modifier.fillMaxWidth().heightIn(min = 60.dp).semantics { stateDescription = status },
         colors = ButtonDefaults.buttonColors(
             containerColor = if (colors.monochrome) {
                 if (primaryAction(state) == VpnPrimaryAction.DISCONNECT) Color(0xFFB5B5B5) else Color.White
@@ -222,13 +230,13 @@ private fun VpnHomeControls(
         VpnDataUpdatePhase.AVAILABLE, VpnDataUpdatePhase.DOWNLOADING, VpnDataUpdatePhase.VERIFYING,
         VpnDataUpdatePhase.UPDATED, VpnDataUpdatePhase.ERROR,
     )) {
-        Spacer(Modifier.height(12.dp))
+        Spacer(Modifier.height(8.dp))
         VpnDataUpdateStatus(dataUpdate, onDataUpdate)
     }
 }
 
 @Composable
-private fun VpnConnectionStatus(state: VpnUiState) {
+private fun VpnConnectionStatus(state: VpnUiState, routingMode: VpnRoutingMode) {
     val colors = LocalVpnColors.current
     val locales = LocalConfiguration.current.locales
     val locale = if (locales.isEmpty) Locale.ROOT else locales[0]
@@ -237,18 +245,33 @@ private fun VpnConnectionStatus(state: VpnUiState) {
     val expiry = remember(expiresAt, locale, zone) { formatSubscriptionExpiry(expiresAt, locale, zone) }
     val showStatus = state.isReady || state.canDisconnect || state.phase == VpnPhase.ERROR
     val status = stringResource(if (showStatus) statusLabel(state.phase) else R.string.vpn_loading)
+    val scenario = stringResource(vpnScenarioStatusLabel(routingMode))
+    val scenarioValueStart = vpnScenarioValueStart(scenario)
+    val statusColor = when {
+        state.isConnected -> colors.connected
+        showStatus && state.phase == VpnPhase.IDLE && !state.hasOwnedTunnel && !state.hasPendingStart -> vpnDeleteColor()
+        else -> colors.foreground
+    }
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(buildAnnotatedString {
+            append(scenario.take(scenarioValueStart))
+            withStyle(SpanStyle(color = Color(vpnScenarioColor(routingMode, colors.light)))) {
+                append(scenario.substring(scenarioValueStart))
+            }
+        },
+            Modifier.fillMaxWidth().padding(bottom = 4.dp), style = MaterialTheme.typography.bodyLarge,
+            color = colors.foreground, textAlign = TextAlign.Center, maxLines = 1, overflow = TextOverflow.Ellipsis)
         Crossfade(
-            targetState = status,
+            targetState = status to statusColor,
             modifier = Modifier.fillMaxWidth().clearAndSetSemantics { text = AnnotatedString(status) },
             animationSpec = tween(durationMillis = 120),
             label = "vpn-connection-status",
-        ) { label ->
+        ) { (label, color) ->
             Text(
                 label,
                 modifier = Modifier.fillMaxWidth(),
                 style = MaterialTheme.typography.bodyLarge,
-                color = if (state.isConnected) colors.connected else colors.foreground,
+                color = color,
                 textAlign = TextAlign.Center,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,

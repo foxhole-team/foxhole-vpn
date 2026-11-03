@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_app_journal_title">Журнал приложения</string>
+    <string name="vpn_app_journal_retention">Очистка журнала</string>
+    <string name="vpn_app_journal_day">1 день</string>
+    <string name="vpn_app_journal_week">1 неделя</string>
+    <string name="vpn_app_journal_month">1 месяц</string>
+    <string name="vpn_app_journal_forever">Навсегда</string>
+    <string name="vpn_app_journal_save">Сохранить</string>
+    <string name="vpn_app_journal_time">Время (UTC)</string>
+    <string name="vpn_app_journal_event">Событие</string>
+    <string name="vpn_app_journal_result">Результат</string>
+    <string name="vpn_app_journal_empty">Событий приложения пока нет.</string>
+    <string name="vpn_app_journal_storage_error">Не удалось прочитать или обновить журнал.</string>
+    <string name="vpn_app_journal_saved">Журнал сохранён.</string>
+    <string name="vpn_app_journal_save_failed">Не удалось сохранить журнал.</string>
+</resources>

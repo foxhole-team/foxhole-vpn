@@ -61,6 +61,20 @@ class EngineNetworkPolicyTest {
         assertNull(ownedVpnNetwork(listOf(old), ownUid, 26, setOf(135)))
     }
 
+    @Test fun trustedFreshHandoverAcceptsSameAgentOnApi26And29() {
+        val current = candidate(135, vpn = true)
+        for (sdk in listOf(26, 29)) {
+            assertEquals(135L, ownedVpnNetwork(listOf(current), ownUid, sdk, setOf(135), freshOwnedTun = true))
+            assertNull(ownedVpnNetwork(listOf(current), ownUid, sdk, setOf(135), freshOwnedTun = false))
+        }
+    }
+
+    @Test fun freshHandoverNeverBypassesModernOwnerUidOrAcceptsAmbiguity() {
+        val foreign = candidate(135, vpn = true, ownerUid = 10111)
+        assertNull(ownedVpnNetwork(listOf(foreign), ownUid, 37, setOf(135), freshOwnedTun = true))
+        assertNull(ownedVpnNetwork(listOf(foreign, foreign.copy(handle = 136)), ownUid, 26, setOf(135, 136), freshOwnedTun = true))
+    }
+
     private fun candidate(
         handle: Long,
         vpn: Boolean = false,

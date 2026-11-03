@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_routing_scenario_applied">Scénario changé avec succès.</string>
+    <string name="vpn_routing_app_removed">Application retirée de la liste.</string>
+    <string name="vpn_routing_rules_applied">Liste de règles appliquée avec succès.</string>
+</resources>

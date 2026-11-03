@@ -3,18 +3,15 @@ package com.foxhole.vpn.ui
 import android.text.format.Formatter
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Checkbox
-import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.HorizontalDivider
@@ -25,8 +22,6 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -56,7 +51,7 @@ internal fun VpnRouterProtocolsList(state: RouterEngineControlState, selected: S
         if (status == null) item { Text(stringResource(R.string.router_engines_unavailable)) }
         if (state.running) item { Text(stringResource(R.string.router_engines_busy)) }
         if (state.job != null) item {
-            OutlinedButton(onShowJob, modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)) {
+            OutlinedButton(onShowJob, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)) {
                 Text(stringResource(if (state.job.running) R.string.router_engines_show_progress else R.string.router_engines_show_result))
             }
         }
@@ -65,7 +60,7 @@ internal fun VpnRouterProtocolsList(state: RouterEngineControlState, selected: S
             Text(stringResource(R.string.router_engines_installed), Modifier.semantics { heading() }, style = MaterialTheme.typography.titleMedium)
         }
         items(installed, key = { it.protocol.canonical }) { entry ->
-            VpnRouterTableRow(Modifier.fillMaxWidth().heightIn(min = 60.dp)) {
+            VpnRouterTableRow(Modifier.fillMaxWidth().heightIn(min = 52.dp)) {
                 Column(Modifier.weight(1f)) {
                     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         Icon(painterResource(R.drawable.lin_power), null, Modifier.size(20.dp))
@@ -89,27 +84,16 @@ internal fun VpnRouterProtocolsList(state: RouterEngineControlState, selected: S
             Text(stringResource(R.string.router_engines_not_released))
         }
         if (available.isNotEmpty()) item {
-            var expanded by remember(status?.catalogSha256, status?.revision) { mutableStateOf(false) }
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text(stringResource(R.string.router_engines_add), Modifier.semantics { heading() }, style = MaterialTheme.typography.titleMedium)
                 val choose = stringResource(R.string.vpn_router_choose_protocols)
-                BoxWithConstraints(Modifier.fillMaxWidth()) {
-                    val menuWidth = maxWidth
-                    OutlinedButton(onClick = { expanded = !expanded }, enabled = enabled && !state.running,
-                        modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)) {
-                        Icon(painterResource(R.drawable.lin_power), null, Modifier.size(20.dp))
-                        Text(available.filter { it.protocol in selected }.joinToString(" · ") { it.protocol.label }
-                            .ifBlank { choose }, Modifier.weight(1f))
-                        Icon(painterResource(R.drawable.lin_chevron_down), null, Modifier.size(20.dp))
-                    }
-                    DropdownMenu(expanded && enabled && !state.running, onDismissRequest = { expanded = false },
-                        modifier = Modifier.width(menuWidth).heightIn(max = 320.dp)) {
-                        available.forEach { entry ->
-                            val checked = entry.protocol in selected
-                            DropdownMenuItem(text = { Text(entry.protocol.label) }, trailingIcon = { Checkbox(checked, onCheckedChange = null) },
-                                onClick = { onSelect(if (checked) selected - entry.protocol else selected + entry.protocol) },
-                                modifier = Modifier.heightIn(min = 48.dp))
-                        }
+                VpnChoiceDropdown(available.filter { it.protocol in selected }.joinToString(" · ") { it.protocol.label }
+                    .ifBlank { choose }, enabled && !state.running, leadingIcon = R.drawable.lin_power) {
+                    available.forEach { entry ->
+                        val checked = entry.protocol in selected
+                        DropdownMenuItem(text = { Text(entry.protocol.label, maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis) }, trailingIcon = { Checkbox(checked, onCheckedChange = null) },
+                            onClick = { onSelect(if (checked) selected - entry.protocol else selected + entry.protocol) },
+                            modifier = Modifier.heightIn(min = 48.dp))
                     }
                 }
             }

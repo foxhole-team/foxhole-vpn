@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="vpn_routing_apply_failed">Impossible d’appliquer les règles de routage. Arrêtez le VPN avant de réessayer.</string>
+</resources>

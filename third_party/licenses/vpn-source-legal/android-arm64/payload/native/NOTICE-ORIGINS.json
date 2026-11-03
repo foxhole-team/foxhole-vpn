@@ -1,0 +1,12 @@
+{
+  "androidDeliveryProfile": "android-arm64",
+  "canonicalCoreCoverageSha256": "4b685864e6317a10f485f5f96c5d9da0deb4425a5d048814c8a56feb4dcdcf83",
+  "coreCommit": "fc2134dc15b32087516672935e64ae7b8b0d5472",
+  "forkMaterialChangedForP2": false,
+  "originalBytesRetained": true,
+  "originalLicenseBodiesRetained": true,
+  "rawOperationalReportPackaged": false,
+  "retainedBaseProducer": "66286391a715fbc1c2bbabb2581c5295f76a1acd",
+  "schema": 1,
+  "sourceProducerProfile": "android-arm64"
+}

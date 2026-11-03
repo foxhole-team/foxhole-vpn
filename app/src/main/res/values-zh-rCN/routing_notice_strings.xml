@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_routing_scenario_applied">场景切换成功。</string>
+    <string name="vpn_routing_app_removed">已从列表中移除应用。</string>
+    <string name="vpn_routing_rules_applied">规则列表已成功应用。</string>
+</resources>

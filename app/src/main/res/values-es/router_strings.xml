@@ -28,7 +28,7 @@
     <string name="vpn_router_change_pin_note">Elija un PIN de seis dígitos al finalizar la configuración inicial. Los cambios posteriores solo están disponibles en LuCI con la cuenta del propietario.</string>
     <string name="vpn_router_save">Guardar</string>
     <string name="vpn_router_no_profile">Sin perfil VPN del router</string>
-    <string name="vpn_router_country_direct">Sitios del país directamente</string>
+    <string name="vpn_router_country_direct">Tráfico local</string>
     <string name="vpn_router_country_direct_note">Los sitios del país seleccionado evitan el túnel VPN.</string>
     <string name="vpn_router_home_country">Código de país, por ejemplo NL</string>
     <string name="vpn_router_auto_home">Cambio automático en casa</string>

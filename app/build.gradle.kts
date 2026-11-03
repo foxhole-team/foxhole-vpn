@@ -66,8 +66,8 @@ android {
         applicationId = "com.foxhole.vpn"
         minSdk = 26
         targetSdk = 37
-        versionCode = 44
-        versionName = "1.0.2"
+        versionCode = 45
+        versionName = "1.0.3"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         if (!providers.gradleProperty("foxhole.splitApks").map(String::toBoolean).orElse(false).get()) {
             ndk { abiFilters += apkDeliveryAbis }
@@ -236,6 +236,7 @@ val prepareDerivedNativeLicenseAssets = tasks.register<PreparePageAlignedNativeT
     )
     doFirst {
         val coreDeliveryProfile = when (selectedAbis.toSet()) {
+            setOf("arm64-v8a") -> "android-arm64"
             setOf("arm64-v8a", "x86_64") -> "android64"
             setOf("armeabi-v7a") -> "android-armv7"
             setOf("arm64-v8a", "armeabi-v7a", "x86_64") -> "android3"

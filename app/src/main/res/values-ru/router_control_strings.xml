@@ -15,8 +15,8 @@
     <string name="router_control_client_remove_title">Подтвердите удаление профиля</string>
     <string name="router_control_client_remove_body">Удалить VPN-доступ для %1$s?</string>
     <string name="router_control_client_remove_record_body">Удалить профиль %1$s с роутера?</string>
-    <string name="router_control_country_direct">Местный трафик напрямую</string>
-    <string name="router_control_auto_home">Переключение дома</string>
+    <string name="router_control_country_direct">Местный трафик</string>
+    <string name="router_control_auto_home">Автоподключение в домашней сети</string>
     <string name="router_control_create_client">Создать клиента</string>
     <string name="router_control_create">СОЗДАТЬ</string>
     <string name="router_control_client_name">Имя клиента</string>
@@ -43,7 +43,7 @@
     <string name="router_profile_probe_failed">Для управления пакетом FoxHole OpenWRT подключитесь к вашему личному VPN или к домашней сети Wi-Fi.</string>
     <string name="router_profile_retry_pairing">Повторить сопряжение</string>
     <string name="router_profile_pair_wifi">Для повторного сопряжения подключитесь к Wi-Fi роутера</string>
-    <string name="router_control_hide_offline">Скрывать офлайн устройства</string>
+    <string name="router_control_hide_offline">Скрыть офлайн устройства</string>
     <string name="router_control_hide_offline_help">Не показывать устройства, которые сейчас не подключены к вашей домашней сети.</string>
     <string name="router_review_no_online_devices">Нет устройств в сети</string>
     <string name="router_updates_check_entry">Проверить обновление</string>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_add_application">添加应用</string>
+    <string name="vpn_app_picker_unavailable">系统应用选择器不可用。</string>
+    <string name="vpn_app_route_direct">不经 VPN</string>
+    <string name="vpn_app_route_vpn">经 VPN</string>
+    <string name="vpn_app_rules">应用规则</string>
+    <string name="vpn_app_rules_empty">添加应用以创建路由规则。</string>
+    <string name="vpn_help_scenarios_body">通过主页上方一排中的按钮打开“场景”。您可以为整个设备或单个应用选择流量路径。\n\n点击“添加应用”，从列表中选择应用，并设置“经 VPN”或“不经 VPN”规则。已选应用显示在顶部。筛选器可显示全部、系统或用户应用，默认显示用户应用。长按规则并确认即可移除。切换场景时会保留应用列表。\n\n“整个设备”场景将全部流量经由 VPN，并忽略应用规则。\n\n“代理”场景使用列表中应用的规则。启用“整个设备”设置时，除标记为“不经 VPN”的应用外，所有应用均使用 VPN。关闭时，只有设为“经 VPN”的应用使用 VPN。\n\n您可以在场景设置中管理原子化应用和更改确认。原子化应用默认启用：更改当前使用的路由前会阻止流量，然后应用新规则，并在必要时重新连接 VPN。更改确认默认关闭。已停止的 VPN 不会自行启动。</string>
+    <string name="vpn_routing_mode">场景</string>
+    <string name="vpn_scenario_atomic">原子化应用场景</string>
+    <string name="vpn_scenario_atomic_help">启用时，更改当前使用的路由前会暂时阻止流量。随后应用规则，并在必要时重新连接 VPN。如果无法安全完成更改，请先停止 VPN 再重试。关闭时，即使“请求确认”已关闭，更换场景或更改“整个设备”设置仍需要确认。应用规则会自动应用。已停止的 VPN 不会启动。</string>
+    <string name="vpn_scenario_back">返回</string>
+    <string name="vpn_scenario_confirm_body">应用此路由更改？正在运行的 VPN 会在必要时重新连接。</string>
+    <string name="vpn_scenario_confirm_title">应用场景？</string>
+    <string name="vpn_scenario_confirmation">请求确认</string>
+    <string name="vpn_scenario_confirmation_help">启用后，更换场景或切换“整个设备”设置需要确认。 默认关闭。</string>
+    <string name="vpn_scenario_default_help">关闭时，只有您选中且设置了“经 VPN”规则的应用流量经过 VPN。在“整个设备”场景下，此设置始终开启，无法更改。</string>
+    <string name="vpn_scenario_remove">删除规则</string>
+    <string name="vpn_scenario_selected_apps">代理</string>
+    <string name="vpn_scenario_settings">场景设置</string>
+    <string name="vpn_scenario_status_selected">场景：代理</string>
+    <string name="vpn_scenario_status_whole">场景：整个设备</string>
+    <string name="vpn_scenario_whole_device">整个设备</string>
+    <string name="vpn_scenarios">路由</string>
+    <string name="vpn_scenarios_help">“整个设备”场景将全部流量经由 VPN，并忽略应用规则。\n\n“代理”场景应用“经 VPN”／“不经 VPN”规则。\n\n启用“整个设备”设置时，除设为“不经 VPN”的应用外，全部流量均经过 VPN。关闭时，只有设为“经 VPN”的应用流量经过 VPN。\n\n“不经 VPN”规则使用设备的正常连接及其系统 DNS 设置，包括 Private DNS。</string>
+</resources>

@@ -44,11 +44,11 @@
     <string name="vpn_language_russian">Русский</string>
     <string name="vpn_help">帮助</string>
     <string name="vpn_about">关于</string>
-    <string name="vpn_about_text">FoxHole VPN %1$s。FoxHole Team 出品的专用 VPN 客户端。字体：Tiny5 和 JetBrains Mono，SIL Open Font License 1.1。</string>
+    <string name="vpn_about_text">FoxHole VPN %1$s。FoxHole Team 开发的精简 VPN 客户端。字体：Tiny5 和 JetBrains Mono，使用 SIL Open Font License 1.1。</string>
     <string name="vpn_help_connect_title">连接</string>
-    <string name="vpn_help_connect_body">导入 VPN 服务商或自有服务器的配置，选中后点击“开始”，并允许 Android VPN 请求。“停止”会取消正在建立的连接或断开 VPN。</string>
+    <string name="vpn_help_connect_body">导入您的 VPN 服务商或自有服务器的配置，选中后点击“启动”，并在 Android 系统窗口中允许 VPN。“停止”会取消连接过程并断开 VPN。</string>
     <string name="vpn_help_profiles_title">配置</string>
-    <string name="vpn_help_profiles_body">使用左侧的圆形按钮选择配置。点击卡片展开详情；如果配置包含多个协议选项，请从列表中选择所需选项。长按可分享、刷新、删除或发送到已配对的路由器。分享会包含完整配置或来源链接，可能含有访问凭据。请仅与可信的人分享。刷新会更新来自提供商订阅和 Outline 动态密钥的配置。</string>
+    <string name="vpn_help_profiles_body">长按已保存的 VPN 配置即可管理。可执行分享、更新、删除或发送到已配对路由器等操作。发送时会传输完整配置或原始链接，其中可能包含访问凭据。请仅与可信任的人分享。可更新来自服务商订阅和 Outline 动态密钥的配置。</string>
     <string name="vpn_import">导入</string>
     <string name="vpn_import_text">粘贴配置或链接</string>
     <string name="vpn_import_file">选择文件</string>
@@ -112,7 +112,7 @@
     <string name="vpn_continue">继续</string>
     <string name="vpn_profile_refresh_unavailable">仅订阅配置可以刷新。</string>
     <string name="vpn_help_add_title">添加配置</string>
-    <string name="vpn_help_add_body">点击 +，粘贴连接链接或提供商的 HTTPS 订阅链接，包括来自 v2rayTun 的链接。也可以手动输入、选择文件或扫描二维码。</string>
+    <string name="vpn_help_add_body">点击＋，粘贴连接链接或您所用 VPN 服务商的 HTTPS 订阅链接，也支持来自 v2rayTun 的链接。还可以手动输入、选择文件或扫描二维码。</string>
     <string name="vpn_help_protocols_title">支持的协议</string>
-    <string name="vpn_help_protocols_body">VLESS、VMess、Trojan、Shadowsocks/Outline、WireGuard、Hysteria2、Naive、TUIC 和 AnyTLS。导入：链接、提供商的 HTTPS 订阅（包括来自 v2rayTun 的订阅）、兼容 JSON、Clash/mihomo YAML、SIP008 JSON、Outline 动态密钥（ssconf://）及 WireGuard。从 Clash/mihomo 中导入受支持的服务器。路由规则、分组及其他客户端设置不会迁移；不支持包含外部 proxy-providers 的配置。</string>
+    <string name="vpn_help_protocols_body">VLESS, VMess, Trojan, Shadowsocks/Outline, WireGuard, Hysteria2, Naive, TUIC, AnyTLS。支持导入链接、服务商的 HTTPS 订阅（包括 v2rayTun）、兼容的 JSON、Clash/mihomo YAML、SIP008 JSON、Outline 动态密钥（ssconf://）和 WireGuard。从 Clash/mihomo 中导入受支持的服务器。</string>
 </resources>

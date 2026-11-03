@@ -2,7 +2,7 @@
 <resources>
     <string name="router_engines_entry">VPN-Protokolleinstellungen</string>
     <string name="router_engines_title">VPN-Protokolle</string>
-    <string name="router_engines_help">VPN-Protokollpakete auf dem Router installieren oder entfernen. Verfügbare Protokolle hängen vom Router und dem verifizierten Release-Katalog ab.</string>
+    <string name="router_engines_help">VPN-Protokollpakete auf dem Router installieren und entfernen. Die verfügbaren Protokolle hängen vom Router und dem geprüften Veröffentlichungskatalog ab.</string>
     <string name="router_engines_installed">Installiert</string>
     <string name="router_engines_add">Protokoll hinzufügen</string>
     <string name="router_engines_update">Aktualisieren</string>

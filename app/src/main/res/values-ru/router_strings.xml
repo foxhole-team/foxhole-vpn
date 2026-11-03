@@ -28,10 +28,10 @@
     <string name="vpn_router_change_pin_note">В конце первой настройки задайте шестизначный PIN-код. В дальнейшем изменить PIN можно только в LuCI под учётной записью владельца.</string>
     <string name="vpn_router_save">СОХРАНИТЬ</string>
     <string name="vpn_router_no_profile">Без профиля VPN для роутера</string>
-    <string name="vpn_router_country_direct">Местный трафик напрямую</string>
+    <string name="vpn_router_country_direct">Местный трафик</string>
     <string name="vpn_router_country_direct_note">Сайты выбранной страны идут в обход VPN-туннеля.</string>
     <string name="vpn_router_home_country">Код страны, например NL</string>
-    <string name="vpn_router_auto_home">Автопереключение дома</string>
+    <string name="vpn_router_auto_home">Автоподключение в домашней сети</string>
     <string name="vpn_router_add_phone">Добавить телефон</string>
     <string name="vpn_router_error_wifi">Для поиска роутера подключитесь к Wi-Fi роутера</string>
     <string name="vpn_router_error_address">Проверьте локальный IP-адрес роутера.</string>

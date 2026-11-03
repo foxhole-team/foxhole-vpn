@@ -5,6 +5,7 @@ import com.foxhole.vpn.widget.startWidgetUpdates
 import com.foxhole.vpn.appupdates.VpnAppUpdater
 import com.foxhole.vpn.appupdates.VpnAppUpdateWork
 import com.foxhole.vpn.router.createRouterRuntime
+import com.foxhole.vpn.journal.AppJournal
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -29,6 +30,7 @@ class VpnApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         runtimeController = DefaultVpnController(this, applicationScope) { licenseConsent.state.value.accepted }
+        AppJournal.start(this, applicationScope, runtimeController)
         applicationScope.launch { licenseConsent.load() }
         routerRuntime // Origin-gated one-shot checks also cover a marked profile connected from the widget.
         appUpdater = VpnAppUpdater.create(this)

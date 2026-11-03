@@ -8,8 +8,8 @@
   "androidDeliveryProfile": "android4",
   "compiledInputs": {
     ".cargo/config.toml": "7bffa1ce3ff53a1f59f465b34012ddeb1b49c08d9c8a18b47bdffd64ac1ef3db",
-    "Cargo.lock": "c82e5f7351ad507789a41f589f2541eb65c08fe96c9421d7f8068262f9b45880",
-    "Cargo.toml": "006fdbc4357c022628ee0afed0aec0c960acc9ad56b97ab07350a4b79837d464",
+    "Cargo.lock": "5e09f6a9cccfbfc98e5aff5c95604c2297e394916b74984226434a75bc017f5d",
+    "Cargo.toml": "91038dfb48ae506f4f6207b91994e1e49d0d3cf93a7b18c1abdbd2be9addfd57",
     "config/foxcore-android-delivery.json": "3edb85a047f7edfe0fb35df3737da24fcc7ee7829f0b547ca05e471382eab96d",
     "config/source-forks/rustls-0.23.46.NOTICE.md": "e348815a3c8cf11f58344f109e9565419f5ef2324408d3543d3905309485fafb",
     "config/source-forks/rustls-0.23.46.json": "88dd76f0174bc49acd931551910754fbe0d4a0ad09cb63ea652fdea6a6ed1df6",
@@ -79,7 +79,8 @@
     "crates/foxcore-dialer/src/lib.rs": "237351f80a9bf8b9ea299334c52da7e654804c7ae1adc9d1b525ca2bb5b0709d",
     "crates/foxcore-dns/Cargo.toml": "c9d9fd8639ef0c33fc8edaa06a93b8747191584d4f8569f6264f2f698309776d",
     "crates/foxcore-dns/src/consts.rs": "bedbe83399b08ba1b94cb36e0e426ec8693ed93eebbb22f197ced6007ce80dd2",
-    "crates/foxcore-dns/src/lib.rs": "0f5ded58b145b8e83b5781acda42dc451df2d42eede975d05e7b9c684c162e25",
+    "crates/foxcore-dns/src/identity_scope_tests.rs": "9786e6b98927c614071ade55684741dd71dac379756b4c7a84687a8e784f94c8",
+    "crates/foxcore-dns/src/lib.rs": "2df9c3cec0cbc6096c9386b16a1da885beaca8c8d6e33eab2570e28115d0687f",
     "crates/foxcore-dns/src/message.rs": "be54f49b2cd6248c1ab97d73524d18186f7313200502e4ddb044973b05336041",
     "crates/foxcore-dns/src/wire.rs": "f17691c3409196355759877d3a65b4a7daa23a98a17b9aa634a4d10e708871f5",
     "crates/foxcore-link/Cargo.toml": "1c63965f04b72d5b8b90aee02898ce222fd5eacdc95b68ef33192f325c832818",
@@ -197,13 +198,13 @@
     "crates/foxcore-tun/src/device.rs": "c21a032b1ee5265954ea6b619a0d9f56a0442453ffb977b83a5871895405fe70",
     "crates/foxcore-tun/src/dns/lease.rs": "e3ac4bec3ff5a325f1671291c80d353bdec4731fd35195b5ec2956d6b0a94cdb",
     "crates/foxcore-tun/src/dns/mod.rs": "19ba933918c1a3c9af2252df009cb6bde3f6ce821ead30e4109d4444a798e470",
-    "crates/foxcore-tun/src/dns/proxy.rs": "cc488fcd1c91c3b8a46051892981b1c9dd7ab38cab6ecf941bde996eef42f230",
+    "crates/foxcore-tun/src/dns/proxy.rs": "e11e78754aa9615245f79d056020f562f5f06a844e1b8cfc0d1ac5855326c54e",
     "crates/foxcore-tun/src/dns/tests.rs": "b30be2971165b4e1be97fa5732287ce36f11b3f8915960692919cdf73ce4df6e",
     "crates/foxcore-tun/src/dns/upstream.rs": "6fbc9e1f56360fed765c83cf9b13073d0be49b86772f407b51969799568915e2",
     "crates/foxcore-tun/src/enginephase.rs": "da559c828bc4c1f73989edb9e380b7b2732ebe64ad50a020c047fcbe085d45df",
     "crates/foxcore-tun/src/flow/engine.rs": "14e997b8149a7d31aed3db44b3c2f6fee78605aa404d0d5a05f57328d725ffc7",
     "crates/foxcore-tun/src/flow/mod.rs": "f0e1d8334d28e5a475641f47f28f7a7e4bedecda0f161a48e553fa8a429c3533",
-    "crates/foxcore-tun/src/flow/policy.rs": "8dc951a7aefbe6a5b5fa0af3d493031837a902cb20934cc7081a1e81f17c6565",
+    "crates/foxcore-tun/src/flow/policy.rs": "e375997557dff343a3ba5000562fd80b0e195a19b242e7d83423040857bd9fb0",
     "crates/foxcore-tun/src/flow/route.rs": "e7c1c3e9412b9fe265e0443fc75a57ed3101ea4ca75e34664baf3d9e2ae9de9a",
     "crates/foxcore-tun/src/flow/select.rs": "f5d626331914b865b21fbf10c8f5c42018d54b52aee380f6318411411c30192d",
     "crates/foxcore-tun/src/flow/state.rs": "7b9a7325b224673e739cea42e6b1d3ce89f729434974ae95e854c4afdb5c8679",
@@ -538,13 +539,13 @@
     "vendor/rustls/src/x509.rs": "e036e80ceb688d1b7ff2ff82a63e99545678b262cf5af0c331fbebc714db4444"
   },
   "consumer": "vpn",
-  "coreCommit": "66286391a715fbc1c2bbabb2581c5295f76a1acd",
+  "coreCommit": "fc2134dc15b32087516672935e64ae7b8b0d5472",
   "derivedNativeExcludedForFreshGradleGeneration": true,
   "kind": "canonical-vpn-source-legal-delivery",
   "licenseFiles": {
     "CURRENT-CORE-PROJECTION.json": {
-      "bytes": 61536,
-      "sha256": "79133fa0bc5851aed23034eb35a84b1a79383738b93c96d8a0a8d08df830ea8f"
+      "bytes": 61664,
+      "sha256": "5c8517a426b2cd012881c67525bfe2e82dc80795f075ac7244b6b81e5b23ebdf"
     },
     "FoxHole-VPN-GPL-3.0-or-later.txt": {
       "bytes": 35149,
@@ -556,7 +557,7 @@
     },
     "MANIFEST.json": {
       "bytes": 107215,
-      "sha256": "6df05b49004d1c3fff7169d6a05a9bc9fc151e25d64b75d502c3035e964e4f02"
+      "sha256": "47f7d2287356bb6b2dc987fe585b68c6f506b0cf897a38e041908115fe740bbb"
     },
     "NaturalEarth-PUBLIC-DOMAIN.txt": {
       "bytes": 602,
@@ -856,35 +857,35 @@
     },
     "native/ABI-COVERAGE.json": {
       "bytes": 2402,
-      "sha256": "38708d3371d2dbcc54d87cc87fdea53e632c0e47f33328ac66a2a4f6af94049c"
+      "sha256": "058191e5ae920a68175a513480ebf2498868a2a12ab63e3ef12fcc72e91feaea"
     },
     "native/CARGO-NOTICE-UNION.json": {
       "bytes": 152091,
-      "sha256": "c267eb11a913cc55f270c66b3edb8a65d1221920bf97905dba0f04369bb4fe96"
+      "sha256": "b46cfac9fbae6400170a68df0dfa48b5c278a2b0377cdf5ea53c1e0b2dcca83e"
     },
     "native/NOTICE-ORIGINS.json": {
       "bytes": 480,
-      "sha256": "829e13e5ab2d73dcb4167e1413db10b5ffc396249690d75b1e36b3d63bec7283"
+      "sha256": "cfdce3e7c8311fa60174b8db02c649733ab19bd3f767f00e167f426126467676"
     },
     "native/README.txt": {
       "bytes": 275,
       "sha256": "cf5365e2a7879f0307985db875476a7a898418c0fe89d62c66efbe61eca56de6"
     },
     "native/aarch64-linux-android.cdx.json": {
-      "bytes": 289342,
-      "sha256": "aed54dd159738703621697f0c148017cd995f489abdac98ce652297cfff1233c"
+      "bytes": 289148,
+      "sha256": "750985696c9d4e01697c3edbdb3c0030634e4967e453d874cbc5e7cb7913f0e8"
     },
     "native/aarch64-linux-android.notices.json": {
       "bytes": 128307,
-      "sha256": "27f845ebacbd86b8cbdd2d5e5bc0fcfefe49c16d34a1e40283f2b7732af26fc0"
+      "sha256": "2e2dea209a0325f5c1a65d88c54d9bf9d7e9e759c6e53cb9f708ecdaca2ee206"
     },
     "native/armv7-linux-androideabi.cdx.json": {
-      "bytes": 286978,
-      "sha256": "0c7abdba0f47fa9747592197dae717a6fffc6fc863a70379f6da51716d28ec65"
+      "bytes": 286784,
+      "sha256": "471f02ed5411e896a812301e057555111bc27cd401dab66f0f2910d221747b85"
     },
     "native/armv7-linux-androideabi.notices.json": {
       "bytes": 127223,
-      "sha256": "406fe150e9f85695647ee195d71b57b640bcbec936699f38ead0f3f60566027c"
+      "sha256": "b1e1e4949ef6eca4c7582933261f74cc8d71712c43d6b0219f29f7e90aaa5ef5"
     },
     "native/cargo/aead-0.5.2/LICENSE-APACHE": {
       "bytes": 10850,
@@ -2759,8 +2760,8 @@
       "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
     },
     "native/foxcore/ABI-COVERAGE.json": {
-      "bytes": 126151,
-      "sha256": "e460e8b2b16d9cb04ad8dd59bea18cd17eeb6641356207178e7aaeeffc1922d6"
+      "bytes": 126285,
+      "sha256": "5c5eb9773e09d6c9043fcc7baac680e8ce67f49d65dd333456ff82b9e948cef8"
     },
     "native/foxcore/FoxHole-Core-GPL-3.0-or-later.txt": {
       "bytes": 35149,
@@ -2768,19 +2769,19 @@
     },
     "native/foxcore/REVISION.txt": {
       "bytes": 41,
-      "sha256": "8a5ca50b48a26d9f7bcc2dd45b3fa880bfe80d9d88ded9cb05ebc286b427b566"
+      "sha256": "d8a80527e7cfcc0348e5beb67127f30bd5fbeebbaaa19d8708b462a08e42282e"
     },
     "native/foxcore/THIRD_PARTY_NOTICES.md": {
       "bytes": 9331,
       "sha256": "5f63fe1104d0ba682236527f2bd8c3ed71cdd664898b50e17c08fb20a34c2116"
     },
     "native/i686-linux-android.cdx.json": {
-      "bytes": 289415,
-      "sha256": "5b8811ed8855ec0e4b0a10ae1211f9f681aa0ed9eb1b0029f9d967ea108ea769"
+      "bytes": 289221,
+      "sha256": "f1b4471d172be6b3cd4d090cc488d2979a015e75e5cf58cce7213ba55a8fef0a"
     },
     "native/i686-linux-android.notices.json": {
       "bytes": 128307,
-      "sha256": "8ed60b4caafc2d7d15cfb3804bd35b5b755177a52bc54e26155a3efd379ef9d2"
+      "sha256": "45b4aa7e8d7ae7e7221e341d2c475459933a4f935b5a7ebac30ab97f8dfee167"
     },
     "native/sentinel/ABI-COVERAGE.json": {
       "bytes": 85294,
@@ -2827,46 +2828,46 @@
       "sha256": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1"
     },
     "native/toolchain/PROVENANCE.json": {
-      "bytes": 24413,
-      "sha256": "2fbac6b5f86fad6ccef8539260aa30b3424f4c51f588c5c176678da2ac5575e5"
+      "bytes": 22941,
+      "sha256": "ee9f8ff4af997453a7c90c57fa472f88dc64fc6d7da6365c25850ae387bb8ebb"
     },
     "native/x86_64-linux-android.cdx.json": {
-      "bytes": 289417,
-      "sha256": "f2d4171fcba37e1fc5562b418b80155cac09b77de4785710ba7b7b78c22f12a2"
+      "bytes": 289223,
+      "sha256": "c350eb30eca1117135316c79e27e7b6cdee92ac8f4fa9d4e4b9e9473e2d541c1"
     },
     "native/x86_64-linux-android.notices.json": {
       "bytes": 128307,
-      "sha256": "b98dbf08b9bec2c37f8cff493390ce7a473d5910738da642423b6267e686fb29"
+      "sha256": "0ed18d1ed8b4f5cfbdfe83a284e1ff31f6fd85c3fdea1918e3ef7e4e39340669"
     }
   },
   "nativeLibraries": {
     "aarch64-linux-android": {
       "abi": "arm64-v8a",
-      "bytes": 12274696,
-      "sha256": "2e73e61f73e037f8aaa7456d903d0fa98e8809f74276cbc7cff25bb3c03dbae5"
+      "bytes": 12279272,
+      "sha256": "d7fa5e1ec029254a71d8d2d292e2117b1c819045218aceb9d8b9e3e245ca1edd"
     },
     "armv7-linux-androideabi": {
       "abi": "armeabi-v7a",
-      "bytes": 8581772,
-      "sha256": "0cb7b83919f57f27edac23dc3fcfc56cabc9ed663270ff8282a2003e1bf1e7c6"
+      "bytes": 8583512,
+      "sha256": "5a9ddfcc0d213929fd0c7aaa4858cfbcf46fcdc73a525ec5dda1b1a8cdb4a145"
     },
     "i686-linux-android": {
       "abi": "x86",
-      "bytes": 13103268,
-      "sha256": "009dc5ce41ab2ab75360f7eb823b4d211ede80ffa62c75152da084cefc49e721"
+      "bytes": 13107376,
+      "sha256": "d9bafd26d898c518194cbd0277954e424360a60ceecb640d6dc054e36c7944b3"
     },
     "x86_64-linux-android": {
       "abi": "x86_64",
-      "bytes": 14582680,
-      "sha256": "724c6ebb6633e1d79121acabd9502f55d10e1dfcdacfba1855f03fe6ddb22208"
+      "bytes": 14585656,
+      "sha256": "7f61980970b14294341820d175f8d588b0a68f29e8c52755fdb0e9db53c070ac"
     }
   },
   "normalGraphics4ProducerReceiptSha256": "448cfa28f72adee3b200c2e8f5bbe23f0ae895a3aad6c857952936dceaff9345",
   "producerReceiptsByTarget": {
-    "aarch64-linux-android": "4340b342c280ad38b212ec07a36ea59c377542c44b9026411c7749874690b7c3",
-    "armv7-linux-androideabi": "4340b342c280ad38b212ec07a36ea59c377542c44b9026411c7749874690b7c3",
-    "i686-linux-android": "4340b342c280ad38b212ec07a36ea59c377542c44b9026411c7749874690b7c3",
-    "x86_64-linux-android": "4340b342c280ad38b212ec07a36ea59c377542c44b9026411c7749874690b7c3"
+    "aarch64-linux-android": "b849cd16771d2cbb9d2b3e19d3dd9741e0c2a63439dc57e64237a33fa1d4f1ec",
+    "armv7-linux-androideabi": "6cb3f8344dd5539b51c593947f4b9ddc348870800c250d278fe866644630e4bf",
+    "i686-linux-android": "6cb3f8344dd5539b51c593947f4b9ddc348870800c250d278fe866644630e4bf",
+    "x86_64-linux-android": "6cb3f8344dd5539b51c593947f4b9ddc348870800c250d278fe866644630e4bf"
   },
   "schema": 1,
   "sourceProducerProfile": "android4",

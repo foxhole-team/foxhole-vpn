@@ -5,6 +5,7 @@ import com.foxhole.vpn.VpnDeviceLocation
 import com.foxhole.vpn.VpnLanguage
 import com.foxhole.vpn.VpnLocation
 import com.foxhole.vpn.VpnPhase
+import com.foxhole.vpn.VpnRoutingMode
 import com.foxhole.vpn.VpnProfileSummary
 import com.foxhole.vpn.VpnSettings
 import com.foxhole.vpn.VpnTheme
@@ -19,6 +20,21 @@ import org.junit.Test
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class WidgetUpdatesTest {
+    @Test
+    fun scenarioChangesRefreshWithoutWaitingForAConnectionEvent() = runTest {
+        val settings = MutableStateFlow(VpnSettings())
+        val updates = mutableListOf<Pair<VpnUiState, VpnSettings>>()
+        backgroundScope.launch { widgetRenderRequests(MutableStateFlow(ready), settings, MutableStateFlow(0L)).collect(updates::add) }
+        runCurrent()
+        settings.value = settings.value.copy(appRouting = settings.value.appRouting.copy(mode = VpnRoutingMode.SELECTED_APPS))
+        runCurrent()
+        assertEquals(2, updates.size)
+        assertEquals(VpnRoutingMode.SELECTED_APPS, updates.last().second.appRouting.mode)
+        settings.value = settings.value.copy(appRouting = settings.value.appRouting.copy(confirmChanges = true))
+        runCurrent()
+        assertEquals(2, updates.size)
+    }
+
     @Test
     fun deviceCountryAndCityRerenderWithoutDetailedErrorsOrIpChanges() = runTest {
         val states = MutableStateFlow(ready)

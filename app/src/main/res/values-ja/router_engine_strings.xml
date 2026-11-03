@@ -2,7 +2,7 @@
 <resources>
     <string name="router_engines_entry">VPNプロトコル設定</string>
     <string name="router_engines_title">VPNプロトコル</string>
-    <string name="router_engines_help">ルーターのVPNプロトコルパッケージをインストールまたは削除します。利用可能なプロトコルはルーターと検証済みリリースカタログによって異なります。</string>
+    <string name="router_engines_help">ルーターの VPN プロトコルパッケージをインストールまたは削除します。利用できるプロトコルは、ルーターと検証済みのリリースカタログによって異なります。</string>
     <string name="router_engines_installed">インストール済み</string>
     <string name="router_engines_add">プロトコルを追加</string>
     <string name="router_engines_update">更新</string>

@@ -28,7 +28,7 @@
     <string name="vpn_router_change_pin_note">请在首次设置结束时设置六位 PIN。此后只能使用所有者账户在 LuCI 中更改 PIN。</string>
     <string name="vpn_router_save">保存</string>
     <string name="vpn_router_no_profile">无路由器 VPN 配置</string>
-    <string name="vpn_router_country_direct">指定国家网站直连</string>
+    <string name="vpn_router_country_direct">本地流量</string>
     <string name="vpn_router_country_direct_note">所选国家的网站将绕过 VPN 隧道。</string>
     <string name="vpn_router_home_country">国家代码，例如 NL</string>
     <string name="vpn_router_auto_home">家庭网络自动切换</string>

@@ -28,6 +28,7 @@ data class VpnSettings(
     val autoCheckConnectionData: Boolean = true,
     val connectionDataCheckIntervalHours: Int = 24,
     val fontStyle: VpnFontStyle = VpnFontStyle.PIXEL,
+    val appRouting: VpnAppRouting = VpnAppRouting(),
 )
 
 data class VpnProfileSummary(
@@ -117,6 +118,9 @@ interface VpnController {
         if (current.profileRevision == expectedProfileRevision && !current.canDisconnect && !current.isConnected) removeProfile(id)
     }
     suspend fun updateSettings(settings: VpnSettings)
+    suspend fun updateAppRouting(transform: (VpnAppRouting) -> VpnAppRouting) {
+        updateSettings(settings.value.copy(appRouting = transform(settings.value.appRouting)))
+    }
     val appLanguageSettingsReady: Boolean get() = state.value.isReady
     suspend fun updateAppLanguage(language: VpnLanguage): Boolean {
         awaitReady()

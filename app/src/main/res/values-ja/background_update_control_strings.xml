@@ -2,7 +2,7 @@
 <resources>
     <string name="vpn_background_updates">バックグラウンド更新</string>
     <string name="vpn_auto_refresh_subscriptions">サブスクリプションを自動更新</string>
-    <string name="vpn_auto_refresh_subscriptions_help">有効にすると、保存済みプロバイダーのサブスクリプションを%1$d時間ごとに更新します。Androidが確認を遅らせる場合があります。オフにしても保存済みプロファイルは保持されます。</string>
+    <string name="vpn_auto_refresh_subscriptions_help">オンの場合、保存したプロバイダーのサブスクリプションを %1$d 時間ごとに更新します。Android が確認を延期する場合があります。オフにしても保存済みのプロファイルは残ります。</string>
     <string name="vpn_auto_check_connection_data">接続データの更新を確認</string>
-    <string name="vpn_auto_check_connection_data_help">有効にすると、FoxHole DBの署名付き接続データを%1$d時間ごとに確認します。インストールには引き続き操作が必要です。</string>
+    <string name="vpn_auto_check_connection_data_help">オンの場合、FoxHole DB の署名付き接続データを %1$d 時間ごとに確認します。更新のインストールには、引き続きユーザーの操作が必要です。</string>
 </resources>

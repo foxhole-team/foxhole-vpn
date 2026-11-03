@@ -9,14 +9,14 @@
     <string name="router_review_architecture">アーキテクチャ</string>
     <string name="router_review_protocols">VPNプロトコル</string>
     <string name="router_review_storage">インストール先</string>
-    <string name="router_review_direct_ip">固定IPv4アドレスを確認済み</string>
+    <string name="router_review_direct_ip">固定IPv4アドレス</string>
     <string name="router_review_remote_settings">外出先からのVPNアクセス</string>
     <string name="router_review_phone_profile">このスマートフォン用のVPNプロファイルを作成</string>
-    <string name="router_review_remote_help">ルーターが静的パブリックIPアドレスに対応している場合、デバイスのVPNゲートウェイとして使用できます。経路：デバイス → ルーター。国内向けの通信は直接インターネットへ、海外向けの通信は有効なVPN接続を経由します。</string>
+    <string name="router_review_remote_help">ルーターが固定の公開 IP アドレスに対応していれば、端末用の VPN ゲートウェイとして使えます。経路は「端末 → ルーター」です。国内向けの通信は直接送信し、国外向けの通信は有効な VPN 接続を経由します。</string>
     <string name="router_review_router_vpn">VPN OpenWRT</string>
     <string name="router_review_vpn_clients">VPN クライアント</string>
     <string name="router_review_router_vpn_description">プロファイル、接続、設定</string>
-    <string name="router_review_clients_description">ホームデバイスとリモートアクセス</string>
+    <string name="router_review_clients_description">家庭内端末とリモートアクセス</string>
     <string name="router_review_unavailable">ルーターが見つかりません</string>
     <string name="router_review_control_disabled">ルーター管理は無効です</string>
     <string name="router_review_back">戻る</string>
@@ -37,7 +37,7 @@
     <string name="router_review_direct">VPN なし</string>
     <string name="router_review_selected_profile">選択したルータープロファイル</string>
     <string name="router_review_unpair">ルーターのペアリングを解除しますか？</string>
-    <string name="router_review_unpair_description">このスマートフォンからの管理を終了します。FoxHoleを削除しない限りルーターVPNは動作を続けます。</string>
+    <string name="router_review_unpair_description">電話からルーターを管理できなくなります。FoxHole を削除しない限り、VPN は動作し続けます。</string>
     <string name="router_review_delete_package">ルーターからFoxHoleを削除</string>
     <string name="router_review_delete_unavailable">削除には接続可能なルーターと互換インストーラーが必要です。</string>
     <string name="router_review_confirm_unpair">ペアリング解除</string>
@@ -65,11 +65,11 @@
     <string name="router_review_reset_unavailable">FoxHoleのリセットは現在利用できません。</string>
     <string name="router_review_open_router_setup">ルーター設定を開く</string>
     <string name="router_review_manual_address">アドレスを入力</string>
-    <string name="router_review_local_traffic">国内サイトに直接接続</string>
+    <string name="router_review_local_traffic">ローカルトラフィック</string>
     <string name="router_review_country_auto">自動</string>
     <string name="router_review_country_unknown">国が不明です</string>
-    <string name="router_review_country_description">ローカルトラフィックの国：%1$s。国を変更。</string>
-    <string name="router_review_country_unknown_description">国が不明です。国を選択してください。</string>
+    <string name="router_review_country_description">国内向け通信の国：%1$s。変更。</string>
+    <string name="router_review_country_unknown_description">国が不明です。選択してください。</string>
     <string name="router_review_device_vpn">VPN</string>
     <string name="router_review_add_router">ルーターを追加</string>
     <string name="router_review_choose_router">ルーターを選択</string>
@@ -79,6 +79,6 @@
     <string name="router_review_saved_unknown">未確認</string>
     <string name="router_review_expand_profiles">VPNプロファイルを表示</string>
     <string name="router_review_collapse_profiles">VPNプロファイルを非表示</string>
-    <string name="router_review_settings_help">このスマートフォンのルーター管理とルーティング設定。\n\nペアリング：ルーター1台につきモバイル端末は10台まで、1つのアプリに保存できるルーターは10台までです。</string>
+    <string name="router_review_settings_help">この端末のルーター管理と通信経路のルールです。\n\nペアリング上限：ルーター 1 台にモバイル端末 10 台まで、アプリ 1 つにルーター 10 台まで。</string>
     <string name="router_review_disconnect">切断</string>
 </resources>

@@ -25,6 +25,7 @@ internal class VpnAppUpdater(
     private val source: VpnAppUpdateSource = VpnAppUpdateHttpSource(),
     private val cache: VpnAppUpdateCache = FileVpnAppUpdateCache(File(directory, "release.json")),
     private val io: CoroutineDispatcher = Dispatchers.IO,
+    private val announce: (VpnAppRelease) -> Unit = {},
 ) {
     private val mutable = MutableStateFlow(VpnAppUpdateState(if (enabled) VpnAppUpdatePhase.IDLE else VpnAppUpdatePhase.DISABLED))
     val state: StateFlow<VpnAppUpdateState> = mutable.asStateFlow()
@@ -73,6 +74,7 @@ internal class VpnAppUpdater(
                         storage { cache.write(result.release) }
                         val ready = previous.phase == VpnAppUpdatePhase.READY && previous.release == result.release && artifact.isFile
                         mutable.value = VpnAppUpdateState(if (ready) VpnAppUpdatePhase.READY else VpnAppUpdatePhase.AVAILABLE, result.release)
+                        runCatching { announce(result.release) }
                     }
                     VpnAppUpdateCheck.NoRelease -> { clearArtifacts(); mutable.value = VpnAppUpdateState(VpnAppUpdatePhase.NO_RELEASE) }
                     VpnAppUpdateCheck.UpToDate -> { clearArtifacts(); mutable.value = VpnAppUpdateState(VpnAppUpdatePhase.UP_TO_DATE) }
@@ -170,7 +172,8 @@ internal class VpnAppUpdater(
             val verifier = VpnAppApkVerifier(app)
             return VpnAppUpdater(File(app.noBackupFilesDir, "app-updates"), verifier::installedCode, verifier::verify,
                 VpnAppUpdatePolicy.allowed(app.packageName, BuildConfig.APP_UPDATE_CHANNEL),
-                source = VpnAppUpdateHttpSource(manifestAssetName = BuildConfig.UPDATE_MANIFEST_ASSET))
+                source = VpnAppUpdateHttpSource(manifestAssetName = BuildConfig.UPDATE_MANIFEST_ASSET),
+                announce = { release -> VpnAppUpdateNotifier(app).notify(release) })
         }
     }
 }

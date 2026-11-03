@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="widget_status_label">FoxHole VPN · 状态</string>
-    <string name="widget_status_description">简洁的 VPN 状态与连接控制。</string>
+    <string name="widget_status_description">紧凑的 VPN 状态和连接控制。</string>
     <string name="widget_fox_label">FoxHole VPN · 狐狸</string>
-    <string name="widget_fox_description">狐狸显示 VPN 连接状态。点击可连接或断开。</string>
+    <string name="widget_fox_description">VPN 状态。点击可连接或断开。</string>
     <string name="widget_connected">已连接 VPN 网络</string>
     <string name="widget_loading">正在加载</string>
     <string name="widget_disconnected">已断开 VPN 网络</string>

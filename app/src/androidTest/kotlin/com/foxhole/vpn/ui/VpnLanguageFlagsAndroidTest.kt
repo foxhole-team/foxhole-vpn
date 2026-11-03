@@ -39,29 +39,30 @@ class VpnLanguageFlagsAndroidTest {
         var backCalls = 0
         compose.setContent {
             VpnUiTheme(initial.theme, initial.fontStyle) {
-                VpnSettingsDetailScreen(VpnSettingsDetail.LANGUAGE, initial,
+                VpnSettingsDetailScreen(VpnSettingsDetail.APPEARANCE, initial,
                     onSettings = { selected = it }, onBack = { backCalls++ })
             }
         }
+        compose.onNodeWithText(context.getString(R.string.vpn_language_english)).performClick()
         listOf("GB", "RU", "DE", "FR", "ES", "JP", "CN").forEach { code ->
             compose.onNodeWithContentDescription(code).performScrollTo().assertIsDisplayed()
         }
         compose.onNodeWithText(context.getString(R.string.vpn_language_japanese)).performScrollTo().performClick()
         compose.runOnIdle {
             assertEquals(initial.copy(language = VpnLanguage.JA), selected)
-            assertEquals(1, backCalls)
+            assertEquals(0, backCalls)
         }
     }
 
-    @Test fun selectedLanguageSummaryAlsoUsesTheFlagImage() {
+    @Test fun appearanceShowsTheCurrentLanguageAndOffersItsCountryImage() {
         compose.setContent {
             VpnUiTheme(VpnTheme.DARK) {
-                VpnSettingsScreen(VpnSettings(language = VpnLanguage.EN),
-                    onSettingsDetail = {}, onProfiles = {}, onSystemSettings = {})
+                VpnSettingsDetailScreen(VpnSettingsDetail.APPEARANCE, VpnSettings(language = VpnLanguage.EN),
+                    onSettings = {}, onBack = {})
             }
         }
+        compose.onNodeWithText(context.getString(R.string.vpn_language_english)).assertIsDisplayed().performClick()
         compose.onNodeWithContentDescription("GB").performScrollTo().assertIsDisplayed()
-        compose.onNodeWithText(context.getString(R.string.vpn_language_english)).assertIsDisplayed()
     }
 
     @Test fun vectorHeightMatchesTheActualCapitalGlyphAcrossFontsStylesAndFontScale() {

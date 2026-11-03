@@ -44,11 +44,11 @@
     <string name="vpn_language_russian">Русский</string>
     <string name="vpn_help">Ayuda</string>
     <string name="vpn_about">Acerca de</string>
-    <string name="vpn_about_text">FoxHole VPN %1$s. Un cliente VPN de FoxHole Team. Fuentes: Tiny5 y JetBrains Mono, SIL Open Font License 1.1.</string>
+    <string name="vpn_about_text">FoxHole VPN %1$s. Un cliente VPN mínimo de FoxHole Team. Fuentes: Tiny5 y JetBrains Mono, SIL Open Font License 1.1.</string>
     <string name="vpn_help_connect_title">Conexión</string>
-    <string name="vpn_help_connect_body">Importe un perfil de su proveedor VPN o servidor propio, selecciónelo, pulse Iniciar y permita la solicitud VPN de Android. Detener cancela una conexión pendiente o desconecta la VPN.</string>
+    <string name="vpn_help_connect_body">Importa un perfil de tu proveedor VPN o servidor, selecciónalo, toca Iniciar y autoriza la VPN en el diálogo del sistema Android. Detener cancela la conexión en curso y desconecta la VPN.</string>
     <string name="vpn_help_profiles_title">Perfiles</string>
-    <string name="vpn_help_profiles_body">Seleccione un perfil con el botón redondo de la izquierda. Toque la tarjeta para ver sus detalles; si el perfil ofrece varias opciones de protocolo, elija la deseada en la lista. Mantenga pulsado para compartir, actualizar, eliminar o enviar a un router vinculado. Se comparte el perfil completo o su enlace de origen y puede incluir credenciales. Comparta solo con personas de confianza. Actualizar renueva los perfiles de suscripciones del proveedor y de claves dinámicas Outline.</string>
+    <string name="vpn_help_profiles_body">Mantén pulsado un perfil VPN guardado para administrarlo. Puedes compartirlo, actualizarlo, eliminarlo o enviarlo a un router vinculado. Se envía el perfil completo o el enlace original, incluidas las posibles credenciales de acceso. Comparte solo con personas de confianza. Se pueden actualizar perfiles de suscripciones de proveedores y claves dinámicas de Outline.</string>
     <string name="vpn_import">IMPORTAR</string>
     <string name="vpn_import_text">Pegar configuración o enlace</string>
     <string name="vpn_import_file">ELEGIR ARCHIVO</string>
@@ -112,7 +112,7 @@
     <string name="vpn_continue">CONTINUAR</string>
     <string name="vpn_profile_refresh_unavailable">Solo se pueden actualizar perfiles de suscripción.</string>
     <string name="vpn_help_add_title">Añadir perfil</string>
-    <string name="vpn_help_add_body">Pulse + para pegar un enlace de conexión o un enlace HTTPS de suscripción del proveedor, incluido uno de v2rayTun. También puede introducirlo manualmente, elegir un archivo o escanear un código QR.</string>
+    <string name="vpn_help_add_body">Toca + y pega un enlace de conexión o una suscripción HTTPS de tu proveedor VPN, incluidos los de v2rayTun. También puedes escribirlo manualmente, elegir un archivo o escanear un código QR.</string>
     <string name="vpn_help_protocols_title">Protocolos compatibles</string>
-    <string name="vpn_help_protocols_body">VLESS, VMess, Trojan, Shadowsocks/Outline, WireGuard, Hysteria2, Naive, TUIC y AnyTLS. Importación: enlaces, suscripciones HTTPS del proveedor, incluidas las de v2rayTun, JSON compatible, YAML de Clash/mihomo, JSON SIP008, claves dinámicas Outline (ssconf://) y WireGuard. Se importan los servidores compatibles de Clash/mihomo. No se transfieren las reglas de enrutamiento, los grupos ni otros ajustes del cliente; no se admiten configuraciones con proxy-providers externos.</string>
+    <string name="vpn_help_protocols_body">VLESS, VMess, Trojan, Shadowsocks/Outline, WireGuard, Hysteria2, Naive, TUIC y AnyTLS. Importa enlaces, suscripciones HTTPS de proveedores incluidas las de v2rayTun, JSON compatible, YAML de Clash/mihomo, JSON SIP008, claves dinámicas de Outline (ssconf://) y WireGuard. De Clash/mihomo se importan las entradas de servidor compatibles.</string>
 </resources>

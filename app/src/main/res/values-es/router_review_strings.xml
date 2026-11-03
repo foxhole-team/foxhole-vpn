@@ -9,14 +9,14 @@
     <string name="router_review_architecture">Arquitectura</string>
     <string name="router_review_protocols">Protocolos VPN</string>
     <string name="router_review_storage">Instalación</string>
-    <string name="router_review_direct_ip">Dirección IPv4 estática confirmada</string>
+    <string name="router_review_direct_ip">Dirección IPv4 estática</string>
     <string name="router_review_remote_settings">Acceso VPN fuera de casa</string>
     <string name="router_review_phone_profile">Crear un perfil VPN para este teléfono</string>
-    <string name="router_review_remote_help">Si su router admite una dirección IP pública estática, puede utilizarlo como puerta de enlace VPN para sus dispositivos. Ruta: dispositivo → router; el tráfico local sale directamente y el tráfico extranjero utiliza la conexión VPN activa.</string>
+    <string name="router_review_remote_help">Si tu router admite una dirección IP pública estática, puede actuar como puerta de enlace VPN para tus dispositivos. Ruta: dispositivo → router; el tráfico local sale directamente y el extranjero pasa por la conexión VPN activa.</string>
     <string name="router_review_router_vpn">VPN OpenWRT</string>
     <string name="router_review_vpn_clients">Clientes VPN</string>
     <string name="router_review_router_vpn_description">Perfiles, conexión y ajustes</string>
-    <string name="router_review_clients_description">Dispositivos del hogar y acceso remoto</string>
+    <string name="router_review_clients_description">Dispositivos domésticos y acceso remoto</string>
     <string name="router_review_unavailable">Router no encontrado</string>
     <string name="router_review_control_disabled">Gestión del router desactivada</string>
     <string name="router_review_back">Volver</string>
@@ -37,7 +37,7 @@
     <string name="router_review_direct">Sin VPN</string>
     <string name="router_review_selected_profile">Perfil seleccionado del router</string>
     <string name="router_review_unpair">¿Desvincular el router?</string>
-    <string name="router_review_unpair_description">Este teléfono dejará de gestionar el router. La VPN del router seguirá funcionando a menos que elimine FoxHole.</string>
+    <string name="router_review_unpair_description">El teléfono dejará de administrar el router. La VPN seguirá funcionando mientras no elimines FoxHole.</string>
     <string name="router_review_delete_package">Eliminar FoxHole del router</string>
     <string name="router_review_delete_unavailable">La eliminación requiere un router accesible y un instalador compatible.</string>
     <string name="router_review_confirm_unpair">DESVINCULAR</string>
@@ -65,11 +65,11 @@
     <string name="router_review_reset_unavailable">El restablecimiento de FoxHole no está disponible actualmente.</string>
     <string name="router_review_open_router_setup">ABRIR AJUSTES DEL ROUTER</string>
     <string name="router_review_manual_address">INTRODUCIR DIRECCIÓN</string>
-    <string name="router_review_local_traffic">Sitios del país directamente</string>
+    <string name="router_review_local_traffic">Tráfico local</string>
     <string name="router_review_country_auto">Automático</string>
     <string name="router_review_country_unknown">País desconocido</string>
-    <string name="router_review_country_description">País para tráfico local: %1$s. Cambiar país.</string>
-    <string name="router_review_country_unknown_description">País desconocido. Elija un país.</string>
+    <string name="router_review_country_description">País para el tráfico local: %1$s. Cambiar.</string>
+    <string name="router_review_country_unknown_description">País desconocido. Elegir país.</string>
     <string name="router_review_device_vpn">VPN</string>
     <string name="router_review_add_router">Añadir router</string>
     <string name="router_review_choose_router">Elegir router</string>
@@ -79,6 +79,6 @@
     <string name="router_review_saved_unknown">Sin comprobar</string>
     <string name="router_review_expand_profiles">Mostrar perfiles VPN</string>
     <string name="router_review_collapse_profiles">Ocultar perfiles VPN</string>
-    <string name="router_review_settings_help">Gestión del router y preferencias de enrutamiento para este teléfono.\n\nVinculación: hasta 10 dispositivos móviles por router y hasta 10 routers en una aplicación.</string>
+    <string name="router_review_settings_help">Administración del router y reglas de enrutamiento para este dispositivo.\n\nVinculación: hasta 10 dispositivos móviles por router y hasta 10 routers en una aplicación.</string>
     <string name="router_review_disconnect">DESCONECTAR</string>
 </resources>

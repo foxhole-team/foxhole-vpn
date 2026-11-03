@@ -39,7 +39,7 @@ plugins {
 
 allprojects {
     group = "com.foxhole.vpn"
-    version = "1.0.2"
+    version = "1.0.3"
 }
 
 val hardenedToolDependencyVersions =

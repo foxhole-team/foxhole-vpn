@@ -94,7 +94,7 @@ internal fun VpnProfilesSheet(
             Icon(painterResource(R.drawable.lin_plus), stringResource(R.string.vpn_no_profile), Modifier.size(24.dp))
         }
     }) {
-        if (state.profiles.isEmpty()) Text(stringResource(R.string.vpn_profile_empty), Modifier.padding(vertical = 24.dp))
+        if (state.profiles.isEmpty()) Text(stringResource(R.string.vpn_profile_empty), Modifier.padding(vertical = 16.dp))
         Box(Modifier.weight(1f, fill = false).heightIn(max = viewportHeight).fillMaxWidth().clipToBounds()) {
             LazyColumn(Modifier.fillMaxWidth().testTag(VpnProfilesListTag).nestedScroll(ProfileListScrollConnection), contentPadding = PaddingValues(end = 12.dp),
                 state = ui.listState, verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -154,7 +154,7 @@ private fun VpnProfileCard(
             Row(Modifier.fillMaxWidth().height(headerHeight).combinedClickable(
                 role = Role.Button, onClick = onToggleDetails, onLongClick = onActions, onLongClickLabel = actionsLabel,
             )
-                .semantics { contentDescription = detailsLabel }.padding(start = 4.dp, end = 16.dp, top = 8.dp, bottom = 8.dp),
+                .semantics { contentDescription = detailsLabel }.padding(start = 4.dp, end = 16.dp, top = 4.dp, bottom = 4.dp),
                 verticalAlignment = Alignment.CenterVertically) {
                 RadioButton(selected, onClick = onSelect, enabled = editable, modifier = Modifier.size(48.dp))
                 Row(Modifier.weight(1f).padding(start = 4.dp, end = 8.dp),
@@ -190,14 +190,14 @@ private fun VpnProfileDetails(
     val colors = LocalVpnColors.current
     if (profile.protocolOptions.size <= 1) {
         Text(stringResource(R.string.vpn_profile_protocol, profile.protocol),
-            Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, bottom = 16.dp),
+            Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, bottom = 12.dp),
             style = MaterialTheme.typography.bodySmall, color = colors.muted)
         return
     }
-    val viewportHeight = (vpnProfilesViewportHeight(1, true, headerHeight, LocalDensity.current) - headerHeight - 16.dp)
-        .coerceAtLeast(52.dp)
+    val viewportHeight = (vpnProfilesViewportHeight(1, true, headerHeight, LocalDensity.current) - headerHeight - 12.dp)
+        .coerceAtLeast(48.dp)
     val listState = rememberLazyListState()
-    Box(Modifier.fillMaxWidth().padding(start = 16.dp, end = 4.dp, bottom = 16.dp)) {
+    Box(Modifier.fillMaxWidth().padding(start = 16.dp, end = 4.dp, bottom = 12.dp)) {
         LazyColumn(Modifier.fillMaxWidth().heightIn(max = viewportHeight).testTag(vpnProtocolListTag(profile.id)),
             state = listState, contentPadding = PaddingValues(end = 12.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -211,7 +211,7 @@ private fun VpnProfileDetails(
 
 @Composable
 private fun VpnProtocolOptionRow(option: VpnProtocolSummary, selected: Boolean, enabled: Boolean, onSelect: () -> Unit) {
-    Row(Modifier.fillMaxWidth().heightIn(min = 52.dp)
+    Row(Modifier.fillMaxWidth().heightIn(min = 48.dp)
         .selectable(selected, enabled = enabled, role = Role.RadioButton, onClick = onSelect),
         verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
         RadioButton(selected, onClick = null, enabled = enabled, modifier = Modifier.size(24.dp))

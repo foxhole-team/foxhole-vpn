@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_routing_scenario_applied">シナリオを切り替えました。</string>
+    <string name="vpn_routing_app_removed">アプリをリストから削除しました。</string>
+    <string name="vpn_routing_rules_applied">ルール一覧を適用しました。</string>
+</resources>

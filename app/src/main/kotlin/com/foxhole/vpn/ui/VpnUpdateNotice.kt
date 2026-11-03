@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -68,15 +69,21 @@ private fun VpnUpdateNoticeSheet(
                 Surface(shape = MaterialTheme.shapes.small, border = BorderStroke(1.dp, LocalVpnColors.current.border),
                     color = LocalVpnColors.current.panel) {
                     Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                        VpnReleaseNoteRow(R.drawable.lin_router, R.string.vpn_release_notes_router_pairing_version)
-                        VpnReleaseNoteRow(R.drawable.lin_refresh, R.string.vpn_release_notes_update_position)
-                        VpnReleaseNoteRow(R.drawable.lin_profiles, R.string.vpn_release_notes_subscriptions)
-                        VpnReleaseNoteRow(R.drawable.lin_router, R.string.vpn_release_notes_router_setup)
-                        VpnReleaseNoteRow(R.drawable.lin_file, R.string.vpn_release_notes_apk_updates)
-                        VpnReleaseNoteRow(R.drawable.lin_refresh, R.string.vpn_release_notes_motion)
-                        VpnReleaseNoteRow(R.drawable.lin_info, R.string.vpn_release_notes_notices)
-                        VpnReleaseNoteRow(R.drawable.lin_router, R.string.vpn_release_notes_router_management)
-                        VpnReleaseNoteRow(R.drawable.lin_settings, R.string.vpn_release_notes_pin6)
+                        val notes = buildList {
+                            if (com.foxhole.vpn.BuildConfig.APP_UPDATE_CHANNEL == "github")
+                                add(R.drawable.lin_refresh to R.string.app_update_available_release_note)
+                            add(R.drawable.lin_apps to R.string.vpn_release_notes_scenarios)
+                            add(R.drawable.lin_refresh to R.string.vpn_release_notes_dns_103)
+                            add(R.drawable.lin_apps to R.string.vpn_release_notes_widget_103)
+                            add(R.drawable.lin_refresh to R.string.vpn_release_notes_interface_103)
+                            add(R.drawable.lin_help to R.string.vpn_release_notes_help_103)
+                            add(R.drawable.lin_file to R.string.vpn_release_notes_journal_103)
+                            add(R.drawable.lin_settings to R.string.vpn_release_notes_compact_103)
+                        }
+                        notes.forEachIndexed { index, (icon, text) ->
+                            VpnReleaseNoteRow(icon, text)
+                            if (index < notes.lastIndex) HorizontalDivider(color = LocalVpnColors.current.border)
+                        }
                     }
                 }
                 if (storageError) {

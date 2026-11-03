@@ -1,1 +1,8 @@
-Server card placement avoids covering the home marker and connection line.
+- Added Routing (beta) for simple per-app traffic routing with atomic rule updates.
+- Fixed DNS routing in application scenarios.
+- The widget now shows the current routing scenario with color indication.
+- Optimized the interface: fixed country flag display, selection list colors, and window animations.
+- Improved documentation and the help section in all supported languages.
+- Added the application log.
+- The application interface is now more compact.
+- Added system notifications for new app versions (GitHub version only).

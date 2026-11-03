@@ -32,9 +32,10 @@ internal fun VpnFlagIcon(
     style: TextStyle = MaterialTheme.typography.bodyMedium,
     modifier: Modifier = Modifier,
     showUnknown: Boolean = false,
+    iconSize: DpSize? = null,
 ) {
     val code = flagCountryCode(countryCode)
-    val slot = vpnFlagIconSize(style)
+    val slot = iconSize ?: vpnFlagIconSize(style)
     if (slot == DpSize.Zero) return
     val resource = when (code) {
         "gb" -> R.drawable.flag_svg_gb
@@ -60,7 +61,7 @@ internal fun VpnFlagIcon(
         }
     } else if (showUnknown) {
         Box(modifier.size(slot), contentAlignment = Alignment.Center) {
-            Icon(painterResource(R.drawable.router_review_globe), null, Modifier.size(slot.height),
+            Icon(painterResource(R.drawable.router_country_unknown), null, Modifier.size(slot.height),
                 tint = LocalVpnColors.current.muted)
         }
     }

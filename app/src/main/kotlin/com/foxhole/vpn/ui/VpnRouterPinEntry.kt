@@ -75,9 +75,6 @@ internal fun VpnRouterPinEntry(
         val split = maxWidth >= 560.dp && maxWidth > maxHeight
         val compact = maxHeight < 420.dp
         Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                VpnRouterHelpButton(R.string.vpn_router_pin, R.string.router_help_pin)
-            }
             val body = Modifier.weight(1f).fillMaxWidth().then(LocalVpnSheetBodyGestures.current).verticalScroll(rememberScrollState())
             if (split) {
                 Row(body, horizontalArrangement = Arrangement.spacedBy(24.dp), verticalAlignment = Alignment.CenterVertically) {
@@ -85,7 +82,7 @@ internal fun VpnRouterPinEntry(
                     VpnRouterPinDetails(credential, active, enabled, retryAfterSeconds, errorLabel, refocusGeneration, Modifier.weight(1f))
                 }
             } else {
-                Column(body, horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(if (compact) 8.dp else 14.dp)) {
+                Column(body, horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(if (compact) 8.dp else 12.dp)) {
                     VpnRouterPinBrand(address, packageVersion, compact)
                     VpnRouterPinDetails(credential, active, enabled, retryAfterSeconds, errorLabel, refocusGeneration)
                 }
@@ -122,7 +119,7 @@ private fun VpnRouterPinDetails(credential: TextFieldState, active: Boolean,
     enabled: Boolean, retryAfterSeconds: Int, errorLabel: Int?, refocusGeneration: Long, modifier: Modifier = Modifier) {
     Column(modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(6.dp)) {
         Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-            Text(stringResource(R.string.router_login_enter_pin), style = MaterialTheme.typography.bodyMedium)
+            VpnHelpLabel(stringResource(R.string.router_login_enter_pin), R.string.vpn_router_pin, R.string.router_help_pin)
         }
         VpnRouterPinSlots(credential, active, enabled, refocusGeneration)
         if (retryAfterSeconds > 0) Text(stringResource(R.string.router_pin_cooldown, retryAfterSeconds),
