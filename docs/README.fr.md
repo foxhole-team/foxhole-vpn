@@ -1,5 +1,18 @@
 <h1 align="center">FoxHole VPN</h1>
 
+<a id="whats-new"></a>
+
+> **🆕 Nouveautés - 1.0.3 Stable**
+>
+> - Ajout de la section « Routage » (bêta) pour un routage simple du trafic par application avec application atomique des modifications.
+> - Correction du routage DNS dans les scénarios de l’application.
+> - Le widget affiche désormais le scénario de routage actuel avec une indication de couleur.
+> - Optimisation de l’interface : correction des drapeaux de pays, des couleurs des listes de sélection et des animations des fenêtres.
+> - Amélioration de la documentation et de la section d’aide dans toutes les langues prises en charge.
+> - Ajout du journal de l’application.
+> - L’interface de l’application est désormais plus compacte.
+> - Ajout de notifications système pour les nouvelles versions de l’application (version GitHub uniquement).
+
 <div align="center">
 
 FoxHole VPN est un client VPN simple pour Android 8 et versions ultérieures. Importez un profil de votre fournisseur VPN ou de votre serveur, connectez votre téléphone et gérez un routeur OpenWrt associé depuis l’application.
@@ -47,17 +60,6 @@ L’import transfère les paramètres de connexion pris en charge. Les règles e
 
 <p align="center"><a href="#quickstart">Démarrer</a> · <a href="#features">Fonctions</a> · <a href="#details">Détails</a> · <a href="#whats-new">Nouveautés</a></p>
 
-<a id="whats-new"></a>
-
-> **🆕 Nouveautés - 1.0.1 Stable**
->
-> - Amélioration de la prise en charge des abonnements des fournisseurs VPN.
-> - Correction de la découverte des routeurs, de l’association et de la vérification d’OpenWrt par SSH, et ajout de la prise en charge des clés SSH.
-> - Correction de la vérification des APK lors des mises à jour depuis GitHub.
-> - Amélioration des animations des fenêtres.
-> - Ajout d’un délai de fermeture des notifications et de la fermeture par balayage vers le haut.
-> - Simplification de la configuration OpenWrt et de la gestion des appareils du foyer et des clients VPN.
-> - Ajout d’un PIN à six chiffres avec confirmation pendant l’installation et de la prise en charge de jusqu’à 10 routeurs.
 
 <a id="quickstart"></a>
 

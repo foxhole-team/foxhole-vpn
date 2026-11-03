@@ -1,5 +1,18 @@
 <h1 align="center">FoxHole VPN</h1>
 
+<a id="whats-new"></a>
+
+> **🆕 Was ist neu - 1.0.3 Stable**
+>
+> - Der Bereich „Routing“ (Beta) wurde für einfaches anwendungsbezogenes Traffic-Routing mit atomarer Anwendung von Änderungen hinzugefügt.
+> - DNS-Routing in den Anwendungsszenarien wurde korrigiert.
+> - Das Widget zeigt jetzt das aktuelle Routing-Szenario mit Farbindikatoren an.
+> - Die Oberfläche wurde optimiert: Länderflaggen, Farben der Auswahllisten und Fensteranimationen wurden korrigiert.
+> - Dokumentation und Hilfebereich wurden in allen unterstützten Sprachen überarbeitet.
+> - Ein Anwendungsprotokoll wurde hinzugefügt.
+> - Die Benutzeroberfläche ist jetzt kompakter.
+> - Systembenachrichtigungen über neue Anwendungsversionen wurden hinzugefügt (nur GitHub-Version).
+
 <div align="center">
 
 FoxHole VPN ist ein einfacher VPN-Client für Android 8 und neuer. Importieren Sie ein Profil Ihres VPN-Anbieters oder eigenen Servers, verbinden Sie Ihr Telefon und verwalten Sie einen gekoppelten OpenWrt-Router in der App.
@@ -47,17 +60,6 @@ Der Import übernimmt unterstützte Verbindungsparameter. Routingregeln und ande
 
 <p align="center"><a href="#quickstart">Einstieg</a> · <a href="#features">Funktionen</a> · <a href="#details">Details</a> · <a href="#whats-new">Was ist neu</a></p>
 
-<a id="whats-new"></a>
-
-> **🆕 Was ist neu - 1.0.1 Stable**
->
-> - Unterstützung für Abonnements von VPN-Anbietern verbessert.
-> - Routersuche, Kopplung und OpenWrt-Prüfung über SSH korrigiert und Unterstützung für SSH-Schlüssel hinzugefügt.
-> - APK-Prüfung bei Updates von GitHub korrigiert.
-> - Fensteranimationen überarbeitet.
-> - Einen Timer zum Schließen von Benachrichtigungen und das Schließen durch Wischen nach oben hinzugefügt.
-> - Die OpenWrt-Einrichtung und die Verwaltung von Heimgeräten und VPN-Clients vereinfacht.
-> - Eine sechsstellige PIN mit Bestätigung bei der Installation und Unterstützung für bis zu 10 Router hinzugefügt.
 
 <a id="quickstart"></a>
 

@@ -2,30 +2,29 @@
 
 ## 1.0.3 Stable
 
-- Добавлены системные уведомления о новых версиях приложения (только версия GitHub).
-
-- Добавлен раздел «Маршрутизация» (бета) для простой маршрутизации трафика по приложениям с атомарным применением изменений.
-- Исправление DNS-маршрутизации в сценариях работы приложения.
-- В виджет добавлен текущий сценарий маршрутизации с цветовой индикацией.
-- Оптимизирован интерфейс: исправлены отображение флага страны, цвета списков выбора и анимации окон.
-- Доработаны документация и раздел помощи на всех поддерживаемых языках.
-- Добавлен журнал приложения.
-- Внешний вид приложения стал компактнее.
+- Added Routing (beta) for simple per-app traffic routing with atomic rule updates.
+- Fixed DNS routing in application scenarios.
+- The widget now shows the current routing scenario with color indication.
+- Optimized the interface: fixed country flag display, selection list colors, and window animations.
+- Improved documentation and the help section in all supported languages.
+- Added the application log.
+- The application interface is now more compact.
+- Added system notifications for new app versions (GitHub version only).
 
 ## 1.0.2 Stable
 
-- Исправлен баг проверки версии OpenWRT при сопряжении с роутером.
-- Уведомление об обновлении приложения перенесено вверх над областью выбора профилей VPN.
+- Fixed the OpenWrt version check when pairing with a router.
+- Moved the application update notice above the VPN profile selection area.
 
 ## 1.0.1 Stable
 
-- Улучшена поддержка подписок VPN провайдеров.
-- Исправлены поиск роутера, сопряжение и проверка OpenWrt по SSH и добавлена поддержка SSH ключей.
-- Исправлена проверка APK при обновлении с Github.
-- Доработаны анимации окон.
-- Добавлены таймер закрытия уведомлений и закрытие свайпом вверх.
-- Упрощены настройка OpenWrt и управление домашними устройствами и VPN-клиентами.
-- Добавлены шестизначный PIN с подтверждением при установке и поддержка до 10 роутеров.
+- Improved support for VPN provider subscriptions.
+- Fixed router discovery, pairing and OpenWrt checks over SSH; added SSH key support.
+- Fixed APK verification when updating from GitHub.
+- Improved window animations.
+- Added a notification dismissal timer and swipe-up dismissal.
+- Simplified OpenWrt setup and management of home devices and VPN clients.
+- Added a six-digit PIN with setup confirmation and support for up to 10 routers.
 
 ## 1.0.0 Stable (unreleased)
 

@@ -1,5 +1,18 @@
 <h1 align="center">FoxHole VPN</h1>
 
+<a id="whats-new"></a>
+
+> **🆕 Novedades - 1.0.3 Stable**
+>
+> - Se ha añadido la sección «Enrutamiento» (beta) para enrutar fácilmente el tráfico por aplicación con aplicación atómica de los cambios.
+> - Se ha corregido el enrutamiento DNS en los escenarios de la aplicación.
+> - El widget muestra ahora el escenario de enrutamiento actual con indicación de color.
+> - Se ha optimizado la interfaz: se han corregido las banderas de los países, los colores de las listas de selección y las animaciones de las ventanas.
+> - Se han mejorado la documentación y la sección de ayuda en todos los idiomas compatibles.
+> - Se ha añadido el registro de la aplicación.
+> - La interfaz de la aplicación es ahora más compacta.
+> - Se han añadido notificaciones del sistema sobre nuevas versiones de la aplicación (solo en la versión de GitHub).
+
 <div align="center">
 
 FoxHole VPN es un cliente VPN sencillo para Android 8 y posteriores. Importe un perfil de su proveedor VPN o servidor propio, conecte el teléfono y gestione un router OpenWrt vinculado desde la aplicación.
@@ -47,17 +60,6 @@ La importación transfiere parámetros de conexión compatibles. No transfiere r
 
 <p align="center"><a href="#quickstart">Empezar</a> · <a href="#features">Funciones</a> · <a href="#details">Detalles</a> · <a href="#whats-new">Novedades</a></p>
 
-<a id="whats-new"></a>
-
-> **🆕 Novedades - 1.0.1 Stable**
->
-> - Mejorado el soporte de suscripciones de proveedores VPN.
-> - Se han corregido la búsqueda del router, la vinculación y la comprobación de OpenWrt por SSH, y se ha añadido compatibilidad con claves SSH.
-> - Se ha corregido la verificación del APK al actualizar desde GitHub.
-> - Se han mejorado las animaciones de las ventanas.
-> - Añadidos un temporizador para cerrar las notificaciones y el cierre deslizando hacia arriba.
-> - Simplificadas la configuración de OpenWrt y la gestión de dispositivos domésticos y clientes VPN.
-> - Añadidos un PIN de seis dígitos con confirmación durante la instalación y soporte para hasta 10 routers.
 
 <a id="quickstart"></a>
 
