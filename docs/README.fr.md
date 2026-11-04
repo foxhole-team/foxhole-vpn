@@ -17,13 +17,7 @@ FoxHole VPN est un client VPN simple pour Android 8 et versions ultérieures. Im
 
 <div align="center">
 
-[![English](https://img.shields.io/badge/%F0%9F%87%AC%F0%9F%87%A7-English-ff7a00?style=flat-square)](../README.md)
-[![Русский](https://img.shields.io/badge/%F0%9F%87%B7%F0%9F%87%BA-%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9-ff7a00?style=flat-square)](README.ru.md)
-[![Deutsch](https://img.shields.io/badge/%F0%9F%87%A9%F0%9F%87%AA-Deutsch-ff7a00?style=flat-square)](README.de.md)
-[![Français](https://img.shields.io/badge/%F0%9F%87%AB%F0%9F%87%B7-Fran%C3%A7ais-ff7a00?style=flat-square)](README.fr.md)
-[![Español](https://img.shields.io/badge/%F0%9F%87%AA%F0%9F%87%B8-Espa%C3%B1ol-ff7a00?style=flat-square)](README.es.md)
-[![日本語](https://img.shields.io/badge/%F0%9F%87%AF%F0%9F%87%B5-%E6%97%A5%E6%9C%AC%E8%AA%9E-ff7a00?style=flat-square)](README.ja.md)
-[![简体中文](https://img.shields.io/badge/%F0%9F%87%A8%F0%9F%87%B3-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-ff7a00?style=flat-square)](README.zh-CN.md)
+[English](../README.md) · [Русский](README.ru.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [العربية](README.ar.md)
 
 </div>
 
@@ -49,8 +43,9 @@ L’import transfère les paramètres de connexion pris en charge. Les règles e
 
 <a id="whats-new"></a>
 
-> **🆕 Nouveautés - 1.0.3 Stable**
+> **🆕 Nouveautés - 1.0.4 Stable**
 >
+> - La prise en charge de l’arabe et du RTL a été ajoutée, le widget a été adapté et les traductions ainsi que les paramètres du routeur ont été corrigés.
 > - Ajout de la section « Routage » (bêta) pour un routage simple du trafic par application avec application atomique des modifications.
 > - Correction du routage DNS dans les scénarios de l’application.
 > - Le widget affiche désormais le scénario de routage actuel avec une indication de couleur.

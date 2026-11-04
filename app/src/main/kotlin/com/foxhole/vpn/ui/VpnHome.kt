@@ -52,6 +52,7 @@ import androidx.compose.ui.semantics.text
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
@@ -177,6 +178,13 @@ private fun VpnHomeControls(
         Spacer(Modifier.height(8.dp))
         VpnAppUpdateCard(appUpdate, onAppUpdate)
     }
+    if (dataUpdate.phase in setOf(
+        VpnDataUpdatePhase.AVAILABLE, VpnDataUpdatePhase.DOWNLOADING, VpnDataUpdatePhase.VERIFYING,
+        VpnDataUpdatePhase.UPDATED, VpnDataUpdatePhase.ERROR,
+    )) {
+        Spacer(Modifier.height(8.dp))
+        VpnDataUpdateStatus(dataUpdate, onDataUpdate)
+    }
     Spacer(Modifier.height(12.dp))
     OutlinedButton(
         onClick = onProfiles,
@@ -225,13 +233,6 @@ private fun VpnHomeControls(
         Icon(painterResource(R.drawable.lin_power), contentDescription = null, modifier = Modifier.size(22.dp))
         Spacer(Modifier.size(12.dp))
         Text(stringResource(primaryLabel(state)), style = MaterialTheme.typography.labelLarge)
-    }
-    if (dataUpdate.phase in setOf(
-        VpnDataUpdatePhase.AVAILABLE, VpnDataUpdatePhase.DOWNLOADING, VpnDataUpdatePhase.VERIFYING,
-        VpnDataUpdatePhase.UPDATED, VpnDataUpdatePhase.ERROR,
-    )) {
-        Spacer(Modifier.height(8.dp))
-        VpnDataUpdateStatus(dataUpdate, onDataUpdate)
     }
 }
 
@@ -332,6 +333,20 @@ internal fun VpnBrand() {
             contentDescription = null,
             modifier = Modifier.size(24.dp),
         )
-        Text(stringResource(R.string.app_name), style = MaterialTheme.typography.titleLarge)
+        val title = stringResource(R.string.app_name)
+        val style = MaterialTheme.typography.titleLarge
+        val measurer = rememberTextMeasurer()
+        val titleWidth = remember(title, style, measurer) {
+            measurer.measure(AnnotatedString(title), style = style, maxLines = 1, softWrap = false).size.width
+        }
+        BoxWithConstraints(Modifier.weight(1f)) {
+            Text(
+                if (titleWidth > constraints.maxWidth) "FoxHole" else title,
+                style = style,
+                maxLines = 1,
+                softWrap = false,
+                overflow = TextOverflow.Ellipsis,
+            )
+        }
     }
 }

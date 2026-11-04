@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_scenarios">التوجيه</string>
+    <string name="vpn_routing_mode">السيناريو</string>
+    <string name="vpn_scenario_whole_device">الجهاز بالكامل</string>
+    <string name="vpn_scenario_selected_apps">الوكيل</string>
+    <string name="vpn_scenario_status_whole">السيناريو: الجهاز بالكامل</string>
+    <string name="vpn_scenario_status_selected">السيناريو: الوكيل</string>
+    <string name="vpn_app_rules">قواعد التطبيقات</string>
+    <string name="vpn_app_rules_empty">أضف تطبيقات لإنشاء قواعد التوجيه.</string>
+    <string name="vpn_add_application">إضافة تطبيق</string>
+    <string name="vpn_app_route_vpn">VPN</string>
+    <string name="vpn_app_route_direct">مباشر</string>
+    <string name="vpn_scenario_remove">إزالة القاعدة</string>
+    <string name="vpn_app_picker_unavailable">منتقي تطبيقات النظام غير متاح.</string>
+    <string name="vpn_scenario_default_help">عند التعطيل، تستخدم VPN فقط التطبيقات التي تختارها بقاعدة VPN. في سيناريو الجهاز بالكامل، يظل هذا الإعداد مفعّلًا ولا يمكن تغييره.</string>
+    <string name="vpn_scenarios_help">يوجّه سيناريو الجهاز بالكامل كل حركة البيانات عبر VPN ويتجاهل قواعد التطبيقات.\n\nيطبّق سيناريو الوكيل قواعد VPN / الاتصال المباشر.\n\nعند تفعيل الجهاز بالكامل، تستخدم كل حركة البيانات VPN باستثناء التطبيقات المحددة للاتصال المباشر. عند تعطيله، تستخدم VPN فقط التطبيقات التي لها قاعدة VPN.\n\nتستخدم قاعدة الاتصال المباشر اتصال الجهاز المعتاد وإعدادات DNS للنظام، بما فيها DNS الخاص.</string>
+    <string name="vpn_scenario_settings">إعدادات السيناريو</string>
+    <string name="vpn_scenario_atomic">تطبيق السيناريو بصورة ذرّية</string>
+    <string name="vpn_scenario_confirmation">طلب التأكيد</string>
+    <string name="vpn_scenario_atomic_help">عند التفعيل، تُحظر حركة البيانات مؤقتًا قبل تغيير التوجيه النشط. ثم تُطبَّق القواعد ويُعاد اتصال VPN عند الحاجة. إذا تعذر إكمال التغيير بأمان، أوقف VPN قبل المحاولة مجددًا. عند التعطيل، يتطلب تغيير السيناريو أو إعداد الجهاز بالكامل تأكيدًا حتى لو كان طلب التأكيد معطّلًا. تُطبَّق قواعد التطبيقات تلقائيًا. لا يُشغَّل VPN المتوقف.</string>
+    <string name="vpn_scenario_confirmation_help">عند التفعيل، يتطلب تغيير السيناريو أو تبديل الجهاز بالكامل تأكيدًا. معطّل افتراضيًا.</string>
+    <string name="vpn_scenario_back">رجوع</string>
+    <string name="vpn_scenario_confirm_title">هل تريد تطبيق السيناريو؟</string>
+    <string name="vpn_scenario_confirm_body">هل تريد تطبيق تغيير التوجيه هذا؟ سيُعاد اتصال VPN الجاري عند الحاجة.</string>
+    <string name="vpn_help_scenarios_body">افتح السيناريوهات باستخدام الزر في الصف العلوي للشاشة الرئيسية. اختر التوجيه للجهاز بالكامل أو لتطبيقات منفردة.\n\nاضغط إضافة تطبيق واختر التطبيقات من القائمة، ثم عيّن VPN أو اتصالًا مباشرًا. تظهر التطبيقات المحددة أولًا. استخدم مرشح التطبيقات لعرض الكل أو تطبيقات النظام أو المستخدم؛ تظهر تطبيقات المستخدم افتراضيًا. اضغط مطولًا على قاعدة لإزالتها بعد التأكيد. تُحفَظ قائمة تطبيقاتك عند تبديل السيناريوهات.\n\nيوجّه سيناريو الجهاز بالكامل كل حركة البيانات عبر VPN ويتجاهل قواعد التطبيقات.\n\nيستخدم سيناريو الوكيل قواعد التطبيقات في القائمة. عند تفعيل الجهاز بالكامل، تستخدم جميع التطبيقات VPN باستثناء المحددة للاتصال المباشر. عند تعطيله، تستخدم VPN فقط التطبيقات التي لها قاعدة VPN.\n\nتتحكم إعدادات السيناريو في التطبيق الذرّي وتأكيد التغييرات. التطبيق الذرّي مفعّل افتراضيًا: تُحظر حركة البيانات قبل تغيير التوجيه النشط، ثم تُطبَّق القواعد الجديدة ويُعاد اتصال VPN عند الحاجة. التأكيد معطّل افتراضيًا. لا يبدأ VPN المتوقف تلقائيًا.</string>
+</resources>

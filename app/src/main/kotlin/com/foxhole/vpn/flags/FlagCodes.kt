@@ -13,5 +13,6 @@ internal fun languageFlagCountry(languageTag: String): String? = when (languageT
     "es" -> "es"
     "ja" -> "jp"
     "zh-CN" -> "cn"
+    "ar" -> "sa"
     else -> null
 }

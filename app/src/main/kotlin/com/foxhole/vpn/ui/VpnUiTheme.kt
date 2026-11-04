@@ -17,6 +17,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -87,21 +88,33 @@ internal fun VpnUiTheme(theme: VpnTheme, fontStyle: VpnFontStyle = VpnFontStyle.
         globeServerTint = vpnGlobeServerTint(theme),
     )
     CompositionLocalProvider(LocalVpnColors provides colors) {
-        val typography = remember(fontStyle) { vpnTypographyFor(fontStyle) }
+        val arabic = LocalConfiguration.current.locales[0].language == "ar"
+        val typography = remember(fontStyle, arabic) { vpnTypographyFor(fontStyle, arabic) }
         MaterialTheme(colorScheme = scheme, typography = typography, content = content)
     }
 }
 
-internal fun vpnTypographyFor(style: VpnFontStyle): Typography = if (style == VpnFontStyle.PIXEL) AppTypography else AppTypography.copy(
+internal fun vpnTypographyFor(style: VpnFontStyle, arabic: Boolean = false): Typography {
+    val typography = if (style == VpnFontStyle.PIXEL) AppTypography else AppTypography.copy(
     titleLarge = AppTypography.titleLarge.copy(fontFamily = Mono, fontWeight = FontWeight.Bold),
     titleMedium = AppTypography.titleMedium.copy(fontFamily = Mono, fontWeight = FontWeight.Bold),
     titleSmall = AppTypography.titleSmall.copy(fontFamily = Mono, fontWeight = FontWeight.Bold),
     labelLarge = AppTypography.labelLarge.copy(fontFamily = Mono, fontWeight = FontWeight.Bold),
-)
+    )
+    if (!arabic) return typography
+    fun TextStyle.arabic() = copy(fontFamily = FontFamily.SansSerif, letterSpacing = 0.sp)
+    return typography.copy(
+        bodyLarge = typography.bodyLarge.arabic(), bodyMedium = typography.bodyMedium.arabic(),
+        bodySmall = typography.bodySmall.arabic(), titleLarge = typography.titleLarge.arabic(),
+        titleMedium = typography.titleMedium.arabic(), titleSmall = typography.titleSmall.arabic(),
+        labelLarge = typography.labelLarge.arabic(),
+    )
+}
 
 @Composable
 internal fun vpnFontPreviewStyle(style: VpnFontStyle): TextStyle = MaterialTheme.typography.bodyMedium.copy(
-    fontFamily = if (style == VpnFontStyle.PIXEL) Pixel else Mono,
+    fontFamily = if (LocalConfiguration.current.locales[0].language == "ar") FontFamily.SansSerif
+        else if (style == VpnFontStyle.PIXEL) Pixel else Mono,
     fontWeight = if (style == VpnFontStyle.PIXEL) FontWeight.Normal else FontWeight.Bold,
 )
 

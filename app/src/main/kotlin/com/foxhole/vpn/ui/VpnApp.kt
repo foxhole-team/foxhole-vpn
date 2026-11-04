@@ -794,7 +794,8 @@ private fun VpnAppContent(
                                 Column(Modifier.weight(1f, fill = false).verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                                     OutlinedTextField(importText, onValueChange = { if (entryCurrent(entry) && it.length <= 1024 * 1024) importText = it },
                                         modifier = Modifier.fillMaxWidth().heightIn(max = 230.dp), enabled = !pageBusy && state.isReady,
-                                        label = { Text(stringResource(R.string.vpn_import_text)) }, minLines = 4, maxLines = 7)
+                                        label = { Text(stringResource(R.string.vpn_import_text)) },
+                                        textStyle = MaterialTheme.typography.bodyLarge.copy(textDirection = androidx.compose.ui.text.style.TextDirection.Ltr), minLines = 4, maxLines = 7)
                                     Row {
                                         TextButton(onClick = { if (entryCurrent(entry)) readProfileClipboard(context)?.let { importText = it } }, enabled = !pageBusy && state.isReady) {
                                             Icon(painterResource(R.drawable.lin_clipboard), null, Modifier.size(24.dp)); Spacer(Modifier.size(8.dp))

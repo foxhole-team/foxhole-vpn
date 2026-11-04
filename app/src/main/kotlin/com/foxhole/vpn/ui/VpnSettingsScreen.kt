@@ -223,6 +223,7 @@ private fun languageLabel(value: VpnLanguage): Int = when (value) {
     VpnLanguage.FR -> R.string.vpn_language_french
     VpnLanguage.ES -> R.string.vpn_language_spanish
     VpnLanguage.ZH -> R.string.vpn_language_chinese
+    VpnLanguage.AR -> R.string.vpn_language_arabic
 }
 
 @Composable

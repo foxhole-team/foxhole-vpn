@@ -17,13 +17,7 @@ FoxHole VPN 是适用于 Android 8 及更高版本的简洁 VPN 客户端。导�
 
 <div align="center">
 
-[![English](https://img.shields.io/badge/%F0%9F%87%AC%F0%9F%87%A7-English-ff7a00?style=flat-square)](../README.md)
-[![Русский](https://img.shields.io/badge/%F0%9F%87%B7%F0%9F%87%BA-%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9-ff7a00?style=flat-square)](README.ru.md)
-[![Deutsch](https://img.shields.io/badge/%F0%9F%87%A9%F0%9F%87%AA-Deutsch-ff7a00?style=flat-square)](README.de.md)
-[![Français](https://img.shields.io/badge/%F0%9F%87%AB%F0%9F%87%B7-Fran%C3%A7ais-ff7a00?style=flat-square)](README.fr.md)
-[![Español](https://img.shields.io/badge/%F0%9F%87%AA%F0%9F%87%B8-Espa%C3%B1ol-ff7a00?style=flat-square)](README.es.md)
-[![日本語](https://img.shields.io/badge/%F0%9F%87%AF%F0%9F%87%B5-%E6%97%A5%E6%9C%AC%E8%AA%9E-ff7a00?style=flat-square)](README.ja.md)
-[![简体中文](https://img.shields.io/badge/%F0%9F%87%A8%F0%9F%87%B3-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-ff7a00?style=flat-square)](README.zh-CN.md)
+[English](../README.md) · [Русский](README.ru.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [العربية](README.ar.md)
 
 </div>
 
@@ -49,8 +43,9 @@ FoxHole VPN 是适用于 Android 8 及更高版本的简洁 VPN 客户端。导�
 
 <a id="whats-new"></a>
 
-> **🆕 更新内容 - 1.0.3 Stable**
+> **🆕 更新内容 - 1.0.4 Stable**
 >
+> - 新增阿拉伯语和RTL支持，适配了小组件，并修复了翻译和路由器设置。
 > - 新增“路由”（测试版）板块，可轻松按应用配置流量路由，并以原子方式应用更改。
 > - 修复了应用场景中的 DNS 路由。
 > - 小组件现在会以颜色标识显示当前路由场景。

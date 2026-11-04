@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_help_open">مساعدة: %1$s</string>
+    <string name="router_help_choose_country">اختيار البلد</string>
+    <string name="router_help_protocols">اختر بروتوكولات VPN التي سيدعمها الموجّه. يُختار Hysteria2 افتراضيًا. يمكن إضافة بروتوكولات أخرى بعد الاقتران بالموجّه.</string>
+    <string name="router_help_profile">اختر ملف VPN شخصيًا من الهاتف لمزامنته مع الموجّه. يمكنك إضافته لاحقًا.</string>
+    <string name="router_help_country_direct">عند التفعيل، تتجاوز حركة بيانات البلد المختار VPN على الموجّه. اضغط على العلم لاختيار البلد أو تغييره.</string>
+    <string name="router_help_home">يفصل التطبيق تلقائيًا اتصال VPN الحالي للهاتف عند انضمامك إلى شبكة Wi-Fi الموثوقة والاقتران بالموجّه. عند مغادرة تلك الشبكة، يستعيد التطبيق اتصال الهاتف السابق باستخدام آخر ملف VPN شخصي مختار.</string>
+    <string name="router_help_add_phone">أضف أجهزتك إلى قائمة أجهزة الشبكة المنزلية لتتمكن حركة بياناتها من استخدام اتصال VPN الموجّه.</string>
+    <string name="router_help_public_ip">إذا كان الموجّه يدعم عنوان IP عامًا ثابتًا، فيمكنه العمل بوابة VPN لأجهزتك. المسار: الجهاز ← الموجّه؛ تمر حركة البيانات المحلية مباشرةً، بينما تستخدم الحركة الخارجية اتصال VPN النشط.</string>
+    <string name="router_help_create_client">أنشئ ملف VPN شخصيًا على الموجّه لأجهزتك.</string>
+    <string name="router_help_password">أدخل كلمة مرور مسؤول OpenWrt. اسم المستخدم عادةً root.</string>
+    <string name="router_help_pin">عيّن رمز PIN من ستة أرقام في نهاية الإعداد الأولي. استخدمه للاقتران بالموجّه المُعَد. لاحقًا، لا يمكن تغيير PIN إلا في LuCI باستخدام حساب المالك. لا يوجد PIN محدد مسبقًا.\n\nالاقتران: حتى 10 أجهزة محمولة لكل موجّه؛ وحتى 10 موجّهات في تطبيق واحد.</string>
+    <string name="router_help_storage">عند استخدام التخزين الداخلي، تبقى بروتوكولات VPN بعد إعادة التشغيل. عند استخدام RAM، تُنزَّل مجددًا بعد إعادة التشغيل لتوفير المساحة. تُحفَظ الإعدادات في التخزين الداخلي.</string>
+    <string name="router_help_setup_pair">يضيف التثبيت حزمة FoxHole إلى موجّه OpenWrt مدعوم. يقرن الاتصال الهاتف بحزمة FoxHole مثبتة مسبقًا. لا يُثبَّت نظام OpenWrt ولا يُحدَّث.\n\nالاقتران: حتى 10 أجهزة محمولة لكل موجّه؛ وحتى 10 موجّهات في تطبيق واحد.</string>
+    <string name="router_help_control">تفعيل إدارة موجّه مقترن من الهاتف. لا يؤدي تعطيل الإدارة إلى حذف ملفات VPN الشخصية من الموجّه.</string>
+    <string name="router_help_vpn">بدء ملف VPN الشخصي المختار على الموجّه أو إيقافه.</string>
+    <string name="router_help_lan_devices">اختر ما إذا كان كل جهاز منزلي يوجّه حركة بياناته عبر VPN أو بدونه.</string>
+    <string name="router_help_remote_clients">متاح فقط مع عنوان IP ثابت. تتصل هذه الملفات الشخصية بالموجّه من خارج المنزل. يمكنك مشاركتها أو إلغاء الوصول.</string>
+    <string name="router_help_reset_foxhole">حذف إعدادات FoxHole ورمز PIN وسجلات العملاء الخاصة به فقط. سيلزم إعداد FoxHole مجددًا. تُحفَظ إعدادات OpenWrt والتطبيقات الأخرى.</string>
+    <string name="router_help_country_source">عند التفعيل، تتجاوز حركة البيانات المحلية VPN. مثلًا، إذا كان الموجّه في RU، تستخدم مواقع وخدمات RU عنوان IP للموجّه. تستخدم حركة البيانات إلى الخدمات الأجنبية اتصال VPN النشط.</string>
+    <string name="router_help_device_status">يبلغ الموجّه عن حالة الجهاز. إذا لم تتوفر بيانات، تكون الحالة غير معروفة.</string>
+    <string name="router_help_install_server">فعّل هذا الخيار إذا كانت أجهزتك ستتصل بهذا الموجّه عبر VPN باستخدام عنوان IP المباشر له. ستُثبَّت حزمة خادم منفصلة وتتطلب ذاكرة إضافية. يمكن إعداد الوصول بعد التثبيت.</string>
+</resources>

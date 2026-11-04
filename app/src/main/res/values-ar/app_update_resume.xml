@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_app_update_install_vpn_notice">سيؤدي التثبيت إلى انقطاع VPN لفترة وجيزة. سيحاول التطبيق استعادة الاتصال النشط؛ افتحه واتصل مجددًا عند الحاجة.</string>
+    <string name="vpn_app_update_reconnect_required">افتح التطبيق واتصل مجددًا لاستعادة VPN بعد التحديث.</string>
+</resources>

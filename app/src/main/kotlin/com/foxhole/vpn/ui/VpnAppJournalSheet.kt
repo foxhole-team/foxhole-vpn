@@ -107,7 +107,8 @@ private val journalTime = DateTimeFormatter.ofPattern("uuuu-MM-dd\nHH:mm:ss.SSS"
 @Composable
 private fun JournalTableRow(time: String, event: String, result: String, header: Boolean = false) {
     val style = MaterialTheme.typography.bodySmall.copy(fontFamily = FontFamily.Monospace,
-        fontSize = 11.sp, lineHeight = 15.sp, fontWeight = if (header) FontWeight.SemiBold else FontWeight.Normal)
+        fontSize = 11.sp, lineHeight = 15.sp, textDirection = if (header) androidx.compose.ui.text.style.TextDirection.ContentOrLtr else androidx.compose.ui.text.style.TextDirection.Ltr,
+        fontWeight = if (header) FontWeight.SemiBold else FontWeight.Normal)
     val color = if (header) LocalVpnColors.current.muted else LocalVpnColors.current.foreground
     Row(Modifier.fillMaxWidth().padding(horizontal = 10.dp, vertical = 6.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.Top) {

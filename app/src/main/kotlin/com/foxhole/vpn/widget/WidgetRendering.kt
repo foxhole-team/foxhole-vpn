@@ -34,6 +34,7 @@ internal fun widgetLocalizedContext(context: Context, language: VpnLanguage): Co
         VpnLanguage.FR -> LocaleList.forLanguageTags("fr")
         VpnLanguage.ES -> LocaleList.forLanguageTags("es")
         VpnLanguage.ZH -> LocaleList.forLanguageTags("zh-CN")
+        VpnLanguage.AR -> LocaleList.forLanguageTags("ar")
     }
     return context.createConfigurationContext(Configuration(context.resources.configuration).apply { setLocales(locales) })
 }
@@ -97,8 +98,12 @@ internal fun statusWidgetViews(
         WidgetAction.STOP -> actionPalette.error
         null -> palette.secondary
     }
-    val layout = if (compact) R.layout.widget_status_compact else R.layout.widget_status
+    val arabic = localized.resources.configuration.locales[0].language == "ar"
+    val layout = if (arabic) {
+        if (compact) R.layout.widget_status_compact_ar else R.layout.widget_status_ar
+    } else if (compact) R.layout.widget_status_compact else R.layout.widget_status
     return RemoteViews(context.packageName, layout).apply {
+        setInt(R.id.widget_status_root, "setLayoutDirection", localized.resources.configuration.layoutDirection)
         val (leftInset, rightInset) = widgetStatusActionInsets(widthDp, context.resources.displayMetrics.density)
         val density = context.resources.displayMetrics.density
         setViewPadding(R.id.widget_status_content, leftInset + (12 * density).roundToInt(), (2 * density).roundToInt(),

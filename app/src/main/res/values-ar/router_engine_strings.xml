@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_engines_entry">إعدادات بروتوكولات VPN</string>
+    <string name="router_engines_title">بروتوكولات VPN</string>
+    <string name="router_engines_help">تثبيت حزم بروتوكولات VPN على الموجّه أو إزالتها. تعتمد البروتوكولات المتاحة على الموجّه وكتالوج الإصدارات المتحقق منه.</string>
+    <string name="router_engines_installed">مثبّت</string>
+    <string name="router_engines_add">إضافة بروتوكول</string>
+    <string name="router_engines_update">تحديث</string>
+    <string name="router_engines_update_reconnect">التحديث وإعادة الاتصال</string>
+    <string name="router_engines_remove_protocol">إزالة %1$s</string>
+    <string name="router_engines_in_use">يستخدمه VPN الموجّه</string>
+    <string name="router_engines_download_size">التنزيل</string>
+    <string name="router_engines_reconnect_note">سيُعاد اتصال VPN الموجّه.</string>
+    <string name="router_engines_keep_active">لن يُعاد تشغيل VPN الموجّه.</string>
+    <string name="router_engines_unavailable">إدارة البروتوكولات غير متاحة.</string>
+    <string name="router_engines_not_released">لا تتوفر حزمة منشورة لهذا الموجّه.</string>
+    <string name="router_engines_stale">تغيرت إعدادات الموجّه. راجع التثبيت مجددًا.</string>
+    <string name="router_engines_no_space">لا تتوفر مساحة تخزين أو ذاكرة RAM كافية على الموجّه.</string>
+    <string name="router_engines_profile_graph">يتطلب هذا الملف الشخصي مجموعة بروتوكولات غير مدعومة.</string>
+    <string name="router_engines_busy">الموجّه مشغول.</string>
+    <string name="router_engines_show_progress">عرض التقدم</string>
+    <string name="router_engines_queued">جارٍ التحضير للتثبيت</string>
+    <string name="router_engines_verifying">جارٍ التحقق من الملفات</string>
+    <string name="router_engines_installing">جارٍ التثبيت على الموجّه</string>
+    <string name="router_engines_reconnecting">جارٍ إعادة اتصال VPN الموجّه</string>
+    <string name="router_engines_done">تم</string>
+    <string name="router_engines_failed">لم تكتمل العملية.</string>
+    <string name="router_engines_download_failed">تعذر تنزيل البروتوكول.</string>
+    <string name="router_engines_verification_failed">رفض الموجّه ملفات التثبيت.</string>
+    <string name="router_engines_recovery">تحقق من حالة VPN الموجّه.</string>
+    <string name="router_engines_restored">استُعيد الاتصال السابق.</string>
+    <string name="router_engines_close_progress">يستمر التثبيت على الموجّه بعد إغلاق هذه النافذة.</string>
+    <string name="router_engines_check_status">التحقق من الحالة</string>
+    <string name="router_engines_remove_confirm">هل تريد إزالة البروتوكول المختار من الموجّه؟</string>
+    <string name="router_engines_flash_budget">التخزين الداخلي</string>
+    <string name="router_engines_ram_budget">RAM</string>
+    <string name="router_engines_memory_budget">المطلوب %1$s، والمتاح %2$s</string>
+    <string name="router_engines_show_result">عرض النتيجة</string>
+</resources>

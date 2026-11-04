@@ -1,8 +1,1 @@
-- Se añadió Enrutamiento (beta) para dirigir el tráfico por aplicación con aplicación atómica de los cambios.
-- Corregido el enrutamiento DNS en los escenarios de la aplicación.
-- El widget ahora muestra el escenario de enrutamiento actual con indicación por colores.
-- Interfaz optimizada: se han corregido la visualización de la bandera del país, los colores de las listas de selección y las animaciones de las ventanas.
-- Se han mejorado la documentación y la sección de ayuda en todos los idiomas compatibles.
-- Se ha añadido el registro de la aplicación.
-- La interfaz de la aplicación es ahora más compacta.
-- Se añadieron notificaciones del sistema sobre nuevas versiones de la aplicación (solo la versión de GitHub).
+Added Arabic language and RTL support, adapted the widget, and fixed translations and router settings.

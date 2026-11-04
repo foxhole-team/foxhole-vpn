@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_app_journal_title">سجل التطبيق</string>
+    <string name="vpn_app_journal_retention">تنظيف السجل</string>
+    <string name="vpn_app_journal_day">يوم واحد</string>
+    <string name="vpn_app_journal_week">أسبوع واحد</string>
+    <string name="vpn_app_journal_month">شهر واحد</string>
+    <string name="vpn_app_journal_forever">دون حد زمني</string>
+    <string name="vpn_app_journal_save">حفظ</string>
+    <string name="vpn_app_journal_time">الوقت (UTC)</string>
+    <string name="vpn_app_journal_event">الحدث</string>
+    <string name="vpn_app_journal_result">النتيجة</string>
+    <string name="vpn_app_journal_empty">لا توجد أحداث للتطبيق بعد.</string>
+    <string name="vpn_app_journal_storage_error">تعذرت قراءة السجل أو تحديثه.</string>
+    <string name="vpn_app_journal_saved">تم حفظ السجل.</string>
+    <string name="vpn_app_journal_save_failed">تعذر حفظ السجل.</string>
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_release_notes_translations_104">أُضيف دعم اللغة العربية والاتجاه من اليمين إلى اليسار، وكُيّفت الأداة، وأُصلحت الترجمات وإعدادات الموجّه.</string>
+    <string name="vpn_release_notes_router_cleanup_104">حُسّن تنظيف إعداد الموجّه والإبلاغ عن الأخطاء.</string>
+</resources>

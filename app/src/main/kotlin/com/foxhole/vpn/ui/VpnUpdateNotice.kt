@@ -70,6 +70,7 @@ private fun VpnUpdateNoticeSheet(
                     color = LocalVpnColors.current.panel) {
                     Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
                         val notes = buildList {
+                            add(R.drawable.lin_help to R.string.vpn_release_notes_translations_104)
                             if (com.foxhole.vpn.BuildConfig.APP_UPDATE_CHANNEL == "github")
                                 add(R.drawable.lin_refresh to R.string.app_update_available_release_note)
                             add(R.drawable.lin_apps to R.string.vpn_release_notes_scenarios)

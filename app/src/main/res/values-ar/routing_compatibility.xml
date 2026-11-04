@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_routing_apply_failed">تعذر تطبيق سياسة التوجيه. أوقف VPN قبل المحاولة مجددًا.</string>
+</resources>

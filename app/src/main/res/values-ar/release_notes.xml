@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_release_notes_title">ما الجديد</string>
+    <string name="vpn_release_notes_scenarios">أُضيف قسم التوجيه (تجريبي) لتوجيه حركة البيانات بسهولة حسب التطبيق مع تطبيق القواعد بصورة ذرّية.</string>
+    <string name="vpn_release_notes_interface_103">حُسّنت الواجهة: أُصلح عرض أعلام البلدان وألوان قوائم الاختيار وحركات النوافذ.</string>
+    <string name="vpn_release_notes_help_103">حُسّنت الوثائق وقسم المساعدة بجميع اللغات المدعومة.</string>
+    <string name="vpn_release_notes_formats">صيغ اشتراكات جديدة: YAML/JSON المتوافقة مع Clash/Mihomo وOutline JSON.</string>
+    <string name="vpn_release_notes_imports">استيراد روابط v2rayTun وملفات FoxHole JSON الشخصية ونصوص SIP008 JSON الملصقة.</string>
+    <string name="vpn_release_notes_router">ثبّت VPN وأدِره على موجّه يشغّل FoxHole OpenWrt Client مباشرةً من التطبيق.</string>
+    <string name="vpn_release_notes_storage_error">تعذرت قراءة إقرارك أو حفظه. حاول مجددًا.</string>
+    <string name="vpn_release_notes_subscriptions">حُسّن دعم اشتراكات مزوّدي VPN.</string>
+    <string name="vpn_release_notes_router_setup">أُصلح اكتشاف الموجّه واقترانه وفحص OpenWrt عبر SSH، وأُضيف دعم مفاتيح SSH.</string>
+    <string name="vpn_release_notes_apk_updates">أُصلح التحقق من APK عند التحديث من GitHub.</string>
+    <string name="vpn_release_notes_motion">حُسّنت حركات النوافذ.</string>
+    <string name="vpn_release_notes_notices">أُضيف مؤقت لإخفاء الإشعارات وإمكانية إخفائها بالسحب لأعلى.</string>
+    <string name="vpn_release_notes_vless_reality">أُصلح التوافق مع VLESS + REALITY.</string>
+    <string name="vpn_release_notes_router_management">بُسّط إعداد OpenWrt وإدارة الأجهزة المنزلية وعملاء VPN.</string>
+    <string name="vpn_release_notes_pin6">أُضيف رمز PIN من ستة أرقام مع تأكيده أثناء التثبيت، ودعم ما يصل إلى 10 موجّهات.</string>
+    <string name="vpn_release_notes_update_position">نُقل إشعار تحديث التطبيق إلى أعلى منطقة اختيار ملفات VPN الشخصية.</string>
+    <string name="vpn_release_notes_router_pairing_version">أُصلح التحقق من إصدار OpenWrt عند الاقتران بموجّه.</string>
+    <string name="vpn_release_notes_dns_103">أُصلح توجيه DNS في سيناريوهات التطبيق.</string>
+    <string name="vpn_release_notes_widget_103">تعرض الأداة الآن سيناريو التوجيه الحالي بمؤشر لوني.</string>
+</resources>

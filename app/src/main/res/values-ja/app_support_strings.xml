@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_discovery_api_absent">このアドレスの FoxHole HTTPS API から応答がありませんでした。ルーターのアドレスを確認するか、もう一度お試しください。</string>
+    <string name="router_discovery_network">この Wi-Fi ネットワーク経由でルーターに接続できませんでした。もう一度試すか、アドレスを入力してください。</string>
+    <string name="router_discovery_package_check">HTTPS サービスは応答しましたが、FoxHole を確認できませんでした。ルーターのウェブ設定を確認するか、もう一度お試しください。</string>
+    <string name="router_discovery_ssh_only">SSH は利用できますが、FoxHole HTTPS API は利用できません。インストール前に OpenWrt を確認できます。</string>
+    <string name="router_discovery_timeout">ルーターの確認がタイムアウトしました。もう一度試すか、現在の LAN アドレスを入力してください。</string>
+    <string name="router_discovery_tls">ルーターの HTTPS 接続を検証できませんでした。ルーターの時刻と証明書を確認してから、もう一度お試しください。</string>
+    <string name="router_profile_pair_wifi">ペアリングをやり直すには、ルーターの Wi-Fi に接続してください</string>
+    <string name="router_profile_retry_pairing">ペアリングをやり直す</string>
+    <string name="router_review_enter_manually">手動で入力</string>
+    <string name="router_review_not_found">ルーターが見つかりません。</string>
+    <string name="router_review_retry_search">再検索</string>
+    <string name="router_review_supported_platforms">OpenWrt 25.12.5: mediatek/filogic · x86/64</string>
+    <string name="router_review_wifi_connected">Wi-Fi 接続済み</string>
+    <string name="router_review_wifi_status_label">Wi-Fi の状態</string>
+    <string name="router_ssh_checking_openwrt">OpenWrt のバージョン、アーキテクチャ、インストール条件を確認中…</string>
+    <string name="router_ssh_key_error">SSH 秘密鍵を読み取れませんでした。64 KiB 以下の PEM または OpenSSH 鍵を選択してください。</string>
+    <string name="router_ssh_key_file">SSH 鍵ファイルを選択</string>
+    <string name="router_ssh_key_loaded">SSH 秘密鍵は、この接続に限って読み込まれています。</string>
+    <string name="router_ssh_key_passphrase">SSH 鍵のパスフレーズ（設定されている場合）</string>
+    <string name="router_ssh_key_paste">SSH 鍵を貼り付け</string>
+    <string name="router_ssh_manual_setup">OpenWrt の確認 / SSH 設定</string>
+    <string name="router_ssh_use_password">パスワードを使用</string>
+    <string name="router_updates_device_download">お使いの端末経由で FoxHole パッケージをダウンロード中</string>
+    <string name="vpn_license_accept">使用許諾契約に同意します</string>
+    <string name="vpn_license_body">1. 本アプリは、適用される法令を厳守して使用する必要があります。\n\n2. FoxHole VPN はウイルス対策ソフトではなく、実行可能な悪意のあるファイルの検出や無害化を保証しません。\n\n3. 開発者は、本アプリの使用により生じる可能性のある損害について責任を負いません。\n\n4. 本アプリの使用は、内部のすべての構成要素および使用するデータセットのライセンス条件への全面的な同意を意味します。\n\n5. 続行することで、本契約のすべての条項に同意したことを確認します。</string>
+    <string name="vpn_license_loading">契約を読み込み中…</string>
+    <string name="vpn_license_open_licenses">ライセンスを開く</string>
+    <string name="vpn_license_required">先に使用許諾契約に同意してください</string>
+    <string name="vpn_license_storage_error">同意内容を読み取る、または保存することができませんでした。もう一度お試しください。</string>
+    <string name="vpn_license_title">FoxHole VPN · 使用許諾契約</string>
+    <string name="vpn_release_notes_formats">新しいサブスクリプション形式：互換性のある Clash/Mihomo YAML/JSON と Outline JSON。</string>
+    <string name="vpn_release_notes_imports">v2rayTun リンク、FoxHole JSON プロファイル、貼り付けた SIP008 JSON をインポートできます。</string>
+    <string name="vpn_release_notes_router">FoxHole OpenWrt Client が動作するルーターに、アプリから直接 VPN をインストールして管理できます。</string>
+    <string name="vpn_release_notes_storage_error">確認内容を読み取る、または保存することができませんでした。もう一度お試しください。</string>
+    <string name="vpn_router_error_home_vpn">ペアリング済みルーターへの確認済み VPN 経路がありません。そのルーターの VPN に接続し、ルーターの設定でホーム VPN 経由の管理を有効にしてください。</string>
+    <string name="vpn_router_local_network_purpose">本アプリはローカルネットワークを使用して OpenWrt ルーターを検索し、このスマートフォンからその VPN を管理します。</string>
+</resources>

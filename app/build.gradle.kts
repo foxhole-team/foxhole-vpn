@@ -66,8 +66,8 @@ android {
         applicationId = "com.foxhole.vpn"
         minSdk = 26
         targetSdk = 37
-        versionCode = 45
-        versionName = "1.0.3"
+        versionCode = 46
+        versionName = "1.0.4"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         if (!providers.gradleProperty("foxhole.splitApks").map(String::toBoolean).orElse(false).get()) {
             ndk { abiFilters += apkDeliveryAbis }

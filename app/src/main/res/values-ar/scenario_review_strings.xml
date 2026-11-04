@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_scenario_filter_label">التصفية</string>
+    <string name="vpn_scenario_filter_all">الكل</string>
+    <string name="vpn_scenario_filter_system">تطبيقات النظام</string>
+    <string name="vpn_scenario_filter_user">تطبيقات المستخدم</string>
+    <string name="vpn_scenario_filter_count">%1$s (%2$d)</string>
+    <string name="vpn_scenario_delete_title">هل تريد حذف التطبيق؟</string>
+    <string name="vpn_scenario_delete_body">هل تريد إزالة %1$s من قواعد التطبيقات؟</string>
+    <string name="vpn_scenario_confirm_action">تأكيد</string>
+    <string name="vpn_scenario_no_visible_apps">لا توجد تطبيقات تطابق هذا المرشح.</string>
+    <string name="vpn_scenario_picker_failed">تعذر تحميل التطبيقات.</string>
+    <string name="vpn_scenario_system_picker">فتح منتقي النظام</string>
+</resources>

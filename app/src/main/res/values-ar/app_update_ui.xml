@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_app_update_title">تحديث التطبيق</string>
+    <string name="vpn_app_update_check">التحقق من وجود تحديثات</string>
+    <string name="vpn_app_update_checking">جارٍ التحقق من إصدار التطبيق…</string>
+    <string name="vpn_app_update_no_release">لم يُنشر أي إصدار بعد.</string>
+    <string name="vpn_app_update_current">أحدث إصدار مثبت بالفعل.</string>
+    <string name="vpn_app_update_available">يتوفر الإصدار %1$s. اضغط لتنزيله.</string>
+    <string name="vpn_app_update_downloading">جارٍ تنزيل التطبيق…</string>
+    <string name="vpn_app_update_percent">جارٍ تنزيل التطبيق… %1$d%%</string>
+    <string name="vpn_app_update_verifying">جارٍ التحقق من التطبيق المنزّل…</string>
+    <string name="vpn_app_update_ready">تم تنزيل الإصدار %1$s. اضغط لتثبيته.</string>
+    <string name="vpn_app_update_intro">تحديثات FoxHole VPN من GitHub.</string>
+    <string name="vpn_app_update_external_source">حدّث التطبيق من المصدر الذي حصلت عليه منه.</string>
+    <string name="vpn_app_update_error_network">تعذر الوصول إلى GitHub. حاول لاحقًا.</string>
+    <string name="vpn_app_update_error_rate">يفرض GitHub قيودًا مؤقتة على الطلبات. حاول لاحقًا.</string>
+    <string name="vpn_app_update_error_verify">تعذر التحقق من ملف التحديث.</string>
+    <string name="vpn_app_update_error_storage">تعذر حفظ التحديث. تحقق من مساحة التخزين المتاحة.</string>
+    <string name="vpn_app_update_error_install">تعذر فتح مثبّت Android.</string>
+    <string name="vpn_app_update_install_permission">اسمح بالتثبيت من FoxHole VPN في إعدادات Android، ثم حاول مجددًا.</string>
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_status_label">FoxHole VPN · الحالة</string>
+    <string name="widget_status_description">حالة VPN مختصرة وعناصر التحكم بالاتصال.</string>
+    <string name="widget_fox_label">FoxHole VPN · الثعلب</string>
+    <string name="widget_fox_description">حالة VPN. اضغط للاتصال أو قطع الاتصال.</string>
+    <string name="widget_connected">متصل بشبكة VPN</string>
+    <string name="widget_loading">جارٍ التحميل</string>
+    <string name="widget_disconnected">غير متصل بشبكة VPN</string>
+    <string name="widget_connecting">جارٍ الاتصال</string>
+    <string name="widget_validating">جارٍ فحص الاتصال</string>
+    <string name="widget_stopping">جارٍ قطع الاتصال</string>
+    <string name="widget_error">خطأ في الاتصال</string>
+    <string name="widget_connect">اتصال</string>
+    <string name="widget_disconnect">قطع الاتصال</string>
+    <string name="widget_cancel">إلغاء</string>
+    <string name="widget_open_app">فتح FoxHole VPN</string>
+    <string name="widget_choose_profile">اختر الملف الشخصي في التطبيق</string>
+    <string name="widget_permission_denied">لم يُمنح إذن VPN.</string>
+    <string name="widget_detail_empty">—</string>
+    <string name="widget_location_determining">جارٍ التحديد…</string>
+    <string name="widget_location_cached">آخر موقع معروف: %1$s</string>
+</resources>

@@ -9,7 +9,7 @@ enum class VpnPhase { IDLE, CONNECTING, VALIDATING, CONNECTED, STOPPING, ERROR }
 enum class VpnTheme { SYSTEM, DARK, LIGHT, NIGHT }
 
 @Serializable
-enum class VpnLanguage { SYSTEM, EN, RU, JA, DE, FR, ES, ZH }
+enum class VpnLanguage { SYSTEM, EN, RU, JA, DE, FR, ES, ZH, AR }
 
 @Serializable
 enum class VpnFontStyle { PIXEL, STANDARD }

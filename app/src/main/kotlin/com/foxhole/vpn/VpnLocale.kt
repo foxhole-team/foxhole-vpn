@@ -16,6 +16,7 @@ internal fun Context.withVpnLocale(language: VpnLanguage): Context {
         VpnLanguage.FR -> "fr"
         VpnLanguage.ES -> "es"
         VpnLanguage.ZH -> "zh-CN"
+        VpnLanguage.AR -> "ar"
     })
     val configuration = Configuration(resources.configuration).apply { setLocales(LocaleList(locale)) }
     return createConfigurationContext(configuration)

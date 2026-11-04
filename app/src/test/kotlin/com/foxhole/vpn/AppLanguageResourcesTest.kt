@@ -8,10 +8,10 @@ import org.junit.Test
 import org.w3c.dom.Element
 
 internal class AppLanguageResourcesTest {
-    private val qualifiers = listOf("values-ru", "values-de", "values-fr", "values-es", "values-ja", "values-zh-rCN")
+    private val qualifiers = listOf("values-ru", "values-de", "values-fr", "values-es", "values-ja", "values-zh-rCN", "values-ar")
     private val placeholders = Regex("""%(?:[1-9]\d*\$)?[-#+ 0,(<]*\d*(?:\.\d+)?(?:[tT][a-zA-Z]|[bBhHsScCdoxXeEfgGaA%n])""")
 
-    @Test fun `all seven app string resource sets preserve keys and format placeholders`() {
+    @Test fun `all eight app string resource sets preserve keys and format placeholders`() {
         val res = root().resolve("app/src/main/res")
         val defaults = entries(res.resolve("values"))
         assertTrue(defaults.size >= 480)
@@ -25,11 +25,11 @@ internal class AppLanguageResourcesTest {
         }
     }
 
-    @Test fun `platform discovery lists exactly the seven app languages`() {
+    @Test fun `platform discovery lists exactly the eight app languages`() {
         val config = DocumentBuilderFactory.newInstance().newDocumentBuilder()
             .parse(root().resolve("app/src/main/res/xml/locale_config.xml"))
         val locales = config.getElementsByTagName("locale")
-        assertEquals(listOf("en", "ru", "de", "fr", "es", "ja", "zh-CN"), (0 until locales.length).map {
+        assertEquals(listOf("en", "ru", "de", "fr", "es", "ja", "zh-CN", "ar"), (0 until locales.length).map {
             (locales.item(it) as Element).getAttribute("android:name")
         })
         assertTrue(root().resolve("app/src/main/AndroidManifest.xml").readText().contains("android:localeConfig=\"@xml/locale_config\""))

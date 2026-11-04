@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_updates_title">تحديثات حزمة FoxHole</string>
+    <string name="router_updates_scope">تُحدَّث حزمة FoxHole وحزم بروتوكولات VPN المثبتة. تُحفَظ الملفات الشخصية والاقتران. لا يتغير نظام OpenWrt ولا حزم النظام غير ذات الصلة.</string>
+    <string name="router_updates_current_version">الإصدار الحالي: %1$s</string>
+    <string name="router_updates_available_version">الإصدار المتاح: %1$s</string>
+    <string name="router_updates_auto">تحديثات FoxHole التلقائية</string>
+    <string name="router_updates_auto_help">عند التفعيل، يتحقق الموجّه من تحديثات حزمة FoxHole المتحقق منها ويثبّتها كل 24 ساعة. يمكنك تعطيل ذلك أثناء التثبيت أو لاحقًا في إعدادات الموجّه. تبقى السياسة على الموجّه بعد إلغاء الاقتران.</string>
+    <string name="router_updates_apply">تحديث</string>
+    <string name="router_updates_check">تحقق</string>
+    <string name="router_updates_status">التحقق من الحالة</string>
+    <string name="router_updates_waiting">بانتظار حالة الموجّه</string>
+    <string name="router_updates_uncertain">قد يكون الموجّه قيد التحديث. أعد الاتصال للتحقق من النتيجة. لن يُرسَل طلب التحديث مجددًا.</string>
+    <string name="router_updates_unreachable">الموجّه غير متاح. تحقق من اتصال Wi-Fi، ثم افحص الحالة.</string>
+    <string name="router_updates_automatic_job">تحديث تلقائي على الموجّه</string>
+    <string name="router_updates_progress">%1$d%%</string>
+    <string name="router_updates_done">تم</string>
+    <string name="router_updates_changes">التغييرات التي ستُثبَّت</string>
+    <string name="router_updates_version_change">%1$s → %2$s</string>
+    <string name="router_updates_reconnect_note">سيُعاد اتصال VPN الموجّه ولوحة التحكم. يستمر التثبيت إذا أُغلقت هذه النافذة.</string>
+    <string name="router_updates_running">قيد التنفيذ</string>
+    <string name="router_updates_unsupported">تحديثات الحزم غير متاحة لهذا الموجّه.</string>
+    <string name="router_updates_current">محدَّث</string>
+    <string name="router_updates_available">يتوفر تحديث</string>
+    <string name="router_updates_check_failed">تعذر التحقق من وجود تحديثات</string>
+    <string name="router_updates_not_checked">لم يُتحقق بعد</string>
+    <string name="router_updates_step_release">جارٍ فحص الإصدار</string>
+    <string name="router_updates_step_backup">جارٍ التحضير للاستعادة</string>
+    <string name="router_updates_step_check">جارٍ فحص الحزم المثبتة</string>
+    <string name="router_updates_step_preparing">جارٍ التحضير</string>
+    <string name="router_updates_step_index">جارٍ تنزيل الكتالوج</string>
+    <string name="router_updates_step_download">جارٍ تنزيل الحزم</string>
+    <string name="router_updates_step_verifying">جارٍ التحقق من الحزم</string>
+    <string name="router_updates_step_installing">جارٍ تثبيت الحزم</string>
+    <string name="router_updates_step_reconnect">جارٍ إعادة اتصال VPN الموجّه</string>
+    <string name="router_updates_release_unavailable">لا يتوفر إصدار متحقق منه لهذا الموجّه.</string>
+    <string name="router_updates_auth_failed">لم يعد تفويض الموجّه صالحًا. أعد الاقتران للمتابعة.</string>
+    <string name="router_updates_stale">تغيرت إعدادات الموجّه. تحقق من الحالة وراجع التحديث مجددًا.</string>
+    <string name="router_updates_no_space">لا تتوفر مساحة تخزين أو ذاكرة RAM كافية على الموجّه.</string>
+    <string name="router_updates_download_failed">تعذر تنزيل التحديث.</string>
+    <string name="router_updates_verification_failed">رفض الموجّه ملفات التحديث أو الإصدار.</string>
+    <string name="router_updates_rollback_unavailable">الاستعادة الآمنة غير متاحة. لم يبدأ التحديث.</string>
+    <string name="router_updates_ram_unavailable">ذاكرة التخزين المؤقت المتحقق منها لبروتوكولات RAM غير متاحة. لم يبدأ التحديث.</string>
+    <string name="router_updates_invalid_response">تعذر التحقق من استجابة الموجّه. تحقق من الحالة قبل المتابعة.</string>
+    <string name="router_updates_disconnect_before_update">افصل VPN الموجّه قبل التحديث</string>
+</resources>

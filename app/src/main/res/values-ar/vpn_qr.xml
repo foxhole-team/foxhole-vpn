@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_import_qr">مسح رمز QR</string>
+    <string name="vpn_qr_title">مسح رمز QR</string>
+    <string name="vpn_qr_hint">وجّه الكاميرا نحو رمز QR لملف VPN شخصي.</string>
+    <string name="vpn_qr_camera_permission_title">الوصول إلى الكاميرا</string>
+    <string name="vpn_qr_camera_permission_body">يلزم الوصول إلى الكاميرا لمسح رموز QR. لا تُحفَظ صور أو فيديوهات.</string>
+    <string name="vpn_qr_allow_camera">السماح بالكاميرا</string>
+    <string name="vpn_qr_open_settings">فتح إعدادات التطبيق</string>
+    <string name="vpn_qr_settings_unavailable">تعذر فتح إعدادات التطبيق.</string>
+    <string name="vpn_qr_camera_unavailable">الكاميرا غير متاحة. حاول مجددًا.</string>
+    <string name="vpn_qr_retry">إعادة المحاولة</string>
+    <string name="vpn_qr_back">رجوع</string>
+    <string name="vpn_qr_preview">معاينة كاميرا QR</string>
+</resources>

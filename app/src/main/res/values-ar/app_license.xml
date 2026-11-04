@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_license_title">FoxHole VPN · اتفاقية الترخيص</string>
+    <string name="vpn_license_body">1. يجب استخدام التطبيق وفقًا للقوانين المعمول بها حصرًا.\n\n2. ليس FoxHole VPN برنامجًا لمكافحة الفيروسات، ولا يضمن اكتشاف الملفات التنفيذية الضارة أو إبطالها.\n\n3. لا يتحمل المطورون مسؤولية أي ضرر محتمل ناتج عن استخدام التطبيق.\n\n4. يُعد استخدام التطبيق قبولًا كاملًا لشروط تراخيص جميع مكوناته الداخلية ومجموعات بياناته.\n\n5. بمتابعة الاستخدام، تؤكد موافقتك على جميع أحكام هذه الاتفاقية.</string>
+    <string name="vpn_license_accept">أوافق على اتفاقية الترخيص</string>
+    <string name="vpn_license_loading">جارٍ تحميل الاتفاقية…</string>
+    <string name="vpn_license_storage_error">تعذرت قراءة موافقتك أو حفظها. حاول مجددًا.</string>
+    <string name="vpn_license_open_licenses">عرض التراخيص</string>
+    <string name="vpn_license_required">وافق على اتفاقية الترخيص أولًا</string>
+</resources>

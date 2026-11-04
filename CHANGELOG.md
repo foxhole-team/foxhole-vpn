@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.4
+
+- Added Arabic language and RTL support, adapted the widget, and fixed translations and router settings.
+
 ## 1.0.3 Stable
 
 - Added Routing (beta) for simple per-app traffic routing with atomic rule updates.

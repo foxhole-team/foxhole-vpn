@@ -1,7 +1,7 @@
 package com.foxhole.vpn
 
 
-internal val VPN_APP_LANGUAGE_CHOICES = listOf(VpnLanguage.SYSTEM, VpnLanguage.EN, VpnLanguage.RU, VpnLanguage.DE, VpnLanguage.FR, VpnLanguage.ES, VpnLanguage.JA, VpnLanguage.ZH)
+internal val VPN_APP_LANGUAGE_CHOICES = listOf(VpnLanguage.SYSTEM, VpnLanguage.EN, VpnLanguage.RU, VpnLanguage.DE, VpnLanguage.FR, VpnLanguage.ES, VpnLanguage.JA, VpnLanguage.ZH, VpnLanguage.AR)
 
 internal data class AppLanguageDecision<T>(val language: T, val applyStored: Boolean)
 
@@ -23,6 +23,7 @@ internal fun languageFromPlatformTag(tag: String): VpnLanguage? {
         "fr" -> VpnLanguage.FR
         "es" -> VpnLanguage.ES
         "ja" -> VpnLanguage.JA
+        "ar" -> VpnLanguage.AR
         "zh" -> VpnLanguage.ZH.takeIf { locale.script != "Hant" && locale.country !in setOf("TW", "HK", "MO") }
         else -> null
     }
@@ -37,6 +38,7 @@ internal fun VpnLanguage.appLanguageTags(): String = when (this) {
     VpnLanguage.ES -> "es"
     VpnLanguage.JA -> "ja"
     VpnLanguage.ZH -> "zh-CN"
+    VpnLanguage.AR -> "ar"
 }
 
 internal fun vpnLanguageFlagCountry(language: VpnLanguage): String? =

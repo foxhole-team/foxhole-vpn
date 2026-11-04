@@ -10,17 +10,17 @@ internal class AppLanguagePolicyTest {
     private val system = VpnLanguage.SYSTEM
     private val choices = VPN_APP_LANGUAGE_CHOICES
 
-    @Test fun `picker has seven languages with Japanese immediately before Chinese`() {
-        assertEquals(listOf("SYSTEM", "EN", "RU", "DE", "FR", "ES", "JA", "ZH"), choices.map { it.name })
-        assertEquals(8, choices.distinct().size)
+    @Test fun `picker has eight languages with Arabic appended after Chinese`() {
+        assertEquals(listOf("SYSTEM", "EN", "RU", "DE", "FR", "ES", "JA", "ZH", "AR"), choices.map { it.name })
+        assertEquals(9, choices.distinct().size)
         assertEquals("zh-CN", VpnLanguage.ZH.appLanguageTags())
-        assertEquals(listOf("gb", "ru", "de", "fr", "es", "jp", "cn"),
+        assertEquals(listOf("gb", "ru", "de", "fr", "es", "jp", "cn", "sa"),
             choices.filter { it != VpnLanguage.SYSTEM }.map(::vpnLanguageFlagCountry))
         assertNull(vpnLanguageFlagCountry(VpnLanguage.SYSTEM))
     }
 
     @Test fun `stored enum names and legacy order remain unchanged`() {
-        assertEquals(listOf("SYSTEM", "EN", "RU", "JA", "DE", "FR", "ES", "ZH"), VpnLanguage.entries.map { it.name })
+        assertEquals(listOf("SYSTEM", "EN", "RU", "JA", "DE", "FR", "ES", "ZH", "AR"), VpnLanguage.entries.map { it.name })
     }
 
     @Test fun `empty OS list does not erase an existing explicit choice on first migration`() {
@@ -71,6 +71,9 @@ internal class AppLanguagePolicyTest {
         assertNull(languageFromPlatformTag("zh-Hant-TW"))
         assertNull(languageFromPlatformTag("zh-HK"))
         assertNull(languageFromPlatformTag("it"))
+        assertEquals(VpnLanguage.AR, languageFromPlatformTag("ar"))
+        assertEquals(VpnLanguage.AR, languageFromPlatformTag("ar-EG"))
+        assertEquals(VpnLanguage.AR, languageFromPlatformTag("ar-SA"))
     }
 
     @Test fun `all language selections survive settings serialization without changing other settings`() {

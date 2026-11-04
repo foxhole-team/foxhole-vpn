@@ -15,7 +15,7 @@ SPEC.loader.exec_module(FETCHER)
 class NativeFetchTest(unittest.TestCase):
     def setUp(self):
         self.owned = tempfile.TemporaryDirectory(prefix='native-fetch-contract-')
-        self.root = Path(self.owned.name)
+        self.root = Path(self.owned.name).resolve()
         self.path = self.root / 'publisher-source'
         self.data = b'original publisher bytes'
         self.identity = {'url': 'https://dl.google.com/exact-publisher-artifact',

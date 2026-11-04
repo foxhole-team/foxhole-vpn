@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_router_home_notification_channel">الشبكة المنزلية</string>
+    <string name="vpn_router_home_notification_title">الشبكة المنزلية</string>
+    <string name="vpn_router_home_notification_monitoring">التبديل التلقائي لـ VPN مفعّل</string>
+    <string name="vpn_router_home_notification_unavailable">لا يوجد اتصال بالموجّه</string>
+    <string name="vpn_router_home_notification_stop">إيقاف</string>
+    <string name="vpn_router_home_notification_permission">اسمح بالإشعارات لتفعيل التبديل التلقائي لـ VPN.</string>
+    <string name="vpn_router_home_notifications_permission">اسمح بإشعارات تبديل VPN المنزلي.</string>
+    <string name="vpn_router_home_notification_profile_unsupported">التبديل التلقائي غير متاح لهذا الملف الشخصي</string>
+</resources>

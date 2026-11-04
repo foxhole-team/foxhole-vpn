@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_discovery_api_absent">L’API HTTPS de FoxHole n’a pas répondu à cette adresse. Vérifiez l’adresse du routeur ou réessayez.</string>
+    <string name="router_discovery_network">Impossible de joindre le routeur via ce réseau Wi-Fi. Réessayez ou saisissez son adresse.</string>
+    <string name="router_discovery_package_check">Le service HTTPS a répondu, mais FoxHole n’a pas pu être vérifié. Vérifiez la configuration web du routeur ou réessayez.</string>
+    <string name="router_discovery_ssh_only">SSH est disponible, mais l’API HTTPS de FoxHole ne l’est pas. Vous pouvez vérifier OpenWrt avant l’installation.</string>
+    <string name="router_discovery_timeout">Le délai de vérification du routeur a expiré. Réessayez ou saisissez son adresse actuelle sur le réseau local.</string>
+    <string name="router_discovery_tls">Impossible de vérifier la connexion HTTPS du routeur. Vérifiez son horloge et son certificat, puis réessayez.</string>
+    <string name="router_profile_pair_wifi">Connectez-vous au Wi-Fi du routeur pour réessayer l’association</string>
+    <string name="router_profile_retry_pairing">Réessayer l’association</string>
+    <string name="router_review_enter_manually">Saisir manuellement</string>
+    <string name="router_review_not_found">Routeur introuvable.</string>
+    <string name="router_review_retry_search">Relancer la recherche</string>
+    <string name="router_review_supported_platforms">OpenWrt 25.12.5: mediatek/filogic · x86/64</string>
+    <string name="router_review_wifi_connected">Wi-Fi connecté</string>
+    <string name="router_review_wifi_status_label">État du Wi-Fi</string>
+    <string name="router_ssh_checking_openwrt">Vérification de la version d’OpenWrt, de l’architecture et des conditions d’installation…</string>
+    <string name="router_ssh_key_error">Impossible de lire la clé privée SSH. Choisissez une clé PEM ou OpenSSH de 64 KiB maximum.</string>
+    <string name="router_ssh_key_file">CHOISIR LE FICHIER DE CLÉ SSH</string>
+    <string name="router_ssh_key_loaded">La clé privée SSH est chargée uniquement pour cette connexion.</string>
+    <string name="router_ssh_key_passphrase">Phrase secrète de la clé SSH (si définie)</string>
+    <string name="router_ssh_key_paste">COLLER LA CLÉ SSH</string>
+    <string name="router_ssh_manual_setup">VÉRIFIER OPENWRT / CONFIGURER SSH</string>
+    <string name="router_ssh_use_password">UTILISER UN MOT DE PASSE</string>
+    <string name="router_updates_device_download">Téléchargement du paquet FoxHole via votre appareil</string>
+    <string name="vpn_license_accept">J’accepte le contrat de licence</string>
+    <string name="vpn_license_body">1. L’application doit être utilisée dans le strict respect de la législation en vigueur.\n\n2. FoxHole VPN n’est pas un antivirus et ne garantit pas la détection ou la neutralisation des fichiers malveillants exécutables.\n\n3. Les développeurs ne sont pas responsables des dommages éventuels résultant de l’utilisation de l’application.\n\n4. L’utilisation de l’application implique l’acceptation intégrale des conditions de licence de tous ses composants internes et des jeux de données utilisés.\n\n5. En poursuivant, vous confirmez votre accord avec toutes les dispositions du présent contrat.</string>
+    <string name="vpn_license_loading">Chargement du contrat…</string>
+    <string name="vpn_license_open_licenses">Ouvrir les licences</string>
+    <string name="vpn_license_required">Acceptez d’abord le contrat de licence</string>
+    <string name="vpn_license_storage_error">Impossible de lire ou d’enregistrer votre accord. Réessayez.</string>
+    <string name="vpn_license_title">FoxHole VPN · contrat de licence</string>
+    <string name="vpn_release_notes_formats">Nouveaux formats d’abonnement : YAML/JSON Clash/Mihomo compatibles et JSON Outline.</string>
+    <string name="vpn_release_notes_imports">Importation de liens v2rayTun, de profils JSON FoxHole et de JSON SIP008 collé.</string>
+    <string name="vpn_release_notes_router">Installez et gérez un VPN sur un routeur équipé de FoxHole OpenWrt Client directement depuis l’application.</string>
+    <string name="vpn_release_notes_storage_error">Impossible de lire ou d’enregistrer votre confirmation. Réessayez.</string>
+    <string name="vpn_release_notes_title">Nouveautés</string>
+    <string name="vpn_router_error_home_vpn">Aucune route VPN vérifiée vers le routeur associé. Connectez-vous à son VPN et activez la gestion via le VPN domestique dans les paramètres du routeur.</string>
+    <string name="vpn_router_local_network_purpose">L’application utilise votre réseau local pour trouver le routeur OpenWrt et gérer son VPN depuis ce téléphone.</string>
+</resources>

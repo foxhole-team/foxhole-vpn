@@ -14,7 +14,6 @@ class FingerprintBaselineTest {
         val root = generateSequence(File(requireNotNull(System.getProperty("user.dir")))) { it.parentFile }
             .first { File(it, "config/foxcore-revision.txt").isFile }
         assertEquals(File(root, "config/foxcore-revision.txt").readText().trim(), FingerprintBaseline.baselineSourceRevision)
-        assertEquals(9, FingerprintBaseline.digests.size)
         assertTrue(FingerprintBaseline.digests.values.all { it.matches(Regex("[0-9a-f]{64}")) })
         val receipt = Json.parseToJsonElement(File(root, "config/foxcore-source-manifest.json").readText()).jsonObject
         assertEquals(FingerprintBaseline.baselineSourceRevision, receipt.getValue("commit").jsonPrimitive.content)
@@ -26,7 +25,7 @@ class FingerprintBaselineTest {
             File(root.parentFile, "foxhole-core_dev/fingerprints"), File(root.parentFile, "foxhole-core/fingerprints"))
             .firstOrNull { it.isDirectory }
         if (source == null) {
-            println("Fingerprint baseline: pin, nine names and source receipt checked; Core source unavailable for payload comparison")
+            println("Fingerprint baseline: pin, ${files.size} names and source receipt checked; Core source unavailable for payload comparison")
             return
         }
         val expected = source.listFiles()!!.filter { it.extension == "json" }.associate { file ->
@@ -35,6 +34,6 @@ class FingerprintBaselineTest {
             profile.getValue("name").jsonPrimitive.content to profile.getValue("fingerprint_sha256").jsonPrimitive.content
         }
         assertEquals(expected, FingerprintBaseline.digests)
-        println("Fingerprint baseline: all nine source files and profile digests checked")
+        println("Fingerprint baseline: all ${expected.size} source files and profile digests checked")
     }
 }
