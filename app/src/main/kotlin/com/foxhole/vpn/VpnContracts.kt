@@ -29,6 +29,7 @@ data class VpnSettings(
     val connectionDataCheckIntervalHours: Int = 24,
     val fontStyle: VpnFontStyle = VpnFontStyle.PIXEL,
     val appRouting: VpnAppRouting = VpnAppRouting(),
+    val hideRouterManagement: Boolean = false,
 )
 
 data class VpnProfileSummary(

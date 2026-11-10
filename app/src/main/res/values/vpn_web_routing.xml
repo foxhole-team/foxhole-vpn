@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_routing_view_applications">Applications</string>
+    <string name="vpn_routing_view_websites">Web addresses</string>
+    <string name="vpn_web_rules">Website rules</string>
+    <string name="vpn_web_rules_empty">Add web addresses or masks to create routing rules.</string>
+    <string name="vpn_add_website">Add web address</string>
+    <string name="vpn_web_address_mask">Address or mask</string>
+    <string name="vpn_web_formats">HTTP/HTTPS · Domains · Domain masks · IPv4/IPv6 · CIDR · IP ranges</string>
+    <string name="vpn_web_invalid">Enter a valid domain, HTTP/HTTPS URL, domain mask, CIDR network or IP range.</string>
+    <string name="vpn_web_route">Route</string>
+    <string name="vpn_web_add">ADD</string>
+    <string name="vpn_web_delete_title">Remove website rule?</string>
+    <string name="vpn_web_delete_body">Remove %1$s from the list?</string>
+    <string name="vpn_web_rules_help">Web rules apply to traffic captured by the current VPN scenario, including Whole device. Choose VPN, Direct or Block for each rule. Block applies only while VPN runs. Hold a rule to delete it. Live changes use the existing atomic traffic barrier and reconnection.</string>
+    <string name="vpn_app_route_block">Block</string>
+    <string name="vpn_web_normalized_rule">Rule: %1$s</string>
+    <string name="vpn_web_host_scope">URLs apply to the entire host. *.example.com includes example.com and its subdomains; *.ru covers the zone.</string>
+</resources>

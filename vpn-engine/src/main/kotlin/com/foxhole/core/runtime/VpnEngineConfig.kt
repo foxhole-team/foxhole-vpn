@@ -119,7 +119,10 @@ object VpnEngineConfig {
             val server = requireNotNull(servers.singleOrNull { it["tag"]?.jsonPrimitive?.content == "dns-wireguard" })
             val address = server.requiredString("server", "$.dns.servers")
             require(address.isFoxCoreIpLiteral())
-            return buildJsonObject { put("mode", "real_ip") } to address
+            return buildJsonObject {
+                put("mode", "real_ip")
+                put("packet_resolvers", JsonArray(listOf(JsonPrimitive(address))))
+            } to address
         }
         val finalTag = source.requiredString("final", "$.dns")
         val server = requireNotNull(servers.singleOrNull { it["tag"]?.jsonPrimitive?.content == finalTag })

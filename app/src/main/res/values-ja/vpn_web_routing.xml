@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_routing_view_applications">アプリ</string>
+    <string name="vpn_routing_view_websites">ウェブアドレス</string>
+    <string name="vpn_web_rules">ウェブサイトのルール</string>
+    <string name="vpn_web_rules_empty">ウェブアドレスやマスクを追加してルーティングルールを作成します。</string>
+    <string name="vpn_add_website">ウェブアドレスを追加</string>
+    <string name="vpn_web_address_mask">アドレスまたはマスク</string>
+    <string name="vpn_web_formats">HTTP/HTTPS · ドメイン · ドメインマスク · IPv4/IPv6 · CIDR · IP 範囲</string>
+    <string name="vpn_web_invalid">有効なドメイン、HTTP/HTTPS URL、ドメインマスク、CIDR ネットワークまたは IP 範囲を入力してください。</string>
+    <string name="vpn_web_route">経路</string>
+    <string name="vpn_web_add">追加</string>
+    <string name="vpn_web_delete_title">ウェブルールを削除しますか？</string>
+    <string name="vpn_web_delete_body">%1$s を一覧から削除しますか？</string>
+    <string name="vpn_web_rules_help">ウェブルールは「端末全体」を含む VPN シナリオの取得対象通信に適用されます。アドレスごとに VPN、直接、ブロックを選択できます。ドメインは完全一致、*.example.com はサブドメインを含み、.com はドメイン末尾に一致します。HTTP/HTTPS URL はパスを除いたドメインとして保存されます。CIDR と開始・終了アドレスを指定する IPv4/IPv6 範囲に対応します。ブロックは VPN 動作中だけ有効です。長押しでルールを削除します。接続中の変更は通信を一時停止し、再接続してアトミックに適用します。</string>
+    <string name="vpn_app_route_block">ブロック</string>
+    <string name="vpn_web_normalized_rule">ルール: %1$s</string>
+    <string name="vpn_web_host_scope">URL のルールはホスト全体に適用されます。*.example.com は example.com とサブドメインを、*.ru はゾーン全体を含みます。</string>
+</resources>

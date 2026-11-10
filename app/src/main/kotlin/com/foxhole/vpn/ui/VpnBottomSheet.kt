@@ -65,7 +65,6 @@ internal fun VpnBottomSheet(onDismiss: () -> Unit, onBack: (() -> Unit)? = null,
     val back = rememberUpdatedState(onBack)
     val dismiss = rememberUpdatedState(onDismiss)
     val explicitClose = remember { mutableStateOf(false) }
-    val noticeHandoff = remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
     val confirmValueChange = remember {
         { value: SheetValue ->
@@ -129,11 +128,7 @@ internal fun VpnBottomSheet(onDismiss: () -> Unit, onBack: (() -> Unit)? = null,
                         contentAlignment = Alignment.Center) {
                         Box(Modifier.width(32.dp).height(4.dp).background(colors.muted, RoundedCornerShape(2.dp)))
                     }
-                    SideEffect {
-                        if (sheetState.targetValue == SheetValue.Expanded) noticeHandoff.value = false
-                        else if (sheetState.isVisible && sheetState.targetValue == SheetValue.Hidden) noticeHandoff.value = true
-                    }
-                    VpnNoticeWindow(closing = explicitClose.value || noticeHandoff.value)
+                    VpnNoticeWindow()
                     Column(Modifier.weight(1f, fill = heightFraction != null).fillMaxWidth().clipToBounds()) { content() }
                     footerContent?.invoke(this)
                     if (showCloseButton) VpnSheetCloseButton(onClose, onBack)

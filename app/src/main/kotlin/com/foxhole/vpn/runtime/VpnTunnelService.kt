@@ -103,7 +103,8 @@ class VpnTunnelService : VpnService() {
     private fun showForegroundNotification() {
         val localized = withVpnLocale(controller.settings.value.language)
         val manager = requireNotNull(getSystemService(NotificationManager::class.java))
-        manager.createNotificationChannel(NotificationChannel(CHANNEL, localized.getString(R.string.vpn_notification_channel), NotificationManager.IMPORTANCE_LOW))
+        if (Build.VERSION.SDK_INT >= 26) manager.createNotificationChannel(
+            NotificationChannel(CHANNEL, localized.getString(R.string.vpn_notification_channel), NotificationManager.IMPORTANCE_LOW))
         val open = Intent(this, binding.activity)
         val stop = Intent(this, VpnTunnelService::class.java).setAction(ACTION_STOP)
         val immutable = PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE

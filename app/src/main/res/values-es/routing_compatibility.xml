@@ -2,4 +2,5 @@
 <resources>
     
     <string name="vpn_routing_apply_failed">No se pudo aplicar la política de enrutamiento. Detenga la VPN antes de volver a intentarlo.</string>
+    <string name="vpn_wireguard_domains_android11">Las reglas de dominios web con WireGuard requieren Android 11 o posterior.</string>
 </resources>

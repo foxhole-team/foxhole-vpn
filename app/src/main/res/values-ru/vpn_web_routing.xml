@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_routing_view_applications">Приложения</string>
+    <string name="vpn_routing_view_websites">Веб-адреса</string>
+    <string name="vpn_web_rules">Правила веб-адресов</string>
+    <string name="vpn_web_rules_empty">Добавьте веб-адреса или маски для создания правил маршрутизации.</string>
+    <string name="vpn_add_website">Добавить веб-адрес</string>
+    <string name="vpn_web_address_mask">Адрес или маска</string>
+    <string name="vpn_web_formats">HTTP/HTTPS · Домены · Маски доменов · IPv4/IPv6 · CIDR · Диапазоны IP</string>
+    <string name="vpn_web_invalid">Введите корректный домен, URL HTTP/HTTPS, маску домена, сеть CIDR или диапазон IP.</string>
+    <string name="vpn_web_route">Маршрут</string>
+    <string name="vpn_web_add">ДОБАВИТЬ</string>
+    <string name="vpn_web_delete_title">Удалить правило веб-адреса?</string>
+    <string name="vpn_web_delete_body">Удалить %1$s из списка?</string>
+    <string name="vpn_web_rules_help">Правила web-адресов применяются к трафику текущего VPN-сценария, включая «Всё устройство». Для каждого правила выберите «В VPN», «Без VPN» или «Блок». Блокировка действует только при работающем VPN. Удерживайте правило для удаления. Изменения используют существующие атомарную блокировку трафика и переподключение.</string>
+    <string name="vpn_app_route_block">Блокировка</string>
+    <string name="vpn_web_normalized_rule">Правило: %1$s</string>
+    <string name="vpn_web_host_scope">URL применяется ко всему хосту. *.example.com включает example.com и его поддомены; *.ru — всю зону.</string>
+</resources>

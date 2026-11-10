@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_release_notes_android7_105">أُضيف دعم Android 7.</string>
+    <string name="vpn_release_notes_web_105">أُضيف توجيه حركة بيانات مواقع الويب.</string>
+</resources>

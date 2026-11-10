@@ -2,7 +2,7 @@
 
 <div align="center">
 
-FoxHole VPN ist ein einfacher VPN-Client für Android 8 und neuer. Importieren Sie ein Profil Ihres VPN-Anbieters oder eigenen Servers, verbinden Sie Ihr Telefon und verwalten Sie einen gekoppelten OpenWrt-Router in der App.
+FoxHole VPN ist ein einfacher VPN-Client für Android 7 und neuer. Importieren Sie ein Profil Ihres VPN-Anbieters oder eigenen Servers, verbinden Sie Ihr Telefon und verwalten Sie einen gekoppelten OpenWrt-Router in der App.
 
 </div>
 
@@ -43,23 +43,17 @@ Der Import übernimmt unterstützte Verbindungsparameter. Routingregeln und ande
 
 <a id="whats-new"></a>
 
-> **🆕 Was ist neu - 1.0.4 Stable**
+> **🆕 Was ist neu - 1.0.5 Stable**
 >
-> - Arabisch und RTL werden unterstützt, das Widget wurde angepasst und Übersetzungen sowie Router-Einstellungen wurden korrigiert.
-> - Der Bereich „Routing“ (Beta) wurde für einfaches anwendungsbezogenes Traffic-Routing mit atomarer Anwendung von Änderungen hinzugefügt.
-> - DNS-Routing in den Anwendungsszenarien wurde korrigiert.
-> - Das Widget zeigt jetzt das aktuelle Routing-Szenario mit Farbindikatoren an.
-> - Die Oberfläche wurde optimiert: Länderflaggen, Farben der Auswahllisten und Fensteranimationen wurden korrigiert.
-> - Dokumentation und Hilfebereich wurden in allen unterstützten Sprachen überarbeitet.
-> - Ein Anwendungsprotokoll wurde hinzugefügt.
-> - Die Benutzeroberfläche ist jetzt kompakter.
-> - Systembenachrichtigungen über neue Anwendungsversionen wurden hinzugefügt (nur GitHub-Version).
+> - Unterstützung für Android 7 hinzugefügt.
+> - Routing für Webseiten hinzugefügt.
+> - Visuellen Stil der Benachrichtigungen verbessert.
 
 <a id="quickstart"></a>
 
 ## ⬇️ Einstieg und Download
 
-Android 8 (API 26) oder neuer ist erforderlich. Verfügbare APK-Architekturen stehen im veröffentlichten Release.
+Android 7 (API 24) oder neuer ist erforderlich. Verfügbare APK-Architekturen stehen im veröffentlichten Release.
 
 1. Die APK-Architektur unter [GitHub Releases](https://github.com/foxhole-team/foxhole-vpn/releases) wählen.
 2. Ein Profil des eigenen Servers oder Anbieters aus Datei, Zwischenablage oder QR-Code importieren.
@@ -75,7 +69,7 @@ Obtainium · ARM64. Für andere Architekturen das APK unter [GitHub Releases](ht
 
 ## 🤖 Unterstützte Plattformen
 
-Android 8 (API 26) oder neuer ist erforderlich. Build-Profile können `arm64-v8a`, `armeabi-v7a`, `x86` und `x86_64` enthalten; jede veröffentlichte Version listet ihre verfügbaren APKs auf.
+Android 7 (API 24) oder neuer ist erforderlich. Build-Profile können `arm64-v8a`, `armeabi-v7a`, `x86` und `x86_64` enthalten; jede veröffentlichte Version listet ihre verfügbaren APKs auf.
 
 Die aktuelle Router-Paket-/Updaterichtlinie lässt OpenWrt 25.12.5 mit `mediatek/filogic` und `x86/64` zu. Erforderlich sind ein authentifizierter Katalog für die genaue Architektur, passende Abhängigkeiten und Kernel-ABI sowie genügend Flash/RAM. Ein Zielname bestätigt nicht jedes Routermodell.
 

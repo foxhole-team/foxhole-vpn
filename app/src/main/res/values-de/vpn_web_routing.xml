@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_routing_view_applications">Anwendungen</string>
+    <string name="vpn_routing_view_websites">Webadressen</string>
+    <string name="vpn_web_rules">Webseitenregeln</string>
+    <string name="vpn_web_rules_empty">Fügen Sie Webadressen oder Muster für Routingregeln hinzu.</string>
+    <string name="vpn_add_website">Webadresse hinzufügen</string>
+    <string name="vpn_web_address_mask">Adresse oder Muster</string>
+    <string name="vpn_web_formats">HTTP/HTTPS · Domains · Domainmasken · IPv4/IPv6 · CIDR · IP-Bereiche</string>
+    <string name="vpn_web_invalid">Eine gültige Domain, HTTP/HTTPS-URL, Domainmaske, ein CIDR-Netz oder einen IP-Bereich eingeben.</string>
+    <string name="vpn_web_route">Route</string>
+    <string name="vpn_web_add">HINZUFÜGEN</string>
+    <string name="vpn_web_delete_title">Webseitenregel entfernen?</string>
+    <string name="vpn_web_delete_body">%1$s aus der Liste entfernen?</string>
+    <string name="vpn_web_rules_help">Webregeln gelten für den vom VPN-Szenario erfassten Verkehr, auch bei Gesamtes Gerät. Pro Adresse VPN, Direkt oder Blockieren wählen. Domains gelten exakt; *.example.com umfasst Domain und Subdomains, .com eine Domainendung. HTTP/HTTPS-URLs werden als Domains ohne Pfad gespeichert. CIDR-Netze und geordnete IPv4/IPv6-Bereiche werden unterstützt. Sperren wirken nur bei aktivem VPN. Zum Löschen eine Regel gedrückt halten. Laufende Änderungen werden atomar mit Verkehrssperre und Neuverbindung angewendet.</string>
+    <string name="vpn_app_route_block">Blockieren</string>
+    <string name="vpn_web_normalized_rule">Regel: %1$s</string>
+    <string name="vpn_web_host_scope">URLs gelten für den gesamten Host. *.example.com umfasst example.com und alle Subdomains; *.ru die gesamte Zone.</string>
+</resources>

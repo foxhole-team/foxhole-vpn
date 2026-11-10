@@ -4,6 +4,7 @@ import android.content.ClipData
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.provider.Settings
 import androidx.core.content.FileProvider
 import java.io.File
@@ -21,7 +22,7 @@ internal class VpnAppInstaller(context: Context, private val verify: (File, VpnA
 
     fun prepare(apk: File, manifest: VpnAppUpdateManifest): VpnAppInstallAction {
         verify(apk, manifest)
-        if (!context.packageManager.canRequestPackageInstalls()) {
+        if (Build.VERSION.SDK_INT >= 26 && !context.packageManager.canRequestPackageInstalls()) {
             return VpnAppInstallAction.PermissionRequired(Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, Uri.parse("package:${context.packageName}")))
         }
         // FileProvider exposes backup-excluded staging, never private cache.

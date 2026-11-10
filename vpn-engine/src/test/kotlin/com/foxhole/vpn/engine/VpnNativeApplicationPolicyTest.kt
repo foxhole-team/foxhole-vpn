@@ -28,7 +28,7 @@ class VpnNativeApplicationPolicyTest {
         assertFalse(Json.parseToJsonElement(compiler.policy(false, 8)).jsonObject.getValue("traffic").jsonObject.getValue("kill_switch").jsonPrimitive.boolean)
     }
 
-    @Test fun wireGuardDnsRemainsRawAndDoesNotCreateAnUnsupportedInterceptor() {
+    @Test fun nonPacketEmptyDnsContractIsNotRewritten() {
         val compiler = VpnNativeApplicationPolicy("""{"dns":{"mode":"real_ip"},"outbound":{"type":"fixture"}}""")
         val dns = Json.parseToJsonElement(compiler.engine(true)).jsonObject.getValue("dns").jsonObject
         assertEquals(setOf("mode"), dns.keys)

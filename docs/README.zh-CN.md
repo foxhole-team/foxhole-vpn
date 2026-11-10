@@ -2,7 +2,7 @@
 
 <div align="center">
 
-FoxHole VPN 是适用于 Android 8 及更高版本的简洁 VPN 客户端。导入 VPN 服务商或自有服务器的配置，在手机上连接，并从应用管理已配对的 OpenWrt 路由器。
+FoxHole VPN 是适用于 Android 7 及更高版本的简洁 VPN 客户端。导入 VPN 服务商或自有服务器的配置，在手机上连接，并从应用管理已配对的 OpenWrt 路由器。
 
 </div>
 
@@ -43,23 +43,17 @@ FoxHole VPN 是适用于 Android 8 及更高版本的简洁 VPN 客户端。导�
 
 <a id="whats-new"></a>
 
-> **🆕 更新内容 - 1.0.4 Stable**
+> **🆕 更新内容 - 1.0.5 Stable**
 >
-> - 新增阿拉伯语和RTL支持，适配了小组件，并修复了翻译和路由器设置。
-> - 新增“路由”（测试版）板块，可轻松按应用配置流量路由，并以原子方式应用更改。
-> - 修复了应用场景中的 DNS 路由。
-> - 小组件现在会以颜色标识显示当前路由场景。
-> - 优化了界面：修复了国旗显示、选择列表颜色和窗口动画。
-> - 改进了所有支持语言的文档和帮助板块。
-> - 新增应用日志。
-> - 应用界面更加紧凑。
-> - 新增应用新版本的系统通知（仅限 GitHub 版本）。
+> - 新增 Android 7 支持。
+> - 新增网站流量路由。
+> - 改进了通知的视觉样式。
 
 <a id="quickstart"></a>
 
 ## ⬇️ 开始使用与下载
 
-需要Android 8（API 26）或更新版本。可用APK架构见各已发布版本。
+需要Android 7（API 24）或更新版本。可用APK架构见各已发布版本。
 
 1. 在[GitHub Releases](https://github.com/foxhole-team/foxhole-vpn/releases)选择APK架构。
 2. 从文件、剪贴板或二维码导入自己的服务器或服务商配置。
@@ -75,7 +69,7 @@ Obtainium · ARM64。其他架构请在[GitHub Releases](https://github.com/foxh
 
 ## 🤖 支持的平台
 
-需要 Android 8（API 26）或更高版本。构建配置可包含 `arm64-v8a`、`armeabi-v7a`、`x86` 和 `x86_64`；每个公开版本会列出可用 APK。
+需要 Android 7（API 24）或更高版本。构建配置可包含 `arm64-v8a`、`armeabi-v7a`、`x86` 和 `x86_64`；每个公开版本会列出可用 APK。
 
 当前路由器软件包与更新策略允许 OpenWrt 25.12.5 的 `mediatek/filogic` 和 `x86/64`，但须有适用于准确架构的已认证目录、匹配的依赖关系与内核 ABI，以及足够的闪存/RAM。目标名称本身不能证明所有路由器型号均兼容。
 

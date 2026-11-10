@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
         val requested = appInstallPermissionPending
         appInstallPermissionPending = false
         if (!licenseConsent.state.value.accepted) return@registerForActivityResult
-        if (requested && packageManager.canRequestPackageInstalls()) prepareAppInstall()
+        if (requested && (Build.VERSION.SDK_INT < 26 || packageManager.canRequestPackageInstalls())) prepareAppInstall()
         else if (requested) uiError = getString(R.string.vpn_app_update_install_permission)
     }
 

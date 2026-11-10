@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_routing_view_applications">应用</string>
+    <string name="vpn_routing_view_websites">网站地址</string>
+    <string name="vpn_web_rules">网站规则</string>
+    <string name="vpn_web_rules_empty">添加网站地址或掩码以创建路由规则。</string>
+    <string name="vpn_add_website">添加网站地址</string>
+    <string name="vpn_web_address_mask">地址或掩码</string>
+    <string name="vpn_web_formats">HTTP/HTTPS · 域名 · 域名掩码 · IPv4/IPv6 · CIDR · IP 范围</string>
+    <string name="vpn_web_invalid">请输入有效域名、HTTP/HTTPS 网址、域名掩码、CIDR 网络或 IP 范围。</string>
+    <string name="vpn_web_route">路由</string>
+    <string name="vpn_web_add">添加</string>
+    <string name="vpn_web_delete_title">删除网站规则？</string>
+    <string name="vpn_web_delete_body">从列表中删除 %1$s？</string>
+    <string name="vpn_web_rules_help">网站规则适用于当前 VPN 场景捕获的流量，包括整个设备。每个地址可选择经 VPN、不经 VPN 或阻止。域名精确匹配；*.example.com 包含其子域名，.com 匹配域名后缀。HTTP/HTTPS 网址只保存域名，不按页面路径匹配。支持 CIDR 网络以及按顺序指定起止地址的 IPv4/IPv6 范围。阻止仅在 VPN 运行时生效。长按可删除规则。连接中的修改通过临时阻断流量和重新连接以原子方式应用。</string>
+    <string name="vpn_app_route_block">阻止</string>
+    <string name="vpn_web_normalized_rule">规则：%1$s</string>
+    <string name="vpn_web_host_scope">URL 规则适用于整个主机。*.example.com 包含 example.com 及其子域名；*.ru 涵盖整个域名区域。</string>
+</resources>

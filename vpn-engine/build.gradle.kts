@@ -9,7 +9,7 @@ val nativeRoot = providers.environmentVariable("FOXCORE_VPN_JNI_ROOT")
 android {
     namespace = "com.foxhole.vpn.engine"
     compileSdk = 37
-    defaultConfig { minSdk = 26 }
+    defaultConfig { minSdk = 24 }
     sourceSets {
         getByName("main") {
             jniLibs.directories.clear()

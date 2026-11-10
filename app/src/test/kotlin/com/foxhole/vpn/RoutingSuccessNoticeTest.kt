@@ -26,4 +26,12 @@ class RoutingSuccessNoticeTest {
         assertNull(routingSuccessNotice(rules, rules.copy(rules = rules.rules.reversed()), true))
         assertNull(routingSuccessNotice(selected, selected, true))
     }
+
+    @Test fun liveWebsiteChangesUseTheRulesMessageAndOfflineEditsStayQuiet() {
+        val before = VpnAppRouting()
+        val website = before.withWebRule("example.org", VpnAppRoute.DIRECT)
+        assertEquals(RoutingSuccessNotice.RULES, routingSuccessNotice(before, website, true))
+        assertEquals(RoutingSuccessNotice.RULES, routingSuccessNotice(website, before, true))
+        assertNull(routingSuccessNotice(before, website, false))
+    }
 }

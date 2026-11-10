@@ -6,12 +6,12 @@
     "x86_64"
   ],
   "androidDeliveryProfile": "android4",
-  "core_revision": "fc2134dc15b32087516672935e64ae7b8b0d5472",
+  "core_revision": "3fc3b70d8e9d700b3e07ec27638515c00651b013",
   "files": [
     {
-      "bytes": 61664,
+      "bytes": 3263,
       "path": "CURRENT-CORE-PROJECTION.json",
-      "sha256": "5c8517a426b2cd012881c67525bfe2e82dc80795f075ac7244b6b81e5b23ebdf"
+      "sha256": "734a2333311b2db10dca57df96a5f42d3d731676f7aae614e775f9586dd75dc7"
     },
     {
       "bytes": 35149,
@@ -29,9 +29,9 @@
       "sha256": "40375e1f5d0b5baf6306acc92e6162e1dbf8a0b8af82fb58239c47c52af4d062"
     },
     {
-      "bytes": 362,
+      "bytes": 487,
       "path": "README.txt",
-      "sha256": "1d685f00e3e71b0f6a069d6e72d7344681acb0dbad822aa9638b380abc4c8533"
+      "sha256": "097dc3589a6ea30a35b2b91be59f81bfaf2bfa3a42ba32b592fecec7b4e7c878"
     },
     {
       "bytes": 1073,
@@ -394,44 +394,29 @@
       "sha256": "8f1195d55a2fd315a07d812328470ca9ba2abb78c8d317ff19619d5125e00cea"
     },
     {
-      "bytes": 2402,
+      "bytes": 2326,
       "path": "native/ABI-COVERAGE.json",
-      "sha256": "058191e5ae920a68175a513480ebf2498868a2a12ab63e3ef12fcc72e91feaea"
+      "sha256": "61ce47d6476f327a46ef378c58029f553c2cce420d9db417fe43310702fbb842"
     },
     {
-      "bytes": 152091,
-      "path": "native/CARGO-NOTICE-UNION.json",
-      "sha256": "b46cfac9fbae6400170a68df0dfa48b5c278a2b0377cdf5ea53c1e0b2dcca83e"
-    },
-    {
-      "bytes": 480,
-      "path": "native/NOTICE-ORIGINS.json",
-      "sha256": "cfdce3e7c8311fa60174b8db02c649733ab19bd3f767f00e167f426126467676"
-    },
-    {
-      "bytes": 275,
-      "path": "native/README.txt",
-      "sha256": "cf5365e2a7879f0307985db875476a7a898418c0fe89d62c66efbe61eca56de6"
-    },
-    {
-      "bytes": 289148,
+      "bytes": 288015,
       "path": "native/aarch64-linux-android.cdx.json",
-      "sha256": "750985696c9d4e01697c3edbdb3c0030634e4967e453d874cbc5e7cb7913f0e8"
+      "sha256": "2aeb63b3e4ab46d6bab0a58a9c595f92139a0a250cf83ee5e86bc0c4adb8f2f9"
     },
     {
-      "bytes": 128307,
+      "bytes": 129073,
       "path": "native/aarch64-linux-android.notices.json",
-      "sha256": "2e2dea209a0325f5c1a65d88c54d9bf9d7e9e759c6e53cb9f708ecdaca2ee206"
+      "sha256": "7c3bd62bb7c1cae5ace77ba994849265272f0c145109d3d703498b0e01e2d6fe"
     },
     {
-      "bytes": 286784,
+      "bytes": 285651,
       "path": "native/armv7-linux-androideabi.cdx.json",
-      "sha256": "471f02ed5411e896a812301e057555111bc27cd401dab66f0f2910d221747b85"
+      "sha256": "10e9190ef43a33ba667db6cfa1f8793eacc4bd3b442c26d022a61d2bc9e04dce"
     },
     {
-      "bytes": 127223,
+      "bytes": 127989,
       "path": "native/armv7-linux-androideabi.notices.json",
-      "sha256": "b1e1e4949ef6eca4c7582933261f74cc8d71712c43d6b0219f29f7e90aaa5ef5"
+      "sha256": "4c8c9a1ca587f59d2f0c69d63020f648b4ece3339f8bacf767bcc03d2aa219e5"
     },
     {
       "bytes": 10850,
@@ -2774,11 +2759,6 @@
       "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
     },
     {
-      "bytes": 126285,
-      "path": "native/foxcore/ABI-COVERAGE.json",
-      "sha256": "5c5eb9773e09d6c9043fcc7baac680e8ce67f49d65dd333456ff82b9e948cef8"
-    },
-    {
       "bytes": 35149,
       "path": "native/foxcore/FoxHole-Core-GPL-3.0-or-later.txt",
       "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
@@ -2786,27 +2766,22 @@
     {
       "bytes": 41,
       "path": "native/foxcore/REVISION.txt",
-      "sha256": "d8a80527e7cfcc0348e5beb67127f30bd5fbeebbaaa19d8708b462a08e42282e"
+      "sha256": "c83f59d36f54d9bd5f77630e3186e51e555aaeb186e258258361dd1e489c1ede"
     },
     {
-      "bytes": 9331,
+      "bytes": 9693,
       "path": "native/foxcore/THIRD_PARTY_NOTICES.md",
-      "sha256": "5f63fe1104d0ba682236527f2bd8c3ed71cdd664898b50e17c08fb20a34c2116"
+      "sha256": "aa93f02f7707569fd28b77d9296dc99dc83a2a3efe7bd7a9bf569cbe545326b1"
     },
     {
-      "bytes": 289221,
+      "bytes": 288088,
       "path": "native/i686-linux-android.cdx.json",
-      "sha256": "f1b4471d172be6b3cd4d090cc488d2979a015e75e5cf58cce7213ba55a8fef0a"
+      "sha256": "396de10148086695504f9d920bcd39a99c9567da50331406a738df3920e9c27b"
     },
     {
-      "bytes": 128307,
+      "bytes": 129073,
       "path": "native/i686-linux-android.notices.json",
-      "sha256": "45b4aa7e8d7ae7e7221e341d2c475459933a4f935b5a7ebac30ab97f8dfee167"
-    },
-    {
-      "bytes": 85294,
-      "path": "native/sentinel/ABI-COVERAGE.json",
-      "sha256": "92e96b03a87d8740c6ece1a25cb1514205cd4b227b1c52f9e8d0ed48f9dfb292"
+      "sha256": "d538ae484049172f3a12ca0dcaa0bbd6bfe4ef52013028c9516ceba9fadd4015"
     },
     {
       "bytes": 834,
@@ -2859,28 +2834,35 @@
       "sha256": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1"
     },
     {
-      "bytes": 22941,
+      "bytes": 53443,
       "path": "native/toolchain/PROVENANCE.json",
-      "sha256": "ee9f8ff4af997453a7c90c57fa472f88dc64fc6d7da6365c25850ae387bb8ebb"
+      "sha256": "d65e1b9ca0ed1834097b67ea77ebe7dbcf1aaf6b598be2123aff1dd40a77a4d0"
     },
     {
-      "bytes": 289223,
+      "bytes": 288090,
       "path": "native/x86_64-linux-android.cdx.json",
-      "sha256": "c350eb30eca1117135316c79e27e7b6cdee92ac8f4fa9d4e4b9e9473e2d541c1"
+      "sha256": "be410785264cd8515946c1ce3c30f56a6973529f4775d038c62b9530381ac074"
     },
     {
-      "bytes": 128307,
+      "bytes": 129073,
       "path": "native/x86_64-linux-android.notices.json",
-      "sha256": "0ed18d1ed8b4f5cfbdfe83a284e1ff31f6fd85c3fdea1918e3ef7e4e39340669"
+      "sha256": "52b14f7e0dba5d9b76738b27d5c0f565fadb97b2a4036241a14e4d5a62afcbaa"
+    },
+    {
+      "bytes": 99298,
+      "path": "CURRENT-LICENSE-DELIVERY.json",
+      "sha256": "d43d661aed0aa7d28420ab4803a773138c2482b52ccf87d66eefb07f7e5633b2"
     }
   ],
+  "kind": "current-vpn-core-package-union-legal-delivery",
   "product": "FoxHole VPN",
   "schema_version": 1,
+  "scope": "Current VPN-only Core package-union notices; original Android notice identity retained; current desugaring and derived native are separately regenerated.",
   "targets": [
     "aarch64-linux-android",
     "armv7-linux-androideabi",
     "i686-linux-android",
     "x86_64-linux-android"
   ],
-  "version": "1.0.0"
+  "version": "1.0.5"
 }

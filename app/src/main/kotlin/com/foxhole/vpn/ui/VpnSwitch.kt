@@ -2,6 +2,9 @@ package com.foxhole.vpn.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.material3.MaterialTheme
@@ -24,15 +27,16 @@ internal fun VpnSwitch(
     val colors = LocalVpnColors.current
     val accent = MaterialTheme.colorScheme.primary
     Box(
-        modifier.sizeIn(minWidth = 52.dp, minHeight = 48.dp)
-            .toggleable(checked, enabled = enabled, role = Role.Switch, onValueChange = onCheckedChange),
+        Modifier.sizeIn(minWidth = 52.dp, minHeight = 48.dp),
         contentAlignment = Alignment.Center,
     ) {
+        Box(modifier.scale(.8f).width(52.dp).height(32.dp).clip(RoundedCornerShape(50))
+            .toggleable(checked, enabled = enabled, role = Role.Switch, onValueChange = onCheckedChange)) {
         Switch(
             checked = checked,
             onCheckedChange = null,
             enabled = enabled,
-            modifier = Modifier.scale(.8f).height(28.dp),
+            modifier = Modifier.width(52.dp).height(32.dp),
             colors = SwitchDefaults.colors(
                 checkedThumbColor = colors.background,
                 checkedTrackColor = accent,
@@ -42,5 +46,6 @@ internal fun VpnSwitch(
                 uncheckedBorderColor = colors.border,
             ),
         )
+        }
     }
 }

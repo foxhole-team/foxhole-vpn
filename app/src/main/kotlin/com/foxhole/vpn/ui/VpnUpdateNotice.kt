@@ -69,18 +69,11 @@ private fun VpnUpdateNoticeSheet(
                 Surface(shape = MaterialTheme.shapes.small, border = BorderStroke(1.dp, LocalVpnColors.current.border),
                     color = LocalVpnColors.current.panel) {
                     Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                        val notes = buildList {
-                            add(R.drawable.lin_help to R.string.vpn_release_notes_translations_104)
-                            if (com.foxhole.vpn.BuildConfig.APP_UPDATE_CHANNEL == "github")
-                                add(R.drawable.lin_refresh to R.string.app_update_available_release_note)
-                            add(R.drawable.lin_apps to R.string.vpn_release_notes_scenarios)
-                            add(R.drawable.lin_refresh to R.string.vpn_release_notes_dns_103)
-                            add(R.drawable.lin_apps to R.string.vpn_release_notes_widget_103)
-                            add(R.drawable.lin_refresh to R.string.vpn_release_notes_interface_103)
-                            add(R.drawable.lin_help to R.string.vpn_release_notes_help_103)
-                            add(R.drawable.lin_file to R.string.vpn_release_notes_journal_103)
-                            add(R.drawable.lin_settings to R.string.vpn_release_notes_compact_103)
-                        }
+                        val notes = listOf(
+                            R.drawable.lin_help to R.string.vpn_release_notes_android7_105,
+                            R.drawable.lin_world_www to R.string.vpn_release_notes_web_105,
+                            R.drawable.lin_info to R.string.vpn_release_notes_notice_style,
+                        )
                         notes.forEachIndexed { index, (icon, text) ->
                             VpnReleaseNoteRow(icon, text)
                             if (index < notes.lastIndex) HorizontalDivider(color = LocalVpnColors.current.border)

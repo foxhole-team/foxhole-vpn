@@ -1,6 +1,7 @@
 import copy
 import hashlib
 import json
+import shutil
 from pathlib import Path
 import subprocess
 import sys
@@ -16,7 +17,15 @@ class NativePayloadTest(unittest.TestCase):
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory(prefix="foxhole-native-validator-fixture-")
         self.addCleanup(self.temporary.cleanup)
-        self.native = Path(self.temporary.name)
+        self.native = Path(self.temporary.name) / 'native'
+        self.native.mkdir()
+        self.legacy = Path(self.temporary.name) / 'legacy-app'
+        (self.legacy / 'scripts').mkdir(parents=True)
+        (self.legacy / 'config').mkdir()
+        self.script = self.legacy / 'scripts/verify-native-payload.py'
+        shutil.copyfile(SCRIPT, self.script)
+        for name in ('foxcore-revision.txt', 'foxcore-features.txt'):
+            shutil.copyfile(ROOT / 'config' / name, self.legacy / 'config' / name)
         self.receipt = {
             "core_revision": (ROOT / "config/foxcore-revision.txt").read_text().strip(),
             "features": (ROOT / "config/foxcore-features.txt").read_text().strip(),
@@ -39,8 +48,8 @@ class NativePayloadTest(unittest.TestCase):
         (self.native / "foxcore-vpn-build.json").write_text(json.dumps(self.receipt))
 
     def verify(self, *abis):
-        return subprocess.run([sys.executable, str(SCRIPT), str(self.native), *abis],
-                              cwd=ROOT, capture_output=True, text=True)
+        return subprocess.run([sys.executable, str(self.script), str(self.native), *abis],
+                              cwd=self.legacy, capture_output=True, text=True)
 
     def test_missing_requested_core_is_rejected(self):
         result = self.verify("armeabi-v7a")

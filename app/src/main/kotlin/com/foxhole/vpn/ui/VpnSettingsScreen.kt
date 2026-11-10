@@ -1,6 +1,8 @@
 package com.foxhole.vpn.ui
 
 import androidx.compose.foundation.clickable
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -117,6 +119,11 @@ internal fun VpnSettingsDetailScreen(
                         }
                     }
                 }
+                AppearanceSettingRow(R.string.vpn_hide_router_management) {
+                    VpnSwitch(settings.hideRouterManagement,
+                        onCheckedChange = { onSettings(settings.copy(hideRouterManagement = it)) },
+                        enabled = enabled, modifier = Modifier.testTag("hide-router-management"))
+                }
             }
             VpnSettingsDetail.BACKGROUND_UPDATES -> {
                 BackgroundUpdateRow(R.string.vpn_auto_refresh_subscriptions,
@@ -166,7 +173,8 @@ private fun AppearanceSettingRow(label: Int, value: @Composable () -> Unit) {
     Row(Modifier.fillMaxWidth().heightIn(min = 48.dp).padding(vertical = 2.dp),
         verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         Text(stringResource(label), Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
-        Box(Modifier.widthIn(max = LocalConfiguration.current.screenWidthDp.dp * .6f)) { value() }
+        Box(Modifier.widthIn(max = LocalConfiguration.current.screenWidthDp.dp * .6f)
+            .animateContentSize(tween(120), alignment = Alignment.CenterEnd)) { value() }
     }
     HorizontalDivider(color = LocalVpnColors.current.border.copy(alpha = .5f))
 }

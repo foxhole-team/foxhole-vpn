@@ -23,5 +23,5 @@
     <string name="vpn_scenario_status_whole">シナリオ：端末全体</string>
     <string name="vpn_scenario_whole_device">端末全体</string>
     <string name="vpn_scenarios">ルーティング</string>
-    <string name="vpn_scenarios_help">「端末全体」シナリオは、すべての通信を VPN 経由にし、アプリのルールを無視します。\n\n「プロキシ」シナリオは「VPN」／「直接」のルールを適用します。\n\n「端末全体」設定がオンの場合、「直接」ルールのアプリ以外はすべての通信が VPN を経由します。オフの場合、「VPN」ルールのアプリの通信だけが VPN を経由します。\n\n「直接」ルールは、端末の通常の接続と、Private DNS を含むシステムの DNS 設定を使用します。</string>
+    <string name="vpn_scenarios_help">「端末全体」シナリオは、すべての通信を VPN 経由にし、アプリのルールを無視します。\n\n「プロキシ」シナリオは「VPN」／「直接」のルールを適用します。\n\n「端末全体」設定がオンの場合、「直接」ルールのアプリ以外はすべての通信が VPN を経由します。オフの場合、「VPN」ルールのアプリの通信だけが VPN を経由します。\n\n「直接」ルールは、端末の通常の接続と、Private DNS を含むシステムの DNS 設定を使用します。\n\nブロックは VPN 動作中の取得対象通信だけを拒否します。プロキシでのアプリのブロックには Android 10 以降が必要です。ウェブサイトのブロックは Android 7 以降に対応します。</string>
 </resources>

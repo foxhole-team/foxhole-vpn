@@ -79,12 +79,15 @@ import com.foxhole.vpn.VpnScenarioAppFilter
 import com.foxhole.vpn.vpnScenarioAppVisible
 import com.foxhole.vpn.routingChangeNeedsConfirmation
 import com.foxhole.vpn.withRule
+import com.foxhole.vpn.withWebRule
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.withContext
 
 internal class VpnScenariosUiState {
     val listState = LazyListState()
+    val webListState = LazyListState()
+    var webView by mutableStateOf(false)
 }
 
 @Composable
@@ -98,8 +101,10 @@ internal fun VpnScenariosSheet(
     onSettings: () -> Unit,
 ) {
     var pending by remember { mutableStateOf<Pair<VpnAppRouting, VpnAppRouting>?>(null) }
+    val haptic = LocalHapticFeedback.current
     var removing by remember { mutableStateOf<Pair<String, String>?>(null) }
     var showPicker by rememberSaveable { mutableStateOf(false) }
+    var showWebsiteInput by rememberSaveable { mutableStateOf(false) }
     fun changeScenario(target: VpnAppRouting) {
         if (routingChangeNeedsConfirmation(routing, target)) pending = routing to target
         else onChange { current ->
@@ -107,23 +112,35 @@ internal fun VpnScenariosSheet(
         }
     }
     VpnSheetContent(R.string.vpn_scenarios, R.drawable.lin_apps, busy = busy,
-        titleBadge = R.string.router_beta_badge, scrollableBody = true, footer = {
+        compactHeader = true, scrollableBody = true, footer = {
         val addColor = routerConnectColor()
-        OutlinedButton(onClick = { showPicker = true }, enabled = enabled,
+        OutlinedButton(onClick = { if (ui.webView) showWebsiteInput = true else showPicker = true }, enabled = enabled,
             border = BorderStroke(1.dp, if (enabled) addColor else LocalVpnColors.current.border),
             colors = androidx.compose.material3.ButtonDefaults.outlinedButtonColors(contentColor = addColor),
             modifier = Modifier.fillMaxWidth().padding(top = 16.dp).heightIn(min = 56.dp).testTag("vpn-add-application")) {
             Icon(painterResource(R.drawable.lin_plus), null, Modifier.size(20.dp))
-            Text(stringResource(R.string.vpn_add_application), Modifier.padding(start = 8.dp))
+            Text(stringResource(if (ui.webView) R.string.vpn_add_website else R.string.vpn_add_application), Modifier.padding(start = 8.dp))
         }
     }, actions = {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            VpnRouterHelpButton(R.string.vpn_scenarios, R.string.vpn_scenarios_help, actionStyle = true)
+            IconButton(onClick = { haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove); ui.webView = !ui.webView },
+                enabled = !busy, modifier = Modifier.size(48.dp).testTag("vpn-routing-view")) {
+                if (busy) CircularProgressIndicator(Modifier.size(20.dp), strokeWidth = 2.dp)
+                else Icon(painterResource(if (ui.webView) R.drawable.lin_apps else R.drawable.lin_world_www),
+                    stringResource(if (ui.webView) R.string.vpn_routing_view_applications else R.string.vpn_routing_view_websites), Modifier.size(24.dp))
+            }
+            if (ui.webView) VpnRouterHelpButton(R.string.vpn_web_rules, R.string.vpn_web_rules_help,
+                actionStyle = true, helpContent = { VpnWebsiteMaskHelp() })
+            else VpnRouterHelpButton(R.string.vpn_app_rules, R.string.vpn_scenarios_help,
+                actionStyle = true, helpContent = { VpnApplicationRoutingHelp() })
             IconButton(onClick = onSettings, enabled = !busy, modifier = Modifier.size(48.dp)) {
                 Icon(painterResource(R.drawable.lin_settings), stringResource(R.string.vpn_scenario_settings))
             }
         }
     }) {
+        if (ui.webView) {
+            VpnWebsiteRules(routing, enabled, ui.webListState, onChange)
+        } else {
         ScenarioOutlinedGroup {
             Row(Modifier.fillMaxWidth().offset(y = (-1).dp), verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -174,7 +191,13 @@ internal fun VpnScenariosSheet(
                 }
             }
         }
-
+        }
+    }
+    if (showWebsiteInput) {
+        VpnWebsiteInputSheet(enabled, onDismiss = { showWebsiteInput = false }) { mask, route ->
+            onChange { it.withWebRule(mask, route) }
+            showWebsiteInput = false
+        }
     }
     if (showPicker) {
         VpnBottomSheet(onDismiss = { showPicker = false },
@@ -196,6 +219,7 @@ internal fun VpnScenariosSheet(
                         Text(stringResource(R.string.vpn_cancel))
                     }
                     Button(enabled = enabled, onClick = {
+                        haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
                         removing = null
                         onChange { current -> current.copy(rules = current.rules.filterNot { it.packageName == packageName }) }
                     }, modifier = Modifier.weight(1f).heightIn(min = 56.dp)) {
@@ -265,8 +289,9 @@ private class ScenarioMenuScope(val dismiss: () -> Unit)
 
 @Composable
 private fun ScenarioDropdown(value: String, enabled: Boolean, modifier: Modifier = Modifier, icon: Int? = null,
+    alignRight: Boolean = false,
     menu: @Composable ScenarioMenuScope.() -> Unit) {
-    VpnChoiceDropdown(value, enabled, modifier, leadingIcon = icon) { dismiss ->
+    VpnChoiceDropdown(value, enabled, modifier, leadingIcon = icon, alignRight = alignRight) { dismiss ->
         ScenarioMenuScope(dismiss).menu()
     }
 }
@@ -276,6 +301,11 @@ private data class ScenarioAppDetails(val label: String, val icon: ImageBitmap?)
 @Composable
 private fun ScenarioAppRow(rule: VpnAppRule, enabled: Boolean, onRoute: (VpnAppRoute) -> Unit, onRemove: (String) -> Unit) {
     val context = LocalContext.current
+    val haptic = LocalHapticFeedback.current
+    fun remove(label: String) {
+        haptic.performHapticFeedback(HapticFeedbackType.LongPress)
+        onRemove(label)
+    }
     val details by produceState(ScenarioAppDetails(rule.packageName, null), rule.packageName, context) {
         value = withContext(Dispatchers.IO) {
             val manager = context.packageManager
@@ -291,8 +321,8 @@ private fun ScenarioAppRow(rule: VpnAppRule, enabled: Boolean, onRoute: (VpnAppR
     val colors = LocalVpnColors.current
     val removeLabel = stringResource(R.string.vpn_scenario_delete_title)
     Surface(Modifier.fillMaxWidth().pointerInput(enabled, details.label) {
-        if (enabled) detectTapGestures(onLongPress = { onRemove(details.label) })
-    }.semantics { if (enabled) onLongClick(removeLabel) { onRemove(details.label); true } },
+        if (enabled) detectTapGestures(onLongPress = { remove(details.label) })
+    }.semantics { if (enabled) onLongClick(removeLabel) { remove(details.label); true } },
         color = colors.panel, contentColor = colors.foreground) {
         Row(Modifier.fillMaxWidth().heightIn(min = 72.dp).padding(horizontal = 12.dp, vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -301,11 +331,11 @@ private fun ScenarioAppRow(rule: VpnAppRule, enabled: Boolean, onRoute: (VpnAppR
             else Icon(painterResource(R.drawable.lin_apps), null, Modifier.size(32.dp), tint = colors.muted)
             Text(details.label, Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium,
                 maxLines = 2, overflow = TextOverflow.Ellipsis)
-            ScenarioDropdown(stringResource(if (rule.route == VpnAppRoute.VPN) R.string.vpn_app_route_vpn else R.string.vpn_app_route_direct),
-                enabled, Modifier.widthIn(max = 144.dp).heightIn(min = 48.dp).testTag("vpn-app-route-${rule.packageName}"),
-                icon = scenarioRouteIcon(rule.route)) {
-                VpnAppRoute.entries.forEach { route ->
-                    DropdownMenuItem(text = { Text(stringResource(if (route == VpnAppRoute.VPN) R.string.vpn_app_route_vpn else R.string.vpn_app_route_direct), maxLines = 1, overflow = TextOverflow.Ellipsis) },
+            ScenarioDropdown(stringResource(scenarioRouteLabel(rule.route)),
+                enabled, Modifier.widthIn(max = 176.dp).heightIn(min = 48.dp).testTag("vpn-app-route-${rule.packageName}"),
+                icon = scenarioRouteIcon(rule.route), alignRight = true) {
+                VpnAppRoute.entries.filter { it != VpnAppRoute.BLOCK || android.os.Build.VERSION.SDK_INT >= 29 }.forEach { route ->
+                    DropdownMenuItem(text = { Text(stringResource(scenarioRouteLabel(route)), maxLines = 1, overflow = TextOverflow.Ellipsis) },
                         leadingIcon = { Icon(painterResource(scenarioRouteIcon(route)), null, Modifier.size(20.dp)) },
                         onClick = { dismiss(); if (route != rule.route) onRoute(route) })
                 }
@@ -316,9 +346,16 @@ private fun ScenarioAppRow(rule: VpnAppRule, enabled: Boolean, onRoute: (VpnAppR
 
 private fun Drawable.scenarioBitmap(): ImageBitmap = toBitmap(64, 64).asImageBitmap()
 
-private fun scenarioRouteIcon(route: VpnAppRoute): Int = when (route) {
+internal fun scenarioRouteIcon(route: VpnAppRoute): Int = when (route) {
     VpnAppRoute.VPN -> R.drawable.lin_power
     VpnAppRoute.DIRECT -> R.drawable.router_review_globe
+    VpnAppRoute.BLOCK -> R.drawable.lin_ban
+}
+
+internal fun scenarioRouteLabel(route: VpnAppRoute): Int = when (route) {
+    VpnAppRoute.VPN -> R.string.vpn_app_route_vpn
+    VpnAppRoute.DIRECT -> R.string.vpn_app_route_direct
+    VpnAppRoute.BLOCK -> R.string.vpn_app_route_block
 }
 
 private fun scenarioModeIcon(mode: VpnRoutingMode): Int = when (mode) {
@@ -336,7 +373,7 @@ private fun ScenarioOutlinedGroup(content: @Composable ColumnScope.() -> Unit) {
 }
 
 @Composable
-private fun ScenarioDivider(dotted: Boolean = false) {
+internal fun ScenarioDivider(dotted: Boolean = false) {
     val color = LocalVpnColors.current.border
     Canvas(Modifier.fillMaxWidth().height(1.dp)) {
         drawLine(color, Offset.Zero, Offset(size.width, 0f), strokeWidth = 1.dp.toPx(),
@@ -345,7 +382,7 @@ private fun ScenarioDivider(dotted: Boolean = false) {
 }
 
 @Composable
-private fun ScenarioEmptyState(message: String, modifier: Modifier = Modifier) {
+internal fun ScenarioEmptyState(message: String, modifier: Modifier = Modifier) {
     val colors = LocalVpnColors.current
     Surface(modifier.fillMaxWidth(), shape = RoundedCornerShape(14.dp), color = colors.panel,
         border = BorderStroke(1.dp, colors.border)) {
@@ -508,7 +545,7 @@ internal fun routingModeLabel(mode: VpnRoutingMode): Int = when (mode) {
     VpnRoutingMode.SELECTED_APPS -> R.string.vpn_scenario_selected_apps
 }
 
-private object ScenarioListScrollConnection : NestedScrollConnection {
+internal object ScenarioListScrollConnection : NestedScrollConnection {
     override fun onPostScroll(consumed: Offset, available: Offset, source: NestedScrollSource): Offset =
         if (source == NestedScrollSource.UserInput) Offset(0f, available.y) else Offset.Zero
 

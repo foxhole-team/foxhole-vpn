@@ -34,7 +34,8 @@ import com.foxhole.vpn.R
 
 @Composable
 internal fun VpnRouterHelpButton(@StringRes titleRes: Int, @StringRes helpRes: Int,
-    textStyle: TextStyle = MaterialTheme.typography.bodyMedium, actionStyle: Boolean = false) {
+    textStyle: TextStyle = MaterialTheme.typography.bodyMedium, actionStyle: Boolean = false,
+    helpContent: (@Composable () -> Unit)? = null) {
     var expanded by remember(titleRes, helpRes) { mutableStateOf(false) }
     val description = stringResource(R.string.router_help_open, stringResource(titleRes))
     val iconSize = if (actionStyle) 24.dp else maxOf(20.dp, vpnFlagIconSize(textStyle, imageWidth = 1, imageHeight = 1).height)
@@ -51,7 +52,8 @@ internal fun VpnRouterHelpButton(@StringRes titleRes: Int, @StringRes helpRes: I
         }
         if (expanded) VpnBottomSheet(onDismiss = { expanded = false }) {
             VpnSheetContent(titleRes, R.drawable.lin_help, Modifier.verticalScroll(rememberScrollState())) {
-                Text(stringResource(helpRes), style = MaterialTheme.typography.bodyMedium)
+                if (helpContent != null) helpContent()
+                else Text(stringResource(helpRes), style = MaterialTheme.typography.bodyMedium)
             }
         }
     }

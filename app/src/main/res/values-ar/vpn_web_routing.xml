@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_routing_view_applications">التطبيقات</string>
+    <string name="vpn_routing_view_websites">عناوين الويب</string>
+    <string name="vpn_web_rules">قواعد مواقع الويب</string>
+    <string name="vpn_web_rules_empty">أضف عناوين ويب أو أنماطًا لإنشاء قواعد التوجيه.</string>
+    <string name="vpn_add_website">إضافة عنوان ويب</string>
+    <string name="vpn_web_address_mask">عنوان أو نمط</string>
+    <string name="vpn_web_formats">HTTP/HTTPS · النطاقات · أنماط النطاقات · IPv4/IPv6 · CIDR · نطاقات IP</string>
+    <string name="vpn_web_invalid">أدخل نطاقًا صالحًا أو عنوان HTTP/HTTPS أو نمط نطاق أو شبكة CIDR أو نطاق عناوين IP.</string>
+    <string name="vpn_web_route">المسار</string>
+    <string name="vpn_web_add">إضافة</string>
+    <string name="vpn_web_delete_title">حذف قاعدة الموقع؟</string>
+    <string name="vpn_web_delete_body">هل تريد حذف %1$s من القائمة؟</string>
+    <string name="vpn_web_rules_help">تنطبق قواعد الويب على حركة البيانات الملتقطة في سيناريو VPN الحالي، بما في ذلك الجهاز بالكامل. اختر عبر VPN أو مباشر أو حظر لكل عنوان. يطابق النطاق الاسم بدقة، ويشمل *.example.com نطاقاته الفرعية، ويطابق .com لاحقة النطاق. تُحفظ عناوين HTTP/HTTPS كنطاقات دون مسار الصفحة. تُدعم شبكات CIDR ونطاقات IPv4/IPv6 المرتبة بعنوان بداية ونهاية. يعمل الحظر أثناء تشغيل VPN فقط. اضغط مطولًا على القاعدة لحذفها. تُطبق التغييرات أثناء الاتصال بشكل ذري مع إيقاف حركة البيانات مؤقتًا وإعادة الاتصال.</string>
+    <string name="vpn_app_route_block">حظر</string>
+    <string name="vpn_web_normalized_rule">القاعدة: %1$s</string>
+    <string name="vpn_web_host_scope">تُطبَّق عناوين URL على المضيف بالكامل. يشمل *.example.com النطاق example.com ونطاقاته الفرعية؛ ويشمل *.ru المنطقة بالكامل.</string>
+</resources>

@@ -15,11 +15,23 @@ import java.io.IOException
 import java.net.Proxy
 import java.util.concurrent.TimeUnit
 
-internal class VpnNetworkProof(network: Network) {
+internal class VpnNetworkProof(network: Network, primary: VpnProofProxy? = null) {
     private val client = OkHttpClient.Builder()
-        .socketFactory(network.socketFactory)
-        .dns(Dns { host -> network.getAllByName(host).toList() })
-        .proxy(Proxy.NO_PROXY)
+        .apply {
+            if (primary == null) {
+                socketFactory(network.socketFactory)
+                dns(Dns { host -> network.getAllByName(host).toList() })
+                proxy(Proxy.NO_PROXY)
+            } else {
+                // The Core-owned listener pins CONNECT to the authenticated profile, not user web rules.
+                proxy(Proxy(Proxy.Type.HTTP, InetSocketAddress("127.0.0.1", primary.port)))
+                proxyAuthenticator { _, response ->
+                    if (response.request.header("Proxy-Authorization") != null) null
+                    else response.request.newBuilder().header("Proxy-Authorization",
+                        okhttp3.Credentials.basic(VpnProofProxy.USER, primary.password)).build()
+                }
+            }
+        }
         .followRedirects(false)
         .followSslRedirects(false)
         .connectionPool(ConnectionPool(0, 1, TimeUnit.SECONDS))

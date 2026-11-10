@@ -23,5 +23,5 @@
     <string name="vpn_scenario_status_whole">场景：整个设备</string>
     <string name="vpn_scenario_whole_device">整个设备</string>
     <string name="vpn_scenarios">路由</string>
-    <string name="vpn_scenarios_help">“整个设备”场景将全部流量经由 VPN，并忽略应用规则。\n\n“代理”场景应用“经 VPN”／“不经 VPN”规则。\n\n启用“整个设备”设置时，除设为“不经 VPN”的应用外，全部流量均经过 VPN。关闭时，只有设为“经 VPN”的应用流量经过 VPN。\n\n“不经 VPN”规则使用设备的正常连接及其系统 DNS 设置，包括 Private DNS。</string>
+    <string name="vpn_scenarios_help">“整个设备”场景将全部流量经由 VPN，并忽略应用规则。\n\n“代理”场景应用“经 VPN”／“不经 VPN”规则。\n\n启用“整个设备”设置时，除设为“不经 VPN”的应用外，全部流量均经过 VPN。关闭时，只有设为“经 VPN”的应用流量经过 VPN。\n\n“不经 VPN”规则使用设备的正常连接及其系统 DNS 设置，包括 Private DNS。\n\n阻止仅在 VPN 运行时拒绝捕获的流量。代理场景的应用阻止需要 Android 10；网站阻止从 Android 7 起可用。</string>
 </resources>

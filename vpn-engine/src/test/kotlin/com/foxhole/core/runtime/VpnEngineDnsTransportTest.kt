@@ -75,6 +75,7 @@ class VpnEngineDnsTransportTest {
             val dns = Json.parseToJsonElement(prepared.engineJson).jsonObject.getValue("dns").jsonObject
             assertEquals("real_ip", dns.getValue("mode").jsonPrimitive.content)
             assertFalse(dns.containsKey("upstreams"))
+            assertEquals(listOf("10.1.2.3"), (dns.getValue("packet_resolvers") as JsonArray).map { it.jsonPrimitive.content })
         }
     }
 

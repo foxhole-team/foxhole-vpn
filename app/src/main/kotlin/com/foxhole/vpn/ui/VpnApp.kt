@@ -55,6 +55,8 @@ import androidx.compose.ui.unit.dp
 import com.foxhole.core.importer.PortableProfileExportFailure
 import com.foxhole.vpn.ProtocolChoiceAction
 import com.foxhole.vpn.R
+import com.foxhole.vpn.engine.EngineException
+import com.foxhole.vpn.engine.EngineFailure
 import com.foxhole.vpn.VpnController
 import com.foxhole.vpn.VpnImportResult
 import com.foxhole.vpn.VpnSettings
@@ -305,6 +307,11 @@ private fun VpnAppContent(
         scope.launch {
             try { action() }
             catch (cancelled: CancellationException) { throw cancelled }
+            catch (failure: EngineException) {
+                val resource = if (failure.reason == EngineFailure.WIREGUARD_DOMAIN_PLATFORM)
+                    R.string.vpn_wireguard_domains_android11 else R.string.vpn_error_action_failed
+                notices.show(resources.getString(resource), error = true)
+            }
             catch (_: Exception) { notices.show(resources.getString(R.string.vpn_error_action_failed), error = true) }
             finally { busy = false }
         }
@@ -490,13 +497,19 @@ private fun VpnAppContent(
                     enabled = state.isReady) {
                     Icon(painterResource(R.drawable.lin_apps), stringResource(R.string.vpn_scenarios))
                 }
-                if (routerWizard != null || routerControl != null) IconButton(onClick = {
+                androidx.compose.animation.AnimatedVisibility(
+                    visible = !settings.hideRouterManagement && (routerWizard != null || routerControl != null),
+                    enter = androidx.compose.animation.fadeIn(androidx.compose.animation.core.tween(120)) +
+                        androidx.compose.animation.expandHorizontally(androidx.compose.animation.core.tween(120), expandFrom = Alignment.End),
+                    exit = androidx.compose.animation.fadeOut(androidx.compose.animation.core.tween(90)) +
+                        androidx.compose.animation.shrinkHorizontally(androidx.compose.animation.core.tween(90), shrinkTowards = Alignment.End),
+                ) { IconButton(onClick = {
                     clipboardRequest = null; pendingInsecureInput = null
                     if (routerControlState?.selectedRouterId == null) routerWizard?.begin(RouterWizardPath.PAIR, null)
                     routerBetaNoticeVisible = !betaNoticePreferences.isSuppressed()
                     navigation.open(if (routerControlState?.selectedRouterId != null)
                         VpnSheetPage.RouterControl else VpnSheetPage.RouterEntry)
-                }) { Icon(painterResource(R.drawable.lin_router), stringResource(R.string.vpn_router)) }
+                }) { Icon(painterResource(R.drawable.lin_router), stringResource(R.string.vpn_router)) } }
                 IconButton(onClick = { clipboardRequest = null; pendingInsecureInput = null; navigation.open(VpnSheetPage.Settings) }) {
                     Icon(painterResource(R.drawable.lin_settings), stringResource(R.string.vpn_settings))
                 }
@@ -697,17 +710,27 @@ private fun VpnAppContent(
                             onCheck = { if (entryCurrent(entry)) actions.checkAppUpdate() })
                         is VpnSheetPage.SettingsDetail -> VpnSettingsDetailScreen(page.detail, settings,
                             modifier = Modifier.then(LocalVpnSheetBodyGestures.current),
-                            onSettings = { updated -> if (entryCurrent(entry)) profileAction {
-                                if (updated.language != controller.settings.value.language) {
-                                    check(com.foxhole.vpn.selectVpnAppLanguage(context, controller, updated.language)) { "App language change remains pending" }
-                                } else com.foxhole.vpn.updateVpnAppSettings(controller, updated)
+                            onSettings = { updated -> if (entryCurrent(entry)) {
                                 if (page.detail == VpnSettingsDetail.APPEARANCE) {
-                                    val applied = controller.settings.value
-                                    check(applied.language == updated.language && applied.fontStyle == updated.fontStyle && applied.theme == updated.theme) {
-                                        "Appearance change remains pending"
+                                    val previous = settings
+                                    scope.launch {
+                                        try {
+                                            if (updated.language != previous.language) {
+                                                check(com.foxhole.vpn.selectVpnAppLanguage(context, controller, updated.language)) {
+                                                    "App language change remains pending"
+                                                }
+                                            }
+                                            com.foxhole.vpn.updateVpnAppSettings(controller, updated, previousAppearance = previous)
+                                            val applied = controller.settings.value
+                                            check((updated.hideRouterManagement == previous.hideRouterManagement || applied.hideRouterManagement == updated.hideRouterManagement) &&
+                                                (updated.theme == previous.theme || applied.theme == updated.theme) &&
+                                                (updated.fontStyle == previous.fontStyle || applied.fontStyle == updated.fontStyle)) {
+                                                "Appearance change remains pending"
+                                            }
+                                        } catch (cancelled: CancellationException) { throw cancelled }
+                                        catch (_: Exception) { notices.show(resources.getString(R.string.vpn_error_action_failed), error = true) }
                                     }
-                                    if (entryCurrent(entry)) back(entry)
-                                }
+                                } else profileAction { com.foxhole.vpn.updateVpnAppSettings(controller, updated) }
                             } },
                             onBack = { back(entry) }, enabled = !pageBusy, busy = busy)
                         VpnSheetPage.Profiles -> VpnProfilesSheet(state, busy, profilesUi,

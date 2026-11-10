@@ -77,13 +77,30 @@ def main():
     parser.add_argument('--native', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--abis', nargs='+', required=True)
+    parser.add_argument('--desugaring-inputs', required=True)
     parser.add_argument('--android-delivery-profile', choices=['legacy4', 'android-arm64', 'android64', 'android-armv7', 'android3', 'android4'], default='legacy4')
+    parser.add_argument('--source-native-manifest', type=Path)
+    parser.add_argument('--core-root', type=Path)
     args = parser.parse_args()
     owned_output = args.repo.resolve() / 'app/build/generated/derivedLicenseAssets/licenses'
     if args.output.resolve() != owned_output or args.output.is_symlink():
         raise ValueError('Derived legal output must be the exact owned generated directory')
     original = args.repo / 'app/src/main/assets/licenses'
-    manifest = json.loads((original / 'MANIFEST.json').read_text())
+    current = None
+    current_module = None
+    if args.source_native_manifest is not None:
+        if args.core_root is None:
+            raise ValueError('Explicit source legal mode requires Core root')
+        spec = importlib.util.spec_from_file_location('fdroid_source_legal', args.repo / 'scripts/fdroid-source-build.py')
+        source = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(source)
+        source.verify_source_mode(args.repo, args.repo / 'native-libs', args.source_native_manifest, args.core_root)
+    elif (args.repo / 'config/current-vpn-license-bindings.json').exists() or (args.repo / 'config/current-vpn-license-bindings.json').is_symlink():
+        spec = importlib.util.spec_from_file_location('current_vpn_legal', args.repo / 'scripts/current-vpn-license-delivery.py')
+        current_module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(current_module)
+        current = current_module.load(args.repo, original, args.abis, args.android_delivery_profile, args.core_root)
+    manifest = current['manifest'] if current else json.loads((original / 'MANIFEST.json').read_text())
     expected = {item['path']: item for item in manifest['files']}
     actual = {p.relative_to(original).as_posix() for p in original.rglob('*') if p.is_file()}
     if actual != set(expected) | {'MANIFEST.json'}:
@@ -93,7 +110,8 @@ def main():
         if path.is_symlink() or hashlib.sha256(path.read_bytes()).hexdigest() != item['sha256'] or \
                 path.stat().st_size != item['bytes']:
             raise ValueError('Original VPN notice bytes differ')
-    validate_fork_material(args.repo, original, manifest, args.android_delivery_profile, args.abis)
+    if current is None:
+        validate_fork_material(args.repo, original, manifest, args.android_delivery_profile, args.abis)
     if args.output.exists():
         shutil.rmtree(args.output)
     shutil.copytree(original, args.output)
@@ -101,10 +119,16 @@ def main():
     subprocess.run(['python3', str(args.repo / 'scripts/copy-derived-native-licenses.py'),
                     '--repo', str(args.repo), '--native', str(args.native), '--output', str(args.output),
                     '--abis', *args.abis], check=True, timeout=60)
+    spec = importlib.util.spec_from_file_location('desugaring_notices', args.repo / 'scripts/copy-desugaring-notices.py')
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    module.copy_notices(args.repo, args.output, args.desugaring_inputs)
     manifest['files'] = [{'path': p.relative_to(args.output).as_posix(),
                           'sha256': hashlib.sha256(p.read_bytes()).hexdigest(), 'bytes': p.stat().st_size}
                          for p in sorted(args.output.rglob('*')) if p.is_file()]
     manifest['nativeProvenance'] = 'Separately rebuilt graphics native; original Maven Java/AAR remains unchanged.'
+    if current is not None:
+        current_module.recheck(current)
     (args.output / 'MANIFEST.json').write_text(json.dumps(manifest, indent=2) + '\n')
 
 

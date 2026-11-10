@@ -1,0 +1,57 @@
+{
+  "abis": [
+    "arm64-v8a",
+    "armeabi-v7a",
+    "x86",
+    "x86_64"
+  ],
+  "androidDeliveryProfile": "android4",
+  "compiledSourceManifestSHA256": "1cc9afa207f2d89b46e4dd0ea4e12bd3a2409bd39a4b1875829daf32c05fba4a",
+  "coreVersion": "1.0.4",
+  "features": "vless,vmess,hysteria2,tuic,trojan,shadowsocks,socks,http,naive,anytls,shadowtls,wireguard",
+  "kind": "pinned-qualified-normal-core-jni",
+  "libraries": {
+    "arm64-v8a": {
+      "bytes": 12430568,
+      "sha256": "45032759fb7ad1de4610944a1251d2efabfd8d554516b9db5de110e4a16c7906"
+    },
+    "armeabi-v7a": {
+      "bytes": 8675372,
+      "sha256": "85608675666fb46e3f8b03481d100bd1c79005ed645e40d25c72a170cb154cf9"
+    },
+    "x86": {
+      "bytes": 13269124,
+      "sha256": "774a0016ec0d8385ab6eec189fe6ad187b63395ed5f014a6345bcb2fe9a0718a"
+    },
+    "x86_64": {
+      "bytes": 14752824,
+      "sha256": "077a7936ffe8da197dab6e28d0dd1fe2172fd149846efc09023b313e7be41f15"
+    }
+  },
+  "normalRoleReceiptSHA256": "5b301edda8cdec05fae8fa373c02bd618eb9a333479316919337a9d0e143db61",
+  "producerCommit": "3fc3b70d8e9d700b3e07ec27638515c00651b013",
+  "producerTree": "1fd25d80359fd8b12765baec7c6d3093e92f89db",
+  "publishedCoreSDK": {
+    "SDKJNIProfile": "guard/shipped",
+    "bytes": 50612930,
+    "containsRoleJNI": false,
+    "name": "foxhole-core-native-v1.0.4.tar.gz",
+    "publisherCommit": "90ae3e0d60de3d35e88e24558c99e771d9ca0bcf",
+    "publisherTree": "ab7dbd0fb7dec20685dc4c279497b2abc78df8d2",
+    "sha256": "10bff6d683808c7e036617c22b3f7dd88e7977b49163738a5d5c116d4a5716e1",
+    "tag": "v1.0.4",
+    "tagObject": "1133fddd86b4ac9b68fc18b32448add459c0b5ce",
+    "version": "1.0.4"
+  },
+  "role": "vpn",
+  "runtimeOrAPKQualificationClaimed": false,
+  "schema": 1,
+  "sourceCommit": "90ae3e0d60de3d35e88e24558c99e771d9ca0bcf",
+  "sourceTree": "ab7dbd0fb7dec20685dc4c279497b2abc78df8d2",
+  "targets": [
+    "aarch64-linux-android",
+    "armv7-linux-androideabi",
+    "i686-linux-android",
+    "x86_64-linux-android"
+  ]
+}

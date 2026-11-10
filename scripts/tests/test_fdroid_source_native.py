@@ -39,8 +39,8 @@ class SourceNativeVerificationTest(unittest.TestCase):
             path.write_bytes(data)
             self.records.append({'path': abi + '/libfoxhole_native.so', 'sha256': hashlib.sha256(data).hexdigest()})
             baseline[target] = {'abi': abi, 'bytes': 64, 'sha256': '0' * 64}
-        self.context = {'producer': self.producer, 'binding': {'sourceCommit': self.source, 'sourceTree': '3' * 40},
-                        'snapshot': {'nativeLibraries': baseline}}
+        self.context = {'producer': self.producer, 'binding': {'sourceCommit': self.source, 'sourceTree': '3' * 40, 'producerCommit': self.producer, 'compiledSourceManifestSha256': '5' * 64},
+                        'snapshot': {'nativeLibraries': baseline}, 'helper': None}
         self.receipt = {'core_revision': self.producer, 'features': self.features, 'files': self.records}
         self.save()
 
@@ -105,6 +105,91 @@ class SourceNativeVerificationTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Linked'):
             SOURCE.verify_vpn_native(self.root, self.context)
 
+
+    def source_mode(self):
+        from types import SimpleNamespace
+        self.context["helper"] = SimpleNamespace(resolve=lambda *_: dict(self.context["binding"]))
+        report = self.root / "app/build/reports/fdroid/native-source-build.json"
+        report.parent.mkdir(parents=True, exist_ok=True)
+        report.write_text(json.dumps(SOURCE.verify_vpn_native(self.root, self.context)))
+        return report
+
+    def test_explicit_source_mode_accepts_own_hashes_without_normal_role_receipt(self):
+        report = self.source_mode()
+        value = SOURCE.verify_source_mode(self.root, self.native, report, self.root / "core", lambda _: self.context)
+        self.assertEqual(value["compiledSourceManifestSha256"], "5" * 64)
+        self.assertEqual(value["androidDeliveryProfile"], "android4")
+        self.assertFalse(value["APKReproducibilityVerified"])
+        self.assertFalse((self.native / "NORMAL-ROLE.json").exists())
+
+    def test_source_mode_report_path_is_closed(self):
+        report = self.source_mode()
+        with self.assertRaisesRegex(ValueError, "exact F-Droid"):
+            SOURCE.verify_source_mode(self.root, self.native, report.with_name("other.json"), self.root / "core", lambda _: self.context)
+
+    def test_source_mode_refuses_report_or_current_native_tampering(self):
+        report = self.source_mode()
+        data = json.loads(report.read_text());data["sourceCommit"] = "9" * 40;report.write_text(json.dumps(data))
+        with self.assertRaises(ValueError):
+            SOURCE.verify_source_mode(self.root, self.native, report, self.root / "core", lambda _: self.context)
+        report = self.source_mode()
+        path = self.native / self.records[0]["path"];path.write_bytes(path.read_bytes() + b"changed")
+        with self.assertRaises(ValueError):
+            SOURCE.verify_source_mode(self.root, self.native, report, self.root / "core", lambda _: self.context)
+
+    def test_source_mode_refuses_relabelled_reference_or_retained_projection(self):
+        report = self.source_mode();data = json.loads(report.read_text());data["files"][0]["matchesReferenceNative"] = True
+        report.write_text(json.dumps(data))
+        with self.assertRaises(ValueError):
+            SOURCE.verify_source_mode(self.root, self.native, report, self.root / "core", lambda _: self.context)
+        report = self.source_mode();self.receipt["materialization"] = {"kind": "retained-qualified-normal-vpn-role"};self.save()
+        with self.assertRaisesRegex(ValueError, "retained-role"):
+            SOURCE.verify_source_mode(self.root, self.native, report, self.root / "core", lambda _: self.context)
+
+    def test_source_mode_refuses_a_different_pinned_checkout(self):
+        from types import SimpleNamespace
+        report = self.source_mode()
+        self.context["helper"] = SimpleNamespace(resolve=lambda *_: {**self.context["binding"], "sourceTree": "9" * 40})
+        with self.assertRaisesRegex(ValueError, "checkout"):
+            SOURCE.verify_source_mode(self.root, self.native, report, self.root / "core", lambda _: self.context)
+
+    def normal_marker_cli(self):
+        import shutil
+        repo = SCRIPT.parents[1]
+        scripts = self.root / "scripts"; scripts.mkdir()
+        for name in ("verify-native-payload.py", "normal-core-native.py"):
+            shutil.copyfile(repo / "scripts" / name, scripts / name)
+        cfg = json.loads((repo / "config/foxcore-native-inputs.json").read_text())
+        manifest = json.loads((repo / "config/foxcore-source-manifest.json").read_text())
+        manifest["commit"] = self.producer
+        raw = json.dumps(manifest).encode(); (self.root / "config/foxcore-source-manifest.json").write_bytes(raw)
+        pin = hashlib.sha256(raw).hexdigest()
+        binding = {"schema": 1, "producerCommit": self.producer, "sourceCommit": self.source, "sourceTree": "3" * 40,
+                   "compiledSourceManifestSha256": pin}
+        (self.root / "config/foxcore-source-checkout.json").write_text(json.dumps(binding))
+        (self.root / "config/foxcore-revision.txt").write_text(self.producer + "\n")
+        cfg.update(producerCommit=self.producer, sourceCommit=self.source, sourceTree="3" * 40, compiledSourceManifestSHA256=pin)
+        cfg["publishedCoreSDK"].update(publisherCommit=self.source, publisherTree="3" * 40)
+        (self.root / "config/foxcore-native-inputs.json").write_text(json.dumps(cfg))
+        return scripts / "verify-native-payload.py"
+
+    def test_missing_normal_role_receipt_does_not_automatically_select_source_or_legacy(self):
+        import subprocess, sys
+        script = self.normal_marker_cli()
+        result = subprocess.run([sys.executable, "-B", str(script), str(self.native)], capture_output=True, text=True, timeout=10)
+        self.assertNotEqual(0, result.returncode)
+        self.assertIn("NORMAL-ROLE.json", result.stderr)
+        (self.root / "config/foxcore-native-inputs.json").unlink()
+        legacy = subprocess.run([sys.executable, "-B", str(script), str(self.native)], capture_output=True, text=True, timeout=10)
+        self.assertEqual(0, legacy.returncode, legacy.stderr)
+
+    def test_partial_source_flag_pair_is_refused_before_any_fallback(self):
+        import subprocess, sys
+        script = self.normal_marker_cli()
+        result = subprocess.run([sys.executable, "-B", str(script), str(self.native), "--source-native-manifest", "missing.json"],
+                                capture_output=True, text=True, timeout=10)
+        self.assertNotEqual(0, result.returncode)
+        self.assertIn("both provenance and Core root", result.stderr)
 
 if __name__ == '__main__':
     unittest.main()

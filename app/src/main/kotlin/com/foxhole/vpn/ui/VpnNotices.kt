@@ -7,7 +7,6 @@ import android.view.HapticFeedbackConstants
 import android.view.WindowManager
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -20,7 +19,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import kotlinx.coroutines.CoroutineScope
 import androidx.compose.runtime.LaunchedEffect
@@ -30,7 +28,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.Color
@@ -68,7 +65,6 @@ internal class VpnNoticeState(private val elapsedRealtime: () -> Long = SystemCl
     val motionScope: CoroutineScope? = null) {
     private var nextId = 0L
     private val windows = mutableStateListOf<Any>()
-    private val leavingWindows = mutableStateListOf<Any>()
     private val motions = mutableMapOf<Long, NoticeDismissState>()
     private val announcedNotices = mutableSetOf<Long>()
     private val presentedNotices = mutableSetOf<Long>()
@@ -109,12 +105,8 @@ internal class VpnNoticeState(private val elapsedRealtime: () -> Long = SystemCl
     }
     fun motion(id: Long): NoticeDismissState = motions.getOrPut(id) { NoticeDismissState() }
     fun attach(window: Any) { windows.add(window) }
-    fun handoff(window: Any, leaving: Boolean) {
-        if (leaving && window in windows && window !in leavingWindows) leavingWindows.add(window)
-        else if (!leaving) leavingWindows.remove(window)
-    }
-    fun draws(window: Any): Boolean = topWindow === window || topWindow in leavingWindows
-    fun detach(window: Any) { windows.remove(window); leavingWindows.remove(window) }
+    fun draws(window: Any): Boolean = topWindow === window
+    fun detach(window: Any) { windows.remove(window) }
 }
 
 internal val LocalVpnNotices = staticCompositionLocalOf<VpnNoticeState?> { null }
@@ -129,14 +121,13 @@ internal fun VpnNoticeScope(content: @Composable () -> Unit) {
 }
 
 @Composable
-internal fun VpnNoticeWindow(closing: Boolean = false) {
+internal fun VpnNoticeWindow() {
     val notices = LocalVpnNotices.current ?: return
     val window = remember { Any() }
     DisposableEffect(notices, window) {
         notices.attach(window)
         onDispose { notices.detach(window) }
     }
-    SideEffect { notices.handoff(window, closing) }
     val notice = notices.current ?: return
     val ownsInteraction = notices.topWindow === window
     val visible = notices.draws(window)
@@ -182,8 +173,7 @@ internal fun VpnNoticeWindow(closing: Boolean = false) {
                     notices.dismiss(notice.id)
                 }
             },
-            // Keep the parent popup laid out behind the modal popup so closing the dialog exposes
-            // an existing surface immediately. Only the top window receives input or accessibility.
+            // Keep the notice above the modal scrim until its native window is disposed.
             modifier = Modifier.width(width).padding(horizontal = 8.dp)
                 .graphicsLayer { alpha = if (visible) 1f else 0f }
                 .then(if (ownsInteraction) Modifier else Modifier.clearAndSetSemantics { }),
@@ -201,16 +191,12 @@ internal fun VpnNoticeWindow(closing: Boolean = false) {
                 contentColor = noticeColor,
                 shadowElevation = 4.dp,
             ) {
-                Row(
-                    Modifier.noticeRemainingLine(progress, noticeColor)
-                        .padding(start = 16.dp, top = 6.dp, bottom = 6.dp, end = 16.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Icon(painterResource(if (notice.error) R.drawable.lin_warning else R.drawable.lin_info), null, Modifier.size(22.dp))
-                    Text(notice.text, Modifier.weight(1f).padding(start = 12.dp, top = 8.dp, bottom = 8.dp),
-                        color = if (notice.error || notice.success) noticeColor else colors.foreground,
-                        style = MaterialTheme.typography.bodyMedium)
-                }
+                InlineNoticeText(notice.text,
+                    icon = if (notice.error) R.drawable.lin_error else if (notice.success) R.drawable.lin_check else R.drawable.lin_info,
+                    color = if (notice.error || notice.success) noticeColor else colors.foreground,
+                    iconColor = noticeColor, style = MaterialTheme.typography.bodyMedium,
+                    modifier = Modifier.fillMaxWidth().noticeRemainingLine(progress, noticeColor)
+                        .padding(horizontal = 16.dp, vertical = 14.dp))
             }
         }
     }

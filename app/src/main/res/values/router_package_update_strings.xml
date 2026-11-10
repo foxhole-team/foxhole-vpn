@@ -2,7 +2,7 @@
 <resources>
     <string name="router_updates_title">FoxHole package updates</string>
     <string name="router_updates_scope">Updates FoxHole and installed VPN protocol packages. Profiles and pairing are preserved. OpenWrt firmware and unrelated system packages are unchanged.</string>
-    <string name="router_updates_current_version">Current version: %1$s</string>
+    <string name="router_updates_current_version">Package version: %1$s</string>
     <string name="router_updates_available_version">Available version: %1$s</string>
     <string name="router_updates_auto">Automatic FoxHole updates</string>
     <string name="router_updates_auto_help">When enabled, the router checks for and installs verified FoxHole package updates every 24 hours. You can turn this off during installation or later in router settings. The policy remains on the router after unpairing.</string>
@@ -43,4 +43,5 @@
     <string name="router_updates_ram_unavailable">The verified RAM protocol cache is unavailable. The update was not started.</string>
     <string name="router_updates_invalid_response">Could not verify the router response. Check status before continuing.</string>
     <string name="router_updates_disconnect_before_update">Disconnect the router VPN before updating</string>
+    <string name="router_updates_core_current">Core modules are up to date; package check pending</string>
 </resources>

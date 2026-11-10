@@ -2,7 +2,7 @@
 
 <div align="center">
 
-FoxHole VPN is a simple VPN client for Android 8 and later. Import a profile from your VPN provider or your own server, connect on your phone, and manage a paired OpenWrt router from the app.
+FoxHole VPN is a simple VPN client for Android 7 and later. Import a profile from your VPN provider or your own server, connect on your phone, and manage a paired OpenWrt router from the app.
 
 </div>
 
@@ -47,23 +47,17 @@ Import transfers supported connection parameters. Clash/mihomo routing rules and
 
 <a id="whats-new"></a>
 
-> **🆕 What's new - 1.0.4 Stable**
+> **🆕 What's new - 1.0.5 Stable**
 >
-> - Added Arabic language and RTL support, adapted the widget, and fixed translations and router settings.
-> - Added Routing (beta) for simple per-app traffic routing with atomic rule updates.
-> - Fixed DNS routing in application scenarios.
-> - The widget now shows the current routing scenario with color indication.
-> - Optimized the interface: fixed country flag display, selection list colors, and window animations.
-> - Improved documentation and the help section in all supported languages.
-> - Added the application log.
-> - The application interface is now more compact.
-> - Added system notifications for new app versions (GitHub version only).
+> - Added Android 7 support.
+> - Added website routing.
+> - Improved the visual style of notifications.
 
 <a id="quickstart"></a>
 
 ## ⬇️ Get started and download
 
-Android 8 (API 26) or later is required. Choose the APK architecture listed in the published release.
+Android 7 (API 24) or later is required. Choose the APK architecture listed in the published release.
 
 1. Choose your APK architecture in [GitHub Releases](https://github.com/foxhole-team/foxhole-vpn/releases).
 2. Import a profile from your own server or provider using a file, clipboard or QR code.
@@ -79,7 +73,7 @@ Obtainium · ARM64. For other architectures, choose an APK in [GitHub Releases](
 
 ## 🤖 Supported platforms
 
-Android 8 (API 26) or later is required. Build profiles can include `arm64-v8a`, `armeabi-v7a`, `x86` and `x86_64`; each published release lists its available APKs.
+Android 7 (API 24) or later is required. Build profiles can include `arm64-v8a`, `armeabi-v7a`, `x86` and `x86_64`; each published release lists its available APKs.
 
 The current router package/update policy allows OpenWrt 25.12.5 targets `mediatek/filogic` and `x86/64`, subject to an authenticated catalog for the exact architecture, dependencies, kernel ABI and available flash/RAM. A target name does not establish compatibility with every router model.
 
@@ -97,7 +91,7 @@ Available APK architectures and router targets are listed in each published rele
 - Home-screen widgets provide connection status and start/stop controls for the selected profile.
 - Choose a theme and app language in Settings: English, Russian, German, French, Spanish, Japanese or Simplified Chinese.
 
-Scenarios use Android’s VPN application routing for every supported profile protocol on Android 8.0 (API 26) and later. Whole device ignores app rules. In Proxy, the Whole device switch controls the default for unlisted apps: on sends them through VPN, off sends only explicit VPN rules through VPN. A Direct rule uses the device’s normal connection and system DNS settings, including Private DNS. These app-owned rules are separate from imported profiles.
+Scenarios use Android’s VPN application routing for every supported profile protocol on Android 7 (API 24) and later. Whole device ignores app rules. In Proxy, the Whole device switch controls the default for unlisted apps: on sends them through VPN, off sends only explicit VPN rules through VPN. A Direct rule uses the device’s normal connection and system DNS settings, including Private DNS. These app-owned rules are separate from imported profiles.
 
 The application picker shows selected apps first and filters all, system, or user apps, with user apps selected by default. Press and hold an application rule to remove it after confirmation. Successful scenario changes and live rule updates show a brief confirmation with haptic feedback.
 

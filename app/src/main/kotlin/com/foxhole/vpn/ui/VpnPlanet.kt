@@ -2,6 +2,7 @@ package com.foxhole.vpn.ui
 
 import android.animation.ValueAnimator
 import android.os.Build
+import android.provider.Settings
 import androidx.compose.animation.core.CubicBezierEasing
 import androidx.compose.animation.core.animate
 import androidx.compose.animation.core.animateDecay
@@ -48,6 +49,7 @@ import androidx.compose.ui.input.pointer.util.addPointerInputChange
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.layout.onSizeChanged
@@ -95,6 +97,7 @@ internal fun VpnPlanet(
     val dragHaptics = remember { GlobeDragHaptics() }
     val hapticFeedback = LocalHapticFeedback.current
     val lifecycle = LocalLifecycleOwner.current.lifecycle
+    val resolver = LocalContext.current.contentResolver
     val confirmation = validatedGlobeExit(connected, exitLocation) && route.exit != null
     val currentConfirmation = rememberUpdatedState(confirmation)
     val currentConnectionId = rememberUpdatedState(connectionId)
@@ -115,7 +118,10 @@ internal fun VpnPlanet(
     }
 
     fun motionAllowed(): Boolean = globeMotionAllowed(
-        scope.coroutineContext[MotionDurationScale]?.scaleFactor ?: if (ValueAnimator.areAnimatorsEnabled()) 1f else 0f,
+        scope.coroutineContext[MotionDurationScale]?.scaleFactor ?: globeAnimatorDurationScale(
+            legacyScale = { Settings.Global.getFloat(resolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f) },
+            animatorsEnabled = { ValueAnimator.areAnimatorsEnabled() },
+        ),
         lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED),
     )
 

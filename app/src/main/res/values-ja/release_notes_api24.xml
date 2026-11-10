@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_release_notes_android7_105">Android 7への対応を追加しました。</string>
+    <string name="vpn_release_notes_web_105">ウェブサイトのルーティングを追加しました。</string>
+</resources>

@@ -248,8 +248,32 @@ def verify_vpn_native(root, context):
     return {"schema": 1, "kind": "verified-fdroid-native-source-build", "consumer": "vpn",
             "sourceCommit": context["binding"]["sourceCommit"], "sourceTree": context["binding"]["sourceTree"],
             "referenceProducerCommit": context["producer"], "features": features, "files": verified,
+            "compiledSourceManifestSha256": context["binding"]["compiledSourceManifestSha256"],
+            "androidDeliveryProfile": "android4", "abis": ABIS, "targets": TARGETS,
             "referenceNativeHashesUnchanged": True, "APKReproducibilityVerified": False}
 
+
+
+def verify_source_mode(root, native, manifest, core_root, context_loader=headers):
+    root, native, manifest, core_root = [Path(value).absolute() for value in (root, native, manifest, core_root)]
+    need(native == root / "native-libs", "Source mode requires the normal disposable native-libs output")
+    need(manifest == root / "app/build/reports/fdroid/native-source-build.json", "Source mode requires its exact F-Droid provenance report")
+    context = context_loader(root)
+    actual_source = context["helper"].resolve(root, core_root, context["producer"])
+    need(all(actual_source[key] == context["binding"][key] for key in ("sourceCommit", "sourceTree", "producerCommit", "compiledSourceManifestSha256")),
+         "Current source checkout differs from source-build provenance")
+    record = document(read(manifest))
+    need(type(record.get("schema")) is int and record["schema"] == 1 and
+         record.get("kind") == "verified-fdroid-native-source-build" and record.get("consumer") == "vpn" and
+         type(record.get("referenceNativeHashesUnchanged")) is bool and record["referenceNativeHashesUnchanged"] is True and
+         type(record.get("APKReproducibilityVerified")) is bool and record["APKReproducibilityVerified"] is False,
+         "Exact source-build provenance kind and scope required")
+    receipt = document(read(native / "foxcore-vpn-build.json"))
+    need(set(receipt) == {"core_revision", "features", "files"}, "A retained-role projection is not a fresh source-build receipt")
+    current = verify_vpn_native(root, context)
+    need(record == current and all(type(row.get("matchesReferenceNative")) is bool for row in record["files"]),
+         "Current source/native hashes or provenance changed")
+    return current
 
 
 DEPENDENCY_INIT = r"""
@@ -387,6 +411,7 @@ def build(root, core_root, go_root, context, env):
         env.update(FOXCORE_ANDROID_ABIS=" ".join(ABIS), FOXCORE_VPN_JNI_ROOT=str(root / "native-libs"))
         need(not (root / "native-libs").exists(), "Fresh normal VPN native output required")
         run(["bash", "scripts/build-native.sh"], env)
+        context["helper"].resolve(root, core_root, context["producer"])
         native_source = verify_vpn_native(root, context)
         report = root / "app/build/reports/fdroid/native-source-build.json"
         report.parent.mkdir(parents=True, exist_ok=True)
@@ -403,7 +428,9 @@ def build(root, core_root, go_root, context, env):
               "-Pkotlin.compiler.execution.strategy=in-process", "-Pfoxhole.splitApks=false", "-Pfoxhole.coreDocker=false",
               "-Pfoxhole.updateChannel=fdroid", "-Pfoxhole.nativeOffline=true", "-Pfoxhole.abis=" + " ".join(ABIS), ":app:assembleRelease"]
     if CONSUMER == "vpn":
-        gradle.extend(["-Pfoxhole.nativeDocker=false", ":app:verifyNativePayload"])
+        gradle.extend(["-Pfoxhole.nativeDocker=false",
+                       "-Pfoxhole.sourceNativeManifest=" + str(root / "app/build/reports/fdroid/native-source-build.json"),
+                       ":app:verifyNativePayload"])
     else:
         # Rust fat LTO needs its memory budget before Gradle starts its JVM.
         core_env = dict(env, FOXCORE_ANDROID_ABIS=" ".join(ABIS),

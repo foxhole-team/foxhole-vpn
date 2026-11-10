@@ -33,20 +33,22 @@ import com.foxhole.vpn.R
 @Composable
 internal fun VpnSheetContent(title: Int, icon: Int, modifier: Modifier = Modifier, busy: Boolean = false,
     actions: @Composable RowScope.() -> Unit = {}, titleHelp: Int? = null, titleBadge: Int? = null,
+    compactHeader: Boolean = false,
     scrollableBody: Boolean = false, footer: (@Composable ColumnScope.() -> Unit)? = null, content: @Composable ColumnScope.() -> Unit) {
     Column(modifier.fillMaxWidth().padding(horizontal = 20.dp).padding(bottom = 12.dp)) {
         Row(
             Modifier.fillMaxWidth().padding(bottom = 12.dp),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            horizontalArrangement = Arrangement.spacedBy(if (compactHeader) 8.dp else 12.dp),
         ) {
             Icon(painterResource(icon), contentDescription = null, modifier = Modifier.size(24.dp),
                 tint = if (icon == R.drawable.lin_trash) vpnDeleteColor() else LocalContentColor.current)
             Row(Modifier.weight(1f), verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                val titleStyle = if (titleBadge != null) MaterialTheme.typography.titleMedium else MaterialTheme.typography.titleLarge
+                val titleStyle = if (titleBadge != null || compactHeader) MaterialTheme.typography.titleMedium else MaterialTheme.typography.titleLarge
                 Text(stringResource(title), Modifier.weight(1f, fill = titleBadge == null), style = titleStyle,
-                    maxLines = if (titleBadge != null) 1 else Int.MAX_VALUE)
+                    maxLines = if (titleBadge != null || compactHeader) 1 else Int.MAX_VALUE,
+                    overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
                 titleBadge?.let { badge ->
                     Surface(modifier = Modifier.offset(y = (-6).dp), shape = MaterialTheme.shapes.extraSmall, color = MaterialTheme.colorScheme.surfaceContainerHigh) {
                         Text(stringResource(badge), Modifier.padding(horizontal = 6.dp, vertical = 2.dp),
@@ -54,7 +56,7 @@ internal fun VpnSheetContent(title: Int, icon: Int, modifier: Modifier = Modifie
                     }
                 }
             }
-            if (busy || titleBadge == null) Box(Modifier.size(24.dp), contentAlignment = Alignment.Center) {
+            if (!compactHeader && (busy || titleBadge == null)) Box(Modifier.size(24.dp), contentAlignment = Alignment.Center) {
                 if (busy) {
                     val working = stringResource(R.string.vpn_working)
                     CircularProgressIndicator(Modifier.size(20.dp).semantics { contentDescription = working }, strokeWidth = 2.dp)

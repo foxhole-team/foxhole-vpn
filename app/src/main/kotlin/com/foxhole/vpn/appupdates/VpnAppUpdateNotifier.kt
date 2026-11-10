@@ -32,8 +32,10 @@ internal class VpnAppUpdateNotifier(context: Context) {
             !NotificationManagerCompat.from(context).areNotificationsEnabled()) return false
         if (Build.VERSION.SDK_INT >= 33 && ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) return false
         val manager = context.getSystemService(NotificationManager::class.java)
-        manager.createNotificationChannel(NotificationChannel(CHANNEL, localized.getString(R.string.vpn_app_update_channel), NotificationManager.IMPORTANCE_DEFAULT))
-        if (manager.getNotificationChannel(CHANNEL)?.importance == NotificationManager.IMPORTANCE_NONE) return false
+        if (Build.VERSION.SDK_INT >= 26) {
+            manager.createNotificationChannel(NotificationChannel(CHANNEL, localized.getString(R.string.vpn_app_update_channel), NotificationManager.IMPORTANCE_DEFAULT))
+            if (manager.getNotificationChannel(CHANNEL)?.importance == NotificationManager.IMPORTANCE_NONE) return false
+        }
         val open = PendingIntent.getActivity(context, 490, Intent(context, MainActivity::class.java)
             .setAction(ACTION_OPEN_APP_UPDATE).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP),
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)

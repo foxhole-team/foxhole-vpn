@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_routing_view_applications">Applications</string>
+    <string name="vpn_routing_view_websites">Adresses web</string>
+    <string name="vpn_web_rules">Règles des sites web</string>
+    <string name="vpn_web_rules_empty">Ajoutez des adresses ou des masques pour créer des règles de routage.</string>
+    <string name="vpn_add_website">Ajouter une adresse web</string>
+    <string name="vpn_web_address_mask">Adresse ou masque</string>
+    <string name="vpn_web_formats">HTTP/HTTPS · Domaines · Masques de domaine · IPv4/IPv6 · CIDR · Plages IP</string>
+    <string name="vpn_web_invalid">Saisissez un domaine, une URL HTTP/HTTPS, un masque de domaine, un réseau CIDR ou une plage IP valide.</string>
+    <string name="vpn_web_route">Route</string>
+    <string name="vpn_web_add">AJOUTER</string>
+    <string name="vpn_web_delete_title">Supprimer la règle web ?</string>
+    <string name="vpn_web_delete_body">Supprimer %1$s de la liste ?</string>
+    <string name="vpn_web_rules_help">Les règles web concernent le trafic capturé par le scénario VPN, y compris Tout l’appareil. Choisissez VPN, Direct ou Bloquer par adresse. Un domaine correspond exactement ; *.example.com inclut ses sous-domaines et .com désigne un suffixe. Les URL HTTP/HTTPS sont enregistrées comme domaines sans chemin. Les réseaux CIDR et les plages IPv4/IPv6 ordonnées sont pris en charge. Le blocage agit uniquement avec le VPN actif. Maintenez une règle pour la supprimer. Les modifications actives sont atomiques, avec blocage temporaire du trafic et reconnexion.</string>
+    <string name="vpn_app_route_block">Bloquer</string>
+    <string name="vpn_web_normalized_rule">Règle : %1$s</string>
+    <string name="vpn_web_host_scope">Les URL concernent tout le nom d’hôte. *.example.com inclut example.com et ses sous-domaines ; *.ru couvre toute la zone.</string>
+</resources>

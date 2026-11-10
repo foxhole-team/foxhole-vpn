@@ -2,7 +2,7 @@
 <resources>
     <string name="router_updates_title">Обновления пакета FoxHole</string>
     <string name="router_updates_scope">Обновляет FoxHole и установленные пакеты VPN-протоколов. Профили и сопряжение сохраняются. Прошивка OpenWrt и посторонние системные пакеты не изменяются.</string>
-    <string name="router_updates_current_version">Текущая версия: %1$s</string>
+    <string name="router_updates_current_version">Версия пакета: %1$s</string>
     <string name="router_updates_available_version">Доступная версия: %1$s</string>
     <string name="router_updates_auto">Автоматические обновления FoxHole</string>
     <string name="router_updates_auto_help">Если включено, роутер раз в 24 часа проверяет и устанавливает проверенные обновления пакетов FoxHole. Отключить можно при установке или позже в настройках роутера. После снятия сопряжения политика остаётся на роутере.</string>
@@ -43,4 +43,5 @@
     <string name="router_updates_ram_unavailable">Проверенный кэш протоколов в ОЗУ недоступен. Обновление не начато.</string>
     <string name="router_updates_invalid_response">Не удалось проверить ответ роутера. Прежде чем продолжить, проверьте статус.</string>
     <string name="router_updates_disconnect_before_update">Отключите VPN на роутере перед обновлением</string>
+    <string name="router_updates_core_current">Модули Core актуальны; пакет ещё не проверен</string>
 </resources>

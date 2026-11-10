@@ -36,7 +36,7 @@
     <string name="vpn_font_style">نمط الخط</string>
     <string name="vpn_font_pixel">Tiny5 Regular</string>
     <string name="vpn_font_standard">JetBrains Mono Bold</string>
-    <string name="vpn_theme_system">تطبيقات النظام</string>
+    <string name="vpn_theme_system">النظام</string>
     <string name="vpn_theme_light">فاتحة</string>
     <string name="vpn_language">اللغة</string>
     <string name="vpn_language_system">لغة النظام</string>

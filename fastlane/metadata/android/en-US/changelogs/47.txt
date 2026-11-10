@@ -1,0 +1,3 @@
+- Added Android 7 support.
+- Added website routing.
+- Improved the visual style of notifications.

@@ -1,59 +1,51 @@
 {
-  "abis": [
-    "arm64-v8a",
-    "armeabi-v7a",
-    "x86",
-    "x86_64"
-  ],
-  "actualValidatedOriginalNoticeCoverageComplete": true,
-  "androidDeliveryProfile": "android4",
-  "canonicalCoreCoverageSha256": "5c5eb9773e09d6c9043fcc7baac680e8ce67f49d65dd333456ff82b9e948cef8",
-  "canonicalUnionNoticeManifestSha256": "b46cfac9fbae6400170a68df0dfa48b5c278a2b0377cdf5ea53c1e0b2dcca83e",
+  "claims": {
+    "APKQualified": false,
+    "completeConsumerLegalQualification": false,
+    "exactCompiledUnitGraphClaim": false,
+    "perUnitFeatureTopology": "UNKNOWN_NOT_CLAIMED",
+    "runtimeQualified": false
+  },
   "consumer": "vpn",
-  "coreCommit": "fc2134dc15b32087516672935e64ae7b8b0d5472",
-  "features": "vless,vmess,hysteria2,tuic,trojan,shadowsocks,socks,http,naive,anytls,shadowtls,wireguard",
-  "kind": "canonical-vpn-profile-selected-native-coverage",
-  "nativeLibraries": {
+  "kind": "current-vpn-package-union-coverage",
+  "normalRoleReceiptSHA256": "5b301edda8cdec05fae8fa373c02bd618eb9a333479316919337a9d0e143db61",
+  "profile": "android4",
+  "schema": 1,
+  "source": {
+    "checkoutCommit": "90ae3e0d60de3d35e88e24558c99e771d9ca0bcf",
+    "checkoutTree": "ab7dbd0fb7dec20685dc4c279497b2abc78df8d2",
+    "compiledManifestSHA256": "1cc9afa207f2d89b46e4dd0ea4e12bd3a2409bd39a4b1875829daf32c05fba4a",
+    "producerCommit": "3fc3b70d8e9d700b3e07ec27638515c00651b013",
+    "producerTree": "1fd25d80359fd8b12765baec7c6d3093e92f89db"
+  },
+  "targets": {
     "aarch64-linux-android": {
-      "abi": "arm64-v8a",
-      "bytes": 12279272,
-      "sha256": "d7fa5e1ec029254a71d8d2d292e2117b1c819045218aceb9d8b9e3e245ca1edd"
+      "noticeFiles": 479,
+      "noticeManifestSHA256": "7c3bd62bb7c1cae5ace77ba994849265272f0c145109d3d703498b0e01e2d6fe",
+      "packageUnionSHA256": "e46e95e1a84b0349a05c56d3cdf83b7081adb666d9c812126178fb0eab1c0bb7",
+      "packages": 262,
+      "selectedSBOMSHA256": "2aeb63b3e4ab46d6bab0a58a9c595f92139a0a250cf83ee5e86bc0c4adb8f2f9"
     },
     "armv7-linux-androideabi": {
-      "abi": "armeabi-v7a",
-      "bytes": 8583512,
-      "sha256": "5a9ddfcc0d213929fd0c7aaa4858cfbcf46fcdc73a525ec5dda1b1a8cdb4a145"
+      "noticeFiles": 475,
+      "noticeManifestSHA256": "4c8c9a1ca587f59d2f0c69d63020f648b4ece3339f8bacf767bcc03d2aa219e5",
+      "packageUnionSHA256": "f40534617dd5e12b4ef033cc4573bc62cc207055e30bdea9fb904a070079c718",
+      "packages": 260,
+      "selectedSBOMSHA256": "10e9190ef43a33ba667db6cfa1f8793eacc4bd3b442c26d022a61d2bc9e04dce"
     },
     "i686-linux-android": {
-      "abi": "x86",
-      "bytes": 13107376,
-      "sha256": "d9bafd26d898c518194cbd0277954e424360a60ceecb640d6dc054e36c7944b3"
+      "noticeFiles": 479,
+      "noticeManifestSHA256": "d538ae484049172f3a12ca0dcaa0bbd6bfe4ef52013028c9516ceba9fadd4015",
+      "packageUnionSHA256": "0b62a4e3f029b60c6845d1f7fd98312bcc3bc3bd0194764945a520f28edc3ec1",
+      "packages": 262,
+      "selectedSBOMSHA256": "396de10148086695504f9d920bcd39a99c9567da50331406a738df3920e9c27b"
     },
     "x86_64-linux-android": {
-      "abi": "x86_64",
-      "bytes": 14585656,
-      "sha256": "7f61980970b14294341820d175f8d588b0a68f29e8c52755fdb0e9db53c070ac"
+      "noticeFiles": 479,
+      "noticeManifestSHA256": "52b14f7e0dba5d9b76738b27d5c0f565fadb97b2a4036241a14e4d5a62afcbaa",
+      "packageUnionSHA256": "184036701d5f497a255de54f77fa850ec219b101e5a6b0607e26fb50d3d609b6",
+      "packages": 262,
+      "selectedSBOMSHA256": "be410785264cd8515946c1ce3c30f56a6973529f4775d038c62b9530381ac074"
     }
-  },
-  "producerReceiptsByTarget": {
-    "aarch64-linux-android": "b849cd16771d2cbb9d2b3e19d3dd9741e0c2a63439dc57e64237a33fa1d4f1ec",
-    "armv7-linux-androideabi": "6cb3f8344dd5539b51c593947f4b9ddc348870800c250d278fe866644630e4bf",
-    "i686-linux-android": "6cb3f8344dd5539b51c593947f4b9ddc348870800c250d278fe866644630e4bf",
-    "x86_64-linux-android": "6cb3f8344dd5539b51c593947f4b9ddc348870800c250d278fe866644630e4bf"
-  },
-  "rawOperationalReceiptsPackaged": false,
-  "schema": 1,
-  "selectedSboms": {
-    "aarch64-linux-android": "750985696c9d4e01697c3edbdb3c0030634e4967e453d874cbc5e7cb7913f0e8",
-    "armv7-linux-androideabi": "471f02ed5411e896a812301e057555111bc27cd401dab66f0f2910d221747b85",
-    "i686-linux-android": "f1b4471d172be6b3cd4d090cc488d2979a015e75e5cf58cce7213ba55a8fef0a",
-    "x86_64-linux-android": "c350eb30eca1117135316c79e27e7b6cdee92ac8f4fa9d4e4b9e9473e2d541c1"
-  },
-  "sourceProducerProfile": "android4",
-  "targets": [
-    "aarch64-linux-android",
-    "armv7-linux-androideabi",
-    "i686-linux-android",
-    "x86_64-linux-android"
-  ]
+  }
 }

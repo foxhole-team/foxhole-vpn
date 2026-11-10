@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import java.util.concurrent.atomic.AtomicBoolean
 
 enum class EnginePhase { IDLE, CONNECTING, VALIDATING, CONNECTED, STOPPING, ERROR }
-enum class EngineFailure { START, VALIDATION, NATIVE_UNAVAILABLE, PROFILE, STOP, GEO, APPLICATION_POLICY }
+enum class EngineFailure { START, VALIDATION, NATIVE_UNAVAILABLE, PROFILE, STOP, GEO, APPLICATION_POLICY, WIREGUARD_DOMAIN_PLATFORM }
 class EngineException(val reason: EngineFailure, val processPoisoned: Boolean = false) : IllegalStateException(reason.name)
 data class EngineLocation(
     val countryCode: String,
@@ -51,6 +51,10 @@ interface EngineSession {
     suspend fun stop(): EngineStopResult
     suspend fun applyApplicationPolicy(scope: VpnApplicationScope, isCurrent: () -> Boolean, persist: suspend () -> Unit): EngineLocation? {
         throw EngineException(EngineFailure.PROFILE)
+    }
+    suspend fun applyRoutingPolicy(policy: VpnRoutingPolicy, isCurrent: () -> Boolean, persist: suspend () -> Unit): EngineLocation? {
+        if (policy.webRules.isNotEmpty() || policy.blockedApplications.isNotEmpty()) throw EngineException(EngineFailure.PROFILE)
+        return applyApplicationPolicy(policy.applicationScope, isCurrent, persist)
     }
 }
 
@@ -105,6 +109,10 @@ class VpnRuntimeOwner(
     fun networkChanged() { events.trySend(Event.NetworkChanged) }
 
     suspend fun applyApplicationPolicy(ticket: Long, target: VpnApplicationScope, isCurrent: () -> Boolean, persist: suspend () -> Unit) {
+        applyRoutingPolicy(ticket, VpnRoutingPolicy(target), isCurrent, persist)
+    }
+
+    suspend fun applyRoutingPolicy(ticket: Long, target: VpnRoutingPolicy, isCurrent: () -> Boolean, persist: suspend () -> Unit) {
         val reply = CompletableDeferred<Unit>()
         events.send(Event.ApplyPolicy(ticket, target, isCurrent, persist, reply))
         reply.await()
@@ -124,7 +132,7 @@ class VpnRuntimeOwner(
         publish(EngineSnapshot(EnginePhase.VALIDATING, captured.request.profile.id))
         scope.launch {
             val result = captureEngineResult {
-                captured.session.applyApplicationPolicy(event.target,
+                captured.session.applyRoutingPolicy(event.target,
                     { change.current.get() && event.isCurrent() }, event.persist)
             }
             events.send(Event.PolicyApplied(change, result, event.reply))
@@ -410,7 +418,7 @@ class VpnRuntimeOwner(
         data class Geo(val active: Active, val version: Long, val result: Result<EngineLocation>) : Event
         data class PendingExpired(val request: Request) : Event
         data class Health(val active: Active, val version: Long, val result: Result<Boolean>) : Event
-        data class ApplyPolicy(val ticket: Long, val target: VpnApplicationScope, val isCurrent: () -> Boolean,
+        data class ApplyPolicy(val ticket: Long, val target: VpnRoutingPolicy, val isCurrent: () -> Boolean,
             val persist: suspend () -> Unit, val reply: CompletableDeferred<Unit>) : Event
         data class PolicyApplied(val change: PolicyChange, val result: Result<EngineLocation?>, val reply: CompletableDeferred<Unit>) : Event
         data object Refresh : Event

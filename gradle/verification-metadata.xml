@@ -11905,5 +11905,21 @@
             <sha256 value="f9de68cf49f356252fe4af9185f1dd3a2a5cf6ca236da03452a83513e223dbfc" origin="Kotlin publisher signature verified: primary 2FBA29D08D2E25EE84C132C30729A0AFF8999A87"/>
          </artifact>
       </component>
+      <component group="com.android.tools" name="desugar_jdk_libs_configuration_nio" version="2.1.5">
+         <artifact name="desugar_jdk_libs_configuration_nio-2.1.5.jar">
+            <sha256 value="7db51661cd07d1fd5cf12769a75ba201910624bb3801c09363dd3cb28e31c51b" origin="Verified from official Google Maven for Android 7 compatibility"/>
+         </artifact>
+         <artifact name="desugar_jdk_libs_configuration_nio-2.1.5.pom">
+            <sha256 value="6e5e9ec6db8093d26c469c18b9231b033e670333a770852debda90c222fa4835" origin="Verified from official Google Maven for Android 7 compatibility"/>
+         </artifact>
+      </component>
+      <component group="com.android.tools" name="desugar_jdk_libs_nio" version="2.1.5">
+         <artifact name="desugar_jdk_libs_nio-2.1.5.jar">
+            <sha256 value="d8044befae095781b9a80bf1faa92edc30382d75d437476784c1bf991598a976" origin="Verified from official Google Maven for Android 7 compatibility"/>
+         </artifact>
+         <artifact name="desugar_jdk_libs_nio-2.1.5.pom">
+            <sha256 value="1ba5db067a494d09f5c4a94f4cb4d58fc6fd33e0a55417e0e46d3b288328f3bc" origin="Verified from official Google Maven for Android 7 compatibility"/>
+         </artifact>
+      </component>
    </components>
 </verification-metadata>

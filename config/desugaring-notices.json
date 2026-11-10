@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "version": "2.1.5",
+  "artifacts": {
+    "com.android.tools:desugar_jdk_libs_nio:2.1.5": "d8044befae095781b9a80bf1faa92edc30382d75d437476784c1bf991598a976",
+    "com.android.tools:desugar_jdk_libs_configuration_nio:2.1.5": "7db51661cd07d1fd5cf12769a75ba201910624bb3801c09363dd3cb28e31c51b"
+  },
+  "configurationMemberSha256": "742e831792335e35e76cc2e752eab4bfd0d0cb5b09bb59b9ba215996e1cb354e",
+  "files": {
+    "LICENSE": {
+      "bytes": 19274,
+      "sha256": "4b9abebc4338048a7c2dc184e9f800deb349366bdf28eb23c2677a77b4c87726"
+    },
+    "ASSEMBLY_EXCEPTION": {
+      "bytes": 1522,
+      "sha256": "a44eb7b5caf5534c6ef536b21edb40b4d6babf91bf97d9d45596868618b2c6fb"
+    },
+    "ADDITIONAL_LICENSE_INFO": {
+      "bytes": 2114,
+      "sha256": "a69bce275ba7a3570af6579cb0f55682cd75fedfcd49e0e8e9022270c447c916"
+    },
+    "configuration-LICENSE": {
+      "bytes": 1491,
+      "sha256": "68834f116f8ff545f05d14753357b620748156d60ee36b26beab4cb3f317efe4"
+    },
+    "ORIGIN.json": {
+      "bytes": 837,
+      "sha256": "c0754c4f8fa7b098c1b536f32193b1de132685fafe02a652e612cdce0325ce15"
+    }
+  }
+}

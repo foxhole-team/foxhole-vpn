@@ -15,6 +15,14 @@ four-ABI inventory, artifact hashes and ELF identities. The normal Core build
 also runs its page, JNI export and host-path gates. Reference checksum differences
 remain visible in `app/build/reports/fdroid/native-source-build.json`.
 
+The offline VPN source builder explicitly selects `foxhole.sourceNativeManifest`
+for the F-Droid channel. The normal fixed `native-source-build.json` report binds
+the clean pinned checkout, compiled-input manifest, protocol features and every
+source-built ABI hash. Assembly revalidates that report against the normal source
+producer receipt and ELF identities. Reference hashes remain separate from these
+host-specific outputs. A missing retained normal-role receipt never selects this
+mode automatically; ordinary retained JNI verification remains fail-closed.
+
 Dependency-prefetch tasks resolve each project's configurations inside that
 project's own task so parallel Gradle execution holds the correct project locks.
 Source/APK scanning remains enabled, and the normal source tarball is retained.

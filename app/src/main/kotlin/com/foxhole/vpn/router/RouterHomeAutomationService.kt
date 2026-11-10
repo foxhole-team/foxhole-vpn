@@ -101,7 +101,7 @@ class RouterHomeAutomationService : Service() {
         return try {
             val manager = getSystemService(NotificationManager::class.java) ?: return false
             val localized = withVpnLocale(controller.settings.value.language)
-            manager.createNotificationChannel(NotificationChannel(ROUTER_HOME_NOTIFICATION_CHANNEL,
+            if (Build.VERSION.SDK_INT >= 26) manager.createNotificationChannel(NotificationChannel(ROUTER_HOME_NOTIFICATION_CHANNEL,
                 localized.getString(R.string.vpn_router_home_notification_channel), NotificationManager.IMPORTANCE_LOW))
             routerHomeNotificationsAvailable(this)
         } catch (_: RuntimeException) { false }
@@ -199,6 +199,6 @@ internal fun routerHomeNotificationsAvailable(context: Context): Boolean {
         routerHomeNotificationAllowed(Build.VERSION.SDK_INT,
             ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED,
             NotificationManagerCompat.from(context).areNotificationsEnabled(),
-            manager.getNotificationChannel(ROUTER_HOME_NOTIFICATION_CHANNEL)?.importance)
+            if (Build.VERSION.SDK_INT >= 26) manager.getNotificationChannel(ROUTER_HOME_NOTIFICATION_CHANNEL)?.importance else null)
     } catch (_: RuntimeException) { false }
 }

@@ -2,4 +2,5 @@
 <resources>
     
     <string name="vpn_routing_apply_failed">Impossible d’appliquer les règles de routage. Arrêtez le VPN avant de réessayer.</string>
+    <string name="vpn_wireguard_domains_android11">Les règles de domaines web avec WireGuard nécessitent Android 11 ou une version ultérieure.</string>
 </resources>

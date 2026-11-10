@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -31,6 +32,14 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
+import androidx.compose.animation.core.MutableTransitionState
+import androidx.compose.animation.core.tween
+import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -77,10 +86,13 @@ internal fun VpnChoiceDropdown(
     tag: String? = null,
     fullWidth: Boolean = false,
     preferAbove: Boolean = false,
+    alignRight: Boolean = false,
     leadingFlagCountry: String? = null,
     content: @Composable ColumnScope.(dismiss: () -> Unit) -> Unit,
 ) {
     var expanded by remember { mutableStateOf(false) }
+    val menuVisibility = remember { MutableTransitionState(false) }
+    menuVisibility.targetState = expanded && enabled
     var anchorWidthPx by remember { mutableStateOf(0) }
     val density = LocalDensity.current
     val windowWidth = with(density) { LocalWindowInfo.current.containerSize.width.toDp() }
@@ -108,19 +120,29 @@ internal fun VpnChoiceDropdown(
                 Icon(painterResource(R.drawable.lin_chevron_down), null, Modifier.size(16.dp))
             }
         }
-        if (preferAbove) {
-            if (expanded && enabled) Popup(
-                popupPositionProvider = remember(density) { AboveChoicePosition(with(density) { 16.dp.roundToPx() }) },
+        if (preferAbove || alignRight) {
+            if (menuVisibility.currentState || menuVisibility.targetState) Popup(
+                popupPositionProvider = remember(density, preferAbove) {
+                    val margin = with(density) { 16.dp.roundToPx() }
+                    if (preferAbove) AboveChoicePosition(margin) else RightChoicePosition(margin)
+                },
                 onDismissRequest = { expanded = false },
                 properties = PopupProperties(focusable = true),
             ) {
+                val origin = TransformOrigin(if (alignRight) 1f else .5f, if (preferAbove) 1f else 0f)
+                AnimatedVisibility(visibleState = menuVisibility,
+                    enter = fadeIn(tween(120)) + scaleIn(tween(120), initialScale = .96f, transformOrigin = origin),
+                    exit = fadeOut(tween(90)) + scaleOut(tween(90), targetScale = .96f, transformOrigin = origin)) {
                 Surface(shape = shape, color = colors.panel, contentColor = colors.foreground,
                     border = BorderStroke(1.dp, colors.border),
-                    modifier = Modifier.width(anchorWidth).heightIn(max = menuMaxHeight)
+                    modifier = Modifier.then(if (preferAbove) Modifier.width(anchorWidth)
+                        else Modifier.widthIn(min = anchorWidth, max = menuMaxWidth)).heightIn(max = menuMaxHeight)
                         .then(if (tag != null) Modifier.testTag("$tag-menu") else Modifier)) {
-                    Column(Modifier.verticalScroll(rememberScrollState()).padding(vertical = 4.dp)) {
+                    Column(Modifier.then(if (preferAbove) Modifier else Modifier.width(IntrinsicSize.Max))
+                        .verticalScroll(rememberScrollState()).padding(vertical = 4.dp)) {
                         content.invoke(this, { expanded = false })
                     }
+                }
                 }
             }
         } else DropdownMenu(
@@ -131,6 +153,18 @@ internal fun VpnChoiceDropdown(
                 .heightIn(max = menuMaxHeight)
                 .then(if (tag != null) Modifier.testTag("$tag-menu") else Modifier),
         ) { content.invoke(this, { expanded = false }) }
+    }
+}
+
+private class RightChoicePosition(private val margin: Int) : PopupPositionProvider {
+    override fun calculatePosition(anchorBounds: IntRect, windowSize: IntSize,
+        layoutDirection: LayoutDirection, popupContentSize: IntSize): IntOffset {
+        val maxX = (windowSize.width - margin - popupContentSize.width).coerceAtLeast(margin)
+        val maxY = (windowSize.height - margin - popupContentSize.height).coerceAtLeast(margin)
+        val top = if (anchorBounds.bottom + popupContentSize.height <= windowSize.height - margin)
+            anchorBounds.bottom else anchorBounds.top - popupContentSize.height
+        return IntOffset((anchorBounds.right - popupContentSize.width).coerceIn(margin, maxX),
+            top.coerceIn(margin, maxY))
     }
 }
 

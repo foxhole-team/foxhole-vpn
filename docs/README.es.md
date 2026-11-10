@@ -2,7 +2,7 @@
 
 <div align="center">
 
-FoxHole VPN es un cliente VPN sencillo para Android 8 y posteriores. Importe un perfil de su proveedor VPN o servidor propio, conecte el teléfono y gestione un router OpenWrt vinculado desde la aplicación.
+FoxHole VPN es un cliente VPN sencillo para Android 7 y posteriores. Importe un perfil de su proveedor VPN o servidor propio, conecte el teléfono y gestione un router OpenWrt vinculado desde la aplicación.
 
 </div>
 
@@ -43,23 +43,17 @@ La importación transfiere parámetros de conexión compatibles. No transfiere r
 
 <a id="whats-new"></a>
 
-> **🆕 Novedades - 1.0.4 Stable**
+> **🆕 Novedades - 1.0.5 Stable**
 >
-> - Se añadió compatibilidad con árabe y RTL, se adaptó el widget y se corrigieron las traducciones y los ajustes del router.
-> - Se ha añadido la sección «Enrutamiento» (beta) para enrutar fácilmente el tráfico por aplicación con aplicación atómica de los cambios.
-> - Se ha corregido el enrutamiento DNS en los escenarios de la aplicación.
-> - El widget muestra ahora el escenario de enrutamiento actual con indicación de color.
-> - Se ha optimizado la interfaz: se han corregido las banderas de los países, los colores de las listas de selección y las animaciones de las ventanas.
-> - Se han mejorado la documentación y la sección de ayuda en todos los idiomas compatibles.
-> - Se ha añadido el registro de la aplicación.
-> - La interfaz de la aplicación es ahora más compacta.
-> - Se han añadido notificaciones del sistema sobre nuevas versiones de la aplicación (solo en la versión de GitHub).
+> - Se añadió compatibilidad con Android 7.
+> - Se añadió el enrutamiento de sitios web.
+> - Mejorado el estilo visual de las notificaciones.
 
 <a id="quickstart"></a>
 
 ## ⬇️ Inicio y descarga
 
-Se necesita Android 8 (API 26) o posterior. Las arquitecturas APK disponibles se indican en cada versión publicada.
+Se necesita Android 7 (API 24) o posterior. Las arquitecturas APK disponibles se indican en cada versión publicada.
 
 1. Elija su arquitectura APK en [GitHub Releases](https://github.com/foxhole-team/foxhole-vpn/releases).
 2. Importe un perfil de su servidor o proveedor mediante archivo, portapapeles o QR.
@@ -75,7 +69,7 @@ Obtainium · ARM64. Para otras arquitecturas, elija el APK en [GitHub Releases](
 
 ## 🤖 Plataformas compatibles
 
-Se requiere Android 8 (API 26) o posterior. Los perfiles de compilación pueden incluir `arm64-v8a`, `armeabi-v7a`, `x86` y `x86_64`; cada versión publicada enumera sus APK disponibles.
+Se requiere Android 7 (API 24) o posterior. Los perfiles de compilación pueden incluir `arm64-v8a`, `armeabi-v7a`, `x86` y `x86_64`; cada versión publicada enumera sus APK disponibles.
 
 La política actual de paquetes y actualizaciones del router admite OpenWrt 25.12.5 en `mediatek/filogic` y `x86/64`, con un catálogo autenticado para la arquitectura exacta, dependencias y ABI del kernel compatibles, y suficiente flash/RAM. Un nombre de destino no valida todos los modelos de router.
 

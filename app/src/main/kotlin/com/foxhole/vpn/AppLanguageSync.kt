@@ -138,12 +138,14 @@ internal suspend fun selectVpnAppLanguage(context: Context, controller: VpnContr
         languagePort(context, controller).coordinator.select(language)
     }
 
-internal suspend fun updateVpnAppSettings(controller: VpnController, updated: VpnSettings) =
+internal suspend fun updateVpnAppSettings(controller: VpnController, updated: VpnSettings, previousAppearance: VpnSettings? = null) =
     appLanguageLock.withLock {
         controller.awaitReady()
         if (controller.appLanguageSettingsReady) {
             val known = languagePorts[controller]?.readStored()
             if (languagePorts.containsKey(controller) && known == null) return@withLock
-            controller.updateSettings(updated.copy(language = known ?: controller.settings.value.language))
+            val target = if (previousAppearance == null) updated else
+                mergeVpnAppearanceSettings(controller.settings.value, previousAppearance, updated)
+            controller.updateSettings(target.copy(language = known ?: controller.settings.value.language))
         }
     }

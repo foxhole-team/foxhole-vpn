@@ -1,5 +1,6 @@
 package com.foxhole.vpn
 
+import android.os.Build
 import android.content.Context
 import android.content.Intent
 import android.net.VpnService
@@ -18,6 +19,7 @@ import java.net.Socket
 import com.foxhole.core.runtime.FoxCoreConfigTranslationException
 import com.foxhole.vpn.engine.AndroidEngineDriver
 import com.foxhole.vpn.engine.EngineDriver
+import com.foxhole.vpn.engine.validateVpnRoutingPlatform
 import com.foxhole.vpn.engine.EngineFailure
 import com.foxhole.vpn.engine.EnginePhase
 import com.foxhole.vpn.engine.EngineSnapshot
@@ -953,8 +955,15 @@ internal class DefaultVpnController(
             val candidate = before.copy(settings = before.settings.copy(appRouting = routing))
             if (candidate == before) return@withLock
             val owner = captureProfileMutationOwner()
-            val target = routing.applicationScope(context.packageName)
-            val effectiveChange = before.settings.appRouting.applicationScope(context.packageName) != target
+            val target = routing.enginePolicy(context.packageName)
+            if (Build.VERSION.SDK_INT < 30 && target.webRules.any { !it.mask.startsWith("cidr:") && !it.mask.startsWith("range:") }) {
+                before.profiles.singleOrNull { it.id == before.selectedProfileId }?.let { profile ->
+                    withContext(Dispatchers.Default) {
+                        validateVpnRoutingPlatform(Build.VERSION.SDK_INT, VpnEngineConfig.prepare(profile).protocols, target)
+                    }
+                }
+            }
+            val effectiveChange = before.settings.appRouting.enginePolicy(context.packageName) != target
             val liveChange = effectiveChange && owner.hasOwnedTunnel
             if (liveChange && (owner.phase != VpnPhase.CONNECTED || owner.hasPendingStart)) throw ProfileMutationSupersededException()
             fun current(): Boolean = if (liveChange) synchronized(commands) {
@@ -972,7 +981,7 @@ internal class DefaultVpnController(
             }
             // Closing a sheet cannot abandon a native hold halfway through a secure-store write. Stop has its own generation fence.
             withContext(NonCancellable) {
-                if (liveChange) runtime.applyApplicationPolicy(owner.generation, target, ::current, ::commit)
+                if (liveChange) runtime.applyRoutingPolicy(owner.generation, target, ::current, ::commit)
                 else commit()
             }
         }
@@ -1098,6 +1107,7 @@ internal class DefaultVpnController(
                     service.recordAcceptedCommand(ticket)
                     val driver = drivers.getOrPut(service) { AndroidEngineDriver(service,
                         applicationScope = { settings.value.appRouting.applicationScope(context.packageName) },
+                        routingPolicy = { settings.value.appRouting.enginePolicy(context.packageName) },
                     ) { profile -> routerPreparedConfiguration(profile, service.latestCommandTicket) } }
                     awaitingRuntimeTicket = ticket
                     runtime.connect(profile, driver, commandTicket = ticket)
@@ -1175,6 +1185,7 @@ internal class DefaultVpnController(
         EngineFailure.STOP -> R.string.vpn_error_tunnel_stop
         EngineFailure.GEO -> R.string.vpn_error_geo_unavailable
         EngineFailure.APPLICATION_POLICY -> R.string.vpn_routing_apply_failed
+        EngineFailure.WIREGUARD_DOMAIN_PLATFORM -> R.string.vpn_wireguard_domains_android11
     }
 }
 

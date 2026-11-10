@@ -24,11 +24,43 @@ class VpnSettingsCompatibilityTest {
         assertEquals(VpnLanguage.RU, state.settings.language)
         assertEquals(VpnGlobeStyle.VOLUME, state.settings.globeStyle)
         assertEquals(VpnFontStyle.PIXEL, state.settings.fontStyle)
+        assertEquals(false, state.settings.hideRouterManagement)
         assertEquals(true, state.settings.autoRefreshSubscriptions)
         assertEquals(12, state.settings.subscriptionRefreshIntervalHours)
         assertEquals(true, state.settings.autoCheckConnectionData)
         assertEquals(24, state.settings.connectionDataCheckIntervalHours)
         assertEquals(0, state.automaticRefresh.subscriptions.size)
+    }
+
+    @Test
+    fun hiddenRouterPreferenceSurvivesStorePayloadRoundTrip() {
+        val previous = json.decodeFromString<ProfileStoreState>("""{"schema":1,"profiles":[{"id":"fixture","name":"Example","protocol":"VLESS","normalizedConfigJson":"synthetic-profile"}],"selectedProfileId":"fixture","settings":{"language":"RU"}}""")
+        val updated = previous.copy(settings = previous.settings.copy(hideRouterManagement = true))
+        val restored = json.decodeFromString<ProfileStoreState>(json.encodeToString(updated))
+        assertEquals(true, restored.settings.hideRouterManagement)
+        assertEquals(previous.profiles, restored.profiles)
+        assertEquals(previous.selectedProfileId, restored.selectedProfileId)
+        assertEquals(previous.settings.language, restored.settings.language)
+    }
+
+    @Test
+    fun queuedFontChangeKeepsTheAlreadySavedRouterVisibility() {
+        val previous = VpnSettings()
+        val current = previous.copy(hideRouterManagement = true)
+        val updated = previous.copy(fontStyle = VpnFontStyle.STANDARD)
+        val merged = mergeVpnAppearanceSettings(current, previous, updated)
+        assertEquals(true, merged.hideRouterManagement)
+        assertEquals(VpnFontStyle.STANDARD, merged.fontStyle)
+    }
+
+    @Test
+    fun appearanceSaveKeepsConcurrentBackgroundPreferences() {
+        val previous = VpnSettings()
+        val current = previous.copy(autoRefreshSubscriptions = false, autoCheckConnectionData = false)
+        val merged = mergeVpnAppearanceSettings(current, previous, previous.copy(theme = VpnTheme.NIGHT))
+        assertEquals(VpnTheme.NIGHT, merged.theme)
+        assertEquals(false, merged.autoRefreshSubscriptions)
+        assertEquals(false, merged.autoCheckConnectionData)
     }
 
     @Test

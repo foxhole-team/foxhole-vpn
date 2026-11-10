@@ -4,6 +4,7 @@ import org.gradle.api.tasks.Exec
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.Sync
 import java.io.File
+import java.security.MessageDigest
 import java.util.Properties
 
 plugins {
@@ -39,6 +40,10 @@ val selectedAbis = providers.gradleProperty("foxhole.abis").orElse("arm64-v8a,ar
 require(selectedAbis.isNotEmpty() && selectedAbis.all { it in setOf("arm64-v8a", "armeabi-v7a", "x86", "x86_64") })
 val appUpdateChannel = providers.gradleProperty("foxhole.updateChannel").orElse("github").get()
 require(appUpdateChannel in setOf("github", "fdroid"))
+val sourceNativeManifest = providers.gradleProperty("foxhole.sourceNativeManifest").orNull?.let(rootProject::file)
+require(sourceNativeManifest == null || appUpdateChannel == "fdroid") {
+    "Explicit source-built native provenance is reserved for the F-Droid channel"
+}
 require(selectedAbis.toSet() != setOf("arm64-v8a", "armeabi-v7a", "x86_64") || appUpdateChannel == "fdroid") {
     "The android3 ABI profile is reserved for the F-Droid channel"
 }
@@ -64,10 +69,10 @@ android {
 
     defaultConfig {
         applicationId = "com.foxhole.vpn"
-        minSdk = 26
+        minSdk = 24
         targetSdk = 37
-        versionCode = 46
-        versionName = "1.0.4"
+        versionCode = 47
+        versionName = "1.0.5"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         if (!providers.gradleProperty("foxhole.splitApks").map(String::toBoolean).orElse(false).get()) {
             ndk { abiFilters += apkDeliveryAbis }
@@ -142,7 +147,7 @@ android {
 }
 
 dependencies {
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs_nio:2.1.5")
     constraints {
         implementation("androidx.room:room-runtime:2.8.4") {
             because("Align WorkManager's database with the verified Guard runtime")
@@ -223,11 +228,23 @@ val prepareDerivedNativeLicenseAssets = tasks.register<PreparePageAlignedNativeT
     dependsOn(preparePageAlignedNative)
     nativeDirectory.set(layout.buildDirectory.dir("generated/derivedLicenseAssets"))
     inputs.dir(rootProject.file("app/src/main/assets/licenses"))
+    inputs.dir(rootProject.file("third_party/desugaring-nio"))
+    inputs.files(configurations.getByName("coreLibraryDesugaring"))
     inputs.dir(preparePageAlignedNative.flatMap { it.nativeDirectory })
     inputs.property("androidAbis", selectedAbis)
+    inputs.property("licenseNativeMode", if (sourceNativeManifest == null) "retained-normal" else "fdroid-source")
+    sourceNativeManifest?.let { inputs.file(it) }
     inputs.files(
         rootProject.file("scripts/prepare-derived-native-license-assets.py"),
+        rootProject.file("scripts/current-vpn-license-delivery.py"),
+        rootProject.file("config/current-vpn-license-bindings.json"),
+        rootProject.file("scripts/normal-core-native.py"),
+        rootProject.file("scripts/core-source-binding.py"),
+        rootProject.file("scripts/sqlite-fork-origin.py"),
+        rootProject.file("scripts/fdroid-source-build.py"),
         rootProject.file("scripts/copy-derived-native-licenses.py"),
+        rootProject.file("scripts/copy-desugaring-notices.py"),
+        rootProject.file("config/desugaring-notices.json"),
         rootProject.file("scripts/verify-page-aligned-native.py"),
         rootProject.file("scripts/rustls-fork-origin.py"),
         rootProject.file("config/foxcore-android-delivery.json"),
@@ -235,6 +252,13 @@ val prepareDerivedNativeLicenseAssets = tasks.register<PreparePageAlignedNativeT
         rootProject.file("config/foxcore-revision.txt"),
     )
     doFirst {
+        val desugaringInputs = configurations.getByName("coreLibraryDesugaring")
+            .resolvedConfiguration.resolvedArtifacts.sortedBy { it.moduleVersion.id.toString() }
+            .joinToString(",") { artifact ->
+                val hash = MessageDigest.getInstance("SHA-256")
+                    .digest(artifact.file.readBytes()).joinToString("") { "%02x".format(it) }
+                "${artifact.moduleVersion.id}=$hash"
+            }
         val coreDeliveryProfile = when (selectedAbis.toSet()) {
             setOf("arm64-v8a") -> "android-arm64"
             setOf("arm64-v8a", "x86_64") -> "android64"
@@ -249,8 +273,15 @@ val prepareDerivedNativeLicenseAssets = tasks.register<PreparePageAlignedNativeT
                 "--repo", rootProject.projectDir.absolutePath,
                 "--native", preparePageAlignedNative.get().nativeDirectory.get().asFile.absolutePath,
                 "--output", nativeDirectory.get().dir("licenses").asFile.absolutePath,
+                "--desugaring-inputs", desugaringInputs,
                 "--abis",
-            ) + selectedAbis + listOf("--android-delivery-profile", coreDeliveryProfile),
+            ) + selectedAbis + listOf("--android-delivery-profile", coreDeliveryProfile) +
+                (sourceNativeManifest?.let { manifest ->
+                    val core = providers.gradleProperty("foxhole.foxCoreSourceRoot")
+                        .orElse(providers.environmentVariable("FOXCORE_SOURCE_ROOT")).orNull
+                        ?: error("Source legal verification requires the pinned Core source root")
+                    listOf("--source-native-manifest", manifest.absolutePath, "--core-root", rootProject.file(core).absolutePath)
+                } ?: emptyList<String>()),
         )
     }
 }
@@ -326,7 +357,15 @@ androidComponents {
 val verifyNativePayload = tasks.register<Exec>("verifyNativePayload") {
     val root = providers.environmentVariable("FOXCORE_VPN_JNI_ROOT")
         .orElse(rootProject.layout.projectDirectory.dir("native-libs").asFile.absolutePath)
-    commandLine(listOf("python3", rootProject.file("scripts/verify-native-payload.py").absolutePath, root.get()) + selectedAbis)
+    val arguments = mutableListOf("python3", rootProject.file("scripts/verify-native-payload.py").absolutePath, root.get())
+    arguments.addAll(selectedAbis)
+    sourceNativeManifest?.let { manifest ->
+        val core = providers.gradleProperty("foxhole.foxCoreSourceRoot")
+            .orElse(providers.environmentVariable("FOXCORE_SOURCE_ROOT")).orNull
+            ?: error("Source native verification requires the pinned Core source root")
+        arguments.addAll(listOf("--source-native-manifest", manifest.absolutePath, "--core-root", rootProject.file(core).absolutePath))
+    }
+    commandLine(arguments)
 }
 
 tasks.matching { it.name in setOf("assembleDebug", "assembleRelease", "bundleRelease", "assembleRouterLab", "assembleRouterReview") }.configureEach {

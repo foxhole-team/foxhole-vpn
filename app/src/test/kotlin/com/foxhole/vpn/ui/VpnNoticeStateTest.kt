@@ -7,7 +7,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class VpnNoticeStateTest {
-    @Test fun parentNoticeIsReadyBeforeClosingSheetDisappears() {
+    @Test fun closingSheetKeepsNoticeAboveItsScrimUntilWindowDisposes() {
         val notices = VpnNoticeState(elapsedRealtime = { 1_000L })
         val parent = Any()
         val sheet = Any()
@@ -16,22 +16,23 @@ class VpnNoticeStateTest {
         notices.show("Applied")
         assertFalse(notices.draws(parent))
         assertTrue(notices.draws(sheet))
-        notices.handoff(sheet, true)
-        assertTrue(notices.draws(parent))
         notices.detach(sheet)
         assertTrue(notices.draws(parent))
+        assertFalse(notices.draws(sheet))
     }
 
-    @Test fun cancellingSheetCloseDoesNotExposeUnderlyingNotice() {
+    @Test fun nestedWindowDisposalTransfersOnlyToTheImmediateParent() {
         val notices = VpnNoticeState(elapsedRealtime = { 1_000L })
+        val home = Any()
         val parent = Any()
-        val sheet = Any()
-        notices.attach(parent)
-        notices.attach(sheet)
-        notices.handoff(sheet, true)
-        notices.handoff(sheet, false)
-        assertFalse(notices.draws(parent))
-        assertTrue(notices.draws(sheet))
+        val child = Any()
+        listOf(home, parent, child).forEach(notices::attach)
+        notices.show("Applied")
+        assertEquals(listOf(child), listOf(home, parent, child).filter(notices::draws))
+        notices.detach(child)
+        assertEquals(listOf(parent), listOf(home, parent).filter(notices::draws))
+        notices.detach(parent)
+        assertEquals(listOf(home), listOf(home, parent).filter(notices::draws))
     }
 
     @Test fun noticeMotionStateSurvivesWindowTransferAndNewNoticeStartsClean() {
