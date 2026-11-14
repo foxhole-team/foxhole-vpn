@@ -2,7 +2,7 @@
 
 <div align="center">
 
-FoxHole VPN es un cliente VPN sencillo para Android 7 y posteriores. Importe un perfil de su proveedor VPN o servidor propio, conecte el teléfono y gestione un router OpenWrt vinculado desde la aplicación.
+FoxHole VPN es un cliente VPN sencillo para Android 7 y posteriores. Importe un perfil de su proveedor VPN o servidor y conéctese desde el teléfono. La gestión de routers OpenWrt vinculados está disponible como beta pública.
 
 </div>
 
@@ -17,7 +17,7 @@ FoxHole VPN es un cliente VPN sencillo para Android 7 y posteriores. Importe un 
 
 <div align="center">
 
-[English](../README.md) · [Русский](README.ru.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [العربية](README.ar.md)
+[🇬🇧 English](../README.md) · [🇷🇺 Русский](README.ru.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 **Español**](README.es.md) · [🇯🇵 日本語](README.ja.md) · [🇨🇳 简体中文](README.zh-CN.md) · [🇸🇦 العربية](README.ar.md)
 
 </div>
 
@@ -34,6 +34,34 @@ FoxHole VPN es un cliente VPN sencillo para Android 7 y posteriores. Importe un 
   </a>
 </p>
 
+<a id="ecosystem"></a>
+<a id="-ecosistema-foxhole"></a>
+
+<div align="center">
+
+**FoxHole ecosystem**
+
+[FoxHole Guard](https://github.com/foxhole-team/foxhole-guard) · [**FoxHole VPN**](https://github.com/foxhole-team/foxhole-vpn) · [FoxHole Core](https://github.com/foxhole-team/foxhole-core) · [FoxHole OpenWRT](https://github.com/foxhole-team/foxhole-openwrt-client) · [FoxHole DB](https://github.com/foxhole-team/foxhole-db)
+
+<details>
+<summary>Funciones de los proyectos</summary>
+
+| Proyecto | Función |
+| --- | --- |
+| [FoxHole Guard](https://github.com/foxhole-team/foxhole-guard) | Android: VPN, Tor/I2P, reglas de tráfico y supervisión local |
+| [**FoxHole VPN**](https://github.com/foxhole-team/foxhole-vpn) | Android: cliente VPN sencillo y gestión de OpenWrt emparejado |
+| [FoxHole Core](https://github.com/foxhole-team/foxhole-core) | Núcleo de red común en Rust; funciones según compilación |
+| [FoxHole OpenWrt](https://github.com/foxhole-team/foxhole-openwrt-client) | VPN del router y gestión de la red local |
+| [FoxHole DB](https://github.com/foxhole-team/foxhole-db) | Reglas firmadas y datos de referencia |
+
+</details>
+
+</div>
+
+
+
+
+Desarrollamos y mantenemos FoxHole VPN con nuestro propio tiempo y recursos, utilizando herramientas de IA. Su apoyo nos ayuda a dedicar más tiempo al proyecto. [Apoyar el desarrollo →](#cryptocurrency-wallets)
 
 Compatible con VLESS, VMess, Trojan, Shadowsocks/Outline, WireGuard, AmneziaWG (experimental), Hysteria2, Naive, TUIC y AnyTLS. Importa configuraciones compatibles de FoxHole Guard, enlaces y suscripciones v2rayTun, YAML de Clash/mihomo, JSON SIP008 y claves dinámicas Outline (`ssconf://`). Comparta perfiles solo con personas de confianza: los perfiles exportados y sus enlaces de origen pueden incluir credenciales.
 
@@ -43,11 +71,16 @@ La importación transfiere parámetros de conexión compatibles. No transfiere r
 
 <a id="whats-new"></a>
 
-> **🆕 Novedades - 1.0.5 Stable**
+> **🆕 Novedades - 1.0.6 Stable**
 >
-> - Se añadió compatibilidad con Android 7.
-> - Se añadió el enrutamiento de sitios web.
-> - Mejorado el estilo visual de las notificaciones.
+> - Se corrigieron la instalación y la configuración inicial del router desde la aplicación
+> - Actualizadas las secciones de ayuda
+> - Interfaz de gestión del router actualizada
+> - Mejoras generales de la interfaz
+> - Añadido un acceso directo a los ajustes rápidos de Android
+> - Añadida la importación de perfiles VPN guardados desde la gestión del router
+
+[Continuidad y límites al actualizar la aplicación](app-update-continuation.md).
 
 <a id="quickstart"></a>
 
@@ -84,24 +117,26 @@ Cada versión publicada enumera las arquitecturas APK y los destinos de router d
 - Importe perfiles desde el portapapeles, un archivo o un código QR; comparta perfiles guardados y actualice los que conservan una fuente de suscripción.
 - Seleccione un protocolo entre las opciones de un perfil importado. Cambiar el protocolo del perfil activo exige confirmación antes de reconectar.
 - Los widgets de la pantalla de inicio muestran el estado de conexión y permiten iniciar o detener el perfil seleccionado.
-- Elija tema e idioma en Ajustes: inglés, ruso, alemán, francés, español, japonés o chino simplificado.
+- Elija tema e idioma en Ajustes: inglés, ruso, alemán, francés, español, japonés, chino simplificado o árabe.
 
 Si se activan en Ajustes → Actualizaciones en segundo plano, las suscripciones se actualizan por defecto aproximadamente cada 12 horas y las tablas firmadas de huellas TLS de FoxHole DB se comprueban cada 24 horas. Allí puede desactivar cada comprobación por separado. Instalar los datos sigue requiriendo su acción. La versión GitHub comprueba actualizaciones de la aplicación cada día; descargar e instalar un APK requiere su acción y confirmación de Android. La versión F-Droid no comprueba ni instala sus propias actualizaciones APK: utilice F-Droid. Android puede retrasar las tareas en segundo plano.
 
 Estas actualizaciones cambian los datos usados por el núcleo para formar TLS ClientHello. Instalar una actualización verificada requiere su acción.
+
+[Contrato de enrutamiento de aplicaciones](application-routing.md) · [Formatos y límites de reglas web](website-routing-formats.md) · [Dominios WireGuard y DNS](wireguard-domain-dns.md).
 
 <a id="details"></a>
 
 ## 🛜 Gestión del router (beta pública)
 
 > [!NOTE]
-> La gestión del router mientras hay una conexión VPN activa aún no es compatible.
+> La búsqueda local, la configuración y las nuevas vinculaciones requieren el flujo Wi-Fi/LAN previsto con VPN apagada. Una vinculación existente puede usar la opción separada de gestión por VPN doméstica bajo las condiciones de confianza y consentimiento indicadas abajo.
 
 La gestión del router está en beta pública. La compatibilidad de dispositivos y los procesos de instalación y actualización siguen en validación.
 
 > [!IMPORTANT]
-> Las restricciones siguientes corresponden a la versión publicada actual.
-> La instalación automática actualmente solo admite routers con la configuración predeterminada de OpenWrt, sin modificaciones.
+> La disponibilidad siguiente describe la configuración actual del código fuente.
+> En este checkout, la instalación automática desde la aplicación está desactivada hasta cualificar el catálogo de publicación. Siguen disponibles la inspección del router y la vinculación con un cliente compatible instalado manualmente.
 > También puede vincular un router después de instalar manualmente la última versión de [FoxHole OpenWrt Client](https://github.com/foxhole-team/foxhole-openwrt-client).
 > Para la instalación y la vinculación, el teléfono y el router deben estar en la misma red local, y el router debe tener acceso a Internet.
 
@@ -127,27 +162,18 @@ Las actualizaciones manuales de FoxHole desde la aplicación y LuCI usan la mism
 
 ## 🔒 Privacidad
 
-Los perfiles y ajustes se cifran en el dispositivo con una clave de Android Keystore. No incluye SDK publicitario ni de analítica. Las comprobaciones VPN contactan con `www.google.com/generate_204`; los datos de la IP de salida proceden de `ipwho.is`. Estas solicitudes usan la red VPN seleccionada. Sin VPN, la ubicación aproximada puede actualizarse con la conexión actual a Internet, incluso desde un widget. Los servicios reciben la solicitud y su IP de origen. Las tablas firmadas de huellas TLS proceden de `foxhole-team.github.io/foxhole-db`; las suscripciones usan las URL guardadas de su proveedor. No se necesita GPS.
+Los perfiles y ajustes se cifran en el dispositivo con una clave de Android Keystore. No incluye SDK publicitario ni de analítica. En el modo de validación habitual, las comprobaciones VPN contactan con `www.google.com/generate_204`; los datos de la IP de salida proceden de `ipwho.is`. Estas solicitudes usan la red VPN seleccionada. Sin VPN, la ubicación aproximada puede actualizarse con la conexión actual a Internet, incluso desde un widget. Los servicios reciben la solicitud y su IP de origen. Las tablas firmadas de huellas TLS proceden de `foxhole-team.github.io/foxhole-db`; las suscripciones usan las URL guardadas de su proveedor. No se necesita GPS.
 
-<a id="ecosystem"></a>
+Excepción: el modo de reglas WireGuard, con reglas web o aplicaciones bloqueadas, valida el resolutor DNS autenticado del perfil en lugar de las comprobaciones HTTP/IP de salida. «Conectado» confirma aquí el acceso al DNS del perfil, no a un destino HTTP cualquiera ni al servicio de IP de salida. La ubicación de la IP de salida no está disponible y se rechaza actualizar Geo en este modo.
 
-## 🔗 Ecosistema FoxHole
-
-| Proyecto | Función |
-| --- | --- |
-| [FoxHole Guard](https://github.com/foxhole-team/foxhole-guard) | Android: VPN, Tor/I2P, reglas de tráfico y supervisión local |
-| [**FoxHole VPN**](https://github.com/foxhole-team/foxhole-vpn) | Android: cliente VPN sencillo y gestión de OpenWrt emparejado |
-| [FoxHole Core](https://github.com/foxhole-team/foxhole-core) | Núcleo de red común en Rust; funciones según compilación |
-| [FoxHole OpenWrt](https://github.com/foxhole-team/foxhole-openwrt-client) | VPN del router y gestión de la red local |
-| [FoxHole DB](https://github.com/foxhole-team/foxhole-db) | Reglas firmadas y datos de referencia |
 
 ## 🤝 Contribuir
 
 Informe de errores y proponga cambios mediante [Issues](https://github.com/foxhole-team/foxhole-vpn/issues).
 
-## 💖 Apoyar el desarrollo
+[Entrega de APK y ABI](apk-delivery-abis.md) · [Compilación F-Droid desde fuentes](fdroid-source-build.md).
 
-Desarrollamos y mantenemos FoxHole VPN íntegramente con nuestro propio tiempo y recursos, utilizando herramientas de IA en el desarrollo. Su apoyo nos ayuda a dedicar más tiempo al proyecto y acelerar el desarrollo.
+## 💖 Apoyar el desarrollo
 
 <a id="cryptocurrency-wallets"></a>
 

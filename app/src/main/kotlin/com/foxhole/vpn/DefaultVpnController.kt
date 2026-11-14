@@ -392,11 +392,6 @@ internal class DefaultVpnController(
                     failPendingStart(ticket, R.string.vpn_error_profile_unavailable, stopExisting = false)
                     return@launch
                 }
-                val configDigest = com.foxhole.vpn.router.routerProfileDigest(profile.normalizedConfigJson)
-                routerPersonalVpnGuard.requireAway(id, configDigest) {
-                    synchronized(commands) { commands.isCurrent(ticket) && state.value.profileRevision == owner.profileRevision &&
-                        stored.selectedProfileId == id && stored.profiles.singleOrNull { it.id == id } == profile }
-                }
                 val plan = preparation?.invoke(owner)
                 val current = synchronized(commands) {
                     if (!commands.isCurrent(ticket) || state.value.profileRevision != owner.profileRevision || stored.selectedProfileId != id) false
@@ -463,10 +458,56 @@ internal class DefaultVpnController(
     }
 
     private fun routerManualAction() {
+        routerSmartStart = null
         routerPausedPhone = null
         routerPreparedStart = null
         routerLaunchingLease = null
         routerManualMutable.value += 1
+    }
+
+    private class RouterSmartStart(val ticket: Long, val profile: String, val revision: Long,
+        val manual: Long, val cellular: Long, val authority: () -> Boolean)
+    @Volatile private var routerSmartStart: RouterSmartStart? = null
+    internal fun routerSmartPausedCurrent(value: RouterPausedPhone): Boolean = synchronized(commands) {
+        routerPausedPhone == value && routerAutomaticProfilesProtected(value, commands.currentGeneration(),
+            routerManualMutable.value, state.value.selectedProfileId, state.value.profileRevision)
+    }
+    internal fun routerSmartStartPending(ticket: Long): Boolean = synchronized(commands) {
+        val owner = routerSmartStart ?: return@synchronized false
+        owner.ticket == ticket && runtime.state.value.phase != EnginePhase.ERROR && commands.isCurrent(ticket) && owner.manual == routerManualMutable.value &&
+            owner.profile == stored.selectedProfileId && owner.revision == state.value.profileRevision
+    }
+    private fun smartCellularNetwork(): android.net.Network? {
+        val manager = context.getSystemService(ConnectivityManager::class.java) ?: return null
+        val active = manager.activeNetwork ?: return null
+        val caps = manager.getNetworkCapabilities(active) ?: return null
+        if (!caps.hasTransport(android.net.NetworkCapabilities.TRANSPORT_CELLULAR) ||
+            caps.hasTransport(android.net.NetworkCapabilities.TRANSPORT_WIFI) || caps.hasTransport(android.net.NetworkCapabilities.TRANSPORT_VPN) ||
+            !caps.hasCapability(android.net.NetworkCapabilities.NET_CAPABILITY_VALIDATED)) return null
+        if (manager.allNetworks.any { manager.getNetworkCapabilities(it)?.hasTransport(android.net.NetworkCapabilities.TRANSPORT_VPN) == true }) return null
+        return active
+    }
+    private fun routerSmartFrameCurrent(ticket: Long?, network: android.net.Network?, established: Boolean): Boolean = synchronized(commands) {
+        if (ticket == null) return@synchronized true
+        if (!commands.isCurrent(ticket)) return@synchronized false
+        val owner = routerSmartStart?.takeIf { it.ticket == ticket } ?: return@synchronized true
+        if (!routerSmartStartPending(ticket) || !owner.authority()) return@synchronized false
+        val manager = context.getSystemService(ConnectivityManager::class.java) ?: return@synchronized false
+        val cellular = manager.allNetworks.singleOrNull { it.networkHandle == owner.cellular } ?: return@synchronized false
+        val caps = manager.getNetworkCapabilities(cellular) ?: return@synchronized false
+        if (!caps.hasTransport(android.net.NetworkCapabilities.TRANSPORT_CELLULAR) ||
+            caps.hasTransport(android.net.NetworkCapabilities.TRANSPORT_WIFI) || !caps.hasCapability(android.net.NetworkCapabilities.NET_CAPABILITY_VALIDATED) ||
+            network != null && network != cellular) return@synchronized false
+        established || smartCellularNetwork() == cellular
+    }
+    private fun routerSmartFrameEstablished(ticket: Long?) = synchronized(commands) {
+        if (routerSmartStart?.ticket == ticket) routerSmartStart = null
+    }
+    internal fun cancelRouterSmartStart(ticket: Long) = synchronized(commands) {
+        if (routerSmartStart?.ticket == ticket) {
+            commands.abandon(ticket)
+            routerSmartStart = null
+        }
     }
 
     internal fun routerPhoneSnapshot(): RouterHomePhoneSnapshot = synchronized(commands) {
@@ -487,7 +528,8 @@ internal class DefaultVpnController(
         RouterPausedPhone(owner, commands.currentGeneration(), routerManualMutable.value).also { routerPausedPhone = it }
     }
 
-    internal fun resumePhoneForRouter(receipt: RouterPausedPhone, plan: RouterBoundDialPlan? = null): RouterPhoneSession? {
+    internal fun resumePhoneForRouter(receipt: RouterPausedPhone, plan: RouterBoundDialPlan? = null,
+        smartAuthority: (() -> Boolean)? = null, smartReserved: ((RouterPhoneSession) -> Unit)? = null): RouterPhoneSession? {
         val selected = receipt.ownership.owner.profileId
         val ticket = synchronized(commands) {
             val manager = context.getSystemService(ConnectivityManager::class.java)
@@ -503,7 +545,11 @@ internal class DefaultVpnController(
                     return@synchronized null
                 }
             }
+            val cellular = if (smartAuthority != null) smartCellularNetwork() ?: return@synchronized null else null
+            if (smartAuthority?.invoke() == false) return@synchronized null
             val reserved = commands.reserveStartIfCurrent(receipt.stopGeneration) ?: return@synchronized null
+            if (smartAuthority != null && cellular != null) routerSmartStart = RouterSmartStart(reserved, selected,
+                receipt.ownership.owner.profileRevision, receipt.manualGeneration, cellular.networkHandle, smartAuthority)
             routerPausedPhone = null
             routerPreparedStart = plan?.let { reserved to it }
             routerLaunchingLease = routerPreparedStart
@@ -512,8 +558,10 @@ internal class DefaultVpnController(
             mutable.update { it.copy(phase = VpnPhase.CONNECTING, hasPendingStart = true, canRestartDuringStop = false, location = null, message = null) }
             reserved
         } ?: return null
+        val resumed = RouterPhoneSession(selected, receipt.ownership.owner.profileRevision, ticket)
+        smartReserved?.invoke(resumed)
         requestStartNow(selected, ticket)
-        return RouterPhoneSession(selected, receipt.ownership.owner.profileRevision, ticket)
+        return resumed
     }
 
     internal fun forgetRouterPause(receipt: RouterPausedPhone) = synchronized(commands) {
@@ -529,6 +577,10 @@ internal class DefaultVpnController(
         val profile = stored.profiles.singleOrNull { it.id == session.profileId } ?: return@synchronized null
         com.foxhole.vpn.router.RouterConnectedProfile(profile.id, com.foxhole.vpn.router.routerProfileDigest(profile.normalizedConfigJson),
             session.connectionId.toString(), network)
+    }
+
+    internal fun disconnectRouterProfileIfCurrent(expected: com.foxhole.vpn.router.RouterConnectedProfile) = synchronized(commands) {
+        if (routerConnectedProfile() == expected) disconnect()
     }
 
     internal fun routerImportedProfileReference(configSha256: String): Pair<String, String>? = synchronized(commands) {
@@ -1108,6 +1160,8 @@ internal class DefaultVpnController(
                     val driver = drivers.getOrPut(service) { AndroidEngineDriver(service,
                         applicationScope = { settings.value.appRouting.applicationScope(context.packageName) },
                         routingPolicy = { settings.value.appRouting.enginePolicy(context.packageName) },
+                        startAuthority = ::routerSmartFrameCurrent,
+                        onStartEstablished = ::routerSmartFrameEstablished,
                     ) { profile -> routerPreparedConfiguration(profile, service.latestCommandTicket) } }
                     awaitingRuntimeTicket = ticket
                     runtime.connect(profile, driver, commandTicket = ticket)

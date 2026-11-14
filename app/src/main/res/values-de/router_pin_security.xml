@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="router_setup_pin">PIN-Code</string>
+    <string name="router_setup_pin">PIN-Code eingeben</string>
     <string name="router_setup_pin_repeat">PIN-Code wiederholen</string>
     <string name="router_pin_cooldown">In %1$d s erneut versuchen.</string>
     <string name="router_setup_all_lan_vpn">VPN für alle Heimgeräte</string>

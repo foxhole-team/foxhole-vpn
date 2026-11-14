@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_transfer_search">対応する VPN 設定を検索中</string>
+    <string name="vpn_app_rules_context_help">アプリの VPN / VPN を使用しないルールはプロキシモードでのみ動作します。\nブロックはすべてのモードで動作します。\nアプリのブロックには Android 10 以降が必要です。</string>
+    <string name="vpn_release_notes_router_ui_106">ルーター管理インターフェースを更新</string>
+    <string name="vpn_release_notes_general_ui_106">インターフェース全体を改善</string>
+    <string name="vpn_release_notes_quick_settings_106">Android のクイック設定にショートカットを追加</string>
+    <string name="vpn_release_notes_all_subscriptions_106">ルーター管理で保存済み VPN プロファイルをインポートできるようにしました</string>
+</resources>

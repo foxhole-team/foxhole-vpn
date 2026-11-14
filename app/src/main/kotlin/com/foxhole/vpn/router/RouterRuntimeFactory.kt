@@ -12,6 +12,7 @@ import com.foxhole.vpn.DefaultVpnController
 import com.foxhole.vpn.VpnImportResult
 import com.foxhole.vpn.VpnApplication
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
@@ -32,6 +33,7 @@ internal class RouterRuntime(
     val preferenceStore: RouterControlPreferenceStore,
     val home: RouterHomeAutomationManager,
     val profileProbe: RouterProfileAutoProbe,
+    val smartHome: RouterHomeReturnMonitor,
 ) : AutoCloseable {
     override fun close() { wizard.close(); control.close() }
 }
@@ -95,13 +97,24 @@ internal fun createRouterRuntime(context: Context, controller: DefaultVpnControl
             deviceBundleProvider = RouterDeviceInstallBundleProvider(application.cacheDir)) }
     val export = RouterPhoneProfileExport(controller)
     val routerImports = VpnRouterProfileImports(controller, pairing)
+    val connectedProfiles = combine(controller.state, (application as VpnApplication).licenseConsent.state) { _, license ->
+        if (license.accepted) controller.routerConnectedProfile() else null
+    }.distinctUntilChanged().stateIn(scope, SharingStarted.Eagerly, null)
+    val smart = RouterHomeReturnMonitor(scope, manager, pairing, preferences, connectedProfiles,
+        controller::routerConnectedProfile, protection, access, VpnRouterSmartPhone(controller),
+        canMonitor = { (application as VpnApplication).licenseConsent.state.value.accepted && routerLocalNetworkAccessGranted(application) && routerSmartNotificationsAvailable(application) },
+        startForeground = { epoch -> ContextCompat.startForegroundService(application, Intent(application, RouterSmartHomeService::class.java)
+            .setAction(RouterSmartHomeService.ACTION_START).putExtra(RouterSmartHomeService.EXTRA_EPOCH, epoch)) },
+        stopForeground = { epoch -> application.startService(Intent(application, RouterSmartHomeService::class.java)
+            .setAction(RouterSmartHomeService.ACTION_STOP).putExtra(RouterSmartHomeService.EXTRA_EPOCH, epoch)) })
     val wizard = RouterWizardCoordinator(transport, pairing, Build.MODEL.take(128).ifBlank { "Android" }, setup, provisioner,
         exportProfile = export::selected, importRemoteProfile = { uri ->
             val result = controller.importProfiles(uri, allowInsecureTls = false)
             result is VpnImportResult.Success && result.rejected == 0 && result.added + result.updated > 0
         }, preferenceStore = preferences, beforeRouterSelection = home::routerSelectionChanged,
         importAuthenticatedProfile = routerImports::authenticated,
-        readonlyInspector = WifiRouterReadonlyInspector.forWifi(manager, protection, access))
+        readonlyInspector = WifiRouterReadonlyInspector.forWifi(manager, protection, access),
+        applySmartHome = smart::setEnabled)
     val control = RouterControlCoordinator(PairedRouterManagementTransport(transport, manager, access, pairing, controller::routerConnectedProfile), pairing, preferences, provisioner,
         deviceUpdateRelay = RouterDeviceUpdateRelay(RouterDeviceReleaseSource(application.cacheDir)),
         homeAutomationAvailable = home.available, applyHomeAutomation = home::setEnabled, homeAutomationActive = { home.isEnabled }, copyProfile = { value ->
@@ -116,13 +129,11 @@ internal fun createRouterRuntime(context: Context, controller: DefaultVpnControl
     }, importProfile = { value ->
         val result = controller.importProfiles(value, allowInsecureTls = false)
         result is VpnImportResult.Success && result.rejected == 0 && result.added + result.updated > 0
-    }, beforeRouterSelection = home::routerSelectionChanged, importAuthenticatedProfile = routerImports::authenticated)
-    scope.launch { home.status.collect { status -> control.homeMonitoringChanged(home.isEnabled && status != RouterHomeMonitorState.OFF) } }
-    val connectedProfiles = combine(controller.state, (application as VpnApplication).licenseConsent.state) { _, license ->
-        if (license.accepted) controller.routerConnectedProfile() else null
-    }.distinctUntilChanged().stateIn(scope, SharingStarted.Eagerly, null)
+    }, beforeRouterSelection = home::routerSelectionChanged, importAuthenticatedProfile = routerImports::authenticated,
+        smartHomeAvailable = true, applySmartHome = smart::setEnabled, smartHomeActive = { smart.isActive })
+    scope.launch { smart.status.collect { status -> control.smartMonitoringChanged(status) } }
     val profileProbe = RouterProfileAutoProbe(scope, manager, pairing, preferences, connectedProfiles, access)
-    return RouterRuntime(wizard, control, pairing, preferences, home, profileProbe)
+    return RouterRuntime(wizard, control, pairing, preferences, home, profileProbe, smart)
 }
 
 // Enabled only after firmware handoff and physical foreground-service acceptance.

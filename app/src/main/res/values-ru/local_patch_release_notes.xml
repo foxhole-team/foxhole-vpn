@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="vpn_release_notes_translations_104">Добавлена поддержка арабского языка и RTL, адаптирован виджет, исправлены переводы и настройки роутера.</string>
-    <string name="vpn_release_notes_router_cleanup_104">Улучшена обработка ошибок и освобождение ресурсов при настройке роутера.</string>
+    <string name="vpn_release_notes_translations_104">Добавлена поддержка арабского языка и RTL, адаптирован виджет, исправлены переводы и настройки роутера</string>
+    <string name="vpn_release_notes_router_cleanup_104">Улучшена обработка ошибок и освобождение ресурсов при настройке роутера</string>
+    <string name="vpn_release_notes_router_setup_106">Исправлена первоначальная установка и настройка роутера через приложение</string>
+    <string name="vpn_release_notes_help_106">Обновление разделов помощи</string>
 </resources>

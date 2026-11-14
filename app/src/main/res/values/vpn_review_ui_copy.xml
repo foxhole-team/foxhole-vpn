@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_transfer_search">Searching for compatible VPN configurations</string>
+    <string name="vpn_app_rules_context_help">VPN / No VPN app rules work only in Proxy mode.\nBlocking works in any mode.\nApp blocking requires Android 10 or later.</string>
+    <string name="vpn_release_notes_router_ui_106">Updated the router management interface</string>
+    <string name="vpn_release_notes_general_ui_106">General interface improvements</string>
+    <string name="vpn_release_notes_quick_settings_106">Added a shortcut to Android Quick Settings</string>
+    <string name="vpn_release_notes_all_subscriptions_106">Added import of saved VPN profiles in router management</string>
+</resources>

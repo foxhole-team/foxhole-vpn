@@ -14,7 +14,7 @@
     <string name="vpn_import_manual">ВВЕСТИ ВРУЧНУЮ</string>
     <string name="vpn_profile_none">Сначала добавьте профиль VPN</string>
     <string name="vpn_remove_named">Удалить %1$s</string>
-    <string name="vpn_location_loading_device">Определяем ваше местоположение</string>
+    <string name="vpn_location_loading_device">Определение местоположения</string>
     <string name="vpn_location_device_caption">Ваше местоположение</string>
     <string name="vpn_cancel">ОТМЕНА</string>
     <string name="vpn_status_idle">VPN отключён</string>
@@ -42,13 +42,13 @@
     <string name="vpn_language_system">Язык системы</string>
     <string name="vpn_language_english">English</string>
     <string name="vpn_language_russian">Русский</string>
-    <string name="vpn_help">Справка</string>
+    <string name="vpn_help">Помощь</string>
     <string name="vpn_about">О приложении</string>
     <string name="vpn_about_text">FoxHole VPN %1$s. Минимальный VPN-клиент от FoxHole Team. Шрифты: Tiny5 и JetBrains Mono, SIL Open Font License 1.1.</string>
     <string name="vpn_help_connect_title">Подключение</string>
     <string name="vpn_help_connect_body">Импортируйте профиль своего VPN-провайдера или сервера, выберите его, нажмите «Старт» и разрешите VPN в системном окне Android. «Стоп» отменяет подключение и отключает VPN.</string>
     <string name="vpn_help_profiles_title">Профили</string>
-    <string name="vpn_help_profiles_body">Управление сохранённым профилем VPN реализовано через длительное нажатие на профиль. Доступны функции: поделиться, обновить, удалить или отправить на сопряжённый роутер. При отправке передаётся весь профиль или исходная ссылка, включая возможные данные доступа. Делитесь только с теми, кому доверяете. Обновляются профили из подписок провайдера и динамических ключей Outline.</string>
+    <string name="vpn_help_profiles_body">Управление сохранённым профилем VPN реализовано через длительное нажатие на сам профиль. Доступны функции: поделиться, обновить, удалить или отправить на сопряжённый роутер. При отправке передаются только выбранные узлы и необходимые данные подписки, которые могут содержать данные доступа. Делитесь только с теми, кому доверяете. Обновляются профили из подписок провайдера и динамических ключей Outline.</string>
     <string name="vpn_import">ИМПОРТ</string>
     <string name="vpn_import_text">Конфигурация или ссылка</string>
     <string name="vpn_import_file">ВЫБРАТЬ ФАЙЛ</string>

@@ -26,3 +26,9 @@ internal fun vpnScenarioColor(mode: VpnRoutingMode, light: Boolean): Int = when 
     VpnRoutingMode.WHOLE_DEVICE -> if (light) 0xFF27723B.toInt() else 0xFF7FB34A.toInt()
     VpnRoutingMode.SELECTED_APPS -> if (light) 0xFF23688D.toInt() else 0xFF68B7DC.toInt()
 }
+
+@androidx.annotation.DrawableRes
+internal fun vpnScenarioStatusIcon(mode: VpnRoutingMode): Int = when (mode) {
+    VpnRoutingMode.WHOLE_DEVICE -> R.drawable.router_device_phone
+    VpnRoutingMode.SELECTED_APPS -> R.drawable.lin_apps
+}

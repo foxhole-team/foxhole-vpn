@@ -29,13 +29,18 @@
         android:icon="@mipmap/ic_launcher"
         android:label="FoxHole VPN"
         android:theme="@style/Theme.Foxhole.Vpn">
-        <activity android:name=".MainActivity" android:exported="true" android:launchMode="singleTop">
+        <activity android:name=".MainActivity" android:exported="true" android:launchMode="singleTop" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".qr.QrScanActivity" android:exported="false" android:excludeFromRecents="true" />
+        <activity android:name=".qr.QrScanActivity" android:exported="false" android:excludeFromRecents="true" android:screenOrientation="portrait" />
+        <service android:name=".router.RouterSmartHomeService" android:exported="false"
+            android:foregroundServiceType="specialUse" android:stopWithTask="false">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="User-enabled trusted home-router VPN transition monitor, preserving exact profile ownership and explicit consent while switching between authenticated home Wi-Fi and cellular connectivity." />
+        </service>
         <service
             android:name=".runtime.VpnTunnelService"
             android:exported="false"
@@ -44,6 +49,16 @@
             <meta-data android:name="android.net.VpnService.SUPPORTS_ALWAYS_ON" android:value="false" />
             <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="User-initiated VPN tunnel" />
             <intent-filter><action android:name="android.net.VpnService" /></intent-filter>
+        </service>
+        <service
+            android:name=".runtime.VpnQuickSettingsTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_qs_tile"
+            android:label="@string/vpn_notification_title"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <meta-data android:name="android.service.quicksettings.ACTIVE_TILE" android:value="true" />
+            <meta-data android:name="android.service.quicksettings.TOGGLEABLE_TILE" android:value="true" />
+            <intent-filter><action android:name="android.service.quicksettings.action.QS_TILE" /></intent-filter>
         </service>
         <service
             android:name=".router.RouterHomeAutomationService"

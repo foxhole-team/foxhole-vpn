@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_notification_connected">VPN conectada</string>
+    <string name="vpn_notification_disconnected">VPN desconectada</string>
+    <string name="vpn_notification_description">Estado y controles de su conexión VPN.</string>
+</resources>

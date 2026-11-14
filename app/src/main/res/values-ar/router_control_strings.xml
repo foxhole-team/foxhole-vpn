@@ -16,7 +16,7 @@
     <string name="router_control_client_remove_body">هل تريد إلغاء وصول VPN لـ %1$s؟</string>
     <string name="router_control_client_remove_record_body">هل تريد إزالة %1$s من الموجّه؟</string>
     <string name="router_control_country_direct">المواقع المحلية مباشرةً</string>
-    <string name="router_control_auto_home">الاتصال التلقائي على الشبكة المنزلية</string>
+    <string name="router_control_auto_home">ذكي</string>
     <string name="router_control_create_client">إنشاء عميل</string>
     <string name="router_control_create">إنشاء</string>
     <string name="router_control_client_name">اسم العميل</string>
@@ -31,14 +31,14 @@
     <string name="router_control_create_help">عميل Hysteria2. يلزم عنوان عام للموجّه وإعداد VPN وارد.</string>
     <string name="router_control_enable_help">تفعيل إدارة الموجّه أو تعطيلها.</string>
     <string name="router_control_country_help">يُحدَّد البلد من اتصال الإنترنت للموجّه. اضغط على العلم لتغييره.</string>
-    <string name="router_control_home_help">التبديل بين الهاتف والموجّه المنزلي فقط بعد تأكيد اتصال مدعوم.</string>
+    <string name="router_control_home_help">يفصل الوضع الذكي ملف VPN المنزلي النشط المستورد من هذا الراوتر المقترن فقط بعد التحقق من شبكة Wi-Fi المنزلية الموثقة وتوجيه VPN. عند الانتقال إلى شبكة الجوال يعيد توصيل الملف نفسه دون تغيير. يجب تفعيل خادم VPN المنزلي والإدارة عبر الجوال. لا يتجاوز الملفات الأخرى أو شبكات Wi-Fi الأخرى أو الإجراءات اليدوية. يكون معطلاً افتراضيًا ويتطلب إشعار المراقبة. تُحاول إعادة الاتصال خلال 90 ثانية من فقدان شبكة Wi-Fi المنزلية، وليس من إيقاف VPN مؤقتًا. يلغي التحكم اليدوي أو تغيير الملف الانتقال.</string>
     <string name="router_control_vpn_help">بدء ملف الموجّه الشخصي المختار أو إيقافه. اضغط على ملف لاختياره؛ واضغط مطولًا لعرض الإجراءات.</string>
     <string name="router_control_lan_help">اختر VPN أو اتصالًا مباشرًا لكل جهاز. الخيار الافتراضي هو VPN. يُتحكَّم في بدء ملف VPN الشخصي بشكل منفصل.</string>
     <string name="router_control_clients_help">افتح ملف VPN شخصيًا لعرض رمز QR الخاص به أو استيراده أو مشاركته أو حذفه.</string>
     <string name="router_control_qr_loading">جارٍ إنشاء QR…</string>
     <string name="router_control_profile_loading">جارٍ تحميل الملف الشخصي…</string>
-    <string name="router_control_home_vpn">الإدارة عبر VPN</string>
-    <string name="router_control_home_vpn_help">إدارة الموجّه عبر شبكة VPN الخاصة به. يلزم عنوان IP عام ثابت.</string>
+    <string name="router_control_home_vpn">الإدارة عبر شبكات الهاتف المحمول</string>
+    <string name="router_control_home_vpn_help">يتيح إدارة هذا الموجّه المقترن عبر ملف VPN منزلي موثوق ومستورد عند استخدام شبكات الهاتف المحمول أو شبكة Wi-Fi أخرى. يجب تفعيل خادم VPN المنزلي وخيار «الإدارة عبر شبكات الهاتف المحمول» وتأكيد عنوان IP العام.</string>
     <string name="vpn_router_error_home_vpn">لا يوجد مسار VPN متحقق منه إلى الموجّه المقترن. اتصل بشبكة VPN الخاصة به وفعّل الإدارة عبر VPN المنزلي في إعدادات الموجّه.</string>
     <string name="router_profile_probe_failed">لإدارة حزمة FoxHole OpenWRT، اتصل بشبكة VPN الشخصية أو شبكة Wi-Fi المنزلية.</string>
     <string name="router_profile_retry_pairing">إعادة محاولة الاقتران</string>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_transfer_search">جارٍ البحث عن إعدادات VPN المتوافقة</string>
+    <string name="vpn_app_rules_context_help">تعمل قواعد التطبيقات VPN / بدون VPN في وضع الوكيل فقط.\nيعمل الحظر في جميع الأوضاع.\nيتطلب حظر التطبيقات Android 10 أو أحدث.</string>
+    <string name="vpn_release_notes_router_ui_106">تحديث واجهة إدارة الموجّه</string>
+    <string name="vpn_release_notes_general_ui_106">تحسينات عامة في الواجهة</string>
+    <string name="vpn_release_notes_quick_settings_106">إضافة اختصار إلى الإعدادات السريعة في Android</string>
+    <string name="vpn_release_notes_all_subscriptions_106">إضافة استيراد ملفات VPN المحفوظة في إدارة الراوتر</string>
+</resources>

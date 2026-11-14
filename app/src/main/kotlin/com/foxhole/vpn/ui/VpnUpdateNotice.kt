@@ -70,9 +70,12 @@ private fun VpnUpdateNoticeSheet(
                     color = LocalVpnColors.current.panel) {
                     Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
                         val notes = listOf(
-                            R.drawable.lin_help to R.string.vpn_release_notes_android7_105,
-                            R.drawable.lin_world_www to R.string.vpn_release_notes_web_105,
-                            R.drawable.lin_info to R.string.vpn_release_notes_notice_style,
+                            R.drawable.lin_router to R.string.vpn_release_notes_router_setup_106,
+                            R.drawable.lin_help to R.string.vpn_release_notes_help_106,
+                            R.drawable.lin_router to R.string.vpn_release_notes_router_ui_106,
+                            R.drawable.lin_info to R.string.vpn_release_notes_general_ui_106,
+                            R.drawable.lin_power to R.string.vpn_release_notes_quick_settings_106,
+                            R.drawable.lin_profiles to R.string.vpn_release_notes_all_subscriptions_106,
                         )
                         notes.forEachIndexed { index, (icon, text) ->
                             VpnReleaseNoteRow(icon, text)

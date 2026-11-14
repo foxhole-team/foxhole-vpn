@@ -9,9 +9,6 @@ import android.net.VpnService
 import android.os.LocaleList
 import android.provider.Settings
 import android.view.View
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.style.ForegroundColorSpan
 import android.widget.RemoteViews
 import com.foxhole.vpn.R
 import com.foxhole.vpn.VpnLanguage
@@ -19,9 +16,7 @@ import com.foxhole.vpn.VpnPhase
 import com.foxhole.vpn.VpnTheme
 import com.foxhole.vpn.VpnSettings
 import com.foxhole.vpn.VpnUiState
-import com.foxhole.vpn.vpnScenarioColor
 import com.foxhole.vpn.vpnScenarioStatusLabel
-import com.foxhole.vpn.vpnScenarioValueStart
 import kotlin.math.roundToInt
 
 internal fun widgetLocalizedContext(context: Context, language: VpnLanguage): Context {
@@ -74,10 +69,6 @@ internal fun statusWidgetViews(
     val palette = widgetPalette(dark, settings.theme == VpnTheme.NIGHT)
     val label = localized.getString(widgetStatusLabel(state))
     val scenario = localized.getString(vpnScenarioStatusLabel(settings.appRouting.mode))
-    val scenarioText = SpannableString(scenario).apply {
-        setSpan(ForegroundColorSpan(vpnScenarioColor(settings.appRouting.mode, light = !dark)),
-            vpnScenarioValueStart(scenario), scenario.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-    }
     val location = widgetLocation(state)
     val detail = widgetLocationLabel(location) ?: localized.getString(widgetLocationPlaceholder(state))
     val flag = location?.countryCode?.let { widgetFlagBitmap(context, it, compact) }
@@ -115,10 +106,10 @@ internal fun statusWidgetViews(
             else if (dark) R.drawable.widget_status_background_dark else R.drawable.widget_status_background_light,
         )
         setTextViewText(R.id.widget_status_label, label)
-        setTextViewText(R.id.widget_status_scenario, scenarioText)
+        setImageViewBitmap(R.id.widget_status_scenario_icon, widgetScenarioBitmap(localized, settings.appRouting.mode, statusColor, arabic, label))
+        setContentDescription(R.id.widget_status_label, "$scenario. $label")
         setTextViewText(R.id.widget_status_detail, detail)
         setTextColor(R.id.widget_status_label, statusColor)
-        setTextColor(R.id.widget_status_scenario, palette.secondary)
         setTextColor(R.id.widget_status_detail, palette.text)
         setImageViewBitmap(R.id.widget_status_flag, flag)
         setViewVisibility(R.id.widget_status_flag, if (flag == null) View.GONE else View.VISIBLE)

@@ -48,7 +48,7 @@ internal fun VpnAppUpdateSheet(state: VpnAppUpdateState, onAction: () -> Unit, o
                     VpnAppUpdatePhase.VERIFYING, VpnAppUpdatePhase.READY, VpnAppUpdatePhase.ERROR)) {
                 VpnAppUpdateCard(state, onAction)
             }
-            Button(onClick = onCheck, enabled = !state.isBusy && state.phase != VpnAppUpdatePhase.DISABLED,
+            Button(colors = vpnBrightNightButtonColors(), onClick = onCheck, enabled = !state.isBusy && state.phase != VpnAppUpdatePhase.DISABLED,
                 modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)) {
                 Text(stringResource(R.string.vpn_app_update_check))
             }

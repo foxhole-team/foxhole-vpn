@@ -2,21 +2,58 @@
 
 <div dir="rtl">
 
-عميل VPN بسيط لنظام Android 7 أو أحدث. استورد ملفًا شخصيًا من مزوّد VPN أو خادمك، واتصل من هاتفك، وأدِر موجّه OpenWrt مقترنًا من التطبيق.
+FoxHole VPN عميل VPN بسيط لنظام Android 7 أو أحدث. استورد ملفًا من مزوّد VPN أو خادمك واتصل من الهاتف. تتوفر إدارة موجّه OpenWrt المقترن في نسخة تجريبية عامة.
 
 </div>
 
 <p align="center"><img src="../media/fhg.gif" alt="FoxHole VPN" width="180" height="180"></p>
 
-[English](../README.md) · [Русский](README.ru.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [العربية](README.ar.md)
+<div align="center">
+
+[🇬🇧 English](../README.md) · [🇷🇺 Русский](README.ru.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇯🇵 日本語](README.ja.md) · [🇨🇳 简体中文](README.zh-CN.md) · [🇸🇦 **العربية**](README.ar.md)
+
+</div>
+
+<a id="ecosystem"></a>
+<a id="منظومة-foxhole"></a>
+
+<div align="center">
+
+**FoxHole ecosystem**
+
+[FoxHole Guard](https://github.com/foxhole-team/foxhole-guard) · [**FoxHole VPN**](https://github.com/foxhole-team/foxhole-vpn) · [FoxHole Core](https://github.com/foxhole-team/foxhole-core) · [FoxHole OpenWRT](https://github.com/foxhole-team/foxhole-openwrt-client) · [FoxHole DB](https://github.com/foxhole-team/foxhole-db)
+
+<details>
+<summary>أدوار المشاريع</summary>
+
+| المشروع | الدور |
+| --- | --- |
+| [FoxHole Guard](https://github.com/foxhole-team/foxhole-guard) | VPN وTor/I2P وقواعد حركة البيانات والمراقبة المحلية على Android |
+| [FoxHole VPN](https://github.com/foxhole-team/foxhole-vpn) | عميل VPN بسيط وإدارة OpenWrt مقترن |
+| [FoxHole Core](https://github.com/foxhole-team/foxhole-core) | نواة شبكة مشتركة بلغة Rust؛ تختلف الميزات حسب البناء |
+| [FoxHole OpenWrt](https://github.com/foxhole-team/foxhole-openwrt-client) | VPN الموجّه وإدارة الشبكة المحلية |
+| [FoxHole DB](https://github.com/foxhole-team/foxhole-db) | مجموعات بيانات وقواعد مرجعية موقّعة |
+
+</details>
+
+</div>
+
+
+
+نطوّر FoxHole VPN ونصونه بوقتنا ومواردنا الخاصة، مع استخدام أدوات الذكاء الاصطناعي في التطوير. يساعد دعمكم على تخصيص مزيد من الوقت للمشروع. [دعم التطوير ←](#cryptocurrency-wallets)
 
 <a id="whats-new"></a>
 
-> **ما الجديد — 1.0.5 Stable**
+> **ما الجديد — 1.0.6 Stable**
 >
-> - أُضيف دعم Android 7.
-> - أُضيف توجيه حركة بيانات مواقع الويب.
-> - تحسين النمط المرئي للإشعارات.
+> - تم إصلاح التثبيت والإعداد الأولي للموجّه من التطبيق
+> - تم تحديث أقسام المساعدة
+> - تحديث واجهة إدارة الموجّه
+> - تحسينات عامة في الواجهة
+> - إضافة اختصار إلى الإعدادات السريعة في Android
+> - إضافة استيراد ملفات VPN المحفوظة في إدارة الراوتر
+
+[استمرارية تحديث التطبيق وحدودها](app-update-continuation.md).
 
 <a id="quickstart"></a>
 
@@ -59,7 +96,7 @@
 
 التطبيق الذرّي مفعّل افتراضيًا. قبل حفظ تغيير التوجيه النشط، ينشئ التطبيق واجهة VPN مؤقتة تشمل الجهاز بالكامل لحظر حركة البيانات. بعد حفظ الإعدادات المشفّرة الجديدة، يطبّق نطاق تطبيقات Android المستهدف ويعيد اتصال VPN عند الحاجة. إذا تعذر إكمال التغيير بأمان، أوقف VPN قبل المحاولة مجددًا. التأكيد معطّل افتراضيًا؛ ولا يبدأ VPN المتوقف تلقائيًا.
 
-توفر أدوات الشاشة الرئيسية حالة الاتصال والتحكم ببدئه وإيقافه. تتيح الإعدادات تغيير السمة واللغة والخط، وسجل التطبيق مع حفظه وتنظيفه.
+توفر أدوات الشاشة الرئيسية حالة الاتصال والتحكم ببدئه وإيقافه. تتيح الإعدادات تغيير السمة واللغة والخط، وسجل التطبيق مع حفظه وتنظيفه. لغات التطبيق: الإنجليزية والروسية والألمانية والفرنسية والإسبانية واليابانية والصينية المبسطة والعربية.
 
 ## التحديثات
 
@@ -67,15 +104,17 @@
 
 تتحقق نسخة GitHub من تحديثات التطبيق يوميًا؛ ويتطلب تنزيل APK وتثبيته إجراء منك وتأكيد Android. لا تفحص نسخة F-Droid تحديثات APK الخاصة بها ولا تثبّتها؛ استخدم F-Droid. قد يؤخر Android العمل في الخلفية.
 
+[عقد توجيه التطبيقات](application-routing.md) · [صيغ قواعد المواقع وحدودها](website-routing-formats.md) · [توجيه نطاقات WireGuard وDNS](wireguard-domain-dns.md).
+
 <a id="details"></a>
 
 ## إدارة الموجّه — نسخة تجريبية عامة
 
-إدارة الموجّه ميزة تجريبية عامة؛ لا تزال توافقية الأجهزة ومسارات التثبيت والتحديث قيد التحقق. تصف القيود التالية الإصدار المنشور الحالي، ولا تمثّل قبولًا تشغيليًا لكل جهاز.
+إدارة الموجّه ميزة تجريبية عامة؛ لا تزال توافقية الأجهزة ومسارات التثبيت والتحديث قيد التحقق. تصف الإتاحة أدناه إعداد المصدر الحالي. لا تمثّل قبولًا تشغيليًا لكل جهاز.
 
-> إدارة الموجّه أثناء نشاط اتصال VPN غير مدعومة بعد في الإصدار المنشور.
+> تتطلب عمليات الاكتشاف والإعداد والاقتران الجديدة المسار المحلي المحدد عبر Wi-Fi/LAN مع إيقاف VPN. يمكن لاقتران موجود استخدام الموافقة المنفصلة للإدارة عبر VPN المنزلي، وفق شروط الثقة والموافقات المبينة أدناه.
 
-يدعم التثبيت التلقائي المنشور حاليًا الموجّهات ذات إعداد OpenWrt الافتراضي بالكامل فقط. يمكنك أيضًا الاقتران بموجّه بعد تثبيت أحدث [FoxHole OpenWrt Client](https://github.com/foxhole-team/foxhole-openwrt-client) يدويًا. يجب أن يكون الهاتف والموجّه على LAN نفسها للإعداد والاقتران، وأن يتوفر الإنترنت للموجّه.
+في هذا checkout، التثبيت التلقائي من التطبيق معطّل حتى تأهيل كتالوج الإصدار. يبقى فحص معلومات الموجّه والاقتران بعميل متوافق مثبّت يدويًا متاحين. يمكنك الاقتران بموجّه بعد تثبيت أحدث [FoxHole OpenWrt Client](https://github.com/foxhole-team/foxhole-openwrt-client) يدويًا. يجب أن يكون الهاتف والموجّه على LAN نفسها للإعداد والاقتران، وأن يتوفر الإنترنت للموجّه.
 
 تسمح سياسة الحزم الحالية بأهداف OpenWrt 25.12.5 من نوع `mediatek/filogic` و`x86/64`، بشرط وجود كتالوج موثَّق للمعمارية والتبعيات وABI النواة ومساحة flash/RAM بالضبط. لا يثبت اسم الهدف التوافق مع كل طراز. يلزم وصول مسؤول الموجّه للتثبيت. تُراجَع هوية SSH وهوية TLS المحلية الخاصة قبل الاقتران؛ ولا تُقبَل شهادة متغيرة بصمت.
 
@@ -95,21 +134,40 @@
 
 ## الخصوصية
 
-تُشفَّر الملفات الشخصية والإعدادات محليًا بمفتاح Android Keystore. لا توجد حزم SDK للإعلانات أو التحليلات. تتصل فحوص VPN بـ `www.google.com/generate_204`، وتأتي معلومات IP الخروج من `ipwho.is`؛ وتستخدم تلك الطلبات شبكة VPN المختارة. عند إيقاف VPN، يمكن تحديث الموقع التقريبي عبر اتصال الإنترنت الحالي، بما فيه عبر الأداة. ترى تلك الخدمات الطلب وعنوان IP المصدر. تأتي جداول بصمات TLS الموقّعة من `foxhole-team.github.io/foxhole-db`؛ وتستخدم الاشتراكات روابط مزوّديك المحفوظة. لا يلزم موقع GPS.
+تُشفَّر الملفات الشخصية والإعدادات محليًا بمفتاح Android Keystore. لا توجد حزم SDK للإعلانات أو التحليلات. في وضع التحقق المعتاد، تتصل فحوص VPN بـ `www.google.com/generate_204`، وتأتي معلومات IP الخروج من `ipwho.is`؛ وتستخدم تلك الطلبات شبكة VPN المختارة. عند إيقاف VPN، يمكن تحديث الموقع التقريبي عبر اتصال الإنترنت الحالي، بما فيه عبر الأداة. ترى تلك الخدمات الطلب وعنوان IP المصدر. تأتي جداول بصمات TLS الموقّعة من `foxhole-team.github.io/foxhole-db`؛ وتستخدم الاشتراكات روابط مزوّديك المحفوظة. لا يلزم موقع GPS.
 
-## منظومة FoxHole
+استثناء: يتحقق وضع قواعد WireGuard، عند وجود قواعد مواقع أو تطبيقات محظورة، من محلّل DNS الموثَّق للملف الشخصي بدل فحوص HTTP وعنوان IP الخروج. تعني «متصل» في هذا الوضع إمكانية الوصول إلى DNS الملف الشخصي، لا إلى أي عنوان HTTP أو خدمة IP الخروج. لا يتاح موقع IP الخروج ويُرفَض تحديث Geo في هذا الوضع.
 
-| المشروع | الدور |
-| --- | --- |
-| [FoxHole Guard](https://github.com/foxhole-team/foxhole-guard) | VPN وTor/I2P وقواعد حركة البيانات والمراقبة المحلية على Android |
-| [FoxHole VPN](https://github.com/foxhole-team/foxhole-vpn) | عميل VPN بسيط وإدارة OpenWrt مقترن |
-| [FoxHole Core](https://github.com/foxhole-team/foxhole-core) | نواة شبكة مشتركة بلغة Rust؛ تختلف الميزات حسب البناء |
-| [FoxHole OpenWrt](https://github.com/foxhole-team/foxhole-openwrt-client) | VPN الموجّه وإدارة الشبكة المحلية |
-| [FoxHole DB](https://github.com/foxhole-team/foxhole-db) | مجموعات بيانات وقواعد مرجعية موقّعة |
 
 ## المساهمة والدعم والترخيص
 
-أبلغ عن الأخطاء واقترح التغييرات عبر [Issues](https://github.com/foxhole-team/foxhole-vpn/issues). نطوّر FoxHole VPN ونصونه بوقتنا ومواردنا الخاصة، مع استخدام أدوات الذكاء الاصطناعي في التطوير. يساعد دعمك في تخصيص وقت أكبر للمشروع وتسريع التطوير. تتوفر [وسائل الدعم والمحافظ](../README.md#cryptocurrency-wallets) في الصفحة الرئيسية.
+أبلغ عن الأخطاء واقترح التغييرات عبر [Issues](https://github.com/foxhole-team/foxhole-vpn/issues).
+
+[تسليم APK ومعماريات ABI](apk-delivery-abis.md) · [بناء F-Droid من المصدر](fdroid-source-build.md).
+
+## 💖 دعم التطوير
+
+<a id="cryptocurrency-wallets"></a>
+
+### 🪙 محافظ العملات الرقمية
+
+**XMR (Monero):**
+
+```text
+48yBVPTdcyJ1WoJtnKmVpEZziEsDy4HvbCW7eQDS9mfdiWPFXwZ8F5h9YZ2UTTBLxPcJgQgvth7iqLZM2yMCaQ432qaouqr
+```
+
+**BTC (Bitcoin):**
+
+```text
+bc1qatnyy7jcpqrp0d3dk9rta9vqfejgh4mysd6m2f
+```
+
+**ETH (Ethereum):**
+
+```text
+0xDEBA357Cc8f5E865ea7FFa98E138C8241A16A465
+```
 
 [GPL-3.0-or-later](../LICENSE) · Copyright (C) 2026 FOXHOLE TEAM. تراخيص المكونات في الإعدادات ← حول التطبيق، وفي [إشعارات الأطراف الثالثة](../THIRD_PARTY_NOTICES.md).
 

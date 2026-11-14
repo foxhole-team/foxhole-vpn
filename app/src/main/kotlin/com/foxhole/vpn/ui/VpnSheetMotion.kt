@@ -11,7 +11,7 @@ import androidx.compose.animation.slideOutVertically
 
 // Material3 1.4 keeps MotionScheme internal; use standard fast tokens.
 internal object VpnSheetMotion {
-    fun <T> defaultSpatialSpec(): FiniteAnimationSpec<T> = spring(dampingRatio = .9f, stiffness = 1400f)
+    fun <T> defaultSpatialSpec(): FiniteAnimationSpec<T> = spring(dampingRatio = 1f, stiffness = 1400f)
     fun <T> fastEffectsSpec(): FiniteAnimationSpec<T> = spring(dampingRatio = 1f, stiffness = 3800f)
 
     fun pageTransition(animateSize: Boolean = true, forward: Boolean = true): ContentTransform = ContentTransform(

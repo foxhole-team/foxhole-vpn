@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
@@ -22,6 +23,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
@@ -34,6 +36,7 @@ import com.foxhole.vpn.R
 internal fun VpnSheetContent(title: Int, icon: Int, modifier: Modifier = Modifier, busy: Boolean = false,
     actions: @Composable RowScope.() -> Unit = {}, titleHelp: Int? = null, titleBadge: Int? = null,
     compactHeader: Boolean = false,
+    titleMaxLines: Int = Int.MAX_VALUE,
     scrollableBody: Boolean = false, footer: (@Composable ColumnScope.() -> Unit)? = null, content: @Composable ColumnScope.() -> Unit) {
     Column(modifier.fillMaxWidth().padding(horizontal = 20.dp).padding(bottom = 12.dp)) {
         Row(
@@ -46,8 +49,8 @@ internal fun VpnSheetContent(title: Int, icon: Int, modifier: Modifier = Modifie
             Row(Modifier.weight(1f), verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 val titleStyle = if (titleBadge != null || compactHeader) MaterialTheme.typography.titleMedium else MaterialTheme.typography.titleLarge
-                Text(stringResource(title), Modifier.weight(1f, fill = titleBadge == null), style = titleStyle,
-                    maxLines = if (titleBadge != null || compactHeader) 1 else Int.MAX_VALUE,
+                Text(stringResource(title), Modifier.weight(1f, fill = titleBadge == null), style = if (icon == R.drawable.lin_help) titleStyle.copy(fontFamily = FontFamily.SansSerif) else titleStyle,
+                    maxLines = if (titleBadge != null || compactHeader) 1 else titleMaxLines,
                     overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
                 titleBadge?.let { badge ->
                     Surface(modifier = Modifier.offset(y = (-6).dp), shape = MaterialTheme.shapes.extraSmall, color = MaterialTheme.colorScheme.surfaceContainerHigh) {
@@ -62,8 +65,10 @@ internal fun VpnSheetContent(title: Int, icon: Int, modifier: Modifier = Modifie
                     CircularProgressIndicator(Modifier.size(20.dp).semantics { contentDescription = working }, strokeWidth = 2.dp)
                 }
             }
-            if (titleHelp != null) VpnRouterHelpButton(title, titleHelp, actionStyle = true)
-            actions()
+            Row(Modifier.offset(x = 12.dp), verticalAlignment = Alignment.CenterVertically) {
+                if (titleHelp != null) VpnRouterHelpButton(title, titleHelp, actionStyle = true)
+                actions()
+            }
         }
         if (scrollableBody) {
             Column(Modifier.weight(1f, fill = false).fillMaxWidth().verticalScroll(rememberScrollState())) { content() }
@@ -83,24 +88,28 @@ internal fun VpnRouterSheetContent(
     scrollable: Boolean = true,
     titleHelp: Int? = null,
     naturalHeight: Boolean = true,
+    titleMaxLines: Int = 1,
+    titleHelpContent: (@Composable () -> Unit)? = null,
+    actionsBeforeHelp: Boolean = false,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     Column(modifier.then(if (naturalHeight) Modifier.fillMaxWidth() else Modifier.fillMaxSize())
         .padding(horizontal = 20.dp).padding(bottom = 8.dp)) {
-        Row(Modifier.fillMaxWidth().padding(bottom = 12.dp),
+        Row(Modifier.fillMaxWidth().padding(bottom = 12.dp).heightIn(min = 48.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             Icon(painterResource(icon), contentDescription = null, modifier = Modifier.size(24.dp),
                 tint = if (icon == R.drawable.lin_trash) vpnDeleteColor() else LocalContentColor.current)
-            Text(stringResource(title), modifier = Modifier.weight(1f), style = MaterialTheme.typography.titleMedium,
-                maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
+            Text(stringResource(title), modifier = Modifier.weight(1f), style = if (icon == R.drawable.lin_help) MaterialTheme.typography.titleMedium.copy(fontFamily = FontFamily.SansSerif) else MaterialTheme.typography.titleMedium,
+                maxLines = titleMaxLines, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
             if (busy) {
                 val working = stringResource(R.string.vpn_working)
                 CircularProgressIndicator(Modifier.size(20.dp).semantics { contentDescription = working }, strokeWidth = 2.dp)
             }
-            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(0.dp)) {
-                if (titleHelp != null) VpnRouterHelpButton(title, titleHelp, actionStyle = true)
-                actions()
+            Row(Modifier.offset(x = 12.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(0.dp)) {
+                if (actionsBeforeHelp) actions()
+                if (titleHelp != null) VpnRouterHelpButton(title, titleHelp, actionStyle = true, helpContent = titleHelpContent)
+                if (!actionsBeforeHelp) actions()
             }
         }
         val body = Modifier.weight(1f, fill = !naturalHeight).fillMaxWidth().then(LocalVpnSheetBodyGestures.current)

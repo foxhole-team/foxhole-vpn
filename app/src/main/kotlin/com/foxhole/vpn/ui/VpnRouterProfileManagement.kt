@@ -36,7 +36,7 @@ internal fun VpnRouterProfileManagementContent(name: String, protocol: String, p
         if (profile != null) VpnRouterClientQr(profile, name)
         else Text(stringResource(if (loading) R.string.router_control_profile_loading else R.string.router_control_qr_unavailable),
             style = MaterialTheme.typography.bodySmall)
-        OutlinedButton(onClick = onImport, enabled = enabled && profile != null,
+        OutlinedButton(colors = vpnNeutralOutlinedButtonColors(), onClick = onImport, enabled = enabled && profile != null,
             modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)) {
             Icon(painterResource(R.drawable.lin_download), null, Modifier.size(18.dp))
             Text(stringResource(R.string.router_control_import_phone), Modifier.padding(start = 8.dp))
@@ -49,7 +49,7 @@ internal fun VpnRouterProfileManagementContent(name: String, protocol: String, p
 @Composable
 internal fun VpnRouterProfileActionsFooter(enabled: Boolean, onShare: () -> Unit, onRemove: () -> Unit) {
     Row(Modifier.fillMaxWidth().height(IntrinsicSize.Min), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        OutlinedButton(onClick = onShare, modifier = Modifier.weight(1f).heightIn(min = 56.dp).fillMaxHeight(), enabled = enabled) {
+        OutlinedButton(colors = vpnNeutralOutlinedButtonColors(), onClick = onShare, modifier = Modifier.weight(1f).heightIn(min = 56.dp).fillMaxHeight(), enabled = enabled) {
             Icon(painterResource(R.drawable.router_review_share), null, Modifier.size(18.dp))
             Text(stringResource(R.string.router_review_share), Modifier.padding(start = 8.dp))
         }

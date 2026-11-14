@@ -55,7 +55,7 @@ internal fun VpnAppRouting.withRule(packageName: String, route: VpnAppRoute): Vp
 
 internal fun VpnAppRouting.enginePolicy(ownerPackage: String): VpnRoutingPolicy = VpnRoutingPolicy(
     applicationScope(ownerPackage), webRules.map { VpnWebsiteRule(it.mask, it.route == VpnAppRoute.VPN, it.route == VpnAppRoute.BLOCK) },
-    if (mode == VpnRoutingMode.SELECTED_APPS) rules.filter { it.route == VpnAppRoute.BLOCK }.map { it.packageName }.toSet() else emptySet(),
+    rules.filter { it.route == VpnAppRoute.BLOCK }.map { it.packageName }.toSet(),
 )
 
 internal fun VpnAppRouting.withWebRule(mask: String, route: VpnAppRoute): VpnAppRouting {

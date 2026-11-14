@@ -113,7 +113,7 @@ internal fun VpnScenariosSheet(
     }
     VpnSheetContent(R.string.vpn_scenarios, R.drawable.lin_apps, busy = busy,
         compactHeader = true, scrollableBody = true, footer = {
-        val addColor = routerConnectColor()
+        val addColor = if (LocalVpnColors.current.monochrome) LocalVpnColors.current.foreground else routerConnectColor()
         OutlinedButton(onClick = { if (ui.webView) showWebsiteInput = true else showPicker = true }, enabled = enabled,
             border = BorderStroke(1.dp, if (enabled) addColor else LocalVpnColors.current.border),
             colors = androidx.compose.material3.ButtonDefaults.outlinedButtonColors(contentColor = addColor),
@@ -165,10 +165,11 @@ internal fun VpnScenariosSheet(
                 enabled = enabled && routing.mode == VpnRoutingMode.SELECTED_APPS,
                 tag = "vpn-scenario-default", icon = R.drawable.router_device_phone) { changeScenario(routing.copy(defaultThroughVpn = it)) }
         }
-        Row(Modifier.padding(top = 12.dp, bottom = 12.dp),
+        Row(Modifier.fillMaxWidth().padding(top = 12.dp, bottom = 12.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
             Icon(painterResource(R.drawable.lin_apps), null, Modifier.size(20.dp))
-            Text(stringResource(R.string.vpn_app_rules), style = MaterialTheme.typography.titleSmall)
+            Text(stringResource(R.string.vpn_app_rules), Modifier.weight(1f), style = MaterialTheme.typography.titleSmall)
+            VpnRouterHelpButton(R.string.vpn_app_rules, R.string.vpn_app_rules_context_help, actionStyle = true)
         }
         if (routing.rules.isEmpty()) {
             ScenarioEmptyState(stringResource(R.string.vpn_app_rules_empty))
@@ -215,10 +216,10 @@ internal fun VpnScenariosSheet(
                 Text(stringResource(R.string.vpn_scenario_delete_body, label),
                     style = MaterialTheme.typography.bodyMedium, modifier = Modifier.padding(bottom = 20.dp))
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    OutlinedButton(onClick = { removing = null }, modifier = Modifier.weight(1f).heightIn(min = 56.dp)) {
+                    OutlinedButton(colors = vpnNeutralOutlinedButtonColors(), onClick = { removing = null }, modifier = Modifier.weight(1f).heightIn(min = 56.dp)) {
                         Text(stringResource(R.string.vpn_cancel))
                     }
-                    Button(enabled = enabled, onClick = {
+                    Button(colors = vpnNeutralButtonColors(), enabled = enabled, onClick = {
                         haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
                         removing = null
                         onChange { current -> current.copy(rules = current.rules.filterNot { it.packageName == packageName }) }
@@ -235,10 +236,10 @@ internal fun VpnScenariosSheet(
                 Text(stringResource(R.string.vpn_scenario_confirm_body),
                     style = MaterialTheme.typography.bodyMedium, modifier = Modifier.padding(bottom = 12.dp))
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    OutlinedButton(onClick = { pending = null }, modifier = Modifier.weight(1f).heightIn(min = 56.dp)) {
+                    OutlinedButton(colors = vpnNeutralOutlinedButtonColors(), onClick = { pending = null }, modifier = Modifier.weight(1f).heightIn(min = 56.dp)) {
                         Text(stringResource(R.string.vpn_cancel))
                     }
-                    Button(enabled = enabled, onClick = {
+                    Button(colors = vpnNeutralButtonColors(), enabled = enabled, onClick = {
                         pending = null
                         onChange { current ->
                             check(current.mode == before.mode && current.defaultThroughVpn == before.defaultThroughVpn) { "Scenario changed before confirmation" }
@@ -358,10 +359,8 @@ internal fun scenarioRouteLabel(route: VpnAppRoute): Int = when (route) {
     VpnAppRoute.BLOCK -> R.string.vpn_app_route_block
 }
 
-private fun scenarioModeIcon(mode: VpnRoutingMode): Int = when (mode) {
-    VpnRoutingMode.WHOLE_DEVICE -> R.drawable.router_device_phone
-    VpnRoutingMode.SELECTED_APPS -> R.drawable.lin_apps
-}
+private fun scenarioModeIcon(mode: VpnRoutingMode): Int =
+    com.foxhole.vpn.vpnScenarioStatusIcon(mode)
 
 @Composable
 private fun ScenarioOutlinedGroup(content: @Composable ColumnScope.() -> Unit) {
@@ -473,7 +472,7 @@ private fun ScenarioApplicationPicker(
         } else {
             if (inventory?.failed == true) {
                 ScenarioEmptyState(stringResource(R.string.vpn_scenario_picker_failed))
-                OutlinedButton(onClick = onSystemPicker, enabled = enabled, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)) {
+                OutlinedButton(colors = vpnNeutralOutlinedButtonColors(), onClick = onSystemPicker, enabled = enabled, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)) {
                     Text(stringResource(R.string.vpn_scenario_system_picker))
                 }
             }

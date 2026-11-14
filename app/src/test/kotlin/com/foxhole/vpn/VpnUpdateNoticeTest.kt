@@ -32,7 +32,7 @@ internal class VpnUpdateNoticeTest {
     }
 
     @Test fun freshAndOlderRecordsRequireAcknowledgement() = runBlocking {
-        for (revision in listOf(-1, 0)) {
+        for (revision in listOf(-1, 0, VPN_UPDATE_NOTICE_REVISION - 1)) {
             val store = Store(revision)
             val notice = VpnUpdateNotice(store)
             assertFalse(notice.state.value.loaded)

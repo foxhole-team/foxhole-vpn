@@ -41,9 +41,15 @@ def path_root(value, suffix):
 def producer_roots(component, steps):
     # These shapes come from the fully verified, hash-bound producer recipe, not the consumer checkout.
     ndks = set()
+    ndk_tool_suffixes = [
+        '/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip',
+        '/toolchains/llvm/prebuilt/darwin-arm64/bin/llvm-strip',
+        '/toolchains/llvm/prebuilt/darwin-x86_64/bin/llvm-strip',
+    ]
     for step in steps:
-        if step['argv'][0].endswith('/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip'):
-            ndks.add(path_root(step['argv'][0], '/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip'))
+        for suffix in ndk_tool_suffixes:
+            if step['argv'][0].endswith(suffix):
+                ndks.add(path_root(step['argv'][0], suffix))
     require(len(ndks) == 1, 'One bound producer NDK command root is required')
     if component == 'graphics':
         first = steps[0]['argv']

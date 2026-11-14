@@ -30,11 +30,17 @@
     <string name="vpn_license_required">Akzeptieren Sie zuerst die Lizenzvereinbarung</string>
     <string name="vpn_license_storage_error">Ihre Zustimmung konnte nicht gelesen oder gespeichert werden. Versuchen Sie es erneut.</string>
     <string name="vpn_license_title">FoxHole VPN · Lizenzvereinbarung</string>
-    <string name="vpn_release_notes_formats">Neue Abonnementformate: kompatible Clash/Mihomo-YAML/JSON-Dateien und Outline-JSON.</string>
-    <string name="vpn_release_notes_imports">Import von v2rayTun-Links, FoxHole-JSON-Profilen und eingefügtem SIP008-JSON.</string>
-    <string name="vpn_release_notes_router">Installieren und verwalten Sie VPN auf einem Router mit FoxHole OpenWrt Client direkt aus der App.</string>
-    <string name="vpn_release_notes_storage_error">Ihre Bestätigung konnte nicht gelesen oder gespeichert werden. Versuchen Sie es erneut.</string>
+    <string name="vpn_release_notes_formats">Neue Abonnementformate: kompatible Clash/Mihomo-YAML/JSON-Dateien und Outline-JSON</string>
+    <string name="vpn_release_notes_imports">Import von v2rayTun-Links, FoxHole-JSON-Profilen und eingefügtem SIP008-JSON</string>
+    <string name="vpn_release_notes_router">Installieren und verwalten Sie VPN auf einem Router mit FoxHole OpenWrt Client direkt aus der App</string>
+    <string name="vpn_release_notes_storage_error">Ihre Bestätigung konnte nicht gelesen oder gespeichert werden. Versuchen Sie es erneut</string>
     <string name="vpn_release_notes_title">Was ist neu</string>
     <string name="vpn_router_error_home_vpn">Es gibt keine verifizierte VPN-Route zum gekoppelten Router. Verbinden Sie sich mit dessen VPN und aktivieren Sie die Verwaltung über das Heim-VPN in den Routereinstellungen.</string>
     <string name="vpn_router_local_network_purpose">Die App verwendet Ihr lokales Netzwerk, um den OpenWrt-Router zu finden und sein VPN von diesem Telefon aus zu verwalten.</string>
+    <string name="router_discovery_ready_to_pair">Router ist bereit zum Koppeln</string>
+    <string name="router_discovery_setup_question">Soll der Installationsassistent für das FoxHole OpenWrt-Paket gestartet werden?</string>
+    <string name="router_discovery_cancel">Abbrechen</string>
+    <string name="router_discovery_continue">Weiter</string>
+    <string name="router_setup_compatibility_title">Installationskompatibilität</string>
+    <string name="router_setup_supported_versions">Installationsversionen</string>
 </resources>

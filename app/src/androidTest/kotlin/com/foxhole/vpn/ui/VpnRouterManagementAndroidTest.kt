@@ -40,7 +40,7 @@ class VpnRouterManagementAndroidTest {
         compose.runOnIdle { assertEquals(1, findRequests) }
     }
 
-    @Test fun notFoundOffersRetryThenManualEntryWithoutCompatibilityClaims() {
+    @Test fun notFoundOffersRetryWithoutManualEntryOrCompatibilityClaims() {
         var retries = 0
         var manual = 0
         compose.setContent { VpnUiTheme(VpnTheme.DARK) {
@@ -52,11 +52,9 @@ class VpnRouterManagementAndroidTest {
         compose.onNodeWithText(context.getString(R.string.router_review_supported_platforms)).assertDoesNotExist()
         compose.onNodeWithContentDescription(context.getString(R.string.router_review_wifi_connected)).assertIsDisplayed()
         val retry = compose.onNodeWithText(context.getString(R.string.router_review_retry_search))
-        val enter = compose.onNodeWithText(context.getString(R.string.router_review_enter_manually))
-        assertTrue(retry.fetchSemanticsNode().boundsInRoot.center.y < enter.fetchSemanticsNode().boundsInRoot.center.y)
+        compose.onNodeWithText(context.getString(R.string.router_review_enter_manually)).assertDoesNotExist()
         retry.performClick()
-        enter.performClick()
-        compose.runOnIdle { assertEquals(1, retries); assertEquals(1, manual) }
+        compose.runOnIdle { assertEquals(1, retries); assertEquals(0, manual) }
     }
 
     @Test fun reachableUnknownPackageRetainsCompatibilityAndAnHonestStatus() {

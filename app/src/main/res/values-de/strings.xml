@@ -48,7 +48,7 @@
     <string name="vpn_help_connect_title">Verbindung</string>
     <string name="vpn_help_connect_body">Importieren Sie ein Profil Ihres VPN-Anbieters oder Servers, wählen Sie es aus, tippen Sie auf „Start“ und erlauben Sie VPN im Android-Systemdialog. „Stopp“ bricht den Verbindungsaufbau ab und trennt das VPN.</string>
     <string name="vpn_help_profiles_title">Profile</string>
-    <string name="vpn_help_profiles_body">Halten Sie ein gespeichertes VPN-Profil gedrückt, um es zu verwalten. Sie können es teilen, aktualisieren, löschen oder an einen gekoppelten Router senden. Dabei wird das gesamte Profil oder der ursprüngliche Link einschließlich möglicher Zugangsdaten übertragen. Teilen Sie es nur mit Personen, denen Sie vertrauen. Profile aus Anbieter-Abonnements und dynamischen Outline-Schlüsseln können aktualisiert werden.</string>
+    <string name="vpn_help_profiles_body">Halten Sie ein gespeichertes VPN-Profil gedrückt, um es zu verwalten. Sie können es teilen, aktualisieren, löschen oder an einen gekoppelten Router senden. Dabei werden nur die ausgewählten Knoten und erforderlichen Abonnementdaten übertragen, die Zugangsdaten enthalten können. Teilen Sie es nur mit vertrauenswürdigen Personen. Anbieter-Abonnements und dynamische Outline-Schlüssel werden aktualisiert.</string>
     <string name="vpn_import">IMPORTIEREN</string>
     <string name="vpn_import_text">Konfiguration oder Link einfügen</string>
     <string name="vpn_import_file">DATEI AUSWÄHLEN</string>

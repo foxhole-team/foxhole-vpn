@@ -34,12 +34,11 @@ class RouterReviewBackendTest {
         wizard.begin(RouterWizardPath.SETUP, "NL")
         wizard.inspectAddress("192.168.1.1")
         wizard.acceptIdentity()
-        wizard.confirmInstallProtocols()
         val password = "demo".toCharArray()
-        wizard.login(password)
+        wizard.login(password); wizard.confirmCompatibility(); wizard.confirmInstallProtocols()
         assertTrue(password.all { it == '\u0000' })
         assertEquals(RouterStorageMode.FLASH, wizard.state.value.storageMode)
-        wizard.install()
+        wizard.options(wizard.state.value.options.copy(licenseAccepted = true)); wizard.install()
         assertEquals(RouterWizardStage.NEW_PIN, wizard.state.value.stage)
         wizard.changePin("5678".toCharArray())
         wizard.options(
@@ -79,10 +78,9 @@ class RouterReviewBackendTest {
         wizard.begin(RouterWizardPath.SETUP, "US")
         wizard.inspectAddress("192.168.1.1")
         wizard.acceptIdentity()
-        wizard.confirmInstallProtocols()
-        wizard.login("demo".toCharArray())
+        wizard.login("demo".toCharArray()); wizard.confirmCompatibility(); wizard.confirmInstallProtocols()
         assertEquals(RouterStorageMode.RAM, wizard.state.value.storageMode)
-        val installing = launch { wizard.install() }
+        val installing = launch { wizard.options(wizard.state.value.options.copy(licenseAccepted = true)); wizard.install() }
         runCurrent()
         advanceTimeBy(100)
         wizard.close()

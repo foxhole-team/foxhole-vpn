@@ -37,5 +37,6 @@ class VpnApplication : Application() {
         applicationScope.launch { appUpdater.restore() }
         VpnAppUpdateWork.schedule(this)
         startWidgetUpdates(this, applicationScope)
+        com.foxhole.vpn.runtime.startVpnQuickSettingsTileUpdates(this, applicationScope)
     }
 }

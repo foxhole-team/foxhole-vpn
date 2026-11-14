@@ -25,12 +25,21 @@ internal class RouterProfileSelection(
 }
 
 internal class RouterPhoneProfileExport(private val controller: VpnController) {
-    suspend fun selected(profileId: String): RouterProfileSelection {
+    suspend fun selected(profileId: String): RouterProfileSelection = export(profileId, null, false)
+
+    suspend fun requested(request: RouterPhoneTransferRequest): RouterProfileSelection =
+        export(request.profileId, request.optionId, true)
+
+    private suspend fun export(profileId: String, requestedOptionId: String?, specific: Boolean): RouterProfileSelection {
         controller.awaitReady()
         val before = controller.state.value
         val profile = before.profiles.singleOrNull { it.id == profileId } ?: throw RouterApiFailure(RouterApiError.UNSUPPORTED)
-        val option = if (profile.protocolOptions.isEmpty()) null else {
-            profile.protocolOptions.singleOrNull { it.id == profile.selectedProtocolOptionId }
+        val option = if (profile.protocolOptions.isEmpty()) {
+            if (specific && requestedOptionId != null) throw RouterApiFailure(RouterApiError.UNSUPPORTED)
+            null
+        } else {
+            val optionId = if (specific) requestedOptionId else profile.selectedProtocolOptionId
+            profile.protocolOptions.singleOrNull { it.id == optionId }
                 ?: throw RouterApiFailure(RouterApiError.UNSUPPORTED)
         }
         val selected = controller.exportProfile(profileId, option?.let { setOf(it.id) } ?: emptySet())

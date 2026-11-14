@@ -59,6 +59,8 @@ class RouterDiscoveryCoordinatorTest {
         val actions = mutableListOf<String>()
         var resetReplyLost = false
         var resetObservation: (() -> Unit)? = null
+        var setupPreparations = 0
+        var prechecks = 0
         var sshInspections = 0
         var tlsInspections = 0
         var discoveryAccess: suspend () -> Unit = {}
@@ -111,6 +113,10 @@ class RouterDiscoveryCoordinatorTest {
             })
         }
         val setup = object : RouterSetupService {
+            override suspend fun prepareInstallation() { setupPreparations++ }
+            override suspend fun precheck(address: String, hostKey: ByteArray, password: CharArray): RouterSetupInspection {
+                prechecks++; password.fill('\u0000'); error("no setup precheck during discovery or existing-package pairing")
+            }
             override val installCatalog = RouterInstallCatalogTest.catalog(setOf(RouterInstallProtocol.HYSTERIA2))
             override suspend fun inspectSshIdentity(address: String): ByteArray {
                 sshInspections++
@@ -259,10 +265,14 @@ class RouterDiscoveryCoordinatorTest {
         assertEquals(RouterWizardPath.PAIR, f.coordinator.state.value.path)
         assertEquals(RouterWizardStage.LOGIN, f.coordinator.state.value.stage)
         assertEquals("9.7.1-r4", f.coordinator.state.value.discovery?.packageVersion)
+        assertEquals(0, f.setupPreparations)
+        assertEquals(0, f.prechecks)
         assertEquals(0, f.sshInspections)
         withContext(Dispatchers.Default) { f.coordinator.login("123456".toCharArray()) }
         assertEquals(RouterWizardStage.COMPLETE, f.coordinator.state.value.stage)
         assertFalse(f.coordinator.state.value.installedInThisWizard)
+        assertEquals(0, f.setupPreparations)
+        assertEquals(0, f.prechecks)
         assertFalse(f.actions.contains("setup.reset"))
         f.coordinator.close()
     }
@@ -314,7 +324,7 @@ class RouterDiscoveryCoordinatorTest {
         assertEquals(null, f.coordinator.state.value.discovery?.pinConfigured)
         assertTrue(f.actions.isEmpty())
         f.coordinator.installDiscovered()
-        assertEquals(RouterWizardStage.PROTOCOLS, f.coordinator.state.value.stage)
+        assertEquals(RouterWizardStage.LOGIN, f.coordinator.state.value.stage)
         assertEquals(setOf(RouterInstallProtocol.HYSTERIA2), f.coordinator.state.value.installSelection?.protocols)
     }
 

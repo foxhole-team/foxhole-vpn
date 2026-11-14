@@ -12,8 +12,8 @@
     <string name="router_engines_download_size">ダウンロード</string>
     <string name="router_engines_reconnect_note">ルーターVPNが再接続します。</string>
     <string name="router_engines_keep_active">ルーターVPNは再起動しません。</string>
-    <string name="router_engines_unavailable">プロトコル管理を利用できません。</string>
-    <string name="router_engines_not_released">このルーター向けの公開済みパッケージはありません。</string>
+    <string name="router_engines_unavailable">VPN プロトコルの管理を利用できません。</string>
+    <string name="router_engines_not_released">このルーターで利用できる FoxHole OpenWrt パッケージはありません。</string>
     <string name="router_engines_stale">ルーターの設定が変更されました。インストール内容を再確認してください。</string>
     <string name="router_engines_no_space">ルーターの空きストレージまたはRAMが不足しています。</string>
     <string name="router_engines_profile_graph">このプロファイルは未対応のプロトコルの組み合わせを必要とします。</string>
@@ -32,8 +32,8 @@
     <string name="router_engines_close_progress">この画面を閉じても、ルーターでインストールは続行されます。</string>
     <string name="router_engines_check_status">状態を確認</string>
     <string name="router_engines_remove_confirm">選択したプロトコルをルーターから削除しますか？</string>
-    <string name="router_engines_flash_budget">内部ストレージ</string>
-    <string name="router_engines_ram_budget">RAM</string>
+    <string name="router_engines_flash_budget">ルーターの内部ストレージ</string>
+    <string name="router_engines_ram_budget">ルーターの RAM</string>
     <string name="router_engines_memory_budget">必要：%1$s、利用可能：%2$s</string>
     <string name="router_engines_show_result">結果を表示</string>
 </resources>

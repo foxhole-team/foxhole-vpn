@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_transfer_search">Поиск совместимых конфигураций VPN</string>
+    <string name="vpn_app_rules_context_help">Правила приложений VPN / Без VPN работают только в сценарии Прокси.\nБлокировка работает в любом сценарии.\nБлокировка приложений - Android 10 и новее.</string>
+    <string name="vpn_release_notes_router_ui_106">Обновлен интерфейс управления роутером</string>
+    <string name="vpn_release_notes_general_ui_106">Общие улучшения интерфейса</string>
+    <string name="vpn_release_notes_quick_settings_106">Добавлен ярлык в раздел быстрых настроек Android</string>
+    <string name="vpn_release_notes_all_subscriptions_106">Добавлен импорт сохраненных профилей VPN в разделе управления роутером</string>
+</resources>

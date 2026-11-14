@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="router_review_management">Cliente OpenWRT</string>
+    <string name="router_review_management">FoxHole OpenWRT</string>
     <string name="router_review_compatibility">Versiones de OpenWrt compatibles</string>
     <string name="router_review_platforms">Plataforma</string>
     <string name="router_review_catalog_pending">OpenWrt 25.12.5: mediatek/filogic y x86/64. La configuración comprueba la arquitectura y el espacio libre con el catálogo verificado de la versión.</string>
@@ -10,13 +10,13 @@
     <string name="router_review_protocols">Protocolos VPN</string>
     <string name="router_review_storage">Instalación</string>
     <string name="router_review_direct_ip">Dirección IPv4 estática</string>
-    <string name="router_review_remote_settings">Acceso VPN fuera de casa</string>
+    <string name="router_review_remote_settings">Gestión a través de redes móviles</string>
     <string name="router_review_phone_profile">Crear un perfil VPN para este teléfono</string>
     <string name="router_review_remote_help">Si tu router admite una dirección IP pública estática, puede actuar como puerta de enlace VPN para tus dispositivos. Ruta: dispositivo → router; el tráfico local sale directamente y el extranjero pasa por la conexión VPN activa.</string>
-    <string name="router_review_router_vpn">VPN OpenWRT</string>
+    <string name="router_review_router_vpn">Administración</string>
     <string name="router_review_vpn_clients">Clientes VPN</string>
     <string name="router_review_router_vpn_description">Perfiles, conexión y ajustes</string>
-    <string name="router_review_clients_description">Dispositivos domésticos y acceso remoto</string>
+    <string name="router_review_clients_description">Dispositivos del hogar</string>
     <string name="router_review_unavailable">Router no encontrado</string>
     <string name="router_review_control_disabled">Gestión del router desactivada</string>
     <string name="router_review_back">Volver</string>
@@ -37,8 +37,8 @@
     <string name="router_review_direct">Sin VPN</string>
     <string name="router_review_selected_profile">Perfil seleccionado del router</string>
     <string name="router_review_unpair">¿Desvincular el router?</string>
-    <string name="router_review_unpair_description">El teléfono dejará de administrar el router. La VPN seguirá funcionando mientras no elimines FoxHole.</string>
-    <string name="router_review_delete_package">Eliminar FoxHole del router</string>
+    <string name="router_review_unpair_description">El teléfono dejará de administrar el router. La VPN seguirá funcionando mientras no elimines FoxHole OpenWrt.</string>
+    <string name="router_review_delete_package">Eliminar FoxHole OpenWrt del router</string>
     <string name="router_review_delete_unavailable">La eliminación requiere un router accesible y un instalador compatible.</string>
     <string name="router_review_confirm_unpair">DESVINCULAR</string>
     <string name="router_review_share">COMPARTIR</string>
@@ -51,21 +51,21 @@
     <string name="router_review_collapse_devices">Ocultar dispositivos del hogar</string>
     <string name="router_review_progress_download">Descargando archivos de instalación</string>
     <string name="router_review_progress_upload">Enviando archivos al router</string>
-    <string name="router_review_progress_install">El router está descargando e instalando FoxHole</string>
-    <string name="router_review_progress_check">Comprobando VPN instalada</string>
+    <string name="router_review_progress_install">Descargando e instalando FoxHole OpenWrt</string>
+    <string name="router_review_progress_check">Comprobando</string>
     <string name="router_review_progress_percent">%1$d%%</string>
     <string name="router_review_find_router">BUSCAR ROUTER</string>
     <string name="router_review_router_found">Router encontrado</string>
     <string name="router_review_package_present">Se ha detectado FoxHole OpenWRT Client y está listo para vincularse con su dispositivo</string>
-    <string name="router_review_package_missing">FoxHole aún no está instalado</string>
-    <string name="router_review_package_unknown">No se pudo comprobar FoxHole. Busque el router de nuevo.</string>
-    <string name="router_review_reset_before_connect">Restablecer configuración de FoxHole</string>
+    <string name="router_review_package_missing">FoxHole OpenWrt aún no está instalado</string>
+    <string name="router_review_package_unknown">No se pudo comprobar FoxHole OpenWrt. Busque el router de nuevo.</string>
+    <string name="router_review_reset_before_connect">Restablecer configuración de FoxHole OpenWrt</string>
     <string name="router_review_setup_available">Router disponible para configurar</string>
-    <string name="router_review_owner_setup_required">Complete la primera configuración de FoxHole en LuCI con la cuenta del propietario.</string>
-    <string name="router_review_reset_unavailable">El restablecimiento de FoxHole no está disponible actualmente.</string>
+    <string name="router_review_owner_setup_required">Complete la primera configuración de FoxHole OpenWrt en LuCI con la cuenta del propietario.</string>
+    <string name="router_review_reset_unavailable">El restablecimiento de FoxHole OpenWrt no está disponible actualmente.</string>
     <string name="router_review_open_router_setup">ABRIR AJUSTES DEL ROUTER</string>
     <string name="router_review_manual_address">INTRODUCIR DIRECCIÓN</string>
-    <string name="router_review_local_traffic">Tráfico local</string>
+    <string name="router_review_local_traffic">Tráfico sin VPN</string>
     <string name="router_review_country_auto">Automático</string>
     <string name="router_review_country_unknown">País desconocido</string>
     <string name="router_review_country_description">País para el tráfico local: %1$s. Cambiar.</string>

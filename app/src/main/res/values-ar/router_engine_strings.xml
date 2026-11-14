@@ -12,8 +12,8 @@
     <string name="router_engines_download_size">التنزيل</string>
     <string name="router_engines_reconnect_note">سيُعاد اتصال VPN الموجّه.</string>
     <string name="router_engines_keep_active">لن يُعاد تشغيل VPN الموجّه.</string>
-    <string name="router_engines_unavailable">إدارة البروتوكولات غير متاحة.</string>
-    <string name="router_engines_not_released">لا تتوفر حزمة منشورة لهذا الموجّه.</string>
+    <string name="router_engines_unavailable">إدارة بروتوكولات VPN غير متاحة.</string>
+    <string name="router_engines_not_released">لا تتوفر حزمة FoxHole OpenWrt لهذا الموجّه.</string>
     <string name="router_engines_stale">تغيرت إعدادات الموجّه. راجع التثبيت مجددًا.</string>
     <string name="router_engines_no_space">لا تتوفر مساحة تخزين أو ذاكرة RAM كافية على الموجّه.</string>
     <string name="router_engines_profile_graph">يتطلب هذا الملف الشخصي مجموعة بروتوكولات غير مدعومة.</string>
@@ -32,8 +32,8 @@
     <string name="router_engines_close_progress">يستمر التثبيت على الموجّه بعد إغلاق هذه النافذة.</string>
     <string name="router_engines_check_status">التحقق من الحالة</string>
     <string name="router_engines_remove_confirm">هل تريد إزالة البروتوكول المختار من الموجّه؟</string>
-    <string name="router_engines_flash_budget">التخزين الداخلي</string>
-    <string name="router_engines_ram_budget">RAM</string>
+    <string name="router_engines_flash_budget">وحدة التخزين الداخلية للموجّه</string>
+    <string name="router_engines_ram_budget">ذاكرة الموجّه العشوائية</string>
     <string name="router_engines_memory_budget">المطلوب %1$s، والمتاح %2$s</string>
     <string name="router_engines_show_result">عرض النتيجة</string>
 </resources>

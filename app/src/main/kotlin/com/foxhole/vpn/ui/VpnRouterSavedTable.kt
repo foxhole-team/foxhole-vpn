@@ -60,10 +60,10 @@ internal fun VpnRouterSavedTable(routers: List<RouterSavedSummary>, selectedId: 
                                 keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
                                 keyboardActions = KeyboardActions(onDone = { save() }))
                             Row(Modifier.fillMaxWidth().padding(top = 4.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                                OutlinedButton(onClick = { editingId = null; keyboard?.hide() }, Modifier.weight(1f), shape = shape) {
+                                OutlinedButton(colors = vpnNeutralOutlinedButtonColors(), onClick = { editingId = null; keyboard?.hide() }, modifier = Modifier.weight(1f), shape = shape) {
                                     Text(stringResource(R.string.router_table_cancel))
                                 }
-                                OutlinedButton(onClick = { save() }, Modifier.weight(1f), enabled = enabled && valid, shape = shape) {
+                                OutlinedButton(colors = vpnNeutralOutlinedButtonColors(), onClick = { save() }, modifier = Modifier.weight(1f), enabled = enabled && valid, shape = shape) {
                                     Text(stringResource(R.string.router_table_save))
                                 }
                             }
@@ -85,10 +85,7 @@ internal fun VpnRouterSavedTable(routers: List<RouterSavedSummary>, selectedId: 
                                     modifier = Modifier.size(40.dp)) {
                                     Icon(painterResource(R.drawable.lin_settings), stringResource(R.string.router_review_settings), Modifier.size(22.dp))
                                 }
-                                IconButton(onClick = { onDelete(router.id) }, enabled = deleteEnabled,
-                                    modifier = Modifier.size(40.dp)) {
-                                    Icon(painterResource(R.drawable.lin_trash), stringResource(R.string.router_review_unpair), Modifier.size(22.dp), tint = vpnDeleteColor())
-                                }
+
                             }
                         }
                     }

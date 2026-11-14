@@ -48,7 +48,7 @@
     <string name="vpn_help_connect_title">Conexión</string>
     <string name="vpn_help_connect_body">Importa un perfil de tu proveedor VPN o servidor, selecciónalo, toca Iniciar y autoriza la VPN en el diálogo del sistema Android. Detener cancela la conexión en curso y desconecta la VPN.</string>
     <string name="vpn_help_profiles_title">Perfiles</string>
-    <string name="vpn_help_profiles_body">Mantén pulsado un perfil VPN guardado para administrarlo. Puedes compartirlo, actualizarlo, eliminarlo o enviarlo a un router vinculado. Se envía el perfil completo o el enlace original, incluidas las posibles credenciales de acceso. Comparte solo con personas de confianza. Se pueden actualizar perfiles de suscripciones de proveedores y claves dinámicas de Outline.</string>
+    <string name="vpn_help_profiles_body">Mantén pulsado un perfil VPN guardado para administrarlo. Puedes compartirlo, actualizarlo, eliminarlo o enviarlo a un router emparejado. Solo se envían los nodos seleccionados y los datos necesarios de la suscripción, que pueden incluir credenciales de acceso. Compártelo solo con personas de confianza. Se actualizan las suscripciones del proveedor y las claves dinámicas de Outline.</string>
     <string name="vpn_import">IMPORTAR</string>
     <string name="vpn_import_text">Pegar configuración o enlace</string>
     <string name="vpn_import_file">ELEGIR ARCHIVO</string>

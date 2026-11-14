@@ -51,7 +51,7 @@ internal fun VpnRouterProtocolsList(state: RouterEngineControlState, selected: S
         if (status == null) item { Text(stringResource(R.string.router_engines_unavailable)) }
         if (state.running) item { Text(stringResource(R.string.router_engines_busy)) }
         if (state.job != null) item {
-            OutlinedButton(onShowJob, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)) {
+            OutlinedButton(colors = vpnNeutralOutlinedButtonColors(), onClick = onShowJob, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)) {
                 Text(stringResource(if (state.job.running) R.string.router_engines_show_progress else R.string.router_engines_show_result))
             }
         }
@@ -69,7 +69,7 @@ internal fun VpnRouterProtocolsList(state: RouterEngineControlState, selected: S
                     Text(listOfNotNull(entry.version, stringResource(if (entry.active) R.string.router_engines_in_use else R.string.router_engines_installed))
                         .joinToString(" · "), style = MaterialTheme.typography.bodySmall, color = LocalVpnColors.current.muted)
                 }
-                if (entry.canUpdate) OutlinedButton(onClick = { onUpdate(entry.protocol) }, enabled = enabled && !state.running) {
+                if (entry.canUpdate) OutlinedButton(colors = vpnNeutralOutlinedButtonColors(), onClick = { onUpdate(entry.protocol) }, enabled = enabled && !state.running) {
                     Text(stringResource(R.string.router_engines_update))
                 }
                 IconButton(onClick = { onRemove(entry.protocol) }, enabled = enabled && !state.running && !entry.active) {

@@ -50,8 +50,6 @@ internal fun VpnSettingsScreen(
     onAppJournal: () -> Unit = {},
 ) {
     VpnSheetContent(R.string.vpn_settings, R.drawable.lin_settings, modifier.verticalScroll(rememberScrollState())) {
-        SettingsRow(R.string.vpn_profiles, onClick = onProfiles)
-        SettingsRow(R.string.vpn_system_settings, onClick = onSystemSettings)
         SettingsRow(R.string.vpn_appearance) { onSettingsDetail(VpnSettingsDetail.APPEARANCE) }
         SettingsRow(R.string.vpn_background_updates) { onSettingsDetail(VpnSettingsDetail.BACKGROUND_UPDATES) }
         SettingsRow(R.string.vpn_app_update_title, onClick = onAppUpdate)
@@ -70,6 +68,7 @@ internal fun VpnSettingsDetailScreen(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     busy: Boolean = false,
+    helpState: VpnHelpState = rememberVpnHelpState(),
 ) {
     val title = when (detail) {
         VpnSettingsDetail.APPEARANCE -> R.string.vpn_appearance
@@ -85,7 +84,7 @@ internal fun VpnSettingsDetailScreen(
     }
     if (detail == VpnSettingsDetail.HELP) {
         VpnRouterSheetContent(title, icon, modifier, busy = busy, scrollable = false, naturalHeight = true) {
-            HelpContent()
+            HelpContent(helpState)
         }
         return
     }
@@ -164,8 +163,8 @@ internal fun fontStyleLabel(style: VpnFontStyle): Int = when (style) {
 }
 
 @Composable
-private fun HelpContent() {
-    VpnHelpContent()
+private fun HelpContent(state: VpnHelpState) {
+    VpnHelpContent(state)
 }
 
 @Composable

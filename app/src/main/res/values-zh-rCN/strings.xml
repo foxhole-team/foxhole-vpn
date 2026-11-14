@@ -48,7 +48,7 @@
     <string name="vpn_help_connect_title">连接</string>
     <string name="vpn_help_connect_body">导入您的 VPN 服务商或自有服务器的配置，选中后点击“启动”，并在 Android 系统窗口中允许 VPN。“停止”会取消连接过程并断开 VPN。</string>
     <string name="vpn_help_profiles_title">配置</string>
-    <string name="vpn_help_profiles_body">长按已保存的 VPN 配置即可管理。可执行分享、更新、删除或发送到已配对路由器等操作。发送时会传输完整配置或原始链接，其中可能包含访问凭据。请仅与可信任的人分享。可更新来自服务商订阅和 Outline 动态密钥的配置。</string>
+    <string name="vpn_help_profiles_body">长按已保存的 VPN 配置进行管理。可分享、更新、删除，或发送到已配对的路由器。发送时仅传输选定节点和必要的订阅信息，其中可能包含访问凭据。仅与可信任的人分享。系统会更新服务商订阅和 Outline 动态密钥。</string>
     <string name="vpn_import">导入</string>
     <string name="vpn_import_text">粘贴配置或链接</string>
     <string name="vpn_import_file">选择文件</string>

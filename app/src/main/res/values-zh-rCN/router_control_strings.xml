@@ -16,7 +16,7 @@
     <string name="router_control_client_remove_body">是否删除 %1$s 的 VPN 访问权限？</string>
     <string name="router_control_client_remove_record_body">是否从路由器删除 %1$s？</string>
     <string name="router_control_country_direct">国内网站直连</string>
-    <string name="router_control_auto_home">家庭网络切换</string>
+    <string name="router_control_auto_home">智能</string>
     <string name="router_control_create_client">创建客户端</string>
     <string name="router_control_create">创建</string>
     <string name="router_control_client_name">客户端名称</string>
@@ -31,7 +31,7 @@
     <string name="router_control_create_help">Hysteria2 客户端。需要路由器的公网地址和已配置的入站 VPN。</string>
     <string name="router_control_enable_help">启用或关闭路由器管理。</string>
     <string name="router_control_country_help">根据路由器的互联网连接判断国家。点击国旗可更改。</string>
-    <string name="router_control_home_help">仅在确认受支持的连接后，才在手机和家庭路由器之间切换。</string>
+    <string name="router_control_home_help">智能连接仅在验证此配对路由器的家庭 Wi-Fi 网络及 VPN 路由后，断开从该路由器导入且正在使用的家庭 VPN 配置。切换到移动网络后，会重新连接同一个未更改的配置。必须开启家庭 VPN 服务器和移动网络管理。不会覆盖其他配置、其他 Wi-Fi 网络或手动操作。智能连接默认关闭，并需要监控通知。 重连仅在家庭 Wi-Fi 网络丢失后的90秒内尝试，而不是从暂停 VPN 时计时。手动操作或配置更改会取消切换。</string>
     <string name="router_control_vpn_help">启动或停止路由器上选中的配置。点击配置进行选择，长按进行操作。</string>
     <string name="router_control_lan_help">为每个设备选择 VPN 或“不经 VPN”。默认使用 VPN。VPN 配置的启动单独控制。</string>
     <string name="router_control_clients_help">打开 VPN 配置可查看二维码、导入、发送或删除。</string>
@@ -46,6 +46,6 @@
     <string name="router_control_protocols_loading">可用协议：正在检查…</string>
     <string name="router_control_protocols_empty">可用协议：尚未安装</string>
     <string name="router_profile_probe_failed">要管理 FoxHole OpenWRT 软件包，请连接到您的个人 VPN 或家庭 Wi-Fi 网络。</string>
-    <string name="router_control_home_vpn">通过 VPN 管理</string>
-    <string name="router_control_home_vpn_help">允许通过路由器的 VPN 网络管理路由器。需要静态公网 IP 地址。</string>
+    <string name="router_control_home_vpn">通过移动网络管理</string>
+    <string name="router_control_home_vpn_help">允许通过可信的已导入家庭 VPN 配置，在移动网络或其他 Wi-Fi 上管理此配对路由器。必须启用家庭 VPN 服务器和“通过移动网络管理”，并确认公网 IP。</string>
 </resources>

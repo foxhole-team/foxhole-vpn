@@ -15,4 +15,10 @@
     <string name="router_discovery_package_check">استجابت خدمة HTTPS، لكن تعذر التحقق من FoxHole. تحقق من إعداد الموجّه عبر الويب أو حاول مجددًا.</string>
     <string name="router_ssh_manual_setup">فحص OPENWRT / إعداد SSH</string>
     <string name="router_updates_device_download">جارٍ تنزيل حزمة FoxHole عبر جهازك</string>
+    <string name="router_discovery_ready_to_pair">الموجّه جاهز للاقتران</string>
+    <string name="router_discovery_setup_question">هل تريد تشغيل معالج تثبيت حزمة FoxHole OpenWrt؟</string>
+    <string name="router_discovery_cancel">إلغاء</string>
+    <string name="router_discovery_continue">متابعة</string>
+    <string name="router_setup_compatibility_title">توافق التثبيت</string>
+    <string name="router_setup_supported_versions">إصدارات التثبيت</string>
 </resources>

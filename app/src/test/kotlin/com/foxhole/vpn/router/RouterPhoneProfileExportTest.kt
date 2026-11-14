@@ -66,4 +66,19 @@ class RouterPhoneProfileExportTest {
         assertEquals(listOf(emptySet<String>(), null), controller.selections)
         assertNull(selected.sourceUrl)
     }
+
+    @Test fun anUnselectedNodeOfAnUnselectedSubscriptionExportsWithoutChangingPhoneChoices() = runTest {
+        val profile = subscription()
+        val controller = Controller(profile, "hysteria2://SyntheticOnly@1.1.1.1:443#First", "https://subscription.example.com/list")
+        val before = controller.state.value.copy(profiles = listOf(profile, profile.copy(id = "other-subscription")),
+            selectedProfileId = "other-subscription")
+        controller.state.value = before
+        val result = RouterPhoneProfileExport(controller).requested(RouterPhoneTransferRequest(profile.id, "first"))
+        assertEquals(profile.id, result.phoneProfileId)
+        assertEquals("first", result.selectedOptionId)
+        assertEquals("hysteria2", result.selectedProtocol)
+        assertEquals("First node", result.selectedNodeName)
+        assertEquals(listOf(setOf("first"), null), controller.selections)
+        assertEquals(before, controller.state.value)
+    }
 }

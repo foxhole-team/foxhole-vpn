@@ -98,4 +98,22 @@ class VpnAppRoutingTest {
         val connected = ProfileMutationOwner(10, VpnPhase.CONNECTED, true, false)
         assertFalse(profileMutationAdmitted(connected, ProfileMutationOwner(11, VpnPhase.STOPPING, true, false), changed, null))
     }
+
+    @Test fun wholeDeviceKeepsApplicationBlocksInsideTheTunnelAndIgnoresDirectExceptions() {
+        val block = VpnAppRule("org.example.blocked", VpnAppRoute.BLOCK)
+        val rules = VpnAppRouting(defaultThroughVpn = false, rules = listOf(vpn, direct, block))
+        val policy = rules.enginePolicy(owner)
+        assertEquals(VpnApplicationScope.WholeDevice, policy.applicationScope)
+        assertEquals(setOf(block.packageName), policy.blockedApplications)
+        assertFalse(policy.blockedApplications.contains(direct.packageName))
+    }
+
+    @Test fun switchingScenariosDoesNotSilentlyRemoveABlockRule() {
+        val block = VpnAppRule("org.example.blocked", VpnAppRoute.BLOCK)
+        val proxy = VpnAppRouting(VpnRoutingMode.SELECTED_APPS, false, listOf(vpn, direct, block))
+        val whole = proxy.copy(mode = VpnRoutingMode.WHOLE_DEVICE)
+        assertEquals(proxy.enginePolicy(owner).blockedApplications, whole.enginePolicy(owner).blockedApplications)
+        assertEquals(VpnApplicationScope.WholeDevice, whole.enginePolicy(owner).applicationScope)
+        assertTrue(whole.copy(rules = listOf(vpn, direct)).enginePolicy(owner).blockedApplications.isEmpty())
+    }
 }

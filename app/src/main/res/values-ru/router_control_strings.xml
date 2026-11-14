@@ -16,7 +16,7 @@
     <string name="router_control_client_remove_body">Удалить VPN-доступ для %1$s?</string>
     <string name="router_control_client_remove_record_body">Удалить профиль %1$s с роутера?</string>
     <string name="router_control_country_direct">Местный трафик</string>
-    <string name="router_control_auto_home">Автоподключение в домашней сети</string>
+    <string name="router_control_auto_home">Смарт</string>
     <string name="router_control_create_client">Создать клиента</string>
     <string name="router_control_create">СОЗДАТЬ</string>
     <string name="router_control_client_name">Имя клиента</string>
@@ -31,14 +31,14 @@
     <string name="router_control_create_help">Клиент Hysteria2. Нужны публичный адрес роутера и настроенный входящий VPN.</string>
     <string name="router_control_enable_help">Включить или отключить управление роутером.</string>
     <string name="router_control_country_help">Страна определяется по интернет-подключению роутера. Нажмите на флаг, чтобы изменить её.</string>
-    <string name="router_control_home_help">Переключение между телефоном и домашним роутером только после подтверждения поддерживаемого соединения.</string>
+    <string name="router_control_home_help">Смарт отключает только активное домашнее VPN-соединение, импортированное из этого сопряжённого роутера, при подключении к подтверждённой домашней Wi-Fi сети с проверенной маршрутизацией VPN. При переходе на сотовую сеть автоматически подключается тот же неизменённый профиль. Должны быть включены «Домашний VPN сервер» и «Управление в мобильных сетях». Другие профили, другие Wi-Fi сети и ручные действия не переопределяются. По умолчанию Смарт выключен; для работы нужно уведомление мониторинга. Повторное подключение выполняется в течение 90 секунд после потери домашней Wi-Fi сети, а не после отключения VPN. Ручное управление или изменение профиля отменяет переход.</string>
     <string name="router_control_vpn_help">Запуск или остановка выбранного профиля роутера. Нажмите профиль для выбора, удерживайте для действий.</string>
     <string name="router_control_lan_help">Для каждого устройства выберите VPN или «Без VPN». По умолчанию используется VPN. Запуск профиля VPN управляется отдельно.</string>
     <string name="router_control_clients_help">Откройте VPN-профиль для QR, импорта, отправки или удаления.</string>
     <string name="router_control_qr_loading">Создание QR…</string>
     <string name="router_control_profile_loading">Загружаю профиль…</string>
-    <string name="router_control_home_vpn">Управление через VPN</string>
-    <string name="router_control_home_vpn_help">Позволяет управлять роутером через его VPN-сеть. Требуется статический публичный IP-адрес.</string>
+    <string name="router_control_home_vpn">Управление в мобильных сетях</string>
+    <string name="router_control_home_vpn_help">Позволяет управлять этим сопряжённым роутером через доверенный импортированный профиль домашнего VPN в мобильных сетях или другой Wi-Fi сети. Должны быть включены «Домашний VPN сервер» и «Управление в мобильных сетях», а публичный IP подтверждён.</string>
     <string name="vpn_router_error_home_vpn">Нет проверенного VPN-маршрута к сопряжённому роутеру. Включите VPN к нему и разрешите управление через домашний VPN в настройках роутера.</string>
     <string name="router_profile_probe_failed">Для управления пакетом FoxHole OpenWRT подключитесь к вашему личному VPN или к домашней сети Wi-Fi.</string>
     <string name="router_profile_retry_pairing">Повторить сопряжение</string>

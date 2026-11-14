@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="router_review_management">OpenWRT Client</string>
+    <string name="router_review_management">FoxHole OpenWRT</string>
     <string name="router_review_compatibility">إصدارات OpenWrt المدعومة</string>
     <string name="router_review_platforms">المنصة</string>
     <string name="router_review_supported_platforms">OpenWrt 25.12.5: mediatek/filogic · x86/64</string>
@@ -11,13 +11,13 @@
     <string name="router_review_protocols">بروتوكولات VPN</string>
     <string name="router_review_storage">التثبيت</string>
     <string name="router_review_direct_ip">عنوان IPv4 ثابت</string>
-    <string name="router_review_remote_settings">وصول VPN من خارج المنزل</string>
+    <string name="router_review_remote_settings">الإدارة عبر شبكات الهاتف المحمول</string>
     <string name="router_review_phone_profile">إنشاء ملف VPN شخصي لهذا الهاتف</string>
     <string name="router_review_remote_help">إذا كان الموجّه يدعم عنوان IP عامًا ثابتًا، فيمكنه العمل بوابة VPN لأجهزتك. المسار: الجهاز ← الموجّه؛ تمر حركة البيانات المحلية مباشرةً، بينما تستخدم الحركة الخارجية اتصال VPN النشط.</string>
-    <string name="router_review_router_vpn">VPN OpenWRT</string>
+    <string name="router_review_router_vpn">الإدارة</string>
     <string name="router_review_vpn_clients">عملاء VPN</string>
     <string name="router_review_router_vpn_description">الملفات الشخصية والاتصال والإعدادات</string>
-    <string name="router_review_clients_description">الأجهزة المنزلية والوصول عن بُعد</string>
+    <string name="router_review_clients_description">الأجهزة المنزلية</string>
     <string name="router_review_unavailable">لم يُعثر على الموجّه</string>
     <string name="router_review_control_disabled">إدارة الموجّه معطلة</string>
     <string name="router_review_back">رجوع</string>
@@ -38,8 +38,8 @@
     <string name="router_review_direct">دون VPN</string>
     <string name="router_review_selected_profile">ملف الموجّه الشخصي المختار</string>
     <string name="router_review_unpair">هل تريد إلغاء اقتران الموجّه؟</string>
-    <string name="router_review_unpair_description">سيتوقف الهاتف عن إدارة الموجّه. سيستمر VPN في العمل ما لم تُزَل حزمة FoxHole.</string>
-    <string name="router_review_delete_package">إزالة FoxHole من الموجّه</string>
+    <string name="router_review_unpair_description">سيتوقف الهاتف عن إدارة الموجّه. سيستمر VPN في العمل ما لم تُزَل حزمة FoxHole OpenWrt.</string>
+    <string name="router_review_delete_package">إزالة FoxHole OpenWrt من الموجّه</string>
     <string name="router_review_delete_unavailable">تتطلب الإزالة موجّهًا يمكن الوصول إليه ومثبّتًا متوافقًا.</string>
     <string name="router_review_confirm_unpair">إلغاء الاقتران</string>
     <string name="router_review_share">مشاركة</string>
@@ -52,21 +52,21 @@
     <string name="router_review_collapse_devices">إخفاء الأجهزة المنزلية</string>
     <string name="router_review_progress_download">جارٍ تنزيل ملفات التثبيت</string>
     <string name="router_review_progress_upload">جارٍ إرسال الملفات إلى الموجّه</string>
-    <string name="router_review_progress_install">ينزّل الموجّه FoxHole ويثبّته</string>
-    <string name="router_review_progress_check">جارٍ فحص VPN المثبّت</string>
+    <string name="router_review_progress_install">جارٍ تنزيل FoxHole OpenWrt وتثبيته</string>
+    <string name="router_review_progress_check">جارٍ التحقق</string>
     <string name="router_review_progress_percent">%1$d%%</string>
     <string name="router_review_find_router">البحث عن الموجّه</string>
     <string name="router_review_router_found">عُثر على الموجّه</string>
     <string name="router_review_package_present">عُثر على FoxHole OpenWRT Client وهو جاهز للاقتران بجهازك</string>
-    <string name="router_review_package_missing">لم يُثبَّت FoxHole بعد</string>
-    <string name="router_review_package_unknown">تعذر فحص FoxHole. حاول البحث عن الموجّه مجددًا.</string>
-    <string name="router_review_reset_before_connect">إعادة ضبط إعداد FoxHole</string>
+    <string name="router_review_package_missing">لم يُثبَّت FoxHole OpenWrt بعد</string>
+    <string name="router_review_package_unknown">تعذر فحص FoxHole OpenWrt. حاول البحث عن الموجّه مجددًا.</string>
+    <string name="router_review_reset_before_connect">إعادة ضبط إعداد FoxHole OpenWrt</string>
     <string name="router_review_setup_available">الموجّه متاح للإعداد</string>
-    <string name="router_review_owner_setup_required">أكمل إعداد FoxHole الأولي في LuCI باستخدام حساب المالك.</string>
-    <string name="router_review_reset_unavailable">إعادة ضبط FoxHole غير متاحة حاليًا.</string>
+    <string name="router_review_owner_setup_required">أكمل إعداد FoxHole OpenWrt الأولي في LuCI باستخدام حساب المالك.</string>
+    <string name="router_review_reset_unavailable">إعادة ضبط FoxHole OpenWrt غير متاحة حاليًا.</string>
     <string name="router_review_open_router_setup">فتح إعدادات الموجّه</string>
     <string name="router_review_manual_address">إدخال العنوان</string>
-    <string name="router_review_local_traffic">حركة البيانات المحلية</string>
+    <string name="router_review_local_traffic">حركة البيانات دون VPN</string>
     <string name="router_review_country_auto">تلقائي</string>
     <string name="router_review_country_unknown">البلد غير معروف</string>
     <string name="router_review_country_description">بلد حركة البيانات المحلية: %1$s. تغيير.</string>

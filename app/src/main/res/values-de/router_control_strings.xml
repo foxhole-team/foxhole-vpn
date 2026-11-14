@@ -16,7 +16,7 @@
     <string name="router_control_client_remove_body">VPN-Zugriff für %1$s entfernen?</string>
     <string name="router_control_client_remove_record_body">%1$s vom Router entfernen?</string>
     <string name="router_control_country_direct">Inländische Websites direkt</string>
-    <string name="router_control_auto_home">Heimnetzumschaltung</string>
+    <string name="router_control_auto_home">Smart</string>
     <string name="router_control_create_client">Client erstellen</string>
     <string name="router_control_create">ERSTELLEN</string>
     <string name="router_control_client_name">Clientname</string>
@@ -31,7 +31,7 @@
     <string name="router_control_create_help">Hysteria2-Client. Erfordert eine öffentliche Routeradresse und einen eingerichteten eingehenden VPN-Zugang.</string>
     <string name="router_control_enable_help">Die Routerverwaltung aktivieren oder deaktivieren.</string>
     <string name="router_control_country_help">Das Land wird über die Internetverbindung des Routers ermittelt. Tippen Sie auf die Flagge, um es zu ändern.</string>
-    <string name="router_control_home_help">Der Wechsel zwischen Telefon und Heimrouter erfolgt erst nach Bestätigung einer unterstützten Verbindung.</string>
+    <string name="router_control_home_help">Smart trennt nur das aktive Heim-VPN-Profil dieses gekoppelten Routers, wenn dessen authentifiziertes WLAN-Heimnetz und VPN-Routing bestätigt sind. Beim Wechsel ins Mobilfunknetz wird dasselbe unveränderte Profil wieder verbunden. Heim-VPN-Server und Mobilfunkverwaltung müssen aktiviert sein. Andere Profile, andere WLAN-Netze und manuelle Aktionen werden nicht übersteuert. Smart ist standardmäßig aus und benötigt die Überwachungsbenachrichtigung. Die Wiederverbindung wird bis 90 Sekunden nach Verlust des WLAN-Heimnetzes versucht, nicht nach der VPN-Pause. Manuelle Steuerung oder Profiländerungen beenden den Übergang.</string>
     <string name="router_control_vpn_help">Das ausgewählte Routerprofil starten oder stoppen. Zum Auswählen auf ein Profil tippen, für Aktionen gedrückt halten.</string>
     <string name="router_control_lan_help">Wählen Sie für jedes Gerät VPN oder „Ohne VPN“. Standardmäßig wird VPN verwendet. Der Start des VPN-Profils wird getrennt gesteuert.</string>
     <string name="router_control_clients_help">Öffnen Sie ein VPN-Profil für QR-Code, Import, Weitergabe oder Löschung.</string>
@@ -46,6 +46,6 @@
     <string name="router_control_protocols_loading">Verfügbare Protokolle: Prüfung…</string>
     <string name="router_control_protocols_empty">Verfügbare Protokolle: keine installiert</string>
     <string name="router_profile_probe_failed">Um das FoxHole OpenWRT-Paket zu verwalten, verbinden Sie sich mit Ihrem persönlichen VPN oder Ihrem WLAN zu Hause.</string>
-    <string name="router_control_home_vpn">Verwaltung über VPN</string>
-    <string name="router_control_home_vpn_help">Ermöglicht die Routerverwaltung über dessen VPN-Netz. Eine statische öffentliche IP-Adresse ist erforderlich.</string>
+    <string name="router_control_home_vpn">Verwaltung über Mobilfunknetze</string>
+    <string name="router_control_home_vpn_help">Ermöglicht die Verwaltung dieses gekoppelten Routers über sein vertrauenswürdiges importiertes Heim-VPN-Profil im Mobilfunknetz oder in einem anderen WLAN. Der Heim-VPN-Server und „Verwaltung über Mobilfunknetze“ müssen aktiviert und die öffentliche IP bestätigt sein.</string>
 </resources>

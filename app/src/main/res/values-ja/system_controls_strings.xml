@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_notification_connected">VPN 接続中</string>
+    <string name="vpn_notification_disconnected">VPN 未接続</string>
+    <string name="vpn_notification_description">VPN 接続の状態と操作。</string>
+</resources>

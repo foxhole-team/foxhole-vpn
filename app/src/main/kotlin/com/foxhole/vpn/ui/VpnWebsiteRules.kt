@@ -78,10 +78,10 @@ internal fun VpnWebsiteRules(routing: VpnAppRouting, enabled: Boolean, listState
                 Text(stringResource(R.string.vpn_web_delete_body, mask), Modifier.padding(bottom = 20.dp),
                     style = MaterialTheme.typography.bodyMedium)
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    OutlinedButton(onClick = { removing = null }, modifier = Modifier.weight(1f).heightIn(min = 56.dp)) {
+                    OutlinedButton(colors = vpnNeutralOutlinedButtonColors(), onClick = { removing = null }, modifier = Modifier.weight(1f).heightIn(min = 56.dp)) {
                         Text(stringResource(R.string.vpn_cancel))
                     }
-                    Button(onClick = { haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove); removing = null; onChange { current -> current.copy(webRules = current.webRules.filterNot { it.mask == mask }) } },
+                    Button(colors = vpnNeutralButtonColors(), onClick = { haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove); removing = null; onChange { current -> current.copy(webRules = current.webRules.filterNot { it.mask == mask }) } },
                         enabled = enabled, modifier = Modifier.weight(1f).heightIn(min = 56.dp)) {
                         Text(stringResource(R.string.vpn_scenario_confirm_action))
                     }
@@ -101,10 +101,10 @@ internal fun VpnWebsiteInputSheet(enabled: Boolean, onDismiss: () -> Unit, onAdd
         VpnSheetContent(R.string.vpn_add_website, R.drawable.lin_world_www, scrollableBody = true,
             footer = {
                 Row(Modifier.fillMaxWidth().padding(top = 16.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    OutlinedButton(onClick = onDismiss, modifier = Modifier.weight(1f).heightIn(min = 56.dp)) {
+                    OutlinedButton(colors = vpnNeutralOutlinedButtonColors(), onClick = onDismiss, modifier = Modifier.weight(1f).heightIn(min = 56.dp)) {
                         Text(stringResource(R.string.vpn_cancel))
                     }
-                    Button(enabled = enabled && address.isNotBlank(), onClick = {
+                    Button(colors = vpnNeutralButtonColors(), enabled = enabled && address.isNotBlank(), onClick = {
                         val mask = normalizedAddress
                         if (mask == null) invalid = true else onAdd(mask, route)
                     }, modifier = Modifier.weight(1f).heightIn(min = 56.dp)) { Text(stringResource(R.string.vpn_web_add)) }

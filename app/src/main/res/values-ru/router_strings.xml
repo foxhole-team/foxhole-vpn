@@ -49,16 +49,16 @@
     <string name="vpn_router_error_active_vpn">Сначала отключите активное VPN-соединение для настройки роутера</string>
     <string name="vpn_router_install_protocols">Протоколы VPN</string>
     <string name="vpn_router_install_protocols_note">Установятся только выбранные протоколы.</string>
-    <string name="vpn_router_all_protocols">Все протоколы</string>
+    <string name="vpn_router_all_protocols">Все протоколы VPN</string>
     <string name="vpn_router_root_login">Логин: root</string>
     <string name="vpn_router_error_local_network_permission">Разрешите доступ к локальной сети для подключения к роутеру.</string>
     <string name="vpn_router_local_network_purpose">Приложение использует локальную сеть для поиска роутера OpenWrt и управления его VPN с этого телефона.</string>
     <string name="vpn_router_error_ssh">SSH недоступен. Подключитесь к Wi-Fi роутера, проверьте адрес и включите SSH в OpenWrt.</string>
     <string name="vpn_router_profile_title">Профиль VPN</string>
-    <string name="vpn_router_choose_protocols">Выберите протоколы</string>
+    <string name="vpn_router_choose_protocols">Выберите протоколы VPN</string>
     <string name="vpn_router_protocol_combination_unavailable">Такой набор недоступен. Измените выбор.</string>
     <string name="vpn_router_error_limit">Сопряжение: до 10 мобильных устройств к одному роутеру; до 10 роутеров в одном приложении.</string>
-    <string name="vpn_router_install_server">VPN-сервер для своих устройств</string>
+    <string name="vpn_router_install_server">VPN-сервер для домашних устройств</string>
     <string name="vpn_router_install_server_yes">Установить</string>
     <string name="vpn_router_install_server_no">Не устанавливать</string>
 </resources>

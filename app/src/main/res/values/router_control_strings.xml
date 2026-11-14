@@ -16,7 +16,7 @@
     <string name="router_control_client_remove_body">Remove VPN access for %1$s?</string>
     <string name="router_control_client_remove_record_body">Remove %1$s from the router?</string>
     <string name="router_control_country_direct">Domestic sites directly</string>
-    <string name="router_control_auto_home">Auto-connect on home network</string>
+    <string name="router_control_auto_home">Smart</string>
     <string name="router_control_create_client">Create client</string>
     <string name="router_control_create">CREATE</string>
     <string name="router_control_client_name">Client name</string>
@@ -31,14 +31,14 @@
     <string name="router_control_create_help">Hysteria2 client. A public router address and a configured incoming VPN are required.</string>
     <string name="router_control_enable_help">Enable or disable router management.</string>
     <string name="router_control_country_help">The country is determined from the router’s internet connection. Tap the flag to change it.</string>
-    <string name="router_control_home_help">Switch between the phone and home router only after a supported connection has been confirmed.</string>
+    <string name="router_control_home_help">Smart disconnects only the active home VPN profile imported from this paired router when its authenticated home Wi-Fi network and VPN routing are verified. On transition to the cellular network, it reconnects that same unchanged profile. Home VPN server and mobile network management must be enabled. Other profiles, other Wi-Fi networks and manual actions are never overridden. Smart is off by default and requires the monitoring notification. Reconnect is attempted within 90 seconds after home Wi-Fi is lost, not after pausing. Manual control or a changed profile cancels the handoff.</string>
     <string name="router_control_vpn_help">Start or stop the selected router profile. Tap a profile to select it; hold it for actions.</string>
     <string name="router_control_lan_help">Choose VPN or Direct for each device. VPN is the default. Starting a VPN profile is controlled separately.</string>
     <string name="router_control_clients_help">Open a VPN profile to view its QR code, import, share or delete it.</string>
     <string name="router_control_qr_loading">Generating QR…</string>
     <string name="router_control_profile_loading">Loading profile…</string>
-    <string name="router_control_home_vpn">Management via VPN</string>
-    <string name="router_control_home_vpn_help">Manage the router through its VPN network. A static public IP address is required.</string>
+    <string name="router_control_home_vpn">Manage over mobile networks</string>
+    <string name="router_control_home_vpn_help">Allows managing this paired router through its trusted imported home VPN profile on mobile networks or other Wi-Fi. The Home VPN server, confirmed public IP, and “Manage over mobile networks” setting must be enabled.</string>
     <string name="vpn_router_error_home_vpn">No verified VPN route to the paired router. Connect to its VPN and enable home VPN management in router settings.</string>
     <string name="router_profile_probe_failed">To manage the FoxHole OpenWRT package, connect to your personal VPN or your home Wi-Fi network.</string>
     <string name="router_profile_retry_pairing">Retry pairing</string>

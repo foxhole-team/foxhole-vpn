@@ -30,11 +30,17 @@
     <string name="vpn_license_required">Acepte primero el acuerdo de licencia</string>
     <string name="vpn_license_storage_error">No se pudo leer o guardar su consentimiento. Inténtelo de nuevo.</string>
     <string name="vpn_license_title">FoxHole VPN · acuerdo de licencia</string>
-    <string name="vpn_release_notes_formats">Nuevos formatos de suscripción: YAML/JSON compatibles con Clash/Mihomo y JSON de Outline.</string>
-    <string name="vpn_release_notes_imports">Importación de enlaces v2rayTun, perfiles JSON de FoxHole y JSON SIP008 pegado.</string>
-    <string name="vpn_release_notes_router">Instale y gestione una VPN en un router con FoxHole OpenWrt Client directamente desde la aplicación.</string>
-    <string name="vpn_release_notes_storage_error">No se pudo leer o guardar su confirmación. Inténtelo de nuevo.</string>
+    <string name="vpn_release_notes_formats">Nuevos formatos de suscripción: YAML/JSON compatibles con Clash/Mihomo y JSON de Outline</string>
+    <string name="vpn_release_notes_imports">Importación de enlaces v2rayTun, perfiles JSON de FoxHole y JSON SIP008 pegado</string>
+    <string name="vpn_release_notes_router">Instale y gestione una VPN en un router con FoxHole OpenWrt Client directamente desde la aplicación</string>
+    <string name="vpn_release_notes_storage_error">No se pudo leer o guardar su confirmación. Inténtelo de nuevo</string>
     <string name="vpn_release_notes_title">Novedades</string>
     <string name="vpn_router_error_home_vpn">No hay una ruta VPN verificada al router vinculado. Conéctese a su VPN y active la gestión mediante la VPN doméstica en los ajustes del router.</string>
     <string name="vpn_router_local_network_purpose">La aplicación utiliza su red local para encontrar el router OpenWrt y gestionar su VPN desde este teléfono.</string>
+    <string name="router_discovery_ready_to_pair">Router listo para emparejar</string>
+    <string name="router_discovery_setup_question">¿Iniciar el asistente de instalación del paquete FoxHole OpenWrt?</string>
+    <string name="router_discovery_cancel">Cancelar</string>
+    <string name="router_discovery_continue">Continuar</string>
+    <string name="router_setup_compatibility_title">Compatibilidad de instalación</string>
+    <string name="router_setup_supported_versions">Versiones de instalación</string>
 </resources>

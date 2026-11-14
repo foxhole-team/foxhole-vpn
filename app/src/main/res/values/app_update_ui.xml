@@ -5,7 +5,7 @@
     <string name="vpn_app_update_no_release">No release has been published yet.</string>
     <string name="vpn_app_update_current">The latest version is installed.</string>
     <string name="vpn_app_update_available">Version %1$s is available. Tap to download.</string>
-    <string name="vpn_app_update_downloading">Downloading the app…</string>
+    <string name="vpn_app_update_downloading">Downloading the update…</string>
     <string name="vpn_app_update_percent">Downloading the app… %1$d%%</string>
     <string name="vpn_app_update_verifying">Checking the downloaded app…</string>
     <string name="vpn_app_update_ready">Version %1$s is downloaded. Tap to install.</string>
@@ -14,7 +14,7 @@
     <string name="vpn_app_update_error_network">Could not reach GitHub. Try again later.</string>
     <string name="vpn_app_update_error_rate">GitHub is temporarily limiting requests. Try again later.</string>
     <string name="vpn_app_update_error_verify">The update file could not be verified.</string>
-    <string name="vpn_app_update_error_storage">Could not save the update. Check free storage.</string>
+    <string name="vpn_app_update_error_storage">Could not save the update.</string>
     <string name="vpn_app_update_error_install">Could not open the Android installer.</string>
     <string name="vpn_app_update_install_permission">Allow installs from FoxHole VPN in Android settings, then try again.</string>
 </resources>

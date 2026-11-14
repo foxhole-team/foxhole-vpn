@@ -5,7 +5,7 @@
     <string name="router_help_protocols">选择路由器要支持的 VPN 协议。默认选中 Hysteria2。与路由器配对后可以添加其他协议。</string>
     <string name="router_help_profile">选择手机上的 VPN 配置以与路由器同步。也可以稍后添加。</string>
     <string name="router_help_country_direct">启用后，所选国家的流量在路由器上绕过 VPN。点击国旗可选择或更改国家。</string>
-    <string name="router_help_home">连接到可信任的 Wi-Fi 网络并与路由器配对后，应用会自动断开手机当前的 VPN 连接。离开该网络后，应用会使用上次选中的 VPN 配置恢复手机原先的连接。</string>
+    <string name="router_help_home">智能连接仅在验证此配对路由器的家庭 Wi-Fi 网络及 VPN 路由后，断开从该路由器导入且正在使用的家庭 VPN 配置。切换到移动网络后，会重新连接同一个未更改的配置。必须开启家庭 VPN 服务器和移动网络管理。不会覆盖其他配置、其他 Wi-Fi 网络或手动操作。智能连接默认关闭，并需要监控通知。 重连仅在家庭 Wi-Fi 网络丢失后的90秒内尝试，而不是从暂停 VPN 时计时。手动操作或配置更改会取消切换。</string>
     <string name="router_help_add_phone">将您的设备添加到家庭网络设备列表中，使其流量能够通过路由器上的 VPN 连接。</string>
     <string name="router_help_public_ip">如果路由器支持静态公网 IP 地址，可以将其用作您设备的 VPN 网关。路径为“设备 → 路由器”；本地流量直接联网，境外流量通过当前启用的 VPN 连接。</string>
     <string name="router_help_create_client">在您的路由器上为您的设备创建 VPN 配置。</string>
@@ -20,5 +20,5 @@
     <string name="router_help_reset_foxhole">仅删除 FoxHole 的设置、PIN 和客户端记录。之后需要重新设置 FoxHole。保留 OpenWrt 和其他应用的设置。</string>
     <string name="router_help_country_source">启用后，本地流量绕过 VPN。例如路由器位于 RU 时，RU 的网站和服务会使用路由器的 IP 地址访问。访问境外服务的流量则通过当前启用的 VPN 连接。</string>
     <string name="router_help_device_status">设备状态由路由器报告。没有数据时，状态为未知。</string>
-    <string name="router_help_install_server">如果您的设备将通过直接 IP 地址使用 VPN 连接到此路由器，请启用。系统会安装单独的服务器软件包，需要额外内存。安装后可以配置访问权限。</string>
+    <string name="router_help_install_server">如果您的设备将通过路由器的公网 IP 地址连接 VPN，请启用此选项。向导会下载并安装独立的 Hysteria2 服务器组件。远程访问需要静态公网 IPv4 地址和开放的 UDP 端口。安装后可完成访问配置。</string>
 </resources>

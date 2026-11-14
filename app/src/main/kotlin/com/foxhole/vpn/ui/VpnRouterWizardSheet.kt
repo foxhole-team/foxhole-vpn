@@ -40,6 +40,12 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.Icon
 import androidx.compose.material3.HorizontalDivider
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.runtime.rememberCoroutineScope
+import kotlinx.coroutines.launch
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.produceState
 import kotlinx.coroutines.delay
@@ -91,6 +97,9 @@ internal data class RouterWizardActions(
     val installCompactSelection: ((Set<RouterInstallProtocol>, Boolean) -> Unit)? = null,
     val loginKey: (suspend (ByteArray, CharArray) -> Unit)? = null,
     val setupAddress: ((String) -> Unit)? = null,
+    val foreground: (suspend () -> Unit)? = null,
+    val background: (() -> Unit)? = null,
+    val confirmCompatibility: (() -> Unit)? = null,
 )
 
 @Composable
@@ -104,6 +113,20 @@ internal fun VpnRouterWizardSheet(
     onClose: (() -> Unit)? = null,
     onBack: (() -> Unit)? = null,
 ) {
+    val lifecycle = LocalLifecycleOwner.current.lifecycle
+    val currentActions = rememberUpdatedState(actions)
+    val lifecycleScope = rememberCoroutineScope()
+    DisposableEffect(lifecycle) {
+        val observer = LifecycleEventObserver { _, event ->
+            when (event) {
+                Lifecycle.Event.ON_RESUME -> lifecycleScope.launch { currentActions.value.foreground?.invoke() }
+                Lifecycle.Event.ON_PAUSE, Lifecycle.Event.ON_STOP -> currentActions.value.background?.invoke()
+                else -> Unit
+            }
+        }
+        lifecycle.addObserver(observer)
+        onDispose { lifecycle.removeObserver(observer); currentActions.value.background?.invoke() }
+    }
     val initialPin = remember(state.options.licenseGeneration, state.address) { TextFieldState() }
     val repeatedPin = remember(state.options.licenseGeneration, state.address) { TextFieldState() }
     DisposableEffect(initialPin, repeatedPin) {
@@ -122,6 +145,7 @@ internal fun VpnRouterWizardSheet(
     var includeServer by remember(installationCatalog?.sha256, state.installSelection) {
         mutableStateOf(state.installSelection?.includeServer ?: false)
     }
+    var showServerInstallConfirmation by remember(installationCatalog?.sha256, state.stage) { mutableStateOf(false) }
     val discoveredPackageVersion = state.discovery?.takeIf { it.address == state.address &&
                     it.kind == com.foxhole.vpn.router.RouterDiscoveryKind.INSTALLED }?.packageVersion
     AnimatedContent(targetState = state.stage, modifier = Modifier.fillMaxWidth(), transitionSpec = {
@@ -167,6 +191,14 @@ internal fun VpnRouterWizardSheet(
                         RouterWizardStage.PIN_SETUP_REQUIRED -> actions.openRouterSetup?.let { open ->
                             RouterFullButton(R.string.router_review_open_router_setup, enabled, open)
                         }
+                        RouterWizardStage.COMPATIBILITY -> Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            OutlinedButton(colors = vpnNeutralOutlinedButtonColors(),
+                                onClick = onBack ?: onClose ?: LocalVpnSheetClose.current,
+                                modifier = Modifier.weight(1f).heightIn(min = 48.dp)) { Text(stringResource(R.string.router_discovery_cancel)) }
+                            OutlinedButton(colors = vpnNeutralOutlinedButtonColors(),
+                                onClick = { actions.confirmCompatibility?.invoke() }, enabled = enabled && actions.confirmCompatibility != null,
+                                modifier = Modifier.weight(1f).heightIn(min = 48.dp)) { Text(stringResource(R.string.router_discovery_continue)) }
+                        }
                         RouterWizardStage.PROTOCOLS -> RouterFullButton(
                             R.string.vpn_continue,
                             enabled && installationCatalog?.accepts(protocols, includeServer) == true &&
@@ -206,7 +238,7 @@ internal fun VpnRouterWizardSheet(
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
                         )
                         if (state.path == RouterWizardPath.PAIR) actions.setupAddress?.let { setup ->
-                            TextButton(onClick = { setup(address) }, enabled = enabled && address.isNotBlank(),
+                            TextButton(colors = vpnNeutralTextButtonColors(), onClick = { setup(address) }, enabled = enabled && address.isNotBlank(),
                                 modifier = Modifier.align(Alignment.CenterHorizontally)) {
                                 Text(stringResource(R.string.router_ssh_manual_setup))
                             }
@@ -226,8 +258,8 @@ internal fun VpnRouterWizardSheet(
                             VpnRouterProtocolDropdown(installationCatalog, protocols, enabled) { protocols = it }
                         }
                         if (installationCatalog?.schema == 2) {
-                            RouterCheckRow(R.string.vpn_router_install_server, R.string.router_help_install_server, includeServer, enabled) {
-                                includeServer = it
+                            RouterCheckRow(R.string.router_home_server, R.string.router_help_install_server, includeServer, enabled) { checked ->
+                                if (checked) showServerInstallConfirmation = true else includeServer = false
                             }
                         }
                         if (state.path == RouterWizardPath.SETUP) {
@@ -239,31 +271,39 @@ internal fun VpnRouterWizardSheet(
                             Text(stringResource(R.string.vpn_router_protocol_combination_unavailable), style = MaterialTheme.typography.bodySmall)
                         }
                     }
-                    RouterWizardStage.INSPECTED -> {
+                    RouterWizardStage.COMPATIBILITY -> {
+                        Text(stringResource(R.string.router_setup_compatibility_title), style = MaterialTheme.typography.titleMedium)
+                        val versions = (installationCatalog?.variants.orEmpty().flatMap { it.supportedOpenWrt } +
+                            installationCatalog?.compactPlatforms.orEmpty().flatMap { it.supportedOpenWrt }).distinct().sorted()
                         VpnRouterReviewTable(listOf(
-                            stringResource(R.string.router_review_address) to state.address,
                             "OpenWrt" to state.openWrtVersion,
                             stringResource(R.string.router_review_architecture) to state.architecture,
-                        ), icons = listOf(R.drawable.lin_router, R.drawable.lin_settings, R.drawable.lin_settings))
+                            stringResource(R.string.router_setup_supported_versions) to versions.joinToString(" · "),
+                        ), icons = listOf(R.drawable.lin_settings, R.drawable.lin_settings, R.drawable.lin_settings))
+                    }
+                    RouterWizardStage.INSPECTED -> {
+                        VpnRouterReviewTable(listOf(
+                            "OpenWrt" to state.openWrtVersion,
+                            stringResource(R.string.router_review_architecture) to state.architecture,
+                        ), icons = listOf(R.drawable.lin_settings, R.drawable.lin_settings))
                         Text(stringResource(R.string.router_setup_readonly_complete), style = MaterialTheme.typography.bodyMedium)
                     }
                     RouterWizardStage.INSTALL -> {
                         if (!state.busy || state.installProgress == null) {
                             Text(stringResource(R.string.router_review_install_summary), style = MaterialTheme.typography.titleMedium)
                             VpnRouterReviewTable(listOf(
-                                stringResource(R.string.router_review_address) to state.address,
-                                "OpenWrt" to state.openWrtVersion,
+                                    "OpenWrt" to state.openWrtVersion,
                                 stringResource(R.string.router_review_architecture) to state.architecture,
                                 stringResource(R.string.router_review_protocols) to RouterInstallProtocol.entries
                                     .filter { it in state.installSelection?.protocols.orEmpty() }.joinToString(" · ") { it.label },
-                                *(if (installationCatalog?.schema == 2) arrayOf(stringResource(R.string.vpn_router_install_server) to
+                                *(if (installationCatalog?.schema == 2) arrayOf(stringResource(R.string.router_home_server) to
                                     stringResource(if (state.installSelection?.includeServer == true) R.string.vpn_router_install_server_yes else R.string.vpn_router_install_server_no)) else emptyArray()),
                                 stringResource(R.string.router_review_storage) to stringResource(
                                     if (state.storageMode == RouterStorageMode.RAM) R.string.vpn_router_ram else R.string.vpn_router_flash),
                                 *(if (state.path == RouterWizardPath.SETUP) arrayOf(stringResource(R.string.vpn_router_setup_auto_updates) to
                                     stringResource(if (state.options.autoUpdateEnabled) R.string.vpn_router_setup_auto_on else R.string.vpn_router_setup_auto_off)) else emptyArray()),
                             ), icons = listOf(
-                                R.drawable.lin_router, R.drawable.lin_settings, R.drawable.lin_settings, R.drawable.lin_power,
+                                R.drawable.lin_settings, R.drawable.lin_settings, R.drawable.lin_power,
                                 *(if (installationCatalog?.schema == 2) arrayOf(R.drawable.lin_profiles) else emptyArray()),
                                 R.drawable.lin_download,
                                 *(if (state.path == RouterWizardPath.SETUP) arrayOf(R.drawable.lin_download) else emptyArray()),
@@ -280,7 +320,8 @@ internal fun VpnRouterWizardSheet(
                             RouterLocalRoutingChoice(state.options.localRules, enabled) { actions.options(state.options.copy(localRules = it)) }
                         RouterOptionsContent(
                             state.options, profiles, enabled && !state.autoUpdateUnconfirmed, supportsHomeAutodetection, supportsRemoteProfile,
-                            state.installedInThisWizard, state.autoUpdateUnconfirmed, state.autoUpdateFailure, actions.options,
+                            state.installedInThisWizard, state.installSelection?.includeServer == true,
+                            state.autoUpdateUnconfirmed, state.autoUpdateFailure, actions.options,
                         )
                         if (state.initialPinRequired && state.installedInThisWizard) {
                             RouterInitialPinFields(initialPin, repeatedPin, enabled && pinCooldownSeconds == 0)
@@ -303,6 +344,27 @@ internal fun VpnRouterWizardSheet(
                 }
                 state.installProgress?.let { RouterInstallationProgress(it) }
             }
+        }
+    }
+    if (showServerInstallConfirmation) {
+        RouterConfirmationModal(
+            title = R.string.router_server_enable_title,
+            confirmLabel = R.string.vpn_continue,
+            enabled = state.stage == RouterWizardStage.PROTOCOLS && !state.busy &&
+                installationCatalog?.accepts(protocols, includeServer = true) == true,
+            busy = state.busy,
+            onDismiss = { if (!state.busy) showServerInstallConfirmation = false },
+            onConfirm = {
+                if (state.stage == RouterWizardStage.PROTOCOLS && !state.busy &&
+                    installationCatalog?.accepts(protocols, includeServer = true) == true) {
+                    includeServer = true
+                    showServerInstallConfirmation = false
+                }
+            },
+            icon = R.drawable.lin_info,
+            destructive = false,
+        ) {
+            Text(stringResource(R.string.router_help_install_server), style = MaterialTheme.typography.bodyMedium)
         }
     }
 }
@@ -330,6 +392,7 @@ private fun RouterOptionsContent(
     supportsHome: Boolean,
     supportsRemote: Boolean,
     setupCompleted: Boolean,
+    serverInstalled: Boolean,
     autoUpdateUnconfirmed: Boolean,
     autoUpdateFailure: RouterUpdateFailureReason?,
     onChange: (RouterWizardOptions) -> Unit,
@@ -358,17 +421,29 @@ private fun RouterOptionsContent(
             VpnSwitch(options.countrySitesDirect, onCheckedChange = { onChange(options.copy(countrySitesDirect = it)) }, enabled = enabled)
         }
         HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-        if (supportsHome) RouterCheckRow(R.string.vpn_router_auto_home, R.string.router_help_home, options.homeAutodetection, enabled) {
+        val showServerOptions = !setupCompleted || serverInstalled
+        if (supportsHome && showServerOptions) RouterCheckRow(R.string.router_smart_title, R.string.router_help_home,
+            options.homeAutodetection, enabled && (!setupCompleted || options.publicIp && options.createRemoteProfile)) {
             onChange(options.copy(homeAutodetection = it))
         }
-        if (supportsRemote) {
-            RouterCheckRow(R.string.router_review_direct_ip, R.string.router_help_public_ip, options.publicIp, enabled) {
-                onChange(options.copy(publicIp = it, createRemoteProfile = it && options.createRemoteProfile))
-            }
-            if (options.publicIp) {
-                RouterHelpLabel(R.string.router_review_remote_settings, R.string.router_review_remote_help)
-                RouterCheckRow(R.string.router_review_phone_profile, R.string.router_review_remote_help,
-                    options.createRemoteProfile, enabled, showHelp = false) { onChange(options.copy(createRemoteProfile = it)) }
+        if (supportsRemote && showServerOptions) {
+            if (setupCompleted) {
+                RouterCheckRow(R.string.router_control_home_vpn, R.string.router_control_home_vpn_help,
+                    options.publicIp && options.createRemoteProfile, enabled) { checked ->
+                        onChange(options.copy(publicIp = checked, createRemoteProfile = checked,
+                            homeAutodetection = if (checked) options.homeAutodetection else false))
+                    }
+                if (options.publicIp && options.createRemoteProfile) Text(stringResource(R.string.router_server_public_ip),
+                    style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.secondary)
+            } else {
+                RouterCheckRow(R.string.router_review_direct_ip, R.string.router_help_public_ip, options.publicIp, enabled) {
+                    onChange(options.copy(publicIp = it, createRemoteProfile = it && options.createRemoteProfile))
+                }
+                if (options.publicIp) {
+                    RouterHelpLabel(R.string.router_review_remote_settings, R.string.router_review_remote_help)
+                    RouterCheckRow(R.string.router_review_phone_profile, R.string.router_review_remote_help,
+                        options.createRemoteProfile, enabled, showHelp = false) { onChange(options.copy(createRemoteProfile = it)) }
+                }
             }
         }
     }
@@ -379,7 +454,7 @@ private fun RouterSetupLicenseChoice(accepted: Boolean, enabled: Boolean, licens
     hideAcceptedChoice: Boolean = false, onChange: (Boolean) -> Unit) {
     var expanded by remember(licenseGeneration) { mutableStateOf(false) }
     if (!hideAcceptedChoice || !accepted) Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
-        TextButton(onClick = { expanded = true }, enabled = enabled) {
+        TextButton(colors = vpnNeutralTextButtonColors(), onClick = { expanded = true }, enabled = enabled) {
             Text(stringResource(R.string.router_setup_license_title))
         }
     }
@@ -446,7 +521,8 @@ private fun RouterCheckRow(label: Int, help: Int, checked: Boolean, enabled: Boo
     showHelp: Boolean = true, onChange: (Boolean) -> Unit) {
     VpnRouterTableRow(Modifier.fillMaxWidth()) {
         val icon = when (label) {
-            R.string.vpn_router_auto_home -> R.drawable.lin_router
+            R.string.vpn_router_auto_home, R.string.router_home_server, R.string.router_smart_title,
+            R.string.router_control_home_vpn -> R.drawable.lin_router
             R.string.router_review_direct_ip -> R.drawable.router_review_globe
             R.string.router_review_phone_profile -> R.drawable.lin_profiles
             else -> R.drawable.lin_power
@@ -556,12 +632,9 @@ private fun RouterWizardContent(
                     Text(stringResource(R.string.router_login_brand), Modifier.fillMaxWidth(),
                         style = if (compact) MaterialTheme.typography.titleMedium else MaterialTheme.typography.titleLarge,
                         textAlign = TextAlign.Center, maxLines = 2)
-                    Text(if (packageVersion == null) stringResource(R.string.router_login_version_unknown)
-                        else stringResource(R.string.router_login_version, packageVersion), Modifier.fillMaxWidth(),
+                    if (packageVersion != null) Text(stringResource(R.string.router_login_version, packageVersion), Modifier.fillMaxWidth(),
                         style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant,
                         textAlign = TextAlign.Center)
-                    Text(address, Modifier.fillMaxWidth(), style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant, textAlign = TextAlign.Center)
                     Row(Modifier.fillMaxWidth().padding(top = 8.dp),
                         verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         Icon(painterResource(icon), null, Modifier.size(20.dp))
@@ -580,20 +653,9 @@ private fun RouterWizardContent(
 
 @Composable
 internal fun VpnRouterWizardNavigationFooter(backEnabled: Boolean, onBack: (() -> Unit)?, onClose: (() -> Unit)?) {
-    if (onClose != null) {
-        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            if (onBack != null) OutlinedButton(onClick = onBack, enabled = backEnabled,
-                modifier = Modifier.weight(1f).heightIn(min = 48.dp)) {
-                Text(stringResource(R.string.router_review_back))
-            }
-            OutlinedButton(onClick = onClose, modifier = Modifier.weight(1f).heightIn(min = 48.dp),
-                border = BorderStroke(1.5.dp, MaterialTheme.colorScheme.error),
-                colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.error)) {
-                Text(stringResource(R.string.vpn_cancel))
-            }
-        }
-    } else if (onBack != null) OutlinedButton(onClick = onBack, enabled = backEnabled,
+    val close = onClose ?: LocalVpnSheetClose.current
+    OutlinedButton(colors = vpnNeutralOutlinedButtonColors(), onClick = close,
         modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)) {
-        Text(stringResource(R.string.router_review_back))
+        Text(stringResource(R.string.vpn_close))
     }
 }

@@ -15,4 +15,10 @@
     <string name="router_discovery_package_check">The HTTPS service replied, but FoxHole could not be verified. Check the router web setup or try again.</string>
     <string name="router_ssh_manual_setup">CHECK OPENWRT / SSH SETUP</string>
     <string name="router_updates_device_download">Downloading the FoxHole package through your device</string>
+    <string name="router_discovery_ready_to_pair">Router ready to pair</string>
+    <string name="router_discovery_setup_question">Start the FoxHole OpenWrt package installation wizard?</string>
+    <string name="router_discovery_cancel">Cancel</string>
+    <string name="router_discovery_continue">Continue</string>
+    <string name="router_setup_compatibility_title">Installation compatibility</string>
+    <string name="router_setup_supported_versions">Installation versions</string>
 </resources>

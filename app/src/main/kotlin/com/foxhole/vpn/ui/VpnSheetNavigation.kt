@@ -59,7 +59,10 @@ internal fun VpnSheetPageTransition(entry: VpnSheetEntry, animateSize: Boolean =
         targetState = entry,
         modifier = Modifier.fillMaxWidth(),
         contentKey = { it.page },
-        transitionSpec = { VpnSheetMotion.pageTransition(animateSize, forward = targetState.depth >= initialState.depth) },
+        transitionSpec = {
+            VpnSheetMotion.pageTransition(animateSize && initialState.page != targetState.page,
+                forward = targetState.depth >= initialState.depth)
+        },
         label = "vpn-sheet-navigation",
         content = { current -> content(current) },
     )

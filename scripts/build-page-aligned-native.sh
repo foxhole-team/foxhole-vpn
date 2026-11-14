@@ -25,10 +25,10 @@ operation=$(mktemp -d "$work/operation-XXXXXXXX")
 inputs="$operation/inputs"
 produced="$operation/produced"
 mkdir "$produced"
-offline=()
-if [[ "${FOXHOLE_NATIVE_OFFLINE:-0}" == 1 ]]; then offline=(--offline); fi
-python3 "$repo/scripts/prepare-page-aligned-native-inputs.py" --repo "$repo" --destination "$inputs" \
-  --cache "$work/publisher-cache" --component "$component" "${offline[@]}"
+prepare_inputs=(python3 "$repo/scripts/prepare-page-aligned-native-inputs.py" --repo "$repo" --destination "$inputs" \
+  --cache "$work/publisher-cache" --component "$component")
+if [[ "${FOXHOLE_NATIVE_OFFLINE:-0}" == 1 ]]; then prepare_inputs+=(--offline); fi
+"${prepare_inputs[@]}"
 python3 "$inputs/build-$component-page-aligned.py" --inputs "$inputs" --ndk "$ndk" \
   --source-consumer "$inputs/consumer" --output "$produced"
 python3 - "$repo" "$inputs" "$produced" "$output" "$component" <<'PY'

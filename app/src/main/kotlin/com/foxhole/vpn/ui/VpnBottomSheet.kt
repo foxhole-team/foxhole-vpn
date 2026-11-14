@@ -153,10 +153,7 @@ private object SheetBodyScrollConnection : NestedScrollConnection {
 private fun VpnSheetCloseButton(onClick: () -> Unit, onBack: (() -> Unit)?) {
     Row(Modifier.fillMaxWidth().padding(horizontal = 20.dp).padding(top = 8.dp, bottom = 12.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        if (onBack != null) OutlinedButton(onClick = onBack, modifier = Modifier.weight(1f).heightIn(min = 56.dp)) {
-            Text(stringResource(R.string.router_review_back))
-        }
-        OutlinedButton(onClick, modifier = Modifier.weight(1f).heightIn(min = 56.dp)) {
+        OutlinedButton(colors = vpnNeutralOutlinedButtonColors(), onClick = onClick, modifier = Modifier.weight(1f).heightIn(min = 56.dp)) {
             Text(stringResource(R.string.vpn_close))
         }
     }

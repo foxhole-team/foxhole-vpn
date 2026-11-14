@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="vpn_release_notes_translations_104">Added Arabic language and RTL support, adapted the widget, and fixed translations and router settings.</string>
-    <string name="vpn_release_notes_router_cleanup_104">Improved router setup cleanup and error reporting.</string>
+    <string name="vpn_release_notes_translations_104">Added Arabic language and RTL support, adapted the widget, and fixed translations and router settings</string>
+    <string name="vpn_release_notes_router_cleanup_104">Improved router setup cleanup and error reporting</string>
+    <string name="vpn_release_notes_router_setup_106">Fixed initial router installation and setup through the app</string>
+    <string name="vpn_release_notes_help_106">Updated help sections</string>
 </resources>

@@ -24,11 +24,11 @@ import com.foxhole.vpn.router.RouterSavedSummary
 
 @Composable
 internal fun VpnRouterSavedSelector(routers: List<RouterSavedSummary>, selectedId: String?,
-    enabled: Boolean, showIllustration: Boolean, onSelect: (String) -> Unit) {
+    enabled: Boolean, showIllustration: Boolean, connected: Boolean = false, searching: Boolean = false, label: String? = null, onSelect: (String) -> Unit) {
     val selected = routers.singleOrNull { it.id == selectedId }
     Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        VpnChoiceDropdown(selected?.let { savedRouterName(it) } ?: stringResource(R.string.router_review_choose_router),
+        VpnChoiceDropdown(label ?: (selected?.let { savedRouterName(it) } ?: stringResource(R.string.router_review_choose_router)),
             enabled, leadingIcon = R.drawable.lin_router, menuMaxHeight = 280.dp) { dismiss ->
             routers.forEach { router ->
                 DropdownMenuItem(text = {
@@ -42,7 +42,8 @@ internal fun VpnRouterSavedSelector(routers: List<RouterSavedSummary>, selectedI
                     onClick = { dismiss(); onSelect(router.id) })
             }
         }
-        if (showIllustration) VpnRouterIllustration(Modifier.fillMaxWidth().height(128.dp).testTag("router-management-vector"))
+        if (showIllustration) VpnRouterIllustration(Modifier.fillMaxWidth().height(176.dp).testTag("router-management-vector"),
+            searching = searching, connected = connected)
     }
 }
 

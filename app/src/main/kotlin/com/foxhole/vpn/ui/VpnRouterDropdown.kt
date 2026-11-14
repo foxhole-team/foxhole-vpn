@@ -224,7 +224,8 @@ internal fun VpnRouterProfileDropdown(
 
 @Composable
 internal fun VpnRouterCountryFlag(code: String, enabled: Boolean, onSelect: (String) -> Unit,
-    autoSelected: Boolean = false, onAuto: (() -> Unit)? = null) {
+    autoSelected: Boolean = false, onAuto: (() -> Unit)? = null,
+    selectionRequested: Boolean = false, onSelectionDismiss: () -> Unit = {}) {
     val locale = LocalConfiguration.current.locales[0]
     val countries = remember(locale) {
         Locale.getISOCountries().map { it to Locale("", it).getDisplayCountry(locale) }.sortedBy { it.second }
@@ -239,16 +240,16 @@ internal fun VpnRouterCountryFlag(code: String, enabled: Boolean, onSelect: (Str
             modifier = Modifier.size(48.dp).semantics { contentDescription = description }) {
             RouterCountryAsset(normalizedCode, compact = true)
         }
-        if (expanded && enabled) VpnBottomSheet(onDismiss = { expanded = false },
-            heightFraction = .5f, confineContentGestures = true) {
+        if ((expanded || selectionRequested) && enabled) VpnBottomSheet(onDismiss = { expanded = false; onSelectionDismiss() },
+            confineContentGestures = true) {
             VpnSheetContent(R.string.router_control_choose_country, R.drawable.router_country_unknown) {
-                LazyColumn(Modifier.fillMaxSize().testTag("router-country-list")) {
+                LazyColumn(Modifier.fillMaxWidth().testTag("router-country-list")) {
                     if (onAuto != null) item {
                         DropdownMenuItem(
                             text = { Text(stringResource(R.string.router_review_country_auto), maxLines = 1, overflow = TextOverflow.Ellipsis) },
                             leadingIcon = { RouterCountryAsset(normalizedCode) },
                             trailingIcon = { Checkbox(autoSelected, onCheckedChange = null) },
-                            onClick = { expanded = false; onAuto() },
+                            onClick = { expanded = false; onAuto(); onSelectionDismiss() },
                         )
                         HorizontalDivider(color = LocalVpnColors.current.border)
                     }
@@ -256,7 +257,7 @@ internal fun VpnRouterCountryFlag(code: String, enabled: Boolean, onSelect: (Str
                         DropdownMenuItem(
                             text = { Text(name, maxLines = 1, overflow = TextOverflow.Ellipsis) },
                             leadingIcon = { RouterCountryAsset(iso) },
-                            onClick = { expanded = false; onSelect(iso) },
+                            onClick = { expanded = false; onSelect(iso); onSelectionDismiss() },
                         )
                         HorizontalDivider(color = LocalVpnColors.current.border)
                     }

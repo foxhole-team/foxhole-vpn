@@ -71,11 +71,11 @@ internal fun VpnRouterPinEntry(
     errorLabel: Int? = null,
     refocusGeneration: Long = 0,
 ) {
-    BoxWithConstraints(Modifier.fillMaxSize().imePadding().padding(horizontal = 20.dp, vertical = 6.dp)) {
+    BoxWithConstraints(Modifier.fillMaxWidth().imePadding().padding(horizontal = 20.dp, vertical = 6.dp)) {
         val split = maxWidth >= 560.dp && maxWidth > maxHeight
         val compact = maxHeight < 420.dp
-        Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            val body = Modifier.weight(1f).fillMaxWidth().then(LocalVpnSheetBodyGestures.current).verticalScroll(rememberScrollState())
+        Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            val body = Modifier.weight(1f, fill = false).fillMaxWidth().then(LocalVpnSheetBodyGestures.current).verticalScroll(rememberScrollState())
             if (split) {
                 Row(body, horizontalArrangement = Arrangement.spacedBy(24.dp), verticalAlignment = Alignment.CenterVertically) {
                     VpnRouterPinBrand(address, packageVersion, compact = true, modifier = Modifier.weight(1f))

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="router_transfer_search">正在搜索兼容的 VPN 配置</string>
+    <string name="vpn_app_rules_context_help">应用的 VPN / 不使用 VPN 规则仅在代理场景中生效。\n阻止在所有场景中生效。\n应用阻止需要 Android 10 或更新版本。</string>
+    <string name="vpn_release_notes_router_ui_106">更新了路由器管理界面</string>
+    <string name="vpn_release_notes_general_ui_106">界面整体改进</string>
+    <string name="vpn_release_notes_quick_settings_106">在 Android 快捷设置中添加快捷方式</string>
+    <string name="vpn_release_notes_all_subscriptions_106">在路由器管理中添加导入已保存 VPN 配置的功能</string>
+</resources>

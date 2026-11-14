@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="vpn_release_notes_translations_104">新增阿拉伯语和RTL支持，适配了小组件，并修复了翻译和路由器设置。</string>
-    <string name="vpn_release_notes_router_cleanup_104">改进了路由器设置过程中的资源释放和错误提示。</string>
+    <string name="vpn_release_notes_translations_104">新增阿拉伯语和RTL支持，适配了小组件，并修复了翻译和路由器设置</string>
+    <string name="vpn_release_notes_router_cleanup_104">改进了路由器设置过程中的资源释放和错误提示</string>
+    <string name="vpn_release_notes_router_setup_106">修复了通过应用首次安装和设置路由器的问题</string>
+    <string name="vpn_release_notes_help_106">更新了帮助章节</string>
 </resources>

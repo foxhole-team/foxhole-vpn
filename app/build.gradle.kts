@@ -71,8 +71,8 @@ android {
         applicationId = "com.foxhole.vpn"
         minSdk = 24
         targetSdk = 37
-        versionCode = 47
-        versionName = "1.0.5"
+        versionCode = 48
+        versionName = "1.0.6"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         if (!providers.gradleProperty("foxhole.splitApks").map(String::toBoolean).orElse(false).get()) {
             ndk { abiFilters += apkDeliveryAbis }
@@ -189,6 +189,18 @@ val pageAlignedNdk = providers.environmentVariable("ANDROID_NDK_HOME")
             .orElse(providers.environmentVariable("ANDROID_HOME"))
             .map { "$it/ndk/29.0.14206865" },
     )
+val pageAlignedNdkTools = pageAlignedNdk.map { ndk ->
+    val hostTags = when {
+        System.getProperty("os.name").lowercase().contains("linux") -> listOf("linux-x86_64")
+        System.getProperty("os.name").lowercase().contains("mac") -> listOf("darwin-arm64", "darwin-x86_64")
+        else -> emptyList()
+    }
+    val host = hostTags.firstOrNull {
+        rootProject.file("$ndk/toolchains/llvm/prebuilt/$it/bin/llvm-strip").isFile
+    } ?: throw GradleException("Pinned NDK host tools are missing")
+    listOf("clang", "clang++", "ld.lld", "llvm-strip", "llvm-ar", "llvm-ranlib", "llvm-nm", "llvm-readelf")
+        .map { rootProject.file("$ndk/toolchains/llvm/prebuilt/$host/bin/$it") }
+}
 
 val preparePageAlignedNative = tasks.register<PreparePageAlignedNativeTask>("preparePageAlignedNative") {
     nativeDirectory.set(layout.buildDirectory.dir("generated/pageAlignedNative"))
@@ -201,10 +213,7 @@ val preparePageAlignedNative = tasks.register<PreparePageAlignedNativeTask>("pre
         ).map { rootProject.file("scripts/$it") },
     )
     inputs.file(pageAlignedNdk.map { rootProject.file("$it/source.properties") })
-    inputs.files(pageAlignedNdk.map { ndk ->
-        listOf("clang", "clang++", "ld.lld", "llvm-strip", "llvm-ar", "llvm-ranlib", "llvm-nm", "llvm-readelf")
-            .map { rootProject.file("$ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/$it") }
-    })
+    inputs.files(pageAlignedNdkTools)
     doFirst {
         environment("FOXHOLE_NATIVE_OFFLINE", providers.gradleProperty("foxhole.nativeOffline").orElse("false").get().let {
             if (it.toBoolean()) "1" else "0"

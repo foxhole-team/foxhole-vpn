@@ -223,12 +223,7 @@ private fun VpnHomeControls(
         onClick = onPrimary,
         enabled = primaryActionEnabled(state),
         modifier = Modifier.fillMaxWidth().heightIn(min = 60.dp).semantics { stateDescription = status },
-        colors = ButtonDefaults.buttonColors(
-            containerColor = if (colors.monochrome) {
-                if (primaryAction(state) == VpnPrimaryAction.DISCONNECT) Color(0xFFB5B5B5) else Color.White
-            } else if (primaryAction(state) == VpnPrimaryAction.DISCONNECT) StopRed else StartGreen,
-            contentColor = if (colors.monochrome) Color.Black else Color.White,
-        ),
+        colors = vpnPrimaryButtonColors(primaryAction(state) == VpnPrimaryAction.DISCONNECT),
     ) {
         Icon(painterResource(R.drawable.lin_power), contentDescription = null, modifier = Modifier.size(22.dp))
         Spacer(Modifier.size(12.dp))
@@ -247,36 +242,21 @@ private fun VpnConnectionStatus(state: VpnUiState, routingMode: VpnRoutingMode) 
     val showStatus = state.isReady || state.canDisconnect || state.phase == VpnPhase.ERROR
     val status = stringResource(if (showStatus) statusLabel(state.phase) else R.string.vpn_loading)
     val scenario = stringResource(vpnScenarioStatusLabel(routingMode))
-    val scenarioValueStart = vpnScenarioValueStart(scenario)
     val statusColor = when {
         state.isConnected -> colors.connected
+        state.phase == VpnPhase.ERROR -> vpnDeleteColor()
         showStatus && state.phase == VpnPhase.IDLE && !state.hasOwnedTunnel && !state.hasPendingStart -> vpnDeleteColor()
         else -> colors.foreground
     }
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(buildAnnotatedString {
-            append(scenario.take(scenarioValueStart))
-            withStyle(SpanStyle(color = Color(vpnScenarioColor(routingMode, colors.light)))) {
-                append(scenario.substring(scenarioValueStart))
-            }
-        },
-            Modifier.fillMaxWidth().padding(bottom = 4.dp), style = MaterialTheme.typography.bodyLarge,
-            color = colors.foreground, textAlign = TextAlign.Center, maxLines = 1, overflow = TextOverflow.Ellipsis)
+    Column(Modifier.offset(y = (-18).dp), horizontalAlignment = Alignment.CenterHorizontally) {
         Crossfade(
             targetState = status to statusColor,
-            modifier = Modifier.fillMaxWidth().clearAndSetSemantics { text = AnnotatedString(status) },
+            modifier = Modifier.fillMaxWidth().clearAndSetSemantics { text = AnnotatedString("$scenario. $status") },
             animationSpec = tween(durationMillis = 120),
             label = "vpn-connection-status",
         ) { (label, color) ->
-            Text(
-                label,
-                modifier = Modifier.fillMaxWidth(),
-                style = MaterialTheme.typography.bodyLarge,
-                color = color,
-                textAlign = TextAlign.Center,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
-            )
+            VpnScenarioConnectionText(label, color, routingMode,
+                modifier = Modifier.fillMaxWidth())
         }
         if (expiry != null) {
             Text(
@@ -322,8 +302,6 @@ private fun VpnDataUpdateStatus(state: VpnDataUpdateState, onClick: () -> Unit) 
     )
 }
 
-private val StartGreen = Color(0xFF1E6C39)
-private val StopRed = Color(0xFFB3261E)
 
 @Composable
 internal fun VpnBrand() {

@@ -33,7 +33,7 @@ import com.foxhole.vpn.appupdates.VpnAppUpdateNotifier
 import com.foxhole.vpn.ui.appUpdateErrorResource
 import com.foxhole.vpn.router.ROUTER_LOCAL_NETWORK_PERMISSION
 import com.foxhole.vpn.router.routerLocalNetworkAccessGranted
-import com.foxhole.vpn.router.routerHomeNotificationsAvailable
+import com.foxhole.vpn.router.routerSmartNotificationsAvailable
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
     private val routerHomeNotificationPermission = registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
         val action = routerHomePermissionAction
         routerHomePermissionAction = null
-        if (licenseConsent.state.value.accepted && granted && routerLocalNetworkAccessGranted(this) && routerHomeNotificationsAvailable(this)) action?.invoke()
+        if (licenseConsent.state.value.accepted && granted && routerLocalNetworkAccessGranted(this) && routerSmartNotificationsAvailable(this)) action?.invoke()
         else if (action != null) uiError = getString(R.string.vpn_router_home_notifications_permission)
     }
     private val routerLocalNetworkPermission = registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
@@ -204,7 +204,7 @@ class MainActivity : AppCompatActivity() {
                         routerWizard = routerRuntime.wizard,
                         routerProfileProbe = routerRuntime.profileProbe,
                         routerControl = routerRuntime.control,
-                        exportRouterProfile = com.foxhole.vpn.router.RouterPhoneProfileExport(controller)::selected,
+                        exportRouterProfile = com.foxhole.vpn.router.RouterPhoneProfileExport(controller)::requested,
                     )
                 }
             }
@@ -325,7 +325,7 @@ class MainActivity : AppCompatActivity() {
     private fun requestRouterHomeAccess(action: () -> Unit) {
         requestRouterAccess {
             if (routerHomePermissionAction != null) return@requestRouterAccess
-            if (routerHomeNotificationsAvailable(this)) action()
+            if (routerSmartNotificationsAvailable(this)) action()
             else if (Build.VERSION.SDK_INT >= 33 && ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
                 routerHomePermissionAction = action
                 try { routerHomeNotificationPermission.launch(Manifest.permission.POST_NOTIFICATIONS) }

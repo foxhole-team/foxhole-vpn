@@ -44,17 +44,26 @@ import kotlin.coroutines.resumeWithException
 class AndroidEngineDriver(private val service: VpnService,
     private val applicationScope: () -> VpnApplicationScope = { VpnApplicationScope.WholeDevice },
     private val routingPolicy: () -> VpnRoutingPolicy = { VpnRoutingPolicy(applicationScope()) },
+    private val startAuthority: (Long?, Network?, Boolean) -> Boolean = { _, _, _ -> true },
+    private val onStartEstablished: (Long?) -> Unit = {},
     private val configurationForProfile: (VpnProfile) -> com.foxhole.core.runtime.PreparedVpnConfig = VpnEngineConfig::prepare) : EngineDriver {
     private val connectivity = requireNotNull(service.getSystemService(ConnectivityManager::class.java))
     private val pendingTun = AtomicReference<ParcelFileDescriptor?>(null)
 
-    override suspend fun open(profile: VpnProfile): EngineSession = withContext(Dispatchers.IO) {
-        ManagedSession(profile, openFrame(profile, routingPolicy(), false, null))
+    override suspend fun open(profile: VpnProfile): EngineSession = open(profile, null)
+    override suspend fun open(profile: VpnProfile, commandTicket: Long?): EngineSession = withContext(Dispatchers.IO) {
+        val frame = openFrame(profile, routingPolicy(), false, null,
+            authority = { network, established -> startAuthority(commandTicket, network, established) })
+        onStartEstablished(commandTicket)
+        ManagedSession(profile, frame)
     }
 
     private suspend fun openFrame(profile: VpnProfile, routing: VpnRoutingPolicy, blocked: Boolean,
-        hooks: HandoverHooks?, prepared: FramePreparation? = null): NativeFrame = withContext(Dispatchers.IO) {
-        fun current() { check(hooks?.isCurrent?.invoke() != false && VpnService.prepare(service) == null) { "Routing frame owner superseded" } }
+        hooks: HandoverHooks?, prepared: FramePreparation? = null,
+        authority: (Network?, Boolean) -> Boolean = { _, _ -> true }): NativeFrame = withContext(Dispatchers.IO) {
+        var sourceNetwork: Network? = null
+        var established = false
+        fun current() { check(authority(sourceNetwork, established) && hooks?.isCurrent?.invoke() != false && VpnService.prepare(service) == null) { "Routing frame owner superseded" } }
         current()
         if (VpnService.prepare(service) != null) throw EngineException(EngineFailure.START)
         val preparation = prepared ?: prepareFrame(profile, routing, blocked)
@@ -73,6 +82,7 @@ class AndroidEngineDriver(private val service: VpnService,
         } catch (_: LinkageError) { throw EngineException(EngineFailure.NATIVE_UNAVAILABLE) }
         catch (_: Exception) { throw EngineException(EngineFailure.NATIVE_UNAVAILABLE) }
         val underlying = underlyingNetwork() ?: throw EngineException(EngineFailure.START)
+        sourceNetwork = underlying
         val previousVpn = vpnNetworks().map { it.networkHandle }.toSet()
         val plan = config.tun
         val builder = service.Builder().setSession("FoxHole VPN").setMtu(plan.mtu)
@@ -98,6 +108,7 @@ class AndroidEngineDriver(private val service: VpnService,
         current()
         val advertisedDns = plan.advertisedDnsServers.map(::numericAddress).toSet()
         val tun = builder.establish() ?: throw EngineException(EngineFailure.START)
+        established = true
         pendingTun.set(tun)
         hooks?.onTun?.invoke(tun)
         var session: NativeFrame? = null
@@ -125,6 +136,7 @@ class AndroidEngineDriver(private val service: VpnService,
                     }
                 }) {
                     try {
+                        current()
                         // No detached FD or token borrow exists while a cancelled start is still queued.
                         val continuation = hooks?.dnsContinuation?.let { lease -> current(); lease.beginStart() }
                         continuationStart.set(continuation)

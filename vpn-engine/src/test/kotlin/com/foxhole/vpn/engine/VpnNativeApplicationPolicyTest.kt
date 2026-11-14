@@ -2,6 +2,7 @@ package com.foxhole.vpn.engine
 
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.boolean
+import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.longOrNull
@@ -33,5 +34,14 @@ class VpnNativeApplicationPolicyTest {
         val dns = Json.parseToJsonElement(compiler.engine(true)).jsonObject.getValue("dns").jsonObject
         assertEquals(setOf("mode"), dns.keys)
         assertEquals(dns, Json.parseToJsonElement(compiler.policy(false, 4)).jsonObject.getValue("dns"))
+    }
+
+    @Test fun blockedPackagesBecomeNativeBlockActionsWhileCapturedTrafficDefaultsToVpn() {
+        val policy = VpnNativeApplicationPolicy(compiler.engine(), blockedApplications = setOf("org.example.blocked"))
+        val traffic = Json.parseToJsonElement(policy.engine()).jsonObject.getValue("traffic").jsonObject
+        assertEquals("vpn", traffic.getValue("default_action").jsonPrimitive.content)
+        val rule = traffic.getValue("applications").jsonArray.single().jsonObject
+        assertEquals("org.example.blocked", rule.getValue("package").jsonPrimitive.content)
+        assertEquals("block", rule.getValue("action").jsonPrimitive.content)
     }
 }

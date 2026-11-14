@@ -2,7 +2,7 @@
 
 <div align="center">
 
-FoxHole VPN 是适用于 Android 7 及更高版本的简洁 VPN 客户端。导入 VPN 服务商或自有服务器的配置，在手机上连接，并从应用管理已配对的 OpenWrt 路由器。
+FoxHole VPN是适用于Android 7及更高版本的简洁VPN客户端。导入VPN服务商或自有服务器的配置，即可从手机连接。已配对OpenWrt路由器的管理功能目前为公开测试版。
 
 </div>
 
@@ -17,7 +17,7 @@ FoxHole VPN 是适用于 Android 7 及更高版本的简洁 VPN 客户端。导�
 
 <div align="center">
 
-[English](../README.md) · [Русский](README.ru.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [العربية](README.ar.md)
+[🇬🇧 English](../README.md) · [🇷🇺 Русский](README.ru.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇯🇵 日本語](README.ja.md) · [🇨🇳 **简体中文**](README.zh-CN.md) · [🇸🇦 العربية](README.ar.md)
 
 </div>
 
@@ -34,6 +34,34 @@ FoxHole VPN 是适用于 Android 7 及更高版本的简洁 VPN 客户端。导�
   </a>
 </p>
 
+<a id="ecosystem"></a>
+<a id="-foxhole生态系统"></a>
+
+<div align="center">
+
+**FoxHole ecosystem**
+
+[FoxHole Guard](https://github.com/foxhole-team/foxhole-guard) · [**FoxHole VPN**](https://github.com/foxhole-team/foxhole-vpn) · [FoxHole Core](https://github.com/foxhole-team/foxhole-core) · [FoxHole OpenWRT](https://github.com/foxhole-team/foxhole-openwrt-client) · [FoxHole DB](https://github.com/foxhole-team/foxhole-db)
+
+<details>
+<summary>项目职责</summary>
+
+| 项目 | 用途 |
+| --- | --- |
+| [FoxHole Guard](https://github.com/foxhole-team/foxhole-guard) | Android：VPN、Tor/I2P、流量规则和本地监控 |
+| [**FoxHole VPN**](https://github.com/foxhole-team/foxhole-vpn) | Android：简洁VPN客户端及已配对OpenWrt管理 |
+| [FoxHole Core](https://github.com/foxhole-team/foxhole-core) | 共用Rust网络核心；功能取决于构建 |
+| [FoxHole OpenWrt](https://github.com/foxhole-team/foxhole-openwrt-client) | 路由器VPN及局域网管理 |
+| [FoxHole DB](https://github.com/foxhole-team/foxhole-db) | 签名规则和参考数据 |
+
+</details>
+
+</div>
+
+
+
+
+我们利用自己的时间和资源开发和维护FoxHole VPN，并在开发中使用AI工具。您的支持能让我们为项目投入更多时间。[支持开发 →](#cryptocurrency-wallets)
 
 支持 VLESS、VMess、Trojan、Shadowsocks/Outline、WireGuard、AmneziaWG（实验性支持）、Hysteria2、Naive、TUIC 和 AnyTLS。可导入兼容的 FoxHole Guard 配置、v2rayTun 链接和订阅、Clash/mihomo YAML、SIP008 JSON 及 Outline 动态密钥（`ssconf://`）。导出的配置和来源链接可能包含访问凭据，请仅与可信的人分享。
 
@@ -43,11 +71,16 @@ FoxHole VPN 是适用于 Android 7 及更高版本的简洁 VPN 客户端。导�
 
 <a id="whats-new"></a>
 
-> **🆕 更新内容 - 1.0.5 Stable**
+> **🆕 更新内容 - 1.0.6 Stable**
 >
-> - 新增 Android 7 支持。
-> - 新增网站流量路由。
-> - 改进了通知的视觉样式。
+> - 修复了通过应用首次安装和设置路由器的问题
+> - 更新了帮助章节
+> - 更新了路由器管理界面
+> - 界面整体改进
+> - 在 Android 快捷设置中添加快捷方式
+> - 在路由器管理中添加导入已保存 VPN 配置的功能
+
+[应用更新连续性与限制](app-update-continuation.md).
 
 <a id="quickstart"></a>
 
@@ -84,24 +117,26 @@ Obtainium · ARM64。其他架构请在[GitHub Releases](https://github.com/foxh
 - 从剪贴板、文件或二维码导入配置；分享已保存的配置，并刷新保留订阅来源的配置。
 - 从导入配置的选项中选择协议。更改当前配置的协议时，需要确认后才会重新连接。
 - 主屏幕小组件显示连接状态，并可启动或停止选中的配置。
-- 在设置中选择主题和应用语言：英语、俄语、德语、法语、西班牙语、日语或简体中文。
+- 在设置中选择主题和应用语言：英语、俄语、德语、法语、西班牙语、日语、简体中文或阿拉伯语。
 
 在“设置 → 后台更新”中启用后，默认大约每 12 小时刷新订阅，每 24 小时检查 FoxHole DB 的签名TLS指纹表。可在同一页面分别关闭这两项后台检查。安装数据仍需您的操作。GitHub 版本每天检查应用更新；下载和安装 APK 需要您的操作及 Android 确认。F-Droid 版本不会自行检查或安装 APK 更新，请使用 F-Droid。Android 可能延迟后台任务。
 
 这些更新改变核心生成TLS ClientHello时使用的数据。安装已验证的更新需要用户操作。
+
+[应用路由契约](application-routing.md) · [网站规则格式与限制](website-routing-formats.md) · [WireGuard 域名路由与 DNS](wireguard-domain-dns.md).
 
 <a id="details"></a>
 
 ## 🛜 路由器管理（公开测试版）
 
 > [!NOTE]
-> 暂不支持在 VPN 连接处于活动状态时管理路由器。
+> 本地发现、设置和新配对须在关闭 VPN 后使用规定的 Wi-Fi/LAN 流程。现有配对可以在满足下述信任与同意条件时，单独选择通过家庭 VPN 管理。
 
 路由器管理现为公开测试版。设备兼容性以及安装和更新流程仍在验证中。
 
 > [!IMPORTANT]
-> 以下限制描述当前已发布版本。
-> 目前，自动安装仅支持使用完全默认 OpenWrt 配置的路由器。
+> 以下可用性描述当前源码配置。
+> 此 checkout 中的应用自动安装在发布目录完成资格验证前保持禁用。仍可检查路由器信息，并与手动安装的兼容客户端配对。
 > 手动安装最新版 [FoxHole OpenWrt Client](https://github.com/foxhole-team/foxhole-openwrt-client) 后也可进行配对。
 > 设置和配对时，手机和路由器必须位于同一局域网，且路由器需要能够访问互联网。
 
@@ -132,27 +167,18 @@ Wi-Fi 图标仅表示实际的 Wi-Fi 连接，不读取 SSID 或访问定位。�
 
 ## 🔒 隐私
 
-配置与设置使用 Android Keystore 密钥在设备上加密保存。不含广告或分析 SDK。VPN 检查会联系 `www.google.com/generate_204`，出口 IP 信息来自 `ipwho.is`；这些请求使用选中的 VPN 网络。VPN 关闭时，可通过当前互联网连接更新大致设备位置，包括从小组件发起的更新。这些服务会收到请求及其来源 IP。签名TLS指纹表来自 `foxhole-team.github.io/foxhole-db`；订阅使用已保存的服务商 URL。不需要 GPS。
+配置与设置使用 Android Keystore 密钥在设备上加密保存。不含广告或分析 SDK。在普通验证模式下，VPN 检查会联系 `www.google.com/generate_204`，出口 IP 信息来自 `ipwho.is`；这些请求使用选中的 VPN 网络。VPN 关闭时，可通过当前互联网连接更新大致设备位置，包括从小组件发起的更新。这些服务会收到请求及其来源 IP。签名TLS指纹表来自 `foxhole-team.github.io/foxhole-db`；订阅使用已保存的服务商 URL。不需要 GPS。
 
-<a id="ecosystem"></a>
+例外：包含网站规则或已阻止应用的 WireGuard 规则模式会验证配置中经认证的 DNS 解析器，代替 HTTP/出口 IP 检查。此模式的“已连接”确认配置 DNS 可达，并不确认任意 HTTP 地址或出口 IP 服务可达。此模式不提供出口 IP 位置，并拒绝 Geo 刷新。
 
-## 🔗 FoxHole生态系统
-
-| 项目 | 用途 |
-| --- | --- |
-| [FoxHole Guard](https://github.com/foxhole-team/foxhole-guard) | Android：VPN、Tor/I2P、流量规则和本地监控 |
-| [**FoxHole VPN**](https://github.com/foxhole-team/foxhole-vpn) | Android：简洁VPN客户端及已配对OpenWrt管理 |
-| [FoxHole Core](https://github.com/foxhole-team/foxhole-core) | 共用Rust网络核心；功能取决于构建 |
-| [FoxHole OpenWrt](https://github.com/foxhole-team/foxhole-openwrt-client) | 路由器VPN及局域网管理 |
-| [FoxHole DB](https://github.com/foxhole-team/foxhole-db) | 签名规则和参考数据 |
 
 ## 🤝 参与开发
 
 请通过[Issues](https://github.com/foxhole-team/foxhole-vpn/issues)报告错误或提出修改建议。
 
-## 💖 支持开发
+[APK 交付与 ABI](apk-delivery-abis.md) · [F-Droid 源码构建](fdroid-source-build.md).
 
-我们完全利用自己的时间和资源开发和维护FoxHole VPN，并在开发中使用AI工具。您的支持能让我们为项目投入更多时间，加快开发进度。
+## 💖 支持开发
 
 <a id="cryptocurrency-wallets"></a>
 

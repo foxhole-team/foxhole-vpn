@@ -4,6 +4,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -31,6 +32,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -57,33 +59,26 @@ internal fun VpnAppJournalSheet(journal: AppJournal, onBack: () -> Unit, onSave:
     val state by journal.state.collectAsStateWithLifecycle()
     LaunchedEffect(journal) { journal.load() }
     VpnRouterSheetContent(R.string.vpn_app_journal_title, R.drawable.lin_file, scrollable = false,
-        naturalHeight = true,
+        naturalHeight = false,
         actions = {
+            IconButton(onClick = onSave, enabled = state.loaded && !saving, modifier = Modifier.size(48.dp)) {
+                Icon(painterResource(R.drawable.lin_download), stringResource(R.string.vpn_app_journal_save), Modifier.size(22.dp))
+            }
             IconButton(onClick = onSettings, modifier = Modifier.size(48.dp)) {
                 Icon(painterResource(R.drawable.lin_settings), stringResource(R.string.vpn_app_journal_settings))
             }
         },
-        footer = {
-            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                OutlinedButton(onClick = onBack, modifier = Modifier.weight(1f).heightIn(min = 56.dp)) {
-                    Text(stringResource(R.string.router_review_back))
-                }
-                Button(onClick = onSave, enabled = state.loaded && !saving,
-                    modifier = Modifier.weight(1f).heightIn(min = 56.dp)) {
-                    Text(stringResource(R.string.vpn_app_journal_save))
-                }
-            }
-        }) {
+        ) {
         if (state.storageError) Text(stringResource(R.string.vpn_app_journal_storage_error),
             color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodySmall)
         val colors = LocalVpnColors.current
-        Surface(Modifier.fillMaxWidth(), shape = RoundedCornerShape(14.dp),
+        Surface(Modifier.weight(1f).fillMaxWidth().clipToBounds(), shape = RoundedCornerShape(14.dp),
             color = colors.background, contentColor = colors.foreground, border = BorderStroke(1.dp, colors.border)) {
             if (!state.loaded) Box(Modifier.fillMaxWidth().heightIn(min = 56.dp), contentAlignment = Alignment.Center) {
                 CircularProgressIndicator(Modifier.size(24.dp))
             } else if (state.entries.isEmpty()) Text(stringResource(R.string.vpn_app_journal_empty),
                 Modifier.padding(16.dp), style = MaterialTheme.typography.bodySmall, color = colors.muted)
-            else LazyColumn(Modifier.fillMaxWidth()) {
+            else LazyColumn(Modifier.fillMaxSize()) {
                 item {
                     JournalTableRow(stringResource(R.string.vpn_app_journal_time), stringResource(R.string.vpn_app_journal_event),
                         stringResource(R.string.vpn_app_journal_result), header = true)

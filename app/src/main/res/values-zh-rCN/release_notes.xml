@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="vpn_release_notes_subscriptions">改进 VPN 提供商订阅的支持。</string>
-    <string name="vpn_release_notes_router_setup">修复了路由器发现、配对和通过 SSH 检查 OpenWrt 的问题，并添加了 SSH 密钥支持。</string>
-    <string name="vpn_release_notes_apk_updates">修复了从 GitHub 更新时的 APK 验证。</string>
-    <string name="vpn_release_notes_motion">改进了窗口动画。</string>
-    <string name="vpn_release_notes_notices">新增通知关闭计时器和向上滑动关闭功能。</string>
-    <string name="vpn_release_notes_vless_reality">修复了 VLESS + REALITY 的兼容性。</string>
-    <string name="vpn_release_notes_router_management">简化 OpenWrt 设置以及家庭设备和 VPN 客户端的管理。</string>
-    <string name="vpn_release_notes_pin6">新增安装时确认的六位 PIN，并支持最多 10 台路由器。</string>
-    <string name="vpn_release_notes_update_position">应用更新通知已移至 VPN 配置选择区域上方。</string>
-    <string name="vpn_release_notes_router_pairing_version">修复了与路由器配对时的 OpenWrt 版本检查问题。</string>
+    <string name="vpn_release_notes_subscriptions">改进 VPN 提供商订阅的支持</string>
+    <string name="vpn_release_notes_router_setup">修复了路由器发现、配对和通过 SSH 检查 OpenWrt 的问题，并添加了 SSH 密钥支持</string>
+    <string name="vpn_release_notes_apk_updates">修复了从 GitHub 更新时的 APK 验证</string>
+    <string name="vpn_release_notes_motion">改进了窗口动画</string>
+    <string name="vpn_release_notes_notices">新增通知关闭计时器和向上滑动关闭功能</string>
+    <string name="vpn_release_notes_vless_reality">修复了 VLESS + REALITY 的兼容性</string>
+    <string name="vpn_release_notes_router_management">简化 OpenWrt 设置以及家庭设备和 VPN 客户端的管理</string>
+    <string name="vpn_release_notes_pin6">新增安装时确认的六位 PIN，并支持最多 10 台路由器</string>
+    <string name="vpn_release_notes_update_position">应用更新通知已移至 VPN 配置选择区域上方</string>
+    <string name="vpn_release_notes_router_pairing_version">修复了与路由器配对时的 OpenWrt 版本检查问题</string>
     <string name="vpn_release_notes_title">更新内容</string>
-    <string name="vpn_release_notes_scenarios">新增路由（测试版）功能，可按应用轻松分配流量并原子应用更改。</string>
-    <string name="vpn_release_notes_interface_103">优化了界面：修复国家旗帜显示、选择列表颜色和窗口动画。</string>
-    <string name="vpn_release_notes_help_103">改进了所有支持语言的文档和帮助部分。</string>
-    <string name="vpn_release_notes_dns_103">修复了应用场景中的 DNS 路由。</string>
-    <string name="vpn_release_notes_widget_103">小部件新增当前路由场景显示，并采用颜色指示。</string>
+    <string name="vpn_release_notes_scenarios">新增路由（测试版）功能，可按应用轻松分配流量并原子应用更改</string>
+    <string name="vpn_release_notes_interface_103">优化了界面：修复国家旗帜显示、选择列表颜色和窗口动画</string>
+    <string name="vpn_release_notes_help_103">改进了所有支持语言的文档和帮助部分</string>
+    <string name="vpn_release_notes_dns_103">修复了应用场景中的 DNS 路由</string>
+    <string name="vpn_release_notes_widget_103">小部件新增当前路由场景显示，并采用颜色指示</string>
 </resources>

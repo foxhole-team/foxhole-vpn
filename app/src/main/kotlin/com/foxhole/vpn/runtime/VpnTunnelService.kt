@@ -11,6 +11,7 @@ import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import android.net.VpnService
 import android.os.Build
+import android.app.Notification
 import androidx.core.app.NotificationCompat
 import androidx.core.app.ServiceCompat
 import androidx.annotation.Keep
@@ -22,6 +23,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.distinctUntilChanged
 
 class VpnTunnelService : VpnService() {
     @Volatile internal var latestStartId: Int = 0
@@ -54,7 +57,11 @@ class VpnTunnelService : VpnService() {
             .addCapability(NetworkCapabilities.NET_CAPABILITY_NOT_VPN).build()
         connectivity.registerNetworkCallback(request, callback)
         registered = true
-        notificationScope.launch { controller.state.collect { if (foreground) showForegroundNotification() } }
+        notificationScope.launch {
+            combine(controller.state, controller.settings) { state, settings ->
+                vpnSystemPresentation(state) to settings.language
+            }.distinctUntilChanged().collect { if (foreground) showForegroundNotification() }
+        }
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -104,24 +111,43 @@ class VpnTunnelService : VpnService() {
         val localized = withVpnLocale(controller.settings.value.language)
         val manager = requireNotNull(getSystemService(NotificationManager::class.java))
         if (Build.VERSION.SDK_INT >= 26) manager.createNotificationChannel(
-            NotificationChannel(CHANNEL, localized.getString(R.string.vpn_notification_channel), NotificationManager.IMPORTANCE_LOW))
+            NotificationChannel(CHANNEL, localized.getString(R.string.vpn_notification_channel), NotificationManager.IMPORTANCE_LOW).apply {
+                description = localized.getString(R.string.vpn_notification_description)
+                setSound(null, null)
+                enableVibration(false)
+                enableLights(false)
+                setShowBadge(false)
+                lockscreenVisibility = Notification.VISIBILITY_SECRET
+                if (Build.VERSION.SDK_INT >= 29) setAllowBubbles(false)
+            })
+        val state = controller.state.value
+        val presentation = vpnSystemPresentation(state)
         val open = Intent(this, binding.activity)
-        val stop = Intent(this, VpnTunnelService::class.java).setAction(ACTION_STOP)
         val immutable = PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        val notification = NotificationCompat.Builder(this, CHANNEL)
+        val builder = NotificationCompat.Builder(this, CHANNEL)
             .setSmallIcon(R.drawable.ic_notification_vpn)
-            .setContentTitle(localized.getString(R.string.vpn_notification_title))
-            .setContentText(localized.getString(when (controller.state.value.phase) {
-                VpnPhase.IDLE -> R.string.vpn_status_idle
-                VpnPhase.CONNECTING -> R.string.vpn_status_connecting
-                VpnPhase.VALIDATING -> R.string.vpn_status_validating
-                VpnPhase.CONNECTED -> R.string.vpn_status_connected
-                VpnPhase.STOPPING -> R.string.vpn_status_stopping
-                VpnPhase.ERROR -> R.string.vpn_status_error
-            }))
+            .setContentTitle(localized.getString(presentation.statusRes))
             .setContentIntent(PendingIntent.getActivity(this, 10, open, immutable))
-            .addAction(R.drawable.ic_notification_vpn, localized.getString(R.string.vpn_notification_stop), PendingIntent.getService(this, 11, stop, immutable))
-            .setOngoing(true).setOnlyAlertOnce(true).setCategory(NotificationCompat.CATEGORY_SERVICE).build()
+            .setColor(presentation.accent)
+            .setVisibility(NotificationCompat.VISIBILITY_SECRET)
+            .setSilent(true)
+            .setPriority(NotificationCompat.PRIORITY_LOW)
+            .setForegroundServiceBehavior(NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE)
+            .setOngoing(presentation.active).setOnlyAlertOnce(true).setCategory(NotificationCompat.CATEGORY_SERVICE)
+        when (presentation.action) {
+            VpnSystemAction.STOP -> builder.addAction(R.drawable.lin_power, localized.getString(R.string.vpn_stop),
+                PendingIntent.getService(this, 11, Intent(this, VpnTunnelService::class.java).setAction(ACTION_STOP), immutable))
+            VpnSystemAction.START -> {
+                val app = application as? com.foxhole.vpn.VpnApplication
+                val start = if (app?.licenseConsent?.state?.value?.accepted == true && state.selectedProfileId != null)
+                    com.foxhole.vpn.widget.widgetPermissionIntent(this, 12, com.foxhole.vpn.widget.WidgetAction.START, state.selectedProfileId)
+                else open
+                builder.addAction(R.drawable.lin_power, localized.getString(R.string.vpn_start),
+                    PendingIntent.getActivity(this, 12, start, immutable))
+            }
+            VpnSystemAction.NONE -> Unit
+        }
+        val notification = builder.build()
         ServiceCompat.startForeground(this, NOTIFICATION, notification,
             if (Build.VERSION.SDK_INT >= 34) ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE else 0)
         foreground = true

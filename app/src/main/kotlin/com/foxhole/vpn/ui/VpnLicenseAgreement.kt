@@ -86,7 +86,7 @@ private fun VpnLicenseAgreement(
                     Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState())) {
                         VpnAboutContent()
                     }
-                    TextButton(onClick = { licensesOpen = false }, modifier = Modifier.fillMaxWidth()) {
+                    TextButton(colors = vpnNeutralTextButtonColors(), onClick = { licensesOpen = false }, modifier = Modifier.fillMaxWidth()) {
                         Text(stringResource(R.string.vpn_close))
                     }
                 } else {
@@ -100,7 +100,7 @@ private fun VpnLicenseAgreement(
                             Text(stringResource(R.string.vpn_license_body), Modifier.padding(16.dp),
                                 style = MaterialTheme.typography.bodyMedium)
                         }
-                        OutlinedButton(onClick = { licensesOpen = true },
+                        OutlinedButton(colors = vpnNeutralOutlinedButtonColors(), onClick = { licensesOpen = true },
                             modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)) {
                             Text(stringResource(R.string.vpn_license_open_licenses))
                         }
@@ -120,7 +120,7 @@ private fun VpnLicenseAgreement(
                         }
                     }
                     Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Button(onClick = { if (checked && !saving) onAccept(true) }, enabled = checked && !saving,
+                        Button(colors = vpnNeutralButtonColors(), onClick = { if (checked && !saving) onAccept(true) }, enabled = checked && !saving,
                             modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)) {
                             Text(stringResource(if (saving) R.string.vpn_working else R.string.vpn_continue))
                         }

@@ -121,7 +121,7 @@ internal fun VpnApp(
     onRouterEntryRequest: ((() -> Unit) -> Unit)? = null,
     routerControl: RouterControlCoordinator? = null,
     onRouterHomeEnableRequest: ((() -> Unit) -> Unit)? = null,
-    exportRouterProfile: (suspend (String) -> RouterProfileSelection?)? = null,
+    exportRouterProfile: (suspend (com.foxhole.vpn.router.RouterPhoneTransferRequest) -> RouterProfileSelection?)? = null,
     openRouterSetup: ((String) -> Unit)? = null,
 ) {
     VpnNoticeScope { VpnAppContent(controller, state, settings, actions, importedFileText, externalError, dataUpdate, appUpdate, openAppUpdate, routerWizard, routerProfileProbe, onRouterEntryRequest, routerControl, onRouterHomeEnableRequest, exportRouterProfile, openRouterSetup) }
@@ -143,7 +143,7 @@ private fun VpnAppContent(
     onRouterEntryRequest: ((() -> Unit) -> Unit)?,
     routerControl: RouterControlCoordinator?,
     onRouterHomeEnableRequest: ((() -> Unit) -> Unit)?,
-    exportRouterProfile: (suspend (String) -> RouterProfileSelection?)?,
+    exportRouterProfile: (suspend (com.foxhole.vpn.router.RouterPhoneTransferRequest) -> RouterProfileSelection?)?,
     openRouterSetup: ((String) -> Unit)?,
 ) {
     val context = LocalContext.current
@@ -152,6 +152,7 @@ private fun VpnAppContent(
     val notices = requireNotNull(LocalVpnNotices.current)
 
     val navigation = remember { VpnSheetNavigation() }
+    val helpState = rememberVpnHelpState()
     val betaNoticePreferences = remember(context.applicationContext) { RouterBetaNoticePreferences(context) }
     var routerBetaNoticeVisible by rememberSaveable { mutableStateOf(false) }
     var profilesUi by remember { mutableStateOf(VpnProfilesUiState()) }
@@ -552,7 +553,7 @@ private fun VpnAppContent(
             },
             onBack = if (!showRouterBetaNotice && shown.depth > 0) ({ back(shown) }) else null,
             showCloseButton = showRouterBetaNotice || (shown.page !in setOf(
-                VpnSheetPage.RouterControl, VpnSheetPage.RouterWizard, VpnSheetPage.ImportText, VpnSheetPage.InsecureConsent, VpnSheetPage.AppJournal,
+                VpnSheetPage.RouterControl, VpnSheetPage.RouterWizard, VpnSheetPage.RouterEntry, VpnSheetPage.ImportText, VpnSheetPage.InsecureConsent,
             ) && shown.page !is VpnSheetPage.ProtocolConfirmation && shown.page !is VpnSheetPage.RemoveConfirmation),
             confineContentGestures = confineViewportGestures && !showRouterBetaNotice,
             footerContent = if (showRouterBetaNotice) ({ VpnRouterBetaNoticeOptOut(betaNoticePreferences) }) else null) {
@@ -572,6 +573,12 @@ private fun VpnAppContent(
                     val pageBusy = busy || !entryCurrent(entry)
                     when (val page = entry.page) {
                         VpnSheetPage.RouterControl -> if (routerControl != null) VpnRouterControlSheet(routerControl,
+                            phoneProfileRequests = remember(state.profiles) { state.profiles.flatMap {
+                                com.foxhole.vpn.router.routerPhoneTransferRequests(it.id, it.protocolOptions.map { option -> option.id }) } },
+                            exportPhoneProfile = { request ->
+                                if (exportRouterProfile != null) exportRouterProfile(request)
+                                else com.foxhole.vpn.router.RouterPhoneProfileExport(controller).requested(request) },
+                            canInstallRouter = routerWizard?.canInstallRouter == true, canInspectRouter = routerWizard?.canInspectRouter == true,
                             profileProbe = profileProbeState,
                             onRetryPairing = {
                                 if (entryCurrent(entry) && routerWizard != null) {
@@ -589,9 +596,9 @@ private fun VpnAppContent(
                                 navigation.replace(VpnSheetPage.RouterEntry)
                             } },
                             onAddRouter = { if (entryCurrent(entry) && routerWizard != null && routerControl.state.value.canAddRouter) {
-                                routerControl.close()
                                 routerWizard.begin(RouterWizardPath.PAIR, null, addingNew = true)
                                 navigation.replace(VpnSheetPage.RouterEntry)
+                                routerControl.close()
                             } },
                             onUnpaired = { if (entryCurrent(entry) && routerControl.state.value.selectedRouterId == null) {
                                 routerWizard?.begin(RouterWizardPath.PAIR, null)
@@ -606,6 +613,7 @@ private fun VpnAppContent(
                             onClose = { if (entryCurrent(entry)) sheetClose() })
                         VpnSheetPage.RouterEntry -> if (routerWizard != null) VpnRouterEntrySheet(
                             setupEnabled = routerWizard.setupAvailable,
+                            canInstallRouter = routerWizard.canInstallRouter, canInspectRouter = routerWizard.canInspectRouter,
                             installationCatalog = routerWizard.installationCatalog,
                             discovery = routerState?.discovery,
                             finding = routerState?.busy == true,
@@ -618,6 +626,9 @@ private fun VpnAppContent(
                                 }
                             },
                             onSetup = { continueRouterDiscovery(entry, null) },
+                            onCancelDiscovery = { if (entryCurrent(entry)) {
+                                routerWizard.begin(RouterWizardPath.PAIR, null, addingNew = routerWizard.isAddingRouter)
+                            } },
                             onPair = { if (entryCurrent(entry)) {
                                 routerWizard.begin(RouterWizardPath.PAIR, null, addingNew = routerWizard.isAddingRouter)
                                 navigation.push(VpnSheetPage.RouterWizard)
@@ -639,6 +650,7 @@ private fun VpnAppContent(
                                 installProtocols = { if (entryCurrent(entry)) routerWizard.installProtocols(it) },
                                 installCompactSelection = { protocols, server -> if (entryCurrent(entry)) routerWizard.installProtocols(protocols, server) },
                                 confirmInstallProtocols = { if (entryCurrent(entry)) routerAction { routerWizard.confirmInstallProtocols() } },
+                                confirmCompatibility = { if (entryCurrent(entry)) routerAction { routerWizard.confirmCompatibility() } },
                                 login = { credential -> if (entryCurrent(entry)) {
                                     val ownedCredential = credential.copyOf()
                                     routerAction(ownedCredential) { routerWizard.login(ownedCredential) }
@@ -656,10 +668,13 @@ private fun VpnAppContent(
                                 options = { if (entryCurrent(entry)) routerWizard.options(it) },
                                 finish = { pin -> if (entryCurrent(entry)) routerAction(pin) { routerWizard.finish(pin) } else pin?.fill('\u0000') },
                                 failure = { notices.show(resources.getString(R.string.vpn_router_error_network), error = true) },
+                                foreground = { if (entryCurrent(entry)) routerWizard.refreshWebSetupOnForeground() },
+                                background = routerWizard::webSetupBackgrounded,
                                 openRouterSetup = {
                                     val address = routerState.address
                                     if (entryCurrent(entry) && com.foxhole.vpn.router.routerLanAddress(address) != null) {
                                         try {
+                                            if (!routerWizard.prepareWebSetupReturn()) throw IllegalStateException("router_web_setup_unavailable")
                                             if (openRouterSetup != null) openRouterSetup(address)
                                             else context.startActivity(android.content.Intent(android.content.Intent.ACTION_VIEW,
                                                 android.net.Uri.parse("http://$address/cgi-bin/luci/admin/services/foxhole/pin")))
@@ -708,7 +723,7 @@ private fun VpnAppContent(
                         VpnSheetPage.AppUpdate -> VpnAppUpdateSheet(appUpdate,
                             onAction = { if (entryCurrent(entry)) actions.appUpdateAction() },
                             onCheck = { if (entryCurrent(entry)) actions.checkAppUpdate() })
-                        is VpnSheetPage.SettingsDetail -> VpnSettingsDetailScreen(page.detail, settings,
+                        is VpnSheetPage.SettingsDetail -> VpnSettingsDetailScreen(page.detail, settings, helpState = helpState,
                             modifier = Modifier.then(LocalVpnSheetBodyGestures.current),
                             onSettings = { updated -> if (entryCurrent(entry)) {
                                 if (page.detail == VpnSettingsDetail.APPEARANCE) {
@@ -767,7 +782,7 @@ private fun VpnAppContent(
                                         onRouterEntryRequest?.invoke {
                                             if (entryCurrent(entry) && !busy) profileAction {
                                                 try {
-                                                    val selection = exportRouterProfile?.invoke(profile.id)
+                                                    val selection = exportRouterProfile?.invoke(com.foxhole.vpn.router.RouterPhoneTransferRequest(profile.id, profile.selectedProtocolOptionId))
                                                     if (selection != null) routerControl.sendSelection(selection)
                                                     else routerControl.sendProfile(profile.name, requireNotNull(controller.exportProfile(profile.id)))
                                                     val failure = routerControl.state.value.error

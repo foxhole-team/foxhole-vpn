@@ -57,7 +57,7 @@ class VpnWebRoutingTest {
         assertEquals("test-site.example", normalizeVpnWebMask("test-site.example"))
     }
 
-    @Test fun blockedApplicationsAreCapturedInProxyAndIgnoredInWholeDevice() {
+    @Test fun blockedApplicationsStayCapturedInBothScenarios() {
         val routing = VpnAppRouting(mode = VpnRoutingMode.SELECTED_APPS, defaultThroughVpn = false)
             .withRule("org.example.blocked", VpnAppRoute.BLOCK)
             .withRule("org.example.direct", VpnAppRoute.DIRECT)
@@ -66,6 +66,9 @@ class VpnWebRoutingTest {
         assertEquals(setOf("org.example.blocked"), policy.blockedApplications)
         assertEquals(com.foxhole.vpn.engine.VpnApplicationScope.Include(setOf("org.example.blocked")), policy.applicationScope)
         assertTrue(policy.webRules.single().blocked)
-        assertTrue(routing.copy(mode = VpnRoutingMode.WHOLE_DEVICE).enginePolicy("com.foxhole.vpn").blockedApplications.isEmpty())
+        val whole = routing.copy(mode = VpnRoutingMode.WHOLE_DEVICE).enginePolicy("com.foxhole.vpn")
+        assertEquals(policy.blockedApplications, whole.blockedApplications)
+        assertEquals(com.foxhole.vpn.engine.VpnApplicationScope.WholeDevice, whole.applicationScope)
+        assertTrue(whole.webRules.single().blocked)
     }
 }

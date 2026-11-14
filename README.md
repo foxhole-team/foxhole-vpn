@@ -2,7 +2,7 @@
 
 <div align="center">
 
-FoxHole VPN is a simple VPN client for Android 7 and later. Import a profile from your VPN provider or your own server, connect on your phone, and manage a paired OpenWrt router from the app.
+FoxHole VPN is a simple VPN client for Android 7 and later. Import a profile from your VPN provider or your own server and connect on your phone. Paired OpenWrt router management is available as a public beta.
 
 </div>
 
@@ -17,7 +17,7 @@ FoxHole VPN is a simple VPN client for Android 7 and later. Import a profile fro
 
 <div align="center">
 
-[English](README.md) · [Русский](docs/README.ru.md) · [Deutsch](docs/README.de.md) · [Français](docs/README.fr.md) · [Español](docs/README.es.md) · [日本語](docs/README.ja.md) · [简体中文](docs/README.zh-CN.md) · [العربية](docs/README.ar.md)
+[🇬🇧 **English**](README.md) · [🇷🇺 Русский](docs/README.ru.md) · [🇩🇪 Deutsch](docs/README.de.md) · [🇫🇷 Français](docs/README.fr.md) · [🇪🇸 Español](docs/README.es.md) · [🇯🇵 日本語](docs/README.ja.md) · [🇨🇳 简体中文](docs/README.zh-CN.md) · [🇸🇦 العربية](docs/README.ar.md)
 
 </div>
 
@@ -34,10 +34,41 @@ FoxHole VPN is a simple VPN client for Android 7 and later. Import a profile fro
   </a>
 </p>
 
+<div align="center">
+
 ![Platform](https://img.shields.io/badge/platform-Android-3DDC84?style=flat-square&logo=android&logoColor=white)
 ![Core](https://img.shields.io/badge/core-Rust-000000?style=flat-square&logo=rust&logoColor=white)
 [![License: GPL-3.0-or-later](https://img.shields.io/badge/license-GPL--3.0--or--later-007ec6?style=flat-square)](https://www.gnu.org/licenses/gpl-3.0.html)
 ![Telemetry](https://img.shields.io/badge/telemetry-none-success?style=flat-square)
+
+</div>
+
+<a id="ecosystem"></a>
+<a id="-foxhole-ecosystem"></a>
+
+<div align="center">
+
+**FoxHole ecosystem**
+
+[FoxHole Guard](https://github.com/foxhole-team/foxhole-guard) · [**FoxHole VPN**](https://github.com/foxhole-team/foxhole-vpn) · [FoxHole Core](https://github.com/foxhole-team/foxhole-core) · [FoxHole OpenWRT](https://github.com/foxhole-team/foxhole-openwrt-client) · [FoxHole DB](https://github.com/foxhole-team/foxhole-db)
+
+<details>
+<summary>Project roles</summary>
+
+| Project | Role |
+| --- | --- |
+| [FoxHole Guard](https://github.com/foxhole-team/foxhole-guard) | Android: VPN, Tor/I2P, traffic rules and local monitoring |
+| [**FoxHole VPN**](https://github.com/foxhole-team/foxhole-vpn) | Android: simple VPN client and paired OpenWrt management |
+| [FoxHole Core](https://github.com/foxhole-team/foxhole-core) | Shared Rust networking core; features depend on the build |
+| [FoxHole OpenWrt](https://github.com/foxhole-team/foxhole-openwrt-client) | Router VPN and local-network management |
+| [FoxHole DB](https://github.com/foxhole-team/foxhole-db) | Signed rules and reference datasets |
+
+</details>
+
+</div>
+
+
+We develop and maintain FoxHole VPN with our own time and resources, using AI tools in development. Your support helps us dedicate more time to the project. [Support development →](#cryptocurrency-wallets)
 
 Supports VLESS, VMess, Trojan, Shadowsocks/Outline, WireGuard, AmneziaWG (experimental), Hysteria2, Naive, TUIC and AnyTLS. Imports compatible FoxHole Guard configurations, v2rayTun links and subscriptions, Clash/mihomo YAML, SIP008 JSON and dynamic Outline keys (`ssconf://`). Share profiles only with people you trust: exported profiles and source links may contain access credentials.
 
@@ -47,11 +78,16 @@ Import transfers supported connection parameters. Clash/mihomo routing rules and
 
 <a id="whats-new"></a>
 
-> **🆕 What's new - 1.0.5 Stable**
+> **🆕 What's new - 1.0.6 Stable**
 >
-> - Added Android 7 support.
-> - Added website routing.
-> - Improved the visual style of notifications.
+> - Fixed initial router installation and setup through the app
+> - Updated help sections
+> - Updated the router management interface
+> - General interface improvements
+> - Added a shortcut to Android Quick Settings
+> - Added import of saved VPN profiles in router management
+
+[App update continuity and limits](docs/app-update-continuation.md).
 
 <a id="quickstart"></a>
 
@@ -89,7 +125,9 @@ Available APK architectures and router targets are listed in each published rele
 - Select a protocol from the options in an imported profile. Changing the active profile’s protocol asks for confirmation before reconnecting.
 - Choose a routing scenario for the whole device or selected applications, with VPN and Direct rules.
 - Home-screen widgets provide connection status and start/stop controls for the selected profile.
-- Choose a theme and app language in Settings: English, Russian, German, French, Spanish, Japanese or Simplified Chinese.
+- Choose a theme and app language in Settings: English, Russian, German, French, Spanish, Japanese, Simplified Chinese or Arabic.
+
+[Application routing contract](docs/application-routing.md) · [Website routing formats and limits](docs/website-routing-formats.md) · [WireGuard domain routing and DNS](docs/wireguard-domain-dns.md).
 
 Scenarios use Android’s VPN application routing for every supported profile protocol on Android 7 (API 24) and later. Whole device ignores app rules. In Proxy, the Whole device switch controls the default for unlisted apps: on sends them through VPN, off sends only explicit VPN rules through VPN. A Direct rule uses the device’s normal connection and system DNS settings, including Private DNS. These app-owned rules are separate from imported profiles.
 
@@ -108,13 +146,13 @@ These updates change the data used by the core to form TLS ClientHello. Installi
 ## 🛜 Router management public beta
 
 > [!NOTE]
-> Router management while a VPN connection is active is not yet supported.
+> Local discovery, setup and new pairing require the local Wi-Fi/LAN flow with VPN off. An existing pairing can use the separate home-VPN management opt-in under the trust and consent conditions below.
 
 Router management is a public beta; device compatibility and installation/update workflows remain under validation.
 
 > [!IMPORTANT]
-> The restrictions below describe the current published release.
-> Automatic installation currently supports only routers with a completely default OpenWrt configuration.
+> The following availability describes the current source configuration.
+> In this checkout, automatic installation through the app is disabled until the release catalog is qualified. Router inspection and pairing with a compatible client installed manually remain available.
 > You can also pair a router after manually installing the latest [FoxHole OpenWrt Client](https://github.com/foxhole-team/foxhole-openwrt-client).
 > For setup and pairing, the phone and router must be on the same LAN, and the router needs internet access.
 
@@ -147,27 +185,18 @@ Manual FoxHole updates from the app and LuCI use the same authenticated transact
 
 ## 🔒 Privacy
 
-Profiles and settings are encrypted on the device with an Android Keystore key. No advertising or analytics SDK is included. VPN connection checks contact `www.google.com/generate_204`, and exit-IP details come from `ipwho.is`; these requests use the selected VPN network. When VPN is off, approximate device location can be refreshed through the current internet connection, including by a widget. These services receive the request and its source IP address. Signed TLS fingerprint tables comes from `foxhole-team.github.io/foxhole-db`; subscriptions use your saved provider URLs. No GPS location is needed.
+Profiles and settings are encrypted on the device with an Android Keystore key. No advertising or analytics SDK is included. In ordinary validation mode, VPN connection checks contact `www.google.com/generate_204`, and exit-IP details come from `ipwho.is`; these requests use the selected VPN network. When VPN is off, approximate device location can be refreshed through the current internet connection, including by a widget. These services receive the request and its source IP address. Signed TLS fingerprint tables come from `foxhole-team.github.io/foxhole-db`; subscriptions use your saved provider URLs. No GPS location is needed.
 
-<a id="ecosystem"></a>
+Exception: WireGuard rule mode, used when website rules or blocked applications are present, validates the authenticated profile DNS resolver instead of the HTTP/exit-IP checks. Connected in this mode confirms profile-DNS reachability, not an arbitrary HTTP endpoint or exit-IP service. Exit-IP location is unavailable and Geo refresh is refused in this mode.
 
-## 🔗 FoxHole ecosystem
-
-| Project | Role |
-| --- | --- |
-| [FoxHole Guard](https://github.com/foxhole-team/foxhole-guard) | Android: VPN, Tor/I2P, traffic rules and local monitoring |
-| [**FoxHole VPN**](https://github.com/foxhole-team/foxhole-vpn) | Android: simple VPN client and paired OpenWrt management |
-| [FoxHole Core](https://github.com/foxhole-team/foxhole-core) | Shared Rust networking core; features depend on the build |
-| [FoxHole OpenWrt](https://github.com/foxhole-team/foxhole-openwrt-client) | Router VPN and local-network management |
-| [FoxHole DB](https://github.com/foxhole-team/foxhole-db) | Signed rules and reference datasets |
 
 ## 🤝 Contributing
 
 Report bugs and propose changes through [Issues](https://github.com/foxhole-team/foxhole-vpn/issues).
 
-## 💖 Support development
+[APK delivery and ABIs](docs/apk-delivery-abis.md) · [F-Droid source build](docs/fdroid-source-build.md).
 
-We develop and maintain FoxHole VPN entirely with our own time and resources, using AI tools in development. Your support helps us dedicate more time to the project and speed up development.
+## 💖 Support development
 
 <a id="cryptocurrency-wallets"></a>
 

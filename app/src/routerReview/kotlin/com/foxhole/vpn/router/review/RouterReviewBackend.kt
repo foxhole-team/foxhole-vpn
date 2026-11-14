@@ -93,6 +93,34 @@ internal class RouterReviewBackend(
     }
     val setupService: RouterSetupService = object : RouterSetupService {
         override val installCatalog = routerReviewCatalog()
+        override suspend fun precheck(address: String, hostKey: ByteArray, password: CharArray): com.foxhole.vpn.router.RouterSetupInspection {
+            try {
+                checkAddress(address)
+                if (!hostKey.contentEquals(this@RouterReviewBackend.hostKey)) throw RouterSetupFailure(RouterWizardError.IDENTITY)
+                delay(stageDelayMs)
+                val inspectedAddress = address
+                val inspectedRouter = currentRouter
+                return object : com.foxhole.vpn.router.RouterSetupInspection {
+                    override val address = inspectedAddress
+                    override val system = com.foxhole.vpn.router.RouterSystemInspection("25.12.5",
+                        com.foxhole.vpn.router.RouterPlatform("25.12", "x86/64", "x86_64"), resourceFacts(), "6.12.75~review-r1")
+                    override val catalogSha256 = installCatalog.sha256
+                    override val manifestSha256 = installCatalog.manifestSha256
+                    private var open = true
+                    override fun requireCurrent() { check(open && currentRouter == inspectedRouter && inspectedRouter !in unreachable) }
+                    override fun close() { open = false }
+                }
+            } finally { password.fill('\u0000') }
+        }
+        override suspend fun planInspection(inspection: com.foxhole.vpn.router.RouterSetupInspection,
+            selection: com.foxhole.vpn.router.RouterInstallProtocolSelection,
+            onProgress: (com.foxhole.vpn.router.RouterInstallProgress) -> Unit): RouterInstallProposal {
+            inspection.requireCurrent()
+            val synthetic = "offline-authenticated-review".toCharArray()
+            return try { inspect(inspection.address, hostKey.copyOf(), synthetic, selection, onProgress) }
+            finally { synthetic.fill('\u0000') }
+        }
+
 
         override suspend fun inspectSshIdentity(address: String): ByteArray {
             checkAddress(address)

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="router_review_management">OpenWRT クライアント</string>
+    <string name="router_review_management">FoxHole OpenWRT</string>
     <string name="router_review_compatibility">対応するOpenWrtバージョン</string>
     <string name="router_review_platforms">プラットフォーム</string>
     <string name="router_review_catalog_pending">OpenWrt 25.12.5：mediatek/filogicとx86/64。設定時に、アーキテクチャと空き容量を検証済みリリースカタログと照合します。</string>
@@ -10,13 +10,13 @@
     <string name="router_review_protocols">VPNプロトコル</string>
     <string name="router_review_storage">インストール先</string>
     <string name="router_review_direct_ip">固定IPv4アドレス</string>
-    <string name="router_review_remote_settings">外出先からのVPNアクセス</string>
+    <string name="router_review_remote_settings">モバイルネットワーク経由の管理</string>
     <string name="router_review_phone_profile">このスマートフォン用のVPNプロファイルを作成</string>
     <string name="router_review_remote_help">ルーターが固定の公開 IP アドレスに対応していれば、端末用の VPN ゲートウェイとして使えます。経路は「端末 → ルーター」です。国内向けの通信は直接送信し、国外向けの通信は有効な VPN 接続を経由します。</string>
-    <string name="router_review_router_vpn">VPN OpenWRT</string>
+    <string name="router_review_router_vpn">管理</string>
     <string name="router_review_vpn_clients">VPN クライアント</string>
     <string name="router_review_router_vpn_description">プロファイル、接続、設定</string>
-    <string name="router_review_clients_description">家庭内端末とリモートアクセス</string>
+    <string name="router_review_clients_description">ホームデバイス</string>
     <string name="router_review_unavailable">ルーターが見つかりません</string>
     <string name="router_review_control_disabled">ルーター管理は無効です</string>
     <string name="router_review_back">戻る</string>
@@ -37,8 +37,8 @@
     <string name="router_review_direct">VPN なし</string>
     <string name="router_review_selected_profile">選択したルータープロファイル</string>
     <string name="router_review_unpair">ルーターのペアリングを解除しますか？</string>
-    <string name="router_review_unpair_description">電話からルーターを管理できなくなります。FoxHole を削除しない限り、VPN は動作し続けます。</string>
-    <string name="router_review_delete_package">ルーターからFoxHoleを削除</string>
+    <string name="router_review_unpair_description">電話からルーターを管理できなくなります。FoxHole OpenWrt を削除しない限り、VPN は動作し続けます。</string>
+    <string name="router_review_delete_package">ルーターからFoxHole OpenWrtを削除</string>
     <string name="router_review_delete_unavailable">削除には接続可能なルーターと互換インストーラーが必要です。</string>
     <string name="router_review_confirm_unpair">ペアリング解除</string>
     <string name="router_review_share">共有</string>
@@ -51,21 +51,21 @@
     <string name="router_review_collapse_devices">ホームデバイスを非表示</string>
     <string name="router_review_progress_download">インストールファイルをダウンロード中</string>
     <string name="router_review_progress_upload">ルーターにファイルを送信中</string>
-    <string name="router_review_progress_install">ルーターでFoxHoleをダウンロードしてインストール中</string>
-    <string name="router_review_progress_check">インストール済みVPNを確認中</string>
+    <string name="router_review_progress_install">FoxHole OpenWrt をダウンロードしてインストール中</string>
+    <string name="router_review_progress_check">確認中</string>
     <string name="router_review_progress_percent">%1$d%%</string>
     <string name="router_review_find_router">ルーターを検索</string>
     <string name="router_review_router_found">ルーターが見つかりました</string>
     <string name="router_review_package_present">FoxHole OpenWRT Clientが見つかり、お使いの端末とペアリングする準備ができています</string>
-    <string name="router_review_package_missing">FoxHoleはまだインストールされていません</string>
-    <string name="router_review_package_unknown">FoxHoleを確認できませんでした。ルーターを再検索してください。</string>
-    <string name="router_review_reset_before_connect">FoxHole設定をリセット</string>
+    <string name="router_review_package_missing">FoxHole OpenWrtはまだインストールされていません</string>
+    <string name="router_review_package_unknown">FoxHole OpenWrtを確認できませんでした。ルーターを再検索してください。</string>
+    <string name="router_review_reset_before_connect">FoxHole OpenWrt設定をリセット</string>
     <string name="router_review_setup_available">ルーターを設定できます</string>
-    <string name="router_review_owner_setup_required">所有者アカウントを使用してLuCIでFoxHoleの初回設定を完了してください。</string>
-    <string name="router_review_reset_unavailable">FoxHoleのリセットは現在利用できません。</string>
+    <string name="router_review_owner_setup_required">所有者アカウントを使用してLuCIでFoxHole OpenWrtの初回設定を完了してください。</string>
+    <string name="router_review_reset_unavailable">FoxHole OpenWrtのリセットは現在利用できません。</string>
     <string name="router_review_open_router_setup">ルーター設定を開く</string>
     <string name="router_review_manual_address">アドレスを入力</string>
-    <string name="router_review_local_traffic">ローカルトラフィック</string>
+    <string name="router_review_local_traffic">VPN を使わない通信</string>
     <string name="router_review_country_auto">自動</string>
     <string name="router_review_country_unknown">国が不明です</string>
     <string name="router_review_country_description">国内向け通信の国：%1$s。変更。</string>

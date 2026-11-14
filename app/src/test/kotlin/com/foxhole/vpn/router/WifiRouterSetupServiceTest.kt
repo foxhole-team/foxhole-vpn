@@ -31,6 +31,12 @@ class WifiRouterSetupServiceTest {
         val closeCompleted = CompletableDeferred<Unit>()
         var closeFailure: IOException? = null
         var connectedWithoutPassword = false
+        val connectCalls = AtomicInteger()
+        val publicKeyCalls = AtomicInteger()
+        val boardReads = AtomicInteger()
+        @Volatile var currentTransport = true
+        var kernelVersion = "6.12.75~fixture-r1"
+        override fun requireCurrent() { if (!currentTransport || closed.get()) throw RouterSshFailure() }
         var boardVersion = "25.12.5"
         var kernelQueried = false
         var availableFlashKiB = 8000L
@@ -39,16 +45,22 @@ class WifiRouterSetupServiceTest {
         var packageReceipt = ""
         var enrollmentRequested = false
         override fun connect(password: CharArray?) {
+            connectCalls.incrementAndGet()
             connectFailure?.let { throw it }
             if (password == null) { connectedWithoutPassword = true; throw RouterSshTrustRequired(byteArrayOf(1, 2, 3)) }
         }
+        override fun connectWithKey(privateKey: ByteArray, passphrase: CharArray) {
+            connectCalls.incrementAndGet(); publicKeyCalls.incrementAndGet()
+            try { connectFailure?.let { throw it } }
+            finally { privateKey.fill(0); passphrase.fill('\u0000') }
+        }
         override fun read(command: RouterReadCommand): ByteArray = when (command) {
-            RouterReadCommand.BOARD -> """{"release":{"distribution":"OpenWrt","version":"$boardVersion","target":"x86/64"}}"""
+            RouterReadCommand.BOARD -> { boardReads.incrementAndGet(); """{"release":{"distribution":"OpenWrt","version":"$boardVersion","target":"x86/64"}}""" }
             RouterReadCommand.ARCHITECTURE -> "x86_64\n"
             RouterReadCommand.FLASH -> "Filesystem 1024-blocks Used Available Capacity Mounted on\n/dev/root 10000 2000 $availableFlashKiB 20% /overlay\n"
             RouterReadCommand.MEMORY -> "MemAvailable: 400000 kB\n"
             RouterReadCommand.CONFIGURATION -> ""
-            RouterReadCommand.KERNEL_PACKAGE -> { kernelQueried = true; "kernel-6.12.75~fixture-r1\n" }
+            RouterReadCommand.KERNEL_PACKAGE -> { kernelQueried = true; """[{"name":"kernel","version":"$kernelVersion"}]""" }
             RouterReadCommand.PACKAGE_MANIFEST -> packageReceipt
             RouterReadCommand.MOBILE_CERTIFICATE -> requireNotNull(javaClass.getResourceAsStream("/router-fixture.crt")).use { it.readBytes() }.toString(Charsets.US_ASCII)
             else -> error("unexpected read")
@@ -69,11 +81,23 @@ class WifiRouterSetupServiceTest {
         override val catalog = RouterInstallCatalogTest.catalog(setOf(RouterInstallProtocol.HYSTERIA2))
         override val supportedPlatforms = setOf(RouterPlatform("25.12", "x86/64", "x86_64"))
         var initialized = false
+        var payloadCalls = 0
+        var compatibilityCalls = 0
+        val compatibilityStarted = CompletableDeferred<Unit>()
+        var compatibilityGate: CompletableDeferred<Unit>? = null
+        override suspend fun verifyCompatibility(system: RouterSystemInspection) {
+            compatibilityCalls++
+            compatibilityStarted.complete(Unit)
+            compatibilityGate?.await()
+            require(system.openWrtVersion == "25.12.5" && system.platform.target == "x86/64" &&
+                system.platform.architecture == "x86_64" && system.kernelVersion == "6.12.75~fixture-r1")
+        }
         var gate: CompletableDeferred<Unit>? = null
         val preparationStarted = CompletableDeferred<Unit>()
         var failInitialize = false
         override suspend fun initialize() { if (failInitialize) throw IllegalArgumentException("fixture"); initialized = true }
         override suspend fun payload(system: RouterSystemInspection, selection: RouterInstallProtocolSelection): RouterSetupPayload {
+            payloadCalls++
             preparationStarted.complete(Unit)
             gate?.await()
             val bytes = "#!/bin/sh\nexit 0\n".toByteArray()
@@ -256,4 +280,100 @@ class WifiRouterSetupServiceTest {
             put("name", "foxcore-cli"); put("version", "1.0.0"); put("file", "core.apk"); put("sha256", "a".repeat(64))
         })))
     }.toString()
+    @Test fun compatibilityKeepsOneAuthenticatedSessionAndDoesNotPlanUntilSelection() = runBlocking {
+        val client = Client(); val release = Release(); var connections = 0
+        val service = WifiRouterSetupService(release, { _, _ -> connections++; client }, {}, Dispatchers.IO)
+        val empty = charArrayOf()
+        val inspected = service.precheck("192.168.1.1", byteArrayOf(1, 2, 3), empty)
+        assertEquals(0, release.payloadCalls)
+        assertFalse(client.installed || client.closed.get())
+        val plan = service.planInspection(inspected, requireNotNull(release.catalog.defaultSelection)) {}
+        assertEquals(1, connections)
+        assertEquals(1, client.connectCalls.get())
+        assertEquals(2, client.boardReads.get())
+        assertEquals(2, release.compatibilityCalls)
+        assertEquals(1, release.payloadCalls)
+        inspected.close()
+        assertFalse(client.closed.get())
+        plan.close()
+        withTimeout(5000) { client.closeCompleted.await() }
+        assertEquals(1, client.closeCalls.get())
+        assertFalse(client.installed)
+    }
+
+    @Test fun finalPlanningRechecksResourcesInsteadOfReusingCompatibilityFacts() = runBlocking {
+        val client = Client(); val release = Release()
+        val service = WifiRouterSetupService(release, { _, _ -> client }, {}, Dispatchers.IO)
+        val inspected = service.precheck("192.168.1.1", byteArrayOf(1, 2, 3), "fixture".toCharArray())
+        client.availableFlashKiB = 0
+        val failure = runCatching { service.planInspection(inspected, requireNotNull(release.catalog.defaultSelection)) {} }.exceptionOrNull()
+        assertTrue(failure is RouterSetupFailure && failure.kind == RouterWizardError.STORAGE)
+        withTimeout(5000) { client.closeCompleted.await() }
+        assertEquals(2, client.boardReads.get())
+        assertEquals(1, client.connectCalls.get())
+        assertFalse(client.installed)
+    }
+
+    @Test fun changedKernelAfterCompatibilityCannotBecomeAnInstallPlan() = runBlocking {
+        val client = Client(); val release = Release()
+        val service = WifiRouterSetupService(release, { _, _ -> client }, {}, Dispatchers.IO)
+        val inspected = service.precheck("192.168.1.1", byteArrayOf(1, 2, 3), "fixture".toCharArray())
+        client.kernelVersion = "6.12.99~different-r1"
+        assertTrue(runCatching { service.planInspection(inspected, requireNotNull(release.catalog.defaultSelection)) {} }.isFailure)
+        withTimeout(5000) { client.closeCompleted.await() }
+        assertEquals(0, release.payloadCalls)
+        assertFalse(client.installed)
+    }
+
+    @Test fun cancelDuringCompatibilityVerificationClosesAndWipesTheSecret() = runBlocking {
+        val client = Client(); val release = Release().apply { compatibilityGate = CompletableDeferred() }
+        val service = WifiRouterSetupService(release, { _, _ -> client }, {}, Dispatchers.IO)
+        val secret = "fixture".toCharArray()
+        val request = async { service.precheck("192.168.1.1", byteArrayOf(1, 2, 3), secret) }
+        withTimeout(5000) { release.compatibilityStarted.await() }
+        request.cancelAndJoin()
+        withTimeout(5000) { client.closeCompleted.await() }
+        assertArrayEquals(CharArray(secret.size), secret)
+        assertEquals(1, client.closeCalls.get())
+        assertEquals(0, release.payloadCalls)
+    }
+
+    @Test fun abandonedCompatibilitySessionExpiresAndCannotBeClaimed() = runBlocking {
+        val client = Client(); val release = Release()
+        val service = WifiRouterSetupService(release, { _, _ -> client }, {}, Dispatchers.IO, inspectionLifetimeMs = 40)
+        val inspected = service.precheck("192.168.1.1", byteArrayOf(1, 2, 3), "fixture".toCharArray())
+        withTimeout(5000) { client.closeCompleted.await() }
+        assertTrue(runCatching { inspected.requireCurrent() }.isFailure)
+        inspected.close()
+        assertEquals(1, client.closeCalls.get())
+        assertFalse(client.installed)
+    }
+
+    @Test fun networkLossClosesAnIdleCompatibilitySession() = runBlocking {
+        val client = Client(); val release = Release()
+        val service = WifiRouterSetupService(release, { _, _ -> client }, {}, Dispatchers.IO,
+            inspectionLifetimeMs = 50, elapsedMs = { 0L })
+        val inspected = service.precheck("192.168.1.1", byteArrayOf(1, 2, 3), "fixture".toCharArray())
+        client.currentTransport = false
+        withTimeout(5000) { client.closeCompleted.await() }
+        assertTrue(runCatching { inspected.requireCurrent() }.isFailure)
+        assertEquals(1, client.closeCalls.get())
+        assertFalse(client.installed)
+    }
+
+    @Test fun keyPrecheckWipesInputsAndTransfersTheSameSessionToFinalPlanning() = runBlocking {
+        val client = Client(); val release = Release()
+        val service = WifiRouterSetupService(release, { _, _ -> client }, {}, Dispatchers.IO)
+        val key = ByteArray(32) { 7 }; val passphrase = "synthetic".toCharArray()
+        val inspected = service.precheckWithKey("192.168.1.1", byteArrayOf(1, 2, 3), key, passphrase)
+        assertArrayEquals(ByteArray(key.size), key)
+        assertArrayEquals(CharArray(passphrase.size), passphrase)
+        val plan = service.planInspection(inspected, requireNotNull(release.catalog.defaultSelection)) {}
+        assertEquals(1, client.connectCalls.get())
+        assertEquals(1, client.publicKeyCalls.get())
+        plan.close()
+        withTimeout(5000) { client.closeCompleted.await() }
+        assertEquals(1, client.closeCalls.get())
+    }
+
 }

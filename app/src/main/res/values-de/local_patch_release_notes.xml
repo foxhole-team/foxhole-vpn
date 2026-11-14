@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="vpn_release_notes_translations_104">Arabisch und RTL werden unterstützt, das Widget wurde angepasst und Übersetzungen sowie Router-Einstellungen wurden korrigiert.</string>
-    <string name="vpn_release_notes_router_cleanup_104">Die Ressourcenfreigabe und Fehlerausgabe bei der Routereinrichtung wurden verbessert.</string>
+    <string name="vpn_release_notes_translations_104">Arabisch und RTL werden unterstützt, das Widget wurde angepasst und Übersetzungen sowie Router-Einstellungen wurden korrigiert</string>
+    <string name="vpn_release_notes_router_cleanup_104">Die Ressourcenfreigabe und Fehlerausgabe bei der Routereinrichtung wurden verbessert</string>
+    <string name="vpn_release_notes_router_setup_106">Die Erstinstallation und Einrichtung des Routers über die App wurde korrigiert</string>
+    <string name="vpn_release_notes_help_106">Hilfebereiche aktualisiert</string>
 </resources>

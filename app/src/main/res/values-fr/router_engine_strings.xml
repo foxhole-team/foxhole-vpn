@@ -12,8 +12,8 @@
     <string name="router_engines_download_size">Téléchargement</string>
     <string name="router_engines_reconnect_note">Le VPN du routeur se reconnectera.</string>
     <string name="router_engines_keep_active">Le VPN du routeur ne redémarrera pas.</string>
-    <string name="router_engines_unavailable">Gestion des protocoles indisponible.</string>
-    <string name="router_engines_not_released">Aucun paquet publié disponible pour ce routeur.</string>
+    <string name="router_engines_unavailable">La gestion des protocoles VPN est indisponible.</string>
+    <string name="router_engines_not_released">Aucun paquet FoxHole OpenWrt n’est disponible pour ce routeur.</string>
     <string name="router_engines_stale">Les réglages du routeur ont changé. Vérifiez à nouveau l’installation.</string>
     <string name="router_engines_no_space">Le routeur manque d’espace libre ou de mémoire vive.</string>
     <string name="router_engines_profile_graph">Ce profil nécessite une combinaison de protocoles non prise en charge.</string>
@@ -32,8 +32,8 @@
     <string name="router_engines_close_progress">L’installation continue sur le routeur après la fermeture de cette fenêtre.</string>
     <string name="router_engines_check_status">VÉRIFIER L’ÉTAT</string>
     <string name="router_engines_remove_confirm">Supprimer le protocole sélectionné du routeur ?</string>
-    <string name="router_engines_flash_budget">Stockage interne</string>
-    <string name="router_engines_ram_budget">RAM</string>
+    <string name="router_engines_flash_budget">Stockage interne du routeur</string>
+    <string name="router_engines_ram_budget">Mémoire vive du routeur</string>
     <string name="router_engines_memory_budget">Requis : %1$s, disponible : %2$s</string>
     <string name="router_engines_show_result">VOIR LE RÉSULTAT</string>
 </resources>

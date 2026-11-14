@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vpn_notification_connected">VPN متصل</string>
+    <string name="vpn_notification_disconnected">VPN غير متصل</string>
+    <string name="vpn_notification_description">حالة اتصال VPN وأدوات التحكم فيه.</string>
+</resources>

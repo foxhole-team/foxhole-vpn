@@ -16,7 +16,7 @@ import java.io.IOException
 
 @OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
 class RouterLicenseSetupFlowTest {
-    private class Setup : RouterSetupService {
+    private class Setup : RouterPrecheckedSetupFixture() {
         override val installCatalog = RouterInstallCatalogTest.catalog(setOf(RouterInstallProtocol.HYSTERIA2))
         var probes = 0
         var authenticated = 0
@@ -54,9 +54,34 @@ class RouterLicenseSetupFlowTest {
             options: RouterWizardOptions, selectedProfile: RouterProfileSelection?) = error("unexpected finish")
     }, { null }, { false }, readonlyInspector = readonly)
 
+    private suspend fun preparePlan(wizard: RouterWizardCoordinator, password: CharArray) {
+        wizard.login(password)
+        wizard.confirmCompatibility()
+        wizard.confirmInstallProtocols()
+    }
+
+    @Test fun helpCapabilitiesDistinguishInspectionFromAQualifiedInstaller() {
+        val absent = wizard(null)
+        assertFalse(absent.canInspectRouter)
+        assertFalse(absent.canInstallRouter)
+        val installer = wizard(Setup())
+        assertTrue(installer.canInstallRouter)
+        assertFalse(installer.canInspectRouter)
+        val inspector = object : RouterReadonlySshInspector {
+            override suspend fun inspectSshIdentity(address: String) = error("not invoked")
+            override suspend fun inspect(address: String, hostKey: ByteArray, password: CharArray) = error("not invoked")
+            override suspend fun inspectWithKey(address: String, hostKey: ByteArray, privateKey: ByteArray, passphrase: CharArray) = error("not invoked")
+        }
+        val inspection = wizard(null, inspector)
+        assertTrue(inspection.setupAvailable)
+        assertTrue(inspection.canInspectRouter)
+        assertFalse(inspection.canInstallRouter)
+        absent.close(); installer.close(); inspection.close()
+    }
+
     private suspend fun loginStage(wizard: RouterWizardCoordinator) {
         wizard.begin(RouterWizardPath.SETUP, "NL")
-        wizard.inspectAddress("192.168.1.1"); wizard.acceptIdentity(); wizard.confirmInstallProtocols()
+        wizard.inspectAddress("192.168.1.1"); wizard.acceptIdentity()
         assertEquals(RouterWizardStage.LOGIN, wizard.state.value.stage)
     }
 
@@ -64,7 +89,7 @@ class RouterLicenseSetupFlowTest {
         val setup = Setup(); val wizard = wizard(setup)
         loginStage(wizard)
         assertEquals(1, setup.probes)
-        val password = "synthetic".toCharArray(); wizard.login(password)
+        val password = "synthetic".toCharArray(); preparePlan(wizard, password)
         assertEquals(1, setup.authenticated)
         assertEquals(RouterWizardStage.INSTALL, wizard.state.value.stage)
         assertFalse(wizard.state.value.options.licenseAccepted)
@@ -78,14 +103,14 @@ class RouterLicenseSetupFlowTest {
 
     @Test fun failedApplyRetiresAuthorizationAndStaleCheckboxCannotAuthorizeNextTarget() = runTest {
         val setup = Setup(); val wizard = wizard(setup)
-        loginStage(wizard); wizard.login("synthetic".toCharArray())
+        loginStage(wizard); preparePlan(wizard, "synthetic".toCharArray())
         val stale = wizard.state.value.options.copy(licenseAccepted = true)
         wizard.options(stale); wizard.install()
         assertEquals(1, setup.installs); assertEquals(1, setup.closed)
         assertEquals(RouterWizardStage.ADDRESS, wizard.state.value.stage)
         assertFalse(wizard.state.value.options.licenseAccepted)
-        wizard.inspectAddress("192.168.1.2"); wizard.acceptIdentity(); wizard.confirmInstallProtocols()
-        wizard.login("synthetic".toCharArray()); wizard.options(stale)
+        wizard.inspectAddress("192.168.1.2"); wizard.acceptIdentity()
+        preparePlan(wizard, "synthetic".toCharArray()); wizard.options(stale)
         assertFalse(wizard.state.value.options.licenseAccepted)
         wizard.install(); assertEquals(1, setup.installs)
         wizard.close()
@@ -96,10 +121,11 @@ class RouterLicenseSetupFlowTest {
         wizard.begin(RouterWizardPath.SETUP, "NL")
         wizard.options(wizard.state.value.options.copy(licenseAccepted = true))
         assertFalse(wizard.state.value.options.licenseAccepted)
-        wizard.inspectAddress("192.168.1.1"); wizard.acceptIdentity(); wizard.confirmInstallProtocols()
+        wizard.inspectAddress("192.168.1.1"); wizard.acceptIdentity()
         val old = wizard.state.value.options.copy(licenseAccepted = true)
+        wizard.login("synthetic".toCharArray()); wizard.confirmCompatibility()
         setup.gate = CompletableDeferred()
-        val request = async { wizard.login("synthetic".toCharArray()) }; runCurrent()
+        val request = async { wizard.confirmInstallProtocols() }; runCurrent()
         wizard.options(old); assertFalse(wizard.state.value.options.licenseAccepted)
         requireNotNull(setup.gate).complete(Unit); request.await()
         wizard.options(old); assertFalse(wizard.state.value.options.licenseAccepted)
@@ -108,9 +134,10 @@ class RouterLicenseSetupFlowTest {
 
     @Test fun lateReadonlyPlanAfterCloseIsClosedAndCannotPublishInstall() = runTest {
         val setup = Setup(); val wizard = wizard(setup)
-        loginStage(wizard); setup.gate = CompletableDeferred()
+        loginStage(wizard)
         val password = "synthetic".toCharArray()
-        val request = async { wizard.login(password) }; runCurrent(); wizard.close()
+        wizard.login(password); wizard.confirmCompatibility(); setup.gate = CompletableDeferred()
+        val request = async { wizard.confirmInstallProtocols() }; runCurrent(); wizard.close()
         requireNotNull(setup.gate).complete(Unit); request.join()
         assertEquals(1, setup.closed)
         assertFalse(wizard.state.value.options.licenseAccepted)
@@ -120,9 +147,9 @@ class RouterLicenseSetupFlowTest {
 
     @Test fun aLateCheckboxFromAClosedWizardCannotAuthorizeItsSuccessor() = runTest {
         val setup = Setup(); val wizard = wizard(setup)
-        loginStage(wizard); wizard.login("synthetic".toCharArray())
+        loginStage(wizard); preparePlan(wizard, "synthetic".toCharArray())
         val stale = wizard.state.value.options.copy(licenseAccepted = true)
-        wizard.close(); loginStage(wizard); wizard.login("synthetic".toCharArray()); wizard.options(stale)
+        wizard.close(); loginStage(wizard); preparePlan(wizard, "synthetic".toCharArray()); wizard.options(stale)
         assertFalse(wizard.state.value.options.licenseAccepted)
         wizard.close()
     }

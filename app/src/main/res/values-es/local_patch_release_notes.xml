@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="vpn_release_notes_translations_104">Se añadió compatibilidad con árabe y RTL, se adaptó el widget y se corrigieron las traducciones y los ajustes del router.</string>
-    <string name="vpn_release_notes_router_cleanup_104">Se mejoraron la liberación de recursos y los mensajes de error durante la configuración del router.</string>
+    <string name="vpn_release_notes_translations_104">Se añadió compatibilidad con árabe y RTL, se adaptó el widget y se corrigieron las traducciones y los ajustes del router</string>
+    <string name="vpn_release_notes_router_cleanup_104">Se mejoraron la liberación de recursos y los mensajes de error durante la configuración del router</string>
+    <string name="vpn_release_notes_router_setup_106">Se corrigieron la instalación y la configuración inicial del router desde la aplicación</string>
+    <string name="vpn_release_notes_help_106">Actualizadas las secciones de ayuda</string>
 </resources>

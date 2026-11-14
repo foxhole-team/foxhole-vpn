@@ -201,7 +201,7 @@ internal fun VpnRouterLoginSheet(
         },
         {
             if (!installed) Text(stringResource(R.string.vpn_router_root_login))
-            OutlinedTextField(
+            if (addressEditable) OutlinedTextField(
                 state = address,
                 textStyle = MaterialTheme.typography.bodyLarge.copy(textDirection = androidx.compose.ui.text.style.TextDirection.Ltr),
                 modifier = Modifier.fillMaxWidth(),
@@ -211,11 +211,11 @@ internal fun VpnRouterLoginSheet(
                 label = { Text(stringResource(R.string.vpn_router_address)) },
             )
             if (!installed && onKeySubmit != null) {
-                OutlinedButton(onClick = { keyFile.launch("*/*") }, enabled = !busy && !submitting && !readingKey,
+                OutlinedButton(colors = vpnNeutralOutlinedButtonColors(), onClick = { keyFile.launch("*/*") }, enabled = !busy && !submitting && !readingKey,
                     modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)) {
                     Text(stringResource(R.string.router_ssh_key_file))
                 }
-                OutlinedButton(onClick = {
+                OutlinedButton(colors = vpnNeutralOutlinedButtonColors(), onClick = {
                     try {
                         if (!view.hasWindowFocus()) throw IOException("router_clipboard_focus")
                         val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
@@ -231,7 +231,7 @@ internal fun VpnRouterLoginSheet(
                 }
                 if (privateKey != null) {
                     Text(stringResource(R.string.router_ssh_key_loaded), style = MaterialTheme.typography.bodySmall)
-                    TextButton(onClick = {
+                    TextButton(colors = vpnNeutralTextButtonColors(), onClick = {
                         privateKey?.fill(0); privateKey = null
                         credential.edit { replace(0, length, "") }
                     }, enabled = !busy && !submitting && !readingKey) { Text(stringResource(R.string.router_ssh_use_password)) }

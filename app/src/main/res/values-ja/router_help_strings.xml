@@ -5,7 +5,7 @@
     <string name="router_help_protocols">ルーターで対応させる VPN プロトコルを選んでください。Hysteria2 は既定で選択されています。ほかのプロトコルは、ルーターのペアリング後に追加できます。</string>
     <string name="router_help_profile">ルーターと同期する電話上の VPN プロファイルを選んでください。後から追加することもできます。</string>
     <string name="router_help_country_direct">オンの場合、選択した国の通信はルーター上で VPN を経由しません。国を選択または変更するには国旗を押してください。</string>
-    <string name="router_help_home">信頼する Wi-Fi ネットワークに接続し、ルーターとペアリングすると、アプリは電話の現在の VPN 接続を自動的に切断します。そのネットワークから切断すると、最後に選択した VPN プロファイルで電話の以前の接続を復元します。</string>
+    <string name="router_help_home">スマートは、このペアリング済みルーターから取り込んだ使用中のホーム VPN プロファイルだけを、認証済み自宅 Wi-Fi ネットワークと VPN ルーティングの確認後に切断します。携帯回線へ移行すると、変更されていない同じプロファイルを再接続します。ホーム VPN サーバーとモバイルネットワーク管理の有効化が必要です。他のプロファイル、他の Wi-Fi ネットワーク、手動操作は優先されます。既定では無効で、監視通知が必要です。 再接続は VPN の一時停止後ではなく、自宅 Wi-Fi ネットワークが失われてから90秒以内に試行します。手動操作やプロファイル変更で切り替えは中止されます。</string>
     <string name="router_help_add_phone">お使いの端末をホームネットワークの端末一覧に追加し、その通信がルーター上の VPN 接続を使えるようにします。</string>
     <string name="router_help_public_ip">ルーターが固定の公開 IP アドレスに対応していれば、端末用の VPN ゲートウェイとして使えます。経路は「端末 → ルーター」です。国内向けの通信は直接送信し、国外向けの通信は有効な VPN 接続を経由します。</string>
     <string name="router_help_create_client">ルーター上で、お使いの端末用の VPN プロファイルを作成します。</string>
@@ -20,5 +20,5 @@
     <string name="router_help_reset_foxhole">FoxHole の設定、PIN、クライアントの記録だけを削除します。FoxHole を再設定する必要があります。OpenWrt とほかのアプリの設定は残ります。</string>
     <string name="router_help_country_source">有効な場合、国内向けの通信は VPN を経由しません。たとえばルーターが RU にある場合、RU のサイトやサービスはルーターの IP アドレスで開きます。国外のサービスへの通信は、有効な VPN 接続を経由します。</string>
     <string name="router_help_device_status">端末の状態はルーターが報告します。情報がない場合、状態は不明です。</string>
-    <string name="router_help_install_server">端末を直接の IP アドレスでこのルーターの VPN に接続する場合に有効にしてください。追加メモリーが必要な、独立したサーバーパッケージをインストールします。アクセスはインストール後に設定できます。</string>
+    <string name="router_help_install_server">端末をルーターのパブリック IP アドレス経由で VPN に接続する場合に有効にしてください。ウィザードが Hysteria2 サーバーコンポーネントをダウンロードしてインストールします。リモートアクセスには固定のパブリック IPv4 アドレスと開放された UDP ポートが必要です。アクセス設定はインストール後に完了できます。</string>
 </resources>

@@ -39,6 +39,7 @@ data class EngineStopResult(val released: Boolean, val poisoned: Boolean = false
 
 interface EngineDriver {
     suspend fun open(profile: VpnProfile): EngineSession
+    suspend fun open(profile: VpnProfile, commandTicket: Long?): EngineSession = open(profile)
     fun abortPendingTun()
 }
 
@@ -216,7 +217,7 @@ class VpnRuntimeOwner(
         lastAcceptedTicket = request.commandTicket
         publish(EngineSnapshot(EnginePhase.CONNECTING, request.profile.id))
         scope.launch {
-            val result = captureEngineResult { request.driver.open(request.profile) }
+            val result = captureEngineResult { request.driver.open(request.profile, request.commandTicket) }
             events.send(Event.Opened(request, result))
         }
     }

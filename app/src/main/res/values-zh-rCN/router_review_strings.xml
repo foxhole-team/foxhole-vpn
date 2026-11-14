@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="router_review_management">OpenWRT 客户端</string>
+    <string name="router_review_management">FoxHole OpenWRT</string>
     <string name="router_review_compatibility">支持的 OpenWrt 版本</string>
     <string name="router_review_platforms">平台</string>
     <string name="router_review_catalog_pending">OpenWrt 25.12.5：mediatek/filogic 和 x86/64。设置时会根据已验证的发布目录检查架构和可用空间。</string>
@@ -10,13 +10,13 @@
     <string name="router_review_protocols">VPN 协议</string>
     <string name="router_review_storage">安装</string>
     <string name="router_review_direct_ip">静态 IPv4 地址</string>
-    <string name="router_review_remote_settings">在外访问 VPN</string>
+    <string name="router_review_remote_settings">通过移动网络管理</string>
     <string name="router_review_phone_profile">为此手机创建 VPN 配置</string>
     <string name="router_review_remote_help">如果路由器支持静态公网 IP 地址，可以将其用作您设备的 VPN 网关。路径为“设备 → 路由器”；本地流量直接联网，境外流量通过当前启用的 VPN 连接。</string>
-    <string name="router_review_router_vpn">VPN OpenWRT</string>
+    <string name="router_review_router_vpn">管理</string>
     <string name="router_review_vpn_clients">VPN 客户端</string>
     <string name="router_review_router_vpn_description">配置、连接和设置</string>
-    <string name="router_review_clients_description">家庭设备和远程访问</string>
+    <string name="router_review_clients_description">家庭设备</string>
     <string name="router_review_unavailable">未找到路由器</string>
     <string name="router_review_control_disabled">路由器管理已禁用</string>
     <string name="router_review_back">返回</string>
@@ -37,8 +37,8 @@
     <string name="router_review_direct">不使用 VPN</string>
     <string name="router_review_selected_profile">所选路由器配置</string>
     <string name="router_review_unpair">是否取消路由器配对？</string>
-    <string name="router_review_unpair_description">手机将无法再管理路由器。只要未删除 FoxHole，VPN 就会继续运行。</string>
-    <string name="router_review_delete_package">从路由器移除 FoxHole</string>
+    <string name="router_review_unpair_description">手机将无法再管理路由器。只要未删除 FoxHole OpenWrt，VPN 就会继续运行。</string>
+    <string name="router_review_delete_package">从路由器移除 FoxHole OpenWrt</string>
     <string name="router_review_delete_unavailable">移除需要可访问的路由器和兼容安装程序。</string>
     <string name="router_review_confirm_unpair">取消配对</string>
     <string name="router_review_share">分享</string>
@@ -51,21 +51,21 @@
     <string name="router_review_collapse_devices">隐藏家庭设备</string>
     <string name="router_review_progress_download">正在下载安装文件</string>
     <string name="router_review_progress_upload">正在发送文件到路由器</string>
-    <string name="router_review_progress_install">路由器正在下载并安装 FoxHole</string>
-    <string name="router_review_progress_check">正在检查已安装的 VPN</string>
+    <string name="router_review_progress_install">正在下载并安装 FoxHole OpenWrt</string>
+    <string name="router_review_progress_check">正在检查</string>
     <string name="router_review_progress_percent">%1$d%%</string>
     <string name="router_review_find_router">查找路由器</string>
     <string name="router_review_router_found">已找到路由器</string>
     <string name="router_review_package_present">已发现 FoxHole OpenWRT Client，可以与您的设备配对</string>
-    <string name="router_review_package_missing">尚未安装 FoxHole</string>
-    <string name="router_review_package_unknown">无法检查 FoxHole。请重新查找路由器。</string>
-    <string name="router_review_reset_before_connect">重置 FoxHole 设置</string>
+    <string name="router_review_package_missing">尚未安装 FoxHole OpenWrt</string>
+    <string name="router_review_package_unknown">无法检查 FoxHole OpenWrt。请重新查找路由器。</string>
+    <string name="router_review_reset_before_connect">重置 FoxHole OpenWrt 设置</string>
     <string name="router_review_setup_available">路由器可供设置</string>
-    <string name="router_review_owner_setup_required">请使用所有者账户在 LuCI 中完成 FoxHole 首次设置。</string>
-    <string name="router_review_reset_unavailable">目前无法重置 FoxHole。</string>
+    <string name="router_review_owner_setup_required">请使用所有者账户在 LuCI 中完成 FoxHole OpenWrt 首次设置。</string>
+    <string name="router_review_reset_unavailable">目前无法重置 FoxHole OpenWrt。</string>
     <string name="router_review_open_router_setup">打开路由器设置</string>
     <string name="router_review_manual_address">输入地址</string>
-    <string name="router_review_local_traffic">本地流量</string>
+    <string name="router_review_local_traffic">不经过 VPN 的流量</string>
     <string name="router_review_country_auto">自动</string>
     <string name="router_review_country_unknown">国家未知</string>
     <string name="router_review_country_description">本地流量所属国家：%1$s。更改。</string>

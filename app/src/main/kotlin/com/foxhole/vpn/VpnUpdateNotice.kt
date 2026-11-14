@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 
-internal const val VPN_UPDATE_NOTICE_REVISION = 1
+internal const val VPN_UPDATE_NOTICE_REVISION = 4
 
 internal interface VpnUpdateNoticeStore {
     suspend fun readAcknowledgedRevision(): Int

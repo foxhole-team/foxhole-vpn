@@ -30,10 +30,16 @@
     <string name="vpn_license_required">请先接受许可协议</string>
     <string name="vpn_license_storage_error">无法读取或保存您的同意。请重试。</string>
     <string name="vpn_license_title">FoxHole VPN · 许可协议</string>
-    <string name="vpn_release_notes_formats">新增订阅格式：兼容的 Clash/Mihomo YAML/JSON 和 Outline JSON。</string>
-    <string name="vpn_release_notes_imports">导入 v2rayTun 链接、FoxHole JSON 配置和粘贴的 SIP008 JSON。</string>
-    <string name="vpn_release_notes_router">直接从应用在运行 FoxHole OpenWrt Client 的路由器上安装和管理 VPN。</string>
-    <string name="vpn_release_notes_storage_error">无法读取或保存您的确认。请重试。</string>
+    <string name="vpn_release_notes_formats">新增订阅格式：兼容的 Clash/Mihomo YAML/JSON 和 Outline JSON</string>
+    <string name="vpn_release_notes_imports">导入 v2rayTun 链接、FoxHole JSON 配置和粘贴的 SIP008 JSON</string>
+    <string name="vpn_release_notes_router">直接从应用在运行 FoxHole OpenWrt Client 的路由器上安装和管理 VPN</string>
+    <string name="vpn_release_notes_storage_error">无法读取或保存您的确认。请重试</string>
     <string name="vpn_router_error_home_vpn">没有通往已配对路由器的已验证 VPN 路由。请连接到该路由器的 VPN，并在路由器设置中启用通过家庭 VPN 进行管理。</string>
     <string name="vpn_router_local_network_purpose">本应用使用您的局域网查找 OpenWrt 路由器，并从此手机管理其 VPN。</string>
+    <string name="router_discovery_ready_to_pair">路由器已准备好配对</string>
+    <string name="router_discovery_setup_question">是否启动 FoxHole OpenWrt 软件包安装向导？</string>
+    <string name="router_discovery_cancel">取消</string>
+    <string name="router_discovery_continue">继续</string>
+    <string name="router_setup_compatibility_title">安装兼容性</string>
+    <string name="router_setup_supported_versions">可安装版本</string>
 </resources>

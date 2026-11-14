@@ -42,7 +42,7 @@ internal fun VpnProfileActionsSheet(
         Text(profile.name, style = MaterialTheme.typography.bodyLarge)
         Spacer(Modifier.size(16.dp))
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            OutlinedButton(onClick = onShare, enabled = shareEnabled,
+            OutlinedButton(colors = vpnNeutralOutlinedButtonColors(), onClick = onShare, enabled = shareEnabled,
                 modifier = Modifier.weight(1f).heightIn(min = 64.dp),
                 contentPadding = PaddingValues(horizontal = 10.dp, vertical = 12.dp)) {
                 Icon(painterResource(R.drawable.lin_file), null, Modifier.size(24.dp))
@@ -50,7 +50,7 @@ internal fun VpnProfileActionsSheet(
                 Text(stringResource(R.string.vpn_profile_share), Modifier.weight(1f), textAlign = TextAlign.Center)
             }
             val unavailable = stringResource(R.string.vpn_profile_refresh_unavailable)
-            OutlinedButton(onClick = onRefresh, enabled = editable && profile.refreshable,
+            OutlinedButton(colors = vpnNeutralOutlinedButtonColors(), onClick = onRefresh, enabled = editable && profile.refreshable,
                 modifier = Modifier.weight(1f).heightIn(min = 64.dp)
                     .semantics { if (!profile.refreshable) stateDescription = unavailable },
                 contentPadding = PaddingValues(horizontal = 10.dp, vertical = 12.dp)) {
@@ -61,7 +61,7 @@ internal fun VpnProfileActionsSheet(
         }
         if (routerPaired) {
             Spacer(Modifier.size(8.dp))
-            OutlinedButton(
+            OutlinedButton(colors = vpnNeutralOutlinedButtonColors(),
                 onClick = onSendToRouter,
                 enabled = shareEnabled,
                 modifier = Modifier.fillMaxWidth().heightIn(min = 64.dp),

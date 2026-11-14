@@ -2,7 +2,7 @@
 
 <div align="center">
 
-FoxHole VPNはAndroid 7以降向けのシンプルなVPNクライアントです。VPNプロバイダーまたは自分のサーバーのプロファイルをインポートし、電話を接続して、ペアリング済みOpenWrtルーターをアプリから管理できます。
+FoxHole VPNはAndroid 7以降向けのシンプルなVPNクライアントです。VPNプロバイダーまたは自分のサーバーのプロファイルをインポートし、スマートフォンから接続できます。ペアリング済みOpenWrtルーターの管理は公開ベータ版です。
 
 </div>
 
@@ -17,7 +17,7 @@ FoxHole VPNはAndroid 7以降向けのシンプルなVPNクライアントです
 
 <div align="center">
 
-[English](../README.md) · [Русский](README.ru.md) · [Deutsch](README.de.md) · [Français](README.fr.md) · [Español](README.es.md) · [日本語](README.ja.md) · [简体中文](README.zh-CN.md) · [العربية](README.ar.md)
+[🇬🇧 English](../README.md) · [🇷🇺 Русский](README.ru.md) · [🇩🇪 Deutsch](README.de.md) · [🇫🇷 Français](README.fr.md) · [🇪🇸 Español](README.es.md) · [🇯🇵 **日本語**](README.ja.md) · [🇨🇳 简体中文](README.zh-CN.md) · [🇸🇦 العربية](README.ar.md)
 
 </div>
 
@@ -34,6 +34,34 @@ FoxHole VPNはAndroid 7以降向けのシンプルなVPNクライアントです
   </a>
 </p>
 
+<a id="ecosystem"></a>
+<a id="-foxholeエコシステム"></a>
+
+<div align="center">
+
+**FoxHole ecosystem**
+
+[FoxHole Guard](https://github.com/foxhole-team/foxhole-guard) · [**FoxHole VPN**](https://github.com/foxhole-team/foxhole-vpn) · [FoxHole Core](https://github.com/foxhole-team/foxhole-core) · [FoxHole OpenWRT](https://github.com/foxhole-team/foxhole-openwrt-client) · [FoxHole DB](https://github.com/foxhole-team/foxhole-db)
+
+<details>
+<summary>プロジェクトの役割</summary>
+
+| プロジェクト | 役割 |
+| --- | --- |
+| [FoxHole Guard](https://github.com/foxhole-team/foxhole-guard) | Android：VPN、Tor/I2P、通信ルールとローカル監視 |
+| [**FoxHole VPN**](https://github.com/foxhole-team/foxhole-vpn) | Android：シンプルなVPNとペアリング済みOpenWrt管理 |
+| [FoxHole Core](https://github.com/foxhole-team/foxhole-core) | 共通Rustネットワークコア。機能はビルドによる |
+| [FoxHole OpenWrt](https://github.com/foxhole-team/foxhole-openwrt-client) | ルーターVPNとローカルネットワーク管理 |
+| [FoxHole DB](https://github.com/foxhole-team/foxhole-db) | 署名付きルールと参照データ |
+
+</details>
+
+</div>
+
+
+
+
+私たちは自分たちの時間と資源を使い、AIツールも活用してFoxHole VPNを開発・保守しています。皆さまの支援により、プロジェクトにより多くの時間を充てられます。[開発を支援する →](#cryptocurrency-wallets)
 
 VLESS、VMess、Trojan、Shadowsocks/Outline、WireGuard、AmneziaWG（試験的サポート）、Hysteria2、Naive、TUIC、AnyTLSに対応します。互換性のあるFoxHole Guard設定、v2rayTunリンクとサブスクリプション、Clash/mihomo YAML、SIP008 JSON、Outline動的キー（`ssconf://`）をインポートできます。エクスポートしたプロファイルや参照リンクには認証情報が含まれる場合があります。信頼できる相手とのみ共有してください。
 
@@ -43,11 +71,16 @@ VLESS、VMess、Trojan、Shadowsocks/Outline、WireGuard、AmneziaWG（試験的
 
 <a id="whats-new"></a>
 
-> **🆕 新機能と変更点 - 1.0.5 Stable**
+> **🆕 新機能と変更点 - 1.0.6 Stable**
 >
-> - Android 7への対応を追加しました。
-> - ウェブサイトのルーティングを追加しました。
-> - 通知の表示スタイルを改善しました。
+> - アプリからのルーターの初回インストールと設定を修正しました
+> - ヘルプの各セクションを更新しました
+> - ルーター管理インターフェースを更新
+> - インターフェース全体を改善
+> - Android のクイック設定にショートカットを追加
+> - ルーター管理で保存済み VPN プロファイルをインポートできるようにしました
+
+[アプリ更新時の継続と制限](app-update-continuation.md).
 
 <a id="quickstart"></a>
 
@@ -84,24 +117,26 @@ Android 7（API 24）以降が必要です。ビルドプロファイルには `
 - クリップボード、ファイル、QRコードからプロファイルをインポートし、保存済みプロファイルを共有できます。サブスクリプションの参照元を保持するプロファイルは更新できます。
 - インポートしたプロファイルの選択肢からプロトコルを選べます。使用中のプロファイルのプロトコル変更には、再接続前の確認が必要です。
 - ホーム画面のウィジェットで接続状態を確認し、選択したプロファイルを開始・停止できます。
-- 設定でテーマと言語を選べます。英語、ロシア語、ドイツ語、フランス語、スペイン語、日本語、簡体字中国語に対応します。
+- 設定でテーマと言語を選べます。英語、ロシア語、ドイツ語、フランス語、スペイン語、日本語、簡体字中国語、アラビア語に対応します。
 
 設定 → バックグラウンド更新で有効にすると、既定ではサブスクリプションを約12時間ごとに更新し、FoxHole DBの署名付きTLSフィンガープリントテーブルを24時間ごとに確認します。各確認は同じ画面で個別にオフにできます。データのインストールには引き続き操作が必要です。GitHub版は毎日アプリの更新を確認します。APKのダウンロードとインストールには操作とAndroidの確認が必要です。F-Droid版は独自のAPK更新を確認・インストールしません。F-Droidをご利用ください。Androidがバックグラウンド処理を遅らせることがあります。
 
 更新するのはコアがTLS ClientHelloを生成する際のデータです。検証済み更新の適用にはユーザーの操作が必要です。
+
+[アプリルーティングの契約](application-routing.md) · [Web ルールの形式と制限](website-routing-formats.md) · [WireGuard ドメインルーティングと DNS](wireguard-domain-dns.md).
 
 <a id="details"></a>
 
 ## 🛜 ルーター管理（パブリックベータ）
 
 > [!NOTE]
-> VPN 接続が有効な間のルーター管理は、まだサポートされていません。
+> ローカル検索、セットアップ、新規ペアリングには、VPN を停止した所定の Wi-Fi/LAN フローが必要です。既存のペアリングは、下記の信頼・同意条件を満たす場合に、別途有効にしたホーム VPN 経由の管理を利用できます。
 
 ルーター管理はパブリックベータ版です。端末の互換性とインストール・更新手順は検証中です。
 
 > [!IMPORTANT]
-> 以下の制限は現在公開されているリリースについての説明です。
-> 現在、自動インストールに対応するのは、OpenWrt の設定がすべて初期値のルーターのみです。
+> 以下の利用可否は現在のソース設定を示します。
+> この checkout では、リリースカタログの適格性確認が完了するまでアプリからの自動インストールを無効にしています。ルーター情報の検査と、手動で導入した互換クライアントとのペアリングは利用できます。
 > 最新の [FoxHole OpenWrt Client](https://github.com/foxhole-team/foxhole-openwrt-client) を手動でインストールしたルーターともペアリングできます。
 > セットアップとペアリングには、スマートフォンとルーターが同じ LAN に接続され、ルーターからインターネットにアクセスできる必要があります。
 
@@ -132,27 +167,18 @@ Wi-Fi アイコンは物理的な Wi-Fi 接続のみを示し、SSID や位置�
 
 ## 🔒 プライバシー
 
-プロファイルと設定はAndroid Keystoreの鍵で端末上に暗号化されます。広告や解析SDKは含まれません。VPN確認には`www.google.com/generate_204`を使用し、出口IPの情報は`ipwho.is`から取得します。これらのリクエストは選択したVPNネットワークを使用します。VPNがオフのときは、ウィジェットを含め、現在のインターネット接続でおおよその端末位置を更新できます。各サービスはリクエストと送信元IPを受け取ります。署名付きTLSフィンガープリントテーブルは`foxhole-team.github.io/foxhole-db`、サブスクリプションは保存済みプロバイダーURLから取得します。GPSは不要です。
+プロファイルと設定はAndroid Keystoreの鍵で端末上に暗号化されます。広告や解析SDKは含まれません。通常の検証モードではVPN確認に`www.google.com/generate_204`を使用し、出口IPの情報は`ipwho.is`から取得します。これらのリクエストは選択したVPNネットワークを使用します。VPNがオフのときは、ウィジェットを含め、現在のインターネット接続でおおよその端末位置を更新できます。各サービスはリクエストと送信元IPを受け取ります。署名付きTLSフィンガープリントテーブルは`foxhole-team.github.io/foxhole-db`、サブスクリプションは保存済みプロバイダーURLから取得します。GPSは不要です。
 
-<a id="ecosystem"></a>
+例外：Web ルールまたはブロックしたアプリがある WireGuard ルールモードでは、HTTP・出口 IP の検査の代わりに、認証済みプロファイル DNS リゾルバーを検証します。このモードの「接続済み」はプロファイル DNS への到達性を示し、任意の HTTP 接続先や出口 IP サービスへの到達を保証しません。出口 IP の位置は取得できず、Geo 更新も拒否されます。
 
-## 🔗 FoxHoleエコシステム
-
-| プロジェクト | 役割 |
-| --- | --- |
-| [FoxHole Guard](https://github.com/foxhole-team/foxhole-guard) | Android：VPN、Tor/I2P、通信ルールとローカル監視 |
-| [**FoxHole VPN**](https://github.com/foxhole-team/foxhole-vpn) | Android：シンプルなVPNとペアリング済みOpenWrt管理 |
-| [FoxHole Core](https://github.com/foxhole-team/foxhole-core) | 共通Rustネットワークコア。機能はビルドによる |
-| [FoxHole OpenWrt](https://github.com/foxhole-team/foxhole-openwrt-client) | ルーターVPNとローカルネットワーク管理 |
-| [FoxHole DB](https://github.com/foxhole-team/foxhole-db) | 署名付きルールと参照データ |
 
 ## 🤝 開発への参加
 
 不具合報告や変更提案は[Issues](https://github.com/foxhole-team/foxhole-vpn/issues)へお願いします。
 
-## 💖 開発を支援する
+[APK 配布と ABI](apk-delivery-abis.md) · [F-Droid ソースビルド](fdroid-source-build.md).
 
-私たちは、開発にAIツールを使用しながら、すべて自分たちの時間と資源でFoxHole VPNを開発・保守しています。皆さまのご支援により、プロジェクトにより多くの時間を充て、開発を加速できます。
+## 💖 開発を支援する
 
 <a id="cryptocurrency-wallets"></a>
 
